@@ -6,16 +6,13 @@ import java.util.Date;
  构造器
  public Date(): 创建当前系统的此刻日期时间
  public Date(long time);  将传进来的时间毫秒值转换成为日期时间
-
-
-
+ 
  * */
 
 public class DateDemo1 {
 
     public static void main(String[] args) {
         Date d1 = new Date();
-//        //打印出人类可读的时间格式
 //        System.out.println(d1);
 //
 //        long l1 = d1.getTime();
@@ -35,7 +32,9 @@ public class DateDemo1 {
         System.out.println(d2);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss a");
         //开始调用方法格式化时间得到字符串
-        String RS = sdf.format(d1);
-        System.out.println(RS);
+//        String RS = sdf.format(d1);
+        //直接格式化时间毫秒值
+        String rs = sdf.format(time);
+        System.out.println(rs);
     }
 }
