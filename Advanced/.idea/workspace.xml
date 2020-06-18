@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5270c861-50f4-4885-a201-b19248952638" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1dTYUzAQfHddZ8CHzuyXNTEKSBj" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/etc/Ayy_data_struct/python" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\lyy\documents\project1\Advanced\src\com\etc\Ayy_data_struct\python" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.list_demo1">
+    <configuration name="collection_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_collection.collection_demo1" />
+      <module name="Advanced" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.etc.Ayy_collection.list集合.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="list_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_collection.list集合.list_demo1" />
+      <module name="Advanced" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.etc.Ayy_collection.list集合.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.list_demo1" />
+        <item itemvalue="Application.collection_demo1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5270c861-50f4-4885-a201-b19248952638" name="Default Changelist" comment="" />
+      <created>1592450569383</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1592450569383</updated>
+      <workItem from="1592450573376" duration="20013000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="0" y="0" key="#Project_Structure" timestamp="1592450579947">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="0" y="0" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1592450579947" />
+    <state x="867" y="87" key="#com.intellij.ide.util.MemberChooser" timestamp="1592478562391">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="867" y="87" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1592478562391" />
+    <state x="871" y="104" key="FileChooserDialogImpl" timestamp="1592452531654">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="871" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1592452531654" />
+    <state width="808" height="107" key="GridCell.Tab.0.bottom" timestamp="1592475221009">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="808" height="107" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1592475221009" />
+    <state width="808" height="107" key="GridCell.Tab.0.center" timestamp="1592475221008">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="808" height="107" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1592475221008" />
+    <state width="808" height="107" key="GridCell.Tab.0.left" timestamp="1592475221008">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="808" height="107" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1592475221008" />
+    <state width="808" height="107" key="GridCell.Tab.0.right" timestamp="1592475221008">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="808" height="107" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1592475221008" />
+    <state width="808" height="203" key="GridCell.Tab.1.bottom" timestamp="1592474789058">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="808" height="203" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1592474789058" />
+    <state width="808" height="203" key="GridCell.Tab.1.center" timestamp="1592474789058">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="808" height="203" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1592474789058" />
+    <state width="808" height="203" key="GridCell.Tab.1.left" timestamp="1592474789058">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="808" height="203" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1592474789058" />
+    <state width="808" height="203" key="GridCell.Tab.1.right" timestamp="1592474789058">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="808" height="203" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1592474789058" />
+  </component>
+</project>
