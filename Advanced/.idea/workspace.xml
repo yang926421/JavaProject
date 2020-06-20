@@ -56,7 +56,7 @@
       <recent name="D:\lyy\documents\project1\Advanced\src\com\etc\Ayy_data_struct\python" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.map_demo1">
+  <component name="RunManager" selected="Application.collection_demo1">
     <configuration name="collection_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_collection.collection_demo1" />
       <module name="Advanced" />
@@ -124,11 +124,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.collection_demo1" />
         <item itemvalue="Application.map_demo1" />
         <item itemvalue="Application.process_demo" />
         <item itemvalue="Application.process_demo (1)" />
         <item itemvalue="Application.list_demo1" />
-        <item itemvalue="Application.collection_demo1" />
       </list>
     </recent_temporary>
   </component>
