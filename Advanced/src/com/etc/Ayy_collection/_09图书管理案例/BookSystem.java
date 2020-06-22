@@ -77,6 +77,7 @@ public class BookSystem {
                 break;
             default:
                 System.err.println("您的命令输入有无，请重新确认！");
+                System.err.println("您的命令输入有无，请重新确认！");
         }
         showCommand(); // 调用自己
     }

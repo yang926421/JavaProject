@@ -56,13 +56,13 @@
       <recent name="D:\lyy\documents\project1\Advanced\src\com\etc\Ayy_data_struct\python" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.two_point_demo">
-    <configuration name="collection_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_collection.collection_demo1" />
+  <component name="RunManager" selected="Application.testException">
+    <configuration name="BookSystem" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_collection._09图书管理案例.BookSystem" />
       <module name="Advanced" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.etc.Ayy_collection.list集合.*" />
+          <option name="PATTERN" value="com.etc.Ayy_collection._09图书管理案例.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -70,12 +70,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="map2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_collection.map集合.map2" />
+    <configuration name="Exception异常处理进阶" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_exception.Exception异常处理进阶" />
       <module name="Advanced" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.etc.Ayy_collection.map集合.*" />
+          <option name="PATTERN" value="com.etc.Ayy_exception.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -83,12 +83,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="map_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_collection.map集合.map_demo1" />
+    <configuration name="Exception_demo运行时异常处理机制" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_exception.Exception_demo运行时异常处理机制" />
       <module name="Advanced" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.etc.Ayy_collection.map集合.*" />
+          <option name="PATTERN" value="com.etc.Ayy_exception.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -96,12 +96,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="process_demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_collection.set_demo.card.process_demo" />
+    <configuration name="Exception_demo2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_exception.Exception_demo2" />
       <module name="Advanced" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.etc.Ayy_collection.set_demo.card.*" />
+          <option name="PATTERN" value="com.etc.Ayy_exception.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -109,12 +109,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="two_point_demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_collection.list集合.two_point_demo" />
+    <configuration name="testException" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_exception.testException" />
       <module name="Advanced" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.etc.Ayy_collection.list集合.*" />
+          <option name="PATTERN" value="com.etc.Ayy_exception.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -124,11 +124,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.two_point_demo" />
-        <item itemvalue="Application.map2" />
-        <item itemvalue="Application.map_demo1" />
-        <item itemvalue="Application.collection_demo1" />
-        <item itemvalue="Application.process_demo" />
+        <item itemvalue="Application.testException" />
+        <item itemvalue="Application.Exception_demo运行时异常处理机制" />
+        <item itemvalue="Application.Exception异常处理进阶" />
+        <item itemvalue="Application.Exception_demo2" />
+        <item itemvalue="Application.BookSystem" />
       </list>
     </recent_temporary>
   </component>
@@ -173,22 +173,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="871" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1592452531654" />
-    <state width="970" height="145" key="GridCell.Tab.0.bottom" timestamp="1592810574918">
+    <state width="1323" height="145" key="GridCell.Tab.0.bottom" timestamp="1592819300984">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="970" height="145" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1592810574918" />
-    <state width="970" height="145" key="GridCell.Tab.0.center" timestamp="1592810574918">
+    <state width="1323" height="145" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1592819300984" />
+    <state width="1323" height="145" key="GridCell.Tab.0.center" timestamp="1592819300984">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="970" height="145" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1592810574918" />
-    <state width="970" height="145" key="GridCell.Tab.0.left" timestamp="1592810574918">
+    <state width="1323" height="145" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1592819300984" />
+    <state width="1323" height="145" key="GridCell.Tab.0.left" timestamp="1592819300984">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="970" height="145" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1592810574918" />
-    <state width="970" height="145" key="GridCell.Tab.0.right" timestamp="1592810574918">
+    <state width="1323" height="145" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1592819300984" />
+    <state width="1323" height="145" key="GridCell.Tab.0.right" timestamp="1592819300984">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="970" height="145" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1592810574918" />
+    <state width="1323" height="145" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1592819300984" />
     <state width="808" height="203" key="GridCell.Tab.1.bottom" timestamp="1592474789058">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
