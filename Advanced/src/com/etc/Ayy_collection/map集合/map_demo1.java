@@ -2,6 +2,13 @@ package com.etc.Ayy_collection.map集合;
 
 import java.util.HashMap;
 import java.util.Map;
+/**
+ map就是字典 存key和value的值 可以有很多API使用
+
+
+
+
+ */
 
 public class map_demo1 {
     public static void main(String[] args) {
