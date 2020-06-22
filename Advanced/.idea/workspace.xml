@@ -56,13 +56,13 @@
       <recent name="D:\lyy\documents\project1\Advanced\src\com\etc\Ayy_data_struct\python" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.map_demo1">
-    <configuration name="collection_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_collection.collection_demo1" />
+  <component name="RunManager" selected="Application.TreeSet_demo1">
+    <configuration name="TreeSet_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_collection.set_demo.TreeSet_demo1" />
       <module name="Advanced" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.etc.Ayy_collection.list集合.*" />
+          <option name="PATTERN" value="com.etc.Ayy_collection.set_demo.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -124,11 +124,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TreeSet_demo1" />
         <item itemvalue="Application.map_demo1" />
         <item itemvalue="Application.process_demo" />
         <item itemvalue="Application.process_demo (1)" />
         <item itemvalue="Application.list_demo1" />
-        <item itemvalue="Application.collection_demo1" />
       </list>
     </recent_temporary>
   </component>
@@ -142,7 +142,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1592450569383</updated>
-      <workItem from="1592450573376" duration="31342000" />
+      <workItem from="1592450573376" duration="34371000" />
     </task>
     <servers />
   </component>
@@ -165,30 +165,30 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="0" y="0" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1592450579947" />
-    <state x="867" y="87" key="#com.intellij.ide.util.MemberChooser" timestamp="1592555059506">
+    <state x="867" y="87" key="#com.intellij.ide.util.MemberChooser" timestamp="1592786558887">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="867" y="87" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1592555059506" />
+    <state x="867" y="87" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1592786558887" />
     <state x="871" y="104" key="FileChooserDialogImpl" timestamp="1592452531654">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="871" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1592452531654" />
-    <state width="898" height="22" key="GridCell.Tab.0.bottom" timestamp="1592560092071">
+    <state width="898" height="167" key="GridCell.Tab.0.bottom" timestamp="1592787088938">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="898" height="22" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1592560092071" />
-    <state width="898" height="22" key="GridCell.Tab.0.center" timestamp="1592560092071">
+    <state width="898" height="167" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1592787088938" />
+    <state width="898" height="167" key="GridCell.Tab.0.center" timestamp="1592787088938">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="898" height="22" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1592560092071" />
-    <state width="898" height="22" key="GridCell.Tab.0.left" timestamp="1592560092071">
+    <state width="898" height="167" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1592787088938" />
+    <state width="898" height="167" key="GridCell.Tab.0.left" timestamp="1592787088938">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="898" height="22" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1592560092071" />
-    <state width="898" height="22" key="GridCell.Tab.0.right" timestamp="1592560092071">
+    <state width="898" height="167" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1592787088938" />
+    <state width="898" height="167" key="GridCell.Tab.0.right" timestamp="1592787088938">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="898" height="22" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1592560092071" />
+    <state width="898" height="167" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1592787088938" />
     <state width="808" height="203" key="GridCell.Tab.1.bottom" timestamp="1592474789058">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

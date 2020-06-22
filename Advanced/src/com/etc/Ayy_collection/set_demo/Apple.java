@@ -2,7 +2,13 @@ package com.etc.Ayy_collection.set_demo;
 
 import java.util.Objects;
 
-public class Apple {
+public class Apple implements Comparable<Apple> {
+
+    // 重写了比较方法。
+    // e1.compareTo(o)
+    // 比较者：this
+    // 被比较者：o
+    // 需求：按照jiage比较
     public Apple(){
 
     }
@@ -15,6 +21,11 @@ public class Apple {
         this.name = name;
         this.color = color;
         this.price = price;
+    }
+    @Override
+    public int compareTo(Apple o) {
+        System.out.println(this.color);
+        return Double.compare(o.price, this.price);
     }
 
     public String getName() {
