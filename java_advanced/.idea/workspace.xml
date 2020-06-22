@@ -47,7 +47,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Advanced/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.customizations" />
   </component>
   <component name="RecentsManager">
@@ -148,6 +148,7 @@
       <workItem from="1592362939909" duration="649000" />
       <workItem from="1592363642125" duration="7368000" />
       <workItem from="1592451952719" duration="4397000" />
+      <workItem from="1592624312967" duration="64000" />
     </task>
     <servers />
   </component>

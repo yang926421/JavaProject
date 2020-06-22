@@ -28,6 +28,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Kotlin Class" />
         <option value="Class" />
       </list>
     </option>
@@ -46,23 +47,24 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/etc/Ayy_data_struct/python" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/etc/Ayy_collection" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\java\project\Advanced\src\com\etc\Ayy_collection" />
       <recent name="D:\lyy\documents\project1\Advanced\src\com\etc\Ayy_data_struct\python" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.collection_demo1">
-    <configuration name="collection_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_collection.collection_demo1" />
+  <component name="RunManager" selected="Application.TreeSet_demo1">
+    <configuration name="TreeSet_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_collection.set_demo.TreeSet_demo1" />
       <module name="Advanced" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.etc.Ayy_collection.list集合.*" />
+          <option name="PATTERN" value="com.etc.Ayy_collection.set_demo.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -70,21 +72,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="list_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_collection.list集合.list_demo1" />
-      <module name="Advanced" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.etc.Ayy_collection.list集合.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="map_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_collection.map集合.map_demo1" />
+    <configuration name="linked_hashmap_demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_collection.map集合.linked_hashmap_demo" />
       <module name="Advanced" />
       <extension name="coverage">
         <pattern>
@@ -96,12 +85,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="process_demo (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_collection.set_demo.card.card_demo.process_demo" />
+    <configuration name="map_demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_JDK1_8_new.map_demo" />
       <module name="Advanced" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.etc.Ayy_collection.set_demo.card.card_demo.*" />
+          <option name="PATTERN" value="com.etc.Ayy_JDK1_8_new.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -109,12 +98,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="process_demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_collection.set_demo.card.process_demo" />
+    <configuration name="map_test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_collection.map集合.map_test" />
       <module name="Advanced" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.etc.Ayy_collection.set_demo.card.*" />
+          <option name="PATTERN" value="com.etc.Ayy_collection.map集合.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="treemap_demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_collection.map集合.treemap_demo" />
+      <module name="Advanced" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.etc.Ayy_collection.map集合.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -124,11 +126,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.collection_demo1" />
-        <item itemvalue="Application.map_demo1" />
-        <item itemvalue="Application.process_demo" />
-        <item itemvalue="Application.process_demo (1)" />
-        <item itemvalue="Application.list_demo1" />
+        <item itemvalue="Application.TreeSet_demo1" />
+        <item itemvalue="Application.map_test" />
+        <item itemvalue="Application.treemap_demo" />
+        <item itemvalue="Application.linked_hashmap_demo" />
+        <item itemvalue="Application.map_demo" />
       </list>
     </recent_temporary>
   </component>
@@ -143,6 +145,7 @@
       <option name="presentableId" value="Default" />
       <updated>1592450569383</updated>
       <workItem from="1592450573376" duration="31342000" />
+      <workItem from="1592619499461" duration="10996000" />
     </task>
     <servers />
   </component>
@@ -159,36 +162,37 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="0" y="0" key="#Project_Structure" timestamp="1592450579947">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="0" y="0" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1592450579947" />
-    <state x="867" y="87" key="#com.intellij.ide.util.MemberChooser" timestamp="1592555059506">
+    <state x="867" y="87" key="#com.intellij.ide.util.MemberChooser" timestamp="1592626882924">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="867" y="87" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1592555059506" />
-    <state x="871" y="104" key="FileChooserDialogImpl" timestamp="1592452531654">
+    <state x="867" y="87" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1592626882924" />
+    <state x="871" y="104" key="FileChooserDialogImpl" timestamp="1592624310014">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="871" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1592452531654" />
-    <state width="898" height="22" key="GridCell.Tab.0.bottom" timestamp="1592560092071">
+    <state x="871" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1592624310014" />
+    <state width="974" height="115" key="GridCell.Tab.0.bottom" timestamp="1592635095545">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="898" height="22" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1592560092071" />
-    <state width="898" height="22" key="GridCell.Tab.0.center" timestamp="1592560092071">
+    <state width="974" height="115" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1592635095545" />
+    <state width="974" height="115" key="GridCell.Tab.0.center" timestamp="1592635095545">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="898" height="22" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1592560092071" />
-    <state width="898" height="22" key="GridCell.Tab.0.left" timestamp="1592560092071">
+    <state width="974" height="115" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1592635095545" />
+    <state width="974" height="115" key="GridCell.Tab.0.left" timestamp="1592635095544">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="898" height="22" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1592560092071" />
-    <state width="898" height="22" key="GridCell.Tab.0.right" timestamp="1592560092071">
+    <state width="974" height="115" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1592635095544" />
+    <state width="974" height="115" key="GridCell.Tab.0.right" timestamp="1592635095545">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="898" height="22" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1592560092071" />
+    <state width="974" height="115" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1592635095545" />
     <state width="808" height="203" key="GridCell.Tab.1.bottom" timestamp="1592474789058">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
