@@ -46,23 +46,24 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/etc/Ayy_data_struct/python" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/etc/Ayy_concurrency/thread/线程安全之同步方法" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\lyy\documents\project1\Advanced\src\com\etc\Ayy_concurrency\thread\线程安全之同步方法" />
       <recent name="D:\lyy\documents\project1\Advanced\src\com\etc\Ayy_data_struct\python" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.testException">
-    <configuration name="BookSystem" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_collection._09图书管理案例.BookSystem" />
+  <component name="RunManager" selected="Application.ThreadSafe">
+    <configuration name="ThreadSafe" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_concurrency.thread.线程安全问题.ThreadSafe" />
       <module name="Advanced" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.etc.Ayy_collection._09图书管理案例.*" />
+          <option name="PATTERN" value="com.etc.Ayy_concurrency.thread.线程安全问题.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -70,12 +71,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Exception异常处理进阶" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_exception.Exception异常处理进阶" />
+    <configuration name="callable_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_concurrency.thread.线程创建方式3.callable_demo1" />
       <module name="Advanced" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.etc.Ayy_exception.*" />
+          <option name="PATTERN" value="com.etc.Ayy_concurrency.thread.线程创建方式3.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -83,12 +84,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Exception_demo运行时异常处理机制" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_exception.Exception_demo运行时异常处理机制" />
+    <configuration name="thread_demo1 (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_concurrency.thread.线程的注意事项和常用API.thread_demo1" />
       <module name="Advanced" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.etc.Ayy_exception.*" />
+          <option name="PATTERN" value="com.etc.Ayy_concurrency.thread.线程的注意事项和常用API.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -96,12 +97,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Exception_demo2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_exception.Exception_demo2" />
+    <configuration name="thread_demo1 (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_concurrency.thread.线程创建方式2.thread_demo1" />
       <module name="Advanced" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.etc.Ayy_exception.*" />
+          <option name="PATTERN" value="com.etc.Ayy_concurrency.thread.线程创建方式2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -109,12 +110,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="testException" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_exception.testException" />
+    <configuration name="thread_name" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_concurrency.thread.调用父类有参构造器为线程创建名字.thread_name" />
       <module name="Advanced" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.etc.Ayy_exception.*" />
+          <option name="PATTERN" value="com.etc.Ayy_concurrency.thread.调用父类有参构造器为线程创建名字.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -124,11 +125,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.testException" />
-        <item itemvalue="Application.Exception_demo运行时异常处理机制" />
-        <item itemvalue="Application.Exception异常处理进阶" />
-        <item itemvalue="Application.Exception_demo2" />
-        <item itemvalue="Application.BookSystem" />
+        <item itemvalue="Application.ThreadSafe" />
+        <item itemvalue="Application.callable_demo1" />
+        <item itemvalue="Application.thread_demo1 (2)" />
+        <item itemvalue="Application.thread_name" />
+        <item itemvalue="Application.thread_demo1 (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -165,30 +166,34 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="0" y="0" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1592450579947" />
-    <state x="867" y="87" key="#com.intellij.ide.util.MemberChooser" timestamp="1592555059506">
+    <state x="403" y="221" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1592879163591">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="867" y="87" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1592555059506" />
-    <state x="871" y="104" key="FileChooserDialogImpl" timestamp="1592452531654">
+    <state x="403" y="221" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1592879163591" />
+    <state x="867" y="87" key="#com.intellij.ide.util.MemberChooser" timestamp="1592912841360">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="871" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1592452531654" />
-    <state width="1323" height="145" key="GridCell.Tab.0.bottom" timestamp="1592819300984">
+    <state x="867" y="87" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1592912841360" />
+    <state x="871" y="104" key="FileChooserDialogImpl" timestamp="1592905101892">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="145" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1592819300984" />
-    <state width="1323" height="145" key="GridCell.Tab.0.center" timestamp="1592819300984">
+    <state x="871" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1592905101892" />
+    <state width="867" height="306" key="GridCell.Tab.0.bottom" timestamp="1592913812251">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="145" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1592819300984" />
-    <state width="1323" height="145" key="GridCell.Tab.0.left" timestamp="1592819300984">
+    <state width="867" height="306" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1592913812251" />
+    <state width="867" height="306" key="GridCell.Tab.0.center" timestamp="1592913812251">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="145" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1592819300984" />
-    <state width="1323" height="145" key="GridCell.Tab.0.right" timestamp="1592819300984">
+    <state width="867" height="306" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1592913812251" />
+    <state width="867" height="306" key="GridCell.Tab.0.left" timestamp="1592913812251">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="145" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1592819300984" />
+    <state width="867" height="306" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1592913812251" />
+    <state width="867" height="306" key="GridCell.Tab.0.right" timestamp="1592913812251">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="867" height="306" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1592913812251" />
     <state width="808" height="203" key="GridCell.Tab.1.bottom" timestamp="1592474789058">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

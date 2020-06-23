@@ -9,7 +9,7 @@ public class Exception异常处理进阶 {
     public static void main(String[] args) {
         System.out.println("程序开始。。。。");
         try {
-            parseDate("2013-03-23 10:19:23");
+            parseDate("2013-03-23 10:19:23");  //可能会有异常, 内部抛出,在这里接这个异常
             System.out.println("功能成功执行！！");
         } catch (Exception e) {
             e.printStackTrace();
