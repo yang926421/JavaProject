@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Advanced/Advanced.iml" filepath="$PROJECT_DIR$/Advanced/Advanced.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java1/java1.iml" filepath="$PROJECT_DIR$/java1/java1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_advanced/java_advanced.iml" filepath="$PROJECT_DIR$/java_advanced/java_advanced.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_mian2/java_mian2.iml" filepath="$PROJECT_DIR$/java_mian2/java_mian2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_mian3/java_mian3.iml" filepath="$PROJECT_DIR$/java_mian3/java_mian3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_muchtai/java_muchtai.iml" filepath="$PROJECT_DIR$/java_muchtai/java_muchtai.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/project1.iml" filepath="$PROJECT_DIR$/.idea/project1.iml" />
+    </modules>
+  </component>
+</project>
