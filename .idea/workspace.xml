@@ -25,6 +25,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -38,15 +45,72 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Advanced/src/com/etc/Ayy_concurrency/变量原子性并发包/原子性" />
   </component>
-  <component name="RunManager">
-    <configuration name="thread_name" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_concurrency.thread.调用父类有参构造器为线程创建名字.thread_name" />
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\lyy\documents\project1\Advanced\src\com\etc\Ayy_concurrency\变量原子性并发包\原子性" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.atomic_demo1">
+    <configuration name="atom_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_concurrency.变量原子性并发包.原子性.atom_demo1" />
       <module name="Advanced" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.etc.Ayy_concurrency.thread.调用父类有参构造器为线程创建名字.*" />
+          <option name="PATTERN" value="com.etc.Ayy_concurrency.变量原子性并发包.原子性.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="atom_demo2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_concurrency.变量原子性并发包.原子性.atom_demo2" />
+      <module name="Advanced" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.etc.Ayy_concurrency.变量原子性并发包.原子性.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="atomic_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_concurrency.变量原子性并发包.原子性.原子类.atomic_demo1" />
+      <module name="Advanced" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.etc.Ayy_concurrency.变量原子性并发包.原子性.原子类.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="volatile_demo1 (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_concurrency.变量原子性并发包.变量不可见性的解决.volatile_demo1" />
+      <module name="Advanced" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.etc.Ayy_concurrency.变量原子性并发包.变量不可见性的解决.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="volatile_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_concurrency.变量原子性并发包.变量可见性问题.volatile_demo1" />
+      <module name="Advanced" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.etc.Ayy_concurrency.变量原子性并发包.变量可见性问题.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -56,7 +120,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.thread_name" />
+        <item itemvalue="Application.atomic_demo1" />
+        <item itemvalue="Application.atom_demo2" />
+        <item itemvalue="Application.atom_demo1" />
+        <item itemvalue="Application.volatile_demo1 (1)" />
+        <item itemvalue="Application.volatile_demo1" />
       </list>
     </recent_temporary>
   </component>
@@ -70,7 +138,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1592990141570</updated>
-      <workItem from="1592990144009" duration="2102000" />
+      <workItem from="1592990144009" duration="16799000" />
     </task>
     <servers />
   </component>
@@ -87,5 +155,27 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="945" y="36" key="#com.intellij.ide.util.MemberChooser" timestamp="1593334765808">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="945" y="36" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1593334765808" />
+    <state width="1119" height="147" key="GridCell.Tab.0.bottom" timestamp="1593338656239">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1119" height="147" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1593338656239" />
+    <state width="1119" height="147" key="GridCell.Tab.0.center" timestamp="1593338656239">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1119" height="147" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1593338656239" />
+    <state width="1119" height="147" key="GridCell.Tab.0.left" timestamp="1593338656239">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1119" height="147" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1593338656239" />
+    <state width="1119" height="147" key="GridCell.Tab.0.right" timestamp="1593338656239">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1119" height="147" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1593338656239" />
   </component>
 </project>
