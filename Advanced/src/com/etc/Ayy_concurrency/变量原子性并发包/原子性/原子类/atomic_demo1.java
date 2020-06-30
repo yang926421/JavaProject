@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  如何保证变量访问的原子性呢?
  1.加锁实现线程安全。
  -- 虽然安全性得到了保证，但是性能不好！！
- 2.基于CAS方式的原子类。
+ 2.基于CAS方式的原子类  compareAndSwap(比较再交换)。
  -- Java已经提供了一些本身即可实现原子性（线程安全）的类。
  -- 概述：java从JDK1.5开始提供了java.util.concurrent.atomic包(简称Atomic包)，
  这个包中的原子操作类提供了一种用法简单

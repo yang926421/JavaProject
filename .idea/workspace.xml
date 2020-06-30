@@ -45,10 +45,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Advanced/src/com/etc/Ayy_concurrency/变量原子性并发包/原子性" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Advanced/src/com/etc/Ayy_concurrency/变量原子性并发包" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\lyy\documents\project1\Advanced\src\com\etc\Ayy_concurrency\变量原子性并发包" />
       <recent name="D:\lyy\documents\project1\Advanced\src\com\etc\Ayy_concurrency\变量原子性并发包\原子性" />
     </key>
   </component>
@@ -138,7 +139,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1592990141570</updated>
-      <workItem from="1592990144009" duration="16799000" />
+      <workItem from="1592990144009" duration="25094000" />
     </task>
     <servers />
   </component>
@@ -161,21 +162,21 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="945" y="36" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1593334765808" />
-    <state width="1119" height="147" key="GridCell.Tab.0.bottom" timestamp="1593338656239">
+    <state width="1119" height="147" key="GridCell.Tab.0.bottom" timestamp="1593338695540">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1119" height="147" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1593338656239" />
-    <state width="1119" height="147" key="GridCell.Tab.0.center" timestamp="1593338656239">
+    <state width="1119" height="147" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1593338695540" />
+    <state width="1119" height="147" key="GridCell.Tab.0.center" timestamp="1593338695539">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1119" height="147" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1593338656239" />
-    <state width="1119" height="147" key="GridCell.Tab.0.left" timestamp="1593338656239">
+    <state width="1119" height="147" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1593338695539" />
+    <state width="1119" height="147" key="GridCell.Tab.0.left" timestamp="1593338695539">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1119" height="147" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1593338656239" />
-    <state width="1119" height="147" key="GridCell.Tab.0.right" timestamp="1593338656239">
+    <state width="1119" height="147" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1593338695539" />
+    <state width="1119" height="147" key="GridCell.Tab.0.right" timestamp="1593338695539">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1119" height="147" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1593338656239" />
+    <state width="1119" height="147" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1593338695539" />
   </component>
 </project>
