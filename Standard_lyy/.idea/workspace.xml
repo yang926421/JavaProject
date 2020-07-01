@@ -28,7 +28,6 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Class" />
         <option value="Class" />
       </list>
     </option>
@@ -52,73 +51,10 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.lyy.method_quote2.方法引用的四种形式._01静态方法" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Application.stream_demo1">
-    <configuration name="lambda_demo1 (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.lyy.lambda_l.简化comparator接口.lambda_demo1" />
-      <module name="module6_30" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.lyy.lambda_l.简化comparator接口.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="method_demo1 (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.lyy.method_quote2.方法引用的四种形式._04构造器方法引用.method_demo1" />
-      <module name="module6_30" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.lyy.method_quote2.方法引用的四种形式._04构造器方法引用.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="method_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.lyy.method_quote2.方法引用的四种形式._03特定类型方法的引用.method_demo1" />
-      <module name="module6_30" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.lyy.method_quote2.方法引用的四种形式._03特定类型方法的引用.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="static_method_quote" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.lyy.method_quote2.方法引用的四种形式._01静态方法.static_method_quote" />
-      <module name="module6_30" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.lyy.method_quote2.方法引用的四种形式._01静态方法.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="stream_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.lyy.stream流3.stream的概述.stream_demo1" />
-      <module name="module6_30" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.lyy.stream流3.stream的概述.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+  <component name="RunManager">
+    <configuration name="lambda_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="lambda_demo1" />
+      <module name="01_lambda" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -172,11 +108,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.stream_demo1" />
-        <item itemvalue="Application.method_demo1 (1)" />
-        <item itemvalue="Application.method_demo1" />
-        <item itemvalue="Application.static_method_quote" />
-        <item itemvalue="Application.lambda_demo1 (2)" />
+        <item itemvalue="Application.lambda_demo1" />
       </list>
     </recent_temporary>
   </component>
@@ -191,8 +123,7 @@
       <option name="presentableId" value="Default" />
       <updated>1593485886903</updated>
       <workItem from="1593485897142" duration="753000" />
-      <workItem from="1593503119154" duration="7734000" />
-      <workItem from="1593571943861" duration="3245000" />
+      <workItem from="1593503119154" duration="830000" />
     </task>
     <servers />
   </component>
@@ -212,34 +143,30 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="0" y="0" key="#Project_Structure" timestamp="1593563954147">
+    <state x="0" y="0" key="#Project_Structure" timestamp="1593503450633">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="0" y="0" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1593563954147" />
-    <state x="867" y="55" key="#com.intellij.ide.util.MemberChooser" timestamp="1593569986096">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="867" y="55" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1593569986096" />
+    <state x="0" y="0" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1593503450633" />
     <state x="526" y="174" key="FileChooserDialogImpl" timestamp="1593503150822">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="526" y="174" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1593503150822" />
-    <state width="900" height="160" key="GridCell.Tab.0.bottom" timestamp="1593574607168">
+    <state width="1136" height="162" key="GridCell.Tab.0.bottom" timestamp="1593486653827">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="900" height="160" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1593574607168" />
-    <state width="900" height="160" key="GridCell.Tab.0.center" timestamp="1593574607168">
+    <state width="1136" height="162" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1593486653827" />
+    <state width="1136" height="162" key="GridCell.Tab.0.center" timestamp="1593486653825">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="900" height="160" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1593574607168" />
-    <state width="900" height="160" key="GridCell.Tab.0.left" timestamp="1593574607167">
+    <state width="1136" height="162" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1593486653825" />
+    <state width="1136" height="162" key="GridCell.Tab.0.left" timestamp="1593486653825">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="900" height="160" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1593574607167" />
-    <state width="900" height="160" key="GridCell.Tab.0.right" timestamp="1593574607168">
+    <state width="1136" height="162" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1593486653825" />
+    <state width="1136" height="162" key="GridCell.Tab.0.right" timestamp="1593486653827">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="900" height="160" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1593574607168" />
+    <state width="1136" height="162" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1593486653827" />
     <state x="0" y="0" key="new project wizard" timestamp="1593503441775">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
