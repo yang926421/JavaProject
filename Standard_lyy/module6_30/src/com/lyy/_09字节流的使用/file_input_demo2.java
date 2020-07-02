@@ -21,27 +21,41 @@ import java.io.InputStream;
  返回读取的字节数量，没有字节可读返回-1。
  使用字节数组读取内容，效率可以。
  但是使用字节数组读取文本内容输出，也无法避免中文读取输出乱码的问题。
+
+ 读取文本文件不建议使用字节流,使用字符流
  */
 public class file_input_demo2 {
     public static void main(String[] args) throws Exception {
         // 分解写法
 //        File file = new File("D:\\lyy\\documents\\project1\\Standard_lyy\\module6_30\\lyy.txt");
 //        InputStream is = new FileInputStream(file);
-        //简便写法
-        InputStream is = new FileInputStream("D:\\lyy\\documents\\project1\\Standard_lyy\\module6_30\\lyy.txt");
-        // 定义一个桶 就是一个数组 一次可以多取数据
-        byte[] buffer = new byte[3];
-        // 从is管道中读取字节装入到字节数组中,返回数量
-        int len = is.read(buffer);
-        System.out.println("读取了字节数"+len);
-        String rs = new String(buffer);
-        System.out.println(rs);
-        int len1;
-        while((len1 = is.read(buffer))!=-1){
-            String rs2 = new String(buffer, 0, len1);
-            System.out.println(rs2);
+//        //简便写法
+//        InputStream is = new FileInputStream("D:\\lyy\\documents\\project1\\Standard_lyy\\module6_30\\lyy.txt");
+//        // 定义一个桶 就是一个数组 一次可以多取数据
+//        byte[] buffer = new byte[3];
+//        // 从is管道中读取字节装入到字节数组中,返回数量
+//        int len = is.read(buffer);
+//        System.out.println("读取了字节数"+len);
+//        String rs = new String(buffer);
+//        System.out.println(rs);
+//        int len1;
+//        while((len1 = is.read(buffer))!=-1){
+//            String rs2 = new String(buffer, 0, len1);
+//            System.out.println(rs2);
+//
+//        }
 
-        }
+        File file1 = new File("D:\\java\\project\\Standard_lyy\\module6_30\\lyy.txt");
+        InputStream is1 = new FileInputStream(file1);
+
+        //定义一个与文件大小一致的容器来进行取全部字节数据
+        byte[] buffer1 = new byte[(int) file1.length()];
+        // 把数据读取到这个容器中
+        int len2 = is1.read(buffer1);
+        System.out.println("读取了"+len2);
+        String RES2 = new String(buffer1);
+        System.out.println(RES2);
+
 
 
 
