@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Standard_lyy.iml" filepath="$PROJECT_DIR$/Standard_lyy.iml" />
       <module fileurl="file://$PROJECT_DIR$/module6_30/module6_30.iml" filepath="$PROJECT_DIR$/module6_30/module6_30.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module7_02/module7_02.iml" filepath="$PROJECT_DIR$/module7_02/module7_02.iml" />
     </modules>
   </component>
 </project>
