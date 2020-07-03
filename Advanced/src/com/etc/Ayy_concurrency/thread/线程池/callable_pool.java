@@ -28,7 +28,9 @@ public class callable_pool {
     }
 }
 
-class myCallable implements Callable<String>{
+class
+
+myCallable implements Callable<String>{
     private int n;
     public myCallable(int n){
         this.n = n;

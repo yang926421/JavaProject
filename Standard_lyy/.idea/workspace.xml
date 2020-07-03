@@ -29,6 +29,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Class" />
+        <option value="HTML File" />
         <option value="Class" />
       </list>
     </option>
@@ -43,27 +44,35 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/module7_02/src" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\lyy\documents\project1\Standard_lyy\module7_02\src" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.lyy.method_quote2.方法引用的四种形式._01静态方法" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\lyy\documents\project1\Standard_lyy\module7_02" />
+      <recent name="D:\lyy\documents\project1\Standard_lyy\module7_02\src" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.file_output_demo1">
-    <configuration name="file_input_demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.lyy._09字节流的使用.file_input_demo" />
-      <module name="module6_30" />
+  <component name="RunManager" selected="Application.Input_stream_demo1">
+    <configuration name="Input_stream_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lyy._04转换流.Input_stream_demo1" />
+      <module name="module7_02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.lyy._09字节流的使用.*" />
+          <option name="PATTERN" value="com.lyy._04转换流.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -71,12 +80,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="file_input_demo2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.lyy._09字节流的使用.file_input_demo2" />
-      <module name="module6_30" />
+    <configuration name="buffer_output_stream_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lyy._02缓冲流的概述和分类._01字节缓冲流.buffer_output_stream_demo1" />
+      <module name="module7_02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.lyy._09字节流的使用.*" />
+          <option name="PATTERN" value="com.lyy._02缓冲流的概述和分类._01字节缓冲流.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -84,12 +93,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="file_output_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.lyy._09字节流的使用.file_output_demo1" />
-      <module name="module6_30" />
+    <configuration name="buffered_input_stream_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lyy._02缓冲流的概述和分类._02字符缓冲流.buffered_input_stream_demo1" />
+      <module name="module7_02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.lyy._09字节流的使用.*" />
+          <option name="PATTERN" value="com.lyy._02缓冲流的概述和分类._02字符缓冲流.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -97,12 +106,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="recursion_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.lyy._07递归实现文件的搜索.recursion_demo1" />
-      <module name="module6_30" />
+    <configuration name="buffered_output_stream_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lyy._02缓冲流的概述和分类._02字符缓冲流.buffered_output_stream_demo1" />
+      <module name="module7_02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.lyy._07递归实现文件的搜索.*" />
+          <option name="PATTERN" value="com.lyy._02缓冲流的概述和分类._02字符缓冲流.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -110,12 +119,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="recursion_demo2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.lyy._06递归.recursion_demo2" />
-      <module name="module6_30" />
+    <configuration name="test_buffer_demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lyy._02缓冲流的概述和分类._03字符缓冲流小练习.test_buffer_demo" />
+      <module name="module7_02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.lyy._06递归.*" />
+          <option name="PATTERN" value="com.lyy._02缓冲流的概述和分类._03字符缓冲流小练习.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -172,11 +181,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.file_output_demo1" />
-        <item itemvalue="Application.file_input_demo2" />
-        <item itemvalue="Application.file_input_demo" />
-        <item itemvalue="Application.recursion_demo1" />
-        <item itemvalue="Application.recursion_demo2" />
+        <item itemvalue="Application.Input_stream_demo1" />
+        <item itemvalue="Application.test_buffer_demo" />
+        <item itemvalue="Application.buffered_output_stream_demo1" />
+        <item itemvalue="Application.buffered_input_stream_demo1" />
+        <item itemvalue="Application.buffer_output_stream_demo1" />
       </list>
     </recent_temporary>
   </component>
@@ -192,7 +201,7 @@
       <updated>1593485886903</updated>
       <workItem from="1593485897142" duration="753000" />
       <workItem from="1593503119154" duration="7734000" />
-      <workItem from="1593571943861" duration="18297000" />
+      <workItem from="1593571943861" duration="33828000" />
     </task>
     <servers />
   </component>
@@ -212,14 +221,14 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="0" y="0" key="#Project_Structure" timestamp="1593652263586">
+    <state x="0" y="0" key="#Project_Structure" timestamp="1593759714846">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="0" y="0" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1593652263586" />
-    <state x="688" y="206" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593703935443">
+    <state x="0" y="0" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1593759714846" />
+    <state x="688" y="206" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593769022565">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="688" y="206" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1593703935443" />
+    <state x="688" y="206" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1593769022565" />
     <state x="867" y="55" key="#com.intellij.ide.util.MemberChooser" timestamp="1593569986096">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -228,41 +237,41 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="526" y="174" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1593503150822" />
-    <state width="974" height="179" key="GridCell.Tab.0.bottom" timestamp="1593704151820">
+    <state width="1082" height="40" key="GridCell.Tab.0.bottom" timestamp="1593770393082">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="974" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1593704151820" />
-    <state width="974" height="179" key="GridCell.Tab.0.center" timestamp="1593704151820">
+    <state width="1082" height="40" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1593770393082" />
+    <state width="1082" height="40" key="GridCell.Tab.0.center" timestamp="1593770393081">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="974" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1593704151820" />
-    <state width="974" height="179" key="GridCell.Tab.0.left" timestamp="1593704151820">
+    <state width="1082" height="40" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1593770393081" />
+    <state width="1082" height="40" key="GridCell.Tab.0.left" timestamp="1593770393081">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="974" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1593704151820" />
-    <state width="974" height="179" key="GridCell.Tab.0.right" timestamp="1593704151820">
+    <state width="1082" height="40" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1593770393081" />
+    <state width="1082" height="40" key="GridCell.Tab.0.right" timestamp="1593770393082">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="974" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1593704151820" />
-    <state width="1082" height="203" key="GridCell.Tab.1.bottom" timestamp="1593678261597">
+    <state width="1082" height="40" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1593770393082" />
+    <state width="1323" height="222" key="GridCell.Tab.1.bottom" timestamp="1593762829255">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1082" height="203" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1593678261597" />
-    <state width="1082" height="203" key="GridCell.Tab.1.center" timestamp="1593678261597">
+    <state width="1323" height="222" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1593762829255" />
+    <state width="1323" height="222" key="GridCell.Tab.1.center" timestamp="1593762829255">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1082" height="203" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1593678261597" />
-    <state width="1082" height="203" key="GridCell.Tab.1.left" timestamp="1593678261597">
+    <state width="1323" height="222" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1593762829255" />
+    <state width="1323" height="222" key="GridCell.Tab.1.left" timestamp="1593762829255">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1082" height="203" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1593678261597" />
-    <state width="1082" height="203" key="GridCell.Tab.1.right" timestamp="1593678261597">
+    <state width="1323" height="222" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1593762829255" />
+    <state width="1323" height="222" key="GridCell.Tab.1.right" timestamp="1593762829255">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1082" height="203" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1593678261597" />
-    <state x="0" y="0" key="new project wizard" timestamp="1593673754067">
+    <state width="1323" height="222" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1593762829255" />
+    <state x="0" y="0" key="new project wizard" timestamp="1593739831619">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="0" y="0" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1593673754067" />
+    <state x="0" y="0" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1593739831619" />
   </component>
 </project>
