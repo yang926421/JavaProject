@@ -8,7 +8,7 @@ import java.io.*;
  InputStream             OutputStream          Reader               Writer   (抽象类)
  FileInputStream         FileOutputStream      FileReader           FileWriter(实现类)
  BufferedInputStream     BufferedOutputStream  BufferedReader       BufferedWriter(实现类，缓冲流)
- InputStreamReader    OutputStreamWriter
+                                                InputStreamReader    OutputStreamWriter
  -- 作用：可以解决字符流读取不同编码乱码的问题。
  可以把原始的字节流按照当前默认的代码编码转换成字符输入流。
  也可以把原始的字节流按照指定编码转换成字符输入流

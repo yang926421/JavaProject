@@ -1,0 +1,82 @@
+博客地址：
+服务器知识：https://www.cnblogs.com/pyyu/articles/9306498.html
+linux入门：https://www.cnblogs.com/pyyu/p/9277153.html
+vmware虚拟机安装：https://www.cnblogs.com/pyyu/articles/9313587.html
+远程连接服务器知识：https://www.cnblogs.com/pyyu/articles/9336967.html
+linux文件目录结构：https://www.cnblogs.com/pyyu/p/9213237.html
+基本目录讲解：https://www.cnblogs.com/pyyu/articles/9314206.html
+
+明天博客地址：
+https://www.cnblogs.com/pyyu/articles/9365054.html
+
+1.电脑硬件有哪些？
+
+2.常见服务器有哪些？
+
+3.Linux是什么？
+
+4.开源是什么意思？
+
+5.Linux作者是谁？
+
+6.常见Linux发行版，你们公司用什么？
+
+7.Linux的特性？好处？
+
+8.学习Linux是怎么安装的操作系统？
+
+9.通过何种方式登录Linux？
+
+10.什么是Ip，什么是port，什么是MAC地址?
+
+11.如何查看自己的ip地址
+
+12.每个人必须安装好Linux，并且获取自己的ip地址，使用xshell连接上
+
+1.Linux文件目录结构是什么样的？常见目录是？
+
+2.请解释 .   ..   -   ~  四个符号的含义？
+
+3.默写常用命令与其意思
+
+
+4.如何查看Linux的环境变量，路径以什么符号分割？
+
+5.反复练习绝对路径，相对路径
+
+6.Linux文件系统你知道哪些？你们公司用的什么？
+
+7. 解释 linux下 > >> 符号是什么意思?
+
+8.找到 / 路径下 以.txt结尾的普通文件
+
+9.查看进程，并且过滤出有关python的进程
+
+10.过滤出/tmp/passwd下名字叫root的用户（提示：先cat /etc/passwd > /tmp/passwd 生成文件）
+
+11.传输本地的/tmp/passwd到192.168.1.11服务器的/tmp目录
+
+12. 如何先进入/home/oldboy目录，然后再进入/home/python目录？
+
+13. 如何在/home.python目录，执行/home/my_first.py文件?
+
+14. 互相提问相对路径和绝对路径
+
+15. 向my_first.py文件中写入"Lift is short,I use python"
+
+16. 请用一条命令创建/tmp/oldboy/python/s11
+
+17. 只查看oldboy_python.txt文件（50行）内20到30行内容 
+
+18. 找一下python命令在哪
+
+19. 将rm命令改为"echo do not use rm"
+
+20. 同桌互相传输文件，使用scp命令
+
+21. 查看/var/log/文件大小
+
+22. 如何查看服务器的负载？
+
+23. top指令的load average三个值分别是什么意思? 
+
