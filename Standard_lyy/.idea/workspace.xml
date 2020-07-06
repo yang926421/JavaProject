@@ -30,7 +30,9 @@
       <list>
         <option value="Kotlin Class" />
         <option value="HTML File" />
+        <option value="Interface" />
         <option value="Class" />
+        <option value="Tag Library Descriptor" />
       </list>
     </option>
   </component>
@@ -53,7 +55,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/module7_03/src/com/lyy" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/module7_06/xml" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -61,10 +63,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\lyy\documents\project1\Standard_lyy\module7_06\xml" />
+      <recent name="D:\lyy\documents\project1\Standard_lyy\module7_06\lib" />
       <recent name="D:\java\project\Standard_lyy\module7_03\src\com\lyy" />
       <recent name="D:\java\project\Standard_lyy\module7_03\src\com\lyy\_03课程代码 了解" />
       <recent name="D:\java\project\Standard_lyy\module7_02\src" />
-      <recent name="D:\lyy\documents\project1\Standard_lyy\module7_02\src" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.lyy._11基本通信模型介绍" />
@@ -75,13 +78,13 @@
       <recent name="D:\lyy\documents\project1\Standard_lyy\module7_02\src" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.construction_demo1.getConstructors">
-    <configuration name="ReflectDemo1 (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.lyy._08反射的作用在哪里.ReflectDemo1" />
+  <component name="RunManager" selected="Application.TestDemo1">
+    <configuration name="AnnotationDemo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lyy._11注解的属性.AnnotationDemo1" />
       <module name="module7_05" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.lyy._08反射的作用在哪里.*" />
+          <option name="PATTERN" value="com.lyy._11注解的属性.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -89,63 +92,59 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Mybatis" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestDemo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lyy._16动态代理.TestDemo1" />
       <module name="module7_05" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.lyy._08反射的作用在哪里.*" />
+          <option name="PATTERN" value="com.lyy._16动态代理.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.lyy._08反射的作用在哪里" />
-      <option name="MAIN_CLASS_NAME" value="com.lyy._08反射的作用在哪里.Mybatis" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestJunitDemo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lyy._15注解模拟junit框架.TestJunitDemo1" />
       <module name="module7_05" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.lyy._01JUnit单元测试类._01Test测试.*" />
+          <option name="PATTERN" value="com.lyy._15注解模拟junit框架.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.lyy._01JUnit单元测试类._01Test测试" />
-      <option name="MAIN_CLASS_NAME" value="com.lyy._01JUnit单元测试类._01Test测试.UserServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceTest.testLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AnnotationDemo1.parseClass" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="module7_05" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.lyy._01JUnit单元测试类._01Test测试.*" />
+          <option name="PATTERN" value="com.lyy._14注解解析.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.lyy._01JUnit单元测试类._01Test测试" />
-      <option name="MAIN_CLASS_NAME" value="com.lyy._01JUnit单元测试类._01Test测试.UserServiceTest" />
-      <option name="METHOD_NAME" value="testLogin" />
+      <option name="PACKAGE_NAME" value="com.lyy._14注解解析" />
+      <option name="MAIN_CLASS_NAME" value="com.lyy._14注解解析.AnnotationDemo1" />
+      <option name="METHOD_NAME" value="parseClass" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="construction_demo1.getConstructors" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AnnotationDemo1.parseMethods" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="module7_05" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.lyy._04反射获取Constructor构造器.*" />
+          <option name="PATTERN" value="com.lyy._14注解解析.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.lyy._04反射获取Constructor构造器" />
-      <option name="MAIN_CLASS_NAME" value="com.lyy._04反射获取Constructor构造器.construction_demo1" />
-      <option name="METHOD_NAME" value="getConstructors" />
+      <option name="PACKAGE_NAME" value="com.lyy._14注解解析" />
+      <option name="MAIN_CLASS_NAME" value="com.lyy._14注解解析.AnnotationDemo1" />
+      <option name="METHOD_NAME" value="parseMethods" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -200,11 +199,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.construction_demo1.getConstructors" />
-        <item itemvalue="JUnit.UserServiceTest.testLogin" />
-        <item itemvalue="JUnit.UserServiceTest" />
-        <item itemvalue="Application.ReflectDemo1 (1)" />
-        <item itemvalue="JUnit.Mybatis" />
+        <item itemvalue="Application.TestDemo1" />
+        <item itemvalue="Application.TestJunitDemo1" />
+        <item itemvalue="JUnit.AnnotationDemo1.parseMethods" />
+        <item itemvalue="JUnit.AnnotationDemo1.parseClass" />
+        <item itemvalue="Application.AnnotationDemo1" />
       </list>
     </recent_temporary>
   </component>
@@ -220,7 +219,7 @@
       <updated>1593485886903</updated>
       <workItem from="1593485897142" duration="753000" />
       <workItem from="1593503119154" duration="7734000" />
-      <workItem from="1593571943861" duration="37552000" />
+      <workItem from="1593571943861" duration="50405000" />
     </task>
     <servers />
   </component>
@@ -240,38 +239,38 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="0" y="0" key="#Project_Structure" timestamp="1593920641457">
+    <state x="0" y="0" key="#Project_Structure" timestamp="1594029462515">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="0" y="0" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1593920641457" />
-    <state x="688" y="206" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593962278017">
+    <state x="0" y="0" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1594029462515" />
+    <state x="688" y="206" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1594029501998">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="688" y="206" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1593962278017" />
-    <state x="867" y="55" key="#com.intellij.ide.util.MemberChooser" timestamp="1593953645405">
+    <state x="688" y="206" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1594029501998" />
+    <state x="867" y="55" key="#com.intellij.ide.util.MemberChooser" timestamp="1594025314918">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="867" y="55" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1593953645405" />
+    <state x="867" y="55" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1594025314918" />
     <state x="526" y="174" key="FileChooserDialogImpl" timestamp="1593832597707">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="526" y="174" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1593832597707" />
-    <state width="1082" height="208" key="GridCell.Tab.0.bottom" timestamp="1593996605194">
+    <state width="1082" height="159" key="GridCell.Tab.0.bottom" timestamp="1594026376925">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1082" height="208" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1593996605194" />
-    <state width="1082" height="208" key="GridCell.Tab.0.center" timestamp="1593996605194">
+    <state width="1082" height="159" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1594026376925" />
+    <state width="1082" height="159" key="GridCell.Tab.0.center" timestamp="1594026376925">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1082" height="208" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1593996605194" />
-    <state width="1082" height="208" key="GridCell.Tab.0.left" timestamp="1593996605194">
+    <state width="1082" height="159" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1594026376925" />
+    <state width="1082" height="159" key="GridCell.Tab.0.left" timestamp="1594026376925">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1082" height="208" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1593996605194" />
-    <state width="1082" height="208" key="GridCell.Tab.0.right" timestamp="1593996605194">
+    <state width="1082" height="159" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1594026376925" />
+    <state width="1082" height="159" key="GridCell.Tab.0.right" timestamp="1594026376925">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1082" height="208" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1593996605194" />
+    <state width="1082" height="159" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1594026376925" />
     <state width="1323" height="222" key="GridCell.Tab.1.bottom" timestamp="1593762829255">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
