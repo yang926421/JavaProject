@@ -15,6 +15,7 @@ public class Inet_address_demo1 {
         InetAddress ip3 = InetAddress.getByName("39.107.202.109");
         System.out.println(ip3.getHostName());
         System.out.println(ip3.getHostAddress());
+//        InetAddress InetAddress;
 
     }
 }
