@@ -31,8 +31,8 @@
         <option value="Kotlin Class" />
         <option value="HTML File" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="Tag Library Descriptor" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -55,36 +55,39 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/module7_06/xml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/module7_06/src" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\lyy\documents\project1\Standard_lyy\module7_06\xml" />
-      <recent name="D:\lyy\documents\project1\Standard_lyy\module7_06\lib" />
-      <recent name="D:\java\project\Standard_lyy\module7_03\src\com\lyy" />
-      <recent name="D:\java\project\Standard_lyy\module7_03\src\com\lyy\_03课程代码 了解" />
-      <recent name="D:\java\project\Standard_lyy\module7_02\src" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\lyy\documents\project1\Standard_lyy\module7_02" />
+      <recent name="D:\lyy\documents\project1\Standard_lyy\module7_02\src" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.lyy._02Dom4解析xml文档根元素" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.lyy._11基本通信模型介绍" />
       <recent name="com.lyy.method_quote2.方法引用的四种形式._01静态方法" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\lyy\documents\project1\Standard_lyy\module7_02" />
-      <recent name="D:\lyy\documents\project1\Standard_lyy\module7_02\src" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\java\project\Standard_lyy\module7_06\src" />
+      <recent name="D:\lyy\documents\project1\Standard_lyy\module7_06\xml" />
+      <recent name="D:\lyy\documents\project1\Standard_lyy\module7_06\lib" />
+      <recent name="D:\java\project\Standard_lyy\module7_03\src\com\lyy" />
+      <recent name="D:\java\project\Standard_lyy\module7_03\src\com\lyy\_03课程代码 了解" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TestDemo1">
-    <configuration name="AnnotationDemo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.lyy._11注解的属性.AnnotationDemo1" />
-      <module name="module7_05" />
+  <component name="RunManager" selected="Application.demo1_test">
+    <configuration name="Dom4Demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lyy._02Dom4解析xml文档根元素.Dom4Demo1" />
+      <module name="module7_06" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.lyy._11注解的属性.*" />
+          <option name="PATTERN" value="com.lyy._02Dom4解析xml文档根元素.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -92,12 +95,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestDemo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.lyy._16动态代理.TestDemo1" />
-      <module name="module7_05" />
+    <configuration name="Dom4j_demo1 (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lyy._06Dom4j解析案例.Dom4j_demo1" />
+      <module name="module7_06" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.lyy._16动态代理.*" />
+          <option name="PATTERN" value="com.lyy._06Dom4j解析案例.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -105,12 +108,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestJunitDemo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.lyy._15注解模拟junit框架.TestJunitDemo1" />
-      <module name="module7_05" />
+    <configuration name="Dom4j_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lyy._03Dom4j解析xml文件的子元素.Dom4j_demo1" />
+      <module name="module7_06" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.lyy._15注解模拟junit框架.*" />
+          <option name="PATTERN" value="com.lyy._03Dom4j解析xml文件的子元素.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -118,34 +121,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AnnotationDemo1.parseClass" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="module7_05" />
+    <configuration name="attribute_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lyy._04Dom4j解析xml的属性.attribute_demo1" />
+      <module name="module7_06" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.lyy._14注解解析.*" />
+          <option name="PATTERN" value="com.lyy._04Dom4j解析xml的属性.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.lyy._14注解解析" />
-      <option name="MAIN_CLASS_NAME" value="com.lyy._14注解解析.AnnotationDemo1" />
-      <option name="METHOD_NAME" value="parseClass" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AnnotationDemo1.parseMethods" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="module7_05" />
+    <configuration name="demo1_test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="面向对象相关.demo1_test" />
+      <module name="homework" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.lyy._14注解解析.*" />
+          <option name="PATTERN" value="面向对象相关.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.lyy._14注解解析" />
-      <option name="MAIN_CLASS_NAME" value="com.lyy._14注解解析.AnnotationDemo1" />
-      <option name="METHOD_NAME" value="parseMethods" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -199,11 +196,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TestDemo1" />
-        <item itemvalue="Application.TestJunitDemo1" />
-        <item itemvalue="JUnit.AnnotationDemo1.parseMethods" />
-        <item itemvalue="JUnit.AnnotationDemo1.parseClass" />
-        <item itemvalue="Application.AnnotationDemo1" />
+        <item itemvalue="Application.demo1_test" />
+        <item itemvalue="Application.Dom4j_demo1 (1)" />
+        <item itemvalue="Application.attribute_demo1" />
+        <item itemvalue="Application.Dom4j_demo1" />
+        <item itemvalue="Application.Dom4Demo1" />
       </list>
     </recent_temporary>
   </component>
@@ -239,10 +236,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="0" y="0" key="#Project_Structure" timestamp="1594029462515">
+    <state x="0" y="0" key="#Project_Structure" timestamp="1594049389471">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="0" y="0" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1594029462515" />
+    <state x="0" y="0" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1594049389471" />
     <state x="688" y="206" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1594029501998">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -251,26 +248,30 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="867" y="55" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1594025314918" />
+    <state x="759" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594043095972">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="759" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1594043095972" />
     <state x="526" y="174" key="FileChooserDialogImpl" timestamp="1593832597707">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="526" y="174" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1593832597707" />
-    <state width="1082" height="159" key="GridCell.Tab.0.bottom" timestamp="1594026376925">
+    <state width="974" height="245" key="GridCell.Tab.0.bottom" timestamp="1594049849232">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1082" height="159" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1594026376925" />
-    <state width="1082" height="159" key="GridCell.Tab.0.center" timestamp="1594026376925">
+    <state width="974" height="245" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1594049849232" />
+    <state width="974" height="245" key="GridCell.Tab.0.center" timestamp="1594049849232">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1082" height="159" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1594026376925" />
-    <state width="1082" height="159" key="GridCell.Tab.0.left" timestamp="1594026376925">
+    <state width="974" height="245" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1594049849232" />
+    <state width="974" height="245" key="GridCell.Tab.0.left" timestamp="1594049849232">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1082" height="159" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1594026376925" />
-    <state width="1082" height="159" key="GridCell.Tab.0.right" timestamp="1594026376925">
+    <state width="974" height="245" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1594049849231" />
+    <state width="974" height="245" key="GridCell.Tab.0.right" timestamp="1594049849232">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1082" height="159" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1594026376925" />
+    <state width="974" height="245" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1594049849232" />
     <state width="1323" height="222" key="GridCell.Tab.1.bottom" timestamp="1593762829255">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -295,9 +296,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="505" y="266" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1366.728@0.0.1366.728" timestamp="1593995950432" />
-    <state x="0" y="0" key="new project wizard" timestamp="1593997697267">
+    <state x="0" y="0" key="new project wizard" timestamp="1594049383488">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="0" y="0" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1593997697267" />
+    <state x="0" y="0" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1594049383488" />
   </component>
 </project>
