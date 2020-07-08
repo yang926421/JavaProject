@@ -1,0 +1,35 @@
+异常的继承体系
+
+throwable
+
+error   Exception(编译时异常)
+
+
+        RuntimeException(运行时异常)
+
+虚拟机处理异常的方式
+    1.打印出堆栈信息
+    2.终止程序
+
+几种常见的运行时异常
+ArrayIndexOutOfBoundsException
+ClassCastException
+NoSuchElementException
+NullPointerException
+ArithmeticException
+
+throw用在方法内部,抛出异常到调用处.
+throws用在方法声明上,可能会抛出异常
+
+
+
+异常的处理方式有两种,分别是throws和try catch finally
+try(){}
+catch(){}
+finally{}
+
+
+
+
+
+

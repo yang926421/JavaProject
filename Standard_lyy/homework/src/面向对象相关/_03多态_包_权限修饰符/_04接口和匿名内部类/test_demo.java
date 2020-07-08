@@ -4,6 +4,11 @@ public class test_demo{
     public static void main(String[] args) {
         player p1 = new player() {
             @Override
+            public void run() {
+                System.out.println("hhhhh");
+            }
+
+            @Override
             public void playerBasketBall() {
                 System.out.println("打篮球呀");
             }
@@ -15,6 +20,7 @@ public class test_demo{
         };
         p1.playerBasketBall();
         p1.playerPingPang();
+        p1.run();
     }
 
 }

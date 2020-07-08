@@ -43,5 +43,6 @@ public class Manager extends employee{
     @Override
     void work() {
         System.out.println("经理工资高 干活轻松");
+        super.run();
     }
 }

@@ -26,4 +26,5 @@ private String bianHao;
     }
 
     abstract void work();
+
 }

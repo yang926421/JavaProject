@@ -36,4 +36,7 @@ public abstract class employee {
     }
     abstract void eat();
     abstract void work();
+    public  void run(){
+        System.out.println("我是定义在抽象类中的方法");
+    }
 }

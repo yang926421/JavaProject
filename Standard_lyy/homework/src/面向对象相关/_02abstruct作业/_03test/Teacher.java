@@ -1,5 +1,8 @@
 package 面向对象相关._02abstruct作业._03test;
 
+import jdk.jfr.StackTrace;
+import org.junit.*;
+
 public class Teacher extends employee {
     public Teacher(String name, String bianHao) {
         super(name, bianHao);
@@ -27,6 +30,5 @@ public class Teacher extends employee {
 
     @Override
     void work() {
-
     }
 }
