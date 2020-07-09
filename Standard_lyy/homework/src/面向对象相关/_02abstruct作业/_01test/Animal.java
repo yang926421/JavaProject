@@ -25,4 +25,10 @@ public abstract class Animal {
         this.color = color;
     }
      abstract void eat();
+    public void run(){
+        System.out.println("动物在跑啊");
+    };
+    public void show(){
+        System.out.println("我是父类呀");
+    }
 }

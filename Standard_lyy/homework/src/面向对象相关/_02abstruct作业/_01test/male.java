@@ -9,6 +9,9 @@ public class male extends Animal {
         System.out.println(this.getAge()+"的公鸡呀是"+this.getColor()+"在啄米");
 
     }
+    public void run(){
+        System.out.println("男人在跑啊");
+    }
     public void daMing(){
         System.out.println("公鸡会打鸣");
     }
