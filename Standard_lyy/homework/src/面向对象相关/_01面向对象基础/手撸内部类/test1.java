@@ -5,6 +5,5 @@ public class test1 {
         OuterClassDemo o1 = new OuterClassDemo();
         OuterClassDemo.InnerClassDemo i1= o1.new InnerClassDemo();
         System.out.println(o1.a);
-        System.out.println(i1.show(););
     }
 }

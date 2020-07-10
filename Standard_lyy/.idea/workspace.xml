@@ -1,108 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c3bea18-aae3-4395-97ca-b527c4370bdb" name="Default Changelist" comment="" />
+    <list default="true" id="61ac1e96-7c0a-4c9b-884d-c9fa51284a21" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Kotlin Class" />
-        <option value="HTML File" />
-        <option value="Tag Library Descriptor" />
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1e1OyUF9Evpo3gPF5UbxLVBlq8E" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="1eTTNGr330Ggp3wEGMV2WZynN4y" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="Downloaded.Files.Path.Enabled" value="false" />
-    <property name="Repository.Attach.Annotations" value="false" />
-    <property name="Repository.Attach.JavaDocs" value="false" />
-    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
-  <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.lyy._02Dom4解析xml文档根元素" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\lyy\documents\project1\Standard_lyy\module7_06\src" />
-      <recent name="D:\java\project\Standard_lyy\module7_06\src" />
-      <recent name="D:\lyy\documents\project1\Standard_lyy\module7_06\xml" />
-      <recent name="D:\lyy\documents\project1\Standard_lyy\module7_06\lib" />
-      <recent name="D:\java\project\Standard_lyy\module7_03\src\com\lyy" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.lyy._11基本通信模型介绍" />
-      <recent name="com.lyy.method_quote2.方法引用的四种形式._01静态方法" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\lyy\documents\project1\Standard_lyy\homework\src\面向对象相关\_01面向对象基础" />
-      <recent name="D:\lyy\documents\project1\Standard_lyy\homework\src\面向对象相关\_02abstruct作业" />
-      <recent name="D:\lyy\documents\project1\Standard_lyy\module7_02" />
-      <recent name="D:\lyy\documents\project1\Standard_lyy\module7_02\src" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Application.test_demo">
-    <configuration name="FinalMethod" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.lyy._01lambda_l.简化comparator接口.FinalMethod" />
-      <module name="module6_30" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.lyy._01lambda_l.简化comparator接口.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="demo2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="线程安全等待唤醒状态.demo2" />
+  <component name="RunManager" selected="Application.test_module">
+    <configuration name="list_demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="_02集合迭代器._02集合._01列表的去重.list_demo" />
       <module name="homework" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="线程安全等待唤醒状态.*" />
+          <option name="PATTERN" value="_02集合迭代器._02集合._01列表的去重.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -110,12 +36,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="demo3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="线程安全等待唤醒状态.demo3" />
+    <configuration name="test1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="面向对象相关._01面向对象基础.手撸内部类.test1" />
       <module name="homework" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="线程安全等待唤醒状态.*" />
+          <option name="PATTERN" value="面向对象相关._01面向对象基础.手撸内部类.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -123,86 +49,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="demo4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="线程安全等待唤醒状态.demo4" />
+    <configuration name="test_module" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="异常.异常知识点回顾.test_module" />
       <module name="homework" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="线程安全等待唤醒状态.*" />
+          <option name="PATTERN" value="异常.异常知识点回顾.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="test_demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="面向对象相关._02abstruct作业._01test.test_demo" />
-      <module name="homework" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="面向对象相关._02abstruct作业._01test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="01_lambda" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="01_lambda" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.test_demo" />
-        <item itemvalue="Application.FinalMethod" />
-        <item itemvalue="Application.demo4" />
-        <item itemvalue="Application.demo3" />
-        <item itemvalue="Application.demo2" />
+        <item itemvalue="Application.test_module" />
+        <item itemvalue="Application.list_demo" />
+        <item itemvalue="Application.test1" />
       </list>
     </recent_temporary>
   </component>
@@ -211,126 +75,34 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5c3bea18-aae3-4395-97ca-b527c4370bdb" name="Default Changelist" comment="" />
-      <created>1593485886903</created>
+      <changelist id="61ac1e96-7c0a-4c9b-884d-c9fa51284a21" name="Default Changelist" comment="" />
+      <created>1594344540370</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1593485886903</updated>
-      <workItem from="1593485897142" duration="753000" />
-      <workItem from="1593503119154" duration="7734000" />
-      <workItem from="1593571943861" duration="75067000" />
-      <workItem from="1594340156248" duration="647000" />
+      <updated>1594344540370</updated>
+      <workItem from="1594344542725" duration="1076000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
   <component name="WindowStateProjectService">
-    <state x="0" y="0" key="#Project_Structure" timestamp="1594049389471">
+    <state width="1136" height="162" key="GridCell.Tab.0.bottom" timestamp="1594374111246">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="0" y="0" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1594049389471" />
-    <state x="688" y="206" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1594256103358">
+    <state width="1136" height="162" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1594374111246" />
+    <state width="1136" height="162" key="GridCell.Tab.0.center" timestamp="1594374111246">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="688" y="206" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1594256103358" />
-    <state x="867" y="55" key="#com.intellij.ide.util.MemberChooser" timestamp="1594196352271">
+    <state width="1136" height="162" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1594374111246" />
+    <state width="1136" height="162" key="GridCell.Tab.0.left" timestamp="1594374111246">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="867" y="55" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1594196352271" />
-    <state x="389" y="331" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1594115541979">
+    <state width="1136" height="162" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1594374111246" />
+    <state width="1136" height="162" key="GridCell.Tab.0.right" timestamp="1594374111246">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="389" y="331" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1366.728@0.0.1366.728" timestamp="1594115541979" />
-    <state x="770" y="292" width="596" height="273" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1594133271050">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="770" y="292" width="596" height="273" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1594133271050" />
-    <state x="759" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594115703004">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="759" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1594115703004" />
-    <state x="526" y="174" key="FileChooserDialogImpl" timestamp="1594256771898">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-<<<<<<< HEAD
-    <state x="526" y="174" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1594256771898" />
-    <state width="1323" height="222" key="GridCell.Tab.0.bottom" timestamp="1594258382594">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="222" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1594258382594" />
-    <state width="1323" height="222" key="GridCell.Tab.0.center" timestamp="1594258382594">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="222" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1594258382594" />
-    <state width="1323" height="222" key="GridCell.Tab.0.left" timestamp="1594258382594">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="222" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1594258382594" />
-    <state width="1323" height="222" key="GridCell.Tab.0.right" timestamp="1594258382594">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="222" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1594258382594" />
-    <state width="1323" height="222" key="GridCell.Tab.1.bottom" timestamp="1594258382594">
-=======
-    <state x="526" y="174" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1594183699810" />
-    <state width="974" height="237" key="GridCell.Tab.0.bottom" timestamp="1594308970516">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="974" height="237" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1594308970516" />
-    <state width="974" height="237" key="GridCell.Tab.0.center" timestamp="1594308970516">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="974" height="237" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1594308970516" />
-    <state width="974" height="237" key="GridCell.Tab.0.left" timestamp="1594308970515">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="974" height="237" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1594308970515" />
-    <state width="974" height="237" key="GridCell.Tab.0.right" timestamp="1594308970516">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="974" height="237" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1594308970516" />
-    <state width="1323" height="222" key="GridCell.Tab.1.bottom" timestamp="1593762829255">
->>>>>>> d318d7cc746a4f8f5e4ab4cfa95253183b5ce0a8
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="222" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1594258382594" />
-    <state width="1323" height="222" key="GridCell.Tab.1.center" timestamp="1594258382594">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="222" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1594258382594" />
-    <state width="1323" height="222" key="GridCell.Tab.1.left" timestamp="1594258382594">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="222" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1594258382594" />
-    <state width="1323" height="222" key="GridCell.Tab.1.right" timestamp="1594258382594">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="222" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1594258382594" />
-    <state x="368" y="16" key="SettingsEditor" timestamp="1593953127367">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="368" y="16" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1593953127367" />
-    <state x="505" y="266" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1594168658493">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="505" y="266" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1366.728@0.0.1366.728" timestamp="1594168658493" />
-    <state x="0" y="0" key="new project wizard" timestamp="1594049383488">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="0" y="0" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1594049383488" />
+    <state width="1136" height="162" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1594374111246" />
   </component>
 </project>
