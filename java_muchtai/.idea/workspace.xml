@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a029fca4-c285-4333-887c-f19267cdef73" name="Default Changelist" comment="" />
+    <list default="true" id="0e2923c7-87e1-4afe-a05d-9d149b55b294" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1eMf3a93kiDa1OZHAJE2zLusvuX" />
+  <component name="ProjectId" id="1eSGZmlniSAv1dN9L2fflKzpeI6" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -21,19 +21,33 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../java_muchtai/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Standard_lyy/homework/src/面向对象相关/_02abstruct作业/_01test/Animal.java" />
+  </component>
+  <component name="RunManager">
+    <configuration name="client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="client" />
+      <module name="java_muchtai" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.client" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a029fca4-c285-4333-887c-f19267cdef73" name="Default Changelist" comment="" />
-      <created>1594136183729</created>
+      <changelist id="0e2923c7-87e1-4afe-a05d-9d149b55b294" name="Default Changelist" comment="" />
+      <created>1594307638099</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1594136183729</updated>
-      <workItem from="1594136185167" duration="1520000" />
+      <updated>1594307638099</updated>
+      <workItem from="1594307639778" duration="1622000" />
     </task>
     <servers />
   </component>
@@ -41,25 +55,9 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="403" y="124" key="FileChooserDialogImpl" timestamp="1594307492781">
+    <state x="403" y="124" key="FileChooserDialogImpl" timestamp="1594308054256">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="403" y="124" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1594307492781" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/com/java/Date/DateDemo1.java</url>
-          <line>27</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/com/java/Date/DateDemo1.java</url>
-          <line>29</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="403" y="124" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1594308054256" />
   </component>
 </project>
