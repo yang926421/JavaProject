@@ -49,10 +49,14 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$/JDBCMysql/bin" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Standard_lyy" />
+>>>>>>> 50b5d59b1dde417b04ef6f012a1a53b69a4b4b4e
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -66,10 +70,17 @@
       <recent name="D:\lyy\documents\project1\Advanced\src\com\etc\Ayy_concurrency\变量原子性并发包\原子性" />
     </key>
   </component>
+<<<<<<< HEAD
   <component name="RunManager" selected="JUnit.jdbcIoException.queryAll">
     <configuration name="JdbcUtilTestDemo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.lyy.mysql._02JDBC使用工具类.JdbcUtilTestDemo1" />
       <module name="JDBCMysql" />
+=======
+  <component name="RunManager" selected="Application.callable_pool">
+    <configuration name="atom_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_concurrency.变量原子性并发包.原子性.atom_demo1" />
+      <module name="Advanced" />
+>>>>>>> 50b5d59b1dde417b04ef6f012a1a53b69a4b4b4e
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.lyy.mysql._02JDBC使用工具类.*" />
@@ -112,11 +123,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< HEAD
     <configuration name="jdbcStatement3.queryAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JDBCMysql" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.lyy.mysql._01JDBC基础.*" />
+=======
+    <configuration name="callable_pool" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_concurrency.thread.线程池.callable_pool" />
+      <module name="Advanced" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.etc.Ayy_concurrency.thread.线程池.*" />
+>>>>>>> 50b5d59b1dde417b04ef6f012a1a53b69a4b4b4e
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -128,11 +148,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< HEAD
     <configuration name="jdbcStatement3.queryOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JDBCMysql" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.lyy.mysql._01JDBC基础.*" />
+=======
+    <configuration name="volatile_demo1 (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_concurrency.变量原子性并发包.变量不可见性的解决.volatile_demo1" />
+      <module name="Advanced" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.etc.Ayy_concurrency.变量原子性并发包.变量不可见性的解决.*" />
+>>>>>>> 50b5d59b1dde417b04ef6f012a1a53b69a4b4b4e
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -146,11 +175,19 @@
     </configuration>
     <recent_temporary>
       <list>
+<<<<<<< HEAD
         <item itemvalue="JUnit.jdbcIoException.queryAll" />
         <item itemvalue="JUnit.jdbcIoException.queryOne" />
         <item itemvalue="JUnit.jdbcStatement3.queryAll" />
         <item itemvalue="JUnit.jdbcStatement3.queryOne" />
         <item itemvalue="Application.JdbcUtilTestDemo1" />
+=======
+        <item itemvalue="Application.callable_pool" />
+        <item itemvalue="Application.atomic_demo1" />
+        <item itemvalue="Application.atom_demo2" />
+        <item itemvalue="Application.atom_demo1" />
+        <item itemvalue="Application.volatile_demo1 (1)" />
+>>>>>>> 50b5d59b1dde417b04ef6f012a1a53b69a4b4b4e
       </list>
     </recent_temporary>
   </component>
@@ -165,7 +202,11 @@
       <option name="presentableId" value="Default" />
       <updated>1592990141570</updated>
       <workItem from="1592990144009" duration="26048000" />
+<<<<<<< HEAD
       <workItem from="1594385629460" duration="26841000" />
+=======
+      <workItem from="1594344140697" duration="66000" />
+>>>>>>> 50b5d59b1dde417b04ef6f012a1a53b69a4b4b4e
     </task>
     <servers />
   </component>
@@ -197,9 +238,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="945" y="36" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1593334765808" />
-    <state x="520" y="104" key="FileChooserDialogImpl" timestamp="1593485800192">
+    <state x="520" y="104" key="FileChooserDialogImpl" timestamp="1594344204426">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
+<<<<<<< HEAD
     <state x="520" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1593485800192" />
     <state width="1323" height="224" key="GridCell.Tab.0.bottom" timestamp="1594459285911">
       <screen x="0" y="0" width="1366" height="728" />
@@ -226,6 +268,26 @@
     </state>
     <state x="476" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1594458466741" />
     <state x="115" y="0" key="new project wizard" timestamp="1594435018557">
+=======
+    <state x="520" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1594344204426" />
+    <state width="1119" height="56" key="GridCell.Tab.0.bottom" timestamp="1594344207683">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1119" height="56" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1594344207683" />
+    <state width="1119" height="56" key="GridCell.Tab.0.center" timestamp="1594344207683">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1119" height="56" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1594344207683" />
+    <state width="1119" height="56" key="GridCell.Tab.0.left" timestamp="1594344207683">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1119" height="56" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1594344207683" />
+    <state width="1119" height="56" key="GridCell.Tab.0.right" timestamp="1594344207683">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1119" height="56" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1594344207683" />
+    <state x="115" y="0" key="new project wizard" timestamp="1593485886393">
+>>>>>>> 50b5d59b1dde417b04ef6f012a1a53b69a4b4b4e
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="115" y="0" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1594435018557" />
