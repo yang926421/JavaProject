@@ -41,25 +41,38 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Advanced/src/com/etc/Ayy_concurrency/变量原子性并发包" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/JDBCMysql/bin" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.lyy.mysql._02JDBC使用工具类" />
+      <recent name="com.lyy.mysql._01JDBC基础" />
+      <recent name="utlis" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\java\project\JDBCMysql\bin" />
       <recent name="D:\lyy\documents\project1\Advanced\src\com\etc\Ayy_concurrency\变量原子性并发包" />
       <recent name="D:\lyy\documents\project1\Advanced\src\com\etc\Ayy_concurrency\变量原子性并发包\原子性" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.atomic_demo1">
-    <configuration name="atom_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_concurrency.变量原子性并发包.原子性.atom_demo1" />
-      <module name="Advanced" />
+  <component name="RunManager" selected="JUnit.jdbcIoException.queryAll">
+    <configuration name="JdbcUtilTestDemo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lyy.mysql._02JDBC使用工具类.JdbcUtilTestDemo1" />
+      <module name="JDBCMysql" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.etc.Ayy_concurrency.变量原子性并发包.原子性.*" />
+          <option name="PATTERN" value="com.lyy.mysql._02JDBC使用工具类.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -67,65 +80,77 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="atom_demo2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_concurrency.变量原子性并发包.原子性.atom_demo2" />
-      <module name="Advanced" />
+    <configuration name="jdbcIoException.queryAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JDBCMysql" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.etc.Ayy_concurrency.变量原子性并发包.原子性.*" />
+          <option name="PATTERN" value="com.lyy.mysql._02JDBC使用工具类.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.lyy.mysql._02JDBC使用工具类" />
+      <option name="MAIN_CLASS_NAME" value="com.lyy.mysql._02JDBC使用工具类.jdbcIoException" />
+      <option name="METHOD_NAME" value="queryAll" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="atomic_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_concurrency.变量原子性并发包.原子性.原子类.atomic_demo1" />
-      <module name="Advanced" />
+    <configuration name="jdbcIoException.queryOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JDBCMysql" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.etc.Ayy_concurrency.变量原子性并发包.原子性.原子类.*" />
+          <option name="PATTERN" value="com.lyy.mysql._02JDBC使用工具类.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.lyy.mysql._02JDBC使用工具类" />
+      <option name="MAIN_CLASS_NAME" value="com.lyy.mysql._02JDBC使用工具类.jdbcIoException" />
+      <option name="METHOD_NAME" value="queryOne" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="volatile_demo1 (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_concurrency.变量原子性并发包.变量不可见性的解决.volatile_demo1" />
-      <module name="Advanced" />
+    <configuration name="jdbcStatement3.queryAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JDBCMysql" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.etc.Ayy_concurrency.变量原子性并发包.变量不可见性的解决.*" />
+          <option name="PATTERN" value="com.lyy.mysql._01JDBC基础.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.lyy.mysql._01JDBC基础" />
+      <option name="MAIN_CLASS_NAME" value="com.lyy.mysql._01JDBC基础.jdbcStatement3" />
+      <option name="METHOD_NAME" value="queryAll" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="volatile_demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_concurrency.变量原子性并发包.变量可见性问题.volatile_demo1" />
-      <module name="Advanced" />
+    <configuration name="jdbcStatement3.queryOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JDBCMysql" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.etc.Ayy_concurrency.变量原子性并发包.变量可见性问题.*" />
+          <option name="PATTERN" value="com.lyy.mysql._01JDBC基础.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.lyy.mysql._01JDBC基础" />
+      <option name="MAIN_CLASS_NAME" value="com.lyy.mysql._01JDBC基础.jdbcStatement3" />
+      <option name="METHOD_NAME" value="queryOne" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.atomic_demo1" />
-        <item itemvalue="Application.atom_demo2" />
-        <item itemvalue="Application.atom_demo1" />
-        <item itemvalue="Application.volatile_demo1 (1)" />
-        <item itemvalue="Application.volatile_demo1" />
+        <item itemvalue="JUnit.jdbcIoException.queryAll" />
+        <item itemvalue="JUnit.jdbcIoException.queryOne" />
+        <item itemvalue="JUnit.jdbcStatement3.queryAll" />
+        <item itemvalue="JUnit.jdbcStatement3.queryOne" />
+        <item itemvalue="Application.JdbcUtilTestDemo1" />
       </list>
     </recent_temporary>
   </component>
@@ -140,6 +165,7 @@
       <option name="presentableId" value="Default" />
       <updated>1592990141570</updated>
       <workItem from="1592990144009" duration="26048000" />
+      <workItem from="1594385629460" duration="26841000" />
     </task>
     <servers />
   </component>
@@ -156,8 +182,17 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="326" y="0" key="#Project_Structure" timestamp="1594435026059">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="326" y="0" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1594435026059" />
+    <state x="580" y="177" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1594435069839">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="580" y="177" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1594435069839" />
     <state x="945" y="36" key="#com.intellij.ide.util.MemberChooser" timestamp="1593334765808">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -166,25 +201,33 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="520" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1593485800192" />
-    <state width="1119" height="75" key="GridCell.Tab.0.bottom" timestamp="1593485891609">
+    <state width="1323" height="224" key="GridCell.Tab.0.bottom" timestamp="1594459285911">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1119" height="75" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1593485891609" />
-    <state width="1119" height="75" key="GridCell.Tab.0.center" timestamp="1593485891609">
+    <state width="1323" height="224" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1594459285911" />
+    <state width="1323" height="224" key="GridCell.Tab.0.center" timestamp="1594459285911">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1119" height="75" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1593485891609" />
-    <state width="1119" height="75" key="GridCell.Tab.0.left" timestamp="1593485891608">
+    <state width="1323" height="224" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1594459285911" />
+    <state width="1323" height="224" key="GridCell.Tab.0.left" timestamp="1594459285910">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1119" height="75" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1593485891608" />
-    <state width="1119" height="75" key="GridCell.Tab.0.right" timestamp="1593485891609">
+    <state width="1323" height="224" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1594459285910" />
+    <state width="1323" height="224" key="GridCell.Tab.0.right" timestamp="1594459285911">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1119" height="75" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1593485891609" />
-    <state x="115" y="0" key="new project wizard" timestamp="1593485886393">
+    <state width="1323" height="224" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1594459285911" />
+    <state x="546" y="268" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1594447734319">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="115" y="0" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1593485886393" />
+    <state x="546" y="268" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1366.728@0.0.1366.728" timestamp="1594447734319" />
+    <state x="476" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1594458466741">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="476" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1594458466741" />
+    <state x="115" y="0" key="new project wizard" timestamp="1594435018557">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="115" y="0" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1594435018557" />
   </component>
 </project>

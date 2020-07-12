@@ -1,0 +1,8 @@
+jdbc和mysql驱动的关系
+        接口和实现类的关系
+2.
+/**class.forName("com.jdbc.mysql.Driven");
+        这句话的意思就是获取方法参数字符串代表的类对应的class类型的对象,优先把.class文件加载到内存中,再创建class类型的对象
+         我们的需求就是想把这个class文件加载到内存中,让它执行代码块,就可以完成驱动的注册
+         */
+        Class.forName("com.mysql.jdbc.Driver");

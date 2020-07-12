@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Advanced/Advanced.iml" filepath="$PROJECT_DIR$/Advanced/Advanced.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Interview/Interview.iml" filepath="$PROJECT_DIR$/Interview/Interview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JDBCMysql/JDBCMysql.iml" filepath="$PROJECT_DIR$/JDBCMysql/JDBCMysql.iml" />
       <module fileurl="file://$PROJECT_DIR$/java1/java1.iml" filepath="$PROJECT_DIR$/java1/java1.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_advanced/java_advanced.iml" filepath="$PROJECT_DIR$/java_advanced/java_advanced.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_mian2/java_mian2.iml" filepath="$PROJECT_DIR$/java_mian2/java_mian2.iml" />

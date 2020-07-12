@@ -12,7 +12,7 @@ public class test_demo {
         a3.eat();
 //        a3.daming();
         a3.show();//子类并没有重写  所以还是去找父类的
-        
+
         m2.youYong();
     }
 
