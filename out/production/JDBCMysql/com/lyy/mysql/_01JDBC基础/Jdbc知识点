@@ -52,3 +52,60 @@ JDBC
                        user = rb.getString("user");
                        password = rb.getString("password");
                        driverClassName = rb.getString("driverClassName");
+
+       jdbc使用连接池
+        1.c3p0连接池
+            配置文件  c3p0.properties     c3p0-config.xml
+            会优先读取xml文件的配置  封装成 C3P0Utils工具类进行使用 更加节省资源
+        2.Druid连接池
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
