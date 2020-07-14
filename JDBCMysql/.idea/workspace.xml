@@ -17,15 +17,19 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+<<<<<<< HEAD
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+=======
+>>>>>>> 052c3bcf83d71655ee37eaf5e4becc853f2ab615
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Standard_lyy" />
+<<<<<<< HEAD
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager" selected="JUnit.jdbcStatement">
@@ -77,6 +81,8 @@
         <item itemvalue="Application.JdbcRegister" />
       </list>
     </recent_temporary>
+=======
+>>>>>>> 052c3bcf83d71655ee37eaf5e4becc853f2ab615
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -89,6 +95,7 @@
       <option name="presentableId" value="Default" />
       <updated>1594732474636</updated>
       <workItem from="1594732476171" duration="9000" />
+<<<<<<< HEAD
       <workItem from="1594734327971" duration="347000" />
     </task>
     <servers />
@@ -109,5 +116,15 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="337" y="267" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1366.728@0.0.1366.728" timestamp="1594734481847" />
+=======
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="498" y="198" key="FileChooserDialogImpl" timestamp="1594732483064">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="498" y="198" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1594732483064" />
+>>>>>>> 052c3bcf83d71655ee37eaf5e4becc853f2ab615
   </component>
 </project>

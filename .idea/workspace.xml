@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="4cfd8154-6184-4f8e-8967-41c541f1fd48" name="Default Changelist" comment="" />
+=======
+    <list default="true" id="c546ff32-0ce3-4d9e-80c8-483eeb449b05" name="Default Changelist" comment="" />
+>>>>>>> 052c3bcf83d71655ee37eaf5e4becc853f2ab615
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,7 +14,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+<<<<<<< HEAD
   <component name="ProjectId" id="1egEhSAhkFJbm9HHtpcL4M8bAkT" />
+=======
+  <component name="ProjectId" id="1ecisM1w7kpyjzOzh0Y9x6f8Jbq" />
+>>>>>>> 052c3bcf83d71655ee37eaf5e4becc853f2ab615
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -20,6 +28,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Standard_lyy" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -31,17 +40,138 @@
       <recent name="D:\java\project\Standard_lyy\.idea" />
     </key>
   </component>
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/JDBCMysql/bin" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.lyy.mysql2.DButils的使用" />
+      <recent name="utlis" />
+      <recent name="com.lyy.mysql2.c3p0封装工具类的获取" />
+      <recent name="com.lyy.mysql2.c3p0配置文件连接" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\lyy\documents\project1\JDBCMysql\bin" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.Demo05ColumnListHandlerSelect.queryOne">
+    <configuration name="domainUsers" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lyy.mysql2.测试.domainUsers" />
+      <module name="JDBCMysql" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lyy.mysql2.测试.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Demo04QueryRunnerSelect.queryAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JDBCMysql" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lyy.mysql2.DButils的使用.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.lyy.mysql2.DButils的使用" />
+      <option name="MAIN_CLASS_NAME" value="com.lyy.mysql2.DButils的使用.Demo04QueryRunnerSelect" />
+      <option name="METHOD_NAME" value="queryAll" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Demo04QueryRunnerSelect.queryOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JDBCMysql" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lyy.mysql2.DButils的使用.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.lyy.mysql2.DButils的使用" />
+      <option name="MAIN_CLASS_NAME" value="com.lyy.mysql2.DButils的使用.Demo04QueryRunnerSelect" />
+      <option name="METHOD_NAME" value="queryOne" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Demo04ScalarHandlerSelect.queryOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JDBCMysql" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lyy.mysql2.DButils的使用.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.lyy.mysql2.DButils的使用" />
+      <option name="MAIN_CLASS_NAME" value="com.lyy.mysql2.DButils的使用.Demo04ScalarHandlerSelect" />
+      <option name="METHOD_NAME" value="queryOne" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Demo05ColumnListHandlerSelect.queryOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JDBCMysql" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lyy.mysql2.DButils的使用.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.lyy.mysql2.DButils的使用" />
+      <option name="MAIN_CLASS_NAME" value="com.lyy.mysql2.DButils的使用.Demo05ColumnListHandlerSelect" />
+      <option name="METHOD_NAME" value="queryOne" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.Demo05ColumnListHandlerSelect.queryOne" />
+        <item itemvalue="JUnit.Demo04ScalarHandlerSelect.queryOne" />
+        <item itemvalue="JUnit.Demo04QueryRunnerSelect.queryOne" />
+        <item itemvalue="JUnit.Demo04QueryRunnerSelect.queryAll" />
+        <item itemvalue="Application.domainUsers" />
+      </list>
+    </recent_temporary>
+  </component>
+>>>>>>> 052c3bcf83d71655ee37eaf5e4becc853f2ab615
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
       <changelist id="4cfd8154-6184-4f8e-8967-41c541f1fd48" name="Default Changelist" comment="" />
       <created>1594734954557</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1594734954557</updated>
       <workItem from="1594734957061" duration="115000" />
+=======
+      <changelist id="c546ff32-0ce3-4d9e-80c8-483eeb449b05" name="Default Changelist" comment="" />
+      <created>1594600179305</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1594600179305</updated>
+      <workItem from="1594600195857" duration="15938000" />
+      <workItem from="1594627488854" duration="189000" />
+      <workItem from="1594627895931" duration="376000" />
+<<<<<<< HEAD
+      <workItem from="1594628404008" duration="8146000" />
+=======
+      <workItem from="1594628404008" duration="6491000" />
+      <workItem from="1594644292506" duration="7903000" />
+>>>>>>> b7769da3221056111803dd2e866835a0c0ef1ea6
+>>>>>>> 052c3bcf83d71655ee37eaf5e4becc853f2ab615
     </task>
     <servers />
   </component>
@@ -49,6 +179,7 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
+<<<<<<< HEAD
     <state x="521" y="109" key="FileChooserDialogImpl" timestamp="1594735071468">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -57,5 +188,59 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="243" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1594735051734" />
+=======
+    <state x="839" y="152" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1594653451131">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="839" y="152" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1594653451131" />
+    <state x="837" y="364" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1594609814960">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="837" y="364" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.728@0.0.1366.728" timestamp="1594609814960" />
+    <state x="0" y="237" key="FileChooserDialogImpl" timestamp="1594627475398">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="0" y="237" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1594627475398" />
+    <state width="974" height="180" key="GridCell.Tab.0.bottom" timestamp="1594649926283">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="974" height="180" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1594649926283" />
+    <state width="974" height="180" key="GridCell.Tab.0.center" timestamp="1594649926282">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="974" height="180" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1594649926282" />
+    <state width="974" height="180" key="GridCell.Tab.0.left" timestamp="1594649926282">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="974" height="180" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1594649926282" />
+    <state width="974" height="180" key="GridCell.Tab.0.right" timestamp="1594649926283">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="974" height="180" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1594649926283" />
+    <state x="368" y="16" key="SettingsEditor" timestamp="1594643942936">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="368" y="16" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1594643942936" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1594645622912">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1594645622912" />
+    <state x="364" y="74" width="670" height="676" key="search.everywhere.popup" timestamp="1594649611799">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="364" y="74" width="670" height="676" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1594649611799" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/JDBCMysql/src/utlis/DruidUtils.java</url>
+          <line>30</line>
+          <properties field="druidDataSource" class="utlis.DruidUtils" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+>>>>>>> 052c3bcf83d71655ee37eaf5e4becc853f2ab615
   </component>
 </project>
