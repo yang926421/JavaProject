@@ -32,7 +32,7 @@ public class DruidUtils {
     static {
         try {
             Properties pros = new Properties();
-            InputStream is = Demo01Druid.class.getClassLoader().getResourceAsStream("druid.properties");
+            InputStream is = DruidUtils.class.getClassLoader().getResourceAsStream("druid.properties");
             //把配置文件信息加载到properties集合对象中
             pros.load(is);
             //        ResourceBundle resourceBundle = ResourceBundle.getBundle("druid.properties");
