@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="bin">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/bin/mchange-commons-java-0.2.19.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bin/lombok-1.18.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bin/c3p0-0.9.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bin/druid-1.0.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bin/commons-dbutils-1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bin/mysql-connector-java-5.1.37-bin.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
