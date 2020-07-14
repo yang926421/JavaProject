@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="61ac1e96-7c0a-4c9b-884d-c9fa51284a21" name="Default Changelist" comment="" />
+    <list default="true" id="a029fca4-c285-4333-887c-f19267cdef73" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,7 +10,8 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1eTTNGr330Ggp3wEGMV2WZynN4y" />
+  <component name="ProjectId" id="1eMf3a93kiDa1OZHAJE2zLusvuX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -20,23 +21,15 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-<<<<<<< HEAD
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
-=======
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
->>>>>>> 50b5d59b1dde417b04ef6f012a1a53b69a4b4b4e
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Advanced/src/com/etc/Ayy_collection/_09图书管理案例" />
   </component>
-  <component name="RunManager" selected="Application.test_module">
-    <configuration name="list_demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="_02集合迭代器._02集合._01列表的去重.list_demo" />
+  <component name="RunManager" selected="Application.StudentSystemDemo">
+    <configuration name="StudentSystemDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ning.java核心类库._学生信息管理系统.StudentSystemDemo" />
       <module name="homework" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="_02集合迭代器._02集合._01列表的去重.*" />
+          <option name="PATTERN" value="ning.java核心类库._学生信息管理系统.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -44,25 +37,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="面向对象相关._01面向对象基础.手撸内部类.test1" />
+    <configuration name="test_demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="面向对象相关._02abstruct作业._02test.test_demo" />
       <module name="homework" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="面向对象相关._01面向对象基础.手撸内部类.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="test_module" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="异常.异常知识点回顾.test_module" />
-      <module name="homework" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="异常.异常知识点回顾.*" />
+          <option name="PATTERN" value="面向对象相关._02abstruct作业._02test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -72,9 +52,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.test_module" />
-        <item itemvalue="Application.list_demo" />
-        <item itemvalue="Application.test1" />
+        <item itemvalue="Application.StudentSystemDemo" />
+        <item itemvalue="Application.test_demo" />
       </list>
     </recent_temporary>
   </component>
@@ -83,12 +62,13 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="61ac1e96-7c0a-4c9b-884d-c9fa51284a21" name="Default Changelist" comment="" />
-      <created>1594344540370</created>
+      <changelist id="a029fca4-c285-4333-887c-f19267cdef73" name="Default Changelist" comment="" />
+      <created>1594136183729</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1594344540370</updated>
-      <workItem from="1594344542725" duration="1076000" />
+      <updated>1594136183729</updated>
+      <workItem from="1594136185167" duration="1520000" />
+      <workItem from="1594735075125" duration="3197000" />
     </task>
     <servers />
   </component>
@@ -96,81 +76,51 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-<<<<<<< HEAD
-    <state x="0" y="0" key="#Project_Structure" timestamp="1594049389471">
+    <state x="403" y="124" key="FileChooserDialogImpl" timestamp="1594737572599">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="0" y="0" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1594049389471" />
-    <state x="688" y="206" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1594114892990">
+    <state x="403" y="124" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1594737572599" />
+    <state width="1323" height="163" key="GridCell.Tab.0.bottom" timestamp="1594737969110">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="688" y="206" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1594114892990" />
-    <state x="867" y="55" key="#com.intellij.ide.util.MemberChooser" timestamp="1594196352271">
+    <state width="1323" height="163" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1594737969110" />
+    <state width="1323" height="163" key="GridCell.Tab.0.center" timestamp="1594737969110">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="867" y="55" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1594196352271" />
-    <state x="389" y="331" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1594115541979">
+    <state width="1323" height="163" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1594737969110" />
+    <state width="1323" height="163" key="GridCell.Tab.0.left" timestamp="1594737969110">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="389" y="331" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1366.728@0.0.1366.728" timestamp="1594115541979" />
-    <state x="770" y="292" width="596" height="273" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1594133271050">
+    <state width="1323" height="163" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1594737969110" />
+    <state width="1323" height="163" key="GridCell.Tab.0.right" timestamp="1594737969110">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="770" y="292" width="596" height="273" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1594133271050" />
-    <state x="759" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594115703004">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="759" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1594115703004" />
-    <state x="526" y="174" key="FileChooserDialogImpl" timestamp="1594385623643">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="526" y="174" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1594385623643" />
-    <state width="974" height="237" key="GridCell.Tab.0.bottom" timestamp="1594385625983">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="974" height="237" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1594385625983" />
-    <state width="974" height="237" key="GridCell.Tab.0.center" timestamp="1594385625983">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="974" height="237" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1594385625983" />
-    <state width="974" height="237" key="GridCell.Tab.0.left" timestamp="1594385625983">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="974" height="237" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1594385625983" />
-    <state width="974" height="237" key="GridCell.Tab.0.right" timestamp="1594385625983">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="974" height="237" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1594385625983" />
-    <state width="1323" height="222" key="GridCell.Tab.1.bottom" timestamp="1593762829255">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="222" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1593762829255" />
-    <state width="1323" height="222" key="GridCell.Tab.1.center" timestamp="1593762829255">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="222" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1593762829255" />
-    <state width="1323" height="222" key="GridCell.Tab.1.left" timestamp="1593762829255">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="222" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1593762829255" />
-    <state width="1323" height="222" key="GridCell.Tab.1.right" timestamp="1593762829255">
-=======
-    <state width="1136" height="162" key="GridCell.Tab.0.bottom" timestamp="1594374111246">
->>>>>>> 50b5d59b1dde417b04ef6f012a1a53b69a4b4b4e
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1136" height="162" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1594374111246" />
-    <state width="1136" height="162" key="GridCell.Tab.0.center" timestamp="1594374111246">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1136" height="162" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1594374111246" />
-    <state width="1136" height="162" key="GridCell.Tab.0.left" timestamp="1594374111246">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1136" height="162" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1594374111246" />
-    <state width="1136" height="162" key="GridCell.Tab.0.right" timestamp="1594374111246">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1136" height="162" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1594374111246" />
+    <state width="1323" height="163" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1594737969110" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/com/java/Date/DateDemo1.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/com/java/Date/DateDemo1.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/homework/src/ning/java核心类库/_学生信息管理系统/StudentSystemDemo.java</url>
+          <line>78</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/homework/src/ning/java核心类库/_学生信息管理系统/StudentSystemDemo.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -1,41 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="f6c0e76f-0400-4f93-84ce-935a962615da" name="Default Changelist" comment="" />
+    <list default="true" id="4cfd8154-6184-4f8e-8967-41c541f1fd48" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1efO6D8YIaiLeD4mGLyrXR9uqki" />
+  <component name="ProjectId" id="1egEhSAhkFJbm9HHtpcL4M8bAkT" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -45,157 +20,42 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Standard_lyy" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.lyy.mysql3.ThreadLocal.view" />
-      <recent name="com.lyy.mysql3.ThreadLocal.service" />
-      <recent name="com.lyy.mysql3.ThreadLocal.dao" />
-      <recent name="com.lyy.mysql3.ThreadLocal" />
-      <recent name="com.lyy.mysql2.mysql事务" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\java\project\Standard_lyy\.idea" />
     </key>
-  </component>
-  <component name="RunManager" selected="Application.AccountView (1)">
-    <configuration name="AccountView (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.lyy.mysql3.ThreadLocal.view.AccountView" />
-      <module name="JDBCMysql" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.lyy.mysql3.ThreadLocal.view.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AccountView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.lyy.转账案例.view.AccountView" />
-      <module name="JDBCMysql" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.lyy.转账案例.view.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Demo01Account" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.lyy.mysql2.mysql事务.Demo01Account" />
-      <module name="JDBCMysql" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.lyy.mysql2.mysql事务.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Demo02Account" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.lyy.mysql2.mysql事务.Demo02Account" />
-      <module name="JDBCMysql" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.lyy.mysql2.mysql事务.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AccountService.transfer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JDBCMysql" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.lyy.转账案例.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.lyy.转账案例.service" />
-      <option name="MAIN_CLASS_NAME" value="com.lyy.转账案例.service.AccountService" />
-      <option name="METHOD_NAME" value="transfer" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.AccountView (1)" />
-        <item itemvalue="Application.AccountView" />
-        <item itemvalue="Application.Demo02Account" />
-        <item itemvalue="JUnit.AccountService.transfer" />
-        <item itemvalue="Application.Demo01Account" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f6c0e76f-0400-4f93-84ce-935a962615da" name="Default Changelist" comment="" />
-      <created>1594709002538</created>
+      <changelist id="4cfd8154-6184-4f8e-8967-41c541f1fd48" name="Default Changelist" comment="" />
+      <created>1594734954557</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1594709002538</updated>
-      <workItem from="1594709007530" duration="10795000" />
+      <updated>1594734954557</updated>
+      <workItem from="1594734957061" duration="115000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
   <component name="WindowStateProjectService">
-    <state x="639" y="235" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1594713867041">
+    <state x="521" y="109" key="FileChooserDialogImpl" timestamp="1594735071468">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="639" y="235" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1594713867041" />
-    <state x="457" y="284" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1594718841062">
+    <state x="521" y="109" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1594735071468" />
+    <state x="243" y="0" key="SettingsEditor" timestamp="1594735051734">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="457" y="284" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1366.728@0.0.1366.728" timestamp="1594718841062" />
-    <state x="541" y="131" key="FileChooserDialogImpl" timestamp="1594708986707">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="541" y="131" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1594708986707" />
-    <state width="968" height="202" key="GridCell.Tab.0.bottom" timestamp="1594719019397">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="968" height="202" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1594719019397" />
-    <state width="968" height="202" key="GridCell.Tab.0.center" timestamp="1594719019397">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="968" height="202" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1594719019397" />
-    <state width="968" height="202" key="GridCell.Tab.0.left" timestamp="1594719019397">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="968" height="202" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1594719019397" />
-    <state width="968" height="202" key="GridCell.Tab.0.right" timestamp="1594719019397">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="968" height="202" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1594719019397" />
-    <state x="605" y="305" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1594718471984">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="605" y="305" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1594718471984" />
+    <state x="243" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1594735051734" />
   </component>
 </project>
