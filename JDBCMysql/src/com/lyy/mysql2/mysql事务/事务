@@ -3,11 +3,3 @@ mysql中事务的默认机制   一条sql是一个单独的事务
 
 手动开启关闭事务 回滚事务
 begin  commit  rollback
-
-
-事务的几种特性
-    ACID
-    原子性
-    一致性
-    隔离性
-    持久性

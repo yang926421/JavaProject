@@ -1,0 +1,10 @@
+diff a/.idea/workspace.xml b/.idea/workspace.xml	(rejected hunks)
+@@ -19,7 +19,7 @@
+     <select />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="c546ff32-0ce3-4d9e-80c8-483eeb449b05" name="Default Changelist" comment="" />
++    <list default="true" id="f6c0e76f-0400-4f93-84ce-935a962615da" name="Default Changelist" comment="" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
