@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/dongcandiya-inf.css">
+			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+			<script type="text/javascript" src="../static/js/common.js" ></script>
+			<script>
+				var IMPORGID=GetRequest("IMPORGID");
+				$(function(){
+					getData();
+				});
+				
+				function getData(){
+					$.ajax({
+						type:"get",
+						url:httpUrl+"/p/sp/pledge/by/id/get.json",
+						async:true,
+						data:{"IMPORGID":IMPORGID},
+						dataType:"json",
+						success:function(res){
+							if(res.success==true){
+								createData(res.data[0]);
+							}
+						}
+					});
+				}
+				
+				function createData(obj){
+					var htmlData="";
+					if(obj.TYPE==1){   //1是有效
+						if(obj.ESPALTER!=null && obj.ESPALTER.length>0){
+							for(var i=0;i<obj.ESPALTER.length;i++){
+								htmlData+="<div class='web-box'> "+
+											"<div class='web-name'>"+
+											"	<h4>股权出质变更信息</h4>"+
+											"	<ul class='web'>"+
+											"		<li><span>变更日期：</span> <span>"+getFormatDateByLong(obj.ESPALTER[i].ALTDATE,"yyyy年MM月dd日")+"</span></li>"+
+											"		<li><span>变更原因：</span> <span>"+obj.ESPALTER[i].ALT+"</span></li>"+
+											"	</ul>"+
+											"</div>"+
+										"</div> ";
+							}
+						}else{
+							htmlData+="<div class='web-box'> "+
+											"<div class='web-name'>"+
+											"<ul class='web'><li><span>暂无变更信息</span></li></ul>"+
+											"</div>"+
+										"</div> ";
+						}
+					}else{
+						var candate="";
+						if(obj.CANDATE!=null && obj.CANDATE!=""){
+							candate=getFormatDateByLong(obj.CANDATE,"yyyy年MM月dd日");
+						}
+						var con="";
+						if(obj.EQUPLECANREA!=null && obj.EQUPLECANREA!=""){
+							con=obj.EQUPLECANREA;
+						}
+						htmlData+="<div class='web-box'> "+
+									"<div class='web-name'>"+
+									"	<h4>股权出质注销信息</h4>"+
+									"	<ul class='web'>"+
+									"		<li><span>注销日期：</span> <span>"+candate+"</span></li>"+
+									"		<li><span>注销原因：</span> <span>"+con+"</span></li>"+
+									"	</ul>"+
+									"</div>"+
+								"</div> ";
+					}
+					$("#common-box").html(htmlData);
+					
+				}
+			</script>
+		
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="guquanchuzi.html"></a>
+		    <h1 class="mui-title">股权出质详细信息</h1>
+		</header>
+		
+		<!--修改信息-->
+		<div id="common-box">
+			<!--<div class="web-box">
+				<a href="add-equity-record.html" class="">
+					<div class="web-name">
+						<h4>股权出质变更信息</h4>
+						<ul class="web">
+							<li><span>变更日期：</span> <span >2015年12月12日</span></li>
+							<li><span>变更内容：</span> <span >aaa</span></li>
+						</ul>
+					</div>
+				</a>
+			</div>
+			
+			<div class="web-box">
+				<a href="add-equity-record.html" class="">
+					<div class="web-name">
+						<h4>股权出质注销信息</h4>
+						<ul class="web">
+							<li><span>注销日期：</span> <span >2015年12月12日</span></li>
+							<li><span>注销原因：</span> <span >aaa</span></li>
+						</ul>
+					</div>
+				</a>
+			</div>-->
+			
+		</div>
+	</body>
+</html>

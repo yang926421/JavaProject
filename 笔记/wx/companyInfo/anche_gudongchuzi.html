@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>股东及出资信息</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/chuzi.css" />
+		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+		<script type="text/javascript" src="../static/js/common.js" ></script>
+		<script>
+			var pripid=sessionStorage.getItem("PRIPID");
+			//pripid="141000010605188441";
+			var type=sessionStorage.getItem("TYPE");   //1企业 2农专 3个体
+			$(function(){
+				getData();
+			});
+			function getData(){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/p/shareholder/list.json",
+					data:{"PRIPID":pripid,"TYPE":type},
+					dataType:"json",
+					async:true,
+					success:function(res){
+						if(res.success==true){
+							createData(res.data);
+						}
+					}
+				});
+			}
+			
+			function createData(obj){
+				if(obj!=null && obj.length>0){
+					$("#count").html(obj.length);
+					var htmlData="";
+					for(var i=0;i<obj.length;i++){
+						if(i==0){
+							htmlData+="<div class='shareholderDiv'>"+
+									 "<div class='holdername'><span>"+obj[i].INVNAME+"</span></div>"+	
+									 "<div class='holderCard'>"+
+									 "	  <div class='holderone'><span>认缴额（万元）：</span><span>"+obj[i].LISUBCONAM+"</span></div>"+
+									 "	  <div class='holderone'><span>认缴出资时间：</span><span>"+getFormatDateByLong(obj[i].SUBCONDATE,"yyyy年MM月dd日") +"</span></div>"+
+									  "	  <div class='holderone'><span>认缴出资方式：</span><span>"+obj[i].SUBCONFORM_CN+"</span></div>"+
+									 "	  <div class='holdertwo'><span>实缴额（万元）： </span><span>"+obj[i].LIACCONAM+"</span></div>"+
+									  "	  <div class='holderone'><span>实缴出资时间：</span><span>"+getFormatDateByLong(obj[i].ACCONDATE,"yyyy年MM月dd日")+"</span></div>"+
+									  "	  <div class='holderone'><span>实缴出资方式：</span><span>"+obj[i].ACCONFORM_CN+"</span></div>"+
+									 "</div>"+
+								"</div> ";
+						}else{
+							htmlData+="<div class='shareholderDiv top'>"+
+									" <div class='holdername'><span>"+obj[i].INVNAME+"</span></div>"+	
+									" <div class='holderCard'>"+
+									 "	  <div class='holderone'><span>认缴额（万元）: </span><span>"+obj[i].LISUBCONAM+"</span></div>"+
+									 "	  <div class='holderone'><span>认缴出资时间：</span><span>"+getFormatDateByLong(obj[i].SUBCONDATE,"yyyy年MM月dd日")+"</span></div>"+
+									  "	  <div class='holderone'><span>认缴出资方式：</span><span>"+obj[i].SUBCONFORM_CN+"</span></div>"+
+									 "	  <div class='holdertwo'><span>实缴额（万元）：</span><span>"+obj[i].LIACCONAM+"</span></div>"+
+									  "	  <div class='holderone'><span>实缴出资时间：</span><span>"+getFormatDateByLong(obj[i].ACCONDATE,"yyyy年MM月dd日")+"</span></div>"+
+									  "	  <div class='holderone'><span>实缴出资方式：</span><span>"+obj[i].ACCONFORM_CN+"</span></div>"+
+									 "</div>"+
+								"</div> ";
+						}
+					}
+					$("#content").html(htmlData);
+					
+				}else{
+					$("#count").html(0);
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href=""></a>
+		    <h1 class="mui-title">股东及出资信息(<span id="count"></span>)</h1>
+		</header>
+		<div class="repair-record">
+			<a href="gudongchuziUpdateRecord.html">查看修改记录 >></a>
+		</div>
+		<div id="content">
+			
+			<!--<div class="shareholderDiv martop">
+				 <div class="holdername"><span>王天霸</span></div>	
+				 <div class="holderCard">
+				 	  <div class="holderone"><span>认缴额（万元）: </span><span>500</span></div>
+				 	  <div class="holdertwo"><span>实缴额（万元）: </span><span>300</span></div>
+				 	  <img src="../static/img/arrow-right.png" />
+				 </div>
+			</div>
+			
+			<div class="shareholderDiv top">
+				 <div class="holdername"><span>王天霸</span></div>	
+				 <div class="holderCard">
+				 	   <div class="holderone"><span>认缴额（万元）: </span><span>500</span></div>
+				 	  <div class="holdertwo"><span>实缴额（万元）:</span><span>200</span></div>
+				 	  <img src="../static/img/arrow-right.png" />
+				 </div>
+			</div>-->
+		</div>
+	</body>
+</html>

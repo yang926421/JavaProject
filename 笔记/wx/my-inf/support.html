@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/notice.css">
+			<link rel="stylesheet" href="../static/css/right-inf.css">
+		<script src="../static/js/jquery.min.js"></script>
+		<script type="text/javascript" src="../static/js/common.js" ></script>
+		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+		<style>
+			.mui-bar-nav {
+				top: 0;
+			}
+			table{
+				font-size:1.6rem;
+				line-height: 3.0rem;
+				margin-bottom: 1.2rem;
+				width: 100%;
+			}
+			table tr td:nth-child(odd){
+				text-align: right;
+				color: #999999;
+				width: 45%;
+			}
+			
+		</style>
+		<script>
+			var region="";  //区域
+			var title="";
+			$(function(){	
+				
+				$("#supportImg1").attr("src",imgUrl+"suport_banner.png");
+				
+				var flag=true;
+				$("#chose").click(function(){
+					if(flag){
+						$("#proList").stop().animate({
+							right:0
+						})
+						flag=false;
+					}else{
+						$("#proList").stop().animate({
+							right:"-70%"
+						})
+						flag=true;
+					}
+				});
+				$(".oAs a").click(function(){					
+					$(".oAs a").removeClass("chosedCity");
+					$(this).addClass("chosedCity");
+					$("#proList").stop().animate({
+							right:"-70%"
+					});
+					var txt=$(this).text();
+					if(txt!="不限"){
+						$("#chose").text(txt);
+						region= getArea(txt); 
+					}else{
+						$("#chose").text("筛选");
+						region= ""; 
+					}
+					flag=true;
+					clearData();
+					getData();
+				});
+			});
+			//切换类型和区域时重新设置当前页码并清除之前的数据
+			function clearData(){
+				$("#indexData").hide();
+				$("#page").val(1);  
+				$("#noticeList").html("");
+				$("#loadData").hide();
+				$("#noData").hide();
+				$("#no-show").hide();
+			}
+				//获取数据
+			function getData(){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/p/o/techsupport/list.json",
+					async:true,
+					data:{"region":region},
+					dataType:"json",
+					success:function(res){
+						if(res.success==true){
+							createData(res.data);
+						}/*else{
+							mui.toast(res.codeMsg);
+						}*/
+					}
+				});
+			}
+			//创建数据
+			function createData(obj){
+				if(obj!=null && obj.length>0){
+					var htmlData="";
+					for(var i=0;i<obj.length;i++){
+						htmlData+="<div class='web-box'>"+
+									"	<div class='web-name'>"+
+									"		<ul class='web'>"+
+									"			<li><h4>"+obj[i].DEPART_NAME+"</h4></li>"+
+									"			<li><span >行政区划名称：</span> <span>"+obj[i].AREA_NAME+"</span></li>"+
+									"			<li><span >业务咨询电话：</span> <span>"+obj[i].BUSI_ADVI_TEL+"</span></li>"+
+									"			<li><span>技术支持电话：</span> <span>"+obj[i].TECH_SUPP_TEL+"</span></li>"+
+									"		</ul>"+
+									"	</div>"+
+								"</div>";
+					}
+					$("#common-box").html(htmlData);
+					
+				}else{
+					$("#no-show").show();
+				}
+			}
+			
+			function goOpinion(){
+				window.location.href="opinion.html";
+			}
+		</script>
+	
+		
+	</head>
+	
+	<body>		
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="notice_index.html"></a>
+		    <h1 class="mui-title"><span id="saveOrUpdate"></span>技术支持</h1>
+		    <span id="sure">
+		    	<a href="javascript:;" class="chose" id="chose">按区域</a>
+		    </span>
+		</header>	
+		
+		<div id="common-boxJ">
+			<div id="proList">
+				<h3>区域筛选</h3>
+				<div class="oAs"><a >不限</a></div>
+				<div class="oAs">
+					<a>郑州</a>
+					<a>开封</a>
+					<a>洛阳</a>
+					<a>平顶山</a>
+					<a>新乡</a>
+					<a>安阳</a>
+					<a>焦作</a>
+					<a>鹤壁</a>
+					<a>濮阳</a>
+					<a>三门峡</a>
+					<a>许昌</a>
+					<a>漯河</a>
+					<a>南阳</a>
+					<a>商丘</a>
+					<a>信阳</a>
+					<a>驻马店</a>
+					<a>周口</a>
+					<a>济源</a>
+					<a>巩义</a>
+					<a>兰考</a>
+					<a>汝州</a>
+					<a>滑县</a>
+					<a>邓州</a>
+					<a>永城</a>
+					<a>固始</a>
+					<a>鹿邑</a>
+					<a>新蔡</a>
+					<a>长垣</a>
+				</div>
+			</div>
+			<div id="indexData" >
+				<div class="web-box">
+					<h4>电话咨询</h4> 
+					<span class="contribution-arrow-right"><img id="totalwagesdisImg" src="../static/img/arrow-down.png"/></span>
+				</div>
+			
+				<div style="padding-top: 20px;margin-top: -8px;">
+					<!--<img id="supportImg1" style="width: 100%;"/>-->
+					<div class="web-name" style="width: 100%;">
+						<table>
+							<tr>
+								<td style="padding-right: 1.2rem;"><img src="../static/img/iocn_tele.png" style="width:30px;vertical-align:middle;"/></td>
+								<td><span style="display:inline-block;font-size: 2.0rem;">业务咨询电话</span></td>
+							</tr>
+							<tr>
+								<td>企业：</td>
+								<td>0371-66779381</td>
+							</tr>
+							<tr>
+								<td>个体、农专：</td>
+								<td>0371-66779473</td>
+							</tr>
+							<tr>
+								<td>社保：</td>
+								<td>0371-65622933</td>
+							</tr>
+							<tr>
+								<td>统计：</td>
+								<td>0371-65898826</td>
+							</tr>
+							<tr>
+								<td>海关：</td>
+								<td>0371-12360</td>
+							</tr>
+						</table>
+						<table>
+							<tr>
+								<td style="padding-right: 1.2rem;"><img src="../static/img/iocn_tele.png" style="width:30px;vertical-align:middle;"/></td>
+							    <td><span style="display:inline-block;font-size: 2.0rem;">技术支持电话</span></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>0371-66779061</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>0371-66779397</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>0371-66779306</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="web-box" onclick="goOpinion();">
+					<h4>在线反馈</h4> 
+					<span class="contribution-arrow-right"><img src="../static/img/arrow-right.png" width="13" height="18" /></span>
+				</div>
+			</div>
+			
+			<div id="common-box" style="margin-top: 0px;"></div>
+			
+			<div id="no-show" class="weui-loadmore weui-loadmore_line" style="display: none;">
+           		 <span class="weui-loadmore__tips">暂无数据</span>
+       		 </div>
+			
+			  	<input type="hidden" name="page" id="page" value="1" />
+				<input type="hidden" name="totalPage" id="totalPage" value="1"/>
+				
+				<div id="loadData" style="display: none;" onclick="getData();">点击加载更多...</div>
+				<!--加载点-->
+				<div id="loading" style="display: none;" class="spinner">
+					 <div class="bounce1"></div>
+					 <div class="bounce2"></div>
+					 <div class="bounce3"></div>
+				</div>
+				
+				<div id="noData" style="display: none;" >没有更多了...</div>
+		</div>
+		</div>
+		
+		
+	   
+	</body>
+</html>

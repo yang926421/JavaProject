@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>基本信息</title>
+		<link rel="stylesheet" href="../../static/css/common.css">
+		<link rel="stylesheet" href="../../static/css/mui.min.css">
+		<link rel="stylesheet" href="../../static/css/essential-inf.css">
+		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
+		<script type="text/javascript" src="../../static/js/common.js"></script>
+		<script>
+			var ancheId=GetRequest("ANCHEID");
+			var ANCHEYEAR=GetRequest("ANCHEYEAR");
+			$(document).ready(function(){
+  				$("#TOKEN").val(TOKEN);
+  				$("#SESSIONID").val(SESSIONID);
+  				$("#PRIPID").val(PRIPID);
+  				$("#FARSPEARTNAME").val(BODY_NAME);  //企业名称
+  				$("#BODY_NO").val(BODY_NO); //信用代码、注册号
+  				$("#REGNO").val(REGNO);
+  				$("#UNISCID").val(UNISCID);
+				$("#ANCHEYEAR").val(ANCHEYEAR);
+				if(ancheId!=null && ancheId!="" && ancheId!="null"){
+					$("#ANCHEID").val(ancheId);
+					getData();
+				}
+  				
+			});
+			
+			function getData(){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/c/an/base/get.json",
+					async:true,
+					data:{"ANCHEID":ancheId,"TOKEN":TOKEN,"SESSIONID":SESSIONID,"BODY_TYPE":BODY_TYPE},
+					dataType:'json',
+					success:function(res){
+						if(res.success==true){
+							//mui.toast(res.codeMsg)
+							createData(res.data);
+						}
+					}
+				});
+			}
+			
+			function createData(obj){
+				$("#ANCHEYEAR").val(obj.ANCHEYEAR); //报告年度
+				$("#PRIPID").val(obj.PRIPID);  //企业id
+				$("#ADDR").val(obj.ADDR); //地址
+				$("#TEL").val(obj.TEL); //电话
+				$("#EMAIL").val(obj.EMAIL); //邮箱
+				$("#MEMNUM").val(obj.MEMNUM); //成员人数
+				$("#FARNUM").val(obj.FARNUM); //其中农民人数
+				$("#ANNNEWMEMNUM").val(obj.ANNNEWMEMNUM); //本年度新增人数
+				$("#ANNREDMEMNUM").val(obj.ANNREDMEMNUM); //本年度退出人数
+				$("#EMPNUM").val(obj.EMPNUM); //从业人数
+				$("#EMPNUMDIS").val(obj.EMPNUMDIS);//从业人数是否公示
+				if(obj.EMPNUMDIS==1){
+					document.getElementById("empnumdisImg").src="../../static/img/show.png";
+				}else{
+					document.getElementById("empnumdisImg").src="../../static/img/show-no.png";
+				}
+				$("#WOMEMPNUM").val(obj.WOMEMPNUM); //女性从业人数
+				$("#WOMEMPNUMDIS").val(obj.WOMEMPNUMDIS);//女性从业人数是否公示
+				if(obj.WOMEMPNUMDIS==1){
+					document.getElementById("womempnumdisImg").src="../../static/img/show.png";
+				}else{
+					document.getElementById("womempnumdisImg").src="../../static/img/show-no.png";
+				}
+				$("#MAINBUSIACT").val(obj.MAINBUSIACT);  //企业主营业务活动
+				
+				if(obj.ISWEB==1){
+					 $("input[name='ISWEB'][value=1]").attr("checked","checked");
+				}
+				
+				
+			}
+			
+			function saveAnche(){
+//				var web=$('input:radio[name="web"]:checked').val();
+//	            sessionStorage.setItem("web"+ancheId,web);  
+				
+				var addr=$("#ADDR").val();
+				if(!isNotNull(addr)){
+					mui.toast("企业通信地址不能为空");
+					return;
+				}
+				
+				var telphone=$("#TEL").val();
+				if(isNotNull(telphone)){
+					if(!(phone.test(telphone) || tel.test(telphone))){
+						mui.toast("联系电话输入错误");
+						return;
+					}
+				}
+				
+				var MEMNUM=$("#MEMNUM").val(); //总成员人数
+				var FARNUM=$("#FARNUM").val(); //农民人数
+				var ANNNEWMEMNUM=$("#ANNNEWMEMNUM").val(); //新增人数
+				var ANNREDMEMNUM=$("#ANNREDMEMNUM").val();  //退出人数
+				if(MEMNUM!=null && MEMNUM!="" && FARNUM!=null && FARNUM!=""){
+					if(parseInt( MEMNUM)<parseInt(FARNUM)){
+						mui.toast("农民人数不能大于成员总人数");
+						return;
+					}
+				}
+				
+				if(MEMNUM!=null && MEMNUM!="" && ANNNEWMEMNUM!=null && ANNNEWMEMNUM!=""){
+					if(parseInt( MEMNUM)<parseInt(ANNNEWMEMNUM)){
+						mui.toast("新增人数不能大于成员总人数");
+						return;
+					}
+				}
+				if(MEMNUM!=null && MEMNUM!="" && ANNREDMEMNUM!=null && ANNREDMEMNUM!=""){
+					if(parseInt( MEMNUM)<parseInt(ANNREDMEMNUM)){
+						mui.toast("退出人数不能大于成员总人数");
+						return;
+					}
+				}
+				
+				var EMPNUM=$("#EMPNUM").val(); //从业人数
+				var WOMEMPNUM=$("#WOMEMPNUM").val(); //女性从业人数
+				
+				if(MEMNUM!=null && MEMNUM!="" && EMPNUM!=null && EMPNUM!=""){
+					if(parseInt( MEMNUM)<parseInt(EMPNUM)){
+						mui.toast("从业人数不能大于成员总人数");
+						return;
+					}
+				}
+				
+				if(EMPNUM!=null && EMPNUM!="" && WOMEMPNUM!=null && WOMEMPNUM!=""){
+					if(parseInt( EMPNUM)<parseInt(WOMEMPNUM)){
+						mui.toast("女性从业人数不能大于从业人数");
+						return;
+					}
+				}
+				
+				$.ajax({
+					type:"post",
+					url:httpUrl+"/c/an/base/save.json",
+					data:$("#addForm").serialize(),
+					async:true,
+					dataType:'json',
+					success:function(res){
+						if(res.success==true){
+							//mui.toast(data.codeMsg);
+							console.info(res.data);
+							window.location.href="report.html?ANCHEID="+res.data.ANCHEID;
+						}
+					}
+				});
+			}
+			
+			
+		</script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="report.html"></a>
+		    <h1 class="mui-title">基本信息</h1>
+		    <span id="sure">
+		    	<a href="javascript:;" onclick="saveAnche()" class="">保存</a>
+		    </span>
+		</header>
+		
+		<!--基本信息-->
+		<form id="addForm">
+			<input type="hidden" name="TOKEN" id="TOKEN" />
+			<input type="hidden" name="SESSIONID" id="SESSIONID" />
+			<input type="hidden" name="PRIPID" id="PRIPID" />
+			<input type="hidden" name="ANCHEID" id="ANCHEID" />
+			<input type="hidden" name="REGNO" id="REGNO" />
+			<input type="hidden" name="UNISCID" id="UNISCID" />
+		<div id="common-box">
+			<div id="line-block">
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									报告年度
+								</span>
+								<div class="web-write">
+									<input type="text" name="ANCHEYEAR" id="ANCHEYEAR" readonly="readonly" />
+								</div>
+							</li>
+						</ul>
+				</div>
+				
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									名称
+								</span>
+								<div class="web-write">
+									<input type="text" name="FARSPEARTNAME" id="FARSPEARTNAME" readonly="readonly" placeholder="请填写名称" />
+								</div>
+							</li>
+						</ul>
+				</div>
+				
+			
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									统一社会信用代码/注册码
+								</span>
+								<div class="web-write">
+									<input type="text" name="BODY_NO" id="BODY_NO" readonly="readonly" placeholder="请填写统一社会信用代码"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+				
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									通信地址
+								</span>
+								<div class="web-write">
+									<input type="text" name="ADDR" id="ADDR" value="" placeholder="请填写通信地址"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+			</div>
+			
+			<!--第三列开始-->
+			<div id="line-block">
+				
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									联系电话
+								</span>
+								<div class="web-write">
+									<input type="text" name="TEL" id="TEL" onkeyup="inputNum(this)"  placeholder="请填写联系电话"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+				
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									电子邮箱
+								</span>
+								<div class="web-write">
+									<input type="text" name="EMAIL" id="EMAIL" value="" placeholder="请填写电子邮箱"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									成员总人数
+								</span>
+								<div class="web-write">
+									<input type="text" name="MEMNUM" id="MEMNUM" value="" placeholder="请填写成员人数"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+				
+					<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									其中农民人数
+								</span>
+								<div class="web-write">
+									<input type="text" name="FARNUM" id="FARNUM" value="" placeholder="请填写成员人数"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+					<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									本年度新增人数
+								</span>
+								<div class="web-write">
+									<input type="text" name="ANNNEWMEMNUM" id="ANNNEWMEMNUM" value="" placeholder="请填写成员人数"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+					<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									本年度退出人数
+								</span>
+								<div class="web-write">
+									<input type="text" name="ANNREDMEMNUM" id="ANNREDMEMNUM" value="" placeholder="请填写成员人数"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+			</div>
+			<!--第三列开始-->
+			<div id="line-block">
+				<div class="web-box">
+						<ul>
+							
+							<li>
+								<span >
+									从业人数
+								</span>
+								<div class="web-write">
+									<input type="text" name="EMPNUM" id="EMPNUM" onkeyup="inputNum(this)" placeholder="请输入人数" style="width: 60%;"/>
+									<input type="hidden" name="EMPNUMDIS" id="EMPNUMDIS" value="2"/> <!--从业人数是否公示-->
+									<div class="contribution-show-right"><img id="empnumdisImg" src="../../static/img/show-no.png"/></div>
+								</div>
+							</li>
+						</ul>
+				</div>
+				
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									女性从业人数
+								</span>
+								<div class="web-write">
+									<input type="text" name="WOMEMPNUM" id="WOMEMPNUM" onkeyup="inputNum(this)" placeholder="请输入人数" style="width: 60%;"/>
+									<input type="hidden" name="WOMEMPNUMDIS" id="WOMEMPNUMDIS" value="2" /> <!--女性从业人数是否公示-->
+									<div class="contribution-show-right"><img id="womempnumdisImg" src="../../static/img/show-no.png"/></div>
+								</div>
+							</li>
+						</ul>
+				</div>
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									主营业务活动
+								</span>
+								<div class="web-write">
+									<textarea name="MAINBUSIACT" id="MAINBUSIACT"  rows="5" placeholder="请填写企业主营业务活动"></textarea>
+								</div>
+							</li>
+						</ul>
+				</div>
+				<div class="web-box">
+						<ul>
+							<li>
+								<span>
+									是否有网站或网店
+								</span>
+								<div class="essential-write">
+									<label><input type="radio" value="1" name="ISWEB" />是</label>
+									<label><input type="radio" value="2" name="ISWEB" checked="checked"/>否</label>
+								</div>
+							</li>
+						</ul>
+				</div>
+				
+			</div>
+			
+		</div>
+		
+		
+		</form>	
+		
+		<script type="text/javascript">
+			/*** ---------start 设置从业人数、女性从业人数、是否对外公示 ****/
+			document.getElementById("empnumdisImg").addEventListener('tap', function() {
+				var empnumdis=$("#EMPNUMDIS").val();
+				if(empnumdis==2){
+					document.getElementById("empnumdisImg").src="../../static/img/show.png";
+					$("#EMPNUMDIS").val(1);
+					mui.toast('您设置了从业人数对外公示');
+				}else{
+					document.getElementById("empnumdisImg").src="../../static/img/show-no.png";
+					$("#EMPNUMDIS").val(2);
+					mui.toast('您设置了从业人数对外隐藏');
+				}
+			});
+			
+			document.getElementById("womempnumdisImg").addEventListener('tap', function() {
+				var womempnumdis=$("#WOMEMPNUMDIS").val();
+				if(womempnumdis==2){
+					document.getElementById("womempnumdisImg").src="../../static/img/show.png";
+					$("#WOMEMPNUMDIS").val(1);
+					mui.toast('您设置了女性从业人数对外公示');
+				}else{
+					document.getElementById("womempnumdisImg").src="../../static/img/show-no.png";
+					$("#WOMEMPNUMDIS").val(2);
+					mui.toast('您设置了女性从业人数对外隐藏');
+				}
+			});
+			/*** ---------end 设置从业人数、女性从业人数是否对外公示 ****/
+		</script>
+		
+	</body>
+</html>

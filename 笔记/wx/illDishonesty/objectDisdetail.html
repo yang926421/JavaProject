@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="../static/css/mui.picker.min.css" /><!--填写时间-->
+		<link rel="stylesheet" href="../static/css/right-inf.css">
+		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+		<script src="../static/js/mui.picker.min.js"></script>
+		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../static/js/common.js" ></script>
+		<script>
+			$(function(){
+				getSelect();
+		         
+		        $("#chose").click(function(){
+					$("#proList").stop().animate({
+							right:"0"
+					})
+				});
+		         $("#surechose").click(function(){
+					$("#proList").stop().animate({
+							right:"-100%"
+					})
+					getData();
+				});
+		         $("#cancelChose").click(function(){
+					$("#proList").stop().animate({
+							right:"-100%"
+					})
+				});
+				getData();
+			});
+			function getData(){
+				var SPECAUSE=$("#sel_serillrea").val();
+				var startDate=$("#startDate").val();
+				var endDate=$("#endDate").val();
+				$("#loadData").hide();
+				page=$("#page").val();
+				if(page==0){
+					page=1;
+				}
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/e/li/illdisdetail/get.json",
+					async:true,
+					data:{"PRIPID":PRIPID,"TOKEN":TOKEN,"SESSIONID":SESSIONID,"outBs":'0',
+					"startDate":startDate,"endDate":endDate,"SERILLREA":SPECAUSE},
+					dataType:"json",
+					beforeSend:function(){
+		    			$("#loading").show();
+		    		},
+					success:function(res){
+						$("#loading").hide();
+						if(res.success==true){
+							loadPage(res);
+							createData(res.data);
+						}
+					}
+				});
+			}
+			
+			function createData(obj){
+				if(document.getElementById("divObjectOut")!=null) 
+					$("#divObjectOut").remove();
+				$("#count").html(obj.length);
+				var htmlData="<div id = 'divObjectOut'>";
+				var strUrl = "";
+				if(obj.length>0){
+					
+					for (var i=0;i<obj.length;i++) {
+						sessionStorage.setItem("object"+obj[i].ILLID,JSON.stringify(obj[i]));
+						if(obj[i].ifEdit){
+							strUrl = "objectOutEdit.html?ILLID="+obj[i].ILLID;
+						}else{
+							strUrl = "objectOutList.html?ILLID="+obj[i].ILLID;
+						}
+						htmlData+=" <div class='web-box'>"+
+									"<a href='"+strUrl+"'>"+
+									"	<div class='web-name'>"+
+									"		<ul class='web'>"+
+									"			<li><span>列入机关：</span>"+obj[i].DECORG_CN+"<span></span></li>"+
+									"			<li><span>列入原因：</span> <span>"+obj[i].SERILLREA_CN+"</span></li>"+
+									"			<li><span>列入时间：</span> <span>"+getFormatDateByLong(obj[i].ABNTIME,"yyyy年MM月dd日")+"</span></li>"+
+									"			<li><span>受理结果：</span> <span>"+obj[i].RESULTFORMART+"</span></li>"+
+									"		</ul>"+
+									"		<div class='arrow-right' style='top: 7rem'>"+
+									"			<img src='../static/img/arrow-right.png'/>"+
+									"		</div>"+
+									"	</div>"+
+									"</a>"+
+								"</div>";
+					}
+				}else{
+					mui.toast("没有更多数据了");
+				}
+				htmlData += "</div>"
+				$("#common-box").append(htmlData);
+				
+			}
+			
+			function goSearch(){
+				$("#common-box").html("");
+				$("#page").val(1);
+				getData();
+			}
+			/*var objOption = document.createElement("OPTION");
+			objOption.text= 2;
+			objOption.value=2;
+			objSelectNow.options.add(objOption);*/
+			function getSelect(){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/dict/list.json",
+					async:true,
+					data:{"CODETYPE":"CD73"},
+					dataType:"json",
+					success:function(res){
+						var code = res.code;
+						if (code == 0) {
+							var sel_serillrea = document.getElementById("sel_serillrea");
+							for(var i = 0; i < res.data.length; i++){
+								var objOption = document.createElement("OPTION");
+								objOption.value = res.data[i].CODE_VALUE;
+								objOption.text = res.data[i].CODE_NAME;
+								sel_serillrea.options.add(objOption);
+							}
+		               		//this.serillreaList = resp.data.data;
+		             	}
+					}
+				});
+			}
+			
+			function show_sub(codeValue){   
+		        getData(codeValue);
+		    }  
+		</script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" ></a>
+		    <h1 class="mui-title">失信企业详细信息</h1>
+		    <span id="sure">
+		    	<a href="javascript:;" class="chose" id="chose">筛选</a>
+		    </span>
+		</header>
+		<div id="common-boxJ">
+			<div id="proList" >
+					<input id="startDate" data-options='{"type":"date"}' placeholder="请选择开始日期" class="btn mui-btn mui-btn-block" style="width: 100%;border-bottom: 1px solid #ccc; padding: 10px 10px; font-size: 14px; text-align: left;background: url(../static/img/rt.png) no-repeat right center;"/>
+					<input id="endDate" data-options='{"type":"date"}' placeholder="请选择结束日期" class="btn mui-btn mui-btn-block" style="width: 100%; border-bottom: 1px solid #ccc;padding: 10px 10px;font-size: 14px; text-align: left;background: url(../static/img/rt.png) no-repeat right center;"/>
+				<div class="oAs">
+					<a class="chosedDate" id="cancelChose" style="border-right: 1px solid #ccc;">取消</a>
+					<a class="chosedDate" id="surechose" >确定</a>
+				</div>
+			</div>
+		</div>
+		<div class="sss" style="padding: 13px 10px;margin-top: 45px;">
+			<!--<div class="searchBoxs">-->
+			<div>
+				<!--<img src="../static/img/icon/ic_search.png" />
+				<input type="text" id="title" placeholder="" style="font-size: 14px; ">
+				<a onclick="goSearch()">搜索</a>-->
+				<Select id="sel_serillrea" style="width:100%;" onchange="getData()">
+                    <option value="">请选择列入原因</option>
+               </Select>
+			</div>
+		</div>	
+		<!--登记信息-->
+		<div id="common-box" style="margin-top: 0px;">
+			
+		</div>
+		<input type="hidden" name="page" id="page" value="1" />
+	<input type="hidden" name="totalPage" id="totalPage" value="1"/>
+	
+	<!--加载点-->
+	<div id="loading" style="display: none;" class="spinner">
+		 <div class="bounce1"></div>
+		 <div class="bounce2"></div>
+		 <div class="bounce3"></div>
+	</div>
+	
+	<div id="loadData" style="display: none;" onclick="getData();">点击加载更多...</div>
+	<div id="noData" style="display: none;" >没有更多了...</div>
+		
+	</body>
+	
+	<script>
+		(function($) {
+			$.init();
+			var result = $('#result')[0];
+			var btns = $('.btn');
+			btns.each(function(i, btn) {
+				btn.addEventListener('tap', function() {
+					var optionsJson = this.getAttribute('data-options') || '{}';
+					var options = JSON.parse(optionsJson);
+					var id = this.getAttribute('id');
+					/*
+					 * 首次显示时实例化组件
+					 * 示例为了简洁，将 options 放在了按钮的 dom 上
+					 * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
+					 */
+					var picker = new $.DtPicker(options);
+					picker.show(function(rs) {
+						/*
+						 * rs.value 拼合后的 value
+						 * rs.text 拼合后的 text
+						 * rs.y 年，可以通过 rs.y.vaue 和 rs.y.text 获取值和文本
+						 * rs.m 月，用法同年
+						 * rs.d 日，用法同年
+						 * rs.h 时，用法同年
+						 * rs.i 分（minutes 的第二个字母），用法同年
+						 */
+						document.getElementById(id).value=rs.value;
+						/* 
+						 * 返回 false 可以阻止选择框的关闭
+						 * return false;
+						 */
+						/*
+						 * 释放组件资源，释放后将将不能再操作组件
+						 * 通常情况下，不需要示放组件，new DtPicker(options) 后，可以一直使用。
+						 * 当前示例，因为内容较多，如不进行资原释放，在某些设备上会较慢。
+						 * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。
+						 */
+						picker.dispose();
+					});
+				}, false);
+			});
+		})(mui);
+	</script>
+	<style>
+		#common-boxJ{
+			padding-top: 4.3rem;
+			position: relative;
+			height: 100%;
+		}
+		#proList{
+			position: fixed;
+			width: 100%;
+			height: 11rem;
+			background: #fff;
+			z-index: 99999;
+			right: -100%;
+			/*top: 4.4rem;
+			border-left: 1px solid #ccc;*/
+		}
+		#proList input{
+			border: none;
+			margin-bottom: 0;
+		}
+		#proList .oAs{
+			overflow: hidden;
+			/*padding-left: 1.8rem;*/
+		}
+		#proList h3{
+			border-bottom: 1px solid #ccc;
+			line-height: 4.4rem;
+			font-size: 1.7rem;
+			padding-left: 2rem;
+			
+		}
+		#proList a{
+			display:block;
+			float: left;
+			width: 48%;
+			height: 4rem;
+			/*border: 1px solid #ccc;*/
+			color: #3e3e3e;
+			/*margin: 5px 3%;*/
+			text-align: center;
+			font-size: 1.5rem;
+			line-height: 4rem;
+			border-radius: 3px;
+		}
+		#proList a.chosedDate{
+			color: #ac812e;
+			/*border-color: #ac812e;*/
+		}
+	</style>
+</html>

@@ -1,0 +1,104 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/notice.css">
+		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../static/js/common.js" ></script>
+		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+		<script>
+			
+			var NOTICE_ID=GetRequest("NOTICE_ID");
+			$(function(){
+				//getData();
+				var notice=JSON.parse( sessionStorage.getItem(NOTICE_ID));
+				createData(notice);
+			});
+			function getData(){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/p/affichebase/get.json",
+					async:true,
+					data:{"NOTICEID":NOTICEID},
+					dataType:"json",
+					success:function(res){
+						if(res.success==true){
+							createData(res.data);
+						}/*else{
+							mui.toast(res.codeMsg);
+						}*/
+					}
+					
+				});
+			}
+			
+			function createData(obj){
+				
+				$("#NOTICETITLE").html(obj.NOTICE_TITLE);
+				$("#NOTICECONTENT").attr("src",obj.CONTENT_FILE_NAME);
+				$("#JUDAUTH_CN").html(obj.JUDAUTH_CN);
+				$("#NOTICEDATE").html(getFormatDateByLong(obj.NOTICE_DATE,"yyyy年MM月dd日") );
+				 
+				 //设置iframe的padding-top高度
+				 var iframe = $('#NOTICECONTENT');
+				 iframe.css("margin-top",$('#NOTICETITLE').innerHeight());
+			}
+			function createData2(obj){
+				if(NOTICEID==1){
+					$("#NOTICETITLE").html("关于国家企业信用信息公示系统（河南）移动端上线的通知");
+					$("#NOTICECONTENT").html("通过前期的不断努力，国家企业信用信息公示系统（河南）移动端（含Android版本App与微信）已开发完成，并经过多轮测试，目前已具备上线运行条件，现将有关事项通知如下："+
+											"<br/>1、企业或个人可通过在应用宝中搜索“公示系统（河南）”下载Android版App或在微信平台中搜索“HNSGSJ”公众号，关注“国家企业信用信息公示系统（河南）”登录微信应用。 "+
+					                       "<br/>2、企业或个人在使用过中如发现任何问题，可通过App或微信平台中【我的】->【意见反馈】将问题或建议反馈给我们。 "+
+					                       "<br/><span style='float:right;'>河南省市场监督管理局</span><br/><span style='float:right;'>2017.11.26</span>");
+					
+				}else if(NOTICEID==2){
+					$("#NOTICETITLE").html("关于2017年度年报催报的通知");
+					$("#NOTICECONTENT").html("2017年即将过去，崭新的2018年即将来临，又到了一年一度催报年报的时间了，望各企业在看到通知后，能够第一时间按照规定将本企业的年度报告及时上报，以免由于延误填报导致的不必要麻烦。现将有关事项告知如下： "+
+					"<br/>1、2017年度年报的填报时间是2018年1月1日至2018年6月30日，企业可通过全国企业信用信息公示系统或国家企业信用信息公示系统（河南）App或“HNSGSJ”公众号填报2017年度报告。"+
+					"<br/>2、年度报告内容应真实反映企业存续经营实际情况，企业对其公示信息的真实性、及时性负责。"+
+					"<br/>3、企业填报的通信地址、邮政编码、联系电话、电子邮箱、存续状态、网址、网站信息均为报送时的信息，其余信息为2017年12月31日的信息。"+
+					"<br/>4、年度报告书所有信息项均为必填项，如果该项内容确无信息，请填写“无”。"+
+					"<br/>5、企业或个人在使用过中如发现在任何问题，可通过App或微信平台中【我的】->【意见反馈】将问题或建议反馈给我们。"+
+					"<br/><span style='float:right;'>河南省市场监督管理局</span><br/><span style='float:right;'>2017.11.26</span>");
+					
+				}
+			}
+			
+			
+		</script>
+	</head>
+	
+	<body>		
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="notice_OperaError.html"></a>
+		    <h1 class="mui-title"><span id="saveOrUpdate"></span>公告详情</h1>
+		    <span id="sure">
+		    	<a href="javascript:;" class="chose" id="chose"></a>
+		    </span>
+		</header>	
+		
+		<div style="padding-top: 4.3rem;">
+
+				<div id="NOTICETITLE" style="border-bottom: solid #999999 1px; background-color:#f2f2f2;position:fixed;top:44px; width:100%; padding-top: 10px; padding-bottom: 10px; text-align: center;font-size: 20px;font-weight: bold;line-height: 35px;"></div>
+				<iframe id="NOTICECONTENT" name="NOTICECONTENT"  frameborder="0"  scrolling="no"  width="100%" height="100%">
+
+				</iframe>
+			<div class="detailBox2"  style="background-color:#f2f2f2;">
+				<p id="JUDAUTH_CN" class="p3" ></p>
+				<p id="NOTICEDATE" class="p3" ></p>
+			</div>
+		</div>
+		
+		<script>
+
+		</script>
+	   
+	</body>
+</html>
+
+

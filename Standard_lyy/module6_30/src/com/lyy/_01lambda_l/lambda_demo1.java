@@ -19,6 +19,7 @@ public class lambda_demo1 {
                 System.out.println(Thread.currentThread().getName()+"在运行");
             }
         };
+        System.out.println("好吧 什么也不打印");
         //不是函数式接口的匿名内部类  不能lambda
 //        Thread t2 = () ->{
 //            System.out.println(123);

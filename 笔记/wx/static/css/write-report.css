@@ -1,0 +1,64 @@
+.web-box{
+	margin-bottom: 0.5rem;
+	background-color: #FFFFFF;
+}
+.web-box a{ 
+text-decoration:none; 
+color:#ac812e; 
+}
+.web-box a:active{ 
+color:#ac812e; 
+}
+.web-name{
+	margin: auto;
+	width: 92%;
+	position: relative;
+	border-bottom: #EAEAEA 1px solid;
+}
+.year-report{
+	/*border: dashed;*/
+	padding-top: 1.4rem;
+}
+.web-name h4{
+	font-size: 1.5rem;
+	font-weight: bold;
+	/*line-height: 2.2rem;*/
+	display: inline-block;
+	/*border: dashed;*/
+	
+}
+.report-state{
+	display: inline-block;
+	float: right;
+	color: #D72830;
+	/*border: dashed;*/
+	font-size: 1.5rem;
+}
+.report-stated{
+	display: inline-block;
+	float: right;
+	color:#333333;
+	/*border: dashed;*/
+	font-size: 1.5rem;
+}
+.web{
+	overflow: hidden;
+	padding-bottom: 1.4rem;
+}
+.web li{
+	font-size:1.5rem;
+	line-height: 2.4rem;
+}
+.web li span:first-child{
+	color: #999999;
+	font-size:1.5rem;
+}
+.write-btn{
+	text-align: center;
+	line-height: 4.8rem;
+	color: #ac812e;
+	font-size: 1.6rem;
+}
+.report-date{
+	float: right;	
+}

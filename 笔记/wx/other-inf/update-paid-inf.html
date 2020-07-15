@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/modify-licensing-inf.css">
+		<link rel="stylesheet" href="../static/css/mui.picker.min.css" /><!--填写时间-->
+		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../static/js/common.js" ></script>
+		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+		<script src="../static/js/mui.picker.min.js"></script>
+		<script src="../static/js/license.js"></script>
+		
+		<script>
+			var PAIDID=GetRequest("PAIDID");
+			var INVID=GetRequest("INVID");
+			$(function(){
+				$("#ALTDATE").val(getSmpFormatDateByLong(new Date(),false));
+				$("#INVID").val(INVID);
+				$("#PAIDID").val(PAIDID);
+				$("#PRIPID").val(PRIPID);
+				$("#ENTNAME").val(BODY_NAME);
+				$("#UNISCID").val(UNISCID);
+				$("#REGNO").val(REGNO);
+				$("#TOKEN").val(TOKEN);
+				$("#SESSIONID").val(SESSIONID);
+				loadData("CA22","CONFORM");
+				getData();
+			});
+			
+			
+			//获取实缴明细
+			function getData(){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/e/self/vactdetail/get.json",
+					data:{"PAIDID":PAIDID,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
+					async:false,
+					dataType:"json",
+					success:function(res){
+						if(res.success==true){
+							createData(res.data);
+						}
+					}
+				});
+			}
+			function createData(obj){
+				
+				$("#BEFORE_ACCONAM").val(obj.ACCONAM);  
+				$("#BEFORE_CONDATE").val(getSmpFormatDateByLong(obj.CONDATE,false) ); 
+				$("#BEFORE_CONFORM_CN").val(obj.CONFORM_CN);
+				$("#BEFORE_CONFORM").val(obj.CONFORM);
+				
+				$("#ACCONAM").val(obj.ACCONAM);  
+				$("#CONDATE").val(getSmpFormatDateByLong(obj.CONDATE,false) ); 
+				$("#CONFORM").val(obj.CONFORM);
+			}
+			
+			function updateData(){
+				var ACCONAM=$("#ACCONAM").val();
+				var CONDATE=$("#CONDATE").val();
+				if(ACCONAM=="" || ACCONAM==null){
+					mui.toast("请输入实缴金额");
+					return;
+				}
+				if(CONDATE=="" || CONDATE==null){
+					mui.toast("请选择出资时间");
+					return;
+				}
+				var flag=$("#service_opt").val();
+				var updateFlag="";  //传给后台的需要变更的项
+					
+					if($('#CONFORM_FLAG').prop('checked')){
+					 		updateFlag+=$('#CONFORM_FLAG').val()+",";
+						
+					}
+					if($('#ACCONAM_FLAG').prop('checked')){
+					 		updateFlag+=$('#ACCONAM_FLAG').val()+",";
+					}
+					if($('#CONDATE_FLAG').prop('checked')){
+					 		updateFlag+=$('#CONDATE_FLAG').val()+",";
+					}
+				
+					$("#UPDATEFLAG").val(updateFlag);
+					$("#UPDATEFLAG").val(updateFlag);
+					if(updateFlag==null || updateFlag==""){
+						mui.toast("请选择您要变更的项");
+						return;
+					}
+					var updateDate=$("#ALTDATE").val();
+					if(updateDate==null || updateDate==""){
+						mui.toast("请选择变更日期");
+						return;
+					}
+					
+					var conform_cn= $("#CONFORM").find("option:selected").text();
+					$("#CONFORM_CN").val(conform_cn);
+					$.ajax({
+							type:"post",
+							url:httpUrl+"/e/self/vactdetail/yupdate.json",
+							data:$("#addForm").serialize(),
+							async:false,
+							dataType:"json",
+							success:function(res){
+								if(res.success==true){
+									//mui.toast(res.codeMsg);
+									window.location.href="contribution-info.html?INVID="+INVID;
+								}
+							}
+					});
+						
+					
+			}
+			//选择变更项,由checkbox控制，选中去掉只读，不选择就是只读不能修改的
+			function checkUpdate(id){
+				if($('#'+id+'_FLAG').prop('checked')){
+					// $('#'+id+'_FLAG').val();
+					$('#'+id).removeAttr("readonly");
+				}else{
+					$('#'+id).attr("readonly","readonly")
+				}
+			}
+			
+		</script>
+		
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="report.html"></a>
+		    <h1 class="mui-title">修改实缴明细信息</h1>
+		    <span id="sure">
+		    	<a href="javascript:;" onclick="updateData();" >保存</a>
+		    </span>
+		</header>
+		
+		<!--变更前-->
+		
+		
+		
+		<div id="common-box">
+			
+			<!--变更前后-->
+			<form id="addForm">
+				<input type="hidden" name="INVID" id="INVID" />
+				<input type="hidden" name="PAIDID" id="PAIDID" />
+				<input type="hidden" name="PRIPID" id="PRIPID" />
+				<input type="hidden" name="ENTNAME" id="ENTNAME" />
+				<input type="hidden" name="UNISCID" id="UNISCID" />
+				<input type="hidden" name="REGNO" id="REGNO" />
+					<input type="hidden" name="TOKEN" id="TOKEN" />
+					<input type="hidden" name="SESSIONID" id="SESSIONID" />
+					<input type="hidden" name="UPDATEFLAG" id="UPDATEFLAG" />
+			<div id="change">
+				<div class="web-box">
+					<div id="social-title" class="changeBefore">
+						<h4>变更前</h4> 
+						<!--<span class="contribution-arrow-right"><img src="img/show-no.png"/></span>-->
+					</div>
+						<ul>
+							<li>
+								<span >
+									出资方式
+								</span>
+								<div class="web-write">
+									<input type="hidden" name="BEFORE_CONFORM" id="BEFORE_CONFORM"  />
+									<input type="text" name="BEFORE_CONFORM_CN" id="BEFORE_CONFORM_CN"  readonly="readonly"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+			
+				<div class="web-box">
+						<ul>
+							<li>
+								<span>
+									实缴出资额（万元）
+								</span>
+								<div class="web-write">
+									<input type="text" name="BEFORE_ACCONAM" id="BEFORE_ACCONAM" readonly="readonly"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+			
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									出资日期
+								</span>
+								<div class="web-write">
+									<input type="text" name="BEFORE_CONDATE" id="BEFORE_CONDATE"  readonly="readonly"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+			
+				
+			
+			
+				<!--第二列开始-->
+					
+				<div id="line-block">
+					<div class="web-box">
+						<div id="social-title" class="changeAfter">
+							<h4>变更后</h4> 
+						</div>
+							<ul>
+								<li>
+									<span >
+									<input type="checkbox" value="09" onclick="checkUpdate('CONFORM');" name="CONFORM_FLAG" id="CONFORM_FLAG"/>
+										出资方式
+									</span>
+									<div class="web-write">
+											<div id="open" style="position: relative;width: 100%;">
+										<input type="hidden" name="CONFORM_CN" id="CONFORM_CN" />
+										<select id="CONFORM" name="CONFORM"  class="service_opt" style="margin-bottom: 0; display:block;width:100%;background: url(../static/img/rt.png) no-repeat right center;">
+										    <!--<option value="0"  data-name="货币">货币</option>
+										    <option value="1"  data-name="实物">实物</option>	
+										    <option value="2"  data-name="股权">股权</option>				    -->
+								        </select>
+								       </div>
+									</div>
+								
+								</li>
+							</ul>
+					</div>
+					
+					<div class="web-box">
+							<ul>
+								<li>
+									<span >
+									<input type="checkbox" value="10" onclick="checkUpdate('ACCONAM');" name="ACCONAM_FLAG" id="ACCONAM_FLAG" />
+										实缴出资额（万元）
+									</span>
+									<div class="web-write">
+										<input type="text" name="ACCONAM" id="ACCONAM" value="" placeholder="请输入实缴出资额"/>
+									</div>
+								</li>
+							</ul>
+					</div>
+					
+					<div class="web-box">
+							<ul>
+								<li>
+									<span >
+									<input type="checkbox" value="11" onclick="checkUpdate('CONDATE');" name="CONDATE_FLAG" id="CONDATE_FLAG" />
+										出资日期
+									</span>
+									<div class="web-write">
+										<input name="CONDATE" id='CONDATE' data-options='{"type":"date"}' placeholder="请选择日期" class="btn mui-btn mui-btn-block" style="margin-top: 1.4rem;text-align: left;"/>
+									</div>
+								</li>
+							</ul>
+					</div>
+					<div class="web-box">
+							<ul>
+								<li>
+									<span >
+										变更日期
+									</span>
+									<div class="web-write">
+										<input name="DATE" id='ALTDATE' data-options='{"type":"date"}' placeholder="请选择日期" class="btn mui-btn mui-btn-block" style="margin-top: 1.4rem;text-align: left;"/>
+									</div>
+								</li>
+							</ul>
+					</div>
+				</div>
+			</div>
+			
+		</form>
+		</div>
+		
+		<!--取消-->
+		<!--一个按钮-->
+		<div class="yy-delete">
+	    	<a onClick="">取消</a>
+	    </div>	
+		
+	
+	<script>
+			(function($) {
+				$.init();
+				var btns = $('.btn');
+				btns.each(function(i, btn) {
+					btn.addEventListener('tap', function() {
+						var optionsJson = this.getAttribute('data-options') || '{}';
+						var options = JSON.parse(optionsJson);
+						var id = this.getAttribute('id');
+						/*
+						 * 首次显示时实例化组件
+						 * 示例为了简洁，将 options 放在了按钮的 dom 上
+						 * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
+						 */
+						var picker = new $.DtPicker(options);
+						picker.show(function(rs) {
+							/*
+							 * rs.value 拼合后的 value
+							 * rs.text 拼合后的 text
+							 * rs.y 年，可以通过 rs.y.vaue 和 rs.y.text 获取值和文本
+							 * rs.m 月，用法同年
+							 * rs.d 日，用法同年
+							 * rs.h 时，用法同年
+							 * rs.i 分（minutes 的第二个字母），用法同年
+							 */
+							document.getElementById(id).value=rs.value;
+							/* 
+							 * 返回 false 可以阻止选择框的关闭
+							 * return false;
+							 */
+							/*
+							 * 释放组件资源，释放后将将不能再操作组件
+							 * 通常情况下，不需要示放组件，new DtPicker(options) 后，可以一直使用。
+							 * 当前示例，因为内容较多，如不进行资原释放，在某些设备上会较慢。
+							 * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。
+							 */
+							picker.dispose();
+						});
+					}, false);
+				});
+			})(mui);
+		</script>
+	</body>
+</html>

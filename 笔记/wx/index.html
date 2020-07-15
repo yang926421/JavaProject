@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<!--<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />-->
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="static/css/common.css">
+		<link rel="stylesheet" href="static/css/mui.min.css">
+		<link rel="stylesheet" href="static/css/index-new.css">
+		<script type="text/javascript" src="static/js/jquery.min.js"></script>
+		<script type="text/javascript" src="static/js/common.js" ></script>
+		<script type="text/javascript" src="static/js/mui.min.js" ></script>
+		<script src="static/js/index.js"></script>
+		
+		<style>
+		.notices{
+			margin-top: 6px;
+			width: 100%;
+			height: 52px;
+			background: #fff;
+			overflow: hidden;
+			position: relative;
+		}
+		
+		#listNotice{
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		#listNotice li{
+			height: 52px;
+			line-height: 52px;
+			text-indent: 18px;
+		}	
+		#listNotice li a{
+			color: #333;
+			font-size: 14px;
+		}
+		</style>
+		<script>
+			$(function(){
+				//banner轮播图
+				$("#bannerImg1").attr("src",imgUrl+"index_banner1.png");
+				$("#bannerImg2").attr("src",imgUrl+"index_banner2.png");
+				$("#bannerImg3").attr("src",imgUrl+"index_banner3.png");
+				
+				//中间的菜单图
+				$("#indexImg1").attr("src",imgUrl+"index_credit_inquiry.png");
+				$("#indexImg2").attr("src",imgUrl+"index_abnormal_operation.png");
+				$("#indexImg3").attr("src",imgUrl+"index_Illegalbreach.png");
+				$("#indexImg4").attr("src",imgUrl+"index_enterprise.png");
+				$("#indexImg5").attr("src",imgUrl+"index_trademark_information.png");
+				$("#indexImg6").attr("src",imgUrl+"index_more.png");
+				
+				document.getElementById('index').addEventListener('tap',function(){
+						window.location.href='index.html'
+				});
+				document.getElementById('query').addEventListener('tap',function(){
+						window.location.href='query-inf.html'
+				});
+				document.getElementById('write').addEventListener('tap',function(){
+						window.location.href='write-inf.html'
+				});
+				document.getElementById('mine').addEventListener('tap',function(){
+						window.location.href='my-inf/my-index.html'
+				});
+					
+			})
+		</script>
+	</head>
+	<body>
+		
+		<!--轮播+搜索-->
+		<div id="index-box">
+			<!--轮播-->
+			<div id="banner-box">
+				<div class="banner">
+					<img id="bannerImg1" src="">
+					<img id="bannerImg2" src="">
+					<img id="bannerImg3" src="">
+				</div>
+				<!--轮播按钮-->
+				<div class="play">
+					<span class="current"></span>
+					<span></span>
+					<span></span>
+				</div>
+				
+			</div>
+			<!--搜索-->
+			<div id="search-box" >
+				<input type="text" id="search-write"  placeholder="请输入企业名称、统一社会信用代码或注册号" />
+			</div>
+		</div>
+		<div class="notices">
+			<img src="static/img/home_notice.png" style="height:18px;margin-top:16px;margin-left: 10px;">
+			<ul id="listNotice" style="left: 15%;">
+				<!--<li><a href="notice/notice_index_detail.html?NOTICEID=1">关于国家企业信用信息公示系统（河南）移动端上线的通知</a></li>
+				<li><a href="notice/notice_index_detail.html?NOTICEID=2">关于2017年度年报催报的通知</a></li>-->
+			</ul>
+		</div>
+		<script>
+			$(function(){
+				function f(){
+					$("#listNotice").animate({ top:-44},200,function(){
+						$("#listNotice li:first").insertAfter($("#listNotice li:last"));	
+						$("#listNotice").css({top:0});
+					});
+				}
+				setInterval(f,3000);
+			});
+		</script>
+		<!--功能图标-->
+		<div id="function-box">
+			<ul>
+				<li>
+					<a href="companyInfo/searchMain.html?searchType=1">
+					<img id="indexImg1" src=""/>
+					<span class="fun-name">
+						企业信用
+					</span>
+					</a>
+				</li>
+				<li>
+					<a href="companyInfo/searchMain.html?searchType=2">
+						<img id="indexImg2" src=""/>
+						<span class="fun-name">
+							经营异常
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="companyInfo/searchMain.html?searchType=3">
+						<img id="indexImg3" src=""/>
+						<span class="fun-name">
+							违法失信
+						</span>
+					</a>
+				</li>
+			</ul>
+			
+			<ul>
+				<li>
+					<a href="smallBussiness/bussinessList.html">
+						<img id="indexImg4" src=""/>
+						<span class="fun-name">
+							小微企业
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="companyInfo/shangbiaoList.html" >
+						<img id="indexImg5" src=""/>
+						<span class="fun-name">
+							商标信息
+						</span>
+						
+					</a>
+				</li>
+				<li>
+					<a href="more.html" >
+						<img id="indexImg6" src=""/>
+						<span class="fun-name">
+							更多
+						</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		
+		<!--通知公告-->
+		<div class="notice-box">
+			<div class="notice-content-box">
+				<div class="notice-title">
+					<span class="notice-title-left">
+						通知公告
+					</span>
+					<span class="notice-title-right">
+						<a href="notice/announcementList.html" class="more">更多 ></a>
+					</span>
+				</div>
+				
+				<!--公告列表-->
+				<div class="notice-list">
+					<ul id="noticeData">
+						<!--
+						<a href="">
+							<li>
+								<div class="notice-list-content">
+									关于河南华宏宇科技有限公司企业列入经营异常名单列表
+								</div>
+								<div class="notice-other-inf">
+									<span class="notice-list-author">
+										国务院办公厅
+									</span>
+									<span class="notice-list-date">
+										2017-06-09
+									</span>
+								</div>
+							</li>
+						</a>-->
+						
+					</ul>
+					
+				</div>
+			</div>
+		</div>
+		
+		
+		<!--扶持信息-->
+		<div class="notice-box">
+			<div class="notice-content-box">
+				<div class="notice-title">
+					<span class="notice-title-left">
+						扶持信息
+					</span>
+					<span class="notice-title-right">
+						<a href="smallBussiness/bussinessSupportList.html" class="more">更多 ></a>
+					</span>
+				</div>
+				
+				<!--公告列表-->
+				<div class="notice-list">
+					<ul id="fuchiData">
+						
+						<!--<a href="">
+							<li>
+								<div class="notice-list-content">
+									关于河南华宏宇科技有限公司企业列入经营异常名单列表
+								</div>
+								<div class="notice-other-inf">
+									<span class="notice-list-author">
+										国务院办公厅
+									</span>
+									<span class="notice-list-date">
+										2017-06-09
+									</span>
+								</div>
+							</li>
+						</a>-->
+						
+					</ul>
+					
+				</div>
+			</div>
+		</div>
+		
+		<!--已经到底线了-->
+		<div class="arrive-bottom-box">
+			<span class="arrive-bottom">
+				已经到我的底线了~~~
+			</span>
+		</div>
+		
+		<!--底部菜单-->
+		<nav class="mui-bar mui-bar-tab" style="background:#fff;color: #d;">
+			<a class="mui-tab-item  mui-active" id="index">
+				<span class="mui-icon mui-icon-home"><img src="static/img/ic_index_on.png"/></span>
+				<span class="mui-tab-label" id="menu">首页</span>
+			</a>
+			
+			<a class="mui-tab-item" id="query">
+				<span class="mui-icon mui-icon-compose"><img src="static/img/ic_enquiries.png"/></span>
+				<span class="mui-tab-label">查询</span>
+			</a>
+			<a class="mui-tab-item" id="write">
+				<span class="mui-icon mui-icon-compose"><img src="static/img/fill.png"/></span>
+				<span class="mui-tab-label">填报</span>
+			</a>
+			
+			<a class="mui-tab-item" id="mine">
+				<span class="mui-icon mui-icon-contact"><img src="static/img/icon_mine.png"/></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+		
+		
+		<!--banner轮播-->
+		
+		<script type="application/javascript">
+			
+			$(function(){
+				$("#search-write").click(function(){
+						window.location.href="companyInfo/searchMain.html";
+				});
+				getTongzhi();
+				getNotice();
+				getFuchi();
+			});
+			
+			function getTongzhi(){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/p/notice/info/list.json",
+					async:false,
+					dataType:"json",
+					success:function(res){
+						if(res.success==true){
+							var html="";
+							for(var i=0;i<res.data.length;i++){
+								sessionStorage.setItem(res.data[i].NOTICE_NO,JSON.stringify(res.data[i]) );
+								if(res.data[i].NOTICE_TITLE.length>18){
+									html+="<li><a href='notice/notice_index_detail.html?NOTICE_ID="+res.data[i].NOTICE_NO+"'>"+res.data[i].NOTICE_TITLE.substring(0,17)+"...</a></li>";
+								}else{
+									html+="<li><a href='notice/notice_index_detail.html?NOTICE_ID="+res.data[i].NOTICE_NO+"'>"+res.data[i].NOTICE_TITLE+"</a></li>";
+								}
+							}
+							$("#listNotice").html(html);
+						}
+					}
+				});
+			}
+			
+			
+			
+			//获取通知公告信息
+			function getNotice(){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/p/notice/list.json",
+					async:false,
+					data:{"page":page,"pageSize":3},
+					dataType:"json",
+					success:function(res){
+						if(res.success==true){
+							var html="";
+							for(var i=0;i<res.data.length;i++){
+								sessionStorage.setItem(res.data[i].NOTICEID,JSON.stringify(res.data[i]) );
+								html+="<a href='notice/announcement_detail.html?NOTICEID="+res.data[i].NOTICEID+"'>"+
+										"<li>"+
+										"	<div class='notice-list-content'>"+res.data[i].NOTICETITLE+"</div>"+
+										"	<div class='notice-other-inf'>"+
+										"		<span class='notice-list-author'>"+res.data[i].JUDAUTH_CN+"</span>"+
+										"		<span class='notice-list-date'>"+getSmpFormatDateByLong(res.data[i].NOTICEDATE,false)+"</span>"+
+										"	</div>"+
+										"</li>"+
+									"</a>";
+							}
+							$("#noticeData").html(html);
+						}
+					}
+				});
+			}
+			
+			function getFuchi(){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/p/e/sm/support/list.json",
+					async:false,
+					data:{"page":page,"pageSize":3},
+					dataType:"json",
+					success:function(res){
+						if(res.success==true){
+							var html="";
+							for(var i=0;i<res.data.length;i++){
+								sessionStorage.setItem(res.data[i].SUPID,JSON.stringify(res.data[i]));
+								html+="<a href='smallBussiness/bussinessSupport_detail.html?SUPID="+res.data[i].SUPID+"'>"+
+										"<li>"+
+										"	<div class='notice-list-content'>"+res.data[i].ENJSPCONTENT+"</div>"+
+										"	<div class='notice-other-inf'>"+
+										"		<span class='notice-list-author'>"+res.data[i].IMPSPDEPART+"</span>"+
+										"		<span class='notice-list-date'>"+getSmpFormatDateByLong(res.data[i].IMPSPDATE,false)+"</span>"+
+										"	</div>"+
+										"</li>"+
+									"</a>";
+							}
+							$("#fuchiData").html(html);
+						}
+					}
+				});
+			}
+			
+		</script>
+		<script type="text/javascript" src="http://tajs.qq.com/stats?sId=64324775" charset="UTF-8"></script>
+	</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/add-contribution.css">
+		<link rel="stylesheet" type="text/css" href="../static/css/mui.picker.min.css" /><!--填写时间-->
+		<script src="../static/js/mui.min.js"></script>
+		<script src="../static/js/mui.picker.min.js"></script> <!--选择日期-->
+		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../static/js/common.js" ></script>
+		<script>
+			var LICID= GetRequest("LICID");
+			var CRENOTID= GetRequest("CRENOTID");
+			$(function(){
+				$("#PRIPID").val(PRIPID);
+				$("#ENTNAME").val(BODY_NAME);
+				$("#REGNO").val(REGNO);
+				$("#UNISCID").val(UNISCID);
+				$("#REGORG").val(REGORG);
+				$("#REGORG_CN").val(REGORG_CN);
+				$("#TOKEN").val(TOKEN);
+				$("#SESSIONID").val(SESSIONID);
+				$("#ENTNAME").val(BODY_NAME);
+				$("#entType").val(BODY_TYPE)
+					
+				if(CRENOTID!=null && CRENOTID!=""){   //如果有id就是修改，当然没有就添加
+					$("#addOrUpdate").html("修改");
+	   			    $("#warnDiv").hide();
+	   			    $("#contentDiv").show();
+					getData();
+				}else{
+					$("#warnDiv").show();
+	   			    $("#contentDiv").hide();
+				}
+			});
+			
+			function getNliquidation(flag){
+				$.ajax({
+						type:"get",
+						url:httpUrl+"/h/en/kzkenliquidation/get.json",
+						data:{"PRIPID":PRIPID, "TOKEN":TOKEN,"SESSIONID":SESSIONID},
+						async:false,
+						dataType:"json",
+						success:function(res){
+							if(res.success==true){
+								if(res.data.enliquidation!=null && res.data.enliquidation!=""){
+									if(res.data.enliquidation.ANCHEIS==1){
+										if(flag==1){
+											$("#warnDiv").hide();
+											$("#contentDiv").show();
+											$("#LIID").val(res.data.enliquidation.LIID);
+											$("#CANNOTCON").val(res.data.enliquidation.DISREADESC);
+										}else{
+											mui.toast("清算组备案已填写");
+										}
+									}else{
+										if(flag==1){
+											mui.toast("清算组备案未公示，请先进行公示");
+										}else{
+											window.location.href="nliq-info-edit.html?LIID="+res.data.enliquidation.LIID;
+										}
+										
+									}
+								}else{
+									if(flag==1){
+											mui.toast("请先进行清算组备案");
+										}else{
+											window.location.href="nliq-uidation.html";
+										}
+								}
+							}
+						}
+					});
+			}
+			
+			function addData(){
+				var crerigdeccon= $("#CRERIGDECCON").val();
+				var tel=$("#TEL").val();
+				var addr=$("#ADDR").val();
+				if(crerigdeccon==null || crerigdeccon.length<1){
+					mui.toast("请输入联系人");
+					return;
+				}
+				if(tel==null || tel.length<1){
+					mui.toast("请输入联系电话");
+					return;
+				}
+				if(addr==null || addr.length<1){
+					mui.toast("请输入地址");
+					return;
+				}
+				$.ajax({
+					type:"post",
+					url:httpUrl+"/h/en/liqcrenotice/save.json",
+					async:false,
+					data:$("#addForm").serialize(),
+					dataType:"json",
+					success:function(res){
+						if(res.success==true){
+							mui.toast(res.codeMsg);
+							window.location.href="nliq-crenotice-info.html?CRENOTID="+res.data.CRENOTID;
+						}
+					}
+				});
+			}
+			
+			
+			
+			function addAndPublic(){
+				mui.confirm("提示：公示后不能修改！","提示信息",btnArray,function(e){
+					if(e.index==1){
+						$("#ANCHEIS").val(1);
+						addData();
+					}
+				});
+			}
+			
+			
+			function getData(){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/h/en/kzkliqcrenotice/get.json",
+					async:false,
+					data:{"CRENOTID":CRENOTID,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
+					dataType:"json",
+					success:function(res){
+						if(res.success==true){
+							createData(res.data);
+						}
+					}
+				});
+			}
+			function createData(obj){
+				 $("#CRENOTID").val(CRENOTID);
+				$("#LIID").val(obj.LIID);
+				$("#CANNOTCON").val(obj.DISREA);
+				$("#CRERIGDECCON").val(obj.CRERIGDECCON);
+				$("#TEL").val(obj.TEL);
+				$("#ADDR").val(obj.ADDR);
+			}
+			
+			function cancel(){
+				if(CRENOTID!=null && CRENOTID!=""){
+					window.location.href="nliq-crenotice-info.html?CRENOTID="+CRENOTID;
+				}else{
+					window.location.href="nliq-index.html";
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="licensing-inf.html"></a>
+		    <h1 class="mui-title"><span id="addOrUpdate"></span>债权人公告</h1>
+		    <span id="sure">
+		    	<!--<a onclick="addData()" class="">保存</a>-->
+		    </span>
+		</header>
+		
+		<form id="addForm">
+			<input type="hidden" name="TOKEN" id="TOKEN" />
+			<input type="hidden" name="SESSIONID" id="SESSIONID" />
+			<input type="hidden" name="PRIPID" id="PRIPID" />
+			<input type="hidden" name="ENTNAME" id="ENTNAME" />
+			<input type="hidden" name="REGNO" id="REGNO" />
+			<input type="hidden" name="UNISCID" id="UNISCID" />
+			<input type="hidden" name="REGORG" id="REGORG" />
+			<input type="hidden" name="REGORG_CN" id="REGORG_CN" />
+			<input type="hidden" name="LIID" id="LIID" />
+			<input type="hidden" name="CRENOTID" id="CRENOTID" />
+			<input type="hidden" name="entType" id="entType" />
+			<input type="hidden" name="ANCHEIS" id="ANCHEIS" value="2" />
+			
+		<div id="common-box">
+			<div id="warnDiv" style="font-weight: bold;text-align: center;padding: 10px;margin-top:100px;">
+				<p style="color: red;font-size: 22px;">提示：是否已进行清算组备案！</p>
+				<p style="color: red;">（如果没有，请先进行清算组备案)</p>
+				<div id="addDiv" class="yy" style="margin-top: 50px;" >
+					<a id="addBtn" onClick="getNliquidation(1)" style="width: 40%;display: inline-block;">是</a>
+					<a id="pubBtn" onClick="getNliquidation(2)" style="width: 40%;display: inline-block;">否</a>
+	    		</div>
+			</div>
+			<div id="contentDiv" style="display: none;">
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									市场主体解散事由
+								</span>
+								<div class="web-write">
+									<input type="text" name="CANNOTCON" id="CANNOTCON" readonly="readonly"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									债权申报联系人
+								</span>
+								<div class="web-write">
+									<input type="text" name="CRERIGDECCON" id="CRERIGDECCON" value="" placeholder="请输入联系人"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									债权申报联系电话
+								</span>
+								<div class="select-time">
+									<div class="web-write">
+										<input type="text" name="TEL" id="TEL" value="" placeholder="请输入联系电话"/>
+									</div>
+								</div>
+								
+							</li>
+						</ul>
+				</div>
+				<div class="web-box">
+						<ul>
+							<li>
+								<span>
+									债权申报地址
+								</span>
+								<div class="select-time">
+									<div class="web-write">
+										<input type="text" name="ADDR" id="ADDR" value="" placeholder="请输入地址"/>
+									</div>
+								</div>
+								
+							</li>
+						</ul>
+				</div>
+			</form>
+			<div id="addDiv" class="yy" >
+				<a id="addBtn" onClick="addData()" style="width: 40%;display: inline-block;">预览</a>
+				<a id="pubBtn" onClick="cancel()" style="width: 40%;display: inline-block;">取消</a>
+		    </div>
+	    </div>
+	    <div id="contentViewDiv" style="display: none;">
+	    	<div class="web-box">
+					<ul>
+						<li>
+							<span>
+								公告期
+							</span>
+							<span id="NOTICEFROMSHOW" class="asset-con" style="text-align: center;"></span>
+						</li>
+					</ul>
+			    </div>
+	    	<div class="web-box">
+					<ul>
+						<li>
+							<span>
+								公告内容
+							</span>
+							<span id="CANNOTCONSHOW" class="asset-con" style="text-align: center;"></span>
+						</li>
+					</ul>
+			    </div>
+				<div class="web-box">
+					<ul>
+						<li>
+							<span>
+								债权申报联系人
+							</span>
+							<span id="CRERIGDECCONSHOW" class="asset-con" style="text-align: center;"></span>
+						</li>
+					</ul>
+			    </div>
+				<div class="web-box">
+					<ul>
+						<li>
+							<span>
+								债权申报联系电话
+							</span>
+							<span id="TELSHOW" class="asset-con" style="text-align: center;"></span>
+						</li>
+					</ul>
+				</div>
+			    <div class="web-box">
+					<ul>
+						<li>
+							<span>
+								债权申报地址
+							</span>
+							<span id="ADDRSHOW" class="asset-con" style="text-align: center;"></span>
+						</li>
+					</ul>
+				</div>
+				<div id="addDiv" class="yy" >
+					<a id="addBtn" onClick="addData()" style="width: 40%;display: inline-block;">公示</a>
+					<a id="pubBtn" onClick="addAndPublic()" style="width: 40%;display: inline-block;">修改</a>
+			    </div>
+	    </div>
+	</div>
+	</body>
+</html>

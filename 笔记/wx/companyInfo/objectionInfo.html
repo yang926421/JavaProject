@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/modify-record.css">
+			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+			<script type="text/javascript" src="../static/js/common.js" ></script>
+		<style>
+			.web{padding-top:15px;}
+			.web-name h2{font-size: 17px;
+						    font-weight: normal;
+						    color: #333;
+						    line-height: 50px;
+						    border-bottom: 1px solid #d9d9d9;}
+		</style>
+
+       <script>
+       	var pripid=sessionStorage.getItem("PRIPID");
+       	var SC;
+       	$(function(){
+       		getData();
+       	});
+       	function getData(){
+       		$.ajax({
+       			type:"get",
+       			url:httpUrl+"/p/escnotice/escobjection/get.json",
+       			data:{"PRIPID":pripid},
+       			dataType:"json",
+       			async:true,
+       			success:function(res){
+       				if(res.success==true){
+       					createData(res.data);
+       				}
+       			}
+       		});
+       	}
+       	
+       	function createData(obj){
+       		SCID=obj.eScNotice.SCID;
+       		 var htmldata ="<span id='watch'>"+
+					"<a href='../notice/notice_cancellation_picture.html?SCID="+obj.eScNotice.SCID+"&LOC_FILENAME="+obj.eScNotice.LOC_FILENAME+"'>"+
+						"查看已上传承诺书</a></span>";
+       		$("#LOC_FILENAME").html(htmldata);
+       		$("#title").html(obj.eScNotice.ENTNAME+"简易注销公告信息");
+       		$("#ENTNAME").html(obj.eScNotice.ENTNAME);
+       		if(obj.eScNotice.UNISCID!=null && obj.eScNotice.UNISCID!=""){
+       			$("#UNISCID").html(obj.eScNotice.UNISCID);
+       		}else{
+       			$("#UNISCID").html(obj.eScNotice.REGNO);
+       		}
+       		$("#REGORG").html(obj.REGORG_CN);
+       		$("#NOTICEFROM").html(getFormatDateByLong(obj.eScNotice.NOTICEFROM,"yyyy年MM月dd日") +"-"+getFormatDateByLong(obj.eScNotice.NOTICETO,"yyyy年MM月dd日"));
+       		
+       		
+       		if(obj.esCobjections!=null && obj.esCobjections.length>0){
+       			var htmlData="<h2>异议信息</h2>";
+       			for(var i=0;i<obj.esCobjections.length;i++){
+       				if(i==0){
+       					htmlData+="<ul class='web'>";
+       				}else{
+       					htmlData+="<ul class='web' style='border-top: 1px solid #d9d9d9;'>";
+       				}
+       				htmlData+="		<li><span>异议申请人：</span><span>"+obj.esCobjections[i].ENTNAME+"</span></li>"+
+							"		<li><span>异议内容：</span><span>"+obj.esCobjections[i].OBJECTION+"</span></li>"+
+							"		<li><span>异议时间：</span><span>"+getFormatDateByLong(obj.esCobjections[i].OBJAPPTIME,"yyyy年MM月dd日") +"</span></li>"+
+							"	</ul>";
+						
+       			}
+       			$("#content").html(htmlData);
+       		}
+
+               //简易注销结果
+               $("#SIMPLECANREA").html(obj.eScNotice.SIMPLECANREA);
+               $("#APPDATE").html(getFormatDateByLong(obj.eScNotice.APPDATE,"yyyy年MM月dd日"));
+                
+       	}
+       	
+       	function toYiyi(){
+       		mui.toast("系统正在完善中，敬请期待。");
+       		//window.location.href="raise_objection.html?SCID="+SCID;
+       	}
+       	
+       	function returnPage(){
+       		window.location.href="companyDetail.html?PRIPID="+pripid;
+       	}
+       	
+       </script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="companyDetail.html"></a>
+		    <h1 class="mui-title">公告详情</h1>
+		    <span id="sure">
+		    	<a href='javascript:;' onclick="toYiyi();">我要异议</a>
+		    </span>
+		</header>
+		
+		<!--修改信息-->
+		<div id="common-box">
+			<div class='web-box'>
+				<div class='web-name'>
+					<h2 id="title">注销公告信息</h2>
+					<ul class='web'>
+						<li><span>企业名称：</span><span id="ENTNAME"></span></li>
+						<li><span>统一社会信用代码/注册号：</span><span id="UNISCID"></span></li>
+						<li><span>登记机关：</span><span id="REGORG"></span></li>
+						<li><span>公告期：</span><span id="NOTICEFROM"></span></li>
+						<li><span>全体投资人承诺书：</span><span id="LOC_FILENAME"></span></li>
+					</ul>
+				</div>
+			</div> 
+			
+			
+			
+			
+			<div class='web-box'>
+				<div class='web-name' id="content">
+					<!--<h2>异议信息</h2>
+					<ul class='web' >
+						<li><span>异议申请人：</span><span></span></li>
+						<li><span>异议内容：</span><span></span></li>
+						<li><span>异议时间：</span><span></span></li>
+					</ul>
+					<ul class='web' style="border-top: 1px solid #d9d9d9;">
+						<li><span>异议申请人：</span><span></span></li>
+						<li><span>异议内容：</span><span></span></li>
+						<li><span>异议时间：</span><span></span></li>
+					</ul>-->
+				</div>
+			</div> 
+		</div>
+		<div class='web-box'>
+				<div class='web-name'>
+					<h2>简易注销结果</h2>
+					<ul class='web'>
+						<li><span>简易注销结果：</span><span id="SIMPLECANREA"></span></li>
+						<li><span>公告申请日期：</span><span id="APPDATE"></span></li>
+					</ul>
+				</div>
+			</div> 
+	</body>
+</html>

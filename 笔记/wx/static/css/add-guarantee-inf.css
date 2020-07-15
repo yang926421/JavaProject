@@ -1,0 +1,103 @@
+.web-box{
+	border-bottom:solid #EAEAEA 1px ;
+	background-color: #FFFFFF;
+}
+.web-box ul{
+	margin: auto;
+	width: 92%;
+	/*border: #000000 solid 1px;*/
+}
+.web-box li{
+	line-height: 5rem;
+	overflow: hidden;
+	font-size: 1.5rem;
+}
+.web-box li span{
+	/*border: #000000 solid 1px;*/
+	float: left;
+	display: inline-block;
+}
+.web-box:nth-child(2) li span{
+	/*border: #000000 solid 1px;*/
+	float: left;
+	display: inline-block;
+}
+.web-write{
+	width:55%;
+	overflow: hidden;
+	/*border: #000000 solid 1px;*/
+	float: right;
+}
+.web-write label{
+	/*border: #000000 solid 1px;*/
+	margin-right: 3rem;
+	font-size: 1.6rem;
+}
+.web-write input{
+	border: none;
+	display: inline-block;
+	font-size: 1.5rem;
+	height: 2.2rem;
+	padding: 0px 0px;
+}
+.web-write label input{
+	vertical-align: middle;
+	border-radius: 1.0rem;
+	width: 1.8rem;
+	height: 1.8rem;
+	display: inline-block;
+	background: #FFFFFF;
+	border: #D4D4D4 solid 1px;
+	-webkit-appearance:none;
+}
+.web-write label input[type=radio]:checked{
+	vertical-align: middle;
+	border:none;
+	-webkit-appearance:none;
+	background:#ffffff  url(../img/yuan-checked.png) no-repeat;
+	background-size: 100%;
+	background-position:center;	
+}
+
+/*.web-write input:nth-child(5){
+	border: none;
+	border: #000000 solid 1px;
+	display: inline-block;
+	font-size: 1.5rem;
+	height: 1.2rem;
+	padding: 0px 0px;
+}*/
+
+.select-time{
+	/*border: #000000 solid 1px;*/
+	overflow: hidden;
+	width: 55%;
+	height: 5rem;
+	float: right;
+}
+.select-time .web-write{
+	width:66%;
+	/*border: #000000 solid 1px;*/
+	float: left;
+}
+.select-time .contribution-arrow-right{
+	/*border: #000000 solid 1px;*/
+	float: right;
+}
+
+/*箭头*/
+.contribution-arrow-right{
+	width: 0.8rem;
+	/*border: #000000 solid 1px;*/
+	float: right;
+}
+
+/*日期*/
+#demo4{
+	border: none;
+	margin-left:-16%;
+	margin-bottom: 0px;
+	padding: 12px 0px;
+	color: #a8a8a8;
+	font-size: 1.5rem;
+}

@@ -20,7 +20,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Standard_lyy" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/front_review" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -33,6 +33,7 @@
       <option name="presentableId" value="Default" />
       <updated>1594774413531</updated>
       <workItem from="1594774425079" duration="86000" />
+      <workItem from="1594784675994" duration="273000" />
     </task>
     <servers />
   </component>
@@ -40,9 +41,17 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="628" y="127" key="FileChooserDialogImpl" timestamp="1594774509878">
+    <state x="410" y="164" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1594784730278">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="628" y="127" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1594774509878" />
+    <state x="410" y="164" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1594784730278" />
+    <state x="628" y="127" key="FileChooserDialogImpl" timestamp="1594784946069">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="628" y="127" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1594784946069" />
+    <state x="28" y="0" key="new project wizard" timestamp="1594784931259">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="28" y="0" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1594784931259" />
   </component>
 </project>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/simple-cancellation.css">
+		<script src="../static/js/jquery.min.js"></script>
+		<script type="text/javascript" src="../static/js/common.js" ></script>
+	    <script type="text/javascript" src="../static/js/mui.min.js" ></script>
+	    <script>
+			$(function() {
+				$("#UNISCID").html(BODY_NO);
+				$("#ENTNAME").html(BODY_NAME);
+			
+				
+			});
+	
+			function toInfo(){
+					$.ajax({
+						type:"get",
+						url:httpUrl+"/h/en/kzkenliquidation/get.json",
+						data:{"PRIPID":PRIPID, "TOKEN":TOKEN,"SESSIONID":SESSIONID},
+						async:true,
+						dataType:"json",
+						success:function(res){
+							if(res.success==true){
+								if(res.data.enliquidation!=null && res.data.enliquidation!=""){
+									if(res.data.enliquidation.ANCHEIS==1){
+										window.location.href="nliq-info.html?LIID="+res.data.enliquidation.LIID;
+									}else{
+										window.location.href="nliq-info-edit.html?LIID="+res.data.enliquidation.LIID;
+									}
+									
+								}else{
+									window.location.href="nliq-uidation.html";
+								}
+							}
+						}
+					});
+					
+			}
+			
+			function getCrenoticeByPripid(){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/h/en/kzkliqcrenotice/pripid/get.json",
+					async:false,
+					data:{"PRIPID":PRIPID,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
+					dataType:"json",
+					success:function(res){
+						if(res.success==true){
+							if(JSON.stringify( res.data)!='{}'){
+								window.location.href="nliq-crenotice-info.html?CRENOTID="+res.data.CRENOTID;
+							}else{
+								window.location.href="nliq-crenotice.html";
+							}
+							
+						}
+					}
+				});
+			}
+			
+	    </script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-icon mui-icon-back mui-pull-left" href="cancel-index.html"></a>
+		    <h1 class="mui-title">注销备案/公告填报</h1>
+		</header>
+		
+		<!--企业名称-->
+		<div id="com-name-box">
+			<div class="com-name">
+				<h3 id="ENTNAME"></h3>
+				<p>统一社会信用代码/注册号：<span id="UNISCID"></span></p>
+			</div>
+		</div>
+		<br/>
+		
+		<div id="common-boxJ">
+			<ul class="mui-table-view mui-table-view-chevron">
+				<li class="mui-table-view-cell mui-media" id="simpleInfo">
+					<a class="mui-navigate-right" onclick="toInfo()" >
+							清算组备案
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media" id="otherInfo">
+					<a class='mui-navigate-right' onclick="getCrenoticeByPripid()" >
+							债权人公告
+					</a>
+				</li>
+				
+			</ul>	
+			
+		</div>
+		
+	
+		
+	</body>
+</html> 

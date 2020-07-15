@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/add-contribution.css">
+		<link rel="stylesheet" type="text/css" href="../static/css/mui.picker.min.css" /><!--填写时间-->
+		<script src="../static/js/mui.min.js"></script>
+		<script src="../static/js/mui.picker.min.js"></script> <!--选择日期-->
+		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../static/js/common.js" ></script>
+		<script>
+			var LICID= GetRequest("LICID");
+			var CRENOTID= GetRequest("CRENOTID");
+			$(function(){
+				$("#PRIPID").val(PRIPID);
+				$("#ENTNAME").val(BODY_NAME);
+				$("#REGNO").val(REGNO);
+				$("#UNISCID").val(UNISCID);
+				$("#REGORG").val(REGORG);
+				$("#REGORG_CN").val(REGORG_CN);
+				$("#TOKEN").val(TOKEN);
+				$("#SESSIONID").val(SESSIONID);
+				$("#ENTNAME").val(BODY_NAME);
+				$("#entType").val(BODY_TYPE)
+				$("#CRENOTID").val(CRENOTID)
+					getData();
+			});
+			
+			
+			
+			function addAndPublic(){
+				mui.confirm("提示：公示后不能修改！","提示信息",btnArray,function(e){
+					if(e.index==1){
+						addData();
+					}
+				});
+			}
+			function addData(){
+				$.ajax({
+					type:"post",
+					url:httpUrl+"/h/en/liqcrenotice/save.json",
+					async:false,
+					data:$("#addForm").serialize(),
+					dataType:"json",
+					success:function(res){
+						if(res.success==true){
+						  	createData(res.data);
+						  	$("#addDiv").hide();
+						}
+					}
+				});
+			}
+			
+			function updateData(){
+				window.location.href="nliq-crenotice.html?CRENOTID="+CRENOTID;
+			}
+			
+			function getData(){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/h/en/kzkliqcrenotice/get.json",
+					async:false,
+					data:{"CRENOTID":CRENOTID,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
+					dataType:"json",
+					success:function(res){
+						if(res.success==true){
+							createData(res.data);
+						}
+					}
+				});
+			}
+			function createData(obj){
+				if(obj.ANCHEIS==1){
+					$("#addDiv").hide();
+				}else{
+					$("#addDiv").show();
+				}
+				$("#NOTICEFROMSHOW").html(getFormatDateByLong(obj.NOTICEFROM,"yyyy年MM月dd日")+"-"+getFormatDateByLong(obj.NOTICETO,"yyyy年MM月dd日"));
+				$("#CANNOTCONSHOW").html(obj.CANNOTCON);
+				$("#CRERIGDECCONSHOW").html(obj.CRERIGDECCON);
+				$("#TELSHOW").html(obj.TEL);
+				$("#ADDRSHOW").html(obj.ADDR);
+				$("#LIID").val(obj.LIID);
+				$("#CANNOTCON").val(obj.DISREA);
+				$("#CRERIGDECCON").val(obj.CRERIGDECCON);
+				$("#TEL").val(obj.TEL);
+				$("#ADDR").val(obj.ADDR);
+			}
+			
+		</script>
+		<style>
+			.web-box li label:first-child {
+			    color: #999999;
+			    font-size: 1.5rem;
+			}
+		</style>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-icon mui-icon-back mui-pull-left" href="nliq-index.html"></a>
+		    <h1 class="mui-title"><span id="addOrUpdate"></span>债权人公告</h1>
+		</header>
+		
+		<form id="addForm">
+			<input type="hidden" name="TOKEN" id="TOKEN" />
+			<input type="hidden" name="SESSIONID" id="SESSIONID" />
+			<input type="hidden" name="PRIPID" id="PRIPID" />
+			<input type="hidden" name="ENTNAME" id="ENTNAME" />
+			<input type="hidden" name="REGNO" id="REGNO" />
+			<input type="hidden" name="UNISCID" id="UNISCID" />
+			<input type="hidden" name="REGORG" id="REGORG" />
+			<input type="hidden" name="REGORG_CN" id="REGORG_CN" />
+			<input type="hidden" name="LIID" id="LIID" />
+			<input type="hidden" name="CRENOTID" id="CRENOTID" />
+			<input type="hidden" name="entType" id="entType" />
+			<input type="hidden" name="ANCHEIS" id="ANCHEIS" value="1" />
+			
+			<input type="hidden" name="CANNOTCON" id="CANNOTCON"  />
+			<input type="hidden" name="CRERIGDECCON" id="CRERIGDECCON"  />
+			<input type="hidden" name="TEL" id="TEL"  />
+			<input type="hidden" name="ADDR" id="ADDR"  />
+			
+			
+		<div id="common-box">
+	    	<div class="web-box">
+					<ul>
+						<li>
+							<label>
+								公告期：
+							</label>
+							<label id="NOTICEFROMSHOW" ></label>
+						</li>
+					</ul>
+			    </div>
+	    	<div class="web-box">
+					<ul>
+						<li>
+							<label>
+								公告内容：
+							</label>
+							<label id="CANNOTCONSHOW"></label>
+						</li>
+					</ul>
+			    </div>
+				<div class="web-box">
+					<ul>
+						<li>
+							<label>
+								债权申报联系人：
+							</label>
+							<label id="CRERIGDECCONSHOW"></label>
+						</li>
+					</ul>
+			    </div>
+				<div class="web-box">
+					<ul>
+						<li>
+							<label>
+								债权申报联系电话：
+							</label>
+							<label id="TELSHOW" ></label>
+						</li>
+					</ul>
+				</div>
+			    <div class="web-box">
+					<ul>
+						<li>
+							<label>
+								债权申报地址：
+							</label>
+							<label id="ADDRSHOW" ></label>
+						</li>
+					</ul>
+				</div>
+				<div id="addDiv" class="yy" >
+					<a id="addBtn" onClick="addAndPublic()" style="width: 40%;display: inline-block;">公示</a>
+					<a id="pubBtn" onClick="updateData()" style="width: 40%;display: inline-block;">修改</a>
+			    </div>
+	</div>
+	</body>
+</html>

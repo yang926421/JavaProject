@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/guarantee-inf.css">
+			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+			<script type="text/javascript" src="../static/js/common.js" ></script>
+			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+			<script>
+				//获取企业id
+					var pripid=sessionStorage.getItem("PRIPID");
+				$(function(){
+					getData();
+				});
+				//获取企业家庭成员信息
+				function getData(){
+					$.ajax({
+						type:"get",
+						url:httpUrl+"/p/persons/familyMembers/list.json",
+						async:true,
+						data:{"PRIPID":pripid},
+						dataType:"json",
+						success:function(res){
+							if(res.data.success=true){
+								createData(res.data);
+							}
+						}
+					});
+				}
+				//创建企业家庭成员数据
+				function createData(obj){
+					var htmlData="";
+					for(var i=0;i<obj.length;i++){
+						htmlData+=obj[i].NAME+ "、"
+					}
+					$("#member-name").html(htmlData);
+				}
+			</script>
+		
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="report.html"></a>
+		    <h1 class="mui-title">参加经营的家庭成员信息</h1>
+		</header>
+		
+		<!--股东信息-->
+		<div id="common-box">
+			<div class="web-box">
+				<div class="web-name">
+					<ul class="web">
+						<li><span id="member">成员：</span> <span id="member-name"></span></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		
+	</body>
+</html>

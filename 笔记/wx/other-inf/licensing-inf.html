@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/license-inf.css">
+			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+			<script type="text/javascript" src="../static/js/common.js" ></script>
+			<script>
+				$(function(){
+					console.info(PRIPID);
+					getData();
+				});
+				
+				function getData(){
+					$.ajax({
+						type:"get",
+						url:httpUrl+"/e/self/publishedLicense/list.json",
+						async:true,
+						data:{"PRIPID":PRIPID,"SESSIONID":SESSIONID,"TOKEN":TOKEN},
+						dataType:"json",
+						success:function(res){
+							if(res.success==true){
+								createData(res.data);
+							}
+						}
+					});
+				}
+				
+				function createData(obj){
+					$("#count").html(obj.length);
+					var htmlData="";
+					for(var i=0;i<obj.length;i++){
+						var type="";
+						var status="";
+						var hrefUrl="";
+						if(obj[i].TYPE==1){
+							type="有效";
+						}else if(obj[i].TYPE==2){
+							type="无效";
+						}			
+						if(obj[i].STATUS!=null && obj[i].STATUS!="" && obj[i].STATUS=="已公示"){
+							hrefUrl="modify-licensing-inf.html";
+						}else{
+							hrefUrl="add-licensing-inf.html";
+						}
+						
+						htmlData+="	<div class='web-box'>"+
+								"<a href='"+hrefUrl+"?LICID="+obj[i].LICID+"'>"+
+								"	<div class='web-name'>"+
+								"		<div class='licens-top'>"+
+								"			<h4>许可文件编号："+obj[i].LICNO+"</h4>"+ 
+								"			<span class=''>"+type+"</span>"+
+								"		</div>"+
+								"		<ul class='web'>"+
+								"			<li><span>许可文件名称：</span> <span>"+obj[i].LICNAME_CN+"</span></li>"+
+								"			<li><span>有效期自：</span> <span>"+getFormatDateByLong(obj[i].VALFROM,"yyyy年MM月dd日") +"</span></li>"+
+								"			<li><span>有效期止：</span> <span>"+getFormatDateByLong(obj[i].VALTO,"yyyy年MM月dd日")+"</span></li>"+
+								"			<li><span>许可机关：</span> <span>"+obj[i].LICANTH+"</span></li>"+
+								"			<li><span>公示状态：</span> <span>"+obj[i].STATUS+"</span></li>"+
+								"		</ul>"+
+								"		<div class='arrow-right'>"+
+								"			<img src='../static/img/arrow-right.png'/>"+
+								"		</div>"+
+								"	</div>"+
+							"	</a>"+
+							"</div> ";
+					}i
+					$("#common-box").html(htmlData);
+				}
+				
+			
+			</script>
+		
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-icon mui-icon-back mui-pull-left" onclick="returnOtherInfoIndex()"></a>
+		    <h1 class="mui-title">行政许可信息(<span id="count"></span>)</h1>
+		    <span id="add">
+		    	<a href="add-licensing-inf.html" class=""><img src="../static/img/add.png"/></a>
+		    </span>
+		</header>
+		
+		<!--行政许可信息-->
+		<div id="common-box">
+			<!--<div class="web-box">
+				<a href="add-licensing-inf.html">
+					<div class="web-name">
+						<div class="licens-top">
+							<h4>许可文件编号：31354564451</h4> 
+							<span class="">有效</span>
+						</div>
+						<ul class="web">
+							<li><span>许可文件名称：</span> <span >盖房许可证</span></li>
+							<li><span>有效期自：</span> <span >2017年5月30日</span></li>
+							<li><span>有效期止：</span> <span >2020年5月30日</span></li>
+							<li><span>许可机关：</span> <span >房建局</span></li>
+							<li><span>公示状态：</span> <span >已公示</span></li>
+						</ul>
+						
+						<div class="arrow-right">
+							<img src="../static/img/arrow-right.png"/>
+						</div>
+					</div>
+				</a>
+			</div>	-->
+			
+			
+		</div>
+		
+	</body>
+</html>

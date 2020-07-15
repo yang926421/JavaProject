@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/notice.css">
+
+		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../static/js/common.js" ></script>
+		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+		<script src="../static/js/pdf.js" type="text/javascript"></script>
+		<style>
+
+.pdfobject-container {
+	width: 100%;
+	max-width: 600px;
+	height: 600px;
+	margin: 2em 0;
+}
+
+.pdfobject { border: solid 1px #666; }
+#results { padding: 1rem; }
+.hidden { display: none; }
+.success { color: #4F8A10; background-color: #DFF2BF; }
+.fail { color: #D8000C; background-color: #FFBABA; }
+
+.lightbox{
+position: fixed;
+top: 0px;
+left: 0px;
+height: 100%;
+width: 100%;
+z-index: 7;
+opacity: 0.3;
+display: block;
+background-color: rgb(0, 0, 0);
+}
+.pop{
+/*position: absolute;*/
+/*left: 50%;*/
+
+/*margin-left: -247px;*/
+/*z-index: 9;*/
+}
+</style>
+		
+		<script>
+			var CASEID=GetRequest("CASEID");
+			var notice=JSON.parse( sessionStorage.getItem(CASEID));
+			$(function(){
+				getData();
+			});
+			function getData(){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/p/announcement/get.json",
+					async:true,
+					data:{"CASEID":CASEID},
+					dataType:"json",
+					success:function(res){
+						if(res.success==true){
+							if(res.data!=null && res.data.length>0){
+								createData(res.data[0]);
+							}
+						}/*else{
+							mui.toast(res.codeMsg);
+						}*/
+					}
+					
+				});
+			}
+			
+			function createData(obj){
+				$("#NAME").html(notice.UNITNAME);
+				$("#PENDECNO").html(notice.PENDECNO);
+				var html="<embed id=\"FILENAME\" src=\""+obj.FILENAME+"\" type=\"application/pdf\" width=\"100%\" height=\"100%\"></embed>"
+//				$("#file").html("<a id='PDFFile' href='"+obj.FILENAME+"'>点击查看处罚决定书</a>");
+				showPdf(obj.FILENAME);
+				$("#PENAUTH_CN").html(notice.PENAUTH_CN);
+				$("#PUBLICDATE").html(getFormatDateByLong(notice.PUBLICDATE,"yyyy年MM月dd日"));
+				
+			}
+			
+			function cusstr(str, findStr, num){
+			    var idx = str.indexOf(findStr);
+			    var count = 1;
+			    while(idx >= 0 && count < num){
+			        idx = str.indexOf(findStr, idx+1);
+			        count++;
+			    }    
+			    if(idx < 0){
+			        return '';
+			    }
+			    return str.substring(0, idx);
+			}
+			
+			
+			
+			
+			function showPdf(val) {
+				var container = document.getElementById("container");
+				container.style.display = "block";
+				var url = val;
+				PDFJS.workerSrc = '../static/js/pdf.worker.js';
+				PDFJS.getDocument(url).then(function getPdfHelloWorld(pdf) {
+					var pop=document.getElementById('file');
+					for(var i=1,l=pdf.numPages;i<=l;i++){
+						pdf.getPage(i).then(function (page) {
+							var scale = 0.6;
+							var oDiv=document.createElement('canvas');
+							var viewport = page.getViewport(scale);
+							var canvas = oDiv;
+							var context = canvas.getContext('2d');
+							canvas.height = viewport.height;
+							canvas.width = viewport.width;
+							var renderContext = {
+								canvasContext: context,
+								viewport: viewport
+							};
+							pop.appendChild(oDiv);
+							page.render(renderContext);
+						});
+					}
+	
+				});
+			}
+		</script>
+		
+	</head>
+	
+	<body>	
+		
+		
+		
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-icon mui-icon-back mui-pull-left" onclick="goBack()"></a>
+		    <h1 class="mui-title"><span id="saveOrUpdate"></span>公告详情</h1>
+		    <span id="sure">
+		    	<a href="javascript:;" class="chose" id="chose"></a>
+		    </span>
+		</header>	
+		
+		
+		
+		<div id="common-boxJ" style="padding-top: 1.8rem;">
+			<div class="detailBox" >
+				<p id="NAME" style="padding-top: 10px;text-align: center;font-size: 20px;font-weight: bold;line-height: 35px;"></p>
+			<hr/>
+			<p id="PENDECNO" style="text-align: center;"></p>
+				
+					<div id="container" style="display: none;">
+				<!--	<div class="lightbox"></div>-->
+					<div id="file" class="pop"></div>
+				</div>
+				<p id="PENAUTH_CN" class="p3"></p>
+				<p id="PUBLICDATE" class="p3"></p>
+			</div>
+			
+		</div>
+		
+	   
+	</body>
+</html>
+
+

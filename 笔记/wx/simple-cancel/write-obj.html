@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/write-obj.css">
+			<script src="../static/js/jquery.min.js"></script>
+		<script type="text/javascript" src="../static/js/common.js" ></script>
+	    <script type="text/javascript" src="../static/js/mui.min.js" ></script>
+	    <script>
+	    	var SCID=GetRequest("SCID");
+	    	var SCOBJID=GetRequest("SCOBJID");
+	   /* 	var PRIPID = localStorage.getItem("PRIPID");
+	    	var SESSIONID = localStorage.getItem("SESSIONID");
+	    	var TOKEN = localStorage.getItem("TOKEN");
+	        var ENTNAME = localStorage.getItem("ENTNAME");*/
+	   $(function(){
+	   	if(PRIPID==null || PRIPID ==""){
+	   		window.location.href ='../login.html';
+	   	}
+	    	if(SCOBJID==null || SCOBJID==""){
+	    		$("#ENTNAME").val(BODY_NAME);
+	    	}else{
+	    		$("#sure").hide();
+	    		$.ajax({
+					type:'get',
+					url:httpUrl+'/p/escobjection/get.json',
+					data:{"SCOBJID":SCOBJID},
+					dataType:'json',
+					success:function(res){
+						if(res.success==true){
+							fullData(res.data);
+						}/*else{
+							mui.toast(res.codeMsg);
+						}*/
+					}
+				})
+	    	}
+	    		$("#SCID").val(SCID);
+	   });
+	    
+	       function save(){
+				$.ajax({
+					type:'post',
+					url:httpUrl+'/e/escobjection/save.json',
+					data:$("#addForm").serialize(),
+					dataType:'json',
+					success:function(res){
+						if(res.success==true){
+								mui.toast(res.codeMsg);
+							window.location.href="view-obj.html?SCID="+SCID;
+						}/*else{
+							mui.toast(res.codeMsg);
+						}*/
+					}
+				})
+			}
+			function fullData(obj){
+				$("#SCID").val(obj.SCID);
+				$("#SCOBJID").val(obj.SCOBJID);
+				$("#ENTNAME").val(obj.BODY_NAME);
+				$("#OBJECTION").val(obj.OBJECTION);
+			}
+	    </script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="view-obj.html"></a>
+		    <h1 class="mui-title">提交异议</h1>
+		    <span id="sure">
+		    	<a  class="" onClick="save()" id="confirmBtn">提交</a>
+		    </span>
+		</header>
+		
+		<!--填写注销公告信息-->
+		
+		<div id="common-box">
+		<form id="addForm">
+			<input type="hidden" name="SCID" id="SCID"/>
+			<input type="hidden" name="SCOBJID" id="SCOBJID"/>
+			<input type="hidden" name="SESSIONID" id="SESSIONID"/>
+			<input type="hidden" name="TOKEN" id="TOKEN"/>
+			<!--填写异议内容-->
+			<div class="obj-box">
+				<div class="obj-con">
+					<textarea name="OBJECTION" id="OBJECTION" cols="" placeholder="请填写异议内容"></textarea>
+				</div>
+			</div>
+			
+			
+			<div class="web-box">
+					<ul>
+						<li>
+							<span >
+								您的姓名
+							</span>
+							<div class="web-write">
+								<input type="text" name="ENTNAME" id="ENTNAME" value="" placeholder="请输入姓名
+"/>
+							</div>
+						</li>
+					</ul>
+			</div>
+			
+			<!--<div class="web-box">
+					<ul>
+						<li>
+							<span >
+								您的手机号
+							</span>
+							<div class="web-write">
+								<input type="text" name=""  value="" placeholder="请输入手机号码 "/>
+							</div>
+						</li>
+					</ul>
+			</div>
+			
+			<div class="web-box">
+					<ul>
+						<li>
+							<span >
+								验证码
+							</span>
+							<div id="Code-box">
+								<div class="web-write" id="Code-write">
+									<input type="text" name=""  value="" placeholder="请输入验证码"/>
+								</div>
+								<input type="button" name="" id="getVerification" value="获取验证码"/>
+							</div>
+							
+						</li>
+					</ul>
+			</div>
+			
+			<div class="web-box">
+					<ul>
+						<li>
+							<div >
+								全体投资人承诺书
+							</div>
+							<div class="">
+								<span id="upload-img">
+									<img src="../img/upload-img.png"/>
+								</span>
+							</div>
+						</li>
+					</ul>
+			</div>
+			
+			<div class="web-box">
+					<ul>
+						<li>
+							<div >
+								营业执照照片
+							</div>
+							<div class="">
+								<span id="upload-img">
+									<img src="../img/upload-img.png"/>
+								</span>
+							</div>
+						</li>
+					</ul>
+			</div>-->
+			</form>
+			<!--需要隐藏的信息-->
+			<!--<div class="network">
+				<span >您处于外部网络，无法查看异议人信息</span>
+			</div>-->
+			
+			<!--一个按钮-->
+			<!--<div class="yy" id="delete">
+		    	<a onClick="" class="cancel" id="confirmBtn">删   除</a>
+		    </div>-->
+		</div>
+		
+	</body>
+</html>

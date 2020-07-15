@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/notice.css">
+		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../static/js/common.js" ></script>
+		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+		<script>
+			var SCID=GetRequest("SCID");
+			var LOC_FILENAME=GetRequest("LOC_FILENAME");
+			$(function(){
+				var url =null;
+				/*$("#img").src=httpUrl+"getimg?SCID="+120648181993177088;*/
+				
+				//url = httpUrl+"/p/escnotice/getImg.json?SCID="+SCID;
+				
+				if(LOC_FILENAME ==null || LOC_FILENAME=="" || typeof(LOC_FILENAME)=="undefined"){
+					url = httpUrl+"/p/escnotice/getImg.json?SCID="+SCID;
+				}else{
+					url =LOC_FILENAME;
+				}
+				if(url!=null && url!=""){
+					$("#img").attr("src",url);
+				}
+			
+			});
+		</script>
+	</head>
+	
+	<body>		
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" ></a>
+		    <h1 class="mui-title"><span id="saveOrUpdate"></span>查看承诺书</h1>
+		    <span id="sure">
+		    	<a href="javascript:;" class="chose" id="chose"></a>
+		    </span>
+		</header>	
+		
+		<div id="common-boxJ">
+			<div class="detailBox">
+				<!--<h3 id="NAME"></h3>
+				<p id="FILENAME" class="p2">
+				</p>-->
+				<img id="img" style="display:none" />
+			</div>
+		</div>
+		
+		
+	   
+	</body>
+</html>
+
+

@@ -1,0 +1,132 @@
+.web-box{
+	border-bottom:solid #EAEAEA 1px ;
+	background-color: #FFFFFF;
+}
+.web-box ul{
+	margin: auto;
+	width: 92%;
+	/*border: #000000 solid 1px;*/
+	font-size: 1.5rem;
+}
+.web-box li{
+	/*border: #000000 solid 1px;*/
+	/*line-height: 5rem;*/
+	overflow: hidden;
+}
+.web-box li span{
+	/*border: #000000 solid 1px;*/
+	/*float: left;*/
+	display: inline-block;
+}
+.web-box:nth-child(2) li span{
+	width: 30%;
+	float: left;
+	display: inline-block;
+	line-height: 2.0rem;
+	padding: 1.3rem 0rem;
+}
+.web-write{
+	width:68%;
+	overflow: hidden;
+	/*border: #000000 solid 1px;*/
+	float: right;
+}
+.web-write input{
+	border: none;
+	display: inline-block;
+	font-size: 1.5rem;
+	height: 2.2rem;
+	padding: 0 0;
+}
+
+.web-write textarea{
+	border: none;
+	font-size: 1.5rem;
+	padding: 0 0;
+	padding-top: 1.2rem;
+}
+/*显示关闭图标*/
+.contribution-show-right{
+	/*border: #000000 solid 1px;*/
+	width: 2.0rem;
+	float: right;
+}
+/*新增不公示信息*/
+#no-show p{
+	margin:4% 0 4% 4%;
+	margin-top: 4%;
+	font-size: 1.5rem;
+}
+#social-title{
+	border-bottom: #EAEAEA solid 1px;
+	/*background-color: #F2F2F2;*/
+	margin-top: 0.5rem;
+}
+#social-title h4{
+	/*border: #000000 solid 1px;*/
+	display: inline-block;
+	/*line-height: 3.8rem;*/
+	margin-left:4%;
+	font-weight: bold;
+	font-size: 1.5rem;
+	vertical-align: bottom;
+	padding: 1.4rem 0 0.8rem 0;
+}
+#line-block .web-box li span{
+	/*border: #000000 solid 1px;*/
+	width: 30%;
+	float: left;
+	display: inline-block;
+	line-height: 2.2rem;
+	padding: 1.3rem 0rem;
+}
+/*向下箭头*/
+#open{
+	/*border: #000000 solid 1px;*/
+}
+#service_opt{
+	/*border: #000000 solid 1px;*/
+	-webkit-appearance: none;
+	border: none;
+	background: none;
+	width: 70%;
+	padding-left:0%;
+	font-size: 1.6rem;
+	padding-bottom: 0%;
+}
+#open .arrow-down{
+	width: 1.4rem;
+	/*margin-left: 2%;*/
+}
+.essential-write{
+	/*border: #000000 solid 1px;*/
+	float: right;
+	width: 58%;
+}
+.essential-write label{
+	display: inline-block;
+	/*border: #000000 solid 1px;*/
+	width: 40%;
+}
+.essential-write input{
+	border: none;
+}
+.essential-write label input{
+	vertical-align: middle;
+	border-radius: 1.0rem;
+	width: 1.8rem;
+	height: 1.8rem;
+	display: inline-block;
+	background: #FFFFFF;
+	border: #D4D4D4 solid 1px;
+	-webkit-appearance:none;
+	margin-right: 10%;
+}
+.essential-write label input[type=radio]:checked{
+	vertical-align: middle;
+	border:none;
+	-webkit-appearance:none;
+	background:#ffffff  url(../img/yuan-checked.png) no-repeat;
+	background-size: 100%;
+	background-position:center;	
+}

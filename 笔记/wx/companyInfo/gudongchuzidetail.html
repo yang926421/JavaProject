@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>股东及出资信息</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/gudongdetail.css">
+				<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+		<script type="text/javascript" src="../static/js/common.js" ></script>
+		<script>
+			//获取股东出资id
+			var INVID=GetRequest("INVID");
+			
+			$(function(){
+				getData();
+			});
+			//获取股东出资详细信息
+			function getData(){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/p/e/self/investment/get.json",
+					data:{"INVID":INVID},
+					async:true,
+					dataType:"json",
+					success:function(res){
+						if(res.success==true){
+							createData(res.data);
+						}
+					}
+				});
+			}
+			
+				function createData(obj){
+					$("#INV").html(obj.baseInfo.INV);  //股东
+					$("#SUBAMOUNT").html(obj.baseInfo.SUBAMOUNT);  //认缴总额
+					$("#PAIDAMOUNT").html(obj.baseInfo.PAIDAMOUNT); //实缴总额
+					var renjiaoHtml="";
+					var shijiaoHtml="";
+					if(obj.vprodetail!=null && obj.vprodetail.length>0){   //认缴明细
+						for(var i=0;i<obj.vprodetail.length;i++){
+							renjiaoHtml+="<div class='group'>"+
+							 		 "<p><span>认缴出资额(万元)：</span><span>"+obj.vprodetail[i].SUBCONAM+"</span></p>"+
+									 "<p><span>认缴出资时间：</span><span>"+getFormatDateByLong(obj.vprodetail[i].CONDATE,"yyyy年MM月dd日")+"</span></p>"+
+									 "<p><span>认缴出资方式：</span><span>"+obj.vprodetail[i].CONFORM_CN+"</span></p>"+
+									 "<p><span>认缴公示日期：</span><span>"+getFormatDateByLong(obj.vprodetail[i].PUBLICDATE,"yyyy年MM月dd日")+"</span></p>"+
+								 "</div>";
+						}
+					}
+					$("#renjiaoInfo").html(renjiaoHtml);
+					
+					if(obj.vactdetail!=null && obj.vactdetail.length>0){  //实缴明细
+						for(var j=0;j<obj.vactdetail.length;j++){
+							shijiaoHtml+="<div class='group'>"+
+							 		 "<p><span>实缴出资额(万元)：</span><span>"+obj.vactdetail[j].ACCONAM+"</span></p>"+
+									 "<p><span>实缴出资时间：</span><span>"+getFormatDateByLong( obj.vactdetail[j].CONDATE,"yyyy年MM月dd日") +"</span></p>"+
+									 "<p><span>实缴出资方式：</span><span>"+obj.vactdetail[j].CONFORM_CN+"</span></p>"+
+									 "<p><span>实缴公示日期：</span><span>"+getFormatDateByLong(obj.vactdetail[j].PUBLICDATE,"yyyy年MM月dd日")+"</span></p>"+
+							 "</div>";
+						}
+					}
+				$("#shijiaoInfo").html(shijiaoHtml);
+			}
+			
+			
+			
+		</script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href=""></a>
+		    <h1 class="mui-title">股东及出资信息</h1>
+		</header>
+		<div class="headertop"></div>
+		<div class="chuzitiele">
+			 <p class="gd-name" id="INV"></p>
+			 <p><span>认缴额(万元)：</span><span id="SUBAMOUNT"></span></p>
+			 <p><span>实缴额(万元)：</span><span id="PAIDAMOUNT"></span></p>
+		</div>
+		<div class="rendetail">认缴出资明细</div>
+		<div class="chuzidetail" id="renjiaoInfo">			
+			 <!--<div class="group">
+			 		 <p><span>认缴出资额(万元)：</span><span>850</span></p>
+					 <p><span>认缴出资时间：</span><span>2017年5月31日</span></p>
+					 <p><span>认缴出资方式：</span><span>货币</span></p>
+					 <p><span>认缴公示日期：</span><span>2017年5月31日</span></p>
+			 </div>
+			 
+			 <div class="group">
+			 		 <p><span>认缴出资额(万元)：</span><span>850</span></p>
+					 <p><span>认缴出资时间：</span><span>2017年5月31日</span></p>
+					 <p><span>认缴出资方式：</span><span>货币</span></p>
+					 <p><span>认缴公示日期：</span><span>2017年5月31日</span></p>
+			 </div>	-->
+		</div>
+		
+		<div class="rendetail">实缴出资明细</div>
+		<div class="chuzitiele" id="shijiaoInfo">			
+			 <!--<p><span>实缴出资额(万元)：</span><span>850</span></p>
+			 <p><span>实缴出资时间：</span><span>2017年5月31日</span></p>
+			 <p><span>实缴出资方式：</span><span>货币</span></p>
+			 <p><span>实缴公示日期：</span><span>2017年5月31日</span></p>-->
+		</div>
+	</body>
+</html>

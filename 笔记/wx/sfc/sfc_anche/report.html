@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../static/css/common.css">
+		<link rel="stylesheet" href="../../static/css/mui.min.css">
+		<link rel="stylesheet" href="../../static/css/report.css">
+		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
+		<script type="text/javascript" src="../../static/js/common.js"></script>
+		<script type="text/javascript" src="../../static/js/path.js" ></script>
+		<script>
+			
+			var ancheid=GetRequest("ANCHEID");
+			var ANCHEYEAR=GetRequest("ANCHEYEAR");
+			var ISWEB="";
+			$(function(){
+				$("#TOKEN").val(TOKEN);
+				$("#SESSIONID").val(SESSIONID);
+			
+			    $("#ANCHEYEAR").html(ANCHEYEAR);  //哪一年的年度报告
+		  	    $("#ENTNAME").html(BODY_NAME); //企业名称
+		  		$("#BODY_NO").html(BODY_NO); //社会信用代码
+				getData();
+				getRegInfo();
+			});
+			
+			
+			//获取年报详情
+			function getData(){
+				$.ajax({
+					type:"get",  
+					url:httpUrl+"/c/an/base/get.json",
+					async:true,
+					data:{"ANCHEID":ancheid,"TOKEN":TOKEN,"SESSIONID":SESSIONID,"BODY_TYPE":BODY_TYPE,"PRIPID":PRIPID},
+					dataType:'json',
+					success:function(res){
+						if(res.success==true){
+							if(res.data.ANCHEYEAR!=null && res.data.ANCHEYEAR!=""){
+								ISWEB=res.data.ISWEB;
+								ANCHEYEAR=res.data.ANCHEYEAR;
+								 $("#ANCHEYEAR").html(res.data.ANCHEYEAR);
+							}
+							createMenu(res.data.EDISYCONTBUSIRELA);
+						}
+					}
+				});
+			}
+			
+			
+			 function createMenu(obj){
+		  		var menuHtml="";
+				for(i=0;i<obj.length;i++){
+					if(obj[i].BUSINESS_ITEMTYPE=="01"){  //判断是否是表级的菜单
+						menuHtml+="<a href='javascript:;' onclick='returnPath(\""+obj[i].BUSINESS_ITEM+"\")'>"+
+								"<div id='list-box'>"+
+								"		<div class='line'>"+
+								"			<span>"+obj[i].BUSINESS_ITEMDISY+" </span>";
+								if( parseInt(obj[i].COUNT)>=0){
+									menuHtml+=" <span  class='inf-num'>(<span id='"+obj[i].BUSINESS_ITEM+"'>"+obj[i].COUNT+"</span>)</span>";
+								}
+							menuHtml+=	"<span id='arrow-right'><img src='../../static/img/arrow-right.png'/></span>"+
+								"		</div>"+
+								"</div>"+
+							"</a> ";
+		  			}
+				}
+				$("#menuData").html(menuHtml);
+				
+		  }
+			
+			
+			function toPublic(){
+				if(ancheid==null || ancheid=="" || ancheid=="null"){
+					mui.toast("您尚未创建年报无法预览");
+				}else{
+					if(ISWEB==1){
+						var count=$("#WEBSITE").text();
+						if(parseInt(count)<=0){
+							mui.toast("请填写基本信息中勾选的网站或网店信息");
+							return;
+						}
+					}
+					window.location.href="show-report.html?publicity=Y&ANCHEID="+ancheid;
+				}
+				
+			}
+			
+				//链接跳转
+		function returnPath(id){
+			if(ancheid!=null && ancheid!=""){
+				if(id=="CU_TAXRELIEFGOODS"){
+					if(regId==null || regId==""){
+						mui.toast("请先填写报关信息");
+						return;
+					}
+				}
+				getAnchePath(id,TYPE,ancheid);
+			}else{
+				mui.toast("请先填写年报《基本信息》");
+			}
+		}
+		var regId="";
+		function getRegInfo(){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/h/an/cu/sfcreginfo/get.json",
+					async:true,
+					data:{"ANCHEID":ancheid,"SESSIONID":SESSIONID,"TOKEN":TOKEN},
+					success:function(res){
+						if(res.success){
+							if(res.data.ancUsfcreginfo!=null && res.data.ancUsfcreginfo!="" && JSON.stringify(res.data.ancUsfcreginfo)!="{}"){
+								regId=res.data.ancUsfcreginfo.REGID;
+							}
+						}
+					}
+				});
+			}
+		function returnList(){
+			window.location.href="report-list.html"
+		}
+		//跳转到基本信息页面
+		function goBaseInfo(){
+			window.location.href="essential-inf.html?ANCHEID="+ancheid+"&ANCHEYEAR="+ANCHEYEAR;
+		}
+		</script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-icon mui-icon-back mui-pull-left" onclick="returnList()"></a>
+		    <h1 class="mui-title"><span id="ANCHEYEAR"></span>年年度报告</h1>
+		</header>
+		
+		<!--企业名称-->
+		<div id="com-name-box">
+			<div class="com-name">
+				<h3 id="ENTNAME"></h3>
+				<p>统一社会信用代码/注册号：<span id="BODY_NO"></span> </p>
+			</div>
+		</div>
+		
+		<!--单行列表-->
+		<div id="list-box">
+			<a onclick="goBaseInfo()">
+				<div class="line">
+					<span>基本信息</span>
+					<span id="arrow-right"><img src="../../static/img/arrow-right.png"/></span>
+				</div>
+			</a>
+		</div>
+		<div id="menuData">
+		<!--<a href="../../static/sfc_websiteInfo/website-inf.html">
+			<div id="list-box">
+					<div class="line">
+						<span>网站或网店信息 </span> <span id="WEB_LENGTH" class="inf-num"></span>
+						<span id="arrow-right"><img src="../../static/img/arrow-right.png"/></span>
+					</div>
+			</div>
+		</a>
+		
+		<a href="../../static/sfc_branchinfo/branchinfo-list.html">
+			<div id="list-box">
+				<div class="line">
+					<span>分支机构信息 </span><span id="BRANCH_LENGTH" class="inf-num"></span>
+					<span id="arrow-right"><img src="../../static/img/arrow-right.png"/></span>
+				</div>
+			</div>
+		</a>
+		
+		<a href="asset-inf.html">
+			<div id="list-box">
+				<div class="line">
+					<span>资产状况信息 </span><span class="inf-num"></span>
+					<span id="arrow-right"><img src="../../static/img/arrow-right.png"/></span>
+				</div>
+			</div>
+		</a>
+		
+		<a href="../../static/sfc_licenceinfo/licenceinfo.html">
+			<div id="list-box">
+				<div class="line">
+					<span>行政许可信息 </span><span id="LICENCE_LENGTH" class="inf-num"></span>
+					<span id="arrow-right"><img src="../../static/img/arrow-right.png"/></span>
+				</div>
+			</div>
+		</a>
+		
+		<a href="../../static/sfc_socsecinfo/social-security-inf.html">
+			<div id="list-box">
+				<div class="line">
+					<span>社保信息</span> <span id="SOCSEC_LENGTH" class="inf-num"></span>
+					<span id="arrow-right"><img src="../../static/img/arrow-right.png"/></span>
+				</div>
+			</div>
+		</a>-->
+		</div>
+		<!--一个按钮-->
+		<div class="yy">
+	    	<a href="javascript:;" onclick="toPublic()" >预览并公示</a>
+	    </div>
+	</body>
+</html>

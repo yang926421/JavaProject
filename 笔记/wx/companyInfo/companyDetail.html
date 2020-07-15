@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>公司详情</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/companyDetail.css">
+			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+			<script type="text/javascript" src="../static/js/common.js" ></script>
+			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+			<script type="text/javascript" src="../static/js/path.js" ></script>
+			<script>
+				var pripid=GetRequest("PRIPID");  //企业id
+				var type=GetRequest("TYPE"); //企业类型
+				var bodyType=GetRequest("BODY_TYPE");  //企业所属编号
+				
+				//历史记录标记，是否是历史搜索记录点击进来的
+				var historyFlag=GetRequest("historyFlag");
+				
+				$(function(){
+					//历史记录进来的
+					if(historyFlag!=null && historyFlag==1){
+						
+					}else{
+						//获取公司基本信息
+						var companyDetail= sessionStorage.getItem("search"+pripid);
+						if(companyDetail!=null){
+							companyDetail=JSON.parse( sessionStorage.getItem("search"+pripid));
+							createCompanyHistory(companyDetail);
+						}
+					}
+					//把企业id记录到session中，其他页面可以直接从session中取
+					sessionStorage.setItem("PRIPID",pripid);
+					 //把企业类型放入到session中
+					sessionStorage.setItem("TYPE",type);
+					//企业类型编号放入session中
+					sessionStorage.setItem("BODY_TYPE",bodyType);
+					getMenu();
+				});
+				
+				//获取动态菜单
+				function getMenu(){
+					$.ajax({
+						type:"get",
+						url:httpUrl+"/p/ctrl/search/form/list.json",
+						async:false,
+						data:{"PRIPID":pripid,"TYPE":type},
+						dataType:"json",
+						success:function(res){
+							if(res.success==true){
+								getCompanyInfo(res.data.BASE_INFO);
+								createMenu(res.data);
+								//放入session中方便其他页面使用
+								sessionStorage.setItem(pripid,JSON.stringify( res.data.BASE_INFO));
+							}
+						}
+					});
+				}
+				
+				//创建菜单
+				function createMenu(obj){
+					var menuData="";
+					var menu_baseInfo="";
+					var menu_self_baseInfo="";
+					for(var i=0;i<obj.list1.length;i++){  // list1是菜单列表
+						if(obj.list1[i].BUSINESS_ITEM=="GOV_PRO"){
+							menuData+="<li class='mui_color'></li>"+
+										"<li class='mui-table-view-cell' style='font-weight:bold;'>"+
+										"	<a href='#'>"+obj.list1[i].BUSINESS_ITEMDISY+"</a>"+
+										"</li>";
+						}else if(obj.list1[i].BUSINESS_ITEM=="BASE_INFO"){   
+							menuData+=
+										"<li class='mui-table-view-cell mui-collapse' style='border-top:#d8d8d8 1px solid;'>"+
+										"	<a class='mui-navigate-right' href='#'><img src='../static/img/point_wechat.png' style='height:5px;margin-left:5px;margin-right:5px;vertical-align:middle;' /> "+obj.list1[i].BUSINESS_ITEMDISY+"</a>"+
+										" <div class='mui-collapse-content' id='BASE_INFO'></div>"+
+										"</li>";
+						}else if(obj.list1[i].BUSINESS_ITEM!="ENTERPRISE_SELF"){
+							menuData+=
+										"<li class='mui-table-view-cell' style='border-top:#d8d8d8 1px solid;'>"+
+										"	<a class='mui-navigate-right' onclick='getPath(\""+obj.list1[i].BUSINESS_ITEM+"\","+type+")' ><img src='../static/img/point_wechat.png' style='height:5px;vertical-align:middle;margin-left:5px;margin-right:5px;' />"+obj.list1[i].BUSINESS_ITEMDISY+"("+obj.list1[i].COUNT+")</a>"+
+										"</li>";
+						}else{
+							menuData+="<li class='mui_color'></li>"+
+										"<li class='mui-table-view-cell mui-collapse' >"+
+										"	<a class='mui-navigate-right' style='color:#ac812e;font-size:17px;font-weight:bold;' >"+obj.list1[i].BUSINESS_ITEMDISY+"</a>"+
+										" <div class='mui-collapse-content' id='"+obj.list1[i].BUSINESS_ITEM+"'></div>"+
+										"</li>";
+						}
+						
+					
+					}
+					
+					$("#menuData").html(menuData);
+					
+					for(var m=0;m<obj.list2.length;m++){
+						menu_baseInfo+="  <a href='javascript:;' onclick='getPath(\""+obj.list2[m].BUSINESS_ITEM+"\","+type+")'>"+
+							  		"<div class='companyfour' >"+
+							  		"	<img src='"+obj.list2[m].FILE_PATH+"' />"+
+							  		"	<span class='typename'>"+obj.list2[m].ALIAS+"</span>"+
+							  		"	<span class='typenum'>"+obj.list2[m].COUNT+"</span>"+
+							  		"</div>"+
+							 " </a>"; 
+								
+					}
+					$("#BASE_INFO").html(menu_baseInfo);	
+//					menu_baseInfo+=" <div class='applyInfo'>以下信息由该企业自行提供</div>";
+					for(var n=0;n<obj.list3.length;n++){
+						menu_self_baseInfo+=" <a href='javascript:;' onclick='getPath(\""+obj.list3[n].BUSINESS_ITEM+"\","+type+")' >"+
+							  		"<div class='companyfour' >"+
+							  		"	<img src='"+obj.list3[n].FILE_PATH+"' />"+
+							  		"	<span class='typename'>"+obj.list3[n].ALIAS+"</span>"+
+							  		"	<span class='typenum'>"+obj.list3[n].COUNT+"</span>"+
+							  		"</div>"+
+							 " </a>"; 
+					}
+					$("#ENTERPRISE_SELF").html(menu_self_baseInfo);
+					
+					
+					
+				}
+				//创建一个数组放搜索的公司
+				var	companyHistory;  
+				//保存搜索的企业历史记录
+				function createCompanyHistory(company){
+					companyHistory= localStorage.getItem("companyHistory");
+					if(companyHistory!=null && companyHistory.length>0){
+						companyHistory=JSON.parse(companyHistory);
+						if(companyHistory.length<1 ){
+							companyHistory=new Array();
+							companyHistory[0]=company;
+						}else if(companyHistory.length>9){
+							companyHistory.splice(0,1);  //如果大于10条数据就删除第一条数据
+						}else{
+							//判断如果历史记录中已有查询过的记录就替换添加到缓存中
+							var flag=false;
+							for(var i=0;i<companyHistory.length;i++){
+								if(pripid==companyHistory[i].PRIPID){
+									companyHistory[i]=company;
+									flag==true;
+									return flag;
+								}
+							}
+							if(!flag){
+								companyHistory[companyHistory.length]=company;
+							}
+						}
+					}else{
+						companyHistory=new Array();
+						companyHistory[0]=company;
+						
+					}
+	                localStorage.setItem("companyHistory",JSON.stringify(companyHistory) );
+				}
+				//获取企业信息
+				function getCompanyInfo(company){
+					$("#BODY_NAME").html(company.ENTNAME);
+					if(company.BIZ_EXP!=undefined && company.BIZ_EXP!=null && company.BIZ_EXP!=""){
+						$("#BIZ_EXP").html("*"+company.BIZ_EXP);
+					}
+					if(company.BLACK_LIST!=undefined && company.BLACK_LIST!=null && company.BLACK_LIST!=""){
+						$("#BLACK_LIST").html("*"+company.BLACK_LIST);
+					}
+					if(company.UNISCID!=null && company.UNISCID!=""){
+						$("#UNISCID").html("统一社会信用代码："+company.UNISCID);
+					}else{
+						$("#UNISCID").html("注册号："+company.REGNO);
+					}
+					$("#NAME").html(company.NAME_CN+"："+company.NAME);
+					$("#REGORG_CN").html("登记机关："+company.REGORG_CN);
+					$("#ESTDATE").html("成立日期："+getFormatDateByLong(company.ESTDATE,"yyyy年MM月dd日") );
+					 
+					 if(company.SC_NOTICE!=null && company.SC_NOTICE!=""){
+					 	$("#SC_NOTICE").html("<img src='../static/img/notice.png'><label style='color: red;'>"+company.SC_NOTICE+"</label><a href='objectionInfo.html' style='color：#ac812e;display: inline-block;float: right;text-decoration:underline;'>我要异议</a> ");
+					 }
+					var htmlData="";
+					if(company.REGSTATE_CN.indexOf('存续')>-1){
+							htmlData+=" <span class='cunxu'>"+company.REGSTATE_CN+"</span>"; 
+						}else if(company.REGSTATE_CN.indexOf('吊销')>-1){
+							htmlData+=" <span class='diaoxiao'>"+company.REGSTATE_CN+"</span>"; 
+						}else if(company.REGSTATE_CN.indexOf('注销')>-1){
+							htmlData+=" <span class='zhuxiao'>"+company.REGSTATE_CN+"</span>"; 
+						}else{
+							htmlData+=" <span class='zhuxiao'>"+company.REGSTATE_CN+"</span>";
+						}
+					
+					$("#REGSTATE_CN").html(htmlData);
+				}
+				
+			
+			</script>
+		
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="searchMain.html"></a>
+		    <h1 class="mui-title">公司详情</h1>
+		</header>
+		
+		<div class="companyInfo">
+			 <p id="BODY_NAME" style="font-weight:bold;"></p>
+			 <p id="abnormal"><a id="BIZ_EXP" href="#yichang"style="color: red;"></a></p>
+			  <p ><a id="BLACK_LIST" href="#weifa" style="color: red;"></a> </p>
+			 <p><img src="../static/img/basic_ic_socialcode.png"><span id="UNISCID"></span></p>
+			 <p><img src="../static/img/basic_ic_-legal.png"><span id="NAME"></span></p>
+			 <p><img src="../static/img/basic_ic_on.png"><span id="REGORG_CN"></span></p>
+			 <p><img src="../static/img/basic_ic_date.png"><span id="ESTDATE"></span></p>
+				<p id="SC_NOTICE"></p>
+			 <p id="REGSTATE_CN"></p>
+			 
+		</div>
+		<div class="mui-content">		
+				<ul class="mui-table-view" id="menuData" >
+					<!--<li class=" mui_color"></li>
+					<li class="mui-table-view-cell mui-collapse" >
+						<a class="mui-navigate-right" href="#">基本信息</a>
+						<div class="mui-collapse-content">
+							  <a href="businesslicense.html">
+							  		<div class="companyfour" >
+							  			<img src="../static/img/basic_ic_license.png" />
+							  			<span class="typename">营业执照</span>
+							  			<span class="typenum">0</span>
+							  		</div>
+							  </a>
+							  <a href="shareholderInfo.html">
+							  		<div class="companyfour" >
+							  			<img src="../static/img/basic__ic_shareholders.png" />
+							  			<span class="typename">股东出资</span>
+							  			<span class="typenum">0</span>
+							  		</div>
+							  </a>
+							  <a href="companypersonnel.html">
+							  		<div class="companyfour" >
+							  			<img src="../static/img/basic_ic_mainstaff.png" />
+							  			<span class="typename">主要人员</span>
+							  			<span class="typenum">0</span>
+							  		</div>
+							  </a>
+							  <a href="branchcompay.html">
+							  		<div class="companyfour" >
+							  			<img src="../static/img/basic_ic_branch.png" />
+							  			<span class="typename">分支机构</span>
+							  			<span class="typenum">0</span>
+							  		</div>
+							  </a>
+							   <a href="qingsuan.html">
+							  		<div class="companyfour" >
+							  			<img src="../static/img/basic_ic_reckoningm.png" />
+							  			<span class="typename">清算信息</span>
+							  			<span class="typenum">0</span>
+							  		</div>
+							  </a>
+							  <a href="biangenInfo.html">
+							  		<div class="companyfour" >
+							  			<img src="../static/img/basic_ic_mortgage.png" />
+							  			<span class="typename">变更信息</span>
+							  			<span class="typenum">0</span>
+							  		</div>
+							  </a>
+							  <a href="dongcandiya.html">
+							  		<div class="companyfour" >
+							  			<img src="../static/img/basic_ic_property.png" />
+							  			<span class="typename">动产抵押</span>
+							  			<span class="typenum">0</span>
+							  		</div>
+							  </a>
+							  <a href="guquanchuzhi.html">
+							  		<div class="companyfour" >
+							  			<img src="../static/img/basic_ic_equitypledge.png" />
+							  			<span class="typename">股权出质</span>
+							  			<span class="typenum">0</span>
+							  		</div>
+							  </a>
+							  <a href="zhishichanquan.html">
+							  		<div class="companyfour" >
+							  			<img src="../static/img/baic_ic_equity.png" />
+							  			<span class="typename">产权出质</span>
+							  			<span class="typenum">0</span>
+							  		</div>
+							  </a>
+							   <a href="shangbiaozhuche.html">
+							  		<div class="companyfour" >
+							  			<img src="../static/img/basic_ic_trademark.png" />
+							  			<span class="typename">商标注册</span>
+							  			<span class="typenum">0</span>
+							  		</div>
+							  </a>
+							  <a href="jiancha.html">
+							  		<div class="companyfour" >
+							  			<img src="../static/img/basic_ic_check.png" />
+							  			<span class="typename">检查抽查</span>
+							  			<span class="typenum">0</span>
+							  		</div>
+							  </a>
+							   <a href="sifaxiezhu.html">
+							  		<div class="companyfour" >
+							  			<img src="../static/img/basic_-in_judicial.png" />
+							  			<span class="typename">司法协助</span>
+							  			<span class="typenum">0</span>
+							  		</div>
+							  </a>
+							  <div class="applyInfo">以下信息由该企业自行提供</div>
+							  <a href="company_anche/ancheList.html">
+							  		<div class="companyfour" >
+							  			<img src="../static/img/provide_ic_annals.png" />
+							  			<span class="typename">年报</span>
+							  			<span class="typenum">0</span>
+							  		</div>
+							  </a>
+							  <a href="gudongchuzi.html">
+							  		<div class="companyfour" >
+							  			<img src="../static/img/provide_IC_Mshareholders.png" />
+							  			<span class="typename">股东出资</span>
+							  			<span class="typenum">0</span>
+							  		</div>
+							  </a>
+							  <a href="anche_guquanbiangeng.html">
+							  		<div class="companyfour" >
+							  			<img src="../static/img/provide_ic_changem.png" />
+							  			<span class="typename">股权变更</span>
+							  			<span class="typenum">0</span>
+							  		</div>
+							  </a>
+							  <a href="anche_xingzhengxuke.html">
+							  		<div class="companyfour" >
+							  			<img src="../static/img/lprovide_mic_icensing.png" />
+							  			<span class="typename">行政许可</span>
+							  			<span class="typenum">0</span>
+							  		</div>
+							  </a>
+							   <a href="zhishichanquan.html">
+							  		<div class="companyfour" >
+							  			<img src="../static/img/baic_ic_equity.png" />
+							  			<span class="typename">产权出质</span>
+							  			<span class="typenum">0</span>
+							  		</div>
+							  </a>
+							  <a href="company_xingzhengchufa.html">
+							  		<div class="companyfour" >
+							  			<img src="../static/img/provide_ic_punish.png" />
+							  			<span class="typename">行政处罚</span>
+							  			<span class="typenum">0</span>
+							  		</div>
+							  </a>
+						</div>
+					</li>
+					<li class=" mui_color"></li>
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right" href="xingzhengxuke.html">
+							行政许可信息（）
+						</a>
+					</li>
+					<li class=" mui_color"></li>
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right" href="xingzhengchufa.html">
+							行政处罚信息（）
+						</a>
+					</li>
+					<li class=" mui_color"></li>
+					<li class="mui-table-view-cell">
+						<a name="yichang" class="mui-navigate-right" href="yichangmulu.html">
+							列入异常目录信息（）
+						</a>
+					</li>
+					<li class=" mui_color"></li>
+					<li class="mui-table-view-cell">
+						<a name="weifa" class="mui-navigate-right" href="weifaqiye.html">
+							列入严重违法失信企业名单（）
+						</a>
+					</li>-->
+				</ul>			
+		</div>
+		
+	</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="static/css/common.css">
+		<link rel="stylesheet" href="static/css/mui.min.css">
+		<link rel="stylesheet" href="static/css/query-inf.css">
+		<script type="text/javascript" src="static/js/jquery.min.js" ></script>
+			<script type="text/javascript" src="static/js/common.js" ></script>
+			<script>
+				
+				$(function(){
+				
+					$("#searchImg1").attr("src",imgUrl+"search_credit_inquiry_small.png");
+					$("#searchImg2").attr("src",imgUrl+"search_notice_icon_small.png");
+					$("#searchImg3").attr("src",imgUrl+"search_enterprise_small.png");
+				})
+			</script>
+	</head>
+	
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <!--<a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="contribution.html"></a>-->
+		    <h1 class="mui-title"><span id="saveOrUpdate"></span>查询</h1>
+		    <span id="sure">
+		    	<!--<a href="contribution.html" class="">确定</a>-->
+		    </span>
+		</header>	
+		
+		<div id="common-boxJ">
+			<ul class="mui-table-view mui-table-view-chevron">
+				<li class="mui-table-view-cell mui-media">
+					<a class="mui-navigate-right" href="companyInfo/searchMain.html">
+						<img class="mui-media-object mui-pull-left" id="searchImg1">
+						<div class="mui-media-body">
+							企业信用查询						
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a class='mui-navigate-right' href="notice/notice_index.html?pageFrom=query">
+						<img class="mui-media-object mui-pull-left" id="searchImg2">
+						<div class="mui-media-body">
+							公示公告
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a class="mui-navigate-right" href="smallBussiness/bussinessList.html">
+						<img class="mui-media-object mui-pull-left" id="searchImg3">
+						<div class="mui-media-body">
+							小微企业
+						</div>
+					</a>
+				</li>
+			</ul>	
+			
+		</div>
+		<nav class="mui-bar mui-bar-tab" style="background:#fff;">
+			<a class="mui-tab-item" href="index.html">
+				<span class="mui-icon mui-icon-home"><img src="static/img/ic_index.png"/></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			
+			<a class="mui-tab-item mui-active" href="query-inf.html">
+				<span class="mui-icon mui-icon-compose"><img src="static/img/ic_enquiries_on.png"/></span>
+				<span class="mui-tab-label" id="menu">查询</span>
+			</a>
+			
+			<a class="mui-tab-item" href="write-inf.html">
+				<span class="mui-icon mui-icon-compose"><img src="static/img/fill.png"/></span>
+				<span class="mui-tab-label">填报</span>
+			</a>
+			
+			<a class="mui-tab-item" href="my-inf/my-index.html">
+				<span class="mui-icon mui-icon-contact"><img src="static/img/icon_mine.png"/></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+		
+	   
+	</body>
+</html>

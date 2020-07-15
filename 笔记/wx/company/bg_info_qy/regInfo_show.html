@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>海关注册信息</title>
+		<link rel="stylesheet" href="../../static/css/common.css">
+		<link rel="stylesheet" href="../../static/css/mui.min.css">
+		<link rel="stylesheet" href="../../static/css/essential-inf.css">
+		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
+		<script type="text/javascript" src="../../static/js/common.js"></script>
+	<script>
+		var ancheId=GetRequest("ANCHEID");
+  		$(function(){
+  			$("#TOKEN").val(TOKEN);
+	  		$("#SESSIONID").val(SESSIONID);
+	  		$("#ANCHEID").val(ancheId);
+	  	
+	  		//跨境贸易电子商务企业类型
+  			var CROSSBORDERTRADEFLAGS= sessionStorage.getItem("CROSSBORDERTRADEFLAGS");
+  			if(CROSSBORDERTRADEFLAGS==1){
+  				$("#kuajingDiv").show();
+  			}
+  			//是否是上市企业
+			var MARKETFLAG= sessionStorage.getItem("MARKETFLAG");
+  			if(MARKETFLAG==1){
+  				$("#shangshiDiv").show();
+  			}
+	  		
+			getData();
+			
+			
+  		})
+  		//跨境贸易电子商务企业类型
+  		var dianziType={};
+  		function getType(val){
+  			dianziType={};
+  			$.ajax({
+					type:"get",
+					url:httpUrl+"/code.json",
+					async:false,
+					data:{"CODETYPE":val},
+					dataType:"json",
+					success:function(res){
+						if(res.success){
+							for(var i=0;i<res.data.length;i++){
+								var demo = res.data[i].CODE_VALUE; 
+								dianziType[demo]=res.data[i].CODE_NAME;
+							}
+						}else{
+							mui.toast(res.codeMsg);
+						}
+					}
+				});
+  		}
+  		
+  		//代理记账单位
+  		function selectJz(){
+  		   var type=$("#ACCOUNTTYPE").val();
+  		   if(type==2){
+  		   	  $("#dailiDiv").show();
+  		   }else{
+  		   	 $("#dailiDiv").hide();
+  		   }
+  		}
+  		
+		
+		function getData(){
+			$.ajax({
+					type:"get",
+					url:httpUrl+"/h/an/cu/entreginfo/get.json",
+					async:true,
+					data:{"ANCHEID":ancheId,"SESSIONID":SESSIONID,"TOKEN":TOKEN},
+					success:function(res){
+						if(res.success){
+							createData(res.data.ancUentreginfo);
+						}
+					}
+				});
+		}
+		
+		function createData(obj){
+			$("#ENFULLCO").html(obj.ENFULLCO);  //英文名称
+			$("#ENADDRCO").html(obj.ENADDRCO);//英文地址
+			//电子商务企业类型
+		    var checkeds = obj.CROSSBORDERTRADEFLAGS;
+		    var type="";
+		    if(checkeds!=null && checkeds!=""){
+		    	//跨境贸易电子商务企业类型
+				getType("CW10");
+	            //拆分为字符串数组
+	            var checkArray =checkeds.split(",");
+	             for(var i=0;i<checkArray.length;i++){
+	                var m= checkArray[i];
+	                if(i==checkArray.length-1){
+	                	type+= dianziType[m];
+	                }else{
+	                	type+= dianziType[m]+"、";
+	                }
+	               
+	             }
+		    	
+		    }
+		    $("#CROSSBORDERTRADEFLAGS").html(type);
+			$("#ACCOBANKNM").html(obj.ACCOBANKNM);//开户银行
+			$("#ACCONO").html(obj.ACCONO);//开户账号
+			 //特殊贸易区
+	  		if(obj.SPECIALTRADEZONE!=null && obj.SPECIALTRADEZONE!=""){
+	  			 getType("CW11");  //特殊贸易区域
+	  			 $("#SPECIALTRADEZONE").html(dianziType[obj.SPECIALTRADEZONE]);
+	  		}
+			
+			//经济区划
+			if(obj.APANAGEREGION!=null && obj.APANAGEREGION!=""){
+	  			 getType("CW12");  //经济区划
+	  			 $("#APANAGEREGION").html(dianziType[obj.APANAGEREGION]);
+	  		}
+			
+			$("#CUSSPENAME").html(obj.CUSSPENAME);//关务负责人姓名
+			//身份证类型
+			if(obj.CUSSPECERTYPE!=null && obj.CUSSPECERTYPE!=""){
+	  			 getType("CB16"); //关务负责人身份证件类型
+	  			 $("#CUSSPECERTYPE").html(dianziType[obj.CUSSPECERTYPE]);
+	  		}
+			
+			//身份证号码
+			$("#CUSSPECERNO").html(obj.CUSSPECERNO);
+			$("#CUSSPETEL").html(obj.CUSSPETEL); //固定电话
+			$("#CUSSPEMOBILE").html(obj.CUSSPEMOBILE); //移动电话
+			$("#CUSSPEEMAIL").html(obj.CUSSPEEMAIL);  //电子邮箱
+			$("#CONTACNAME").html(obj.CONTACNAME); //海关负责人姓名
+			$("#CONTACTTEL").html(obj.CONTACTTEL);//固定电话
+			$("#CONTACTMOBILE").html(obj.CONTACTMOBILE);//移动电话
+			$("#CONTACTEMAIL").html(obj.CONTACTEMAIL);//电子邮箱
+			$("#CONTACTFAX").html(obj.CONTACTFAX); //传真
+			
+	  		
+			//经营场所性质
+			if(obj.SITEFLAG!=null && obj.SITEFLAG!=""){
+	  			 getType("CW13"); //经营场所性质
+	  			 $("#SITEFLAG").html(dianziType[obj.SITEFLAG]);
+	  		}
+			//是否是上市公司
+			if(obj.MARKETFLAG==1){
+				$("#MARKETFLAG").html("是");
+			}else{
+				$("#MARKETFLAG").html("否");
+			}
+			//是否实行会计电算化
+			if(obj.ACCOUNTFLAG==1){
+				$("#ACCOUNTFLAG").html("是");
+			}else{
+				$("#ACCOUNTFLAG").html("否");
+			}
+		   //财务软件名称
+		   $("#FINSOFT").html(obj.FINSOFT);
+		   //记账方式
+		   if(obj.ACCOUNTTYPE!=null && obj.ACCOUNTTYPE!=""){
+	  			 getType("CW14"); //记账方式
+	  			 $("#ACCOUNTTYPE").html(dianziType[obj.ACCOUNTTYPE]);
+	  		}
+		   if(obj.ACCOUNTTYPE==2){
+		   		$("#dailiDiv").show();
+		   		//委托代理记账单位名称
+		   		 $("#ACCOUNTNAME").html(obj.ACCOUNTNAME);
+		   		 //统一社会信用代码
+		   		 $("#ACCOUNTSOCIALCREDITCODE").html(obj.ACCOUNTSOCIALCREDITCODE);
+		   		 //单位地址
+		   		 $("#ACCOUNTADDR").html(obj.ACCOUNTADDR);
+		   		 //单位联系人
+		   		 $("#ACCOUNTCONTACT").html(obj.ACCOUNTCONTACT);
+		   		 //单位电话
+		   		 $("#ACCOUNTTEL").html(obj.ACCOUNTTEL);
+		   }
+		    
+		}
+	
+	</script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" ></a>
+		    <h1 class="mui-title">海关注册信息</h1>
+		</header>
+		
+		<!--基本信息-->
+		<form id="addForm">
+			<input type="hidden" name="SESSIONID" id="SESSIONID" />
+			<input type="hidden" name="TOKEN" id="TOKEN"/>
+			<input type="hidden" name="ANCHEID" id="ANCHEID"/>
+			
+		<div id="common-box">
+			<div id="line-block">
+					<div class="web-box">
+						<ul>
+							<li style="color: red;">
+									*以下信息为海关年报信息预览，不进行公示
+							</li>
+						</ul>
+				</div>
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									英文名称
+								</span>
+								<span id="ENFULLCO" class="asset-con">
+								</span>
+								
+							</li>
+						</ul>
+				</div>
+				
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									英文地址
+								</span>
+								<span id="ENADDRCO" class="asset-con">
+								</span>
+							</li>
+						</ul>
+				</div>
+				
+				<div class="web-box" id="kuajingDiv" style="display: none;">
+						<ul>
+							<li>
+								<span>
+									跨境贸易电子商务企业类型
+								</span>
+								<span id="CROSSBORDERTRADEFLAGS" class="asset-con">
+								</span>
+							</li>
+						</ul>
+				</div>
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									开户银行
+								</span>
+								<span id="ACCOBANKNM" class="asset-con">
+								</span>
+							</li>
+						</ul>
+				</div>
+				
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									开户账号
+								</span>
+								<span id="ACCONO" class="asset-con">
+								</span>
+							</li>
+						</ul>
+				</div>
+			
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									特殊贸易区域
+								</span>
+								<span id="SPECIALTRADEZONE" class="asset-con">
+								</span>
+							</li>
+						</ul>
+				</div>
+				
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									经济区划
+								</span>
+								<span id="APANAGEREGION" class="asset-con">
+								</span>
+							</li>
+						</ul>
+				</div>
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									经营场所性质
+								</span>
+								<span id="SITEFLAG" class="asset-con">
+								</span>
+							</li>
+						</ul>
+				</div>
+				<div class="web-box" id="shangshiDiv" style="display: none;">
+					<ul>
+						<li>
+							<span >
+								是否上市公司
+							</span>
+							<span id="MARKETFLAG" class="asset-con">
+								</span>
+						</li>
+					</ul>
+				</div>
+				<div class="web-box" >
+					<ul>
+						<li>
+							<span >
+								是否实行会计电算化
+							</span>
+							<span id="ACCOUNTFLAG" class="asset-con"></span>
+						</li>
+					</ul>
+				</div>
+				<div class="web-box" id="finsoftDiv" style="display: none;">
+					<ul>
+						<li>
+							<span >
+								财务管理软件名称
+								
+							</span>
+							<span id="FINSOFT" class="asset-con"></span>
+							<!--<span style="color: red;">（注：该数据项当“是否实行会计电算化”的值为“是”的时候显示）</span>-->
+						</li>
+					</ul>
+				</div>
+				<div class="web-box">
+					<ul>
+						<li>
+							<span >
+								记账方式
+							</span>
+							<span id="ACCOUNTTYPE" class="asset-con">
+								</span>
+							
+						</li>
+					</ul>
+				</div>
+				<div class="web-box" id="dailiDiv" style="display: none;">
+					<div id="social-title">
+						<h4>委托代理记账单位</h4> 
+						<!--<span style="color: red;">（注：该数据项当“记账方式”的值为“委托代理记账”的时候显示）</span>-->
+						<!--<span class="contribution-arrow-right"><img src="img/show-no.png"/></span>-->
+					</div>
+						<ul>
+							<li>
+								<span >
+									单位名称
+								</span>
+								<span id="ACCOUNTNAME" class="asset-con"></span>
+							</li>
+						</ul>
+				
+				<div class="web-box">
+					<ul>
+						<li>
+							<span >
+								统一社会信用代码
+							</span>
+							<span id="ACCOUNTSOCIALCREDITCODE" class="asset-con"></span>
+						</li>
+					</ul>
+				</div>
+				<div class="web-box">
+					<ul>
+						<li>
+							<span >
+								单位地址
+							</span>
+							<span id="ACCOUNTADDR" class="asset-con"></span>
+						</li>
+					</ul>
+				</div>
+				<div class="web-box">
+					<ul>
+						<li>
+							<span >
+								单位联系人
+							</span>
+							<span id="ACCOUNTCONTACT" class="asset-con"></span>
+						</li>
+					</ul>
+				</div>
+				<div class="web-box">
+					<ul>
+						<li>
+							<span >
+								单位电话
+							</span>
+							<span id="ACCOUNTTEL" class="asset-con"></span>
+						</li>
+					</ul>
+				</div>
+			</div>
+				<div class="web-box">
+					<div id="social-title">
+						<h4>关务负责人</h4>
+					</div>
+						<ul>
+							<li>
+								<span >
+									姓名
+								</span>
+								<span id="CUSSPENAME" class="asset-con"></span>
+							</li>
+						</ul>
+				</div>
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									身份证件类型
+								</span>
+								<span id="CUSSPECERTYPE" class="asset-con"></span>
+								
+							</li>
+						</ul>
+				</div>
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									身份证件号码
+								</span>
+								<span id="CUSSPECERNO" class="asset-con"></span>
+							</li>
+						</ul>
+				</div>
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									固定电话
+								</span>
+								<span id="CUSSPETEL" class="asset-con"></span>
+							</li>
+						</ul>
+				</div>
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									移动电话
+								</span>
+								<span id="CUSSPEMOBILE" class="asset-con"></span>
+							</li>
+						</ul>
+				</div>
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									电子邮箱
+								</span>
+								<span id="CUSSPEEMAIL" class="asset-con"></span>
+							</li>
+						</ul>
+				</div>
+				<div class="web-box">
+					<div id="social-title">
+						<h4>海关业务负责人</h4> 
+						<!--<span class="contribution-arrow-right"><img src="img/show-no.png"/></span>-->
+					</div>
+						<ul>
+							<li>
+								<span >
+									姓名
+								</span>
+								<span id="CONTACNAME" class="asset-con"></span>
+							</li>
+						</ul>
+				</div>
+			
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									固定电话
+								</span>
+								<span id="CONTACTTEL" class="asset-con"></span>
+							</li>
+						</ul>
+				</div>
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									移动电话
+								</span>
+								<span id="CONTACTMOBILE" class="asset-con"></span>
+							</li>
+						</ul>
+				</div>
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									电子邮箱
+								</span>
+								<span id="CONTACTEMAIL" class="asset-con"></span>
+							</li>
+						</ul>
+				</div>
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									传真
+								</span>
+								<span id="CONTACTFAX" class="asset-con"></span>
+							</li>
+						</ul>
+				</div>
+			</div>
+				
+		</div>
+	</form>	
+		
+	</body>
+</html>

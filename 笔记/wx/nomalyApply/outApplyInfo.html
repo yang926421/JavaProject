@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/objection.css">
+		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+			<script type="text/javascript" src="../static/js/common.js" ></script>
+			<script>
+				var BUSEXCLIST=GetRequest("BUSEXCLIST");
+				var objection =JSON.parse( sessionStorage.getItem(BUSEXCLIST));
+				var reason=objection.SPECAUSE_CN;
+				var decorg = objection.DECORG_CN;
+				var creDate=objection.ABNTIME;
+				$(function(){
+					getData();
+				});
+				function getData(){
+					$.ajax({
+						type:"get",
+						url:httpUrl+"/e/opa/out/info.json",
+						async:true,
+						data:{"BUSEXCLIST":BUSEXCLIST, "SESSIONID":SESSIONID,"TOKEN":TOKEN},
+						dataType:"json",
+						success:function(res){
+							if(res.success==true){
+								createData(res.data);
+							}
+						}
+					});
+				}
+				
+				function createData(obj){
+					var htmlData="";
+					htmlData="<div class='web-box'><div class='web-name'><ul class='web'>"+ 
+					          "<li><span>列入机关：</span> <span>"+decorg+"</span></li>"+
+					          "<li><span>列入日期：</span> <span>"+getFormatDateByLong(creDate,"yyyy年MM月dd日")+"</span></li>"+
+							  "<li><span>列入原因：</span> <span>"+reason+"</span></li>"+
+							  "</ul></div></div>";
+					if(obj.length>0){
+						for (var i=0;i<obj.length;i++) {
+							htmlData+=" <div class='web-box'>"+
+										"	<div class='web-name'>"+
+										"		<ul class='web'>"+
+										"			<li><span>申请时间：</span> <span>"+getFormatDateByLong(obj[i].CREATEDTIME,"yyyy年MM月dd日")+"</span></li>"+
+										"			<li><span>受理结果：</span><span>"+obj[i].RESULT+"</span></li>"+
+										"			<li><span>受理意见：</span> <span>"+obj[i].OPINION+"</span></li>"+
+										"		</ul>"+
+										"	</div>"+
+									"</div>";
+						}
+					}else{
+						mui.toast("没有更多数据了")
+					}
+					$("#common-box").html(htmlData);
+				}
+			</script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="other-inf.html"></a>
+		    <h1 class="mui-title">移出申请记录</h1>
+		</header>
+		<!--登记信息-->
+		<div id="common-box" style="margin-top: 45px;">
+			<!--<div class="web-box">
+				<a href="add-penalty-inf.html">
+					<div class="web-name">
+						<ul class="web">
+							<li><span>处罚机关：</span> <span >卫生局</span></li>
+							<li><span>处罚决定书文号：</span> <span >54435456</span></li>
+							<li><span>处罚决定书签发日期：</span> <span >2017年6月30日</span></li>
+							<li><span>违法行为类型：</span> <span >拖欠工资</span></li>
+							<li><span>处罚种类：</span> <span >责令停产停业</span></li>
+							<li><span>公示状态：</span> <span >已公示</span></li>
+						</ul>
+						
+						<div class="arrow-right-01">
+							<img src="../static/img/arrow-right.png"/>
+						</div>
+					</div>
+				</a>
+			</div>-->
+			
+		</div>
+		<input type="hidden" name="page" id="page" value="1" />
+	<input type="hidden" name="totalPage" id="totalPage" value="1"/>
+	
+	<div id="loadData" style="display: none;" onclick="getData();">点击加载更多...</div>
+	<!--加载点-->
+	<div id="loading" style="display: none;" class="spinner">
+		 <div class="bounce1"></div>
+		 <div class="bounce2"></div>
+		 <div class="bounce3"></div>
+	</div>
+	
+	<div id="noData" style="display: none;" >没有更多了...</div>
+		
+	</body>
+</html>

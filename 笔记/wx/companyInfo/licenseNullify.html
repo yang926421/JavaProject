@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>营业执照作废声明</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/modify-record.css">
+			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+			<script type="text/javascript" src="../static/js/common.js" ></script>
+		<style>
+			.web{padding-top:15px;}
+		</style>
+
+     <script>
+     	
+     	var pripid=sessionStorage.getItem("PRIPID"); 
+     	var type=sessionStorage.getItem("TYPE");  //1是企业2是农专3是个体
+     	
+     	$(function(){
+     		getData();
+     	})
+     	function getData(){
+     		$.ajax({
+     			type:"get",
+     			url:httpUrl+"/p/licenseNullify/pripid/list.json",
+     			data:{"PRIPID":pripid},
+     			dataType:"json",
+     			async:true,
+     			success:function(res){
+     				if(res.success){
+     					createData(res.data);
+     				}
+     			}
+     		});
+     	}
+     	
+     	function createData(obj){
+     		$("#count").html(obj.length);
+     		var htmlData="";
+     		if(obj!=null && obj.length>0){
+     			for(var i=0;i<obj.length;i++){
+     				htmlData+="<div class='web-box'>"+
+							"<div class='web-name'>"+
+							"	<ul class='web'>"+
+							"		<li><span>是否正副本：</span> <span>"+obj[i].ISORICOP+"</span></li>"+
+							"		<li><span>副本编号：</span><span>"+obj[i].LICCOPYNO +"</span></li>"+
+							"		<li><span>声明内容：</span><span>"+obj[i].LICCANSTA+"</span></li>"+
+							"		<li><span>声明日期：</span><span>"+obj[i].LICCANDATE+"</span> </li>"+
+							"		<li><span>是否已补领：</span><span>"+obj[i].ISREILIC+"</span> </li>"+
+							"		<li><span>补领日期：</span><span>"+getFormatDateByLong(obj[i].REIDATE,"yyyy年MM月dd日")+"</span> </li>"+
+							"	</ul>";
+							htmlData+="</div></div> ";	
+     			}
+     			$("#common-box").html(htmlData);
+     		}
+     	}
+     	
+     </script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="companyDetail.htmll"></a>
+		    <h1 class="mui-title">营业执照作废声明(<span id="count"></span>)</h1>
+		</header>
+		
+		<!--修改信息-->
+		<div id="common-box">
+			<!--<div class="web-box">
+				<div class="web-name">
+					<ul class="web">
+						<li><span>决定书文号：</span> <span>4578457574</span></li>
+						<li><span>违法行为类型：</span><span>类型类型</span></li>
+						<li><span>行政处罚内容：</span><span>吊销营业执照，责令一个月整改</span></li>
+						<li><span>决定机关名称：</span><span>卫生局</span></li>
+						<li><span>出发决定日期：</span><span>2017年5月31日</span></li>
+						<li><span>公示日期：</span><span>2017年5月31日</span></li>
+						<li><span>备注：</span><span>无</span></li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="web-box">
+				<div class="web-name">
+					<ul class="web">
+						<li><span>决定书文号：</span> <span>4578457574</span></li>
+						<li><span>违法行为类型：</span><span>类型类型</span></li>
+						<li><span>行政处罚内容：</span><span>吊销营业执照，责令一个月整改</span></li>
+						<li><span>决定机关名称：</span><span>卫生局</span></li>
+						<li><span>出发决定日期：</span><span>2017年5月31日</span></li>
+						<li><span>公示日期：</span><span>2017年5月31日</span></li>
+						<li><span>备注：</span><span>无</span></li>
+					</ul>
+				</div>
+			</div>-->
+		</div>
+		
+	</body>
+</html>

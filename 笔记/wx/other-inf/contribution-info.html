@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/contribution-inf.css">
+			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+			<script type="text/javascript" src="../static/js/common.js" ></script>
+			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+		<script>
+			var INVID=GetRequest("INVID");
+			var SHAREHOLDER=GetRequest("SHAREHOLDER");
+			
+			$(function(){
+				getData();
+			});
+			
+			function getData(){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/e/self/investment/get.json",
+					data:{"INVID":INVID, "TOKEN":TOKEN,"SESSIONID":SESSIONID},
+					async:true,
+					dataType:"json",
+					success:function(res){
+						if(res.success==true){
+							
+							createData(res.data);
+						}
+					}
+				});
+			}
+			
+			function createData(obj){
+					$("#INV").html(obj.baseInfo.INV);
+					$("#SUBAMOUNT").html(obj.baseInfo.SUBAMOUNT);
+					$("#PAIDAMOUNT").html(obj.baseInfo.PAIDAMOUNT);
+					var renjiaoHtml="";
+					var shijiaoHtml="";
+					if(obj.vprodetail!=null && obj.vprodetail.length>0){   //认缴明细
+						for(var i=0;i<obj.vprodetail.length;i++){
+							var hrefUrl="";
+							if(obj.vprodetail[i].STATUS=="已公示" || obj.vprodetail[i].STATUS=="修改待公示"){
+								hrefUrl="update-subscription-inf.html";
+							}else{
+								hrefUrl="modify-subscription-inf.html";
+							}
+							
+						    renjiaoHtml+="<a onclick='updateDetail(\""+hrefUrl+"\",1,\""+obj.vprodetail[i].SUBID+"\")' >"+
+										"<div class='web-name'>"+
+										"	<ul class='web'>"+
+										"		<li><span>认缴出资额（万元）：</span> <span>"+obj.vprodetail[i].SUBCONAM+"</span></li>"+
+										"		<li><span>认缴出资时间：</span> <span>"+getFormatDateByLong(obj.vprodetail[i].CONDATE,"yyyy年MM月dd日")+"</span></li>"+
+										"		<li><span>认缴出资方式：</span> <span>"+obj.vprodetail[i].CONFORM_CN+"</span></li>"+
+										"		<li><span>公示状态：</span> <span>"+obj.vprodetail[i].STATUS+"</span></li>"+
+										"	</ul>"+
+										"	<div class='arrow-right'>"+
+										"		<img src='../static/img/arrow-right.png'/>"+
+										"	</div>"+
+										"</div>"+
+									"</a> ";
+						}
+					}
+					$("#renjiaoInfo").html(renjiaoHtml);
+					
+					if(obj.vactdetail!=null && obj.vactdetail.length>0){  //实缴明细
+						for(var j=0;j<obj.vactdetail.length;j++){
+							var hrefUrl="";
+							if( obj.vactdetail[j].STATUS=="已公示" || obj.vactdetail[j].STATUS=="修改待公示"){
+								hrefUrl="update-paid-inf.html";
+							}else{
+								hrefUrl="modify-paid-inf.html";
+							}
+						   shijiaoHtml+="<a onclick='updateDetail(\""+hrefUrl+"\",2,\""+obj.vactdetail[j].PAIDID+"\")' >"+
+										"<div class='web-name'>"+
+										"	<ul class='web'>"+
+										"		<li><span>实缴出资额（万元）：</span> <span>"+obj.vactdetail[j].ACCONAM+"</span></li>"+
+										"		<li><span>实缴出资时间：</span> <span>"+getFormatDateByLong( obj.vactdetail[j].CONDATE,"yyyy年MM月dd日") +"</span></li>"+
+										"		<li><span>实缴出资方式：</span> <span>"+obj.vactdetail[j].CONFORM_CN+"</span></li>"+
+										"		<li><span>公示状态：</span> <span>"+obj.vactdetail[j].STATUS+"</span></li>"+
+										"	</ul>"+
+										"	<div class='arrow-right'>"+
+										"		<img src='../static/img/arrow-right.png'/>"+
+										"	</div>"+
+										"</div>"+
+									"</a> ";
+						}
+					}
+				$("#shijiaoInfo").html(shijiaoHtml);
+			}
+			
+			function updateInv(){
+				window.location.href="add-contribution.html?INVID="+INVID;
+			}
+			
+			function addDetail(val){
+				if(val==1){
+					window.location.href="modify-subscription-inf.html?INVID="+INVID;
+				}else{
+					window.location.href="modify-paid-inf.html?INVID="+INVID;
+				}
+			}
+			
+			function updateDetail(hrefUrl,val,id){
+				if(val==1){
+					window.location.href=hrefUrl+"?INVID="+INVID+"&SUBID="+id;
+				}else{
+					window.location.href=hrefUrl+"?INVID="+INVID+"&PAIDID="+id;
+				}
+			}
+			
+			function returnPage(){
+				window.location.href="contribution-list.html";
+			}
+			
+		</script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-icon mui-icon-back mui-pull-left" onclick="returnPage()"></a>
+		    <h1 class="mui-title">股东及出资信息 	</h1>
+		</header>
+	    <!--<nav class="mui-bar mui-bar-tab" style="background-color: #F2F2F2;height: 70px;">
+			<a class="mui-tab-item  mui-active" onClick="addAndPublic()" style="display: inline-block;height: 50px;line-height: 50px; width: 90%; margin-top: 10px;margin-left: 5%;border-radius: 5px; color: #FFFFFF;background: #ac812e;" id="addBtn" >
+				公示全部信息
+			</a>
+		</nav>-->
+		<!--股东出资信息-->
+		<div id="common-box" style="margin-bottom: 70px;">
+			<div class="web-box">
+				<div class="web-name">
+					<h4 id="INV"></h4>	<a onclick="updateInv()"><span class="name-repair"><img src="../static/img/name-repair.png"/></span></a>
+					<ul class="web">
+						<li><span>认缴出资额（万元）：</span> <span id="SUBAMOUNT"></span></li>
+						<li><span>实缴出资额（万元）：</span> <span id="PAIDAMOUNT"></span></li>
+					</ul>
+				</div>
+			</div>
+			
+			<!--认缴-->
+			<div class="con-name">
+				<h4>认缴出资明细</h4> <a onclick="addDetail(1)">+ 添加认缴明细</a>
+			</div>
+			<div class="web-box" id="renjiaoInfo">
+				<!--<a href="modify-subscription-inf.html">
+					<div class="web-name">
+						<ul class="web">
+							<li><span>认缴出资额（万元）：</span> <span >880</span></li>
+							<li><span>认缴出资时间：</span> <span >2017年02月12日</span></li>
+							<li><span>认缴出资方式：</span> <span >货币</span></li>
+							<li><span>公示状态：</span> <span >已公示</span></li>
+						</ul>
+						<div class="arrow-right">
+							<img src="../img/arrow-right.png"/>
+						</div>
+					</div>
+				</a>
+				
+				<a href="modify-subscription-inf.html">
+					<div class="web-name">
+						<ul class="web">
+							<li style="padding-top: 0;"><span>认缴出资额（万元）：</span> <span >880</span></li>
+							<li><span>认缴出资时间：</span> <span >2017年02月12日</span></li>
+							<li><span>认缴出资方式：</span> <span >货币</span></li>
+							<li><span>公示状态：</span> <span >已公示</span></li>
+						</ul>
+						<div class="arrow-right">
+							<img src="../img/arrow-right.png"/>
+						</div>
+					</div>
+				</a>-->
+			</div>
+			
+			
+			<!--认缴-->
+			<div class="con-name">
+				<h4>实缴出资明细</h4> <a onclick="addDetail(2)">+ 添加实缴明细</a>
+			</div>
+			<div class="web-box" id="shijiaoInfo">
+				<!--<a href="add-contribution.html">
+					<div class="web-name">
+						<ul class="web">
+							<li><span>实缴出资额（万元）：</span> <span >880</span></li>
+							<li><span>实缴出资时间：</span> <span >2017年02月12日</span></li>
+							<li><span>实缴出资方式：</span> <span >货币</span></li>
+							<li><span>公示状态：</span> <span >已公示</span></li>
+						</ul>
+						<div class="arrow-right">
+							<img src="../img/arrow-right.png"/>
+						</div>
+					</div>
+				</a>-->
+			</div>
+			
+			
+		</div>
+	</body>
+</html>

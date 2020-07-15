@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="static/css/common.css">
+		<link rel="stylesheet" href="static/css/mui.min.css">
+		<link rel="stylesheet" href="static/css/query-inf.css">
+			<script type="text/javascript" src="static/js/jquery.min.js" ></script>
+			<script type="text/javascript" src="static/js/common.js" ></script>
+			<script type="text/javascript" src="static/js/mui.min.js" ></script>
+			<script>
+				$(function(){
+					
+					$("#readImg1").attr("src",imgUrl+"read_annual_report_small.png");
+					$("#readImg2").attr("src",imgUrl+"read_other_small.png");
+					$("#readImg3").attr("src",imgUrl+"zxbatb.png");
+					$("#readImg4").attr("src",imgUrl+"jtcytb.png");
+					$("#readImg5").attr("src",imgUrl+"yezzzfsm.png");
+					$("#readImg6").attr("src",imgUrl+"jyyctb.png");
+					$("#readImg7").attr("src",imgUrl+"yzwftb.png");
+					if(write==1){
+						$("#otherInfo").click(function(){
+							mui.toast("系统正在完善中，敬请期待。");
+						});
+						$("#simpleInfo").click(function(){
+							mui.toast("系统正在完善中，敬请期待。");
+						});
+					}else{
+						//关于填写的暂时屏蔽
+						if(PRIPID!=null && PRIPID!=""){
+							//其他信息登记显示情况
+							if(OTHER_PUBLICITY){
+								$("#otherInfo").show();
+							}else{
+								$("#otherInfo").hide();
+							}
+							//简易注销显示情况
+//							if(TYPE!=3){
+//								$("#simpleInfo").show();
+//							}else{
+//								$("#simpleInfo").hide();
+//							}
+							if(EASY_CANCLE){
+								$("#simpleInfo").show();
+							}else{
+								$("#simpleInfo").hide();
+							}
+							// 集团成员
+							if(GROUP_MEMBER){
+								$("#groupmemberInfo").show();
+							}else{
+								$("#groupmemberInfo").hide();
+							}
+							//营业执照
+							if(TYPE==1){
+								$("#lienceInfo").show();
+							}else{
+								$("#lienceInfo").hide();
+							}
+							$("#otherInfo").click(function(){
+								window.location.href="other-inf/other-inf.html";
+							});
+							$("#simpleInfo").click(function(){
+								window.location.href="simple-cancel/simple-cancellation.html";
+							});
+							$("#groupmemberInfo").click(function(){
+								window.location.href="groupMenberInfo/groupMenber-list.html";
+							});
+							$("#lienceInfo").click(function(){
+								window.location.href="licenseNullifyInfo/license-list.html";
+							});
+							$("#pubIllInfo").click(function(){
+								window.location.href="illDishonesty/illIndex.html";
+							});
+						}else{
+							$("#otherInfo").click(function(){
+								window.location.href="login.html";
+							});
+							$("#simpleInfo").click(function(){
+								window.location.href="login.html";
+							});
+							$("#groupmemberInfo").click(function(){
+								window.location.href="login.html";
+							});
+							$("#lienceInfo").click(function(){
+								window.location.href="login.html";
+							});
+							$("#pubIllInfo").click(function(){
+								window.location.href="login.html";
+							});
+						}
+					}
+					
+					
+					document.getElementById('index').addEventListener('tap',function(){
+						window.location.href='index.html'
+				});
+				document.getElementById('query').addEventListener('tap',function(){
+						window.location.href='query-inf.html'
+				});
+				document.getElementById('write').addEventListener('tap',function(){
+						window.location.href='write-inf.html'
+				});
+				document.getElementById('mine').addEventListener('tap',function(){
+						window.location.href='my-inf/my-index.html'
+				});
+					
+					
+					
+			});
+				//年报连接跳转
+			function goAnche(){
+				if(write==1){
+					mui.toast("系统正在完善中，敬请期待。");
+				}else{
+					//年报填写暂时屏蔽
+					if(TYPE==1){
+						window.location.href="company/anche/report-list.html";
+					}else if(TYPE==2){
+						window.location.href="sfc/sfc_anche/report-list.html";
+					}else if(TYPE==3){
+						window.location.href="pb/pb_anche/report-list.html";
+					}else{
+						window.location.href="login.html";
+					}
+					
+				}
+			}
+			</script>
+	
+	</head>
+	
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <!--<a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="contribution.html"></a>-->
+		    <h1 class="mui-title"><span id="saveOrUpdate"></span>填报</h1>
+		    <span id="sure">
+		    	<!--<a href="contribution.html" class="">确定</a>-->
+		    </span>
+		</header>	
+		
+		<div id="common-boxJ">
+			<ul class="mui-table-view mui-table-view-chevron">
+				<li class="mui-table-view-cell mui-media">
+					<a class="mui-navigate-right" href="javascript:;" onclick="goAnche();">
+						<img class="mui-media-object mui-pull-left" id="readImg1">
+						<div class="mui-media-body">
+							年度报告填写						
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media" id="otherInfo">
+					<a class='mui-navigate-right' href="javascript:;" >
+						<img class="mui-media-object mui-pull-left" id="readImg2">
+						<div class="mui-media-body">
+							其他自行公示信息填报
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media" id="simpleInfo">
+					<a class="mui-navigate-right" href="javascript:;" >
+						<img class="mui-media-object mui-pull-left" id="readImg3">
+						<div class="mui-media-body">
+							简易注销公告填报
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media" id="groupmemberInfo">
+					<a class="mui-navigate-right" href="javascript:;" >
+						<img class="mui-media-object mui-pull-left" id="readImg4">
+						<div class="mui-media-body">
+							集团成员信息填报
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media" id="lienceInfo">
+					<a class="mui-navigate-right" href="javascript:;" >
+						<img class="mui-media-object mui-pull-left" id="readImg5">
+						<div class="mui-media-body">
+							营业执照作废声明填报
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media" id="nomalyInfo">
+					<a class="mui-navigate-right" href="nomalyApply/apply-index.html" >
+						<img class="mui-media-object mui-pull-left"  id="readImg6">
+						<div class="mui-media-body">
+							经营异常
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media" id="pubIllInfo">
+					<a class="mui-navigate-right" href="javascript:;" >
+						<img class="mui-media-object mui-pull-left" id="readImg7">
+						<div class="mui-media-body">
+							严重违法
+						</div>
+					</a>
+				</li>
+			</ul>	
+			
+		</div>
+		<nav class="mui-bar mui-bar-tab" style="background:#fff;">
+			<a class="mui-tab-item" id="index">
+				<span class="mui-icon mui-icon-home"><img src="static/img/ic_index.png"/></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			
+			<a class="mui-tab-item" id="query">
+				<span class="mui-icon mui-icon-compose"><img src="static/img/ic_enquiries.png"/></span>
+				<span class="mui-tab-label">查询</span>
+			</a>
+			
+			<a class="mui-tab-item mui-active" id="write">
+				<span class="mui-icon mui-icon-compose"><img src="static/img/fill_on.png"/></span>
+				<span class="mui-tab-label" id="menu">填报</span>
+			</a>
+			
+			<a class="mui-tab-item" id="mine">
+				<span class="mui-icon mui-icon-contact"><img src="static/img/icon_mine.png"/></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+		
+	   
+	</body>
+</html>

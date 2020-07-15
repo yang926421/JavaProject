@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>修改记录</title>
+		<link rel="stylesheet" href="../../static/css/common.css">
+		<link rel="stylesheet" href="../../static/css/mui.min.css">
+		<link rel="stylesheet" href="../../static/css/modify-record.css">
+		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
+		<script type="text/javascript" src="../../static/js/common.js"></script>
+		<script>
+			var ancheId=GetRequest("ANCHEID");  //年报id
+			$(function(){
+				page=1;
+				getData();
+			})
+			
+			function getData(){
+				page=$("#page").val();
+					if(page==0){
+						page=1;
+					}
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/p/e/self/an/update/list.json",
+					async:true,
+					data:{"ANCHEID":ancheId,"page":page,"pageSize":pageSize},
+					dataType:"json",
+					success:function(res){
+						if(res.success==true){
+							loadPage(res);
+							createData(res.data);
+							$("#count").html(res.records);
+						}
+					}
+				});
+			}
+			
+			
+			function createData(obj){
+				if(obj!=null && obj.length>0){
+					var htmlData="";
+					for(var i=0;i<obj.length;i++){
+						htmlData+=" <div class='web-name'>"+
+							"<h4>"+obj[i].ALITEM+"</h4>"+
+							" <ul class='web'>"+
+							"	<li><span>修改前：</span> <span>"+obj[i].ALTBE+"</span></li>"+
+							"	<li><span>修改后：</span> <span>"+obj[i].ALTAF+"</span></li>"+
+							"	<li><span>修改日期：</span> <span>"+getSmpFormatDateByLong(obj[i].ALTDATE,false)+"</span></li>"+
+							"</ul>"+
+						"</div>"+
+					"</div>"
+						
+					}
+					$("#common-box").append(htmlData);
+				}else{
+					$("#count").html(0);
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="javascript:history.go(-1);"></a>
+		    <h1 class="mui-title">修改记录(<span id="count"></span>)</h1>
+		    <span id="add">
+<!--		    	<a href="add-website.html" class=""><img src="img/add.png"/></a>-->
+		    </span>
+		</header>
+		
+		<!--修改信息-->
+		<div id="common-box" style="background: #FFFFFF;">
+				<!--<div class="web-name">
+					<h4>电子邮箱</h4>
+					<ul class="web">
+						<li><span>修改前：</span> <span >fengtou@sina.com.cn</span></li>
+						<li><span>修改后：</span> <span >45784518@qq.com</span></li>
+						<li><span>修改日期：</span> <span >2017年5月31日</span></li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="web-box">
+				<div class="web-name">
+					<h4>资产总额</h4>
+					<ul class="web">
+						<li><span>修改前：</span> <span >450124</span></li>
+						<li><span>修改后：</span> <span >4578451</span></li>
+						<li><span>修改日期：</span> <span >2017年5月31日</span></li>
+					</ul>
+				</div>-->
+			
+		</div>
+				
+	<input type="hidden" name="page" id="page" value="1" />
+	<input type="hidden" name="totalPage" id="totalPage" value="1"/>
+	
+	<div id="loadData" style="display: none;" onclick="getData();">点击加载更多...</div>
+	<!--加载点-->
+	<div id="loading" style="display: none;" class="spinner">
+		 <div class="bounce1"></div>
+		 <div class="bounce2"></div>
+		 <div class="bounce3"></div>
+	</div>
+	
+	<div id="noData" style="display: none;" >没有更多了...</div>
+		
+	</body>
+</html>

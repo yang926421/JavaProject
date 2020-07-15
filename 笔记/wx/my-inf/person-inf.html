@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/my-index.css">
+			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+			<script type="text/javascript" src="../static/js/common.js" ></script>
+		<script>
+			$(function(){
+				$("#name").html(sessionStorage.getItem("name"));
+				$("#mobile").html(sessionStorage.getItem("mobile"));
+				$("#cardId").html(sessionStorage.getItem("cardId"));
+				$("#body_no").html(BODY_NO);
+				$("#body_name").html(BODY_NAME);
+			})
+		</script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="my-index.html"></a>
+		    <h1 class="mui-title">个人信息 </h1>
+		</header>
+		
+		<!--填写注册信息-->
+		<div id="common-box">
+			<div id="person-inf">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<p>姓名<span class="mui-pull-right" id="name"></span></p>
+					</li>
+					<li class="mui-table-view-cell">
+						<p>手机号<span class="mui-pull-right" id="mobile"></span></p>
+					</li>
+					<li class="mui-table-view-cell">
+						<p>身份证号<span class="mui-pull-right" id="cardId"></span></p>
+					</li>
+					<li class="mui-table-view-cell">
+						<p>企业(个体、农专)名称<span class="mui-pull-right" id="body_name"></span></p>
+					</li>
+					<li class="mui-table-view-cell">
+						<p>统一社会信用代码/注册号<span class="mui-pull-right" id="body_no"></span></p>
+					</li>
+				</ul>
+				
+			    
+			</div>
+			
+		    
+		</div>
+		
+	    
+		<script src="../static/js/jquery.min.js"></script>
+		<script src="../static/js/login.js"></script>
+	</body>
+</html>

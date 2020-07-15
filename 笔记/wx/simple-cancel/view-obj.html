@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/view-obj.css">
+		<script src="../static/js/jquery.min.js"></script>
+		<script type="text/javascript" src="../static/js/common.js" ></script>
+	    <script type="text/javascript" src="../static/js/mui.min.js" ></script>
+	    <script>
+	    	var SCID=GetRequest("SCID");
+	    	$(function(){
+				getData();
+			});
+			function getData(){
+				 page=$("#page").val();
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/p/escobjection/list.json",
+					async:true,
+					data:{"SCID":SCID,"page":page,"pageSize":pageSize},
+					dataType:"json",
+					beforeSend:function(){
+						$("#loading").show();
+					},
+					success:function(res){
+						$("#loading").hide();
+						
+						if(res.success==true){
+							if(typeof(res.data) !="undefined"){
+								loadPage(res);
+							    createData(res.data);
+							}else{
+								mui.toast(res.codeMsg);
+							}
+						}/*else{
+							mui.toast(res.codeMsg);
+						}*/
+					}
+				});
+				}
+			
+				function createData(obj){
+				//	var htmladd="<a href='write-obj.html?SCID="+SCID+"' ><img src='../static/img/add.png'/></a>"
+				//	$("#add").append(htmladd);
+					var htmlData ="";
+				   	if(obj.length>0){
+						for(var i=0;i<obj.length;i++){
+								htmlData+="<div class='web-box'><ul class='mui-table-view mui-table-view-chevron'>"+
+								"<li class='mui-table-view-cell mui-media'>"+
+									"<a class='mui-navigate-right' href='write-obj.html?SCOBJID="+obj[i].SCOBJID+"&SCID="+obj[i].SCID+"'>"+
+										"<div class='mui-media-body'>"+
+											"<h4>"+obj[i].ENTNAME+"</h4>"+
+											"<span id='obj-name'>"+
+												obj[i].OBJECTION
+											+"</span><p class='mui-ellipsis'>"+getFormatDateByLong(obj[i].OBJAPPTIME,"yyyy年MM月dd日")+"</p></div></a></li></ul></div>";
+						}
+						$("#common-box").append(htmlData);
+					}else{
+						mui.toast("未查询到异议")
+					}
+				}
+	    </script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="simple-cancellation-notice.html"></a>
+		    <h1 class="mui-title">查看异议</h1>
+		    <!--<span id="add">
+		    	
+		    </span>-->
+		</header>
+		
+		<!--修改信息-->
+		<div id="common-box">
+		<!--	<div class="web-box">
+				<ul class="mui-table-view mui-table-view-chevron">
+					<li class="mui-table-view-cell mui-media">
+						<a class="mui-navigate-right" href="write-obj.html">
+							<div class="mui-media-body">
+								<h4>李大明：</h4>
+								<span id="obj-name">
+									公司快经营不下去了，我要提前注销企业，做企业真的很难
+								</span>
+								<p class='mui-ellipsis'>2016年5月31日</p>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+			
+			<div class="web-box">
+				<ul class="mui-table-view mui-table-view-chevron">
+					<li class="mui-table-view-cell mui-media">
+						<a class="mui-navigate-right" href="write-obj.html">
+							<div class="mui-media-body">
+								<h4>王小华：</h4>
+								<span id="obj-name">还欠了我一个亿，没还清，怎么能注销。我有相关借贷证据，如不撤销公告，我将去法院告你。</span>
+								<p class='mui-ellipsis'>2016年5月31日</p>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+			
+			<div class="web-box">
+				<ul class="mui-table-view mui-table-view-chevron">
+					<li class="mui-table-view-cell mui-media">
+						<a class="mui-navigate-right" href="write-obj.html">
+							<div class="mui-media-body">
+								<h4>张小花：</h4>
+								<span id="obj-name">我不管，我就要注销...</span>
+								<p class='mui-ellipsis'>2016年5月31日</p>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>-->
+		</div>
+	<input type="hidden" name="page" id="page" value="1" />
+	<input type="hidden" name="totalPage" id="totalPage" value="1"/>
+	
+	<div id="loadData" style="display: none;" onclick="getData();">点击加载更多...</div>
+	<!--加载点-->
+	<div id="loading" style="display: none;" class="spinner">
+		 <div class="bounce1"></div>
+		 <div class="bounce2"></div>
+		 <div class="bounce3"></div>
+	</div>
+	
+	<div id="noData" style="display: none;" >没有更多了...</div>
+		
+		
+	</body>
+</html>

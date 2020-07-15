@@ -1,0 +1,26 @@
+#segmentedControl a.item {
+    border: none;
+    background: none;
+    color: #3e3e3e;
+    line-height: 4.6rem;
+    border-bottom: 2px solid #fff;
+}
+
+#segmentedControl a.item.active {
+    border-bottom: 2px solid #ac812e;
+    color: #ac812e;
+}
+.item{
+	line-height: 38px;
+    display: table-cell;
+    overflow: hidden;
+    width: 1%;
+    -webkit-transition: background-color .1s linear;
+    transition: background-color .1s linear;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #007aff;
+    border-color: #007aff;
+    border-left: 1px solid #007aff;
+}

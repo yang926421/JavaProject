@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/right-inf.css">
+		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+			<script type="text/javascript" src="../static/js/common.js" ></script>
+			<script>
+				
+				$(function(){
+					var SUPID=GetRequest("SUPID");
+					console.info(sessionStorage.getItem(SUPID));
+					var obj=JSON.parse(sessionStorage.getItem(SUPID));
+					createData(obj);
+				});
+				
+				function createData(obj){
+					var htmlData="";
+					var body_no="";
+					if(obj.UNISCID!=null && obj.UNISCID!=""){
+						body_no=obj.UNISCID;
+					}else{
+						body_no=obj.REGNO;
+					}
+					htmlData+=" <div class='web-box'>"+
+								"	<div class='web-name'>"+
+								"		<ul class='web'>"+
+								"			<li><span>企业名称：</span> <span>"+obj.ENTNAME+"</span></li>"+
+								"			<li><span>统一社会信用代码/注册号：</span> <span>"+body_no+"</span></li>"+
+								"			<li><span>扶持依据：</span> <span>"+obj.ENJSPBASIS+"</span></li>"+
+								"			<li><span>扶持内容：</span> <span>"+obj.ENJSPCONTENT+"</span></li>"+
+								"			<li><span>扶持数额：</span>"+obj.ENJSPAMOUNT+"元<span></span></li>"+
+								"			<li><span>扶持部门：</span> <span>"+obj.IMPSPDEPART+"</span></li>"+
+								"			<li><span>实施日期：</span> <span>"+getFormatDateByLong(obj.IMPSPDATE,"yyyy年MM月dd日")+"</span></li>"+
+								"		</ul>"+
+								"	</div>"+
+							"</div>";
+					
+					$("#common-box").html(htmlData);
+					
+				}
+			</script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="other-inf.html"></a>
+		    <h1 class="mui-title">小微企业享受扶持政策公示信息</h1>
+		</header>
+		<!--登记信息-->
+		<div id="common-box">
+			<!--<div class="web-box">
+				<a href="add-penalty-inf.html">
+					<div class="web-name">
+						<ul class="web">
+							<li><span>处罚机关：</span> <span >卫生局</span></li>
+							<li><span>处罚决定书文号：</span> <span >54435456</span></li>
+							<li><span>处罚决定书签发日期：</span> <span >2017年6月30日</span></li>
+							<li><span>违法行为类型：</span> <span >拖欠工资</span></li>
+							<li><span>处罚种类：</span> <span >责令停产停业</span></li>
+							<li><span>公示状态：</span> <span >已公示</span></li>
+						</ul>
+						
+						<div class="arrow-right-01">
+							<img src="../static/img/arrow-right.png"/>
+						</div>
+					</div>
+				</a>
+			</div>-->
+			
+		</div>
+		
+	</body>
+</html>

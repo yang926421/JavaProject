@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/contribution-inf.css">
+			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+			<script type="text/javascript" src="../static/js/common.js" ></script>
+			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+			<script>
+				
+				$(function(){
+					getData();
+				});
+				
+				function getData(){
+					$.ajax({
+						type:"get",
+						url:httpUrl+"/e/licenseNullify/list.json",
+						async:false,
+						data:{"PRIPID":PRIPID,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
+						dataType:"json",
+						success:function(res){
+							if(res.success==true){
+								createData(res.data);
+							}
+						}
+					});
+				}
+				
+				function createData(obj){
+					$("#count").html(obj.length);
+					var htmlData="";
+					for(var i=0;i<obj.length;i++){
+						htmlData+="<div class='web-box'>"+
+								"<a href='javascript:;' onclick='toInfo(\""+obj[i].RECID+"\",\""+obj[i].ANCHEIS+"\")'>"+
+								"	<div class='web-name'>"+
+								"		<ul class='web'>"+
+								"			<li><span>是否正副本：</span> <span>"+obj[i].ISORICOP+"</span></li>"+
+								"			<li><span>声明日期：</span> <span>"+obj[i].LICCANDATE+"</span></li>"+
+								"			<li><span>公示状态：</span> <span>"+obj[i].ANCHEIS+"</span></li>"+
+								"			<li><span>补领日期：</span> <span>"+obj[i].REIDATE+"</span></li>"+
+								"		</ul>"+
+								"		<div class='arrow-right'>"+
+								"			<img src='../static/img/arrow-right.png'/>"+
+								"		</div>"+
+								"	</div>"+
+							"	</a>"+
+							"</div> ";
+					}
+					$("#common-box").html(htmlData);
+				}
+				
+				function toInfo(id,status){
+					if(status=="已公示"){
+						mui.toast("该信息已公示，不能再修改")
+					}else{
+						window.location.href="license-add.html?RECID="+id
+					}
+				}
+			</script>
+		
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-icon mui-icon-back mui-pull-left" href="../write-inf.html"></a>
+		    <h1 class="mui-title">营业执照作废声明信息(<span id="count"></span>)</h1>
+		    <span id="add">
+		    	<a href="license-add.html"><img src="../static/img/add.png"/></a>
+		    </span>
+		</header>
+		
+		<!--营业执照作废声明信息-->
+		<div id="common-box">
+			<!--<div class="web-box">
+				<a href="contribution-inf-con.html">
+					<div class="web-name">
+						<ul class="web">
+							<li><span>是否正副本：</span> <span >正副本</span></li>
+							<li><span>声明日期：</span> <span >2018年9月1日</span></li>
+							<li><span>公示状态：</span> <span >未公示</span></li>
+							<li><span>补领日期：</span> <span >2018年1月1日</span></li>
+						</ul>
+						
+						<div class="arrow-right">
+							<img src="../static/img/arrow-right.png"/>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="web-box">
+				<a href="contribution-inf-con.html">
+					<div class="web-name">
+						<ul class="web">
+							<ul class="web">
+							<li><span>是否正副本：</span> <span >正副本</span></li>
+							<li><span>声明日期：</span> <span >2018年9月1日</span></li>
+							<li><span>公示状态：</span> <span >未公示</span></li>
+							<li><span>补领日期：</span> <span >2018年1月1日</span></li>
+						</ul>
+						</ul>
+						
+						<div class="arrow-right">
+							<img src="../static/img/arrow-right.png"/>
+						</div>
+					</div>
+				</a>
+			</div>-->
+			
+		</div>
+		
+	</body>
+</html>

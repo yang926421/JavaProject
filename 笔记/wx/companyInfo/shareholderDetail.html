@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>股东及出资详细信息</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/shareholderDetail.css" />
+		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+		<script type="text/javascript" src="../static/js/common.js" ></script>
+		<script>
+			var INVID=GetRequest("INVID");
+			var SHAREHOLDER=GetRequest("SHAREHOLDER");
+			$(function(){
+				getData();
+			});
+			function getData(){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/p/subcapital/by/pripid/get.json",
+					data:{"INVID":INVID, "SHAREHOLDER":SHAREHOLDER},
+					async:true,
+					dataType:"json",
+					success:function(res){
+						if(res.success==true){
+							createData(res.data);
+						}
+					}
+				});
+			}
+			function createData(obj){
+					$("#INV").html(obj.INV);
+					var renjiaoHtml="";
+					var shijiaoHtml="";
+					if(obj.ESHOULDCONTRIBUTIONS!=null && obj.ESHOULDCONTRIBUTIONS.length>0){   //认缴明细
+						for(var i=0;i<obj.ESHOULDCONTRIBUTIONS.length;i++){
+							var conDate="";
+							if(obj.ESHOULDCONTRIBUTIONS[i].CONTO!=null && obj.ESHOULDCONTRIBUTIONS[i].CONTO!=""){
+								conDate=getSmpFormatDateByLong( obj.ESHOULDCONTRIBUTIONS[i].CONTO,false)
+							}
+							renjiaoHtml+=" <div class='jiaohang'><span>"+obj.ESHOULDCONTRIBUTIONS[i].CONFORM+"</span><span>"+obj.ESHOULDCONTRIBUTIONS[i].CURSUBCONAM+"</span><span>"+conDate+"</span></div>";
+						}	
+					}
+					
+					if(obj.EFACTCONTRIBUTIONS!=null && obj.EFACTCONTRIBUTIONS.length>0){  //实缴明细
+						for(var j=0;j<obj.EFACTCONTRIBUTIONS.length;j++){
+							var conDate="";
+							if(obj.EFACTCONTRIBUTIONS[j].CONDATE!=null && obj.EFACTCONTRIBUTIONS[j].CONDATE!=""){
+								conDate=getSmpFormatDateByLong( obj.EFACTCONTRIBUTIONS[j].CONDATE,false);
+							}
+						   shijiaoHtml+="<div class='jiaohang'><span>"+obj.EFACTCONTRIBUTIONS[j].CONFORM_CN+"</span><span>"+obj.EFACTCONTRIBUTIONS[j].ACCONAM+"</span><span>"+conDate +"</span></div> ";
+						}	
+					}
+					
+					$("#LISUBCONAM").html(obj.LISUBCONAM);
+					$("#LIACCONAM").html(obj.LIACCONAM);
+					$("#renjiaoInfo").html(renjiaoHtml);
+					$("#shijiaoInfo").html(shijiaoHtml);
+			}
+		</script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="searchMain.html"></a>
+		    <h1 class="mui-title">股东及出资详细信息</h1>
+		</header>
+		
+		<div class="gudong martop">
+			 <div class="gtitle">股东信息</div>
+			 <div class="guhang ptop"><span>股东名称: </span><span id="INV"></span></div>
+			 <div class="guhang"><span>认缴额(万元): </span><span id="LISUBCONAM"></span></div>
+			 <div class="guhang"><span>实缴额(万元): </span><span id="LIACCONAM"></span></div>
+		</div>
+		
+		<div class="renjiao gtop">
+			 <div class="gtitle">认缴明细信息</div>
+			 <div class="jiaohang gcolor"><span>出资方式</span><span>出资额度(万元)</span><span>出资日期</span></div>
+			 <div id="renjiaoInfo">
+		   </div>
+		</div>
+		
+		<div class="shijiao gtop">
+			 <div class="gtitle">实缴明细信息</div>
+			 <div class="jiaohang gcolor"><span>出资方式</span><span>出资额度(万元)</span><span>出资日期</span></div>
+			<div id="shijiaoInfo">
+		  </div>
+		</div>
+	</body>
+</html>

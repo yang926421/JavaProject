@@ -1,0 +1,38 @@
+.web-box{
+	border-bottom:solid #EAEAEA 1px ;
+	background-color: #FFFFFF;
+}
+.web-box ul{
+	margin: auto;
+	width: 92%;
+	/*border: #000000 solid 1px;*/
+}
+.web-box li{
+	line-height: 5rem;
+	overflow: hidden;
+	font-size: 1.6rem;
+}
+.web-box li span{
+	/*border: #000000 solid 1px;*/
+	float: left;
+	display: inline-block;
+}
+
+
+.asset-con{
+	float: right;
+	/*border: #000000 solid 1px;*/
+	display: inline-block;
+}
+.tip{
+	width: 100%;
+}
+.tip span{
+	margin: auto;
+	width: 92%;
+	font-size: 1.5rem;
+	display: inline-block;
+	line-height: 5rem;
+	/*color: #D72830;*/
+	margin-left: 4%;
+}

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>简易注销</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/notice.css">
+			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+			<script type="text/javascript" src="../static/js/common.js" ></script>
+
+     <script>
+     	
+     	var LIID=GetRequest("LIID"); 
+     	
+     	$(function(){
+     		getData();
+     	})
+     	function getData(){
+     		$.ajax({
+     			type:"get",
+     			url:httpUrl+"/p/e/nliquidation/get.json",
+     			data:{"LIID":LIID},
+     			dataType:"json",
+     			async:true,
+     			success:function(res){
+     				if(res.success==true){
+     					createData(res.data);
+     				}
+     			}
+     		});
+     	}
+     	
+     	function createData(obj){
+     		var baseInfo,noticeInfo,updateInfo;
+     		baseInfo=obj.baseInfo;
+     		noticeInfo=obj.noticeInfo;
+     		updateInfo=obj.updateInfo;
+     		$("#noticeTitle").html(baseInfo.ENTNAME+"注销备案/公告");
+     		$("#ENTNAME").html(baseInfo.ENTNAME);
+			$("#UNISCID").html(baseInfo.UNISCID);
+			$("#REGORG_CN").html(baseInfo.REGORGCN);
+			
+			$("#RECDATE").html(getFormatDateByLong( baseInfo.RECDATE,"yyyy年MM月dd日"));
+			$("#LIGEATDATE").html(getFormatDateByLong( baseInfo.LIGEATDATE,"yyyy年MM月dd日"));
+			
+			$("#DISREA").html(baseInfo.DISREADESC);
+			
+			$("#TEL").html(baseInfo.TEL);
+			$("#ADDR").html(baseInfo.ADDR);
+			var mainMbr="";
+			for(var i=0;i<obj.MAINLIQMEN.length;i++){
+				mainMbr+=obj.MAINLIQMEN[i]+",";
+			}
+			var mbr="";
+			for(var m=0;m<obj.LIQMEN.length;m++){
+				mbr+=obj.LIQMEN[m]+",";
+			}
+			$("#LIGPRISIGN").html(mainMbr);
+			$("#LIQMEM").html(mbr);
+     		
+     		
+			$("#NOTICE_ENTNAME").html(noticeInfo.ENTNAME);
+			$("#NOTICE_UNISCID").html(noticeInfo.UNISCID);
+			$("#NOTICE_REGORG_CN").html(noticeInfo.REGORGCN);
+			$("#NOTICE_NOTICEFROM").html(getFormatDateByLong( noticeInfo.NOTICEFROM,"yyyy年MM月dd日")+"-"+getFormatDateByLong( noticeInfo.NOTICETO,"yyyy年MM月dd日"));
+			$("#NOTICE_CANNOTCON").html(noticeInfo.CANNOTCON);
+			$("#NOTICE_CRERIGDECCON").html(noticeInfo.CRERIGDECCON);
+			$("#NOTICE_TEL").html(noticeInfo.TEL);
+			$("#NOTICE_ADDR").html(noticeInfo.ADDR);
+			
+			var updateHtml="<p style=\"color:#804000;\">修改信息</p>";
+			if(updateInfo.length>0){
+				for(var n=0;n<updateInfo.length;n++){
+					updateHtml+="<div style=\"border-bottom: solid 1px #D1D1D1;\">"+
+						"<p class=\"p1\">"+
+						"修改内容：<span>"+updateInfo[n].MODITEM+"</span>"+
+						"</p>"+
+						"<p class=\"p1\">"+
+						"	修改前：<span>"+updateInfo[n].MODBE+"</span>"+
+						"</p>"+
+						"<p class=\"p1\">"+
+						"	修改后：<span>"+updateInfo[n].MODAF+"</span>"+
+						"</p>"+
+						"<p class=\"p1\">"+
+						"	修改时间：<span>"+getFormatDateByLong(updateInfo[n].MODDATE,"yyyy年MM月dd日")+"</span>"+
+						"</p>"+
+					"</div>"
+				}
+				
+			}
+			$("#updateDiv").html(updateHtml);
+     	}
+     	
+     </script>
+     <style>
+     	.detailBox p{
+     		color: #999999;
+     	}
+     	.detailBox span{
+     		color: #333333;
+     	}
+     </style>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="companyDetail.htmll"></a>
+		    <h1 class="mui-title">注销备案/公告信息</h1>
+		</header>
+		
+	<div id="common-boxJ" style="padding-top: 3rem;">
+			<div class="detailBox">
+				<p id="noticeTitle" style="color: #333333; padding-top: 10px;text-align: center;font-size: 20px;font-weight: bold;line-height: 35px;"></p>
+				<p style="color:#804000;">清算组备案信息</p>
+				<p class="p1">
+					企业名称：<span id="ENTNAME"></span>
+				</p>
+				<p class="p1">
+					统一社会信用代码/注册号：<span id="UNISCID"></span>
+				</p>
+				
+				<p class="p1">
+					登记机关：<span id="REGORG_CN"></span>
+				</p>
+				<p class="p1">
+					清算组备案日期：<span id="RECDATE"></span>
+				</p>
+				<p class="p1">
+					清算组成立日期：<span id="LIGEATDATE"></span>
+				</p>
+				<p class="p1">
+					市场主体解散事由：<span id="DISREA"></span>
+				</p>
+				<p class="p1">
+					清算组办公地址：<span id="ADDR"></span>
+				</p>
+				<p class="p1">
+					清算组联系电话：<span id="TEL"></span>
+				</p>
+				<p class="p1">
+					清算组负责人：<span id="LIGPRISIGN"></span>
+				</p>
+				<p class="p1">
+					清算组成员：<span id="LIQMEM"></span>
+				</p>
+			</div>
+		</div>
+	<div id="common-boxJ" style="padding-top: 1rem;">
+		<div class="detailBox">
+			<p style="color:#804000;">债权人公告信息</p>
+			<p class="p1">
+				企业名称：<span id="NOTICE_ENTNAME"></span>
+			</p>
+			<p class="p1">
+				统一社会信用代码/注册号：<span id="NOTICE_UNISCID"></span>
+			</p>
+			
+			<p class="p1">
+				登记机关：<span id="NOTICE_REGORG_CN"></span>
+			</p>
+			<p class="p1">
+				公告期：<span id="NOTICE_NOTICEFROM"></span>
+			</p>
+			<p class="p1">
+				公告内容：<span id="NOTICE_CANNOTCON"></span>
+			</p>
+			<p class="p1">
+				债权申报联系人：<span id="NOTICE_CRERIGDECCON"></span>
+			</p>
+			<p class="p1">
+				债权申报联系电话：<span id="NOTICE_TEL"></span>
+			</p>
+			<p class="p1">
+				债权申报地址：<span id="NOTICE_ADDR"></span>
+			</p>
+		</div>
+	</div>
+	<div id="common-boxJ" style="padding-top: 1rem;">
+		<div class="detailBox"  id="updateDiv">
+			<!--<p style="color:#804000;">修改信息</p>
+			<div style="border-bottom: solid 1px #D1D1D1;">
+				<p class="p1">
+				修改内容：<span id="NOTICE_ENTNAME"></span>
+				</p>
+				<p class="p1">
+					修改前：<span id="NOTICE_UNISCID"></span>
+				</p>
+				
+				<p class="p1">
+					修改后：<span id="NOTICE_REGORG_CN"></span>
+				</p>
+				<p class="p1">
+					修改时间：<span id="NOTICE_NOTICEFROM"></span>
+				</p>
+			</div>-->
+			
+			
+		</div>
+	</div>
+	</body>
+</html>

@@ -1,0 +1,81 @@
+
+.shareholderDiv{
+	padding: 10px;
+	background-color: #FFFFFF;
+	font-size: 16px;
+	color: #3E3E3E;
+}
+
+.martop{
+	margin-top: 44px;
+}
+
+.holdername{
+	padding-top: 10px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #F2F2F2;
+}
+
+.holdername span:nth-child(2){
+	float: right;
+	/*color: #ac812e;*/
+}
+
+.top{
+	margin-top: 15px;
+}
+
+.holderCard{
+	width: 100%;
+	/*height: 80px;*/
+}
+ .holderone,.holdertwo{
+	/*width: 80%;*/
+	/*float: left;*/
+	/*height: 30px;*/
+	line-height: 30px;
+	font-size: 16px;
+}
+
+.holderone{
+	margin-top: 10px;
+}
+.holderCard img{
+	float: right;
+	height: 20px;
+	margin-top: -40px;
+}
+.holderone span:first-child{
+	color: #999999;
+}
+.holdertwo span:first-child{
+	color: #999999;
+}
+/*小提示*/
+.tip{
+	width: 100%;
+	margin-top: 44px;
+	margin-bottom: 6px;
+}
+.tip span{
+	margin: auto;
+	width: 92%;
+	font-size: 1.3rem;
+	display: inline-block;
+	line-height: 2.0rem;
+	color: #D72830;
+	margin-left: 4%;
+	margin-top: 2%;
+}
+
+/*修改记录*/
+.repair-record{
+	margin-top: 4.0rem;
+	background:#f2dcc2;
+	text-align: center;
+}
+.repair-record a{
+	color: #f08300;
+	line-height: 4.4rem;
+	font-size: 1.4rem;
+}

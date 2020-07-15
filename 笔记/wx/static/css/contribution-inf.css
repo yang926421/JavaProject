@@ -1,0 +1,72 @@
+.web-box{
+	margin-bottom: 0.5rem;
+	background-color: #FFFFFF;
+}
+.web-box a{
+	color: #333333;
+}
+.web-name{
+	margin: auto;
+	width: 92%;
+	position: relative;
+}
+.web-name h4{
+	padding-top: 1.8rem;
+	font-size: 1.6rem;
+	font-weight: bold;
+	
+	display: inline-block;
+}
+.web-name .name-repair{
+	display: inline-block;
+	width: 1.6rem;
+	vertical-align: middle;
+	margin-left: 2%;
+}
+.web{
+	margin-top:1.2rem;
+}
+.web li{
+	font-size:1.5rem;
+	line-height: 2.4rem;
+}
+.web li span:first-child{
+	color: #999999;
+	font-size:1.5rem;
+}
+.web li:last-child{
+	padding-bottom: 1.4rem;
+	border-bottom: #EAEAEA 1px solid;
+}
+.web:first-child li:first-child{
+	padding-top: 1.4rem;
+}
+.web-name:nth-child(3) li:first-child{
+	padding-top: 0rem;
+}
+/*箭头*/
+.arrow-right{
+	position: absolute;
+	right: 0;
+	width: 0.8rem;
+	top: 4.6rem;
+}
+
+.con-name{
+	overflow: hidden;
+}
+.con-name h4{
+	margin-left: 4%;
+	float: left;
+	font-size: 1.5rem;
+	font-weight: bold;
+	line-height: 1.0rem;
+	/*border: dashed 1px;*/
+}
+.con-name a{
+	float: right;
+	font-size: 1.4rem;
+	margin-right: 4%;
+	/*border: dashed 1px;*/
+	
+}

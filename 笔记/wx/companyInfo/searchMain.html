@@ -1,0 +1,294 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/SearchInfo.css" />
+		<script type="text/javascript" src="../static/js/jquery.min.js"></script>
+		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+		<script type="text/javascript" src="../static/js/common.js" ></script>
+			<script type="text/javascript">
+				$(function(){
+					 $("input").focus(function(){  
+					    $(this).parent().children(".input_clear").show();  
+					});  
+					$("input").blur(function(){  
+					    if($(this).val()=='')  
+					    {  
+					        $(this).parent().children(".input_clear").hide();  
+					    }  
+					});  
+					$(".input_clear").click(function(){  
+					    $(this).parent().find('input').val('');  
+					    $(this).hide();  
+					    $("#searchBtn").hide();
+					    $("#cancelBtn").show();
+					});  
+				});
+				
+			    
+				var searchType=1;    //搜索类型1: 信用信息 2: 经营异常名录 3: 严重违法失信名单
+				$(function(){
+					//从首页跳转过来判断搜索的类型
+					searchType=GetRequest("searchType");
+					if(searchType!=null && searchType!=""){
+						searchTypeCont('searchType'+searchType,searchType);
+					}else{
+						searchType=1;
+					}
+					
+				});
+				
+				/**
+				 * 搜索类型内容切换
+				 * @param {Object} typeId
+				 * @param {Object} typeVal
+				 */
+			    function searchTypeCont(typeId,typeVal){
+			    	searchType=typeVal;
+			    	$('.type').css({"color":"#999999","border":"1px solid #F2F2F2"});
+		    		$('#'+typeId).css({"color":"#ac812e","border":"1px solid #ac812e"});
+		    		$('.bottomright').hide();
+		    		$('#'+typeId).children().show();
+			    }
+			    
+			    /**
+			     * 搜索框输入内容之后变换“取消、搜索”按钮
+			     * @param {Object} val
+			     */
+			    function inputKey(val){
+			    	if(val!=null && val!=""){
+			    		$("#cancelBtn").hide();
+			    		$("#searchBtn").show();
+			    	}else{
+			    		$("#cancelBtn").show();
+			    		$("#searchBtn").hide();
+			    	}
+			    }
+			    var companyHistory="";
+			    $(function(){
+			    	$("#page").val(1);
+					$("#totalPage").val(1);
+					getHistory(0);
+			    })
+			    
+			    //获取历史搜索记录
+			    function getHistory(type){
+					companyHistory=localStorage.getItem("companyHistory");
+					var htmlData="<div class='searchHistory histop'><span>搜索历史</span><a onclick='delAllHistory()'><img src='../static/img/search_ic_dele.png'></a></div>";
+					if(companyHistory!=null && companyHistory.length>0){
+						companyHistory=JSON.parse(companyHistory);
+						$("#historyData").show();
+						//搜索历史记录当然要按照倒序排啦
+						for(var i=companyHistory.length-1;i>-1;i--){
+						   var bodyName=delHtmlTag( companyHistory[i].BODY_NAME);
+							htmlData+="<div class='searchHistory'><span onclick='goDetail(\""+companyHistory[i].PRIPID+"\","+companyHistory[i].TYPE+",\""+companyHistory[i].BODY_TYPE+"\")'>"+bodyName+"</span><a onclick='delHistory("+i+")'><img src='../static/img/close.png'></a></div>";
+						}
+						$("#historyData").html(htmlData);
+					}else{
+						if(type==1){
+							$("#historyData").html(htmlData);
+						}
+					}
+			    }
+			    //点击搜索的历史记录跳转到主页面
+			    function goDetail(pId,typeVal,bodyType){
+			    		window.location.href="companyDetail.html?PRIPID="+pId+"&TYPE="+typeVal+"&BODY_TYPE="+bodyType+"&historyFlag=1";
+			    }
+			    
+			    //删除所有历史记录
+			    function delAllHistory(){
+			    	var comhistory= localStorage.getItem("companyHistory");
+			    	if(comhistory!=null && comhistory!=""){
+			    		comhistory=JSON.parse(comhistory);
+			    		if(comhistory.length>0){
+			    			mui.confirm("确定要清空所有搜索历史吗？","",btnArray,function(e){
+			    				if(e.index==1){
+			    					localStorage.setItem("companyHistory",""); 
+			    					getHistory(1);
+			    				}
+			    			})
+			    		}
+			    	}
+			    	
+			    	
+			    }
+			    
+			    //删除其中一个历史记录
+			    function delHistory(num){
+			    	companyHistory.splice(num,1); 
+			    	localStorage.setItem("companyHistory",JSON.stringify(companyHistory));
+			    	getHistory(1);
+			    	
+			    }
+			    
+			    function searchData(){
+			    	$("#page").val(1);
+			    	$("#content").html("");
+			    	getData();
+			    }
+			    
+			    /**
+			     * 获取搜索到的数据
+			     */
+			    function getData(){
+			    	$("#searchCount").html("0");
+			    	$("#loadData").hide();
+			    	var keyword=$("#searchKey").val();
+			    	page=$("#page").val();
+					if(page==0){
+						page=1;
+					}
+			    	$.ajax({
+			    		type:"get",
+			    		url:httpUrl+"/p/search.json",
+			    		async:true,
+			    		data:{"keyword":keyword,"searchType":searchType,"page":page,"pageSize":pageSize},
+			    		dataType:"json",
+			    		beforeSend:function(){
+			    			$("#loading").show();
+			    		},
+			    		success:function(res){
+			    			$("#loading").hide();
+			    			if(res.success){
+			    				loadPage(res.data);
+			    				if(res.data.records>100){
+			    					$("#searchCount").html("100");
+			    				}else{
+			    					$("#searchCount").html(res.data.records);
+			    				}
+								
+			    				createData(res.data.list);
+			    			}
+			    		}
+			    	});
+			    }
+			    
+			    /**
+			     * 根据搜索到的数据创建内容
+			     * @param {Object} obj
+			     */
+			    function createData(obj){
+			    	$("#historyData").hide();
+			    	$("#searchData").show();
+			    	$(".searchType").hide();
+			    	for(var i=0;i<obj.length;i++){
+			    		//大神说啦企业详情页就用这里查询出来的，又省了一个接口
+			    		sessionStorage.setItem("search"+obj[i].PRIPID,JSON.stringify(obj[i]));
+			    	  var	htmlData="<li class='mui-table-view-cell'> "+
+								"<a class='mui-navigate-right compy' onclick='gotoPage(\""+obj[i].PRIPID+"\","+obj[i].TYPE+",\""+obj[i].BODY_TYPE+"\")' href='javascript:;'>"+
+								"	 <p>"+obj[i].BODY_NAME+"</p>"+
+								"	 <p>"+obj[i].BIZ_EXP+"</p>"+
+								"	 <p style='color:red'>"+obj[i].BLACK_LIST+"</p>";
+								//是否再进行简易注销
+						if(obj[i].SC_NOTICE!=null && obj[i].SC_NOTICE!=""){ 
+							htmlData+="<p style='color:red'>(该企业"+obj[i].SC_NOTICE.substring(0,8)+")</p>";
+						}
+						if(obj[i].UNISCID!=undefined && obj[i].UNISCID!=null && obj[i].UNISCID!=""){
+							htmlData+="	<p><img src='../static/img/basic_ic_socialcode.png'><span>统一社会信用代码："+delHtmlTag(obj[i].UNISCID)+"</span></p>";
+						}else{
+							htmlData+="	<p><img src='../static/img/basic_ic_socialcode.png'><span>注册号："+delHtmlTag(obj[i].REGNO)+"</span></p>";
+						}
+								
+						htmlData+="	 <p><img src='../static/img/basic_ic_-legal.png'><span>"+obj[i].NAME_CN+"："+obj[i].NAME+"</span></p>"+
+								  "	 <p><img src='../static/img/basic_ic_date.png'><span>成立日期："+getFormatDateByLong(obj[i].ESTDATE,"yyyy年MM月dd日")+"</span></p>";
+						
+						if(obj[i].REGSTATE_CN.indexOf('存续')>-1){
+							htmlData+=" <p><span class='cunxu'>"+obj[i].REGSTATE_CN+"</span></p>"; 
+						}else if(obj[i].REGSTATE_CN.indexOf('吊销')>-1){
+							htmlData+=" <p><span class='diaoxiao'>"+obj[i].REGSTATE_CN+"</span></p>"; 
+						}else if(obj[i].REGSTATE_CN.indexOf('注销')>-1){
+							htmlData+=" <p><span class='zhuxiao'>"+obj[i].REGSTATE_CN+"</span></p>"; 
+						}else{
+							htmlData+=" <p><span class='zhuxiao'>"+obj[i].REGSTATE_CN+"</span></p>";
+						}
+						htmlData+="</a></li><li class='mui_color'></li> ";
+						$("#content").append(htmlData);
+			    	}
+			    }
+			    
+			    /**
+			     * 根据企业类型判断跳转到哪个主页面
+			     * @param {Object} pid
+			     * @param {Object} typeVal
+			     */
+			    function gotoPage(pid,typeVal,bodyType){
+			    	window.location.href="companyDetail.html?PRIPID="+pid+"&TYPE="+typeVal+"&BODY_TYPE="+bodyType;
+			    }
+			    
+		</script>
+		
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		 		<div class="searchHeader"> 
+		 			  <img src="../static/img/search_ic_search.png" />
+		 			  <input type="text" id="searchKey" name="searchKey" onkeyup="inputKey(this.value)" placeholder="企业名称、统一社会代码、注册号" />
+		 			  <i class="input_clear"><img src="../static/img/close.png"/></i>
+		 		</div>
+		 		<button class="searchBtn" id="cancelBtn" onclick="goBack();">取消</button>
+		 		<button class="searchBtn" id="searchBtn" onclick="searchData()" style="display: none;">搜索</button>
+		</header>
+		
+		<div class="searchType" >
+			<div class="searchTitle">搜索内容</div>
+			<div class="type" id="searchType1" onclick="searchTypeCont('searchType1',1)" style="color: #ac812e;border: 1px solid #ac812e;">企业信用<span class="bottomright" style="display: block;"></span></div>
+			<div class="type" id="searchType2" onclick="searchTypeCont('searchType2',2)" >经营异常<span class="bottomright"></span></div>
+			<div class="type" id="searchType3" onclick="searchTypeCont('searchType3',3)" >违法失信<span class="bottomright"></span></div>
+		</div>
+		
+		<div id="captcha-box"></div>
+		
+		<div id="historyData" class="historyDiv" >
+		</div>
+		
+		
+		<div id="searchData" style="display: none;">
+		<div class="searchNum">搜索到：<span id="searchCount" style="color: red;"></span>条数据</div>
+		<div >	
+			<ul id="content"  class="mui-table-view">
+				<!--<li class="mui-table-view-cell">
+					<a class="mui-navigate-right compy" href="../static/companyInfo/companyDetail.html">
+						 <p>北京畅通有限责任公司</p>
+						 <p>*该企业被列入经营异常名录</p>
+						 <p><img src=""><span>统一社会信用代码：45784578457845125</span></p>
+						 <p><img src=""><span>法定代表人：王栎鑫</span></p>
+						 <p><img src=""><span>成立日期：2017年5月31日</span></p>
+						 <p><span class="cunxu">存续</span></p>
+					</a>
+				</li>
+				<li class=" mui_color"></li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right compy" href="../static/companyInfo/companyDetail.html">
+						 <p>北京畅通有限责任公司</p>
+						 <p>*该企业被列入经营异常名录</p>
+						 <p><img src=""><span>统一社会信用代码：45784578457845125</span></p>
+						 <p><img src=""><span>法定代表人：王栎鑫</span></p>
+						 <p><img src=""><span>成立日期：2017年5月31日</span></p>
+						 <p><span class="cunxu">存续</span></p>
+					</a>
+				</li>	-->
+			</ul>		
+		</div>
+		</div>	
+	
+		
+	<input type="hidden" name="page" id="page" value="1" />
+	<input type="hidden" name="totalPage" id="totalPage" value="1"/>
+	
+	<div id="loadData" style="display: none;" onclick="getData();">点击加载更多...</div>
+	<!--加载点-->
+	<div id="loading" style="display: none;" class="spinner">
+		 <div class="bounce1"></div>
+		 <div class="bounce2"></div>
+		 <div class="bounce3"></div>
+	</div>
+	
+	<div id="noData" style="display: none;" >没有更多了...</div>
+	</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/shangbiaozhuce-inf.css">
+			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+			<script type="text/javascript" src="../static/js/common.js" ></script>
+			<script>
+				var TMID=GetRequest("TMID");
+				$(function(){
+					getData();
+				});
+				
+				function getData(){
+					$.ajax({
+						type:"get",
+						url:httpUrl+"/p/tm/baseinfo/by/id/get.json",
+						async:true,
+						data:{"TMID":TMID},
+						dataType:"json",
+						success:function(res){
+							if(res.success==true){
+								createData(res.data);
+							}
+						}
+					});
+				}
+				function createData(obj){
+					var img="../static/img/shangbiao_no.png";
+					if(obj.TM_IMAGE!=null && obj.TM_IMAGE!=""){
+						img=obj.TM_IMAGE;
+					}
+					$("#TM_IMAGE").attr("src",img);
+					
+					$("#ENTNAME").html(obj.ENTNAME);
+					if(obj.UNISCID!=null && obj.UNISCID!=""){
+						$("#UNISCID").html(obj.UNISCID);
+					}else{
+						$("#REGNO").html(obj.REGNO);
+					}
+					
+					$("#REG_NUM").html(obj.REG_NUM);
+					$("#INT_CLS").html("第"+obj.INT_CLS+"类");
+					if(obj.REG_ANNC_DATE!=null && obj.REG_ANNC_DATE!=""){
+						$("#REG_ANNC_DATE").html(getFormatDateByLong( obj.REG_ANNC_DATE,"yyyy年MM月dd日"));
+					}
+					$("#REG_ANNC_ISSUE").html(obj.REG_ANNC_ISSUE);
+					
+					var startDate="";
+					var endDate="";
+					if(obj.PROPERTY_BGN_DATE!=null && obj.PROPERTY_BGN_DATE!=""){
+						startDate=getFormatDateByLong(obj.PROPERTY_BGN_DATE,"yyyy年MM月dd日");
+					}
+					if(obj.PROPERTY_END_DATE1=null && obj.PROPERTY_END_DATE!=""){
+						endDate=getFormatDateByLong(obj.PROPERTY_END_DATE,"yyyy年MM月dd日");
+					}
+					$("#PROPERTY_BGN_DATE").html(startDate+"至"+endDate);
+					$("#GOODS_CN_NAME").html(obj.GOODS_CN_NAME);
+					
+				}
+			</script>
+		
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" ></a>
+		    <h1 class="mui-title">商标详情</h1>
+		</header>
+		
+		<!--商标信息-->
+		<div id="common-box">
+			<div id="com-logo-box">
+				<span >
+					<img id="TM_IMAGE" src="../static/img/shangbiao_no.png"/>
+				</span>
+			</div>
+			<div class="web-box">
+				<div class="web-name">
+					<ul class="web">
+						<li><span>企业名称：</span> <span id="ENTNAME"></span></li>
+						<li><span>统一社会信用代码/注册号：</span> <span id="UNISCID"></span></li>
+						<li><span>商标注册号：</span> <span id="REG_NUM"></span></li>
+						<li><span>类别：</span> <span id="INT_CLS"></span></li>
+						<li><span>注册公告日期：</span> <span id="REG_ANNC_DATE"></span></li>
+						<li><span>注册公告期号：</span> <span id="REG_ANNC_ISSUE"></span></li>
+						<li><span>商标专用权起止日期：</span> <span id="PROPERTY_BGN_DATE"></span></li>
+						<li><span>商品/服务项目：</span> 
+							<div class="xiangmu" id="GOODS_CN_NAME">
+								<!--<p >3201——姜汁啤酒</p>
+								<p >3201——姜汁啤酒</p>
+								<p >3201——制啤酒用蛇麻子汁</p>
+								<p >3201——麦芽汁(发酵后成啤酒)</p>
+								<p >3201——姜汁啤酒</p>-->
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+			
+			
+		</div>
+		
+		
+	</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/notice.css">
+			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+			<script type="text/javascript" src="../static/js/common.js" ></script>
+			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+			
+			<script>
+				var RECID=GetRequest("RECID");
+				$(function(){
+					getData();
+				});
+				
+				function getData(){
+					$.ajax({
+						type:"get",
+						url:httpUrl+"/p/licenseNullify/notice/get.json",
+						async:true,
+						data:{"RECID":RECID},
+						dataType:"json",
+						success:function(res){
+							if(res.success==true){
+								createData(res.data);
+							}/*else{
+								mui.toast(res.codeMsg);
+							}*/
+						}
+					});
+				}
+				
+				function createData(obj){
+					$("#noticeTitle").html(obj.TITLE);
+					$("#ENTNAME").html(obj.ENTNAME);
+					$("#UNISCID").html(obj.UNISCID);
+					$("#REGORG_CN").html(obj.REGORG_CN);
+					$("#ISORICOP").html(obj.ISORICOP_CN);
+					$("#LICCANSTA").html(obj.LICCANSTA);
+					$("#LICCANDATE").html(obj.LICCANDATE);
+					
+				}
+			</script>
+		
+		
+	</head>
+	
+	<body>		
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left"></a>
+		    <h1 class="mui-title">公告详情</h1>
+		</header>	
+		
+		<div id="common-boxJ">
+			<div class="detailBox">
+				<p id="noticeTitle" style="padding-top: 10px;text-align: center;font-size: 20px;font-weight: bold;line-height: 35px;"></p>
+				<hr/>
+				<p class="p1">
+					企业名称：<span id="ENTNAME"></span>
+				</p>
+				<p class="p1">
+					统一社会信用代码/注册号：<span id="UNISCID"></span>
+				</p>
+				
+				<p class="p1">
+					登记机关：<span id="REGORG_CN"></span>
+				</p>
+				<p class="p1">
+					声明日期：<span id="LICCANDATE"></span>
+				</p>
+				<p class="p1">
+					是否正副本：<span id="ISORICOP"></span>
+				</p>
+				<p class="p1">
+					声明内容：<span id="LICCANSTA"></span>
+				</p>
+			</div>
+		</div>
+		
+		
+	   
+	</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/report.css">
+			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+			<script type="text/javascript" src="../static/js/common.js" ></script>
+			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+			<script>
+				
+				$(function(){
+					$("#BODY_NAME").html(BODY_NAME);
+					$("#BODY_NO").html("统一社会信用代码/注册码："+BODY_NO);
+					getData();
+					
+				});
+				
+				function getData(){
+					$.ajax({
+						type:"get",
+						url:httpUrl+"/e/self/UnpublishedItem/cnt.json",
+						async:true,
+						data:{"PRIPID":PRIPID,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
+						dataType:"json",
+						success:function(res){
+							if(res.success==true){
+								$("#permit").html(res.data[0].permit);
+								$("#investment").html(res.data[0].investment);
+								$("#invsralt").html(res.data[0].invsralt);
+								$("#ippldg").html(res.data[0].ippldg);
+								$("#case").html(res.data[0].case);
+							}
+						}
+					});
+				}
+				
+			</script>
+			
+		
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-icon mui-icon-back mui-pull-left" href="../write-inf.html"></a>
+		    <h1 class="mui-title">其他信息登记</h1>
+		</header>
+		
+		<!--企业名称-->
+		<div id="com-name-box">
+			<div class="com-name">
+				<h3 id="BODY_NAME"></h3>
+				<p id="BODY_NO"></p>
+			</div>
+		</div>
+		
+		
+		<!--单行列表-->
+		<a href="licensing-inf.html">
+			<div id="list-box">
+					<div class="line">
+						<span>行政许可信息 </span> <span class="inf-num">(<span id="permit"></span>)</span>
+						<span id="arrow-right"><img src="../static/img/arrow-right.png"/></span>
+					</div>
+			</div>
+		</a>
+		
+		<!--单行列表-->
+		<a href="contribution-list.html">
+			<div id="list-box">
+				<div class="line">
+					<span>股东及出资信息 </span><span class="inf-num">(<span id="investment"></span>)</span>
+					<span id="arrow-right"><img src="../static/img/arrow-right.png"/></span>
+				</div>
+			</div>
+		</a>
+		
+		<!--单行列表-->
+		<a href="equity-record.html">  
+			<div id="list-box">
+				<div class="line">
+					<span>股权变更信息</span><span class="inf-num">(<span id="invsralt"></span>)</span>
+					<span id="arrow-right"><img src="../static/img/arrow-right.png"/></span>
+				</div>
+			</div>
+		</a>
+		
+		<!--单行列表-->
+		<a href="right-inf.html">
+			<div id="list-box">
+				<div class="line">
+					<span>知识产权出质登记信息 </span><span class="inf-num">(<span id="ippldg"></span>)</span>
+					<span id="arrow-right"><img src="../static/img/arrow-right.png"/></span>
+				</div>
+			</div>
+		</a>
+		
+		<!--单行列表-->
+		<a href="penalty-inf.html">
+			<div id="list-box">
+				<div class="line">
+					<span>行政处罚信息</span><span class="inf-num">(<span id="case"></span>)</span>
+					<span id="arrow-right"><img src="../static/img/arrow-right.png"/></span>
+				</div>
+			</div>
+		</a>
+		
+		
+	</body>
+</html>

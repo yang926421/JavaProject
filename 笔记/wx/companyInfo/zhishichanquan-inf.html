@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/dongcandiya-inf.css">
+		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+		<script type="text/javascript" src="../static/js/common.js" ></script>
+		<script>
+			var PLEID=GetRequest("PLEID");
+			var type=sessionStorage.getItem("TYPE");   //1企业 2农专 3个体
+			
+			$(function(){
+				getData();
+			});
+			function getData(){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/p/ippldg/get.json",
+					data:{"PLEID":PLEID,"TYPE":type},
+					async:true,
+					dataType:"json",
+					success:function(res){
+						if(res.success==true){
+							createData(res.data);
+						}
+					}
+				});
+			}
+			
+			function createData(obj){
+				if(obj!=null && obj.length>0){
+					var htmlData="";
+					if(obj[0].TYPE==2){ // 2是注销就显示注销信息
+						htmlData+="<div class='web-box'><div class='web-name'>"+
+										"<h4>知识产权出质登记注销信息</h4>"+
+										"<ul class='web'>"+
+										"	<li><span>注销日期：</span> <span id='CANDATE'>"+getFormatDateByLong(obj[0].CANDATE,"yyyy年MM月dd日") +"</span></li>"+
+										"	<li><span>注销原因：</span> <span id='EQUPLECANREA'>"+obj[0].EQUPLECANREA+"</span></li>"+
+										"</ul>"+
+								"</div> </div> ";
+					}else if(obj[0].TYPE==1){  //1是没有注销就显示变更信息
+						for(var i=0;i<obj[0].EIMIPPLDGALT.length;i++){
+							htmlData+="<div class='web-box'><div class='web-name'>"+
+										"<h4>知识产权出质登记变更信息</h4>"+
+										"<ul class='web'>"+
+										"	<li><span>变更事项：</span> <span id='ALT'>"+obj[0].EIMIPPLDGALT[i].ALT+"</span></li>"+
+										"	<li><span>变更时间：</span> <span id='ALTDATE'>"+getFormatDateByLong(obj[0].EIMIPPLDGALT[i].ALTDATE,"yyyy年MM月dd日") +"</span></li>"+
+										"	<li><span>变更前内容：</span> <span id='ALTBE'>"+obj[0].EIMIPPLDGALT[i].ALTBE+"</span></li>"+
+										"	<li><span>变更后内容：</span> <span id='ALTAF'>"+obj[0].EIMIPPLDGALT[i].ALTAF+"</span></li>"+
+										"</ul>"+
+								"</div> </div>";
+							}
+					}
+					$("#common-box").html(htmlData);
+					
+				}else{
+					mui.toast("没有更多数据了")
+				}
+				
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="zhishichanquan.html"></a>
+		    <h1 class="mui-title">知识产权出质详细信息</h1>
+		</header>
+		
+		<!--修改信息-->
+		<div id="common-box">
+			<!--<div class="web-box">
+					<div class="web-name">
+						<h4>知识产权出质登记变更信息</h4>
+						<ul class="web">
+							<li><span>变更事项：</span> <span id="ALT"></span></li>
+							<li><span>变更时间：</span> <span id="ALTDATE"></span></li>
+							<li><span>变更前内容：</span> <span id="ALTBE"></span></li>
+							<li><span>变更后内容：</span> <span id="ALTAF"></span></li>
+						</ul>
+					</div>
+			</div>
+			<div class="web-box">
+					<div class="web-name">
+						<h4>知识产权出质登记变更信息</h4>
+						<ul class="web">
+							<li><span>变更事项：</span> <span id="ALT"></span></li>
+							<li><span>变更时间：</span> <span id="ALTDATE"></span></li>
+							<li><span>变更前内容：</span> <span id="ALTBE"></span></li>
+							<li><span>变更后内容：</span> <span id="ALTAF"></span></li>
+						</ul>
+					</div>
+			</div>-->
+			
+		</div>
+	</body>
+</html>

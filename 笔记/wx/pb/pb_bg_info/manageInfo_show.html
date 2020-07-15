@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>经营补充信息</title>
+		<link rel="stylesheet" href="../../static/css/common.css">
+		<link rel="stylesheet" href="../../static/css/mui.min.css">
+		<link rel="stylesheet" href="../../static/css/add-guarantee-inf.css">
+		<link rel="stylesheet" type="text/css" href="../../static/css/mui.picker.min.css" /><!--填写时间-->
+	
+		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
+		<script type="text/javascript" src="../../static/js/common.js"></script>
+		<script type="text/javascript" src="../../static/js/mui.picker.min.js"></script> <!--选择日期-->
+		<script>
+			var ancheId=GetRequest("ANCHEID");
+			$(function(){
+				$("#TOKEN").val(TOKEN);
+		  		$("#SESSIONID").val(SESSIONID);
+		  		$("#ANCHEID").val(ancheId);
+		  		getData();
+			})
+			
+			function getData(){
+				$.ajax({
+					type:"GET",
+					url:httpUrl+"/h/an/cu/pbreginfo/get.json",
+					async:true,
+					data:{"ANCHEID":ancheId,"SESSIONID":SESSIONID,"TOKEN":TOKEN},
+					success:function(res){
+						$("input[name='SUSTAINEDLOSSES'][value='"+res.data.SUSTAINEDLOSSES+"']").attr("checked","checked");
+						if(res.data.SUSTAINEDLOSSES==1){
+							$("#SUSTAINEDLOSSES").html("是");
+						}else if(res.data.SUSTAINEDLOSSES==2){
+							$("#SUSTAINEDLOSSES").html("否");
+						}else{
+							$("#SUSTAINEDLOSSES").html("");
+						}
+					}
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" ></a>
+		    <h1 class="mui-title"><span id="saveOrUpdate"></span>经营补充信息</h1>
+		</header>
+		
+		<!--股东信息-->
+		<form id="addForm">
+		<div id="common-box">
+			<div class="web-box">
+						<ul>
+							<li style="color: red;">
+									*以下信息为海关年报信息预览，不进行公示
+							</li>
+						</ul>
+				</div>
+			<div class="web-box">
+					<ul>
+						<li>
+							<span id="name" style="width: 50%;">
+								最近三年是否连续亏损
+							</span>
+							<span id="SUSTAINEDLOSSES" class="asset-con" style="text-align: center;width: 40%;"></span>
+						</li>
+					</ul>
+			</div>
+		</div>
+		</form>
+			
+	</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>对外提供保证担保信息</title>
+		<link rel="stylesheet" href="../../static/css/common.css">
+		<link rel="stylesheet" href="../../static/css/mui.min.css">
+		<link rel="stylesheet" href="../../static/css/guarantee-inf.css">
+		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
+		<script type="text/javascript" src="../../static/js/common.js"></script>
+		<script>
+			var ancheid=GetRequest("ANCHEID");  //年报id
+			$(function(){
+				getData();
+			});
+			
+			function getData(){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/e/an/foreignGuarantee/list.json",
+					async:true,
+					data:{"ANCHEID":ancheid,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
+					dataType:"json",
+					success:function(res){
+						if(res.success==true){
+							createData(res.data);
+						}
+					}
+				});
+			}
+			
+			function createData(obj){
+				if(obj!=null && obj.length>0){
+					$("#count").html(obj.length);
+					var htmlData="";
+					for(var i=0;i<obj.length;i++){
+						var status="";
+						var GUARANPERIOD_CN="";
+						if(obj[i].GUARANPERIOD==1){
+							GUARANPERIOD_CN="期间";
+						}else if(obj[i].GUARANPERIOD==2){
+							GUARANPERIOD_CN="未约定";
+						}
+						var GATYPE_CN="";
+						if(obj[i].GATYPE==1){
+							GATYPE_CN="一般保证";
+						}else if(obj[i].GATYPE==2){
+							GATYPE_CN="连带保证";
+						}else if(obj[i].GATYPE==3){
+							GATYPE_CN="未约定";
+						}
+						var PRICLASECAM="";
+						if(obj[i].PRICLASECAM!=null){
+							PRICLASECAM=obj[i].PRICLASECAM+"万元";
+						}
+						if(obj[i].MOREDIS==1){
+								htmlData+="<div class='web-box'>"+
+									"	<div class='web-name'>"+
+									"		<ul class='web'>"+
+									"			<li><span>债权人：</span><span>"+obj[i].MORE+"</span></li>"+
+									"			<li><span>债务人：</span><span>"+obj[i].MORTGAGOR+"</span></li>"+
+									"			<li><span>主债权种类：</span><span>"+obj[i].PRICLASECKIND_CN+"</span></li>"+
+									"			<li><span>主债权数额：</span><span>"+PRICLASECAM+"</span></li>"+
+									"			<li><span>履行债务的期限自：</span><span>"+getSmpFormatDateByLong(obj[i].PEFPERFORM,false)+"</span></li>"+
+									"			<li><span>履行债务的期限止：</span><span>"+getSmpFormatDateByLong(obj[i].PEFPERTO,false)+"</span></li>"+
+									"			<li><span>保证的期限自：</span><span>"+getSmpFormatDateByLong(obj[i].PEFPERFORM,false)+"</span></li>"+
+									"			<li><span>保证的期间：</span><span>"+GUARANPERIOD_CN+"</span></li>"+
+									"			<li><span>保证的方式：</span><span>"+GATYPE_CN+"</span></li>"+
+									"			<li><span>公示状态：</span><span>选择公示</span></li>"+
+									"		</ul>"+
+									"	</div>"+
+									"</div> "; 
+						}else{
+							htmlData+="<div class='web-box'>"+
+									"	<div class='web-name'>"+
+									"		<ul class='web'>"+
+									"			<li><span>债权人：</span><span>企业选择不公示</span></li>"+
+									"			<li><span>债务人：</span><span>企业选择不公示</span></li>"+
+									"			<li><span>主债权种类：</span><span>企业选择不公示</span></li>"+
+									"			<li><span>主债权数额：</span><span>企业选择不公示</span></li>"+
+									"			<li><span>履行债务的期限自：</span><span>企业选择不公示</span></li>"+
+									"			<li><span>履行债务的期限止：</span><span>企业选择不公示</span></li>"+
+									"			<li><span>保证的期限自：</span><span>企业选择不公示</span></li>"+
+									"			<li><span>保证的期间：</span><span>企业选择不公示</span></li>"+
+									"			<li><span>保证的方式：</span><span>企业选择不公示</span></li>"+
+									"		</ul>"+
+									"	</div>"+
+									"</div> "; 
+						}
+						
+					}
+					$("#common-box").html(htmlData);
+				}else{
+					$("#count").html(0);
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="../anche/report.html"></a>
+		    <h1 class="mui-title">对外提供保证担保信息(<span id="count"></span>)</h1>
+		</header>
+		
+		<!--股东信息-->
+		<div id="common-box">
+			<div class="web-box">
+				<!--<a href="add-guarantee-inf.html">
+					<div class="web-name">
+						<ul class="web">
+							<li><span>债权人：</span> <span >神风投资集团</span></li>
+							<li><span>债务人：</span> <span >端木投资集团</span></li>
+							<li><span>主债权种类：</span> <span >货币</span></li>
+							<li><span>主债权数额：</span> <span >450万元</span></li>
+							<li><span>履行债务的期限自：</span> <span >2017年5月30日</span></li>
+							<li><span>履行债务的期限止：</span> <span >2017年6月30日</span></li>
+							<li><span>保证的期限自：</span> <span >2017年5月30日</span></li>
+							<li><span>保证的期限止：</span> <span >2017年6月30日</span></li>
+							<li><span>保证的方式：</span> <span >合同</span></li>
+						</ul>
+						
+						<div class="arrow-right">
+							<img src="img/arrow-right.png"/>
+						</div>
+					</div>
+				</a>
+			</div>
+			
+			
+			<div class="web-box">
+				<a href="add-guarantee-inf.html">
+					<div class="web-name">
+						<ul class="web">
+							<li><span>债权人：</span> <span >神风投资集团</span></li>
+							<li><span>债务人：</span> <span >端木投资集团</span></li>
+							<li><span>主债权种类：</span> <span >货币</span></li>
+							<li><span>主债权数额：</span> <span >450万元</span></li>
+							<li><span>履行债务的期限自：</span> <span >2017年5月30日</span></li>
+							<li><span>履行债务的期限止：</span> <span >2017年6月30日</span></li>
+							<li><span>保证的期限自：</span> <span >2017年5月30日</span></li>
+							<li><span>保证的期限止：</span> <span >2017年6月30日</span></li>
+							<li><span>保证的方式：</span> <span >合同</span></li>
+						</ul>
+						
+						<div class="arrow-right">
+							<img src="img/arrow-right.png"/>
+						</div>
+					</div>
+				</a>
+			</div>-->
+			
+		</div>
+		
+		
+	</body>
+</html>

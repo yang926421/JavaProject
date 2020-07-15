@@ -1,0 +1,49 @@
+/*企业名称*/
+#com-name-box{
+	margin-top: 4.4rem;
+	background-color:#FFFFFF ;
+}
+.com-name{
+	margin: auto;
+	width: 92%;
+}
+.com-name h3{
+	padding-top: 1.8rem;
+	font-size: 1.6rem;
+	font-weight: bold;
+	margin-top: 1.4rem;
+}
+.com-name p{
+	padding-bottom: 1.3rem;
+}
+/*列表状态分类*/
+#mui-ellipsis-no{
+	color:#D72830;
+}
+.mui-media-body{
+	margin-left: 16%;
+}
+.mui-media-body span{
+/*	font-size: 1.6rem;
+*/}
+.cancell-state-a{
+	color:#333333;
+	white-space: normal;
+	font-size: 1.6rem;
+}
+.cancell-state-b{
+	color:#D72830;
+	white-space: normal;
+	font-size: 1.6rem;
+}
+.zx-title{
+	font-size: 1.6rem;
+}
+/*图标大小*/
+.mui-table-view .mui-media-object{
+	width: 3.0rem;
+	height: auto;
+}
+.mui-table-view .mui-media-object.mui-pull-left{
+	margin: 1rem   1.4rem 1rem 0rem;
+}

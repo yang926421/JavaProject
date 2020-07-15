@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="../../static/css/common.css">
+		<link rel="stylesheet" href="../../static/css/mui.min.css">
+		<link rel="stylesheet" href="../../static/css/add-website.css">
+		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
+		<script type="text/javascript" src="../../static/js/common.js"></script>
+		
+		<script>
+			var ancheid=GetRequest("ANCHEID");
+			$(function(){
+				loadData("CZ05","PARINS");
+				$("#TOKEN").val(TOKEN);
+				$("#SESSIONID").val(SESSIONID);
+				if(ancheid!=null && ancheid!=""){
+					$("#ANCHEID").val(ancheid);
+					getData();
+				}
+			});
+			
+			
+			//获取数据
+			function getData(){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/i/an/party/get.json",
+					async:true,
+					data:{"ANCHEID":ancheid,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
+					dataType:"json",
+					success:function(res){
+						if(res.success==true){
+							createData(res.data[0]);
+						}
+					}
+				});
+			}
+			
+			
+			function createData(obj){
+				$("#ANCHEID").val(obj.ANCHEID);
+				$("#NUMPARM").val(obj.NUMPARM);
+				$("#PARINS_CN").val(obj.PARINS_CN);
+				$("#PARINS").find("option[value='"+obj.PARINS+"']").attr("selected",true);//经营状态
+				
+				if(obj.RESPARMSIGN==1){
+					$("#RESPARMSIGN1").prop("checked",true);
+				}else{
+					$("#RESPARMSIGN2").prop("checked",true);
+				}
+				if(obj.RESPARSECSIGN==1){
+					$("#RESPARSECSIGN1").prop("checked",true);
+				}else{
+					$("#RESPARSECSIGN2").prop("checked",true);
+				}
+				
+				
+			}
+			
+			
+			//添加数据
+			function addData(){
+				$("#PARINS_CN").val($("#PARINS").find("options:selected").text());
+				$.ajax({
+					type:"post",
+					url:httpUrl+"/i/an/party/save.json",
+					async:true,
+					data:$("#addForm").serialize(),
+					dataType:"json",
+					success:function(res){
+						if(res.success==true){
+							//mui.toast(res.codeMsg);
+							window.location.href="report.html?ANCHEID="+ancheid;
+						}
+					}
+				});
+			}
+			
+		</script>
+		
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="report.html"></a>
+		    <h1 class="mui-title">党建信息</h1>
+		    <span id="sure">
+		    	<a href="javascript:;" onclick="addData()">保存</a>
+		    </span>
+		</header>
+		<div class="tip">
+			<span >
+				* 以下为不公示信息
+			</span>
+		</div>
+		<!--资产状况信息-->
+		<form id="addForm">
+			<input type="hidden" name="ANCHEID" id="ANCHEID" />
+			<input type="hidden" name="TOKEN" id="TOKEN" />
+			<input type="hidden" name="SESSIONID" id="SESSIONID" />
+		<div id="common-box">
+			
+			<div class="web-box">
+					<ul>
+						<li>
+							<span id="dangjian-name">
+								中共党员（包括预备党员）人数
+							</span>
+							<div class="web-write">
+								<input type="text" name="NUMPARM" id="NUMPARM" onkeyup="inputNum(this)" placeholder="请输入人数" style="padding-left:10px ;"/>
+							</div>
+						</li>
+					</ul>
+			</div>
+			
+			<div class="web-box">
+					<ul>
+						<li>
+							<span id="dangjian-name" style="padding-top: 5%;">
+								党组织建制
+							</span>
+							<div class="web-write">
+								<div id="open" style="position: relative;padding-top:6%;width: 100%;line-height: 1.6rem;">
+								<input type="hidden" name="PARINS_CN" id="PARINS_CN" />
+								<select name="PARINS" id="PARINS" style="padding-left: 10px; display:block;width:100%;background: url(../static/img/rt.png) no-repeat right center;">
+									<!--<option value="1">党委</option>
+									<option value="2">党总支</option>
+									<option value="3">党支部</option>
+									<option value="4">未成立党组织</option>-->
+								</select>
+								</div>
+							</div>
+						</li>
+					</ul>
+			</div>
+			
+			<div class="web-box">
+					<ul>
+						<li>
+							<span id="dangjian-name" style="padding-top: 5%;">
+								经营者是否为党员
+							</span>
+								<div class="web-write">
+									<label style="margin-left: 10px;"><input type="radio" value="1" name="RESPARMSIGN" id="RESPARMSIGN1" checked="checked"/><span> 是</span></label>
+									<label><input type="radio" value="2" name="RESPARMSIGN" id="RESPARMSIGN2" /><span> 否</span></label>
+								</div>
+							
+						</li>
+					</ul>
+			</div>
+			<div class="web-box">
+					<ul>
+						<li>
+							<span id="dangjian-name">
+								经营者是否为党组织书记
+							</span>
+								<div class="web-write">
+									<label style="margin-left: 10px;"><input type="radio" value="1" name="RESPARSECSIGN" id="RESPARSECSIGN1" checked="checked"/><span> 是</span></label>
+									<label><input type="radio" value="2" name="RESPARSECSIGN" id="RESPARSECSIGN2" /><span> 否</span></label>
+								</div>
+							
+						</li>
+					</ul>
+			</div>
+			</form>
+			
+		</div>
+	</body>
+</html>

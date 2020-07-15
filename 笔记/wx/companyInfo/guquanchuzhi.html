@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>股权出质信息</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/modify-record.css">
+			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+			<script type="text/javascript" src="../static/js/common.js" ></script>
+		<style>
+			.web{padding-top:15px;}
+			.status{float: right;color: #ac812e;}
+		</style>
+
+
+    <script>
+    	var pripid=sessionStorage.getItem("PRIPID");;
+    	//pripid="141000010605188441";
+    	pageSize=100;
+    	
+    	$(function(){
+    		$("#page").val(1);
+			$("#totalPage").val(1);
+			getData();
+    	});
+    	function getData(){
+    		page=$("#page").val();
+			if(page==0){
+				page=1;
+			}
+    		$.ajax({
+    			type:"get",
+    			url:httpUrl+"/p/sp/pledge/by/pripid/list.json",
+    			data:{"PRIPID":pripid,"pageSize":pageSize,"page":page},
+    			async:true,
+    			dataType:"json",
+    			success:function(res){
+    				if(res.success==true){
+    					
+							$("#count").html(res.records);
+							createData(res.data);
+    				}
+    			}
+    		});
+    	}
+    	
+    	function createData(obj){
+    		if(obj!=null && obj.length>0){
+    			$("#count").html(obj.length);
+    			var htmlData="";
+    			for(var i=0;i<obj.length;i++){
+    				var type="";
+    				if(obj[i].TYPE==1){
+    					type="有效";
+    				}else{
+    					type="无效";
+    				}
+    				var PLEDAMUNIT="万元";
+    				if(obj[i].PLEDAMUNIT==1){
+    					PLEDAMUNIT="万元";
+    				}else if(obj[i].PLEDAMUNIT==2){
+    					PLEDAMUNIT="万股";
+    				}
+    				var publicDate="";
+    				if(obj[i].PUBLICDATE!=null && obj[i].PUBLICDATE!=""){
+    					publicDate=getFormatDateByLong(obj[i].PUBLICDATE,"yyyy年MM月dd日")
+    				}
+    				htmlData+="<a href='guquanchuzi-inf.html?IMPORGID="+obj[i].IMPORGID+"'>"+
+    							"<div class='web-box'>"+
+								" <div class='web-name'>"+
+								"	<ul class='web'>"+
+								"		<li><span>登记编号：</span> <span>"+obj[i].EQUITYNO+"</span><span class='status'>"+type+"</span></li>"+
+								"		<li><span>出质人：</span><span>"+obj[i].PLEDGOR+"</span></li>"+
+								"		<li><span>证照/证件号码：</span><span>"+obj[i].PLEDBLICNO+"</span></li>"+
+								"		<li><span>出质股权数额：</span><span>"+obj[i].IMPAM+"&nbsp;"+PLEDAMUNIT+"</span></li>"+
+								"		<li><span>质权人：</span><span>"+obj[i].IMPORG+"</span></li>"+
+								"		<li><span>证照/证件号码：</span><span>"+obj[i].IMPORGBLICNO+"</span></li>"+
+								"		<li><span>股权出质登记日期：</span><span>"+getFormatDateByLong(obj[i].EQUPLEDATE,"yyyy年MM月dd日") +"</span></li>"+
+								"		<li><span>公示日期：</span><span>"+publicDate+"</span></li>"+
+								"	</ul>"+
+								"	<div class='arrow-right'>"+
+								"		<img src='../static/img/arrow-right.png'/>"+
+								"	</div>"+
+								" </div>"+
+								"</div>"+
+								"</a>";
+    			}
+    			$("#common-box").html(htmlData);
+    		}else{
+    			$("#count").html(0);
+    		}
+    	}
+    	
+    </script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="companyDetail.html"></a>
+		    <h1 class="mui-title">股权出质信息(<span id="count"></span>)</h1>
+		</header>
+		
+		<!--修改信息-->
+		<div id="common-box">
+			
+				
+		</div>
+		<input type="hidden" name="page" id="page" value="1" />
+		<input type="hidden" name="totalPage" id="totalPage" value="1"/>
+		
+		<div id="loadData" style="display: none;" onclick="getData();">点击加载更多...</div>
+		<div id="noData" style="display: none;" >没有更多了...</div>
+		
+	</body>
+</html>

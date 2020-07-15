@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>其他公告</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/notice.css">
+		<script src="../static/js/jquery.min.js"></script>
+		<script>
+			$(function(){				
+				
+				var flag=true;
+				$("#chose").click(function(){
+					if(flag){
+						$("#proList").stop().animate({
+							right:0
+						})
+						flag=false;
+					}else{
+						$("#proList").stop().animate({
+							right:"-70%"
+						})
+						flag=true;
+					}
+				});
+				$(".oAs a").click(function(){					
+					$(".oAs a").removeClass("chosedCity");
+					$(this).addClass("chosedCity");
+					$("#proList").stop().animate({
+							right:"-70%"
+					});
+					var txt=$(this).text();
+					if(txt!="不限"){
+						$("#chose").text(txt);
+					}else{
+						$("#chose").text("筛选");
+					}
+					flag=true;
+				});
+			});
+		</script>
+	
+		
+	</head>
+	
+	<body>		
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="notice_index.html"></a>
+		    <h1 class="mui-title"><span id="saveOrUpdate"></span>其他公告</h1>
+		    <span id="sure">
+		    	<a href="javascript:;" class="chose" id="chose">筛选</a>
+		    </span>
+		</header>	
+		
+		<div id="common-boxJ">
+			<div id="proList">
+				<h3>区域筛选</h3>
+				<div class="oAs"><a class="chosedCity">不限</a></div>
+				<div class="oAs">
+					<a>郑州</a>
+					<a>开封</a>
+					<a>洛阳</a>
+					<a>平顶山</a>
+					<a>新乡</a>
+					<a>安阳</a>
+					<a>焦作</a>
+					<a>鹤壁</a>
+					<a>濮阳</a>
+					<a>三门峡</a>
+					<a>许昌</a>
+					<a>漯河</a>
+					<a>南阳</a>
+					<a>商丘</a>
+					<a>信阳</a>
+					<a>驻马店</a>
+					<a>周口</a>
+					<a>济源</a>
+					<a>巩义</a>
+					<a>兰考</a>
+					<a>汝州</a>
+					<a>滑县</a>
+					<a>邓州</a>
+					<a>永城</a>
+					<a>固始</a>
+					<a>鹿邑</a>
+					<a>新蔡</a>
+					<a>长垣</a>
+				</div>
+			</div>
+			<div class="sss" style="padding: 13px 10px;">
+				<div class="searchBoxs">
+					<img src="../static/img/icon/ic_search.png" />
+					<input type="text" placeholder="搜索" style="padding-top: 0rem;">
+					<a>搜索</a>
+				</div>
+			</div>	
+			<br />
+			
+			<p align="center">暂无其他公告</p>
+			<!--<ul class="noticeList" style="background: #fff;">
+				<li>
+					<!--<a href="notice_detail1.html">-->
+						
+						<!--<span>2017.03.06 15:55:25</span>-->
+					<!--</a>
+				</li>
+				<!--<li>
+					<a href="notice_detail1.html">
+						<p>关于洛阳神都信息技术有限公司列入</p>
+						<span>2017.03.06 15:55:25</span>
+					</a>
+				</li>
+				<li>
+					<a href="notice_detail1.html">
+						<p>关于洛阳神都信息技术有限公司列</p>
+						<span>2017.03.06 15:55:25</span>
+					</a>
+				</li>
+				<li>
+					<a href="notice_detail1.html">
+						<p>关于洛阳神都信息技术有限公司</p>
+						<span>2017.03.06 15:55:25</span>
+					</a>
+				</li>
+			</ul>-->
+		</div>
+		
+		
+	   
+	</body>
+</html>

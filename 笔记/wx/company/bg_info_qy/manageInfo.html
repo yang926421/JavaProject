@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>经营补充信息</title>
+		<link rel="stylesheet" href="../../static/css/common.css">
+		<link rel="stylesheet" href="../../static/css/mui.min.css">
+		<link rel="stylesheet" href="../../static/css/add-guarantee-inf.css">
+		<link rel="stylesheet" type="text/css" href="../../static/css/mui.picker.min.css" /><!--填写时间-->
+	
+		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
+		<script type="text/javascript" src="../../static/js/common.js"></script>
+		<script type="text/javascript" src="../../static/js/mui.picker.min.js"></script> <!--选择日期-->
+		<script type="text/javascript" src="../../static/js/entreginfo_company.js"></script>
+		<script>
+			var ancheId=GetRequest("ANCHEID");
+			$(function(){
+				$("#TOKEN").val(TOKEN);
+		  		$("#SESSIONID").val(SESSIONID);
+		  		$("#ANCHEID").val(ancheId);
+		  		var GOODSINSTOCK= sessionStorage.getItem("GOODSINSTOCK");
+	  			if(GOODSINSTOCK==1){
+	  				$("#goodsDiv").show();
+	  				$("#danweiDiv").show();
+	  			}
+		  		
+		  		getData();
+			})
+			
+			function addData(){
+				delete entreginfo.S_EXT_DATATIME;
+				entreginfo.SUSTAINEDLOSSES=$("input[name='SUSTAINEDLOSSES']:checked").val();
+				entreginfo.GOODSINSTOCK=$("#GOODSINSTOCK").val();
+				entreginfo.CASHLIABILITY=$("#CASHLIABILITY").val();
+				entreginfo.CIRCULATINGASSETS=$("#CIRCULATINGASSETS").val();
+				entreginfo.NETCASHFLOW=$("#NETCASHFLOW").val();
+				entreginfo.OPERATINGPROFIT=$("#OPERATINGPROFIT").val();
+				entreginfo.OWNERSEQUITY=$("#OWNERSEQUITY").val();
+				entreginfo.SESSIONID=SESSIONID;
+				entreginfo.TOKEN=TOKEN;
+				$.ajax({
+					type:"post",
+					url:httpUrl+"/h/an/cu/entreginfo/save.json",
+					async:true,
+					data:entreginfo,
+					success:function(res){
+						if(res.success){
+							mui.toast(res.codeMsg);
+							window.location.href="customs_index.html?ANCHEID="+ancheId;
+						}
+					}
+				});
+			}
+			
+			function getData(){
+				$.ajax({
+					type:"GET",
+					url:httpUrl+"/h/an/cu/entreginfo/get.json",
+					async:true,
+					data:{"ANCHEID":ancheId,"SESSIONID":SESSIONID,"TOKEN":TOKEN},
+					success:function(res){
+						entreginfo=res.data.ancUentreginfo;
+						$("input[name='SUSTAINEDLOSSES'][value='"+res.data.ancUentreginfo.SUSTAINEDLOSSES+"']").attr("checked","checked");
+						$("#GOODSINSTOCK").val(res.data.ancUentreginfo.GOODSINSTOCK);
+						$("#CASHLIABILITY").val(res.data.ancUentreginfo.CASHLIABILITY);
+						$("#CIRCULATINGASSETS").val(res.data.ancUentreginfo.CIRCULATINGASSETS);
+						$("#NETCASHFLOW").val(res.data.ancUentreginfo.NETCASHFLOW);
+						$("#OPERATINGPROFIT").val(res.data.ancUentreginfo.OPERATINGPROFIT);
+						$("#OWNERSEQUITY").val(res.data.ancUentreginfo.OWNERSEQUITY);
+					}
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" ></a>
+		    <h1 class="mui-title"><span id="saveOrUpdate"></span>经营补充信息</h1>
+		     <span id="sure">
+		    	<a href="javascript:;" onclick="addData()">保存</a>
+		    </span>
+		</header>
+		
+		<!--股东信息-->
+		<form id="addForm">
+		<div id="common-box">
+			<div class="web-box">
+					<ul>
+						<li>
+							<span id="name">
+								最近三年是否连续亏损
+							</span>
+							<div class="web-write">
+								<label><input type="radio" value="1" name="SUSTAINEDLOSSES" id="SUSTAINEDLOSSES1" />是</label>
+								<label><input type="radio" value="2" name="SUSTAINEDLOSSES" id="SUSTAINEDLOSSES2" />否</label>
+							</div>
+						</li>
+					</ul>
+			</div>
+			<div id="goodsDiv" style="display: none;">
+			<div class="web-box">
+					<ul>
+						<li>
+							<span >
+								存货
+							</span>
+							<div class="web-write">
+								<input type="text" name="GOODSINSTOCK" id="GOODSINSTOCK" oninput="inputNumPoint(this)"  placeholder="请输入存货"/>
+							</div>
+						</li>
+					</ul>
+			</div>
+			
+			<div class="web-box">
+					<ul>
+						<li>
+							<span >
+								流动负债
+							</span>
+							<div class="web-write">
+								<input type="text" name="CASHLIABILITY" id="CASHLIABILITY" oninput="inputNumPoint(this)" placeholder="请输入流动负债"/>
+							</div>
+						</li>
+					</ul>
+			</div>
+			
+			
+			
+			<div class="web-box">
+					<ul>
+						<li>
+							<span >
+								流动资产
+							</span>
+							<div class="web-write">
+								<input type="text" name="CIRCULATINGASSETS" id="CIRCULATINGASSETS" oninput="inputNumPoint(this)"  placeholder="请输入流动资产"/>
+							</div>
+						</li>
+					</ul>
+			</div>
+			
+			<div class="web-box">
+					<ul>
+						<li>
+							<span >
+								经营现金净流量
+							</span>
+							<div class="web-write">
+								<input type="text" name="NETCASHFLOW" id="NETCASHFLOW" oninput="inputNumPoint(this)"  placeholder="请输入经营现金净流量"/>
+							</div>
+						</li>
+					</ul>
+			</div>
+			
+			<div class="web-box">
+					<ul>
+						<li>
+							<span >
+								营业利润
+							</span>
+							<div class="web-write">
+								<input type="text" name="OPERATINGPROFIT" id="OPERATINGPROFIT" oninput="inputNumPoint(this)"  placeholder="请输入营业利润"/>
+							</div>
+						</li>
+					</ul>
+			</div>
+			
+			<div class="web-box">
+					<ul>
+						<li>
+							<span >
+								年初所有者权益
+							</span>
+							<div class="web-write">
+								<input type="text" name="OWNERSEQUITY" id="OWNERSEQUITY" oninput="inputNumPoint(this)"  placeholder="请输入年初所有者权益"/>
+							</div>
+						</li>
+					</ul>
+			</div>
+			</div>
+		</div>
+		</form>
+			
+		<div class="tip" id="danweiDiv" style="display: none;">
+				<span style="font-size:16px;">
+					*说明：以上单位为<img src="../../static/img/million.gif"  style="height: 25px;vertical-align:middle;"/>
+				</span>
+			</div>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+body{
+	background-color: #F2F2F2;
+}
+
+.licenseInfo{
+	padding-bottom: 10px;
+	margin-top: 44px;
+}
+.licenseInfo ul{
+	padding-left: 10px;
+	margin-bottom: 10px;
+	background-color: #FFFFFF;
+	padding-bottom: 5px;
+}
+
+.licenseInfo ul li{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 14px;
+}
+
+.licenseInfo ul li span:first-child{
+	color: #999999;
+
+}
+.licenseInfo ul li p{
+	color: #3E3E3E;
+	padding-left: 20px;
+	padding-right: 10px;
+}

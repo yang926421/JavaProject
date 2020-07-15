@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>基本信息</title>
+		<link rel="stylesheet" href="../../static/css/common.css">
+		<link rel="stylesheet" href="../../static/css/mui.min.css">
+		<link rel="stylesheet" href="../../static/css/essential-inf.css">
+		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
+		<script type="text/javascript" src="../../static/js/common.js"></script>
+		<script>
+			
+			var ancheId=GetRequest("ANCHEID");
+			var ANCHEYEAR=GetRequest("ANCHEYEAR");
+			$(document).ready(function(){
+				loadData("CD24","BUSST");
+				
+  				$("#TOKEN").val(TOKEN);
+  				$("#SESSIONID").val(SESSIONID);
+  				$("#PRIPID").val(PRIPID);
+  				$("#TRANAME").val(BODY_NAME);  //企业名称
+  				$("#BODY_NO").val(BODY_NO); //信用代码、注册号
+  				$("#REGNO").val(REGNO);
+  				$("#UNISCID").val(UNISCID);
+				$("#ANCHEYEAR").val(ANCHEYEAR);
+				if(ancheId!=null && ancheId!="" && ancheId!="null"){
+					$("#ANCHEID").val(ancheId);
+					getData();
+				}
+  				
+			});
+			
+			
+			function getData(){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/i/an/base/get.json",
+					async:true,
+					data:{"ANCHEID":ancheId,"BODY_TYPE":BODY_TYPE, "TOKEN":TOKEN,"SESSIONID":SESSIONID},
+					dataType:'json',
+					success:function(res){
+						if(res.success==true){
+							//mui.toast(res.codeMsg)
+							createData(res.data);
+						}
+					}
+				});
+			}
+			
+			function createData(obj){
+				$("#ANCHEYEAR").val(obj.ANCHEYEAR); //报告年度
+				$("#PRIPID").val(obj.PRIPID);  //企业id
+				$("#NAME").val(obj.NAME);
+				$("#TEL").val(obj.TEL); //电话
+				$("#FUNDAM").val(obj.FUNDAM); //资金数额
+				$("#EMPNUM").val(obj.EMPNUM); //从业人数
+				$("#EMPNUMDIS").val(obj.EMPNUMDIS);//从业人数是否公示
+				$("#BUSST_CN").val(obj.BUSST_CN);
+				//$("#BUSST").find("option[value='"+obj.BUSST+"']").attr("selected",true);//经营状态
+//				if(obj.EMPNUMDIS==0){
+//					document.getElementById("empnumdisImg").src="../../static/img/show-no.png";
+//				}else{
+//					document.getElementById("empnumdisImg").src="../../static/img/show.png";
+//				}
+				$("#COLGRANUM").val(obj.COLGRANUM);
+				$("#COLEMPLNUM").val(obj.COLEMPLNUM);
+				$("#RETSOLNUM").val(obj.RETSOLNUM);
+				$("#RETEMPLNUM").val(obj.RETEMPLNUM);
+				$("#DISPERNUM").val(obj.DISPERNUM);
+				$("#DISEMPLNUM").val(obj.DISEMPLNUM);
+				$("#UNENUM").val(obj.UNENUM);
+				$("#UNEEMPLNUM").val(obj.UNEEMPLNUM);
+				
+				//是否有网站网店
+				if(obj.ISWEB==1){
+					$("input[name='ISWEB'][value=1]").attr("checked","checked");
+				}
+			}
+			
+			function saveAnche(){
+//				var web=$('input:radio[name="web"]:checked').val();
+//	            sessionStorage.setItem("web"+ancheId,web); 
+				var telphone=$("#TEL").val();
+				if(isNotNull(telphone)){
+					if(!(phone.test(telphone) || tel.test(telphone))){
+						mui.toast("联系电话输入错误");
+						return;
+					}
+				}
+				
+				$.ajax({
+					type:"post",
+					url:httpUrl+"/i/an/base/save.json",
+					data:$("#addForm").serialize(),
+					async:true,
+					dataType:'json',
+					success:function(res){
+						if(res.success){
+							mui.toast(res.codeMsg);
+							window.location.href="report.html?ANCHEID="+res.data.ANCHEID;
+						}
+					}
+				});
+			}
+			
+			
+		</script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="report.html"></a>
+		    <h1 class="mui-title">基本信息</h1>
+		    <span id="sure">
+		    	<a href="javascript:;" onclick="saveAnche()" class="">保存</a>
+		    </span>
+		</header>
+		
+		<!--基本信息-->
+		<form id="addForm">
+			<input type="hidden" name="TOKEN" id="TOKEN" />
+			<input type="hidden" name="SESSIONID" id="SESSIONID" />
+			<input type="hidden" name="PRIPID" id="PRIPID" />
+			<input type="hidden" name="ANCHEID" id="ANCHEID" />
+			<input type="hidden" name="UNISCID" id="UNISCID" />
+			<input type="hidden" name="REGNO" id="REGNO" />
+		<div id="common-box">
+			<div id="line-block">
+				<div class="web-box">
+						<ul>
+							<li>
+								<span>
+									报告年度
+								</span>
+								<div class="web-write">
+									<input type="text" name="ANCHEYEAR" id="ANCHEYEAR" readonly="readonly"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+				
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									个体名称
+								</span>
+								<div class="web-write">
+									<input type="text" name="TRANAME" id="TRANAME" readonly="readonly" placeholder="请填写个体名称" />
+								</div>
+							</li>
+						</ul>
+				</div>
+				
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									统一社会信用代码/注册号
+								</span>
+								<div class="web-write">
+									<input type="text" name="BODY_NO" id="BODY_NO" placeholder="请填写统一社会信用代码" readonly="readonly"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+				
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									经营者姓名
+								</span>
+								<div class="web-write">
+									<input type="text" name="NAME" id="NAME" value="" placeholder="请填写经营者姓名"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+			</div>
+			
+			<!--第三列开始-->
+			<div id="line-block">
+				
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									联系电话
+								</span>
+								<div class="web-write">
+									<input type="text" name="TEL" id="TEL" onkeyup="inputNum(this)"  placeholder="请填写联系电话"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+				
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									资金数额<img src="../../static/img/million.gif"  style="height: 25px;vertical-align:middle;"/>
+								</span>
+								<div class="web-write">
+									<input type="text" name="FUNDAM" id="FUNDAM" oninput="inputNumPoint(this)" placeholder="请填写资金数额"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+				
+			</div>
+			
+			<!--第三列开始-->
+			<div id="line-block">
+				<div class="web-box">
+						<ul>
+							
+							<li>
+								<span >
+									从业人数
+								</span>
+								<div class="web-write">
+									<input type="text" name="EMPNUM" id="EMPNUM" onkeyup="inputNum(this)" placeholder="请输入人数" style="width: 60%;"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+				
+			
+			<!--<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									经营状态
+								</span>
+								<div class="web-write">
+									<div id="open" style="position: relative;width: 100%;">
+										<input type="hidden" name="BUSST_CN" id="BUSST_CN" />
+										<select name="BUSST"  id="BUSST" class="service_opt" style="margin-bottom: 0; display:block;width:100%;background: url(../../static/img/rt.png) no-repeat right center;">
+						                </select>
+									</div>
+								</div>
+							</li>
+						</ul>
+				</div>-->
+			
+			
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									是否有网站或网店
+								</span>
+								<div class="essential-write">
+									<label><input type="radio" value="1" name="ISWEB"/>是</label>
+									<label><input type="radio" value="2" name="ISWEB"  checked="checked" />否</label>
+								</div>
+							</li>
+						</ul>
+				</div>
+				
+				<!--新增不公示信息-->
+				<div id="no-show">
+					<p>以下为不公示信息</p>
+				</div>
+				<!--不展示的信息-->
+				<div class="web-box">
+					<div id="social-title">
+						<h4>高校毕业生人数</h4> 
+						<!--<span class="contribution-arrow-right"><img src="img/show-no.png"/></span>-->
+					</div>
+						<ul>
+							<li>
+								<span >
+									经营者（人）
+								</span>
+								<div class="web-write">
+									<input type="text" name="COLGRANUM" id="COLGRANUM" onkeyup="inputNum(this)" placeholder="请输入人数"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									雇员
+								</span>
+								<div class="web-write">
+									<input type="text" name="COLEMPLNUM" id="COLEMPLNUM" onkeyup="inputNum(this)" placeholder="请输入人数"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+			</div>
+				<!--不展示的信息-->
+				<div class="web-box">
+					<div id="social-title">
+						<h4>退役士兵人数</h4> 
+						<!--<span class="contribution-arrow-right"><img src="img/show-no.png"/></span>-->
+					</div>
+						<ul>
+							<li>
+								<span >
+									经营者（人）
+								</span>
+								<div class="web-write">
+									<input type="text" name="RETSOLNUM" id="RETSOLNUM" onkeyup="inputNum(this)" placeholder="请输入人数"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+			
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									雇员
+								</span>
+								<div class="web-write">
+									<input type="text" name="RETEMPLNUM" id="RETEMPLNUM" onkeyup="inputNum(this)" placeholder="请输入人数"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+				
+				<!--不展示的信息-->
+				<div class="web-box">
+					<div id="social-title">
+						<h4>残疾人人数</h4> 
+						<!--<span class="contribution-arrow-right"><img src="img/show-no.png"/></span>-->
+					</div>
+						<ul>
+							<li>
+								<span >
+									经营者（人）
+								</span>
+								<div class="web-write">
+									<input type="text" name="DISPERNUM" id="DISPERNUM" onkeyup="inputNum(this)" placeholder="请输入人数"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+			
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									雇员
+								</span>
+								<div class="web-write">
+									<input type="text" name="DISEMPLNUM" id="DISEMPLNUM" onkeyup="inputNum(this)" placeholder="请输入人数"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+				
+				<!--不展示的信息-->
+				<div class="web-box">
+					<div id="social-title">
+						<h4>失业人员再就业人数</h4> 
+						<!--<span class="contribution-arrow-right"><img src="img/show-no.png"/></span>-->
+					</div>
+						<ul>
+							<li>
+								<span >
+									经营者（人）
+								</span>
+								<div class="web-write">
+									<input type="text" name="UNENUM" id="UNENUM" onkeyup="inputNum(this)" placeholder="请输入人数"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+			
+				<div class="web-box">
+						<ul>
+							<li>
+								<span >
+									雇员
+								</span>
+								<div class="web-write">
+									<input type="text" name="UNEEMPLNUM" id="UNEEMPLNUM" onkeyup="inputNum(this)" placeholder="请输入人数"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+				<!--新增不公示信息-->
+		</form>	
+			
+		
+		
+	</body>
+</html>

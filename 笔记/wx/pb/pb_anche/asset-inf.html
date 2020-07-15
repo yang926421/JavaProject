@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>资产状况信息</title>
+		<link rel="stylesheet" href="../../static/css/common.css">
+		<link rel="stylesheet" href="../../static/css/mui.min.css">
+		<link rel="stylesheet" href="../../static/css/mui.min.css">
+		<link rel="stylesheet" href="../../static/css/asset-inf.css">
+		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
+		<script type="text/javascript" src="../../static/js/common.js"></script>
+		
+		<script>
+			var ancheid=GetRequest("ANCHEID");
+			$(function(){
+				$("#TOKEN").val(TOKEN);
+				$("#SESSIONID").val(SESSIONID);
+				if(ancheid!=null && ancheid!=""){
+					$("#ANCHEID").val(ancheid);
+					getData();
+				}
+			});
+			
+			
+			//获取资产数据
+			function getData(){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/i/an/assetsCondition/get.json",
+					async:true,
+					data:{"ANCHEID":ancheid,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
+					dataType:"json",
+					success:function(res){
+						if(res.success==true){
+							createData(res.data);
+						}
+					}
+				});
+			}
+			
+			
+			function createData(obj){
+				$("#VENDINC").val(obj.VENDINC);//销售额或营业收入
+				$("#VENDINCDIS").val(obj.VENDINCDIS);
+				
+				if(obj.VENDINCDIS==null || obj.VENDINCDIS==""){
+					$("#VENDINCDIS").val(2);
+				}
+				if(obj.VENDINCDIS=='1'){
+					document.getElementById("vendincdisImg").src="../../static/img/show.png";
+				}else{
+					document.getElementById("vendincdisImg").src="../../static/img/show-no.png";
+				}
+			
+				$("#RATGRO").val(obj.RATGRO);  //纳税金额
+				$("#RATGRODIS").val(obj.RATGRODIS);
+				if(obj.RATGRODIS==null || obj.RATGRODIS==""){
+					$("#RATGRODIS").val(2);
+				}
+				if(obj.RATGRODIS==1){
+					document.getElementById("ratgroImg").src="../../static/img/show.png";
+				}else{
+					document.getElementById("ratgroImg").src="../../static/img/show-no.png";
+				}	
+				
+			}
+			
+			
+			//添加资产数据
+			function addData(){
+				$.ajax({
+					type:"post",
+					url:httpUrl+"/i/an/assetsCondition/save.json",
+					async:true,
+					data:$("#addForm").serialize(),
+					dataType:"json",
+					success:function(res){
+						if(res.success==true){
+							mui.toast(res.codeMsg);
+							window.location.href="report.html?ANCHEID="+ancheid;
+						}
+					}
+				});
+			}
+			
+		</script>
+		
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="report.html"></a>
+		    <h1 class="mui-title">资产状况信息</h1>
+		    <span id="sure">
+		    	<a href="javascript:;" onclick="addData()">保存</a>
+		    </span>
+		</header>
+		
+		<!--资产状况信息-->
+		<form id="addForm">
+			<input type="hidden" name="ANCHEID" id="ANCHEID" />
+			<input type="hidden" name="TOKEN" id="TOKEN" />
+			<input type="hidden" name="SESSIONID" id="SESSIONID" />
+			
+		<div id="common-box">
+			<div class="web-box">
+					<ul>
+						<li>
+							<span >
+								营业额或营业收入
+							</span>
+							<div class="select-time">
+								<div class="web-write">
+									<input type="text" name="VENDINC" id="VENDINC" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
+								</div>
+								<input type="hidden" name="VENDINCDIS" id="VENDINCDIS" value="2" />
+								<span class="contribution-arrow-right"><img id="vendincdisImg" /></span>
+							</div>
+							
+						</li>
+					</ul>
+			</div>
+			
+		
+			
+			<div class="web-box">
+					<ul>
+						<li>
+							<span >
+								纳税总额
+							</span>
+							<div class="select-time">
+								<div class="web-write">
+									<input type="text" name="RATGRO" id="RATGRO" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
+								</div>
+								<input type="hidden" name="RATGRODIS" id="RATGRODIS" value="2"/>
+								<span class="contribution-arrow-right"><img id="ratgroImg" /></span>
+							</div>
+							
+						</li>
+					</ul>
+			</div>
+			
+			
+			</form>
+			<!--提示信息-->
+			<div class="tip">
+				<span style="font-size:16px;">
+					*说明：以上单位为<img src="../../static/img/million.gif"  style="height: 25px;vertical-align:middle;"/>
+				</span>
+			</div>
+		</div>
+		<script type="text/javascript">
+		
+		   /******** start 设置资产状况对外公示or隐藏*************/
+			document.getElementById("vendincdisImg").addEventListener('tap', function() {
+				var vendincdis=$("#VENDINCDIS").val();
+				if(vendincdis==2){
+					document.getElementById("vendincdisImg").src="../../static/img/show.png";
+					$("#VENDINCDIS").val(1);
+					mui.toast('您设置了营业额或营业收入对外公示');
+				}else{
+					document.getElementById("vendincdisImg").src="../../static/img/show-no.png";
+					$("#VENDINCDIS").val(2);
+					mui.toast('您设置了营业额或营业收入对外隐藏');
+				}
+			});
+			
+		
+			
+			document.getElementById("ratgroImg").addEventListener('tap', function() {
+				var ratgrodis=$("#RATGRODIS").val();
+				if(ratgrodis==2){
+					document.getElementById("ratgroImg").src="../../static/img/show.png";
+					$("#RATGRODIS").val(1);
+					mui.toast('您设置了纳税总额对外公示');
+				}else{
+					document.getElementById("ratgroImg").src="../../static/img/show-no.png";
+					$("#RATGRODIS").val(2);
+					mui.toast('您设置了纳税总额对外隐藏');
+				}
+				
+			});
+			
+		
+			
+		
+			
+			
+			/******** end 设置资产状况对外公示or隐藏*************/
+		</script>
+	</body>
+</html>

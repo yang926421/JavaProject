@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/notice.css">
+			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+			<script type="text/javascript" src="../static/js/common.js" ></script>
+			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+			
+			<script>
+				var FROID=GetRequest("FROID");
+				
+				$(function(){
+					getData();
+				});
+				
+				function getData(){
+					$.ajax({
+						type:"get",
+						url:httpUrl+"/p/esfinfo/get.json",
+						async:true,
+						data:{"FROID":FROID},
+						dataType:"json",
+						success:function(res){
+							if(res.success==true){
+								createData(res.data);
+							}/*else{
+								mui.toast(res.codeMsg);
+							}*/
+						}
+					});
+				}
+				
+				function createData(obj){
+					$("#noticeTitle").html("关于"+obj.CORENTNAME+"的司法股权冻结公告");
+					$("#FROAUTH").html(obj.FROAUTH);
+					$("#FRODOCNO").html(obj.FRODOCNO+"执行裁定书<br/>"+obj.FRODOCNO+"执行通知书");
+					$("#EXECUTEITEM_CN").html(obj.EXECUTEITEM_CN);
+					$("#INV").html(obj.INV);
+					if(obj.BLICTYPE_CN!=null && obj.BLICTYPE_CN!=""){
+						$("#CERTYPE_CN").html(obj.BLICTYPE_CN);
+					}else{
+						$("#CERTYPE_CN").html(obj.CERTYPE_CN);
+					}
+					if(obj.BLICNO!=null && obj.BLICNO!=""){
+						$("#CERNO").html(obj.BLICNO);
+					}else{
+						$("#CERNO").html("******");
+					}
+					$("#FROAM").html(obj.FROAM+obj.FORAMME);
+					
+					if(obj.KEEPFROFROM!=null && obj.KEEPFROFROM!=""){
+						var html="自"+getFormatDateByLong(obj.KEEPFROFROM,"yyyy年MM月dd日")+"起至"+getFormatDateByLong(obj.KEEPFROTO,"yyyy年MM月dd日");
+						$("#FROFROM").html(html);
+						$("#FROZDEADLINE").html(obj.KEEPFROZDEADLINE);
+					}else{
+						var html="自"+getFormatDateByLong(obj.FROFROM,"yyyy年MM月dd日")+"起至"+getFormatDateByLong(obj.FROTO,"yyyy年MM月dd日");
+						$("#FROFROM").html(html);
+						$("#FROZDEADLINE").html(obj.FROZDEADLINE);
+					}
+					$("#PUBLICDATE").html(getFormatDateByLong(obj.PUBLICDATE,"yyyy年MM月dd日"));
+				}
+			</script>
+		
+		
+	</head>
+	
+	<body>		
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left"></a>
+		    <h1 class="mui-title"><span id="saveOrUpdate"></span>公告详情</h1>
+		    <span id="sure">
+		    	<a href="javascript:;" class="chose" id="chose"></a>
+		    </span>
+		</header>	
+		
+		<div id="common-boxJ">
+			<div class="detailBox">
+				<p id="noticeTitle" style="padding-top: 10px;text-align: center;font-size: 20px;font-weight: bold;line-height: 35px;"></p>
+				<hr/>
+				<p class="p1">
+					执行法院：<span id="FROAUTH"></span>
+				</p>
+				<p class="p1">
+					执行文书文号：<span id="FRODOCNO"></span>
+				</p>
+				
+				<p class="p1">
+					执行事项：<span id="EXECUTEITEM_CN"></span>
+				</p>
+				<p class="p1">
+					被执行人：<span id="INV"></span>
+				</p>
+				<p class="p1">
+					被执行人证照/证件种类：<span id="CERTYPE_CN"></span>
+				</p>
+				<p class="p1">
+					被执行人证照/证件号码：<span id="CERNO"></span>
+				</p>
+				<p class="p1">
+					被执行人持有股权、其他投资权益的数额：<span id="FROAM"></span>
+				</p>
+				<p class="p1">
+					冻结/续行冻结期限：<span id="FROFROM"></span> （解除冻结的除外）				
+				</p>
+				<p class="p1">冻结期限：<span id="FROZDEADLINE"></span> 天</p>
+				<p class="p1">公示日期：<span id="PUBLICDATE"></span> </p>
+			</div>
+		</div>
+		
+		
+	   
+	</body>
+</html>

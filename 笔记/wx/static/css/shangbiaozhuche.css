@@ -1,0 +1,71 @@
+body{
+	background-color: #F2F2F2;
+}
+
+.headerH{
+	height: 44px;
+	width: 100%;
+}
+
+.shangdiv{
+	background-color: #FFFFFF;
+	height: 130px;
+	padding: 15px;
+	position: relative;
+}
+
+.imgdiv{
+	width: 20%;
+	height: 100%;
+	float: left;
+}
+
+.imgdiv img{
+	width: 60px;
+	height: 60px;
+	margin-top: 20px;
+}
+
+.insdiv{
+	width: 80%;
+	height: 100%;
+	float: left;
+}
+
+.insdiv ul li{
+	height: 25px;
+	line-height: 25px;
+}
+
+.type{
+	float: right;
+	color: #ac812e;
+	font-size: 1.5rem;
+}
+
+.insdiv ul li span:first-child{
+	color: #999999;
+}
+.zhuce-con{
+	font-size: 1.5rem;
+	color: #333;
+}
+.martop{
+	margin-top: 15px;
+}
+/*箭头*/
+.arrow-right{
+	position: absolute;
+	right: 4%;
+	width: 0.8rem;
+	top: 6rem;
+}
+
+
+.web-box{
+	margin-bottom: 0.5rem;
+	background-color: #FFFFFF;
+}
+.web-box a{
+	color: #333333;
+}

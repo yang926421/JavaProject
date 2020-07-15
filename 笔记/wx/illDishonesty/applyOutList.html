@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/right-inf.css">
+		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../static/js/common.js" ></script>
+		<script>
+			var ILLID=GetRequest("ILLID");
+			var objection =JSON.parse(sessionStorage.getItem("apply"+ILLID));
+			$(function(){
+				getData();
+			});
+			function getData(){
+				$("#loadData").hide();
+				page=$("#page").val();
+				if(page==0){
+					page=1;
+				}
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/e/ill/apply/out/get.json",
+					async:true,
+					data:{"PRIPID":PRIPID,"TOKEN":TOKEN,"SESSIONID":SESSIONID,"ILLID":ILLID},
+					dataType:"json",
+					beforeSend:function(){
+		    			$("#loading").show();
+		    		},
+					success:function(res){
+						$("#loading").hide();
+						if(res.success==true){
+							loadPage(res);
+							createData(res.data);
+						}
+					}
+				});
+			}
+			
+			function createData(obj){
+				$("#count").html(obj.length);
+				var htmlData="";
+				if(obj.length>0){
+					htmlData="<div class='web-box'><div class='web-name'><ul class='web'>"+ 
+					          "<li><span>列入机关：</span> <span>"+objection.DECORG_CN+"</span></li>"+
+					          "<li><span>列入日期：</span> <span>"+getFormatDateByLong(objection.ABNTIME,"yyyy年MM月dd日")+"</span></li>"+
+							  "<li><span>列入原因：</span> <span>"+objection.SERILLREA_CN+"</span></li>"+
+							  "</ul></div></div>";
+					for (var i=0;i<obj.length;i++) {
+						htmlData+=" <div class='web-box'>"+
+									/*"<a href='bussinessSupport.html?PRIPID="+obj[i].PRIPID+"'>"+*/
+									"	<div class='web-name'>"+
+									"		<ul class='web'>"+
+									"			<li><span>申请时间：</span> <span>"+getFormatDateByLong(obj[i].CREATEDTIME,"yyyy年MM月dd日")+"</span></li>"+
+									"			<li><span>受理结果：</span> <span>"+obj[i].RESULTFORMART+"</span></li>"+
+									/*"			<li><span>受理人：</span>"+obj[i].PERSON+"<span></span></li>"+*/
+									"			<li><span>受理意见：</span> <span>"+obj[i].RESULTRESON+"</span></li>"+
+									"		</ul>"+
+									/*"		<div class='arrow-right' style='top: 7rem'>"+
+									"			<img src='../static/img/arrow-right.png'/>"+
+									"		</div>"+*/
+									"	</div>"+
+									"</a>"+
+								"</div>";
+					}
+				}else{
+					mui.toast("没有更多数据了");
+				}
+				
+				$("#common-box").append(htmlData);
+				
+			}
+			
+			function goSearch(){
+				$("#common-box").html("");
+				$("#page").val(1);
+				getData();
+			}
+		</script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" ></a>
+		    <h1 class="mui-title">移出申请信息</h1>
+		</header>
+		<div class="sss" style="padding: 13px 10px;margin-top: 5px;">
+			<!--<div class="searchBoxs">
+				<img src="../static/img/icon/ic_search.png" />
+				<input type="text" id="title" placeholder="" style="font-size: 14px; ">
+				<a onclick="goSearch()">搜索</a>
+			</div>-->
+		</div>	
+		<!--异议信息-->
+		<div id="common-box" style="margin-top: 0px;">
+			
+		</div>
+		<input type="hidden" name="page" id="page" value="1" />
+	<input type="hidden" name="totalPage" id="totalPage" value="1"/>
+	
+	<!--加载点-->
+	<div id="loading" style="display: none;" class="spinner">
+		 <div class="bounce1"></div>
+		 <div class="bounce2"></div>
+		 <div class="bounce3"></div>
+	</div>
+	
+	<div id="loadData" style="display: none;" onclick="getData();">点击加载更多...</div>
+	<div id="noData" style="display: none;" >没有更多了...</div>
+		
+	</body>
+</html>

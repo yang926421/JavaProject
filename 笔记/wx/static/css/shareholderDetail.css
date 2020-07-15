@@ -1,0 +1,82 @@
+
+.gudong{
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 15px;
+	padding-bottom: 20px;
+	background-color: #FFFFFF;
+	font-size: 16px;
+}
+
+.martop{
+	margin-top: 44px;
+}
+
+.gtop{
+	margin-top: 15px;
+}
+
+.gtitle{
+	padding-bottom: 15px;	
+	border-bottom: 1px solid #F2F2F2;
+}
+
+.guhang{
+	padding-top: 10px;
+}
+
+.ptop{
+	padding-top: 15px;
+}
+
+.guhang span:first-child{
+	color: #999999;
+}
+.guhang span:last-child{
+	color: #3E3E3E;
+}
+
+
+.renjiao,.shijiao{
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 15px;
+	background-color: #FFFFFF;
+	font-size: 16px;
+}
+
+.renjiao{
+	height: 220px;
+}
+
+.shijiao{
+	height: 250px;
+}
+
+.jiaohang span{
+	width: 33.3%;
+	height: 35px;
+	float: left;
+}
+
+.jiaohang span:nth-child(1){
+	text-align: left;
+}
+
+.jiaohang span:nth-child(2){
+	text-align: center;
+}
+
+.jiaohang span:nth-child(3){
+	text-align: center;
+}
+
+.gtop{
+	margin-top: 15px;	
+}
+
+.gcolor{
+	color: #999999;
+	margin-top: 15px;
+}
+

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>变更信息</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/biangenInfo.css">
+			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+			<script type="text/javascript" src="../static/js/common.js" ></script>
+			<script>
+				//获取企业id
+				var pripid= sessionStorage.getItem("PRIPID");
+				//获取企业类型
+				var type=sessionStorage.getItem("TYPE");  //1是企业 2是农专，3是个体
+			  
+				$(function(){
+					getData();
+				});
+				//获取变更信息
+				function getData(){
+					$.ajax({
+						type:"get",
+						url:httpUrl+"/p/changing/by/pripid/get.json",
+						data:{"PRIPID":pripid,"TYPE":type},
+						dataType:"json",
+						async:true,
+						success:function(res){
+							if(res.success==true){
+								createData(res.data);
+							}
+						}
+					});
+				}
+				
+				//创建变更信息内容
+				function createData(obj){
+					if(obj!=null && obj.length>0){
+						$("#count").html(obj.length);
+						var htmlData="";
+						for(var i=0;i<obj.length;i++){
+							if(i==0){
+								htmlData+="<div class='biangentitle'>"+getFormatDateByLong(obj[i].ALTDATE,"yyyy年MM月dd日") +"</div>"+
+									"<div class='biangencontent'>"+
+									"	 <p>变更事项:</p>"+
+									"	 <p>"+obj[i].ALTITEM_CN+"</p>"+
+									"	 <p >变更前:</p>	"+
+									"	 <p>"+obj[i].ALTBE+"</p>"+
+//									"	 <p class='biancolor'>-收起</p>"+
+//									"	 <p class='biancolor'>+展开</p>"+
+									"	 <p>变更后:</p>"+
+									"	 <p>"+obj[i].ALTAF+"</p>"+
+									"</div>";
+							}else{
+								htmlData+="<div class='biangentitle martop'>"+getFormatDateByLong(obj[i].ALTDATE,"yyyy年MM月dd日")+"</div>"+
+									"<div class='biangencontent'>"+
+									"	 <p>变更事项:</p>"+
+									"	 <p>"+obj[i].ALTITEM_CN+"</p>"+
+									"	 <p >变更前:</p>	"+
+									"	 <p>"+obj[i].ALTBE+"</p>"+
+//									"	 <p class='biancolor'>-收起</p>"+
+//									"	 <p></p>"+
+//									"	 <p class='biancolor'>+展开</p>"+
+									"	 <p>变更后:</p>"+
+									"	 <p>"+obj[i].ALTAF+"</p>"+
+									"</div>";
+							}
+						}
+						$("#content").append(htmlData);
+					}else{
+						$("#count").html(0);
+					}
+				}
+				
+				
+			</script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="companyDetail.html"></a>
+		    <h1 class="mui-title">变更信息(<span id="count"></span>)</h1>
+		</header>
+		<div class="headertop"></div>
+		<div id="content"></div>
+		
+		<input type="hidden" name="page" id="page" value="1" />
+		<input type="hidden" name="totalPage" id="totalPage" value="1"/>
+		
+		<div id="loadData" style="display: none;" onclick="getData();">点击加载更多...</div>
+		<div id="noData" style="display: none;" >没有更多了...</div>
+	</body>
+</html>

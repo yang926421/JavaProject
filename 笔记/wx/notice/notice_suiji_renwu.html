@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/guarantee-inf.css">
+		<script src="../static/js/jquery.min.js"></script>
+		<script type="text/javascript" src="../static/js/common.js" ></script>
+	    <script type="text/javascript" src="../static/js/mui.min.js" ></script>
+	     <script type="text/javascript" src="../static/js/isAll.js" ></script>
+		<script>
+			var RANINSTASKID=GetRequest("RANINSTASKID");
+				
+			$(function(){
+				getData();
+			});
+			function getData(){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/p/zhjhdoubltask/get.json",
+					async:true,
+					data:{"RANINSTASKID":RANINSTASKID},
+					dataType:"json",
+					success:function(res){
+						if(res.success==true){
+							if(typeof(res.data) !="undefined"){
+							createData(res.data);
+							}else{
+								mui.toast(res.codeMsg);
+							}
+						}/*else{
+							mui.toast(res.codeMsg);
+						}*/
+					}
+				});
+				}
+			
+			function createData(obj){
+				var htmlData ="";
+			   	if(obj.length>0){
+					for(var i=0;i<obj.length;i++){
+						htmlData+="<li><span>抽查计划编号：</span> <span>"+obj[i].RANINSPLANID+"</span></li>"+
+								"<li><span>抽查计划名称：</span> <span>"+obj[i].RANINSPLANNAME+"</span></li>"+
+								"<li><span>抽查任务编号：</span> <span>"+obj[i].RANINSTASKID+"</span></li>"+
+								"<li><span>抽查任务名称：</span> <span>"+obj[i].RANINSTASKNAME+"</span></li>"
+								if(obj[i].RANINSTYPE==1){
+								htmlData+="<li><span>抽查类型：</span> <span>定向</span></li>"
+								}else if(obj[i].RANINSTYPE==2){
+								htmlData+="<li><span>抽查类型：</span> <span>不定向</span></li>"
+								}
+								
+								if(obj[i].RANINSITEM.length>30){
+									htmlData+="<li ><span>抽查事项：</span> <span id='isAll"+i+"'>"+obj[i].RANINSITEM.substring(0,29)+"...<label onclick='getAll("+i+",\""+obj[i].RANINSITEM+"\")' style='color:#ac812e'>+展开</label></span></li>";
+								}else{
+									htmlData+="<li ><span>抽查事项：</span> <span>"+obj[i].RANINSITEM+"</span></li>";
+								}
+								
+								htmlData+="<li><span>抽查对象范围：</span> <span>"+obj[i].RANINSOBJSCOPE+"</span></li>"+
+								"<li><span>抽取日期：</span> <span>"+obj[i].EXTRACTFROM+"至"+obj[i].EXTRACTTO+"</span></li>"+
+								"<li><span>检查市场主体数量：</span><span>"+obj[i].RANINSOBJNUM+"</span></li>"+
+								"<li><span>抽查名单：</span> <span><a href='choucha-name.html?RANINSTASKID="+obj[i].RANINSTASKID+"'style='color:#ac812e;'>点击查看</a></span></li>";
+					}
+				}else{
+					mui.toast(ob.codeMsg);
+			 	}
+				$("#web").html(htmlData);
+			}
+		</script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="report.html"></a>
+		    <h1 class="mui-title">抽查任务详情</h1>
+		</header>
+		
+		<!--股东信息-->
+		<div id="common-box">
+			<div class="web-box">
+				<!--<a href="add-guarantee-inf.html">-->
+					<div class="web-name">
+						<ul class="web" id="web">
+						<!--	<li><span>抽查计划编号：</span> <span >4104547578745</span></li>
+							<li><span>抽查计划名称：</span> <span >市监系统全面加强市场监管</span></li>
+							<li><span>抽查任务编号：</span> <span >4104547578745</span></li>
+							<li><span>抽查任务名称：</span> <span >2017年度第1号抽查任务</span></li>
+							<li><span>抽查类型：</span> <span >不定项</span></li>
+							<li><span>抽查事项：</span> <span >重大变更的检查@超出直销产品，重大变更的检查@超出直销产品</span></li>
+							<li><span>抽查对象范围：</span> <span >全省存续企业</span></li>
+							<li><span>抽取日期：</span> <span >2017-9-29至2017-9-29</span></li>
+							<li><span>检查机关：</span> <span >市监局</span></li>
+							<li><span>检查市场主体数量：</span> <span >1688</span></li>
+							<li><span>抽查名单：</span> <span ><a href="choucha-name.html" style="color:#ac812e;">点击查看</a></span></li>-->
+						</ul>
+					</div>
+				<!--</a>-->
+			</div>
+			
+		</div>
+		
+		
+	</body>
+</html>

@@ -1,0 +1,50 @@
+.web-box{
+	margin-bottom: 0.5rem;
+	background-color: #FFFFFF;
+}
+.web-box a{
+	color: #333333;
+}
+.web-name{
+	margin: auto;
+	width: 92%;
+	position: relative;
+}
+.web-name h4{
+	font-size: 1.5rem;
+	font-weight: bold;
+	float: left;
+	display: inline-block;
+}
+.web{
+	/*border: #000000 solid 1px;*/
+}
+.web li{
+	font-size:1.4rem;
+	line-height: 2.4rem;
+}
+.web li span:first-child{
+	color: #999999;
+	font-size:1.4rem;
+}
+.web li:last-child{
+	padding-bottom: 1.4rem;
+}
+/*箭头*/
+.arrow-right{
+	position: absolute;
+	right: 0;
+	width: 0.8rem;
+	top: 9rem;
+}
+.licens-top{
+	padding-top: 1.4rem;
+	overflow: hidden;
+	padding-bottom: 0.6rem;
+}
+.licens-top span{
+	float: right;
+	padding-top: 1%;
+	font-size: 1.4rem;
+	color: #ac812e;
+}

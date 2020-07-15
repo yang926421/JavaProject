@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+			<link rel="stylesheet" href="../static/css/weui.css">
+		<link rel="stylesheet" href="../static/css/essential-inf.css">
+		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../static/js/mui.min.js"></script>
+		<script type="text/javascript" src="../static/js/common.js"></script>
+		<script type="text/javascript" src="../static/js/opinion.js"></script>
+		 <style>
+    li{list-style-type: none;}
+    a,input{outline: none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+    #choose{display: none;}
+    canvas{width: 100%;border: 1px solid #000000;}
+    #upload{display: block;margin: 10px;height: 60px;text-align: center;line-height: 60px;border: 1px solid;border-radius: 5px;cursor: pointer;}
+    .touch{background-color: #ddd;}
+    .img-list{margin: 10px 5px;}
+    .img-list li{position: relative;display: inline-block;width: 100px;height: 100px;margin: 5px 5px 20px 5px;border: 1px solid rgb(100,149,198);background: #fff no-repeat center;background-size: cover;}
+    .progress{position: absolute;width: 100%;height: 20px;line-height: 20px;bottom: 0;left: 0;background-color:rgba(100,149,198,.5);}
+    .progress span{display: block;width: 0;height: 100%;background-color:rgb(100,149,198);text-align: center;color: #FFF;font-size: 13px;}
+    .size{position: absolute;width: 100%;height: 15px;line-height: 15px;bottom: -18px;text-align: center;font-size: 13px;color: #666;}
+    .tips{display: block;text-align:center;font-size: 13px;margin: 10px;color: #999;}
+    .pic-list{margin: 10px;line-height: 18px;font-size: 13px;}
+    .pic-list a{display: block;margin: 10px 0;}
+    .pic-list a img{vertical-align: middle;max-width: 30px;max-height: 30px;margin: -4px 0 0 10px;}
+  </style>
+		<script>
+			var url="/p/o/feed/back/save.json";
+			$(function(){
+				if(PRIPID!=null && PRIPID!=""){
+					url="/e/o/feed/back/save.json";
+					$("#IS_ANON").val(0);  //是否匿名 1是匿名 0是实名
+					$("#PRIPID").val(PRIPID);
+					$("#LM_NAME").val(sessionStorage.getItem("name"));
+				}
+			});
+			
+		</script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="report.html"></a>
+		    <h1 class="mui-title">意见反馈</h1>
+		    <span id="sure">
+		    	<a href="javascript:;"  id="commit" >提交</a>
+		    </span>
+		</header>
+		
+		<!--基本信息-->
+		<form id="addForm">
+			<input type="hidden" name="IS_ANON" id="IS_ANON" value="1" />
+			<input type="hidden" name="PRIPID" id="PRIPID"  />
+			<input type="hidden" name="LM_NAME" id="LM_NAME" />
+		<div id="common-box">
+			<div id="line-block">
+				
+				<div class="web-box">
+						<ul>
+							<li>
+								<div style="height: 30px;">
+									请提出您的宝贵意见
+								</div>
+								<div style="height: 185px;">
+									<textarea name="FEED_CONTENT" id="FEED_CONTENT"  rows="6" placeholder="请填写您的宝贵意见" style="border:solid 1px #E1E1E1 ;margin-top: 15px;"></textarea>
+								</div>
+							</li>
+						</ul>
+				</div>
+				
+				<div class="web-box">
+					<ul>
+					<li>
+						<span>
+							上传图片<br/>
+							<label style="color: #999999;">(最多可上传4张)</label>
+						</span>
+						<div style="width: 58%; float: right;overflow: hidden;padding-top: 18px;padding-bottom: 8px;">
+						    	<div id="upload-container">
+								<div class="page__bd">
+									<!--图片浏览、删除-->
+							        <div class="weui-gallery" id="gallery">
+							            <span class="weui-gallery__img" id="galleryImg" ></span>
+							            <div class="weui-gallery__opr">
+							                <a href="javascript:" class="weui-gallery__del">
+							                    <i class="weui-icon-delete weui-icon_gallery-delete" ></i>
+							                </a>
+							            </div>
+							        </div>
+									
+																	
+									<!--图片添加模块-->
+			                        <div class="weui-uploader__bd" style="margin-bottom: 0.5rem;">
+			                            <ul class="weui-uploader__files" id="uploaderFiles" >
+			                                <li></li>
+			                            </ul>
+			                            <div id="uploadDiv" class="weui-uploader__input-box">
+			                            	 <input id="uploaderInput" name="uploaderInput" class="weui-uploader__input" type="file" multiple accept="image/*" />
+			                            </div>
+			                        </div>
+							    </div>
+							</div>
+						</div>
+						
+						</li>
+					</ul>
+				</div>
+				
+				<div class="web-box">
+						<ul>
+							<li>
+								<span>
+									联系电话
+								</span>
+								<div class="web-write">
+									<input type="text" name="CONTACT_TEL" id="CONTACT_TEL" onkeyup="inputNum(this)" placeholder="请填写联系电话"/>
+							
+								</div>
+							</li>
+						</ul>
+				</div>
+				<div class="web-box">
+						<ul>
+							<li>
+								<span>
+									联系邮箱
+								</span>
+								<div class="web-write">
+									<input type="text" name="CONTACT_EMAIL" id="CONTACT_EMAIL" placeholder="请填写联系邮箱"/>
+								</div>
+							</li>
+						</ul>
+				</div>
+				
+			</div>
+			
+			</div>
+		</form>	
+
+	</body>
+</html>

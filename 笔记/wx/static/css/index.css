@@ -1,0 +1,42 @@
+body{
+	background: #FFFFFF;
+}
+/*搜索*/
+#search-box{
+	width: 92%;
+	margin: auto;
+}
+#search-box input{
+	color: #999999;
+	font-size: 1.4rem;
+	padding: 6.2% 3%;
+	padding-left: 4rem;
+	border: #ac812e 1px solid;
+}
+#search-icon{
+	background: url(../img/notice_ic_search.png) no-repeat;
+	background-position: left;
+	background-position: 10px;
+}
+#function-box ul{
+	overflow: hidden;
+	margin-bottom: 4%;
+}
+#function-box li{
+	text-align: center;
+	width: 33.3%;
+	float: left;
+}
+#function-box li img{
+	width: 50%;
+	margin: auto;
+	display:block;
+}
+.fun-name{
+	display:inline-block;
+	color: #333333;
+	font-size: 1.3rem;
+	margin-top: 0.6rem;
+}
+
+

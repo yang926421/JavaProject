@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>营业执照信息</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/businesslicense.css" />
+		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+		<script type="text/javascript" src="../static/js/common.js" ></script>
+		<script>
+			//获取企业id
+			var pripid= sessionStorage.getItem("PRIPID");
+			//获取企业类型
+			var type=sessionStorage.getItem("TYPE");
+			$(function(){
+				getData();
+			});
+			//获取营业执照数据
+			function getData(){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/p/baseinfo/by/pripid/get.json",
+					async:false,
+					data:{"PRIPID":pripid,"type":type},
+					dataType:"json",
+					success:function(res){
+						if(res.success==true){
+							createMenu(res.data.SHOW_FIELD,res.data);
+						//	createData(res.data);
+						}
+					}
+				});
+			}
+			//根据获取到的营业执照动态数据创建内容
+			function createMenu(obj,val){
+				
+				var group=0;
+				for(var i=0;i<obj.length;i++){
+					if(obj[i].BUSINESS_DISY_GROUP!=group){   //分组显示（为了样式有层次感）
+						var htmlMenu="<ul id='data"+obj[i].BUSINESS_DISY_GROUP+"' style='margin-bottom:10px;'>"+
+						"<li><span>"+obj[i].BUSINESS_ITEMDISY+"：</span><span id='"+obj[i].BUSINESS_ITEM+"'></span></li>"+
+						"</ul>";
+						$("#Data").append(htmlMenu);
+						var item=obj[i].BUSINESS_ITEM;
+						if(obj[i].BUSINESS_ITEM=="REGCAP"){  //注册资本，要加单位
+							$("#"+obj[i].BUSINESS_ITEM).html(val[item]+val.REGCAPCUR_CN);
+						}else if(obj[i].BUSINESS_ITEM=="NAME"){
+							$("#"+obj[i].BUSINESS_ITEM).html("<lable style='color:#ac812e'>"+ val[item]+"</lable>");
+						}else{
+							$("#"+obj[i].BUSINESS_ITEM).html(val[item]);
+						}
+						group=obj[i].BUSINESS_DISY_GROUP;
+					}else{
+						var htmlMenu="<li><span>"+obj[i].BUSINESS_ITEMDISY+"：</span><span id='"+obj[i].BUSINESS_ITEM+"'></span></li>";
+						$("#data"+obj[i].BUSINESS_DISY_GROUP).append(htmlMenu);
+						var item=obj[i].BUSINESS_ITEM;
+						if(obj[i].BUSINESS_ITEM=="REGCAP"){
+							$("#"+obj[i].BUSINESS_ITEM).html(val[item]+val.REGCAPCUR_CN);
+						}else if(obj[i].BUSINESS_ITEM=="NAME"){
+							$("#"+obj[i].BUSINESS_ITEM).html("<lable style='color:#ac812e'>"+ val[item]+"</lable>");
+						}else{
+							$("#"+obj[i].BUSINESS_ITEM).html(val[item]);
+						}
+					}
+					
+					
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="companyDetail.html"></a>
+		    <h1 class="mui-title">营业执照信息</h1>
+		</header>
+		<div class="licenseInfo" id="Data">
+			 <!--企业-->
+			 <!--<ul id="menuData">
+			 	<li><span>企业名称：</span><span id="ENTNAME"></span></li>
+			 	<li><span>注册号/统一社会信用代码：</span><span id="UNISCID"></span></li>
+			 	<li><span>类型：</span><span id="ENTTYPE_CN"></span></li>
+			 	<li><span>法定代表人：</span><span id="NAME"></span></li>
+			 	<li><span>注册资本：</span><span id="REGCAP"></span></li>
+			 	<li><span>成立日期：</span><span id="ESTDATE"></span></li>
+			 	<li><span>营业期限自：</span><span id="OPFROM"></span></li>
+			 	<li><span>营业期限至：</span><span id="OPTO"></span></li>
+			 	<li><span>登记机关：</span><span id="REGORG_CN"></span></li>
+			 	<li><span>核准日期：</span><span id="APPRDATE"></span></li>
+			 	<li><span>登记状态：</span><span id="REGSTATE_CN"></span></li>
+			 	<li><span>住所：</span><span id="DOM"></span></li>
+			 	<li><span>经营范围：</span></li>
+			 	<li><p id="OPSCOPE"></p></li>
+			 </ul>-->
+			 
+			 <!--个人-->
+			 
+			 <!--<ul>
+			 	<li><span>名称：</span><span>腾讯科技（深圳有限公司）</span></li>
+			 	<li><span>注册号：</span><span>914403007145756XG</span></li>
+			 	<li><span>类型：</span><span>有限责任公司（自然人投资或控股）</span></li>
+			 	<li><span>经营者：</span><span>马化腾</span></li>
+			 	<li><span>组成形式：</span><span>20000.00万人民币</span></li>
+			 	<li><span>注册日期：</span><span>2015年5月31日</span></li>
+			 	<li><span>登记机关：</span><span>2015年5月31日</span></li>
+			 	<li><span>核准日期：</span><span>2015年5月31日</span></li>			 
+			 	<li><span>登记状态：</span><span>存续</span></li>
+			 	<li><span>经营场所：</span><span>深圳市南山区高新区科技中一路腾讯大厦</span></li>
+			 	<li><span>经营范围：</span></li>
+			 	<li><p>习近平指出，保持高层接触是中新两国老一辈领导人的良好传统，也是中新关系紧密的体现。相信总理先生此次访问将深化中新传统友谊，推动两国各领域合作得到更大发展。</p></li>
+			 </ul>-->
+		</div>
+		
+		
+	</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/guarantee-inf.css">
+		<script src="../static/js/jquery.min.js"></script>
+		<script type="text/javascript" src="../static/js/common.js" ></script>
+		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+		<script>
+			var RANINSTASKID=GetRequest("RANINSTASKID");
+			$(function(){
+				getData();
+			});
+			function getData(){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/p/zhjhdoubltask/get.json",
+					async:false,
+					data:{"RANINSTASKID":RANINSTASKID},
+					dataType:"json",
+					success:function(res){
+						if(res.success==true){
+							if(res.data.length>0){
+							    createfirstData(res.data);
+							}
+						}/*else{
+							mui.toast(res.codeMsg);
+						}*/
+					}
+				});
+				
+				page=$("#page").val();
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/p/zhjhdoubleent/list.json",
+					async:false,
+					data:{"RANINSTASKID":RANINSTASKID,"page":page,"pageSize":pageSize},
+					dataType:"json",
+					beforeSend:function(){
+						$("#loading").show();
+					},
+					success:function(res){
+						$("#loading").hide();
+						if(res.success==true){
+							if(res.data.length>0){
+								loadPage(res);
+							    createsecondData(res.data);
+							}
+						}/*else{
+							mui.toast(res.codeMsg);
+						}*/
+					}
+				});
+				}
+			function createfirstData(obj){
+				var htmlData = ""
+				if(typeof(obj[0].RANINSTASKID) !="undefined"){
+				htmlData =	"<li><span>抽查计划编号：</span> <span>"+obj[0].RANINSPLANID+"</span></li>"+
+							"<li><span>抽查计划名称：</span> <span>"+obj[0].RANINSPLANNAME+"</span></li>"+
+							"<li><span>抽查任务编号：</span> <span>"+obj[0].RANINSTASKID+"</span></li>"+
+							"<li><span>抽查任务名称：</span> <span>"+obj[0].RANINSTASKNAME+"</span></li>";
+							if(obj[0].RANINSTYPE==1){
+							htmlData+="<li><span>抽查类型：</span> <span>定向</span></li>"
+							}else if(obj[0].RANINSTYPE==2){
+							htmlData+="<li><span>抽查类型：</span> <span>不定向</span></li>"
+							}
+//							htmlData+="<li><span>检查机关：</span> <span>"+obj[0].C_DEPNAME+"</span></li>";
+							htmlData+="<li><span>抽查市场主体数量：</span> <span>"+obj[0].RANINSOBJNUM+"</span></li>";
+							
+				$("#web").html(htmlData);
+				}
+			};
+			function createsecondData(obj){
+			 var htmlData ="";
+			   if(obj.length>0){
+			for(var i=0;i<obj.length;i++){
+					htmlData+="<div class='web-box' id='jiancha'>"+
+					"<a href='choucha-name-con.html?C_ENT_ID="+obj[i].C_ENT_ID+"&RANINSTASKID="+RANINSTASKID+"'>"+
+					"<div class='web-name'>"+
+						"<h4>"+obj[i].C_ENTERPRISE+"</h4>"+
+						"<ul class='web' style='padding-top:0rem;'>"+
+							"<li><span></span><span>"+obj[i].C_REGCODE+"</span></li>"+
+							"<li><span></span><span>"+obj[i].REGORG_CN+"</span></li>"+
+						"</ul><div class='arrow-right-a'>"+
+							"<img src='../static/img/arrow-right.png'/>"+
+						"</div></div></a></div>";
+			}
+			}else{
+					mui.toast(obj.codeMsg);
+			 }
+			$("#list").append(htmlData);
+			}
+		</script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="report.html"></a>
+		    <h1 class="mui-title">检查结果详情</h1>
+		</header>
+		
+		<!--股东信息-->
+		<div id="common-box">
+			<div class="web-box">
+					<div class="web-name">
+						<ul class="web" id="web">
+							<!--<li><span>抽查计划编号：</span> <span >4104547578745</span></li>
+							<li><span>抽查计划名称：</span> <span >市监系统全面加强市场监管</span></li>
+							<li><span>抽查任务编号：</span> <span >4104547578745</span></li>
+							<li><span>抽查任务名称：</span> <span >2017年度第1号抽查任务</span></li>
+							<li><span>抽查类型：</span> <span >不定项</span></li>
+							<li><span>检查机关：</span> <span >机关枪</span></li>-->
+						</ul>
+					</div>
+			</div>
+			
+			<div id="list">
+			<!--<div class="web-box"  id="jiancha">
+				<a href="choucha-name-con.html" class="">
+					<div class="web-name">
+						<h4>兰考县兴民果蔬种植合作社</h4>
+						<ul class="web" style="padding-top:0rem;">
+							<li><span></span> <span >410225NA000623X</span></li>
+							<li><span></span> <span >2017年9月29日</span></li>
+						</ul>
+						<div class="arrow-right-a">
+							<img src="../static/img/arrow-right.png"/>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="web-box"  id="jiancha">
+				<a href="choucha-name-con.html" class="">
+					<div class="web-name">
+						<h4>兰考县兴民果蔬种植合作社</h4>
+						<ul class="web" style="padding-top:0rem;">
+							<li><span></span> <span >410225NA000623X</span></li>
+							<li><span></span> <span >2017年9月29日</span></li>
+						</ul>
+						<div class="arrow-right-a">
+							<img src="../static/img/arrow-right.png"/>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="web-box"  id="jiancha">
+				<a href="choucha-name-con.html" class="">
+					<div class="web-name">
+						<h4>兰考县兴民果蔬种植合作社</h4>
+						<ul class="web" style="padding-top:0rem;">
+							<li><span></span> <span >410225NA000623X</span></li>
+							<li><span></span> <span >2017年9月29日</span></li>
+						</ul>
+						<div class="arrow-right-a">
+							<img src="../static/img/arrow-right.png"/>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>-->
+		</div>
+	<input type="hidden" name="page" id="page" value="1" />
+	<input type="hidden" name="totalPage" id="totalPage" value="1"/>
+	
+	<div id="loadData" style="display: none;" onclick="getData();">点击加载更多...</div>
+	<!--加载点-->
+	<div id="loading" style="display: none;" class="spinner">
+		 <div class="bounce1"></div>
+		 <div class="bounce2"></div>
+		 <div class="bounce3"></div>
+	</div>
+	
+	<div id="noData" style="display: none;" >没有更多了...</div>
+		
+	</body>
+</html>

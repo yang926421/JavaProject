@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>修改网站或网店</title>
+		<link rel="stylesheet" href="../../static/css/common.css">
+		<link rel="stylesheet" href="../../static/css/mui.min.css">
+		<link rel="stylesheet" href="../../static/css/add-website.css">
+		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
+		<script type="text/javascript" src="../../static/js/common.js"></script>
+		
+		<script>
+			var webid=GetRequest("WEBID");  //从url中获取webid参数值
+			$(function(){
+				$("#WEBID").val(webid);
+				$("#TOKEN").val(TOKEN);
+				$("#SESSIONID").val(SESSIONID);
+				getData(webid);
+			});
+			
+			function getData(id){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/i/an/website/get.json",
+					async:true,
+					data:{"WEBID":id,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
+					dataType:"json",
+					success:function(res){
+						if(res.success==true){
+							$("#ANCHEID").val(res.data.ANCHEID);
+							$("#WEBID").val(res.data.WEBID);
+							$("#WEBSITE").val(res.data.WEBSITE);
+							$("#WEBSITNAME").val(res.data.WEBSITNAME);
+							if(res.data.WEBTYPE==1){
+								$("#webtype1").prop("checked",true);
+							}else{
+								$("#webtype2").prop("checked",true);
+							}
+						}
+					}
+				});
+			}
+			
+			/**
+			 * 修改
+			 */
+			function updateWeb(){
+				var websitname=$("#WEBSITNAME").val();
+				if(!isNotNull(websitname)){
+					mui.toast("请输入网站或网店名称");
+					return;
+				}
+				var websit=$("#WEBSITE").val();
+				if(!isNotNull(websit)){
+					mui.toast("请输入网址");
+					return;
+				}else if(!website.test(websit)){
+					mui.toast("请输入正确的网址");
+					return;
+				}
+				
+				$.ajax({
+					type:"post",
+					url:httpUrl+"/i/an/website/save.json",
+					async:true,
+					data:$("#updateForm").serialize(),
+					dataType:'json',
+					success:function(res){
+						if(res.success==true){
+							//mui.toast(res.codeMsg);
+							window.location.href="website-inf.html?ANCHEID="+$("#ANCHEID").val();
+						}
+					}
+				});
+			}
+			
+			/**
+			 * 删除
+			 */
+				function delWeb(){
+				mui.confirm("您确定要删除吗？","提示",btnArray,function(e){
+					if(e.index==1){
+						$.ajax({
+							type:"post",
+							url:httpUrl+"/i/an/website/delete.json",
+							async:true,
+							data:{"WEBID":$("#WEBID").val(),"ANCHEID":$("#ANCHEID").val(),"TOKEN":TOKEN,"SESSIONID":SESSIONID},
+							dataType:'json',
+							success:function(res){
+								if(res.success==true){
+								//	mui.toast(res.codeMsg);
+									window.location.href="website-inf.html?ANCHEID="+$("#ANCHEID").val();
+								}
+							}
+						});
+						
+					}
+				});
+			}
+		</script>
+		
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="website-inf.html"></a>
+		    <h1 class="mui-title">修改网站或网店</h1>
+		    <span id="sure">
+		    	<a href="javascript:;" onclick="updateWeb()">确定</a>
+		    </span>
+		</header>
+		
+		<!--网站名称-->
+		<form id="updateForm">
+		<input type="hidden" name="WEBID" id="WEBID" />
+		<input type="hidden" name="ANCHEID" id="ANCHEID" />
+		  <input type="hidden" name="SESSIONID" id="SESSIONID" />
+		   <input type="hidden" name="TOKEN" id="TOKEN" />
+		<div id="common-box">
+			<div class="web-box">
+					<ul>
+						<li>
+							<span id="name">
+								类型
+							</span>
+							<div class="web-write">
+								<label><input type="radio" value="1" name="WEBTYPE" id="webtype1" /><span> 网站</span></label>
+								<label><input type="radio" value="2" name="WEBTYPE" id="webtype2" /><span> 网店</span></label>
+							</div>
+						</li>
+					</ul>
+			</div>
+			
+			<div class="web-box">
+					<ul>
+						<li>
+							<span id="name">
+								名称
+							</span>
+							<div class="web-write">
+								<input type="text" name="WEBSITNAME" id="WEBSITNAME" placeholder="请输入网站/网店名称" />
+							</div>
+						</li>
+					</ul>
+			</div>
+			
+			<div class="web-box">
+					<ul>
+						<li>
+							<span id="name">
+								类型
+							</span>
+							<div class="web-write">
+								<input type="text" name="WEBSITE" id="WEBSITE" placeholder="请输入网址" />
+							</div>
+						</li>
+					</ul>
+			</div>
+			
+		</div>
+		</form>
+		<!--一个按钮-->
+	    <div class="yy-delete">
+	    	<a onClick="delWeb()">删   除</a>
+	    </div>
+	</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>主要公司人员</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+		<script type="text/javascript" src="../static/js/common.js" ></script>
+		<style>
+			.person{
+				padding-left: 15px;
+				padding-right: 15px;
+				padding-top: 20px;
+				padding-bottom: 20px;
+				background-color: #FFFFFF;
+				color: #3E3E3E;
+				border-bottom: 1px solid #F2F2F2;
+				font-size: 16px;
+			}
+			.person span:last-child{
+				float: right;	
+				color: #999999;
+			}
+			.person span:first-child{
+				color: #000000;
+			}
+			.martop{
+				margin-top: 44px;
+			}
+		</style>
+		<script>
+			//获取企业id
+			var pripid=sessionStorage.getItem("PRIPID");
+			$(function(){
+				//获取企业主要人员信息
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/p/priperson/by/pripid/list.json",
+					data:{"PRIPID":pripid},
+					async:true,
+					success:function(res){
+						if(res.success==true){
+							createData(res.data);
+						}
+					}
+					
+				});
+			})
+			//创建主要人员数据
+			function createData(obj){
+				if(obj!=null && obj.length>0){
+					var htmlData="";
+					$("#count").html(obj.length);
+					for(var i=0;i<obj.length;i++){
+						if(i==0){
+							htmlData+=" <div class='person martop'><span>"+obj[i].NAME+"</span><span>"+obj[i].POSITION_CN+"</span></div>";
+						}else{
+							htmlData+="<div class='person'><span>"+obj[i].NAME+"</span><span>"+obj[i].POSITION_CN+"</span></div>";
+						
+						}
+					}
+					$("#content").html(htmlData);
+				}else{
+					$("#count").html(0);
+				}
+				
+			}
+		</script>
+		
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href=""></a>
+		    <h1 class="mui-title">主要人员信息(<span id="count"></span>)</h1>
+		</header>
+		<div id="content">
+		<!--<div class="person martop"><span>董事长</span><span>麻鸭</span></div>
+		<div class="person"><span>董事长</span><span>麻鸭</span></div>
+		<div class="person"><span>董事长</span><span>麻鸭</span></div>
+		<div class="person"><span>董事长</span><span>麻鸭</span></div>-->
+		</div>
+	</body>
+</html>

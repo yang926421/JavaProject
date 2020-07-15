@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/sifaxiezhu-inf.css">
+			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+			<script type="text/javascript" src="../static/js/common.js" ></script>
+			<script>
+				var PARENT_ID=GetRequest("PARENT_ID");
+				$(function(){
+					getData();
+				})
+				
+				function getData(){
+					$.ajax({
+						type:"get",
+						url:httpUrl+"/p/judicial/assist/by/id/get.json",
+						data:{"PARENT_ID":PARENT_ID},
+						dataType:"json",
+						async:true,
+						success:function(res){
+							if(res.success==true){
+								createData(res.data);
+							}
+						}
+					});
+				}
+				
+				function createData(obj){
+					//冻结信息
+					$("#FROAUTH").html(obj.FROAUTH);
+					$("#EXECUTEITEM_CN").html(obj.EXECUTEITEM_CN);
+					$("#FRODOCNO").html(obj.FRODOCNO);
+					$("#EXECUTENO").html(obj.EXECUTENO);
+					$("#INV").html(obj.INV);
+					$("#FROAM").html(obj.FROAM+obj.FORAMME);
+					$("#BLICTYPE_CN").html(obj.BLICTYPE_CN);
+					$("#CERNO").html(obj.CERNO);
+					$("#FROFROM").html(getFormatDateByLong(obj.FROFROM,"yyyy年MM月dd日"));  //冻结期限自
+					$("#FROTO").html(getFormatDateByLong(obj.FROTO,"yyyy年MM月dd日"));//冻结期限止
+					$("#FROZDEADLINE").html(obj.FROZDEADLINE);
+					$("#PUBLICDATE").html(getFormatDateByLong(obj.PUBLICDATE,"yyyy年MM月dd日") );  //公示日期
+					
+					//解冻信息
+					$("#FROAUTH1").html(obj.FROAUTH);
+					$("#EXECUTEITEM_CN1").html(obj.EXECUTEITEM_CN);
+					$("#FRODOCNO1").html(obj.FRODOCNO);
+					$("#EXECUTENO1").html(obj.EXECUTENO);
+					$("#INV1").html(obj.INV);
+					$("#FROAM1").html(obj.FROAM+obj.FORAMME);
+					$("#BLICTYPE_CN1").html(obj.BLICTYPE_CN);
+					$("#CERNO1").html(obj.CERNO);
+					$("#PUBLICDATE1").html(getFormatDateByLong(obj.PUBLICDATE,"yyyy年MM月dd日") );  //公示日期
+					$("#THAWDATE").html(getFormatDateByLong(obj.THAWDATE,"yyyy年MM月dd日"));
+					
+					
+				}
+				
+			</script>
+		
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="sifaxiezhu.html"></a>
+		    <h1 class="mui-title">司法股权冻结详细信息</h1>
+		</header>
+		
+		<!--修改信息-->
+		<div id="common-box">
+			<div class="web-box">
+					<div class="web-name">
+						<h4>股权冻结信息</h4>
+						<ul class="web">
+							<li><span>执行法院：</span> <span id="FROAUTH"></span></li>
+							<li><span>执行事项：</span> <span id="EXECUTEITEM_CN"></span></li>
+							<li><span>执行裁定书文号：</span> <span id="FRODOCNO"></span></li>
+							<li><span>执行通知书文号：</span> <span id="EXECUTENO"></span></li>
+							<li><span>被执行人：</span> <span id="INV"></span></li>
+							<li><span>被执行人持有股权、其他投资权益的数额：</span> <span id="FROAM"></span></li>
+							<li><span>被执行人证照类型：</span> <span id="BLICTYPE_CN"></span></li>
+							<li><span>被执行人证照号码：</span> <span id="CERNO"></span></li>
+							<li><span>冻结期限自：</span> <span id="FROFROM"></span></li>
+							<li><span>冻结期限至：</span> <span id="FROTO"></span></li>
+							<li><span>冻结期限：</span> <span id="FROZDEADLINE"></span></li>
+							<li><span>公示日期：</span> <span id="PUBLICDATE"></span></li>
+						</ul>
+					</div>
+			</div>
+			
+			<div class="web-box">
+					<div class="web-name">
+						<h4>股权解冻信息</h4>
+						<ul class="web">
+							<li><span>执行法院：</span> <span id="FROAUTH1"></span></li>
+							<li><span>执行事项：</span> <span id="EXECUTEITEM_CN1"></span></li>
+							<li><span>执行裁定书文号：</span> <span id="FRODOCNO1"></span></li>
+							<li><span>执行通知书文号：</span> <span id="EXECUTENO1"></span></li>
+							<li><span>被执行人：</span> <span id="INV1"></span></li>
+							<li><span>被执行人持有股权、其他投资权益的数额：</span> <span id="FROAM1"></span></li>
+							<li><span>被执行人证照类型：</span> <span id="BLICTYPE_CN1"></span></li>
+							<li><span>被执行人证照号码：</span> <span id="CERNO1"></span></li>
+							<li><span>解除冻结日期：</span> <span id="THAWDATE"></span></li>
+							<li><span>公示日期：</span> <span id="PUBLICDATE1"></span></li>
+						</ul>
+					</div>
+			</div>
+		</div>
+	</body>
+</html>

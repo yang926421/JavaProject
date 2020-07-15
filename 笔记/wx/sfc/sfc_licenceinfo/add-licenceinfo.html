@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>行政许可信息</title>
+		<link rel="stylesheet" href="../../static/css/common.css">
+		<link rel="stylesheet" href="../../static/css/mui.min.css">
+		<link rel="stylesheet" href="../../static/css/add-contribution.css">
+		<link rel="stylesheet" type="text/css" href="../../static/css/mui.picker.min.css" /><!--填写时间-->
+	
+		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
+		<script type="text/javascript" src="../../static/js/common.js"></script>
+		<script type="text/javascript" src="../../static/js/mui.picker.min.js"></script> <!--选择日期-->
+		<script>
+			var ancheId=GetRequest("ANCHEID");  //年报id
+			var licId=GetRequest("LICID");  //行政许可id
+			$(function(){
+				loadData("CA25","LICNAME");
+				$("#TOKEN").val(TOKEN);
+				$("#SESSIONID").val(SESSIONID);
+				$("#ANCHEID").val(ancheId);
+				if(licId!=null && licId!=""){
+					$("#saveOrUpdate").html("修改");
+					$("#LICID").val(licId);
+					var updateBtn="<a href='javascript:;' onclick='saveInv()' >确定</a>";
+					$("#sure").html(updateBtn);
+					$("#delBtn").show();
+					$("#addBtn").hide();
+					//获取详情数据
+					getData();
+				}else{
+					$("#saveOrUpdate").html("添加");
+					$("#delBtn").hide();
+					$("#addBtn").show();
+				}
+				
+			});
+			
+		
+			
+			//获取行政许可信息
+			function getData(){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/c/an/license/get.json",
+					data:{"LICID":$("#LICID").val(),"TOKEN":TOKEN,"SESSIONID":SESSIONID},
+					async:false,
+					dataType:"json",
+					success:function(res){
+						if(res.success==true){
+							$("#LICID").val(res.data.LICID);  //行政许可id
+							$("#LICNAME").val(res.data.LICNAME);
+							$("#LICNAME_CN").val(res.data.LICNAME_CN);  //文件中文名称
+							$("#VALTO").val(getSmpFormatDateByLong(res.data.VALTO,false) ); //有效期
+						}
+					}
+				});
+			}
+			
+			function saveInv(){
+				$("#LICNAME_CN").val($("#LICNAME").find("option:selected").text());
+				$.ajax({
+					type:'post',
+					url:httpUrl+'/c/an/license/save.json',
+					data:$("#addForm").serialize(),
+					dataType:'json',
+					success:function(res){
+						if(res.success==true){
+							window.location.href="licenceinfo.html?ANCHEID="+ancheId;
+						}
+					}
+				})
+			}
+			
+			function delInv(){
+				mui.confirm("您确定要删除吗？","提示",btnArray,function(e){
+					if(e.index==1){
+						$.ajax({
+							type:'post',
+							url:httpUrl+'/c/an/license/delete.json',
+							data:{"LICID":$("#LICID").val(),"ANCHEID":ancheId,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
+							dataType:'json',
+							success:function(res){
+								if(res.success==true){
+									window.location.href="licenceinfo.html?ANCHEID="+ancheId;
+								}
+							}
+						});
+					}
+				});
+			}
+		
+		/**
+		 * 选择许可文件名称
+		 */
+		function selectType(){
+			var typeName= $("#LICNAME").find("option:selected").text();
+			$("#LICNAME_CN").val(typeName);
+		}
+		
+		
+		</script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="contribution.html"></a>
+		    <h1 class="mui-title"><span id="saveOrUpdate"></span>行政许可信息</h1>
+		    <span id="sure">
+		    	<!--<a href="contribution.html" class="">确定</a>-->
+		    </span>
+		</header>
+		
+		<!--股东信息-->
+		<form id="addForm">
+			<input type="hidden" name="TOKEN" id="TOKEN" />
+			<input type="hidden" name="SESSIONID" id="SESSIONID" />
+			<input type="hidden" name="ANCHEID" id="ANCHEID" />
+			<input type="hidden" name="LICID" id="LICID" />
+		<div id="common-box">
+			<div class="web-box">
+					<ul>
+						<li>
+							<span >
+								许可文件名称
+							</span>
+							<div class="select-time">
+								<div class="web-write">
+									<div id="open" style="position: relative;width: 100%;">
+										<select name="LICNAME"  id="LICNAME" class="service_opt" style="padding: 0 0; margin-bottom: 0; width:100%;background: url(../../static/img/rt.png) no-repeat right center;">
+										</select>
+									</div>
+									<input type="hidden" name="LICNAME_CN" id="LICNAME_CN"/>
+								</div>
+							</div>
+							
+						</li>
+					</ul>
+			</div>
+			<div class="web-box">
+					<ul>
+						<li>
+							<span >
+								有效期至
+							</span>
+							<div class="select-time">
+								<div class="web-write" style="width: 70%;">
+									<input name="VALTO" id="VALTO" data-options='{"type":"date"}' placeholder="请选择日期" class="btn mui-btn mui-btn-block" style="margin-top: 1.4rem;text-align: left;"/>
+								</div>
+								<span><img src="../../static/img/rt.png"/></span>
+							</div>
+							
+						</li>
+					</ul>
+			</div>
+			
+		
+		</div>
+		</form>
+		<div id="addBtn" class="yy">
+	    	<a onClick="saveInv()">添&nbsp;&nbsp;加</a>
+	    </div>
+	    <div id="delBtn" class="yy-delete" style="display: none;">
+	    	<a onClick="delInv()">删&nbsp;&nbsp;除</a>
+	    </div>
+		
+		<script>
+			(function($) {
+				$.init();
+				var btns = $('.btn');
+				btns.each(function(i, btn) {
+					btn.addEventListener('tap', function() {
+						var optionsJson = this.getAttribute('data-options') || '{}';
+						var options = JSON.parse(optionsJson);
+						var id = this.getAttribute('id');
+						/*
+						 * 首次显示时实例化组件
+						 * 示例为了简洁，将 options 放在了按钮的 dom 上
+						 * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
+						 */
+						var picker = new $.DtPicker(options);
+						picker.show(function(rs) {
+							/*
+							 * rs.value 拼合后的 value
+							 * rs.text 拼合后的 text
+							 * rs.y 年，可以通过 rs.y.vaue 和 rs.y.text 获取值和文本
+							 * rs.m 月，用法同年
+							 * rs.d 日，用法同年
+							 * rs.h 时，用法同年
+							 * rs.i 分（minutes 的第二个字母），用法同年
+							 */
+							document.getElementById(id).value=rs.value;
+
+							/* 
+							 * 返回 false 可以阻止选择框的关闭
+							 * return false;
+							 */
+							/*
+							 * 释放组件资源，释放后将将不能再操作组件
+							 * 通常情况下，不需要示放组件，new DtPicker(options) 后，可以一直使用。
+							 * 当前示例，因为内容较多，如不进行资原释放，在某些设备上会较慢。
+							 * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。
+							 */
+							picker.dispose();
+						});
+					}, false);
+				});
+			})(mui);
+		</script>
+		
+		
+	</body>
+</html>

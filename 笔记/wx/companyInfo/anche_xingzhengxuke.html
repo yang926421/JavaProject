@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>行政许可信息</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/modify-record.css">
+			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+			<script type="text/javascript" src="../static/js/common.js" ></script>
+			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+		<style>
+			.web{padding-top:15px;}
+			.status{float: right;color: #ac812e;}
+		</style>
+		<script>
+			
+			var pripid=sessionStorage.getItem("PRIPID");
+			var type=sessionStorage.getItem("TYPE");
+			$(function(){
+				getData();
+			});
+			function getData(){
+				$.ajax({
+					type:"get",
+					url:httpUrl+"/p/licence/list.json",
+					data:{"PRIPID":pripid,"TYPE":type},
+					dataType:"json",
+					async:true,
+					success:function(res){
+						if(res.success==true){
+							createData(res.data);
+						}
+					}
+				});
+			}
+			
+			function createData(obj){
+				if(obj!=null && obj.length>0){
+					$("#count").html(obj.length);
+					var htmlData="";
+						for(var i=0;i<obj.length;i++){
+							var status="";
+							if(obj[i].TYPE==1){
+								status="有效";
+							}else{
+								status="无效";
+							}
+							htmlData+="<a href='anche_xingzhengxuke_inf.html?LICID="+obj[i].LICID+"&TYPE="+obj[i].TYPE+"'> <div class='web-box'>"+
+										"<div class='web-name'>"+
+										"	<ul class='web'>"+
+										"		<li><span>许可文件编号：</span> <span>"+obj[i].LICNO+"</span><span class='status'>"+status+"</span></li>"+
+										"		<li><span>许可文件名称：</span><span>"+obj[i].LICNAME_CN+"</span></li>"+
+										"		<li><span>有效期：</span><span>"+getSmpFormatDateByLong(obj[i].VALFROM,false) +"--"+getSmpFormatDateByLong(obj[i].VALTO,false) +"</span></li>"+
+										"		<li><span>许可机关：</span><span>"+obj[i].LICANTH+"</span></li>"+
+										"		<li><span>许可内容：</span><span>"+obj[i].LICITEM+"</span></li>"+
+										"	</ul>"+
+										"	<div class='arrow-right'>"+
+										"		<img src='../static/img/arrow-right.png'/>"+
+										"	</div>"+
+										"</div>"+
+									"</div>	";
+						}
+						
+					
+					$("#common-box").html(htmlData);
+				}else{
+					$("#count").html(0);
+				}
+			}
+			
+		</script>
+		
+
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="companyDetail.html"></a>
+		    <h1 class="mui-title">行政许可信息(<span id="count"></span>)</h1>
+		</header>
+		
+		<!--修改信息-->
+		<div id="common-box">
+			<!--<div class="web-box">
+				<div class="web-name">
+					<ul class="web">
+						<li><span>许可文件编号：</span> <span>4578451245</span><span class="status">有效</span></li>
+						<li><span>许可文件名称：</span><span>盖房许可证</span></li>
+						<li><span>有效期：</span><span>2017年5月31日-2020年5月30日</span></li>
+						<li><span>许可机关：</span><span>房建局</span></li>
+						<li><span>许可内容:</span></li>
+						<li>允许盖房子允许盖房子允许盖房子允许盖房子允许盖房子允许盖房子允许盖房子允许盖房子允许盖房子允许盖房子</li>
+					</ul>
+				</div>
+			</div>			-->
+			
+			
+		</div>
+		
+		
+	</body>
+</html>

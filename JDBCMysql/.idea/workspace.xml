@@ -50,11 +50,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/bin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Standard_lyy" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.annotationProcessors" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -154,7 +154,8 @@
       <workItem from="1594778269155" duration="127000" />
       <workItem from="1594778485144" duration="117000" />
       <workItem from="1594778661336" duration="992000" />
-      <workItem from="1594779768047" duration="45000" />
+      <workItem from="1594779768047" duration="502000" />
+      <workItem from="1594780434294" duration="179000" />
     </task>
     <servers />
   </component>
@@ -182,10 +183,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="0" y="0" key="#lombok.jar/0.0.1366.728@0.0.1366.728" timestamp="1594778021386" />
-    <state x="552" y="143" key="FileChooserDialogImpl" timestamp="1594778108360">
+    <state x="552" y="143" key="FileChooserDialogImpl" timestamp="1594780619114">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="552" y="143" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1594778108360" />
+    <state x="552" y="143" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1594780619114" />
     <state width="968" height="176" key="GridCell.Tab.0.bottom" timestamp="1594776517712">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -202,10 +203,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="968" height="176" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1594776517711" />
-    <state x="297" y="16" key="SettingsEditor" timestamp="1594779819271">
+    <state x="297" y="16" key="SettingsEditor" timestamp="1594780038250">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="297" y="16" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1594779819271" />
+    <state x="297" y="16" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1594780038250" />
     <state x="546" y="264" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1594774722186">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

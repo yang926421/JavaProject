@@ -1,0 +1,49 @@
+/*企业名称*/
+#com-name-box{
+	margin-top: 4.4rem;
+	background-color:#FFFFFF ;
+}
+.com-name{
+	margin: auto;
+	width: 92%;
+}
+.com-name h3{
+	padding-top: 1.8rem;
+	font-size: 1.6rem;
+	font-weight: bold;
+	margin-top: 1.4rem;
+}
+.com-name p{
+	padding-bottom: 1.3rem;
+}
+/*单行列表*/
+#list-box{
+	background-color:#FFFFFF ;
+	margin-bottom: 1.0rem;
+}
+#list-box .line{
+	margin: auto;
+	width: 92%;
+	overflow: hidden;
+}
+#list-box .line a{
+	color: #333333;
+}
+#list-box .line .inf-num{
+	color: #999999;
+}
+#list-box .line span{
+	font-size: 1.5rem;
+	font-weight: bold;
+	line-height: 4.8rem;
+	border: #000000 solid red;
+}
+#list-box .line span:first-child{
+	color: #333333;
+}
+#arrow-right{
+	float: right;
+	width: 0.6rem;
+	height: 1.2rem;
+}
+

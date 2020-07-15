@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/right-inf.css">
+		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+			<script type="text/javascript" src="../static/js/common.js" ></script>
+			<script>
+				$(function(){
+					getData();
+				});
+				function getData(){
+					$.ajax({
+						type:"get",
+						url:httpUrl+"/e/self/publishedPunish/list.json",
+						async:true,
+						data:{"PRIPID":PRIPID,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
+						dataType:"json",
+						success:function(res){
+							if(res.success==true){
+								createData(res.data);
+							}
+						}
+					});
+				}
+				
+				function createData(obj){
+					$("#count").html(obj.length);
+					var htmlData="";
+					for (var i=0;i<obj.length;i++) {
+						var type="";
+						var status="";
+						var hrefUrl="";
+						if(obj[i].TYPE==1){
+							type="有效";
+						}else if(obj[i].TYPE==2){
+							type="无效";
+						}
+						if(obj[i].STATUS!=null && obj[i].STATUS!="" && obj[i].STATUS=="已公示"){
+							sessionStorage.setItem(obj[i].CASEID,JSON.stringify(obj[i]));
+							hrefUrl="penalty-update-inf.html";
+						}else{
+							hrefUrl="add-penalty-inf.html";
+						}
+						htmlData+=" <div class='web-box'>"+
+									"<a href='"+hrefUrl+"?CASEID="+obj[i].CASEID+"'>"+
+									"	<div class='web-name'>"+
+									"		<ul class='web'>"+
+									"			<li><span>处罚机关：</span> <span>"+obj[i].JUDAUTH+"</span> <span class='right-state'>"+type+"</span></li>"+
+									"			<li><span>处罚决定书文号：</span> <span>"+obj[i].PENDECNO+"</span></li>"+
+									"			<li><span>处罚决定签发日期：</span> <span>"+getFormatDateByLong(obj[i].PENDECISSDATE,"yyyy年MM月dd日")+"</span></li>"+
+									"			<li><span>违法行为类型：</span> <span>"+obj[i].ILLEGACTTYPE+"</span></li>"+
+									"			<li><span>处罚种类：</span> <span>"+obj[i].PENTYPE_CN+"</span></li>";
+									
+							if(obj[i].PENTYPE=="02"){
+								htmlData+="<li><span>罚款金额（元）：</span> <span>"+obj[i].PENAM+"</span></li>";
+							}else if(obj[i].PENTYPE=="03"){
+								htmlData+="<li><span>没收金额（元）：</span> <span>"+obj[i].FORFAM+"</span></li>";
+							}
+									
+						htmlData+="<li><span>公示状态：</span>"+obj[i].STATUS+"<span></span></li>"+
+									"</ul>"+
+									"		<div class='arrow-right'>"+
+									"			<img src='../static/img/arrow-right.png'/>"+
+									"		</div>"+
+									"	</div>"+
+									"</a>"+
+								"</div>";
+					}
+					
+					$("#common-box").html(htmlData);
+					
+					
+				}
+			</script>
+	</head>
+	<body>
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-icon mui-icon-back mui-pull-left" onclick="returnOtherInfoIndex()"></a>
+		    <h1 class="mui-title">行政处罚信息(<span id="count"></span>)</h1>
+		    <span id="add">
+		    	<a href="add-penalty-inf.html" class=""><img src="../static/img/add.png"/></a>
+		    </span>
+		</header>
+		
+		<!--登记信息-->
+		<div id="common-box">
+			<!--<div class="web-box">
+				<a href="add-penalty-inf.html">
+					<div class="web-name">
+						<ul class="web">
+							<li><span>处罚机关：</span> <span >卫生局</span></li>
+							<li><span>处罚决定书文号：</span> <span >54435456</span></li>
+							<li><span>处罚决定书签发日期：</span> <span >2017年6月30日</span></li>
+							<li><span>违法行为类型：</span> <span >拖欠工资</span></li>
+							<li><span>处罚种类：</span> <span >责令停产停业</span></li>
+							<li><span>公示状态：</span> <span >已公示</span></li>
+						</ul>
+						
+						<div class="arrow-right-01">
+							<img src="../static/img/arrow-right.png"/>
+						</div>
+					</div>
+				</a>
+			</div>-->
+			
+		</div>
+		
+		
+	</body>
+</html>

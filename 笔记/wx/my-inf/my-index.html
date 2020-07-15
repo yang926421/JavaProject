@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>国家企业信用信息公示系统</title>
+		<link rel="stylesheet" href="../static/css/common.css">
+		<link rel="stylesheet" href="../static/css/mui.min.css">
+		<link rel="stylesheet" href="../static/css/my-index.css">
+		
+			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
+			<script type="text/javascript" src="../static/js/common.js" ></script>
+			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
+			<script>
+				$(function(){
+					
+					$("#myImg1").attr("src",imgUrl+"my_enterprise.png");
+					$("#myImg2").attr("src",imgUrl+"my_help.png");
+					$("#myImg3").attr("src",imgUrl+"my_support.png");
+					$("#myImg4").attr("src",imgUrl+"my_feedback.png");
+					$("#myImg5").attr("src",imgUrl+"my_setting.png");
+					
+					document.getElementById('index').addEventListener('tap',function(){
+						window.location.href='../index.html'
+					});
+					document.getElementById('query').addEventListener('tap',function(){
+							window.location.href='../query-inf.html'
+					});
+					document.getElementById('write').addEventListener('tap',function(){
+							window.location.href='../write-inf.html'
+					});
+					document.getElementById('mine').addEventListener('tap',function(){
+							window.location.href='my-index.html'
+					});
+					
+					if(PRIPID!=null && PRIPID!=""){
+						$("#head-img").attr("src","../static/img/login.png");
+						$("#isLogin").html("已登录");
+						$("#BODY_NAME").html(BODY_NAME);
+					}else{
+						$("#head-img").attr("src","../static/img/no_login.png");
+						$("#isLogin").html("未登录");
+						$("#BODY_NAME").html("点击登录");
+					}
+				});
+				
+				function isLogin(){
+					if(write==1){
+						mui.toast("系统正在完善中，敬请期待。");
+					}else{
+						//登录入口暂时封闭
+						if(PRIPID!=null && PRIPID!=""){
+							window.location.href="person-inf.html";
+						}else{
+							window.location.href="../login.html";
+						}
+					}
+					
+				}
+				
+				
+			</script>
+		
+	</head>
+	<body>
+		<!--导航栏-->
+		<!--<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="website-inf.html"></a>
+		    <h1 class="mui-title">我的</h1>
+		</header>-->
+		
+		<!--底部菜单-->
+		<nav class="mui-bar mui-bar-tab" style="background:#fff;color: #d;">
+			<a class="mui-tab-item" id="index">
+				<span class="mui-icon mui-icon-home"><img src="../static/img/ic_index.png"/></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			
+			<a class="mui-tab-item" id="query">
+				<span class="mui-icon mui-icon-compose"><img src="../static/img/ic_enquiries.png"/></span>
+				<span class="mui-tab-label">查询</span>
+			</a>
+			
+			<a class="mui-tab-item" id="write">
+				<span class="mui-icon mui-icon-compose"><img src="../static/img/fill.png"/></span>
+				<span class="mui-tab-label">填报</span>
+			</a>
+			
+			<a class="mui-tab-item mui-active" id="mine">
+				<span class="mui-icon mui-icon-contact"><img src="../static/img/icon_mine-_on.png"/></span>
+				<span class="mui-tab-label" id="menu">我的</span>
+			</a>
+		</nav>
+		
+		<!--我的信息-->
+		<div >
+			<div id="login-header">
+				<ul class="mui-table-view mui-table-view-chevron">
+					<li class="mui-table-view-cell mui-media">
+						<a class="mui-navigate-right" onclick="isLogin()" href="javascript:;">
+							<img class="mui-media-object mui-pull-left head-img" id="head-img" src="../static/img/login.png">
+							<div class="mui-media-body">
+								<span id="isLogin">未登录</span>
+								<p class='mui-ellipsis' id="BODY_NAME">点击登录</p>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+			
+			<div class="my-list">
+				<!--单行列表-->
+				<!--<div id="list-box">
+					<a href="person-inf.html">
+						<div class="line">
+							<span class="list-img">
+								<img id="myImg1"/>
+							</span>
+							<span class="list-name">我的企业</span>
+							<span id="arrow-right"><img src="../static/img/arrow-right.png"/></span>
+						</div>
+					</a>
+				</div>-->
+				
+				<!--单行列表-->
+				<div id="list-box">
+					<a href="help.html">
+						<div class="line">
+							<span class="list-img">
+								<img id="myImg2"/>
+							</span>
+							<span class="list-name">使用帮助</span>
+							<span id="arrow-right"><img src="../static/img/arrow-right.png"/></span>
+						</div>
+					</a>
+				</div>
+				
+				<div id="list-box">
+					<a href="support.html">
+						<div class="line">
+							<span class="list-img">
+								<img id="myImg3"/>
+							</span>
+							<span class="list-name">技术支持</span>
+							<span id="arrow-right"><img src="../static/img/arrow-right.png"/></span>
+						</div>
+					</a>
+				</div>
+				<div id="list-box">
+					<a href="opinion.html">
+						<div class="line">
+							<span class="list-img">
+								<img id="myImg4"/>
+							</span>
+							<span class="list-name">意见反馈</span>
+							<span id="arrow-right"><img src="../static/img/arrow-right.png"/></span>
+						</div>
+					</a>
+				</div>
+				
+				
+			</div>
+			
+			<!--单行列表-->
+			<div id="list-box">
+				<a href="setting.html">
+					<div class="line">
+						<span class="list-img">
+							<img id="myImg5"/>
+						</span>
+						<span class="list-name">设置</span>
+						<span id="arrow-right"><img src="../static/img/arrow-right.png"/></span>
+					</div>
+				</a>
+			</div>
+
+		</div>
+		
+		
+	</body>
+</html>
