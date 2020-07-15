@@ -1,44 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="02a7289a-96eb-4065-a697-0fbe61b97612" name="Default Changelist" comment="" />
+    <list default="true" id="eb83ba44-9c44-454e-8051-cf3f3f68ae9e" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1eg9fqHykG9M04NKIGhLSnYgE9e" />
+  <component name="ProjectId" id="1ehXAvsd24CJZXN2di1zHypLHs7" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-<<<<<<< HEAD
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-=======
->>>>>>> 052c3bcf83d71655ee37eaf5e4becc853f2ab615
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Standard_lyy" />
-<<<<<<< HEAD
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/bin" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.annotationProcessors" />
   </component>
-  <component name="RunManager" selected="JUnit.jdbcStatement">
-    <configuration name="Demo01C3P0" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.lyy.mysql2.c3p0的使用.Demo01C3P0" />
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\lyy\documents\project1\JDBCMysql\bin" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\lyy\documents\project1\JDBCMysql\bin" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.lombokDemo1">
+    <configuration name="JdbcUtilTestDemo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lyy.mysql._02JDBC使用工具类.JdbcUtilTestDemo1" />
       <module name="JDBCMysql" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.lyy.mysql2.c3p0的使用.*" />
+          <option name="PATTERN" value="com.lyy.mysql._02JDBC使用工具类.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -46,12 +78,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="JdbcRegister" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.lyy.mysql._01JDBC基础.JdbcRegister" />
+    <configuration name="domainUsers" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lyy.mysql2.测试.domainUsers" />
       <module name="JDBCMysql" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.lyy.mysql._01JDBC基础.*" />
+          <option name="PATTERN" value="com.lyy.mysql2.测试.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -59,72 +91,124 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="jdbcStatement" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="lombokDemo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lyy.mysql2.lombok测试.lombokDemo1" />
       <module name="JDBCMysql" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.lyy.mysql._01JDBC基础.*" />
+          <option name="PATTERN" value="com.lyy.mysql2.lombok测试.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.lyy.mysql._01JDBC基础" />
-      <option name="MAIN_CLASS_NAME" value="com.lyy.mysql._01JDBC基础.jdbcStatement" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="Demo05ColumnListHandlerSelect.queryAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JDBCMysql" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lyy.mysql2.DButils的使用.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.lyy.mysql2.DButils的使用" />
+      <option name="MAIN_CLASS_NAME" value="com.lyy.mysql2.DButils的使用.Demo05ColumnListHandlerSelect" />
+      <option name="METHOD_NAME" value="queryAll" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="lombok.jar" type="JarApplication">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/bin/lombok.jar" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.jdbcStatement" />
-        <item itemvalue="Application.Demo01C3P0" />
-        <item itemvalue="Application.JdbcRegister" />
+        <item itemvalue="Application.lombokDemo1" />
+        <item itemvalue="Application.domainUsers" />
+        <item itemvalue="Application.JdbcUtilTestDemo1" />
+        <item itemvalue="JUnit.Demo05ColumnListHandlerSelect.queryAll" />
       </list>
     </recent_temporary>
-=======
->>>>>>> 052c3bcf83d71655ee37eaf5e4becc853f2ab615
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="02a7289a-96eb-4065-a697-0fbe61b97612" name="Default Changelist" comment="" />
-      <created>1594732474636</created>
+      <changelist id="eb83ba44-9c44-454e-8051-cf3f3f68ae9e" name="Default Changelist" comment="" />
+      <created>1594774658735</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1594732474636</updated>
-      <workItem from="1594732476171" duration="9000" />
-<<<<<<< HEAD
-      <workItem from="1594734327971" duration="347000" />
+      <updated>1594774658735</updated>
+      <workItem from="1594774666509" duration="437000" />
+      <workItem from="1594775144415" duration="76000" />
+      <workItem from="1594775254076" duration="217000" />
+      <workItem from="1594775510563" duration="814000" />
+      <workItem from="1594776548248" duration="556000" />
+      <workItem from="1594777139400" duration="103000" />
+      <workItem from="1594777279198" duration="924000" />
+      <workItem from="1594778269155" duration="127000" />
+      <workItem from="1594778485144" duration="117000" />
+      <workItem from="1594778661336" duration="992000" />
+      <workItem from="1594779768047" duration="45000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="498" y="198" key="FileChooserDialogImpl" timestamp="1594734677318">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="498" y="198" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1594734677318" />
-    <state x="275" y="17" key="SettingsEditor" timestamp="1594734669897">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="275" y="17" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1594734669897" />
-    <state x="337" y="267" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1594734481847">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="337" y="267" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1366.728@0.0.1366.728" timestamp="1594734481847" />
-=======
-    </task>
-    <servers />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="498" y="198" key="FileChooserDialogImpl" timestamp="1594732483064">
+    <state x="0" y="0" key="#Project_Structure" timestamp="1594778188877">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="498" y="198" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1594732483064" />
->>>>>>> 052c3bcf83d71655ee37eaf5e4becc853f2ab615
+    <state x="0" y="0" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1594778188877" />
+    <state x="0" y="0" key="#lombok.jar" timestamp="1594778021386">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="0" y="0" key="#lombok.jar/0.0.1366.728@0.0.1366.728" timestamp="1594778021386" />
+    <state x="552" y="143" key="FileChooserDialogImpl" timestamp="1594778108360">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="552" y="143" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1594778108360" />
+    <state width="968" height="176" key="GridCell.Tab.0.bottom" timestamp="1594776517712">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="968" height="176" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1594776517712" />
+    <state width="968" height="176" key="GridCell.Tab.0.center" timestamp="1594776517711">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="968" height="176" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1594776517711" />
+    <state width="968" height="176" key="GridCell.Tab.0.left" timestamp="1594776517711">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="968" height="176" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1594776517711" />
+    <state width="968" height="176" key="GridCell.Tab.0.right" timestamp="1594776517711">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="968" height="176" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1594776517711" />
+    <state x="297" y="16" key="SettingsEditor" timestamp="1594779819271">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="297" y="16" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1594779819271" />
+    <state x="546" y="264" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1594774722186">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="546" y="264" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1366.728@0.0.1366.728" timestamp="1594774722186" />
   </component>
 </project>

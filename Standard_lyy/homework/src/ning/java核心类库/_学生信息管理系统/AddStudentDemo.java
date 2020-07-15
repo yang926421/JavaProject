@@ -7,7 +7,7 @@ import java.util.List;
 
 public class AddStudentDemo {
     public static List<student> addStudent(){
-        String sc = s
+//        String sc = s
         return new ArrayList<>();
     }
 }

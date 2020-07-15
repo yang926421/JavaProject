@@ -8,7 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="bin" level="project" />
-<<<<<<< HEAD
     <orderEntry type="module-library">
       <library name="JUnit4">
         <CLASSES>
@@ -19,7 +18,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-=======
->>>>>>> 052c3bcf83d71655ee37eaf5e4becc853f2ab615
+    <orderEntry type="library" name="lombok" level="project" />
   </component>
 </module>
