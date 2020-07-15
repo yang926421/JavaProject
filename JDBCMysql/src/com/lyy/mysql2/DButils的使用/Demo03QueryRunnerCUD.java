@@ -31,7 +31,7 @@ public class Demo03QueryRunnerCUD {
      */
     @Test
     public void addUsers() throws Exception{
-//        1.空参构造器创建queryRunner对象
+//        1.有参构造器创建queryRunner对象,传递连接池对象  连接池对象时静态方法
         QueryRunner queryRunner = new QueryRunner(DruidUtils.getDataSource());
 //        2.定义sql语句s
         String sql = "insert into users_day2(uid, uname, upass) values(?,?,?);";
@@ -47,7 +47,7 @@ public class Demo03QueryRunnerCUD {
     //修改一条数据
     @Test
     public void editUsers() throws Exception{
-//        1.空参构造器创建queryRunner对象
+//        1.//        1.有参构造器创建queryRunner对象,传递连接池对象  连接池对象时静态方法
         QueryRunner queryRunner = new QueryRunner(DruidUtils.getDataSource());
 //        2.定义sql语句s
         String sql = "update users_day2 set uname = ?, upass = ? where uid = ?;";
@@ -64,7 +64,7 @@ public class Demo03QueryRunnerCUD {
     //删除一条数据
     @Test
     public void deleteUsers() throws Exception{
-//        1.空参构造器创建queryRunner对象
+//        //        1.有参构造器创建queryRunner对象,传递连接池对象  连接池对象时静态方法
         QueryRunner queryRunner = new QueryRunner(DruidUtils.getDataSource());
 //        3.定义sql语句s
         String sql = "delete from users_day2 where uid = ?";
