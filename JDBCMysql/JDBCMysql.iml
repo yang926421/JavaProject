@@ -7,7 +7,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="mysql-connector-java-5.1.37-bin" level="project" />
+    <orderEntry type="library" name="bin" level="project" />
+<<<<<<< HEAD
     <orderEntry type="module-library">
       <library name="JUnit4">
         <CLASSES>
@@ -18,11 +19,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="c3p0-0.9.5.5" level="project" />
-    <orderEntry type="library" name="mchange-commons-java-0.2.19" level="project" />
-    <orderEntry type="library" name="druid-1.0.9" level="project" />
-    <orderEntry type="library" name="lombok" level="project" />
-    <orderEntry type="library" name="lombok-1.18.6" level="project" />
-    <orderEntry type="library" name="commons-dbutils-1.7" level="project" />
+=======
+>>>>>>> 052c3bcf83d71655ee37eaf5e4becc853f2ab615
   </component>
 </module>
