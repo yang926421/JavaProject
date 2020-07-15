@@ -47,10 +47,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/js简单回顾/src/javascript基础" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\java\javaProject\front_review\js简单回顾\src\javascript基础" />
       <recent name="D:\lyy\documents\project1\front_review\src\html" />
     </key>
   </component>
@@ -66,6 +67,7 @@
       <updated>1594784951828</updated>
       <workItem from="1594784953361" duration="1955000" />
       <workItem from="1594801122279" duration="5306000" />
+      <workItem from="1594822789975" duration="2351000" />
     </task>
     <servers />
   </component>
@@ -85,6 +87,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="822" y="267" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1594824532722">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="822" y="267" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1594824532722" />
     <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1594807335518">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
