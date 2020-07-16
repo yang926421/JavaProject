@@ -7,6 +7,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -16,11 +23,13 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/front_review" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -34,6 +43,7 @@
       <updated>1594774413531</updated>
       <workItem from="1594774425079" duration="86000" />
       <workItem from="1594784675994" duration="273000" />
+      <workItem from="1594816883581" duration="2754000" />
     </task>
     <servers />
   </component>
@@ -45,10 +55,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="410" y="164" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1594784730278" />
-    <state x="628" y="127" key="FileChooserDialogImpl" timestamp="1594784946069">
+    <state x="628" y="127" key="FileChooserDialogImpl" timestamp="1594822786314">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="628" y="127" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1594784946069" />
+    <state x="628" y="127" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1594822786314" />
+    <state x="184" y="8" key="SettingsEditor" timestamp="1594820949956">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="184" y="8" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1594820949956" />
     <state x="28" y="0" key="new project wizard" timestamp="1594784931259">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
