@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图测试实现</title>
+</head>
+<body>
+<img  id="img1" src="./img/banner_1.jpg" >
+<script>
+    var number = 1;
+    function f() {
+        number ++;
+        if (number > 3){
+            number = 1
+        }
+
+        document.getElementById("img1").src = "./img/banner_" + number+".jpg";
+
+    }
+    window.setInterval(f, 2000);
+</script>
+
+</body>
+</html>

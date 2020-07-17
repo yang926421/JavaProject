@@ -1553,3 +1553,13 @@ udp 无连接的 不可靠的, 可能会丢失数据
 
 
 
+public InputStream getResourceAsStream(String name)
+
+查找具有给定名称的资源  的两种获取的方式
+
+class.getResourceAsStream("/文件名")   代表默认去src下面寻找文件的资源
+
+class.getClassLoder().getResourceAsStream("文件名")    不以/开头 默认是从src下来获取
+
+
+

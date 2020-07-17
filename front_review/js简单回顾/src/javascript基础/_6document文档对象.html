@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>document文档对象</title>
+</head>
+<body>
+<div>div</div>
+<div>div1</div>
+<input class="input1" name="输入" type="button" id="btn" value="点击">
+
+<script>
+    //获取元素对象
+    document.getElementById("btn");
+    var div_length =  document.getElementsByTagName("div").length; //返回的是数组
+    document.getElementsByClassName("input1")  //返回的是数组
+    document.getElementsByName("输ru"); //返回的也是数组
+    alert(div_length)
+    //创建其它dom对象
+    document.createElement("table");
+    // document.createAttribute("hhh")
+</script>
+
+</body>
+</html>

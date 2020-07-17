@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+//window对象创建可以直接使用 window.方法名
+    window.alert();
+    /*
+    方法
+        alert
+        confirm()显示一段消息  还带有确定取消按钮
+            点确定  返回true  反之 false
+
+        prompt
+           显示可提示用户输入的对话框
+           可以获取用户输入
+    * */
+    var flag = window.confirm("你是个傻逼吧");
+    if (flag){
+        alert("你还真是个傻逼")
+    }
+    else{
+        alert("看起来你不是啊")
+    }
+
+    var pro = window.prompt("输入你的密码啊,傻子");
+    alert(pro)
+
+</script>
+
+
+
+<input id="btn" type="button" value="打开窗口">
+<script>
+    var openBtn = document.getElementById("btn")
+    openBtn.onclick = function(){
+        open();
+    }
+</script>
+
+
+<script></script>
+</body>
+</html>

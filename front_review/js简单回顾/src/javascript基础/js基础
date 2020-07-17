@@ -1,0 +1,106 @@
+BOM   browser object model  浏览器对象模型  将浏览器的各个组成部分封装成对象
+    window  浏览器窗口对象
+    History  历史记录对象
+    Location  地址栏对象
+    Navigator 浏览器对象
+    Screen  显示器对象
+
+
+    前三个比较重要
+
+    window的常用弹出方法
+     方法
+            alert
+            confirm()显示一段消息  还带有确定取消按钮
+                点确定  返回true  反之 false
+
+            prompt
+               显示可提示用户输入的对话框
+               可以获取用户输入
+     打开关闭方法
+        open()
+        close()
+     定时器有关的方法
+        setTimeOut()  在指定的时间后调用函数或者表达式
+            参数  1.js代码   2.毫秒值
+                返回值唯一编号可以设定  关闭的时候关这个设定值
+        clearTimeOut()  取消由setTimeOut设置的timeOut
+        setInterval()    指定周期循环
+
+     window窗口对象的属性
+        获取其它Bom对象
+        获取dom
+     location地址栏对象
+        href链接指向哪
+        reload 重新加载
+
+     History
+        length 属性 当前窗口的历史 个数
+        方法
+            forward  back  go
+
+
+DOM
+    文档对象模型
+    将标记语言文档的各个组成部分封装成一个个对象
+    核心Dom 针对任何结构化文档的标准模型
+        document 文档对象
+        Element 元素对象
+        Attribute 属性对象
+        Text   文本对象
+        Comment  注释对象
+
+        Node  节点对象  其他五个的父对象
+
+    核心的核心
+        document  文档对象
+            获取 方法
+                window.document
+                document
+
+        element    元素对象
+
+        Node   节点对象
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

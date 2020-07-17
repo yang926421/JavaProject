@@ -46,7 +46,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../JDBCMysql" />
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -154,6 +154,7 @@
       <workItem from="1594783257248" duration="410000" />
       <workItem from="1594783815916" duration="213000" />
       <workItem from="1594784072717" duration="595000" />
+      <workItem from="1594977805520" duration="2308000" />
     </task>
     <servers />
   </component>
@@ -173,10 +174,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="403" y="124" key="FileChooserDialogImpl" timestamp="1594784670097">
+    <state x="403" y="124" key="FileChooserDialogImpl" timestamp="1594978514795">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="403" y="124" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1594784670097" />
+    <state x="403" y="124" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1594978514795" />
     <state width="1286" height="163" key="GridCell.Tab.0.bottom" timestamp="1594784671163">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

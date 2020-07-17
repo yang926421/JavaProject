@@ -50,7 +50,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Standard_lyy" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -156,6 +156,7 @@
       <workItem from="1594778661336" duration="992000" />
       <workItem from="1594779768047" duration="502000" />
       <workItem from="1594780434294" duration="179000" />
+      <workItem from="1594978517943" duration="1559000" />
     </task>
     <servers />
   </component>

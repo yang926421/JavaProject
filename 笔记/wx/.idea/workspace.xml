@@ -40,6 +40,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../front_review" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -51,7 +52,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1594800128563</updated>
-      <workItem from="1594800130121" duration="7854000" />
+      <workItem from="1594800130121" duration="22147000" />
     </task>
     <servers />
   </component>
@@ -70,9 +71,25 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594864900585">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1594864900585" />
     <state x="745" y="128" key="FileChooserDialogImpl" timestamp="1594801117994">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="745" y="128" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1594801117994" />
+    <state x="368" y="15" key="SettingsEditor" timestamp="1594976857319">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="368" y="15" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1594976857319" />
+    <state x="516" y="208" key="run.anything.popup" timestamp="1594884680889">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="516" y="208" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1594884680889" />
+    <state x="523" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1594976853581">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="523" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1594976853581" />
   </component>
 </project>
