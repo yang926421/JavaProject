@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="annual-report">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/BootStrap/src/annual-report.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
