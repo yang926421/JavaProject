@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="test">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/BootStrap/src/test.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/BootStrap/src/test.jar!/" />
+      <root url="jar://$PROJECT_DIR$/BootStrap/src/annual-report.jar!/" />
+      <root url="jar://$PROJECT_DIR$/BootStrap/src/test.jar!/META-INF/maven/com.asb.gsxt/gsxt-annual-report" />
+      <root url="jar://$PROJECT_DIR$/BootStrap/src/test.jar!/BOOT-INF/classes/com/asb/gsxt/config" />
+    </SOURCES>
+  </library>
+</component>

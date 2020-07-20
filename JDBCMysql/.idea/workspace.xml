@@ -50,8 +50,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$/bin" />
     <property name="project.structure.last.edited" value="Modules" />
+=======
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/一些文件/黑马java web/jd-gui-windows-1.6.2/jd-gui-windows-1.6.2/com/asb/test.jar.src" />
+    <property name="project.structure.last.edited" value="Libraries" />
+>>>>>>> 17171da8c7ba4a74cf11eb543832ef2ffb6d9a8a
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -157,9 +162,14 @@
       <workItem from="1594778661336" duration="992000" />
       <workItem from="1594779768047" duration="502000" />
       <workItem from="1594780434294" duration="179000" />
+<<<<<<< HEAD
       <workItem from="1594978517943" duration="1559000" />
       <workItem from="1595147144981" duration="287000" />
       <workItem from="1595147474981" duration="721000" />
+=======
+      <workItem from="1594978517943" duration="2387000" />
+      <workItem from="1595214436646" duration="654000" />
+>>>>>>> 17171da8c7ba4a74cf11eb543832ef2ffb6d9a8a
     </task>
     <servers />
   </component>
@@ -188,10 +198,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="0" y="0" key="#lombok.jar/0.0.1366.728@0.0.1366.728" timestamp="1594778021386" />
-    <state x="552" y="143" key="FileChooserDialogImpl" timestamp="1594780619114">
+    <state x="552" y="143" key="FileChooserDialogImpl" timestamp="1595216641660">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="552" y="143" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1594780619114" />
+    <state x="552" y="143" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1595216641660" />
     <state width="968" height="176" key="GridCell.Tab.0.bottom" timestamp="1594776517712">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
