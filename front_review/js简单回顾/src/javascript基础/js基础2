@@ -1,0 +1,35 @@
+标签体的设置和获取  innerhtml
+
+
+
+事件
+    概念  某些组件执行了某些操作后,触发某些代码的执行
+        事件  某些操作 单击 双击 鼠标按上去 鼠标移走
+        事件源 组件  按钮 文本输入框
+        监听器 代码
+       注册监听  将事件源 事件 监听器结合在一起 当事件源发生了某个事件  则触发执行某个监听事件代码
+
+       点击事件
+        单击事件 onclick
+        双击事件 ondbclick
+       焦点事件
+        onblur  失去焦点
+        onfocus  获得焦点
+
+       加载事件
+        onload  加载完毕
+       鼠标键盘事件
+        onmousedown  鼠标按钮被按下
+        onmouseup鼠标按键被松开
+        onmouseover  移到元素之上
+        onmouseout  离开元素
+
+        键盘事件
+            onkeydown  某个按键被按下
+            onkeyup 某个键盘键被松开
+            onkeypress  按下并松开
+
+         onchange  域的内容被改变
+         onselect  文本被选中
+
+         表单事件  onsubmit  确认扭

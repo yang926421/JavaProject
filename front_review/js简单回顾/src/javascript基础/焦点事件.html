@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>焦点事件</title>
+</head>
+<body>
+<form action="#">
+    <input type="submit" value="提交">
+</form>
+
+<input type="text" id="username">
+<script>
+
+    //加载完成事件   window或者body加载完毕
+    //点击文本框 获取焦点  失去焦点  完成操作  表单验证的时候  失去焦点后  查询数据库 获取其他信息
+    document.getElementById("username").onblur = function () {
+        alert("失去焦点了")
+    }
+
+    window.onload = function () {
+        //加载完毕后要执行的操作
+    }
+    //绑定鼠标事件
+    document.getElementById("username").onmouseover = function () {
+        alert(0)
+    }
+
+
+    //鼠标点击事件
+    document.getElementById("username").onmousedown = function (event) {
+        alert(event.button)  //左键0
+
+    }
+    //onkeydown   哪个键被按下  event.keycode
+
+    //onchange  三级联动
+
+    //onsubmit
+
+</script>
+</body>
+</html>

@@ -50,17 +50,18 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/bin" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\lyy\documents\project1\JDBCMysql\bin" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\java\javaProject\JDBCMysql\bin" />
       <recent name="D:\lyy\documents\project1\JDBCMysql\bin" />
     </key>
   </component>
@@ -157,23 +158,26 @@
       <workItem from="1594779768047" duration="502000" />
       <workItem from="1594780434294" duration="179000" />
       <workItem from="1594978517943" duration="1559000" />
+      <workItem from="1595147144981" duration="287000" />
+      <workItem from="1595147474981" duration="721000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="0" y="0" key="#Project_Structure" timestamp="1594778188877">
@@ -204,10 +208,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="968" height="176" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1594776517711" />
-    <state x="297" y="16" key="SettingsEditor" timestamp="1594780038250">
+    <state x="260" y="12" key="SettingsEditor" timestamp="1595147433819">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="297" y="16" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1594780038250" />
+    <state x="260" y="12" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1595147433819" />
+    <state x="598" y="321" key="com.intellij.ide.util.TipDialog" timestamp="1595147484316">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="598" y="321" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1595147484316" />
     <state x="546" y="264" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1594774722186">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
