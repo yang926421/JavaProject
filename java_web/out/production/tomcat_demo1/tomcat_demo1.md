@@ -29,6 +29,19 @@ tomcat的相关知识
 
 ![image-20200720230822209](tomcat_demo1.assets/image-20200720230822209.png)
 
+Servlet被执行原理
+
+​	
+
+```
+1.当服务器接收到客户端浏览器的请求后，会解析该url路径，获取访问的servlet路径
+2.查找web.xml文件，是否有对应的<url-pattern>标签体内容
+3.如果有，则在对应的<servlet-class> 下面保存的全路径名
+4.tomcat会将字节码文件加载进内存  反射
+5.调用其方法
+
+```
+
 servlet的声明周期方法
 
 ​	1.被创建 执行init,只执行一次
@@ -65,7 +78,7 @@ servlet的声明周期方法
 
 servlet3.0标准
 
-​	支持竹节配置  可以使用web.xml也可以注解配置
+​	支持注解配置  可以使用web.xml也可以注解配置
 
 ​	步骤
 
@@ -83,6 +96,36 @@ servlet3.0标准
 @WebServlet(urlPatterns = {"/demo"})
 //如果只有一个注解  可以 @WebServlet("/demo")
 "/demo"  资源路径
+```
+
+
+
+```
+			Websevlet的原理
+			@Target({ElementType.TYPE})
+			@Retention(RetentionPolicy.RUNTIME)
+			@Documented
+			public @interface WebServlet {
+			    String name() default "";//相当于<Servlet-name>
+			
+			    String[] value() default {};//代表urlPatterns()属性配置
+			
+			    String[] urlPatterns() default {};//相当于<url-pattern>
+			
+			    int loadOnStartup() default -1;//相当于<load-on-startup>
+			
+			    WebInitParam[] initParams() default {};
+			
+			    boolean asyncSupported() default false;
+			
+			    String smallIcon() default "";
+			
+			    String largeIcon() default "";
+			
+			    String description() default "";
+			
+			    String displayName() default "";
+			}
 ```
 
 IDEA与tomcat的相关配置

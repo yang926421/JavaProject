@@ -4,8 +4,9 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/demo"})
+//@WebServlet(urlPatterns = {"/demo"})
 //如果只有一个注解  可以 @WebServlet("/demo")
+@Web
 public class ServletDemo1 implements Servlet {
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {

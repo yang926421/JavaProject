@@ -37,6 +37,7 @@ public class DruidUtils {
             pros.load(is);
             //        ResourceBundle resourceBundle = ResourceBundle.getBundle("druid.properties");
             druidDataSource = DruidDataSourceFactory.createDataSource(pros);
+            System.out.println(druidDataSource);
         } catch (Exception e) {
             e.printStackTrace();
         }

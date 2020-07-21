@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Servlet_demo1/Servlet_demo1.iml" filepath="$PROJECT_DIR$/Servlet_demo1/Servlet_demo1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Servlet_login/Servlet_login.iml" filepath="$PROJECT_DIR$/Servlet_login/Servlet_login.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_web.iml" filepath="$PROJECT_DIR$/java_web.iml" />
       <module fileurl="file://$PROJECT_DIR$/tomcat_demo1/tomcat_demo1.iml" filepath="$PROJECT_DIR$/tomcat_demo1/tomcat_demo1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tomcat_demo2/tomcat_demo2.iml" filepath="$PROJECT_DIR$/tomcat_demo2/tomcat_demo2.iml" />
     </modules>
   </component>
 </project>
