@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
         //调用userDao的登陆方法
         System.out.println(23456);
         userDao dao = new userDao();
-        dao.demo1();
+//        dao.demo1();
         System.out.println(12345);
 //        request.getRequestDispatcher("/SuccessServlet").forward(request,response);
         user user = dao.login(loginUser);
