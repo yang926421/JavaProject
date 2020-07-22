@@ -2,42 +2,42 @@ package cn.gsxt.dao;
 
 import cn.gsxt.domain.user;
 import cn.gsxt.utils.JDBCUtils;
-import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
+//import org.springframework.dao.DataAccessException;
+//import org.springframework.jdbc.core.BeanPropertyRowMapper;
+////import org.springframework.jdbc.core.JdbcTemplate;
 
 
 /**
  * 操纵数据库层*/
 public class userDao {
     //声明JDBCTemplate对象共用
-    private JdbcTemplate template = new JdbcTemplate(JDBCUtils.getDataSource());
+//    private JdbcTemplate template = new JdbcTemplate(JDBCUtils.getDataSource());
 
     /**
      * 登录方法
      * @param loginUser 只有用户名和密码
      * @return user包含用户全部数据,没有查询到，返回null
      */
-    public user login(user loginUser){
-        try {
-            //1.编写sql
-            String sql = "select * from users where username = ? and password = ?";
-            //2.调用query方法
-            user user1 = template.queryForObject(sql,
-                    new BeanPropertyRowMapper<user>(user.class),
-                    loginUser.getUsername(), loginUser.getPassword());
-
-
-            return user1;
-        } catch (DataAccessException e) {
-            e.printStackTrace();//记录日志
-            return null;
-        }
-    }
-
-    public void demo1(){
-        System.out.println("卧槽 为什么啊");
-    }
+//    public user login(user loginUser){
+//        try {
+//            //1.编写sql
+//            String sql = "select * from users where username = ? and password = ?";
+//            //2.调用query方法
+//            user user1 = template.queryForObject(sql,
+//                    new BeanPropertyRowMapper<user>(user.class),
+//                    loginUser.getUsername(), loginUser.getPassword());
+//
+//
+//            return user1;
+//        } catch (DataAccessException e) {
+//            e.printStackTrace();//记录日志
+//            return null;
+//        }
+//    }
+//
+//    public void demo1(){
+//        System.out.println("卧槽 为什么啊");
+//    }
 //    static {
 //        System.out.println(11111);
 //    }
