@@ -40,8 +40,6 @@ public class LoginServlet extends HttpServlet {
 //        request.getRequestDispatcher("/SuccessServlet").forward(request,response);
         userDao dao = new userDao();
         user user = null;
-        person p1 = new person();
-        p1.test();
         try {
             user = dao.login(loginUser);
         } catch (Exception e) {
