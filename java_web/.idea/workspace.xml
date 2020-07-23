@@ -57,7 +57,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -235,17 +235,12 @@
     <option name="viewStates">
       <list>
         <serviceView>
-          <option name="contentProportion" value="0.20170015" />
+          <option name="contentProportion" value="0.16151468" />
           <treeState>
             <expand>
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
             </expand>
             <select />
@@ -271,6 +266,7 @@
       <workItem from="1595331452455" duration="278000" />
       <workItem from="1595331743494" duration="9102000" />
       <workItem from="1595341324437" duration="1789000" />
+      <workItem from="1595423827581" duration="2387000" />
     </task>
     <servers />
   </component>
@@ -366,10 +362,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="703" height="216" key="GridCell.Tab.2.right/0.0.1366.728@0.0.1366.728" timestamp="1595411167156" />
-    <state x="174" y="0" key="SettingsEditor" timestamp="1595253196802">
+    <state x="98" y="12" key="SettingsEditor" timestamp="1595425837671">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="174" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1595253196802" />
+    <state x="98" y="12" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1595425837671" />
     <state x="363" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1595423902464">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
