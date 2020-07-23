@@ -1,5 +1,11 @@
 servlet&&response
 
+servlet的一些原理
+
+![1595412982214](assets/1595412982214.png)
+
+![1595412994467](assets/1595412994467.png)
+
 ## http协议
 
 ```
@@ -145,6 +151,6 @@ ServletContext对象
 	WEB-INF 下
 		context.getRealPath("/WEB-INF/文件名")
 	src下
-		context.getRealPath("/WEB-INF/classes/wen'ji")
+		context.getRealPath("/WEB-INF/classes/文件名")
 ```
 
