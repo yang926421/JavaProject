@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/EL&amp;&amp;JSTL/EL&amp;&amp;JSTL.iml" filepath="$PROJECT_DIR$/EL&amp;&amp;JSTL/EL&amp;&amp;JSTL.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EL&amp;&amp;JSTL/EL&amp;JSTL&amp;crud.iml" filepath="$PROJECT_DIR$/EL&amp;&amp;JSTL/EL&amp;JSTL&amp;crud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EL_CRUD/EL_CRUD.iml" filepath="$PROJECT_DIR$/EL_CRUD/EL_CRUD.iml" />
       <module fileurl="file://$PROJECT_DIR$/Servlet_demo1/Servlet_demo1.iml" filepath="$PROJECT_DIR$/Servlet_demo1/Servlet_demo1.iml" />
       <module fileurl="file://$PROJECT_DIR$/Servlet_login/Servlet_login.iml" filepath="$PROJECT_DIR$/Servlet_login/Servlet_login.iml" />
       <module fileurl="file://$PROJECT_DIR$/Servlet_login1/Servlet_login1.iml" filepath="$PROJECT_DIR$/Servlet_login1/Servlet_login1.iml" />
