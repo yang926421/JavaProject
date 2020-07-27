@@ -41,4 +41,14 @@ public class userServiceImpl implements userService {
         //修改根据提交的user属性修改
         dao.updateUser(user);
     }
+
+    //删除选中的所有人
+    @Override
+    public void delSelectedUser(String[] ids) {
+        //批量删除用户
+        for (String id : ids) {
+            //
+            dao.delUserById(Integer.parseInt(id));
+        }
+    }
 }
