@@ -16,4 +16,6 @@ public interface userService {
     User findUserById(int parseInt);
 
     public void updateUser(User user);
+
+    void delSelectedUser(String[] ids);
 }

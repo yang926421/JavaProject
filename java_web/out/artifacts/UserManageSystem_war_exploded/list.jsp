@@ -37,6 +37,7 @@
         }
         window.onload = function(){
             document.getElementById("delSelected").onclick = function () {
+                alert(111111)
                 document.getElementById("form").submit();
             }
         }
@@ -76,7 +77,7 @@
     <form id="form" action="${pageContext.request.contextPath}/delSelectedServlet" method="post">
         <table border="1" class="table table-bordered table-hover">
         <tr class="success">
-            <th><input type="checkbox" name="uid" ></th>
+            <th><input type="checkbox" ></th>
             <th>编号</th>
             <th>姓名</th>
             <th>性别</th>
@@ -88,7 +89,7 @@
         </tr>
         <c:forEach items="${requestScope.users}" var="user" varStatus="s">
             <tr>
-                <th><input type="checkbox"></th>
+                <td><input type="checkbox" name="uid" value="${user.id}"></td>
                 <td>${s.count}</td>
                 <td>${user.name}</td>
                 <td>${user.gender}</td>
