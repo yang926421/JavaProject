@@ -17,4 +17,8 @@ public interface userDao {
     User findUserById(int parseInt);
 
     void updateUser(User user);
+
+    int findUsersCount();
+
+    List<User> findByPage(int start, int rows);
 }

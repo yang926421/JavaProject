@@ -1,5 +1,6 @@
 package cn.gsxt.service;
 
+import cn.gsxt.domain.PageBean;
 import cn.gsxt.domain.User;
 
 import java.util.List;
@@ -18,4 +19,6 @@ public interface userService {
     public void updateUser(User user);
 
     void delSelectedUser(String[] ids);
+
+    PageBean<User> findUserByPages(String currentPage, String rows);
 }

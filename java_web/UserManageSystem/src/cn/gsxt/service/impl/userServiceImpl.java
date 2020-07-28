@@ -1,6 +1,7 @@
 package cn.gsxt.service.impl;
 import cn.gsxt.dao.impl.userDaoImpl;
 import cn.gsxt.dao.userDao;
+import cn.gsxt.domain.PageBean;
 import cn.gsxt.domain.User;
 import cn.gsxt.service.userService;
 
@@ -50,5 +51,35 @@ public class userServiceImpl implements userService {
             //
             dao.delUserById(Integer.parseInt(id));
         }
+    }
+
+    @Override
+    //页码分页查询总记录数和当页数据
+    public PageBean<User> findUserByPages(String _currentPage, String _rows) {
+        //
+        int currentPage = Integer.parseInt(_currentPage);
+        if(currentPage <=0) {
+            currentPage = 1;
+        }
+        int rows = Integer.parseInt(_rows);
+        System.out.println(rows);
+        PageBean<User> pb = new PageBean<User>();
+        pb.setRows(rows);
+        //dao.
+        int totalCount = dao.findUsersCount();
+        System.out.println(totalCount);
+        int totalPage = (totalCount % rows) == 0 ? (totalCount % rows) : (totalCount % rows) + 1;
+        pb.setTotalCount(totalCount);
+        //计算总页码数
+        if(currentPage >= totalPage){
+            currentPage = totalPage;
+        }
+        pb.setCurrentPage(currentPage);
+        //查询当前页码list,计算开始记录
+        int start =  (currentPage - 1)*rows;
+        List<User> list =  dao.findByPage(start, rows);
+        pb.setList(list);
+        pb.setTotalPage(totalPage);
+        return pb;
     }
 }

@@ -20,6 +20,7 @@ import java.util.Map;
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
+        System.out.println("进入loginServlet");
         //获取数据
         String verifycode = request.getParameter("verifycode");
         //校验验证码，拿到生成验证码的时候存进session的值
@@ -41,6 +42,8 @@ public class LoginServlet extends HttpServlet {
         User user = new User();
         user.setUsername(request.getParameter("username"));
         user.setPassword(request.getParameter("password"));
+        System.out.println(user.getUsername());
+        System.out.println(user.getPassword());
 //        try {
 //            BeanUtils.populate(user,map);
 //        } catch (IllegalAccessException e) {
