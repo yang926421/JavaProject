@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/Servlet_login/Servlet_login.iml" filepath="$PROJECT_DIR$/Servlet_login/Servlet_login.iml" />
       <module fileurl="file://$PROJECT_DIR$/Servlet_login1/Servlet_login1.iml" filepath="$PROJECT_DIR$/Servlet_login1/Servlet_login1.iml" />
       <module fileurl="file://$PROJECT_DIR$/UserManageSystem/UserManageSystem.iml" filepath="$PROJECT_DIR$/UserManageSystem/UserManageSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ajaxJson/ajaxJson.iml" filepath="$PROJECT_DIR$/ajaxJson/ajaxJson.iml" />
       <module fileurl="file://$PROJECT_DIR$/cookie&amp;&amp;session/cookie&amp;&amp;session.iml" filepath="$PROJECT_DIR$/cookie&amp;&amp;session/cookie&amp;&amp;session.iml" />
       <module fileurl="file://$PROJECT_DIR$/Servlet_login1/el&amp;&amp;jstl.iml" filepath="$PROJECT_DIR$/Servlet_login1/el&amp;&amp;jstl.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_web.iml" filepath="$PROJECT_DIR$/java_web.iml" />
