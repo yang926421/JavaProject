@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        function fun() {
+            //也可以将get改为post方法名不一样，其它参数都一样
+            $.get("ajaxServlet",{username:"rose"},function (data) {
+                alert(data)
+            },"text" );
+        }
+    </script>
+</head>
+<body>
+
+<input type="button" value="发送异步请求" onclick="fun();">
+
+<input>
+
+</body>
+</html>
