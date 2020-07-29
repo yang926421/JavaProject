@@ -24,7 +24,8 @@ public class SensitiveWordsFilter implements Filter {
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                 //增强getParameter()方法
                 if(method.getName().equals("getParameter")){
-                    //增强返回值
+                    //增强返回值  真实的类调用对象,会这个调用进行增强 就是说不管你怎么增强 我原来该执行的方法依
+                    // 旧要执行
                     String values = (String) method.invoke(req, args);  //===>req.getParameter()
                     if (values != null){
                         for (String s : list) {
