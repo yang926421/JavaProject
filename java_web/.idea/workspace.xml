@@ -41,7 +41,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/UserManageSystem/web" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Filter&amp;Listener/src/cn/gsxt/web/listener" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -49,17 +49,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.gsxt.filter" />
       <recent name="cn.gsxt.service.impl" />
       <recent name="cn.gsxt.service" />
       <recent name="cn.gsxt.servlet" />
       <recent name="cn.gsxt.utils" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\java\javaProject\java_web\Filter&amp;Listener\src\cn\gsxt\web\listener" />
+      <recent name="D:\java\javaProject\java_web\UserManageSystem\src\cn\gsxt\servlet" />
+      <recent name="D:\java\javaProject\java_web\UserManageSystem\src" />
+      <recent name="D:\java\javaProject\java_web\Filter&amp;Listener\src" />
       <recent name="D:\java\javaProject\java_web\UserManageSystem\web" />
-      <recent name="D:\lyy\documents\project1\java_web\UserManageSystem\src\cn\gsxt\servlet" />
-      <recent name="D:\lyy\documents\project1\java_web\UserManageSystem" />
-      <recent name="D:\java\javaProject\java_web\EL_CRUD\web" />
-      <recent name="D:\java\javaProject\java_web\EL_CRUD\src" />
     </key>
   </component>
   <component name="RunManager">
@@ -155,6 +156,11 @@
                 <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
                 <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Finished" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
             </expand>
             <select />
           </treeState>
@@ -185,10 +191,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="260" y="2" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1595832870922" />
-    <state x="274" y="37" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595928773175">
+    <state x="274" y="37" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595939960512">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="274" y="37" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1595928773175" />
+    <state x="274" y="37" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1595939960512" />
     <state x="872" y="94" key="#com.intellij.ide.util.MemberChooser" timestamp="1595921430308">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -269,10 +275,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="324" y="154" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1595861578416" />
-    <state x="762" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1595924339602">
+    <state x="762" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1595948456362">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="762" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1595924339602" />
+    <state x="762" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1595948456362" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -294,6 +300,11 @@
           <url>file://$PROJECT_DIR$/UserManageSystem/web/list.jsp</url>
           <line>106</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/UserManageSystem/src/cn/gsxt/filter/SensitiveWordsFilter.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
