@@ -223,6 +223,14 @@
         </option>
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.jackSonTest.test1" />
+      <item itemvalue="JUnit.jackSonTest.test2" />
+      <item itemvalue="JUnit.jackSonTest.test3" />
+      <item itemvalue="JUnit.jackSonTest.test4" />
+      <item itemvalue="JUnit.jackSonTest.test5" />
+      <item itemvalue="Tomcat Server.Tomcat 8.5.31" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.jackSonTest.test5" />
@@ -248,6 +256,11 @@
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
                 <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Finished" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
             </expand>
             <select />
