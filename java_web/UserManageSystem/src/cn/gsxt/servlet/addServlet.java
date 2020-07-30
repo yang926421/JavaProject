@@ -31,6 +31,7 @@ public class addServlet extends HttpServlet {
 
         //跳转到userListServer
         response.sendRedirect(request.getContextPath()+"/userListServlet");
+        //如果没有注册过,就将submit提交的数据存储到数据库中
 
 
 //        request.setAttribute("user", user);

@@ -155,29 +155,31 @@
       <workItem from="1594783815916" duration="213000" />
       <workItem from="1594784072717" duration="595000" />
       <workItem from="1594977805520" duration="2581000" />
+      <workItem from="1595947556643" duration="3892000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="403" y="124" key="FileChooserDialogImpl" timestamp="1594978514795">
+    <state x="403" y="124" key="FileChooserDialogImpl" timestamp="1596035581085">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="403" y="124" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1594978514795" />
+    <state x="403" y="124" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1596035581085" />
     <state width="1286" height="163" key="GridCell.Tab.0.bottom" timestamp="1594784671163">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
