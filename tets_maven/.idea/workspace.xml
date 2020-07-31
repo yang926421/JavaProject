@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="64657cc2-3f25-4c7d-a956-c586f8a8f16f" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../software/maven/apache-maven-3.5.2-bin/apache-maven-3.5.2" />
+        <option name="userSettingsFile" value="D:\lyy\software\maven\apache-maven-3.5.2-bin\apache-maven-3.5.2\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="vmOptions" value="-DachetypeCatalog=internal" />
+  </component>
+  <component name="ProjectId" id="1fRF7uCRtI43HtvmY6UuenrRYoE" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.runner" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="64657cc2-3f25-4c7d-a956-c586f8a8f16f" name="Default Changelist" comment="" />
+      <created>1596172836305</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1596172836305</updated>
+      <workItem from="1596172846262" duration="3169000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="481" y="202" key="FileChooserDialogImpl" timestamp="1596181518839">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="481" y="202" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1596181518839" />
+    <state width="1060" height="169" key="GridCell.Tab.0.bottom" timestamp="1596176775312">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1060" height="169" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1596176775312" />
+    <state width="1060" height="169" key="GridCell.Tab.0.center" timestamp="1596176775312">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1060" height="169" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1596176775312" />
+    <state width="1060" height="169" key="GridCell.Tab.0.left" timestamp="1596176775312">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1060" height="169" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1596176775312" />
+    <state width="1060" height="169" key="GridCell.Tab.0.right" timestamp="1596176775312">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1060" height="169" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1596176775312" />
+    <state x="210" y="11" width="1077" height="717" key="SettingsEditor" timestamp="1596181117478">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="210" y="11" width="1077" height="717" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1596181117478" />
+    <state x="113" y="34" key="new project wizard" timestamp="1596181557642">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="113" y="34" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1596181557642" />
+  </component>
+</project>
