@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4067e54c-7930-426b-9cd4-26f38a5b3ee3" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="D:/lyy/documents/apache-maven-3.5.2-bin/apache-maven-3.5.2" />
+        <option name="userSettingsFile" value="D:\lyy\documents\apache-maven-3.5.2-bin\apache-maven-3.5.2\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1fSMT1NlSK0q379yErAU13FcwXb" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\java\javaProject\maven_webapp\maven_web1\src\main\webapp" />
+      <recent name="D:\java\javaProject\maven_webapp\maven_web1\src\main" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn tomcat:run" />
+      <command value="mvn tomcat7:run" />
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4067e54c-7930-426b-9cd4-26f38a5b3ee3" name="Default Changelist" comment="" />
+      <created>1596207044320</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1596207044320</updated>
+      <workItem from="1596207049449" duration="1002000" />
+      <workItem from="1596208169852" duration="2173000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="920" height="240" key="GridCell.Tab.0.bottom" timestamp="1596375223023">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="920" height="240" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1596375223023" />
+    <state width="920" height="240" key="GridCell.Tab.0.center" timestamp="1596375223023">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="920" height="240" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1596375223023" />
+    <state width="920" height="240" key="GridCell.Tab.0.left" timestamp="1596375223023">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="920" height="240" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1596375223023" />
+    <state width="920" height="240" key="GridCell.Tab.0.right" timestamp="1596375223023">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="920" height="240" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1596375223023" />
+    <state x="274" y="0" key="SettingsEditor" timestamp="1596207275420">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="274" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1596207275420" />
+    <state x="66" y="0" key="new project wizard" timestamp="1596375386168">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="66" y="0" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1596375386168" />
+    <state x="297" y="155" width="672" height="677" key="run.anything.popup" timestamp="1596375223057">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="297" y="155" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1596375223057" />
+  </component>
+</project>
