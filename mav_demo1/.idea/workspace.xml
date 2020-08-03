@@ -20,8 +20,14 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="$PROJECT_DIR$/../../../software/maven/apache-maven-3.5.2-bin/apache-maven-3.5.2" />
+        <option name="mavenHome" value="D:/lyy/documents/apache-maven-3.5.2-bin/apache-maven-3.5.2" />
+        <option name="userSettingsFile" value="D:\lyy\documents\apache-maven-3.5.2-bin\apache-maven-3.5.2\conf\settings.xml" />
       </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
     </option>
   </component>
   <component name="ProjectId" id="1fRWo6z5imwLPvxAp8Ve5kElC0F" />
@@ -35,7 +41,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="instant.run" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RunManager" selected="JUnit.App.test">
     <configuration name="App.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -107,8 +113,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Maven.maven_java [clean,tomcat7:run]" />
       <item itemvalue="JUnit.App.test" />
+      <item itemvalue="Maven.maven_java [clean,tomcat7:run]" />
     </list>
     <recent_temporary>
       <list>
@@ -127,6 +133,8 @@
       <option name="presentableId" value="Default" />
       <updated>1596181557927</updated>
       <workItem from="1596181564907" duration="2404000" />
+      <workItem from="1596457779426" duration="176000" />
+      <workItem from="1596458070151" duration="3843000" />
     </task>
     <servers />
   </component>
@@ -138,10 +146,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="124" y="0" width="1092" height="728" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1596182225303" />
-    <state x="289" y="232" key="FileChooserDialogImpl" timestamp="1596182078174">
+    <state x="289" y="232" key="FileChooserDialogImpl" timestamp="1596457953352">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="289" y="232" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1596182078174" />
+    <state x="289" y="232" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1596457953352" />
     <state width="1060" height="140" key="GridCell.Tab.0.bottom" timestamp="1596184032925">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -158,13 +166,17 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1060" height="140" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1596184032925" />
-    <state x="0" y="11" key="SettingsEditor" timestamp="1596183009530">
+    <state x="0" y="11" key="SettingsEditor" timestamp="1596457836669">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="0" y="11" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1596183009530" />
+    <state x="0" y="11" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1596457836669" />
     <state x="115" y="10" key="new project wizard" timestamp="1596183651507">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="115" y="10" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1596183651507" />
+    <state x="647" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1596467323819">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="647" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1596467323819" />
   </component>
 </project>

@@ -11,4 +11,6 @@ public interface UserDao {
     User findUserByCode(String code);
 
     void updateStatus(User user);
+
+    User findUserByUsernameAndPassword(String username, String password);
 }
