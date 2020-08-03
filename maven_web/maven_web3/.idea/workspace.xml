@@ -64,9 +64,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1596186883011</updated>
+<<<<<<< HEAD
+      <workItem from="1596186889211" duration="5262000" />
+=======
       <workItem from="1596186889211" duration="4848000" />
       <workItem from="1596204055262" duration="2941000" />
       <workItem from="1596208109261" duration="605000" />
+>>>>>>> be5e521cfeb884618f5062e5f9bbbbdec36c4d7a
     </task>
     <servers />
   </component>
@@ -78,6 +82,25 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1596190017306" />
+<<<<<<< HEAD
+    <state width="1323" height="298" key="GridCell.Tab.0.bottom" timestamp="1596414811843">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="298" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1596414811843" />
+    <state width="1323" height="298" key="GridCell.Tab.0.center" timestamp="1596414811842">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="298" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1596414811842" />
+    <state width="1323" height="298" key="GridCell.Tab.0.left" timestamp="1596414811842">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="298" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1596414811842" />
+    <state width="1323" height="298" key="GridCell.Tab.0.right" timestamp="1596414811842">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="298" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1596414811842" />
+    <state x="105" y="0" width="1174" height="728" key="SettingsEditor" timestamp="1596189486972">
+=======
     <state x="472" y="119" key="FileChooserDialogImpl" timestamp="1596208582242">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -95,6 +118,7 @@
     </state>
     <state width="1169" height="295" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1596375183792" />
     <state width="1169" height="295" key="GridCell.Tab.0.right" timestamp="1596375183793">
+>>>>>>> be5e521cfeb884618f5062e5f9bbbbdec36c4d7a
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1169" height="295" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1596375183793" />

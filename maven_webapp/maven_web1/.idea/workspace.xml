@@ -13,8 +13,8 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="D:/lyy/documents/apache-maven-3.5.2-bin/apache-maven-3.5.2" />
-        <option name="userSettingsFile" value="D:\lyy\documents\apache-maven-3.5.2-bin\apache-maven-3.5.2\conf\settings.xml" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../../software/maven/apache-maven-3.5.2-bin/apache-maven-3.5.2" />
+        <option name="userSettingsFile" value="D:\lyy\software\maven\apache-maven-3.5.2-bin\apache-maven-3.5.2\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
     <option name="importingSettings">
@@ -34,11 +34,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../maven_mysql" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -63,7 +63,13 @@
       <option name="presentableId" value="Default" />
       <updated>1596207044320</updated>
       <workItem from="1596207049449" duration="1002000" />
+<<<<<<< HEAD
       <workItem from="1596208169852" duration="2674000" />
+=======
+      <workItem from="1596208169852" duration="2173000" />
+      <workItem from="1596417689758" duration="1613000" />
+      <workItem from="1596429442226" duration="2395000" />
+>>>>>>> abc653adcc4e9db2be8abdc11bcd318e36273e14
     </task>
     <servers />
   </component>
@@ -71,33 +77,37 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="920" height="240" key="GridCell.Tab.0.bottom" timestamp="1596375223023">
+    <state x="553" y="113" key="FileChooserDialogImpl" timestamp="1596439151406">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="920" height="240" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1596375223023" />
-    <state width="920" height="240" key="GridCell.Tab.0.center" timestamp="1596375223023">
+    <state x="553" y="113" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1596439151406" />
+    <state width="1184" height="176" key="GridCell.Tab.0.bottom" timestamp="1596439155118">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="920" height="240" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1596375223023" />
-    <state width="920" height="240" key="GridCell.Tab.0.left" timestamp="1596375223023">
+    <state width="1184" height="176" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1596439155118" />
+    <state width="1184" height="176" key="GridCell.Tab.0.center" timestamp="1596439155118">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="920" height="240" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1596375223023" />
-    <state width="920" height="240" key="GridCell.Tab.0.right" timestamp="1596375223023">
+    <state width="1184" height="176" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1596439155118" />
+    <state width="1184" height="176" key="GridCell.Tab.0.left" timestamp="1596439155118">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="920" height="240" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1596375223023" />
-    <state x="274" y="0" key="SettingsEditor" timestamp="1596207275420">
+    <state width="1184" height="176" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1596439155118" />
+    <state width="1184" height="176" key="GridCell.Tab.0.right" timestamp="1596439155118">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="274" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1596207275420" />
+    <state width="1184" height="176" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1596439155118" />
+    <state x="274" y="0" key="SettingsEditor" timestamp="1596422731652">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="274" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1596422731652" />
     <state x="66" y="0" key="new project wizard" timestamp="1596375386168">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="66" y="0" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1596375386168" />
-    <state x="297" y="155" width="672" height="677" key="run.anything.popup" timestamp="1596375223057">
+    <state x="297" y="155" width="672" height="677" key="run.anything.popup" timestamp="1596432248405">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="297" y="155" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1596375223057" />
+    <state x="297" y="155" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1596432248405" />
   </component>
 </project>
