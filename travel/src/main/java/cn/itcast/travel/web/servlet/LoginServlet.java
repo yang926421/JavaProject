@@ -19,7 +19,7 @@ import java.util.Map;
 @WebServlet("/loginServlet")
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        System.out.println("跳转登陆servlet");
         Map<String, String[]> map = request.getParameterMap();
         User user = new User();
         try {
@@ -30,6 +30,9 @@ public class LoginServlet extends HttpServlet {
         //调用service查询
         UserService service = new UserServiceImpl();
         User u =  service.login(user);
+        System.out.println(u.getName());
+        System.out.println(u==null);
+        System.out.println(u.getStatus());
         ResultInfo info = new ResultInfo();
         //判断用户名或密码是否正确
         if(u==null){

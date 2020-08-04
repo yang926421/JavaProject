@@ -13,11 +13,15 @@ import java.io.IOException;
 public class FindUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             //从session中获取user对象
+        System.out.println(123456);
+        //从session中获取登录用户
         Object user = request.getSession().getAttribute("user");
-        //讲user写回客户端
+        //将user写回客户端
+
         ObjectMapper mapper = new ObjectMapper();
-        response.setContentType("application/json;character=utf-8");
-        mapper.writeValue(response.getOutputStream(), user);
+        response.setContentType("application/json;charset=utf-8");
+        mapper.writeValue(response.getOutputStream(),user);
+
 
 
     }

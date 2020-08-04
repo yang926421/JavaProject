@@ -72,6 +72,7 @@ public class UserDaoImpl  implements UserDao {
     @Override
     public User findUserByUsernameAndPassword(String username, String password) {
         User user = null;
+        System.out.println("根据用户名密码数据库层查询");
         try {
             System.out.println(username);
             String sql = "select * from tab_user where username = ? and password = ?";

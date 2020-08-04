@@ -10,10 +10,12 @@ import java.io.IOException;
 @WebServlet("/exitServlet")
 public class ExitServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("跳转推出界面");
         //销毁session中的user
         request.getSession().invalidate();
+        System.out.println("destoryUser");
         //跳转页面
-        response.sendRedirect(request.getContextPath()+"login.html");
+        response.sendRedirect(request.getContextPath()+"/login.html");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
