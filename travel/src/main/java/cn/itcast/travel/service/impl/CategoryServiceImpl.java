@@ -20,6 +20,7 @@ public class CategoryServiceImpl implements CategoryService {
 //        return list;
         //使用redis缓存查询
         Jedis jedis = JedisUtil.getJedis();
+        System.out.println(jedis);
         //使用sortedSet来进行排序查询
 //        有序集合类型 sortedset：不允许重复元素，且元素有顺序
 //        Set<String> categorys = jedis.zrange("category", 0, -1);
@@ -30,14 +31,16 @@ public class CategoryServiceImpl implements CategoryService {
             //从数据库查询
             System.out.println("从数据库查询");
             list = dao.findAll();
-            //查询之后将数据存储到redis中
-            for (int i = 0; i < categorys.size(); i++) {
+//            System.out.println(list);
+            //查询之后将数据存储到redis中System.out.println("将数据存进redis中");
+            for (int i = 0; i < list.size(); i++) {
                 //根据cid的大小来存储
-                jedis.zadd("categorys", list.get(i).getCid(), list.get(i).getCname());
+                jedis.zadd("category", list.get(i).getCid(), list.get(i).getCname());
+
             }
         }
         else{
-            System.out.println("从resis查询");
+            System.out.println("从resis查询"+"redis");
             //redis存储的是set集合的数据，但是我们需要的是list
             list = new ArrayList<Category>();
             for (Tuple tuple : categorys) {

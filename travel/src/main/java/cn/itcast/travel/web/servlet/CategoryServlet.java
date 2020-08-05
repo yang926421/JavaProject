@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/Category/*")
+@WebServlet("/category/*")
 public class CategoryServlet extends BaseServlet {
     private CategoryService service = new CategoryServiceImpl();
 

@@ -102,6 +102,7 @@ public class UserServlet extends BaseServlet {
         }
         //登录成功的判断
         if(u!=null && "Y".equals(u.getStatus())){
+            request.getSession().setAttribute("user",u);//登录成功标记
             info.setFlag(true);
         }
         //响应数据给前端
@@ -148,9 +149,10 @@ public class UserServlet extends BaseServlet {
     //从session中获取user对象
     public void findOne(HttpServletRequest request, HttpServletResponse response) throws Exception{
         //从session中获取user对象
-        System.out.println(123456);
+        System.out.println(1234566543);
         //从session中获取登录用户
         Object user = request.getSession().getAttribute("user");
+        System.out.println(user);
         //将user写回客户端
 
 //        ObjectMapper mapper = new ObjectMapper();
