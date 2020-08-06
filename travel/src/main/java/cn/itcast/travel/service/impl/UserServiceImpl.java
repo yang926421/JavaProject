@@ -1,14 +1,26 @@
 package cn.itcast.travel.service.impl;
 
+import cn.itcast.travel.dao.FavoriteDao;
+import cn.itcast.travel.dao.RouteDao;
 import cn.itcast.travel.dao.UserDao;
+import cn.itcast.travel.dao.impl.FavoriteDaoImpl;
+import cn.itcast.travel.dao.impl.RouteDaoImpl;
 import cn.itcast.travel.dao.impl.UserDaoImpl;
+import cn.itcast.travel.domain.Favorite;
+import cn.itcast.travel.domain.Route;
 import cn.itcast.travel.domain.User;
 import cn.itcast.travel.service.UserService;
 import cn.itcast.travel.util.MailUtils;
 import cn.itcast.travel.util.UuidUtil;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 public class UserServiceImpl implements UserService {
     UserDao dao =  new UserDaoImpl();
+    FavoriteDao favoriteDao =  new FavoriteDaoImpl();
+    RouteDao routeDao = new RouteDaoImpl();
     @Override
     public Boolean register(User user) {
         User u = dao.findUserByUsername(user.getUsername());
@@ -53,5 +65,20 @@ public class UserServiceImpl implements UserService {
         User u =  dao.findUserByUsernameAndPassword(user.getUsername(), user.getPassword());
         System.out.println("登陆返回user"+u.getName());
         return u;
+    }
+
+    @Override
+    public List<Route> findFavoriteByUid(int uid) {
+        //获取到当前user对象所有的收藏
+        List<Map<String, Object>> list =  dao.findFavoriteByUid(uid);
+        System.out.println(list);
+        //根据当前的uid和rid去favrite_dao查询具体的favorite对象,将所有对象返回到列表中
+        ArrayList<Route> list1 = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i).get("rid"));
+            //根据rid去查询线路
+            list1.add(routeDao.findOne((int)list.get(i).get("rid")));
+        }
+        return list1;
     }
 }

@@ -28,8 +28,14 @@ public class RouteServlet extends BaseServlet {
 
         //接收rname搜索框填写的内容
         String rname = request.getParameter("rname");
+        System.out.println("-----1--");
+        System.out.println(rname);
         //rname传递过来是乱码
+        System.out.println("-----2-----");
         rname = new String(rname.getBytes("iso-8859-1"), "utf-8");
+        if(rname.length()<=0){ //如果rname为空字符串"" 让其为null
+            rname = null;
+        }
         //处理这些参数
         int cid = 0;
         //字符串的null判断是因为传的时候首页地方的cid传的是null
@@ -93,4 +99,30 @@ public class RouteServlet extends BaseServlet {
 
     }
 
+    /**
+     * 添加收藏
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+    public void addFavorite(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //1. 获取线路rid
+        String rid = request.getParameter("rid");
+        //2. 获取当前登录的用户
+        User user = (User) request.getSession().getAttribute("user");
+        int uid;//用户id
+        if(user == null){
+            //用户尚未登录
+            return ;
+        }else{
+            //用户已经登录
+            uid = user.getUid();
+        }
+
+
+        //3. 调用service添加
+        favoriteService.add(rid,uid);
+
+    }
     }

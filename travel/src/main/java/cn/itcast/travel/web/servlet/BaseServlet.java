@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
 
 public class BaseServlet extends HttpServlet {
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("重写的service方法");
         String uri = req.getRequestURI();  //travel/user/add
         System.out.println("请求全路径"+uri);

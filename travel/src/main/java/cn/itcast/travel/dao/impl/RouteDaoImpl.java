@@ -29,7 +29,7 @@ public class RouteDaoImpl implements RouteDao {
             params.add(cid);//添加？对应的值
         }
 
-        if(rname != null && rname.length() > 0){
+        if(rname != null && rname.length() > 0 && !"null".equals(rname)){
             sb.append(" and rname like ? ");
 
             params.add("%"+rname+"%");
@@ -58,8 +58,12 @@ public class RouteDaoImpl implements RouteDao {
 
             params.add(cid);//添加？对应的值
         }
+        System.out.println(rname);
+        System.out.println("null".equals(rname));
+        System.out.println(rname != null);
+//        System.out.println(rname.length());
 
-        if(rname != null && rname.length() > 0){
+        if(rname != null && rname.length() > 0 && !"null".equals(rname)){
             sb.append(" and rname like ? ");
 
             params.add("%"+rname+"%");
@@ -67,7 +71,7 @@ public class RouteDaoImpl implements RouteDao {
         sb.append(" limit ? , ? ");//分页条件
 
         sql = sb.toString();
-
+        System.out.println(sql);
         params.add(start);
         params.add(pageSize);
 

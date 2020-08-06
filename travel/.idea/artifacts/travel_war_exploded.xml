@@ -14,7 +14,7 @@
           <element id="module-output" name="travel" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.49" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.9" />
           <element id="library" level="project" name="Maven: com.alibaba:druid:1.0.9" />
           <element id="library" level="project" name="Maven: org.springframework:spring-core:4.1.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.1.2.RELEASE" />

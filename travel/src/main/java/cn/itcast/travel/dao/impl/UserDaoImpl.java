@@ -7,6 +7,9 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.util.List;
+import java.util.Map;
+
 public class UserDaoImpl  implements UserDao {
 
     private JdbcTemplate template = new JdbcTemplate(JDBCUtils.getDataSource());
@@ -84,4 +87,12 @@ public class UserDaoImpl  implements UserDao {
         }
         return user;
     }
+
+    @Override
+    public List<Map<String, Object>> findFavoriteByUid(int uid) {
+        String sql = "select rid from tab_favorite where uid = ?";
+
+        return template.queryForList(sql, uid);
+    }
+
 }
