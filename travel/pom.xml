@@ -116,14 +116,15 @@
 
     <build>
         <!--maven插件-->
+        <finalName>travel</finalName>
         <plugins>
             <!--jdk编译插件-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <target>1.8</target>
-                    <source>1.8</source>
+                    <target>1.7</target>
+                    <source>1.7</source>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
@@ -132,7 +133,7 @@
                 <groupId>org.apache.tomcat.maven</groupId>
                 <!-- tomcat7的插件， 不同tomcat版本这个也不一样 -->
                 <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
+                <version>2.1</version>
                 <configuration>
                     <!-- 通过maven tomcat7:run运行项目时，访问项目的端口号 -->
                     <port>80</port>
