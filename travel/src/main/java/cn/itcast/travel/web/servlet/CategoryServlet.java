@@ -13,21 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/Category/*")
+@WebServlet("/category/*")
 public class CategoryServlet extends BaseServlet {
     private CategoryService service = new CategoryServiceImpl();
-
     public void findAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
         //调用service查询数据
         List<Category> cs = service.findAll();
         //序列化json返回
-//        ObjectMapper mapper = new ObjectMapper();
-//        response.setContentType("application/json;character=utf-8");
-//        mapper.writeValue(response.getOutputStream(), cs);
         writeValue(cs, response);
-
     }
-
-    //
-
 }

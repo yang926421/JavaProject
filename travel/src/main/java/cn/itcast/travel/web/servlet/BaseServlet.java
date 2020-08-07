@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+<<<<<<< HEAD
 public class BaseServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -20,6 +21,16 @@ public class BaseServlet extends HttpServlet {
         String uri = req.getRequestURI(); //   /travel/user/add
         System.out.println("请求uri:"+uri);//  /travel/user/add
         //2.获取方法名称
+=======
+
+public class BaseServlet extends HttpServlet {
+    @Override
+    public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("重写的service方法");
+        String uri = req.getRequestURI();  //travel/user/add
+        System.out.println("请求全路径"+uri);
+        //对字符串切割获取方法名称
+>>>>>>> 41b9727aec3c574f27cf49d4533a4d3deea8f46f
         String methodName = uri.substring(uri.lastIndexOf('/') + 1);
         System.out.println("方法名称："+methodName);
         //3.获取方法对象Method

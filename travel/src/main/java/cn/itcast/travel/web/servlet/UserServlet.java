@@ -1,6 +1,7 @@
 package cn.itcast.travel.web.servlet;
 
 import cn.itcast.travel.domain.ResultInfo;
+import cn.itcast.travel.domain.Route;
 import cn.itcast.travel.domain.User;
 import cn.itcast.travel.service.UserService;
 import cn.itcast.travel.service.impl.UserServiceImpl;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 @WebServlet("/user/*")
@@ -102,6 +104,7 @@ public class UserServlet extends BaseServlet {
         }
         //登录成功的判断
         if(u!=null && "Y".equals(u.getStatus())){
+            request.getSession().setAttribute("user",u);//登录成功标记
             info.setFlag(true);
         }
         //响应数据给前端
@@ -147,16 +150,22 @@ public class UserServlet extends BaseServlet {
 
     //从session中获取user对象
     public void findOne(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        //从session中获取user对象
-        System.out.println(123456);
         //从session中获取登录用户
         Object user = request.getSession().getAttribute("user");
+        System.out.println(user);
         //将user写回客户端
-
-//        ObjectMapper mapper = new ObjectMapper();
-//        response.setContentType("application/json;charset=utf-8");
-//        mapper.writeValue(response.getOutputStream(),user);
         writeValue(user, response);
+    }
+
+    //
+    public void findFavoriteByUid(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        //根据uid获取用户喜欢的线路数据
+        String uid = request.getParameter("uid");
+        UserService service = new UserServiceImpl();
+        List<Route> list =  service.findFavoriteByUid(Integer.parseInt(uid));
+        //将获取到的线路返回前端
+        System.out.println(list);
+        writeValue(list, response);
     }
 
 }
