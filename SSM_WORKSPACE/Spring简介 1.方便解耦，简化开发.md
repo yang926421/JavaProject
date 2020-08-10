@@ -4,17 +4,17 @@
 
 ![1597041625130](assets/1597041625130.png)	1.方便解耦，简化开发
 
-### 	spring的体系结构
+spring的体系结构
 
 ![1597041919739](assets/1597041919739.png)
 
-### Core Container核心容器
+Core Container核心容器
 
 ![1597042265839](assets/1597042265839.png)
 
 使用Spring容器配置文件为了解耦
 
-### spring程序开发的步骤
+spring程序开发的步骤
 
 ​	
 
@@ -34,7 +34,7 @@
 
 这种配置写法默认调用的是类中的无参构造函数，如果没有无参构造函数则不能创建成功
 
-### 	基本属性   
+### 基本属性   
 
 ​		id  Bean实例在容器中的唯一标识
 
@@ -62,7 +62,7 @@
 
 ### Bean的生命周期
 
-#### init-method属性    destory-method属性
+init-method属性    destory-method属性
 
 ```
 init-method  初始化方法
@@ -105,11 +105,11 @@ public class userDaoImpl implements userDao {
 
 ![1597047278537](assets/1597047278537.png)
 
-### bean的依赖注入
+## bean的依赖注入
 
 ![1597048163006](assets/1597048163006.png)
 
-#### 依赖注入的两种方式
+### 依赖注入的两种方式
 
 set 方法
 
@@ -144,7 +144,7 @@ xml文件property标签中用value来接收值
 
 集合数据类型
 
-### Spring的重点配置
+Spring的重点配置
 
 ```
 <bean>标签
@@ -177,6 +177,23 @@ Spring相关的API
 
 ![1597052342389](assets/1597052342389.png)
 
-#### getBean方法
+### getBean方法
 
 ![1597052543371](assets/1597052543371.png)
+
+## spring容器加载配置文件
+
+```
+context命名空间下的
+<context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
+```
+
+# spring注解开发
+
+是一种趋势,提高开发效率
+
+原始注解
+
+![image-20200810234322515](Spring%E7%AE%80%E4%BB%8B%201.%E6%96%B9%E4%BE%BF%E8%A7%A3%E8%80%A6%EF%BC%8C%E7%AE%80%E5%8C%96%E5%BC%80%E5%8F%91.assets/image-20200810234322515.png)
+
+  使用xml配置的方式,setattr方法需要写,因为是spring通过反射调用,注解配置不需要,通过反射直接为属性赋值

@@ -1,0 +1,30 @@
+package cn.gsxt.service.impl;
+
+import cn.gsxt.dao.UserDao;
+import cn.gsxt.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+
+
+//<bean id="userService" class="cn.gsxt.service.impl.UserServiceImpl" ></bean>
+//@Component("userService")
+@Service("userService")
+public class UserServiceImpl implements UserService {
+    //<property name="userDao" ref="userDao"></property>
+    @Autowired //按照数据类型从Spring容器中进行配置,如果只有这一个参数,  spring扫描的时候会直接在spring容器中找有没有一个userDao的bean,如果有则直接注入到这里
+    @Qualifier("userDao")//这两个注解相当于xml的依赖注入    按照id的值从容器中进行匹配
+//    @Resource(name="userDao")   相当于 Autowired + Qualifier
+    private UserDao userDao;
+
+//    public void setUserDao(UserDao userDao) {
+//        this.userDao = userDao;
+//    }
+
+    public void save() {
+        userDao.save();
+    }
+}

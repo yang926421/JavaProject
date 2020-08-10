@@ -46,4 +46,6 @@
     <bean id="userService" class="cn.gsxt.service.impl.UserServiceImpl">
     <constructor-arg name="userDao" ref="userDao"></constructor-arg>
     </bean>
+    <import resource="applicationContext-dao.xml"></import>
+    <import resource="applicationContext-user.xml"></import>
 </beans>

@@ -14,18 +14,13 @@
     </bean>
     <bean id="userDao" class="cn.gsxt.dao.impl.userDaoImpl" scope="singleton"
     init-method="init" destroy-method="destory">
-<!--        <property name="strList">-->
-<!--            <list>-->
-<!--                <value>张三</value>-->
-<!--                <value>李四</value>-->
-<!--                <value>王五</value>-->
-<!--            </list>-->
-<!--        </property>-->
-        <constructor-arg >
+        <property name="strList">
             <list>
                 <value>张三</value>
+                <value>李四</value>
+                <value>王五</value>
             </list>
-        </constructor-arg>
+        </property>
         <property name="userMap">
             <map>
                 <entry key="111" value-ref="user1">

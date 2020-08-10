@@ -46,7 +46,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../travel" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SSM_WORKSPACE" />
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -158,6 +158,7 @@
       <workItem from="1595947556643" duration="3892000" />
       <workItem from="1597030163040" duration="198000" />
       <workItem from="1597032216249" duration="695000" />
+      <workItem from="1597066675948" duration="45000" />
     </task>
     <servers />
   </component>
@@ -178,10 +179,14 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="403" y="124" key="FileChooserDialogImpl" timestamp="1597034664555">
+    <state x="529" y="253" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1597066705713">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="403" y="124" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1597034664555" />
+    <state x="529" y="253" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1597066705713" />
+    <state x="403" y="124" key="FileChooserDialogImpl" timestamp="1597066719282">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="403" y="124" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1597066719282" />
     <state width="933" height="176" key="GridCell.Tab.0.bottom" timestamp="1597034665940">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
