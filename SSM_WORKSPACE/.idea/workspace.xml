@@ -10,9 +10,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="spring-beans.schema" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="spring-beans.schema" />
       </list>
     </option>
   </component>
@@ -22,8 +22,9 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="$PROJECT_DIR$/../../../software/maven/apache-maven-3.5.2-bin/apache-maven-3.5.2" />
-        <option name="userSettingsFile" value="D:\lyy\software\maven\apache-maven-3.5.2-bin\apache-maven-3.5.2\conf\settings.xml" />
+        <option name="localRepository" value="D:\lyy\documents\maven_jar\maven_repository" />
+        <option name="mavenHome" value="D:/lyy/documents/apache-maven-3.5.2-bin/apache-maven-3.5.2" />
+        <option name="userSettingsFile" value="D:\lyy\documents\apache-maven-3.5.2-bin\apache-maven-3.5.2\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
     <option name="importingSettings">
@@ -43,13 +44,13 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/一些文件/ssm/03-就业课(2.1)-Spring/day01_Spring简介和配置/代码" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../JDBCMysql" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager" selected="Application.UserControl">
+  <component name="RunManager" selected="Application.UserController">
     <configuration name="UserControl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cn.gsxt.demo.UserControl" />
       <module name="spring_ioc_1" />
@@ -63,12 +64,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="userDaoTestDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="cn.gsxt.demo.userDaoTestDemo" />
-      <module name="spring_ioc_1" />
+    <configuration name="UserController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.gsxt.web.UserController" />
+      <module name="spring_ioc_anno" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cn.gsxt.demo.*" />
+          <option name="PATTERN" value="cn.gsxt.web.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -76,8 +77,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SpringTest.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="spring_ioc_1" />
+    <configuration name="DataSourceTest.test3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring_ioc_anno" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cn.gsxt.test.*" />
@@ -85,8 +86,40 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="cn.gsxt.test" />
-      <option name="MAIN_CLASS_NAME" value="cn.gsxt.test.SpringTest" />
-      <option name="METHOD_NAME" value="test1" />
+      <option name="MAIN_CLASS_NAME" value="cn.gsxt.test.DataSourceTest" />
+      <option name="METHOD_NAME" value="test3" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataSourceTest.test4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring_ioc_anno" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.gsxt.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.gsxt.test" />
+      <option name="MAIN_CLASS_NAME" value="cn.gsxt.test.DataSourceTest" />
+      <option name="METHOD_NAME" value="test4" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataSourceTest.test5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring_ioc_anno" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.gsxt.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.gsxt.test" />
+      <option name="MAIN_CLASS_NAME" value="cn.gsxt.test.DataSourceTest" />
+      <option name="METHOD_NAME" value="test5" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -94,9 +127,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.UserController" />
         <item itemvalue="Application.UserControl" />
-        <item itemvalue="JUnit.SpringTest.test1" />
-        <item itemvalue="Application.userDaoTestDemo" />
+        <item itemvalue="JUnit.DataSourceTest.test4" />
+        <item itemvalue="JUnit.DataSourceTest.test5" />
+        <item itemvalue="JUnit.DataSourceTest.test3" />
       </list>
     </recent_temporary>
   </component>
@@ -111,7 +146,14 @@
       <option name="presentableId" value="Default" />
       <updated>1597035162037</updated>
       <workItem from="1597035163847" duration="3374000" />
+<<<<<<< HEAD
       <workItem from="1597043403043" duration="10393000" />
+=======
+      <workItem from="1597043403043" duration="10142000" />
+      <workItem from="1597066075772" duration="383000" />
+      <workItem from="1597066472428" duration="201000" />
+      <workItem from="1597066722707" duration="9648000" />
+>>>>>>> 9715d391d488b65c85466b20a037490bfb7caf24
     </task>
     <servers />
   </component>
@@ -119,42 +161,46 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="300" y="25" key="#Project_Structure" timestamp="1597035169140">
+    <state x="300" y="25" key="#Project_Structure" timestamp="1597072312540">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="300" y="25" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1597035169140" />
-    <state x="0" y="95" key="#com.intellij.ide.util.MemberChooser" timestamp="1597050780673">
+    <state x="300" y="25" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1597072312540" />
+    <state x="0" y="95" key="#com.intellij.ide.util.MemberChooser" timestamp="1597074682368">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="0" y="95" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1597050780673" />
-    <state x="217" y="270" width="706" height="188" key="#com.intellij.javaee.module.view.common.J2EE.J2EEDeploymentDescriptorLocationPanel.changeDDPath" timestamp="1597035819910">
+    <state x="0" y="95" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1597074682368" />
+    <state x="529" y="253" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1597066497352">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="217" y="270" width="706" height="188" key="#com.intellij.javaee.module.view.common.J2EE.J2EEDeploymentDescriptorLocationPanel.changeDDPath/0.0.1366.728@0.0.1366.728" timestamp="1597035819910" />
-    <state x="309" y="270" key="#com.intellij.javaee.module.view.web.EditWebRootDialog" timestamp="1597035833525">
+    <state x="529" y="253" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1597066497352" />
+    <state x="217" y="270" width="706" height="188" key="#com.intellij.javaee.module.view.common.J2EE.J2EEDeploymentDescriptorLocationPanel.changeDDPath" timestamp="1597069131025">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="309" y="270" key="#com.intellij.javaee.module.view.web.EditWebRootDialog/0.0.1366.728@0.0.1366.728" timestamp="1597035833525" />
-    <state x="161" y="70" key="FileChooserDialogImpl" timestamp="1597043684397">
+    <state x="217" y="270" width="706" height="188" key="#com.intellij.javaee.module.view.common.J2EE.J2EEDeploymentDescriptorLocationPanel.changeDDPath/0.0.1366.728@0.0.1366.728" timestamp="1597069131025" />
+    <state x="309" y="270" key="#com.intellij.javaee.module.view.web.EditWebRootDialog" timestamp="1597069148189">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="161" y="70" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1597043684397" />
-    <state width="1049" height="176" key="GridCell.Tab.0.bottom" timestamp="1597050889677">
+    <state x="309" y="270" key="#com.intellij.javaee.module.view.web.EditWebRootDialog/0.0.1366.728@0.0.1366.728" timestamp="1597069148189" />
+    <state x="161" y="70" key="FileChooserDialogImpl" timestamp="1597070269572">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1049" height="176" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1597050889677" />
-    <state width="1049" height="176" key="GridCell.Tab.0.center" timestamp="1597050889677">
+    <state x="161" y="70" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1597070269572" />
+    <state width="918" height="301" key="GridCell.Tab.0.bottom" timestamp="1597075720272">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1049" height="176" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1597050889677" />
-    <state width="1049" height="176" key="GridCell.Tab.0.left" timestamp="1597050889676">
+    <state width="918" height="301" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1597075720272" />
+    <state width="918" height="301" key="GridCell.Tab.0.center" timestamp="1597075720272">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1049" height="176" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1597050889676" />
-    <state width="1049" height="176" key="GridCell.Tab.0.right" timestamp="1597050889677">
+    <state width="918" height="301" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1597075720272" />
+    <state width="918" height="301" key="GridCell.Tab.0.left" timestamp="1597075720271">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1049" height="176" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1597050889677" />
+    <state width="918" height="301" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1597075720271" />
+    <state width="918" height="301" key="GridCell.Tab.0.right" timestamp="1597075720272">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="918" height="301" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1597075720272" />
     <state width="1049" height="219" key="GridCell.Tab.1.bottom" timestamp="1597046494442">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -171,18 +217,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1049" height="219" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1597046494442" />
-    <state x="0" y="0" key="SettingsEditor" timestamp="1597043473881">
+    <state x="213" y="19" key="Maven.ArtifactSearchDialog" timestamp="1597066800220">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="0" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1597043473881" />
-    <state x="84" y="40" key="new project wizard" timestamp="1597035754423">
+    <state x="213" y="19" key="Maven.ArtifactSearchDialog/0.0.1366.728@0.0.1366.728" timestamp="1597066800220" />
+    <state x="226" y="0" key="SettingsEditor" timestamp="1597069149466">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="84" y="40" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1597035754423" />
-    <state x="781" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1597048701105">
+    <state x="226" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1597069149466" />
+    <state x="115" y="16" key="new project wizard" timestamp="1597068998624">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="781" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1597048701105" />
+    <state x="115" y="16" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1597068998624" />
+    <state x="781" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1597076343179">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="781" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1597076343179" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

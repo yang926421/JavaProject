@@ -14,6 +14,9 @@ public class userDaoImpl implements userDao {
     private Map<String, User> userMap;
     private Properties properties;
 
+    public userDaoImpl(String s) {
+    }
+
     public List<String> getStrList() {
         return strList;
     }
