@@ -62,10 +62,10 @@ public class DataSourceTest {
     @Test
     public void test4() throws Exception{
     ApplicationContext app = new ClassPathXmlApplicationContext("applicationContext.xml");
-        DataSource dataSource = (DataSource) app.getBean("dataSource");
-        Connection con =  dataSource.getConnection();
-        System.out.println(con);
-        con.close();
+    DataSource dataSource = (DataSource) app.getBean("dataSource");
+    Connection con =  dataSource.getConnection();
+    System.out.println(con);
+    con.close();
 
     }
 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--    配置目标对象-->
+    <bean id="target" class="cn.gsxt.aop2.Target"></bean>
+<!--    切面对象-->
+    <bean id="myAspect" class="cn.gsxt.aop2.MyAspect"></bean>
+
+<!--    配置织入 高速spring框架哪些方法(切点)需要进行哪些增强(前置,后置)-->
+    <aop:config>
+        <aop:aspect ref="myAspect">
+            <aop:before method="before" pointcut="execution(public void cn.gsxt.aop2.Target.save())"></aop:before>
+        </aop:aspect>
+    </aop:config>
+</beans>
