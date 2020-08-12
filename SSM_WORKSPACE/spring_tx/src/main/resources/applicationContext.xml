@@ -41,8 +41,17 @@ transactionManger 底层会从DataSource拿一个连接来进行事务控制
 <!--    使用注解配置的时候事物的注解驱动  -->
     <tx:annotation-driven transaction-manager="transactionManger"/>
 
+<!--    <tx:advice id="txAdvice" transaction-manager="transactionManger">-->
+<!--        <tx:attributes>-->
+<!--            <tx:method name="*"/>-->
+<!--        </tx:attributes>-->
+<!--    </tx:advice>-->
 
-    <!--&lt;!&ndash;通知,事物的增强&ndash;&gt;-->
+<!--    <aop:config>-->
+<!--        <aop:pointcut id="myPointCut" expression="execution(* cn.gsxt.*.*(..))"/>-->
+<!--        <aop:advisor advice-ref="txAdvice"></aop:advisor>-->
+<!--    </aop:config>-->
+<!--    通知,事物的增强-->
 <!--    <tx:advice id="txAdvice" transaction-manager="transactionManger">-->
 <!--&lt;!&ndash;        设置事务的属性信息&ndash;&gt;-->
 <!--        <tx:attributes>-->
