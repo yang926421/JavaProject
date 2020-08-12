@@ -10,9 +10,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="spring-beans.schema" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="spring-beans.schema" />
       </list>
     </option>
   </component>
@@ -42,8 +42,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="D:/lyy/ssm/03-就业课(2.1)-Spring/day03_ AOP简介/代码/itheima_spring_aop/itheima_spring_aop" />
-    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -53,17 +56,20 @@
       <recent name="cn.gsxt.aop" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\java\javaProject\SSM_WORKSPACE\spring_aop_1\src\main\resources" />
-      <recent name="D:\java\javaProject\SSM_WORKSPACE\spring_aop_1\src\main\java\cn\gsxt\anno_aop" />
+      <recent name="D:\lyy\documents\project1\SSM_WORKSPACE" />
+      <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\spring_tx\src\main\resources" />
+      <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\spring_tx\src\main\java\cn\gsxt\controller" />
+      <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\spring_tx\src\main\java\cn\gsxt" />
+      <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\spring_jdbc\src\test\java\cn\gsxt" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AnnoTest">
-    <configuration name="ProxyTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="cn.gsxt.proxy.jdk.ProxyTest" />
-      <module name="spring_aop_1" />
+  <component name="RunManager" selected="Application.AccountController">
+    <configuration name="AccountController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.gsxt.controller.AccountController" />
+      <module name="spring_tx" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cn.gsxt.proxy.jdk.*" />
+          <option name="PATTERN" value="cn.gsxt.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -101,8 +107,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AopTest.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="spring_aop_1" />
+    <configuration name="Jdbc_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring_jdbc" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cn.gsxt.test.*" />
@@ -110,15 +116,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="cn.gsxt.test" />
-      <option name="MAIN_CLASS_NAME" value="cn.gsxt.test.AopTest" />
-      <option name="METHOD_NAME" value="test1" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="cn.gsxt.test.Jdbc_test" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SpringJunitTest.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="spring_ioc_anno" />
+    <configuration name="Jdbc_test.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring_jdbc" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cn.gsxt.test.*" />
@@ -126,7 +131,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="cn.gsxt.test" />
-      <option name="MAIN_CLASS_NAME" value="cn.gsxt.test.SpringJunitTest" />
+      <option name="MAIN_CLASS_NAME" value="cn.gsxt.test.Jdbc_test" />
       <option name="METHOD_NAME" value="test1" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -135,11 +140,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AccountController" />
+        <item itemvalue="JUnit.Jdbc_test" />
+        <item itemvalue="JUnit.Jdbc_test.test1" />
         <item itemvalue="JUnit.AnnoTest" />
         <item itemvalue="JUnit.AopTest" />
-        <item itemvalue="JUnit.AopTest.test1" />
-        <item itemvalue="Application.ProxyTest" />
-        <item itemvalue="JUnit.SpringJunitTest.test1" />
       </list>
     </recent_temporary>
   </component>
@@ -153,7 +158,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1597108809655</updated>
-      <workItem from="1597108811387" duration="13777000" />
+      <workItem from="1597108811387" duration="26320000" />
     </task>
     <servers />
   </component>
@@ -161,34 +166,46 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="0" y="44" key="#Project_Structure" timestamp="1597225046312">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="0" y="44" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1597225046312" />
     <state x="759" y="135" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1597111855843">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="759" y="135" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1597111855843" />
+    <state x="482" y="287" key="#com.intellij.javaee.module.view.common.J2EE.J2EEDeploymentDescriptorLocationPanel.changeDDPath" timestamp="1597224701651">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="482" y="287" key="#com.intellij.javaee.module.view.common.J2EE.J2EEDeploymentDescriptorLocationPanel.changeDDPath/0.0.1366.728@0.0.1366.728" timestamp="1597224701651" />
+    <state x="635" y="270" key="#com.intellij.javaee.module.view.web.EditWebRootDialog" timestamp="1597224719251">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="635" y="270" key="#com.intellij.javaee.module.view.web.EditWebRootDialog/0.0.1366.728@0.0.1366.728" timestamp="1597224719251" />
     <state x="433" y="0" key="#com.intellij.unscramble.UnscrambleDialog" timestamp="1597140470724">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="433" y="0" key="#com.intellij.unscramble.UnscrambleDialog/0.0.1366.728@0.0.1366.728" timestamp="1597140470724" />
-    <state x="643" y="124" key="FileChooserDialogImpl" timestamp="1597158624607">
+    <state x="643" y="124" key="FileChooserDialogImpl" timestamp="1597213933164">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="643" y="124" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1597158624607" />
-    <state width="918" height="295" key="GridCell.Tab.0.bottom" timestamp="1597158738310">
+    <state x="643" y="124" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1597213933163" />
+    <state width="958" height="224" key="GridCell.Tab.0.bottom" timestamp="1597227904080">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="918" height="295" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1597158738310" />
-    <state width="918" height="295" key="GridCell.Tab.0.center" timestamp="1597158738310">
+    <state width="958" height="224" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1597227904080" />
+    <state width="958" height="224" key="GridCell.Tab.0.center" timestamp="1597227904078">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="918" height="295" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1597158738310" />
-    <state width="918" height="295" key="GridCell.Tab.0.left" timestamp="1597158738310">
+    <state width="958" height="224" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1597227904078" />
+    <state width="958" height="224" key="GridCell.Tab.0.left" timestamp="1597227904075">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="918" height="295" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1597158738310" />
-    <state width="918" height="295" key="GridCell.Tab.0.right" timestamp="1597158738310">
+    <state width="958" height="224" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1597227904075" />
+    <state width="958" height="224" key="GridCell.Tab.0.right" timestamp="1597227904080">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="918" height="295" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1597158738310" />
+    <state width="958" height="224" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1597227904080" />
     <state width="1323" height="314" key="GridCell.Tab.1.bottom" timestamp="1597139270040">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -205,10 +222,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="314" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1597139270040" />
-    <state x="364" y="11" key="SettingsEditor" timestamp="1597152439218">
+    <state x="326" y="0" key="SettingsEditor" timestamp="1597224720575">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="364" y="11" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1597152439218" />
+    <state x="326" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1597224720575" />
+    <state x="115" y="81" key="new project wizard" timestamp="1597224670579">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="115" y="81" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1597224670579" />
     <state x="375" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1597110043590">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

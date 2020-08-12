@@ -357,11 +357,113 @@ execution(* *..*.*(..))
 
 
 
+事务的隔离级别
+
+事务并发可能会脏读，不可重复读 续读
+
+事物的传播行为
+
+REQUIRED  如果当前没有事务，就新建一个事务，如果已经存在一个事务，就加入到这个事务默认值
 
 
 
+事务的超时时间，是否只读
 
 
 
+声明式事务控制（xml和注解）
 
+![1597224410655](assets/1597224410655.png)
+
+事务的命名空间
+
+```
+xmlns:tx="http://www.springframework.org/schema/tx"
+
+```
+
+切点方法的事务参数的配置
+
+```
+<!--通知,事物的增强-->
+    <tx:advice id="txAdvice" transaction-manager="transactionManger">
+<!--        设置事务的属性信息-->
+        <tx:attributes>
+<!--        可以配置多个,对不同的方法进行不同的事务控制    <tx:method name="transfer"/>-->
+<!--            <tx:method name="transfer" isolation="REPEATABLE_READ" timeout="-1"/>-->
+            <tx:method name="*"/>
+        </tx:attributes>
+    </tx:advice>
+```
+
+![1597226837338](assets/1597226837338.png)
+
+
+
+![1597226979013](assets/1597226979013.png)
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+">
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/spring_test"/>
+        <property name="user" value="root"/>
+        <property name="password" value="123"/>
+    </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="accountDao" class="cn.gsxt.dao.impl.AccountDaoImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+<!--        目标对象,内部的方法就是切点-->
+    <bean id="accountService" class="cn.gsxt.service.impl.AccountServiceImpl">
+        <property name="accountDao" ref="accountDao"/>
+    </bean>
+<!--    配置平台事务管理器
+transactionManger 底层会从DataSource拿一个连接来进行事务控制
+-->
+    <bean id="transactionManger" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+<!--通知,事物的增强-->
+    <tx:advice id="txAdvice" transaction-manager="transactionManger">
+<!--        设置事务的属性信息-->
+        <tx:attributes>
+<!--        可以配置多个,对不同的方法进行不同的事务控制    <tx:method name="transfer"/>-->
+<!--            <tx:method name="transfer" isolation="REPEATABLE_READ" timeout="-1"/>-->
+            <tx:method name="*"/>
+        </tx:attributes>
+    </tx:advice>
+
+<!--    需要配置事务的AOP注入-->
+    <aop:config>
+<!--        事务增强用advice-->
+        <aop:advisor advice-ref="txAdvice" pointcut="execution(* cn.gsxt.service.impl.*.*(..))"></aop:advisor>
+    </aop:config>
+
+
+</beans>
+```
+
+注解配置的知识要点
+
+![1597228078164](assets/1597228078164.png)
+
+```
+
+```
 
