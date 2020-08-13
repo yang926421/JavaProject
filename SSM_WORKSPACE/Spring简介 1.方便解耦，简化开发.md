@@ -467,3 +467,21 @@ transactionManger 底层会从DataSource拿一个连接来进行事务控制
 
 ```
 
+web.xml配置的全局初始化参数
+
+```
+ <!--全局初始化参数-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+    </context-param>
+```
+
+读取web.xml的全局参数
+
+```
+ //读取web.xml中的全局参数
+String contextConfigLocation = servletContext.getInitParameter("contextConfigLocation");
+
+```
+
