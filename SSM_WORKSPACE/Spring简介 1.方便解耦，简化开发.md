@@ -485,3 +485,119 @@ String contextConfigLocation = servletContext.getInitParameter("contextConfigLoc
 
 ```
 
+# SpringMvc
+
+## Spring集成web环境
+
+```
+1.pom.xml文件中导入相关web坐标
+2.配置ContextServletListener监听器
+	spring提供的该监听器内部加载Spring配置文件，创建应用上下文对象，并存储到ServletContext域中，提供了一个客户端工具WebApplicationContextUtils供使用者获得应用上下文对象。
+	web.xml文件中
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+	配置全局参数，
+	<context-param>
+    	<param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+     </context-param>
+3.使用时可以通过提供的WebApplicationContextUtils获取上下文对象
+	 WebApplicationContextUtils.getWebApplicationContext(servletContext);
+	
+			
+```
+
+SpringMVC 是一种基于Java实现的MVC设计模型的请求驱动框架，通过注解，让一个简单的类
+
+成为处理请求的控制器
+
+Spring快速入门的开发步骤
+
+```
+1.导入MVC相关坐标
+2.在web.xml中配置springmvc的核心控制器DispathServlet
+3.创建Controller类和视图页面
+4.使用注解配置Controller业务方法的映射地址
+5.配置核心文件Spring-mvc.xml      扫描器
+
+
+```
+
+![1597382950428](assets/1597382950428.png)
+
+注解配置
+
+![1597382991284](assets/1597382991284.png)
+
+
+
+![1597383034552](assets/1597383034552.png)
+
+springmvc组建解析和执行流程（熟悉，了解）
+
+![1597383075998](assets/1597383075998.png)
+
+![1597383096609](assets/1597383096609.png)
+
+@RequestMapping()
+
+![1597383131162](assets/1597383131162.png)
+
+
+
+![1597383165188](assets/1597383165188.png)
+
+
+
+![1597383183596](assets/1597383183596.png)
+
+![1597383216102](assets/1597383216102.png)
+
+![1597383249754](assets/1597383249754.png)
+
+# Spring请求和数据响应
+
+## 数据响应
+
+1.页面跳转
+
+​	1.直接返回字符串
+
+​	
+
+```
+<!--配置内部资源视图解析器-->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--  /jsp/success.jsp  -->
+        <property name="prefix" value="/jsp/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+```
+
+​	这种方式在返回视图的时候直接返回字符串   例如直接 return "success";  springMvc底层会给我们
+
+将返回的字符串和视图解析器的前后缀拼接后跳转    /jsp/success.jsp	
+
+2.通过ModelAndView对象返回
+
+2.回写数据
+
+​	1.直接返回字符串
+
+​	2.返回对象或者集合
+
+
+
+
+
+
+
+
+
+
+
+
+

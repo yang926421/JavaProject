@@ -10,7 +10,6 @@
       <module fileurl="file://$PROJECT_DIR$/spring_mvc_web/spring_mvc_web.iml" filepath="$PROJECT_DIR$/spring_mvc_web/spring_mvc_web.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_test/spring_test.iml" filepath="$PROJECT_DIR$/spring_test/spring_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_tx/spring_tx.iml" filepath="$PROJECT_DIR$/spring_tx/spring_tx.iml" />
-      <module fileurl="file://$PROJECT_DIR$/spring_web_mvc/spring_web_mvc.iml" filepath="$PROJECT_DIR$/spring_web_mvc/spring_web_mvc.iml" />
     </modules>
   </component>
 </project>

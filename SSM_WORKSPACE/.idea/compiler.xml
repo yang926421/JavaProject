@@ -10,7 +10,6 @@
         <module name="spring_mvc_web" />
         <module name="spring_test" />
         <module name="spring_ioc_anno" />
-        <module name="spring_web_mvc" />
         <module name="spring_ioc_1" />
         <module name="spring_aop_1" />
         <module name="spring_jdbc" />
