@@ -1,15 +1,21 @@
 package cn.gsxt.controller;
 
 import cn.gsxt.domain.User;
+import cn.gsxt.domain.VoResult;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/user")
@@ -123,6 +129,171 @@ public class UserController {
         return user;
     }
 
+    @RequestMapping("/quick12")
+    //回写数据(返回对象或集合  不自己转json  使用MVC配置的)
+    @ResponseBody  //告诉SpringMVC这是为了回写字符串,不是进行跳转的  直接在Http响应体回写(重点 重点)
+//    http://localhost:8080/spring_mvc_web/user/quick12?username=zhangsan&&age=12
+//    获取请求参数   直接形参匹配
+    public void save12(String username, int age)throws Exception{
+        System.out.println("Controller12 save running");
+        System.out.println(username);
+        System.out.println(age);
+        //配置声明 mvc声明  自动转化为json  配置转换器的时候指定json转换的转换器(详见spring-mvc.xml mvc配置中的)
+        //注入json的一个转换器
+
+    }
+
+    @RequestMapping("/quick13")
+    //回写数据(返回对象或集合  不自己转json  使用MVC配置的)
+    @ResponseBody  //告诉SpringMVC这是为了回写字符串,不是进行跳转的  直接在Http响应体回写(重点 重点)
+//    http://localhost:8080/spring_mvc_web/user/quick13?username=zhangsan&&age=12
+//    获取请求参数   参数的属性名与请求参数的name一致,参数会自动映射匹配
+    public void save13(User user)throws Exception{
+        System.out.println("Controller13 save running");
+        System.out.println(user.getUsername());
+        System.out.println(user.getAge());
+        //配置声明 mvc声明  自动转化为json  配置转换器的时候指定json转换的转换器(详见spring-mvc.xml mvc配置中的)
+        //注入json的一个转换器
+
+    }
+
+    @RequestMapping("/quick14")
+    //回写数据(返回对象或集合  不自己转json  使用MVC配置的)
+    @ResponseBody  //告诉SpringMVC这是为了回写字符串,不是进行跳转的  直接在Http响应体回写(重点 重点)
+//    http://localhost:8080/spring_mvc_web/user/quick14?strs=111&&strs=222&&strs=333
+//    获取数组类型的请求参数   参数的属性名与请求参数的name一致,参数会自动映射匹配
+    public void save14(String[] strs)throws Exception{
+        System.out.println("Controller14 save running");
+        System.out.println(Arrays.asList(strs));
+        //配置声明 mvc声明  自动转化为json  配置转换器的时候指定json转换的转换器(详见spring-mvc.xml mvc配置中的)
+        //注入json的一个转换器
+
+    }
+
+    @RequestMapping("/quick15")
+    //回写数据(返回对象或集合  不自己转json  使用MVC配置的)
+    @ResponseBody  //告诉SpringMVC这是为了回写字符串,不是进行跳转的  直接在Http响应体回写(重点 重点)
+//    form表单提交的数据  form.jsp  获取集合类型的请求参数 需要放入一个Vo对象中   valueResult  参数的属性名与请求参数的name一致,参数会自动映射匹配
+    public void save15(VoResult voResult)throws Exception{
+        System.out.println("Controller15 save running");
+        System.out.println(voResult);
+        //配置声明 mvc声明  自动转化为json  配置转换器的时候指定json转换的转换器(详见spring-mvc.xml mvc配置中的)
+        //注入json的一个转换器
+
+    }
+
+    @RequestMapping("/quick16")
+    //回写数据(返回对象或集合  不自己转json  使用MVC配置的)
+    @ResponseBody  //告诉SpringMVC这是为了回写字符串,不是进行跳转的  直接在Http响应体回写(重点 重点)
+//    ajax请求的数据,详见ajax.jsp
+    public void save16(@RequestBody List<User> userList)throws Exception{
+        System.out.println("Controller16 save running");
+        //配置声明 mvc声明  自动转化为json  配置转换器的时候指定json转换的转换器(详见spring-mvc.xml mvc配置中的)
+        //注入json的一个转换器
+        System.out.println(userList);
+
+    }
+
+
+//    @RequestParam(重点,重点,重点)
+    @RequestMapping("/quick17")
+    //回写数据(返回对象或集合  不自己转json  使用MVC配置的)
+    @ResponseBody  //告诉SpringMVC这是为了回写字符串,不是进行跳转的  直接在Http响应体回写(重点 重点)
+//    http://localhost:8080/spring_mvc_web/user/quick17?name=zhangsan
+//    将url请求的参数  name绑定为当前方法形参的username
+    //required=false   url请求的参数name可以不写  配置default默认参数为lyy
+    public void save17(@RequestParam( value="name", required = false, defaultValue = "lyy") String username)throws Exception{
+        System.out.println("Controller17 save running");
+        System.out.println(username);
+        //配置声明 mvc声明  自动转化为json  配置转换器的时候指定json转换的转换器(详见spring-mvc.xml mvc配置中的)
+        //注入json的一个转换器
+
+    }
+
+    @RequestMapping("/quick18/{username}")
+    //回写数据(返回对象或集合  不自己转json  使用MVC配置的)
+    @ResponseBody  //告诉SpringMVC这是为了回写字符串,不是进行跳转的  直接在Http响应体回写(重点 重点)
+//    http://localhost:8080/spring_mvc_web/user/quick17/zhangsan   使用restful规范
+//    将url请求的参数  name绑定为当前方法形参的username
+    //@PathVariable("username") 获取到restful的requestMapping的username
+    public void save18(@PathVariable("username") String username)throws Exception{
+        System.out.println("Controller18 save running");
+        System.out.println(username);
+        //配置声明 mvc声明  自动转化为json  配置转换器的时候指定json转换的转换器(详见spring-mvc.xml mvc配置中的)
+        //注入json的一个转换器
+
+    }
+
+    @RequestMapping("/quick19")
+    //回写数据(返回对象或集合  不自己转json  使用MVC配置的)
+    @ResponseBody  //告诉SpringMVC这是为了回写字符串,不是进行跳转的  直接在Http响应体回写(重点 重点)
+//    http://localhost:8080/spring_mvc_web/user/quick19/  使用restful规范
+    //如果是2020/9/20   可以转换  如果是   2020-9-20则不可以转换  需要自定义类型转换器
+    public void save19(Date date)throws Exception{
+        System.out.println("Controller19 save running");
+        System.out.println(date);
+        //配置声明 mvc声明  自动转化为json  配置转换器的时候指定json转换的转换器(详见spring-mvc.xml mvc配置中的)
+        //注入json的一个转换器
+
+    }
+
+    @RequestMapping("/quick20")
+    //回写数据(返回对象或集合  不自己转json  使用MVC配置的)
+    @ResponseBody  //告诉SpringMVC这是为了回写字符串,不是进行跳转的  直接在Http响应体回写(重点 重点)
+//    http://localhost:8080/spring_mvc_web/user/quick20
+     public void save20(HttpServletRequest request, HttpServletResponse response, HttpSession session)throws Exception{
+        System.out.println("Controller20 save running");
+        System.out.println(request);
+        System.out.println(response);
+        System.out.println(session);
+        //配置声明 mvc声明  自动转化为json  配置转换器的时候指定json转换的转换器(详见spring-mvc.xml mvc配置中的)
+        //注入json的一个转换器
+
+    }
+
+    @RequestMapping("/quick21")
+    //回写数据(返回对象或集合  不自己转json  使用MVC配置的)
+    @ResponseBody  //告诉SpringMVC这是为了回写字符串,不是进行跳转的  直接在Http响应体回写(重点 重点)
+//    http://localhost:8080/spring_mvc_web/user/quick21
+    public void save21(@RequestHeader(value = "User-Agent", required = false) String user_agent)throws Exception{
+        System.out.println("Controller21 save running");
+        System.out.println(user_agent);
+        //配置声明 mvc声明  自动转化为json  配置转换器的时候指定json转换的转换器(详见spring-mvc.xml mvc配置中的)
+        //注入json的一个转换器
+
+    }
+
+    @RequestMapping("/quick22")
+    //回写数据(返回对象或集合  不自己转json  使用MVC配置的)
+    @ResponseBody  //告诉SpringMVC这是为了回写字符串,不是进行跳转的  直接在Http响应体回写(重点 重点)
+//    http://localhost:8080/spring_mvc_web/user/quick22
+    public void save22(@CookieValue(value = "JSESSIONID", required = false) String jsessionId)throws Exception{
+        System.out.println("Controller22 save running");
+        System.out.println(jsessionId);
+        //配置声明 mvc声明  自动转化为json  配置转换器的时候指定json转换的转换器(详见spring-mvc.xml mvc配置中的)
+        //注入json的一个转换器
+
+    }
+
+    @RequestMapping("/quick23")
+    //回写数据(返回对象或集合  不自己转json  使用MVC配置的)
+    @ResponseBody  //告诉SpringMVC这是为了回写字符串,不是进行跳转的  直接在Http响应体回写(重点 重点)
+//    http://localhost:8080/upload.jsp   upload.jsp  input file的名称必须和这个一致
+    public void save23(String name, MultipartFile[] uploadFile) throws Exception{
+        System.out.println("Controller23 save running");
+        System.out.println(name);
+//        System.out.println(uploadFile);
+        //多文件上传  服务端用数组接收
+        for (MultipartFile multipartFile : uploadFile) {
+            //保存文件,放到服务器磁盘中(先获取名称)
+            String filename = multipartFile.getOriginalFilename();
+            //后期都是保存在服务器中的某个地址
+            multipartFile.transferTo(new File("D:\\lyy\\"+filename));
+        }
+
+
+
+    }
 
 
 

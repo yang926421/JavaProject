@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-">
+       xsi:schemaLocation="
+                        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+                        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-<!--    配置Controller的组件saomia-->
+
+
+<!--    配置Controller的组件扫描-->
     <context:component-scan base-package="cn.gsxt.controller"/>
 
 
@@ -16,6 +20,12 @@
         <property name="prefix" value="/jsp/"></property>
         <property name="suffix" value=".jsp"></property>
     </bean>
+
+<!--    配置MVC的注解驱动-->
+    <mvc:annotation-driven conversion-service="conversionService"/>
+<!--    配置读取静态文件   开发资源的访问-->
+<!--    <mvc:resources location="/js/" mapping="/js/**"/>-->
+    <mvc:default-servlet-handler/>
 <!--    配置处理器映射器-->
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
         <property name="messageConverters" >
@@ -25,7 +35,21 @@
             </list>
         </property>
     </bean>
-
-
-
+<!--声明自定义的日期格式转换器  内部需要设置注入我们自定义的日起转换器对象-->
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+<!--        内部需要注入一个converters-->
+    <property name="converters">
+        <list>
+            <bean class="cn.gsxt.converter.DateConverter"></bean>
+        </list>
+    </property>
+    </bean>
+<!--配置文件上传解析器-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+<!--        上传文件的编码类型-->
+        <property name="defaultEncoding" value="UTF-8"/>
+<!--        单个文件的大小-->
+        <property name="maxUploadSizePerFile" value="5242800"/>
+        <property name="maxUploadSize" value="10000000000"/>
+    </bean>
 </beans>

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/spring_inter" />
+    <file type="web" url="file://$PROJECT_DIR$/spring_interceptor" />
     <file type="web" url="file://$PROJECT_DIR$/spring_mvc_web" />
+    <type id="Spring" />
   </component>
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="ES6" />
@@ -16,6 +19,7 @@
         <option value="$PROJECT_DIR$/spring_tx/pom.xml" />
         <option value="$PROJECT_DIR$/spring_test/pom.xml" />
         <option value="$PROJECT_DIR$/spring_mvc_web/pom.xml" />
+        <option value="$PROJECT_DIR$/spring_inter/pom.xml" />
       </list>
     </option>
   </component>
