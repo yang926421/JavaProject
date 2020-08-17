@@ -8,7 +8,9 @@
       <module fileurl="file://$PROJECT_DIR$/spring_ioc_1/spring_ioc_1.iml" filepath="$PROJECT_DIR$/spring_ioc_1/spring_ioc_1.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_ioc_anno/spring_ioc_anno.iml" filepath="$PROJECT_DIR$/spring_ioc_anno/spring_ioc_anno.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_jdbc/spring_jdbc.iml" filepath="$PROJECT_DIR$/spring_jdbc/spring_jdbc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_lyy_mvc/spring_lyy_mvc.iml" filepath="$PROJECT_DIR$/spring_lyy_mvc/spring_lyy_mvc.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_mvc_web/spring_mvc_web.iml" filepath="$PROJECT_DIR$/spring_mvc_web/spring_mvc_web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_spring_mvc/spring_spring_mvc.iml" filepath="$PROJECT_DIR$/spring_spring_mvc/spring_spring_mvc.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_test/spring_test.iml" filepath="$PROJECT_DIR$/spring_test/spring_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_tx/spring_tx.iml" filepath="$PROJECT_DIR$/spring_tx/spring_tx.iml" />
     </modules>

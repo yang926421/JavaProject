@@ -10,20 +10,26 @@
         <module name="spring_mvc_web" />
         <module name="spring_test" />
         <module name="spring_ioc_anno" />
-        <module name="spring_jdbc" />
+        <module name="spring_lyy_mvc" />
         <module name="spring_ioc_1" />
         <module name="spring_inter" />
+        <module name="spring_spring_mvc" />
         <module name="spring_aop_1" />
+        <module name="spring_jdbc" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
       <module name="spring_aop_1" target="1.5" />
+      <module name="spring_demo_test" target="1.7" />
+      <module name="spring_demo_test2" target="1.5" />
       <module name="spring_inter" target="1.7" />
       <module name="spring_interceptor" target="1.7" />
       <module name="spring_ioc_1" target="1.5" />
       <module name="spring_ioc_anno" target="1.5" />
       <module name="spring_jdbc" target="1.5" />
+      <module name="spring_lyy_mvc" target="1.7" />
       <module name="spring_mvc_web" target="1.7" />
+      <module name="spring_spring_mvc" target="1.7" />
       <module name="spring_test" target="1.5" />
       <module name="spring_tx" target="1.5" />
       <module name="spring_web_mvc" target="1.5" />

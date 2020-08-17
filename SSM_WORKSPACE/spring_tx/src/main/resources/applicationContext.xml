@@ -52,20 +52,20 @@ transactionManger 底层会从DataSource拿一个连接来进行事务控制
 <!--        <aop:advisor advice-ref="txAdvice"></aop:advisor>-->
 <!--    </aop:config>-->
 <!--    通知,事物的增强-->
-<!--    <tx:advice id="txAdvice" transaction-manager="transactionManger">-->
-<!--&lt;!&ndash;        设置事务的属性信息&ndash;&gt;-->
-<!--        <tx:attributes>-->
-<!--&lt;!&ndash;        可以配置多个,对不同的方法进行不同的事务控制    <tx:method name="transfer"/>&ndash;&gt;-->
-<!--&lt;!&ndash;            <tx:method name="transfer" isolation="REPEATABLE_READ" timeout="-1"/>&ndash;&gt;-->
-<!--            <tx:method name="*"/>-->
-<!--        </tx:attributes>-->
-<!--    </tx:advice>-->
+    <tx:advice id="txAdvice" transaction-manager="transactionManger">
+<!--        设置事务的属性信息-->
+        <tx:attributes>
+<!--        可以配置多个,对不同的方法进行不同的事务控制    <tx:method name="transfer"/>-->
+<!--            <tx:method name="transfer" isolation="REPEATABLE_READ" timeout="-1"/>-->
+            <tx:method name="*"/>
+        </tx:attributes>
+    </tx:advice>
 
-<!--&lt;!&ndash;    需要配置事务的AOP注入&ndash;&gt;-->
-<!--    <aop:config>-->
-<!--&lt;!&ndash;        事务增强用advice&ndash;&gt;-->
-<!--        <aop:advisor advice-ref="txAdvice" pointcut="execution(* cn.gsxt.service.impl.*.*(..))"></aop:advisor>-->
-<!--    </aop:config>-->
+<!--    需要配置事务的AOP注入-->
+    <aop:config>
+<!--        事务增强用advice-->
+        <aop:advisor advice-ref="txAdvice" pointcut="execution(* cn.gsxt.service.impl.*.*(..))"></aop:advisor>
+    </aop:config>
 
 
 </beans>
