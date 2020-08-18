@@ -23,6 +23,14 @@
         <property name="prefix" value="/pages/"></property>
         <property name="suffix" value=".jsp"></property>
     </bean>
-
-
+<!--    配置权限拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+<!--            /**代表访问所有资源都需要进行验证是否登录权限过滤  -->
+            <mvc:mapping path="/**"/>
+<!--            配置哪些资源不进行拦截操作-->
+            <mvc:exclude-mapping path="/user/login"/>
+            <bean class="cn.gsxt.interceptor.PrivilegeInter"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

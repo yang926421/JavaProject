@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.context.annotation.SessionScope;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -52,6 +54,17 @@ public class UserController {
         //去service层查询
         userService.del(userId);
         return "redirect:/user/list";
+    }
+    //登录
+    @RequestMapping("/login")
+    public String login(String username, String password, HttpSession session){
+        //去service层查询
+        User user = userService.login(username, password);
+        if (user != null) {
+            session.setAttribute("user", user);
+            return "redirect:/index.jsp";
+        }
+        return "redirect:/login.jsp";
     }
 
 }

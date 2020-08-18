@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="itheima_spring_exception:war">
+    <output-path>$PROJECT_DIR$/../../一些文件/ssm/04-就业课(2.1)-SpringMVC/day03_SpringMVC的文件上传/代码/代码/itheima_spring_exception/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>itheima_spring_exception</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="itheima_spring_exception-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="itheima_spring_exception:war exploded" />
+    </root>
+  </artifact>
+</component>

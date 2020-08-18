@@ -59,7 +59,16 @@
 	href="${pageContext.request.contextPath}/plugins/ionslider/ion.rangeSlider.skinNice.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/plugins/bootstrap-slider/slider.css">
+    <script>
+        function delUser(userId) {
+            if(confirm("您确认要删除吗")){
+                location.href = "${pageContext.request.contextPath}/user/del/"+userId;
+            }
+        }
+    </script>
+    
 </head>
+
 
 <body class="hold-transition skin-blue sidebar-mini">
 

@@ -3,6 +3,7 @@ package cn.gsxt.dao.impl;
 import cn.gsxt.dao.UserDao;
 import cn.gsxt.domain.Role;
 import cn.gsxt.domain.User;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
@@ -81,5 +82,14 @@ public class UserDaoImpl implements UserDao {
     public void del(Long userId) {
     String sql = "delete from sys_user where id = ?";
     jdbcTemplate.update(sql, userId);
+    }
+
+    //
+
+    @Override
+    public User findByUsernameAndPassword(String username, String password) throws EmptyResultDataAccessException {
+        String sql = "select * from sys_user where username = ? and password = ?";
+        User user = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class), username, password);
+        return user;
     }
 }

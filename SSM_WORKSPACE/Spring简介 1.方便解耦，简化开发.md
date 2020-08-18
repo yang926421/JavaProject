@@ -1218,3 +1218,41 @@ public class MyInterceptor1 implements HandlerInterceptor {
 ```
 
 ![image-20200816225923259](Spring%E7%AE%80%E4%BB%8B%201.%E6%96%B9%E4%BE%BF%E8%A7%A3%E8%80%A6%EF%BC%8C%E7%AE%80%E5%8C%96%E5%BC%80%E5%8F%91.assets/image-20200816225923259.png)
+
+
+
+存储用户的状态(登录)
+
+集群  可以将数据存在redis中(数据共享)  不做集群 存在session
+
+SpringMvc的两种异常处理方式
+
+1.使用SpringMvc提供的简单异常处理器SimpleMappingExceptionResolver
+
+​	异常和要跳转页面的简单映射关系
+
+2.实现spring的异常处理接口HandlerExceptionResolver自定义自己的异常处理器
+
+![1597717408497](assets/1597717408497.png)
+
+spring-mvc异常处理
+
+异常处理方式
+
+​	1.配置简单异常处理器
+
+​	2.自定义异常处理器
+
+自定义异常处理步骤
+
+​	
+
+```
+1.创建异常处理器实现HandlerExceptionResolver
+2.配置异常处理器
+3.编写异常页面
+4.测试跳转异常
+```
+
+
+

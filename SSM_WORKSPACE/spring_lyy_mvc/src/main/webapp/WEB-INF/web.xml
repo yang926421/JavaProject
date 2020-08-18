@@ -42,7 +42,6 @@
         </init-param>
     </filter>
     <filter-mapping>
-<!--        /*代表所有的请求都过滤使用utf-8-->
         <filter-name>CharacterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>

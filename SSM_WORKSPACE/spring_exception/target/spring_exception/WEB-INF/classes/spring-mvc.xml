@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+                        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+                        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+
+    <!--    配置Controller的组件扫描-->
+    <context:component-scan base-package="cn.gsxt.controller"/>
+    <!--    配置MVC的注解驱动-->
+    <mvc:annotation-driven/>
+    <!--    配置读取静态文件   开发资源的访问-->
+    <!--    <mvc:resources location="/js/" mapping="/js/**"/>-->
+    <mvc:default-servlet-handler/>
+    <!--配置内部资源视图解析器(对默认的进行增强)-->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--  /jsp/success.jsp  -->
+        <property name="prefix" value="/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+<!--    配置权限拦截器-->
+<!--    <mvc:interceptors>-->
+<!--        <mvc:interceptor>-->
+<!--&lt;!&ndash;            /**代表访问所有资源都需要进行验证是否登录权限过滤  &ndash;&gt;-->
+<!--            <mvc:mapping path="/**"/>-->
+<!--&lt;!&ndash;            配置哪些资源不进行拦截操作&ndash;&gt;-->
+<!--            <mvc:exclude-mapping path="/user/login"/>-->
+<!--            <bean class="cn.gsxt.interceptor.PrivilegeInter"/>-->
+<!--        </mvc:interceptor>-->
+<!--    </mvc:interceptors>-->
+<!--    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">-->
+<!--&lt;!&ndash;        默认异常&ndash;&gt;-->
+<!--        <property name="defaultErrorView" value="error"/>-->
+<!--&lt;!&ndash;        自己设置自定义异常的跳转页面&ndash;&gt;-->
+<!--        <property name="exceptionMappings">-->
+<!--            <map>-->
+<!--                <entry key="ClassCastException" value="error1"/>-->
+<!--                <entry key="cn.gsxt.exception.MyException" value="error2"/>-->
+<!--            </map>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+    <bean class="cn.gsxt.resolve.MyResolveException"/>
+</beans>
