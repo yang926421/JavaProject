@@ -1,4 +1,4 @@
-package cn.gsxt.domian;
+package cn.gsxt.domain;
 
 public class User {
     private String name;

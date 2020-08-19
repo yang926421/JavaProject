@@ -1254,5 +1254,152 @@ spring-mvc异常处理
 4.测试跳转异常
 ```
 
+# Mybaits
+
+![1597820156146](assets/1597820156146.png)
+
+Mybaits开发步骤
+
+1.添加坐标    mysql 和Mybatis  junit  log4j
+
+2.创建user表
+
+3.user实体类
+
+4.编写映射文件UserMapper.xml   实体类和数据库表之间的映射关系
+
+5.编写核心文件  配置mybatis核心内容     数据源环境    加载映射文件
+
+6.编写测试类
+
+​	获得核心配置文件
+
+## Mybatis映射文件的概述
+
+![1597825544439](assets/1597825544439.png)
+
+nameSpace  命名空间
+
+resultType  User的全路径名Mybatis 会自动通过反射创建user对象,将结果集封装到user对象中
+
+## 插入操作
+
+paramterType  指定插入的参数的类型
+
+![1597827079605](assets/1597827079605.png)
+
+
+
+## 修改和删除操作
+
+修改update  删除delete
+
+delete   id=#{xxx}  xxx位置可以写任何数据    parameterType  写根据的条件可以是String   也可以是user对象  
+
+```
+<!--   删除操作-->
+    <delete id="delete" parameterType="int">
+        delete from user where id=#{id}
+    </delete>
+```
+
+### 增删改查结论
+
+![1597827929096](assets/1597827929096.png)
+
+
+
+## Mybatis核心配置文件
+
+```
+configuration配置
+	properties 属性
+	settings 设置
+	typeAliases 类型别名
+	typeHandlers类型处理器
+	objextFactory对象工厂
+	plugins 插件
+	environments环境
+		environment环境变量
+			transcationManager 事务管理器
+			dataSource 数据源
+	mapperss映射器
+	
+```
+
+enviroments标签
+
+![1597828296140](assets/1597828296140.png)
+
+properties标签   加载外部的properties文件
+
+```
+<properties resource="jdbc.properties"></properties>
+
+```
+
+![1597829076717](assets/1597829076717.png)
+
+
+
+typeAliases标签
+
+Mybatis把一些常用的类型都已经定义好别名了  我们也可以自定义别名
+
+![1597829183697](assets/1597829183697.png)
+
+
+
+```
+<!--    配置别名-->
+    <typeAliases>
+        <typeAlias type="cn.gsxt.domain.User" alias="user"></typeAlias>
+    </typeAliases>
+```
+
+核心配置文件常用配置
+
+![1597829379745](assets/1597829379745.png)
+
+
+
+Mybatis的常用API
+
+![1597829549465](assets/1597829549465.png)
+
+sqlSession工厂 sqlSessionFactoryBuilder工厂构建器生成
+
+
+
+sqlSessionFactory来创建sqlSession实例
+
+sqlSessionFactory有两个方法创建sqlsession实例
+
+![1597829792259](assets/1597829792259.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

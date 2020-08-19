@@ -1,0 +1,28 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="lyy_mybatis_test:war exploded">
+    <output-path>$PROJECT_DIR$/lyy_mybatis_test/target/lyy_mybatis_test</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>lyy_mybatis_test</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="lyy_mybatis_test" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.32" />
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.4.6" />
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/lyy_mybatis_test/target/lyy_mybatis_test/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="lyy_mybatis_test/web/Web" />
+    </root>
+  </artifact>
+</component>

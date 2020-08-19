@@ -9,6 +9,7 @@
         <module name="spring_tx" />
         <module name="spring_exception" />
         <module name="spring_mvc_web" />
+        <module name="lyy_mybatis_test" />
         <module name="spring_test" />
         <module name="spring_ioc_anno" />
         <module name="spring_lyy_mvc" />
@@ -21,6 +22,8 @@
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
       <module name="itheima_spring_exception" target="1.5" />
+      <module name="lyy_mybatis" target="1.5" />
+      <module name="lyy_mybatis_test" target="1.7" />
       <module name="spring_aop_1" target="1.5" />
       <module name="spring_demo_test" target="1.7" />
       <module name="spring_demo_test2" target="1.5" />

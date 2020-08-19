@@ -13,7 +13,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="D:/lyy/documents/apache-maven-3.5.2-bin/apache-maven-3.5.2" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../apache-maven-3.5.2-bin/apache-maven-3.5.2" />
         <option name="userSettingsFile" value="D:\lyy\documents\apache-maven-3.5.2-bin\apache-maven-3.5.2\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
@@ -33,7 +33,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/annual-report.jar.src/META-INF/maven/com.asb.gsxt/gsxt-annual-report/pom.xml" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="SvnConfiguration">
@@ -47,6 +47,7 @@
       <option name="presentableId" value="Default" />
       <updated>1597584157558</updated>
       <workItem from="1597584160743" duration="88000" />
+      <workItem from="1597802190600" duration="60000" />
     </task>
     <servers />
   </component>
@@ -54,10 +55,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="619" y="125" key="FileChooserDialogImpl" timestamp="1597584248219">
+    <state x="619" y="125" key="FileChooserDialogImpl" timestamp="1597802222133">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="619" y="125" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1597584248219" />
+    <state x="619" y="125" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1597802222133" />
     <state x="340" y="12" key="SettingsEditor" timestamp="1597584222673">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

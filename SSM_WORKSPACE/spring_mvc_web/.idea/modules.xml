@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$USER_HOME$/Desktop/annual-report.jar.src/META-INF/maven/com.asb.gsxt/gsxt-annual-report/gsxt-annual-report.iml" filepath="$USER_HOME$/Desktop/annual-report.jar.src/META-INF/maven/com.asb.gsxt/gsxt-annual-report/gsxt-annual-report.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_mvc_web.iml" filepath="$PROJECT_DIR$/spring_mvc_web.iml" />
     </modules>
   </component>

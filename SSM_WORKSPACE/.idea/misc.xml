@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/lyy_mybatis_test" />
     <file type="web" url="file://$PROJECT_DIR$/spring_demo_test" />
     <file type="web" url="file://$PROJECT_DIR$/spring_exception" />
     <file type="web" url="file://$PROJECT_DIR$/spring_inter" />
@@ -28,6 +29,7 @@
         <option value="$PROJECT_DIR$/spring_lyy_mvc/pom.xml" />
         <option value="$PROJECT_DIR$/../../一些文件/ssm/04-就业课(2.1)-SpringMVC/day03_SpringMVC的文件上传/代码/代码/itheima_spring_exception/pom.xml" />
         <option value="$PROJECT_DIR$/spring_exception/pom.xml" />
+        <option value="$PROJECT_DIR$/lyy_mybatis_test/pom.xml" />
       </list>
     </option>
   </component>

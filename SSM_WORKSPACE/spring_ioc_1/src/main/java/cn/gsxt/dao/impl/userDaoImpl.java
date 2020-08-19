@@ -1,9 +1,8 @@
 package cn.gsxt.dao.impl;
 
 import cn.gsxt.dao.userDao;
-import cn.gsxt.domian.User;
+import cn.gsxt.domain.User;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
