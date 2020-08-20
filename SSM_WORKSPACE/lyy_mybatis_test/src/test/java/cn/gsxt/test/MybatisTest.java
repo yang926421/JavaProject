@@ -129,4 +129,18 @@ public class MybatisTest {
         sqlSession.close();
     }
 
+    @Test
+    public void test7() throws Exception{
+        String username = "zhangsan";
+        //获取
+        InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+        //
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
+        //
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        //
+        Object o = sqlSession.selectOne("userMapper.findByUsername", username);
+        System.out.println((User)o);
+    }
+
 }

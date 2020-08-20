@@ -29,4 +29,7 @@
     <select id="findByUsernameAndPassword" parameterType="user" resultType="user">
         select * from user where username=#{username} and password=#{password};
     </select>
+    <select id="findByUsername" resultType="user" parameterType="string">
+        select * from user where username=#{username}
+    </select>
 </mapper>

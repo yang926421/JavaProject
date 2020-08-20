@@ -1379,19 +1379,86 @@ sqlSessionFactory有两个方法创建sqlsession实例
 
 
 
+MybatisDao层的实现
+
+两种实现方式
+
+1.手动dao层实现
+
+代理方式dao层实现
+
+![1597892635688](assets/1597892635688.png)
 
 
 
+![1597892663881](assets/1597892663881.png)
+
+## Mybatis映射文件的深入
+
+动态Sql
+
+例如根据多个条件查询,动态变化的sql
+
+### 动态sql之if标签
+
+```
+  <select id="findByCondition" resultType="user" parameterType="user">
+            select * from user
+            <where>
+                <if test="id!=0">
+                    and id=#{id}
+                </if>
+                <if test="username!=null">
+                    and username=#{username}
+                </if>
+                <if test="password!=null">
+                    and password=#{password}
+                </if>
+            </where>
+        </select>
+```
+
+## 动态sql之foreach
 
 
 
+```
+<select id="findByIds" resultType="user" parameterType="list">
+        select * from user
+        <where>
+            <foreach collection="list" open="id in(" close=")" item="id" separator=",">
+                #{id}
+            </foreach>
+        </where>
+    </select>
+```
 
 
 
+### sql片段的抽取
+
+```
+<sql id="selectUser">select * from user</sql>
+<select id="findByCondition" resultType="user" parameterType="user">
+    <include refid="selectUser"></include>
+```
 
 
 
+## Mybatis核心配置文件深入
 
+
+
+mybatis核心配置文件之常用标签
+
+```
+1.properties   加载外部的properties文件
+2.typeAliases  设置类型别名
+3.enivroments  数据源环境配置标签
+4.typeHandlers 配置自定义类型处理器
+5.plugins      配置mybatis使用的第三方插件
+6.mappers      加载mybatis的映射文件
+```
 
 
 

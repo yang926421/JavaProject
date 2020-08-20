@@ -1,32 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--<mapper namespace="userMapper">-->
+<!--    &lt;!&ndash;查询操作&ndash;&gt;-->
+<!--    <select id="findAll" resultType="user">-->
+<!--        select * from user-->
+<!--    </select>-->
+
+<!--&lt;!&ndash;    添加操作&ndash;&gt;-->
+<!--    <insert id="save" parameterType="cn.gsxt.domain.User">-->
+<!--        insert into user values(#{id}, #{username}, ${password})-->
+<!--    </insert>-->
+
+<!--&lt;!&ndash;    修改操作&ndash;&gt;-->
+<!--    <update id="update" parameterType="cn.gsxt.domain.User">-->
+<!--        update user set username=#{username}, password=#{password} where id=#{id}-->
+<!--    </update>-->
+
+<!--&lt;!&ndash;   删除操作&ndash;&gt;-->
+<!--    <delete id="delete" parameterType="int">-->
+<!--        delete from user where id=#{id}-->
+<!--    </delete>-->
+
+<!--&lt;!&ndash;    根据Id查询&ndash;&gt;-->
+<!--    <select id="findById" resultType="user" parameterType="int">-->
+<!--        select * from user where id=#{id}-->
+<!--    </select>-->
+
+<!--    <select id="findByUsernameAndPassword" parameterType="user" resultType="user">-->
+<!--        select * from user where username=#{username} and password=#{password};-->
+<!--    </select>-->
+<!--</mapper>-->
 <mapper namespace="userMapper">
-    <!--查询操作-->
-    <select id="findAll" resultType="user">
-        select * from user
-    </select>
-
-<!--    添加操作-->
-    <insert id="save" parameterType="cn.gsxt.domain.User">
-        insert into user values(#{id}, #{username}, ${password})
-    </insert>
-
-<!--    修改操作-->
-    <update id="update" parameterType="cn.gsxt.domain.User">
-        update user set username=#{username}, password=#{password} where id=#{id}
-    </update>
-
-<!--   删除操作-->
-    <delete id="delete" parameterType="int">
-        delete from user where id=#{id}
-    </delete>
-
-<!--    根据Id查询-->
-    <select id="findById" resultType="user" parameterType="int">
-        select * from user where id=#{id}
-    </select>
-
-    <select id="findByUsernameAndPassword" parameterType="user" resultType="user">
-        select * from user where username=#{username} and password=#{password};
+    <select id="findByUsername" resultType="user" parameterType="string">
+        select * from user where username=#{username}
     </select>
 </mapper>
