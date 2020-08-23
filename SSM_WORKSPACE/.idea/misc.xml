@@ -11,6 +11,8 @@
     <file type="web" url="file://$PROJECT_DIR$/spring_lyy_mvc" />
     <file type="web" url="file://$PROJECT_DIR$/spring_mvc_web" />
     <file type="web" url="file://$PROJECT_DIR$/spring_spring_mvc" />
+    <file type="web" url="file://$PROJECT_DIR$/ssm_lyy_project" />
+    <file type="web" url="file://$PROJECT_DIR$/ssm_lyy_project1" />
     <file type="web" url="file://$PROJECT_DIR$/../../一些文件/ssm/04-就业课(2.1)-SpringMVC/day03_SpringMVC的文件上传/代码/代码/itheima_spring_exception" />
     <type id="Spring" />
   </component>
@@ -34,6 +36,8 @@
         <option value="$PROJECT_DIR$/lyy_mybatis_test/pom.xml" />
         <option value="$PROJECT_DIR$/lyy_mybatis_test2/pom.xml" />
         <option value="$PROJECT_DIR$/Mybatis_test_demo1/pom.xml" />
+        <option value="$PROJECT_DIR$/ssm_lyy_project/pom.xml" />
+        <option value="$PROJECT_DIR$/ssm_lyy_project1/pom.xml" />
       </list>
     </option>
   </component>
