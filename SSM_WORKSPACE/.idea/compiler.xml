@@ -6,20 +6,26 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+<<<<<<< HEAD
         <module name="lyy_mybatis_sql" />
         <module name="lyy_mybatis_test2" />
+=======
+        <module name="ssm_lyy_project1" />
+>>>>>>> f447bfe4ea2b02306c7a197ab68c1cb822f64c74
         <module name="spring_jdbc" />
         <module name="spring_aop_1" />
         <module name="spring_exception" />
+        <module name="ssm_lyy_project" />
         <module name="spring_inter" />
         <module name="spring_ioc_anno" />
-        <module name="Mybatis_test_demo1" />
+        <module name="lyy_mybatis_test2" />
         <module name="spring_mvc_web" />
         <module name="lyy_mybatis_anno" />
         <module name="spring_lyy_mvc" />
         <module name="spring_ioc_1" />
         <module name="itheima_spring_exception" />
         <module name="lyy_mybatis_test" />
+        <module name="Mybatis_test_demo1" />
         <module name="spring_test" />
         <module name="spring_tx" />
       </profile>
@@ -47,6 +53,8 @@
       <module name="spring_test" target="1.5" />
       <module name="spring_tx" target="1.5" />
       <module name="spring_web_mvc" target="1.5" />
+      <module name="ssm_lyy_project" target="1.7" />
+      <module name="ssm_lyy_project1" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
