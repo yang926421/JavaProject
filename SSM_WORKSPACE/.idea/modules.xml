@@ -9,6 +9,12 @@
       <module fileurl="file://$PROJECT_DIR$/lyy_mybatis_sql/lyy_mybatis_sql.iml" filepath="$PROJECT_DIR$/lyy_mybatis_sql/lyy_mybatis_sql.iml" />
       <module fileurl="file://$PROJECT_DIR$/lyy_mybatis_test/lyy_mybatis_test.iml" filepath="$PROJECT_DIR$/lyy_mybatis_test/lyy_mybatis_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/lyy_mybatis_test2/lyy_mybatis_test2.iml" filepath="$PROJECT_DIR$/lyy_mybatis_test2/lyy_mybatis_test2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssm_maven_parent/maven_dao/maven_dao.iml" filepath="$PROJECT_DIR$/ssm_maven_parent/maven_dao/maven_dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/maven_parent/maven_parent.iml" filepath="$PROJECT_DIR$/maven_parent/maven_parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssm_maven_parent/maven_pojo/maven_pojo.iml" filepath="$PROJECT_DIR$/ssm_maven_parent/maven_pojo/maven_pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssm_maven_parent/maven_service/maven_service.iml" filepath="$PROJECT_DIR$/ssm_maven_parent/maven_service/maven_service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/maven_parent/maven_son/maven_son.iml" filepath="$PROJECT_DIR$/maven_parent/maven_son/maven_son.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssm_maven_parent/maven_web/maven_web.iml" filepath="$PROJECT_DIR$/ssm_maven_parent/maven_web/maven_web.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_aop_1/spring_aop_1.iml" filepath="$PROJECT_DIR$/spring_aop_1/spring_aop_1.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_exception/spring_exception.iml" filepath="$PROJECT_DIR$/spring_exception/spring_exception.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_inter/spring_inter.iml" filepath="$PROJECT_DIR$/spring_inter/spring_inter.iml" />
@@ -21,6 +27,8 @@
       <module fileurl="file://$PROJECT_DIR$/spring_tx/spring_tx.iml" filepath="$PROJECT_DIR$/spring_tx/spring_tx.iml" />
       <module fileurl="file://$PROJECT_DIR$/ssm_lyy_project/ssm_lyy_project.iml" filepath="$PROJECT_DIR$/ssm_lyy_project/ssm_lyy_project.iml" />
       <module fileurl="file://$PROJECT_DIR$/ssm_lyy_project1/ssm_lyy_project1.iml" filepath="$PROJECT_DIR$/ssm_lyy_project1/ssm_lyy_project1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssm_maven_parent/ssm_maven_parent.iml" filepath="$PROJECT_DIR$/ssm_maven_parent/ssm_maven_parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssm_web_all/ssm_web_all.iml" filepath="$PROJECT_DIR$/ssm_web_all/ssm_web_all.iml" />
     </modules>
   </component>
 </project>

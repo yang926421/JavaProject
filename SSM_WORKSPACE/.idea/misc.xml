@@ -5,6 +5,7 @@
     <file type="web" url="file://$PROJECT_DIR$/lyy_mybatis_sql" />
     <file type="web" url="file://$PROJECT_DIR$/lyy_mybatis_test" />
     <file type="web" url="file://$PROJECT_DIR$/lyy_mybatis_test2" />
+    <file type="web" url="file://$PROJECT_DIR$/maven_parent" />
     <file type="web" url="file://$PROJECT_DIR$/Mybatis_test_demo1" />
     <file type="web" url="file://$PROJECT_DIR$/spring_demo_test" />
     <file type="web" url="file://$PROJECT_DIR$/spring_exception" />
@@ -15,6 +16,8 @@
     <file type="web" url="file://$PROJECT_DIR$/spring_spring_mvc" />
     <file type="web" url="file://$PROJECT_DIR$/ssm_lyy_project" />
     <file type="web" url="file://$PROJECT_DIR$/ssm_lyy_project1" />
+    <file type="web" url="file://$PROJECT_DIR$/ssm_maven_parent" />
+    <file type="web" url="file://$PROJECT_DIR$/ssm_web_all" />
     <file type="web" url="file://$PROJECT_DIR$/../../一些文件/ssm/04-就业课(2.1)-SpringMVC/day03_SpringMVC的文件上传/代码/代码/itheima_spring_exception" />
     <type id="Spring" />
   </component>
@@ -38,14 +41,20 @@
         <option value="$PROJECT_DIR$/lyy_mybatis_test/pom.xml" />
         <option value="$PROJECT_DIR$/lyy_mybatis_test2/pom.xml" />
         <option value="$PROJECT_DIR$/Mybatis_test_demo1/pom.xml" />
-<<<<<<< HEAD
         <option value="$PROJECT_DIR$/lyy_mybatis_sql/pom.xml" />
         <option value="$PROJECT_DIR$/lyy_mybatis_anno/pom.xml" />
-=======
         <option value="$PROJECT_DIR$/ssm_lyy_project/pom.xml" />
         <option value="$PROJECT_DIR$/ssm_lyy_project1/pom.xml" />
->>>>>>> f447bfe4ea2b02306c7a197ab68c1cb822f64c74
+        <option value="$PROJECT_DIR$/ssm_web_all/pom.xml" />
+        <option value="$PROJECT_DIR$/maven_parent/pom.xml" />
+        <option value="$PROJECT_DIR$/ssm_maven_parent/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/maven_parent/maven_son/pom.xml" />
+        <option value="$PROJECT_DIR$/ssm_maven_parent/maven_web/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">

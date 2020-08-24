@@ -6,55 +6,60 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-<<<<<<< HEAD
         <module name="lyy_mybatis_sql" />
-        <module name="lyy_mybatis_test2" />
-=======
+        <module name="maven_son" />
+        <module name="maven_dao" />
         <module name="ssm_lyy_project1" />
->>>>>>> f447bfe4ea2b02306c7a197ab68c1cb822f64c74
         <module name="spring_jdbc" />
+        <module name="maven_web" />
         <module name="spring_aop_1" />
-        <module name="spring_exception" />
+        <module name="spring_mvc_web" />
         <module name="ssm_lyy_project" />
-        <module name="spring_inter" />
+        <module name="maven_pojo" />
         <module name="spring_ioc_anno" />
         <module name="lyy_mybatis_test2" />
-        <module name="spring_mvc_web" />
-        <module name="lyy_mybatis_anno" />
+        <module name="spring_inter" />
+        <module name="spring_exception" />
         <module name="spring_lyy_mvc" />
+        <module name="maven_service" />
         <module name="spring_ioc_1" />
+        <module name="ssm_web_all" />
         <module name="itheima_spring_exception" />
         <module name="lyy_mybatis_test" />
         <module name="Mybatis_test_demo1" />
+        <module name="lyy_mybatis_anno" />
         <module name="spring_test" />
         <module name="spring_tx" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="8">
+    <bytecodeTargetLevel>
       <module name="itheima_spring_exception" target="1.5" />
-      <module name="lyy_mybatis" target="1.5" />
       <module name="lyy_mybatis_anno" target="1.7" />
       <module name="lyy_mybatis_sql" target="1.7" />
       <module name="lyy_mybatis_test" target="1.7" />
       <module name="lyy_mybatis_test2" target="1.7" />
+      <module name="maven_dao" target="1.8" />
+      <module name="maven_parent" target="1.7" />
+      <module name="maven_pojo" target="1.8" />
+      <module name="maven_service" target="1.8" />
+      <module name="maven_son" target="1.7" />
+      <module name="maven_web" target="1.8" />
       <module name="Mybatis_test_demo1" target="1.7" />
       <module name="spring_aop_1" target="1.5" />
-      <module name="spring_demo_test" target="1.7" />
-      <module name="spring_demo_test2" target="1.5" />
       <module name="spring_exception" target="1.7" />
       <module name="spring_inter" target="1.7" />
-      <module name="spring_interceptor" target="1.7" />
       <module name="spring_ioc_1" target="1.5" />
       <module name="spring_ioc_anno" target="1.5" />
       <module name="spring_jdbc" target="1.5" />
       <module name="spring_lyy_mvc" target="1.7" />
       <module name="spring_mvc_web" target="1.7" />
-      <module name="spring_spring_mvc" target="1.7" />
       <module name="spring_test" target="1.5" />
       <module name="spring_tx" target="1.5" />
-      <module name="spring_web_mvc" target="1.5" />
       <module name="ssm_lyy_project" target="1.7" />
       <module name="ssm_lyy_project1" target="1.7" />
+      <module name="ssm_maven_parent" target="1.8" />
+      <module name="ssm_web" target="1.7" />
+      <module name="ssm_web_all" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

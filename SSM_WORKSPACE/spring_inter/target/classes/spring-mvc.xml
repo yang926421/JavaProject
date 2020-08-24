@@ -33,5 +33,13 @@
         </mvc:interceptor>
     </mvc:interceptors>
 
+<!--    拦截器2-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="cn.gsxt.interceptor.MyInterceptor2"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 
 </beans>
