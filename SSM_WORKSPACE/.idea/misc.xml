@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/lyy_mybatis_anno" />
+    <file type="web" url="file://$PROJECT_DIR$/lyy_mybatis_sql" />
     <file type="web" url="file://$PROJECT_DIR$/lyy_mybatis_test" />
     <file type="web" url="file://$PROJECT_DIR$/lyy_mybatis_test2" />
     <file type="web" url="file://$PROJECT_DIR$/Mybatis_test_demo1" />
@@ -34,6 +36,8 @@
         <option value="$PROJECT_DIR$/lyy_mybatis_test/pom.xml" />
         <option value="$PROJECT_DIR$/lyy_mybatis_test2/pom.xml" />
         <option value="$PROJECT_DIR$/Mybatis_test_demo1/pom.xml" />
+        <option value="$PROJECT_DIR$/lyy_mybatis_sql/pom.xml" />
+        <option value="$PROJECT_DIR$/lyy_mybatis_anno/pom.xml" />
       </list>
     </option>
   </component>

@@ -56,8 +56,8 @@ public class MapperTest {
         UserMapper1 mapper = sqlSession.getMapper(UserMapper1.class);
 
         //自定义类型转换器查询
-        User user = mapper.findById(5);
-        System.out.println("user中类型转换存进去的birthday"+user.getBirthday());
+        User user = mapper.findById(1);
+        System.out.println("user中类型转换存进去的"+user);
         sqlSession.commit();
         sqlSession.close();
     }

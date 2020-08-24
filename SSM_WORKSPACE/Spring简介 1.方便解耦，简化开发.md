@@ -1462,6 +1462,314 @@ mybatis核心配置文件之常用标签
 
 
 
+## mybatis多表查询
+
+### 一对一关系(order  里有个属性 user  属于哪一个用户)
+
+```
+ <resultMap id="orderMap" type="order">
+<!--        手动去指定字段与实体属性之间的关系
+        column  数据库字段的名称
+         property 实体的属性名称
+-->
+        <id column="oid" property="id"/>
+        <result column="ordertime" property="ordertime"/>
+        <result column="total" property="total"/>
+        <result column="uid" property="user.id"/>
+        <result column="username" property="user.username"/>
+        <result column="password" property="user.password"/>
+        <result column="birthday" property="user.birthday"/>
+
+    </resultMap>
+    <select id="findAll" resultMap="orderMap">
+        select *,o.id oid from orders o, user u where o.uid=u.id
+    </select>
+```
+
+另一种方式
+
+```
+ <resultMap id="orderMap" type="order">
+<!--        手动去指定字段与实体属性之间的关系
+        column  数据库字段的名称
+         property 实体的属性名称
+-->
+        <id column="oid" property="id"/>
+        <result column="ordertime" property="ordertime"/>
+        <result column="total" property="total"/>
+<!--        property指属性名称(order中的属性  private User user)       javaType代表类型  当前实体中属性 的类型（User）-->
+         <association property="user" javaType="user">
+            <id column="uid" property="id"/>
+            <result column="username" property="username"/>
+            <result column="password" property="password"/>
+            <result column="birthday" property="birthday"/>
+        </association>
+    </resultMap>
+    <select id="findAll" resultMap="orderMap">
+        select *,o.id oid from orders o, user u where o.uid=u.id
+    </select>
+```
+
+### 一对多的配置
+
+```
+<resultMap id="userMap" type="user">
+        <id column="uid" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="birthday" property="birthday"/>
+<!--        配置集合信息
+        property  user中定义的集合属性名称  orderList
+        ofType  当前集合中的数据类型   order
+-->
+        <collection property="orderList" ofType="order">
+            <id column="oid" property="id"/>
+            <id column="ordertime" property="ordertime"/>
+            <id column="total" property="total"/>
+        </collection>
+    </resultMap>
+    <select id="findAll" resultMap="userMap">
+        select *,o.id oid from user u ,orders o where u.id=o.uid
+    </select>
+```
+
+### 多对多的关系(和一对多类似  只是sql语句不同)
+
+```
+<!--        查询用户还有自己的角色-->
+    <resultMap id="userRoleMap" type="user">
+        <id column="userId" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="birthday" property="birthday"/>
+<!--        封装roleList-->
+        <collection property="roleList" ofType="role">
+            <id column="roleId" property="id"/>
+            <result column="rolename" property="roleName"/>
+            <result column="roledesc" property="roleDesc"/>
+        </collection>
+    </resultMap>
+    <select id="findUserAndRoleAll" resultMap="userRoleMap">
+        select * from user u, sys_user_role ur, sys_role r where u.id=ur.userid and ur.roleid=r.id
+    </select>
+```
+
+![1597978650222](assets/1597978650222.png)
+
+
+
+![1597979233532](assets/1597979233532.png)
+
+
+
+## 注解配置单表查询
+
+
+
+```
+package cn.gsxt.mapper;
+
+import cn.gsxt.domain.User;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+
+import java.util.List;
+
+public interface UserMapper {
+    @Insert("insert into user values(#{id},#{username},#{password},#{birthday})")
+    public void save(User user);
+
+    @Update("update user set username=#{username}, password=#{password} where id =#{id}")
+    public void update(User user);
+
+    @Delete("delete from user where id=#{id}")
+    public void delete(int id);
+
+    @Select("select * from user where id=#{id}}")
+    public User findById(int id);
+
+    @Select("select * from user")
+    public List<User> findAll();
+}
+
+```
+
+### 在mybatis的配置文件中
+
+加载映射关系
+
+```
+<!--    加载注解配置的映射关系-->
+    <mappers>
+<!--        指定接口所在的包  加载映射关系-->
+        <package name="cn.gsxt.mapper"/>
+    </mappers>
+```
+
+## 注解配置多表
+
+### 一对一
+
+```
+
+public interface OrderMapper {
+    @Select("select *, o.id oid from orders o, user u where o.uid = u.id")
+    @Results({
+            @Result(column = "oid", property = "id"),
+            @Result(column = "ordertime", property = "ordertime"),
+            @Result(column = "total", property = "total"),
+            @Result(column = "uid", property = "user.id"),
+            @Result(column = "username", property = "user.username"),
+            @Result(column = "password", property = "user.password"),
+            @Result(column = "birthday", property = "user.birthday")
+    })
+    public List<Order> findAll();
+```
+
+一对一的另一种方式
+
+```
+@Select("select * from orders")
+    @Results({
+            @Result(column = "id", property = "id"),
+            @Result(column = "ordertime", property = "ordertime"),
+            @Result(column = "total", property = "total"),
+            @Result(
+                    property = "user",   //要封装的属性名称
+                    column = "uid",    //根据当前查询结果的哪个字段去user表查询
+                    javaType = User.class,   //要封装的实体的类型
+                    // select 代表查询哪个接口的方法获得数据
+                    one=@One(select = "cn.gsxt.mapper.UserMapper.findById")
+            )
+    })
+    public List<Order> findAll();
+
+```
+
+一对多
+
+```
+UserMapper下查询user  可能有多个订单信息
+@Select("select * from user")
+    @Results({
+            @Result(column = "id", property = "id"),
+            @Result(column = "username", property = "username"),
+            @Result(column = "password", property = "password"),
+            @Result(
+                    property = "orderList",//要封装的属性名称
+                    column = "id",   //根据当前查询结果的哪个字段去user表查询
+                    javaType = List.class, //要封装的实体的类型
+                    // select代表查询哪个接口的方法获得数据
+                    many = @Many(select = "cn.gsxt.mapper.OrderMapper.findByUid")
+            )
+    })
+    public List<User> findUserAndOrder();
+    
+orderMapper下根据uid来查询订单
+
+    @Select("select * from orders where uid=#{uid}")
+    public List<Order> findByUid(int uid);
+
+```
+
+
+
+多对多查询   查询多个用户每个用户对应多个角色
+
+![1597997194544](assets/1597997194544.png)
+
+```
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="lyy_mybatis_sql:war">
+    <output-path>$PROJECT_DIR$/lyy_mybatis_sql/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>lyy_mybatis_sql</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="lyy_mybatis_sql.war">
+      <element id="artifact" artifact-name="lyy_mybatis_sql:war exploded" />
+    </root>
+  </artifact>
+</component>

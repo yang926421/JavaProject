@@ -31,13 +31,20 @@
       <list>
         <option value="Jsp File" />
         <option value="spring-beans.schema" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/yang926421/JavaProject.git" />
+      </set>
+    </option>
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -70,30 +77,30 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Mybatis_test_demo1/src/main/resources" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\java\javaProject\SSM_WORKSPACE\spring_inter\src\main\webapp\jsp" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\lyy_mybatis_sql\src\main\java\cn\gsxt\domain" />
+      <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\lyy_mybatis_sql\src\main\resources" />
+      <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\Mybatis_test_demo1\src\main\resources" />
+      <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\lyy_mybatis_test2\src\main\resources" />
+      <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\lyy_mybatis_test\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="cn.gsxt.handler" />
       <recent name="cn.gsxt.domain" />
+      <recent name="cn.gsxt.test" />
       <recent name="cn.gsxt.exception" />
       <recent name="cn.gsxt.controller" />
-      <recent name="cn.gsxt.test" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\Mybatis_test_demo1\src\main\resources" />
-      <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\lyy_mybatis_test2\src\main\resources" />
-      <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\lyy_mybatis_test\src\main\resources" />
-      <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\spring_exception\src\main\webapp" />
-      <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\spring_exception\src\main\resources" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\java\javaProject\SSM_WORKSPACE\spring_inter\src\main\webapp\jsp" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -103,9 +110,9 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.MybatisTest.test2">
-    <configuration name="MapperTest.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="lyy_mybatis_test2" />
+  <component name="RunManager" selected="JUnit.MybatisTest2.test1">
+    <configuration name="MybatisTest2.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lyy_mybatis_anno" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cn.gsxt.test.*" />
@@ -113,30 +120,15 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="cn.gsxt.test" />
-      <option name="MAIN_CLASS_NAME" value="cn.gsxt.test.MapperTest" />
+      <option name="MAIN_CLASS_NAME" value="cn.gsxt.test.MybatisTest2" />
       <option name="METHOD_NAME" value="test1" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MybatisTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Mybatis_test_demo1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cn.gsxt.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="cn.gsxt.test" />
-      <option name="MAIN_CLASS_NAME" value="cn.gsxt.test.MybatisTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MybatisTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Mybatis_test_demo1" />
+      <module name="lyy_mybatis_anno" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cn.gsxt.test.*" />
@@ -151,8 +143,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MybatisTest.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Mybatis_test_demo1" />
+    <configuration name="MybatisTest.test1 (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lyy_mybatis_anno" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cn.gsxt.test.*" />
@@ -168,7 +160,7 @@
       </method>
     </configuration>
     <configuration name="MybatisTest.test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Mybatis_test_demo1" />
+      <module name="lyy_mybatis_anno" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cn.gsxt.test.*" />
@@ -178,6 +170,22 @@
       <option name="PACKAGE_NAME" value="cn.gsxt.test" />
       <option name="MAIN_CLASS_NAME" value="cn.gsxt.test.MybatisTest" />
       <option name="METHOD_NAME" value="test2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MybatisTest.test6" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lyy_mybatis_anno" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.gsxt.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.gsxt.test" />
+      <option name="MAIN_CLASS_NAME" value="cn.gsxt.test.MybatisTest" />
+      <option name="METHOD_NAME" value="test6" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -257,20 +265,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.MapperTest.test1" />
-      <item itemvalue="Tomcat Server.Tomcat 8.5.31" />
-      <item itemvalue="JUnit.MybatisTest" />
+      <item itemvalue="JUnit.MybatisTest.test1 (2)" />
+      <item itemvalue="JUnit.MybatisTest2.test1" />
       <item itemvalue="JUnit.MybatisTest.test" />
-      <item itemvalue="JUnit.MybatisTest.test1" />
+      <item itemvalue="JUnit.MybatisTest.test6" />
+      <item itemvalue="Tomcat Server.Tomcat 8.5.31" />
       <item itemvalue="JUnit.MybatisTest.test2" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MybatisTest.test2" />
-        <item itemvalue="JUnit.MybatisTest.test1" />
+        <item itemvalue="JUnit.MybatisTest2.test1" />
+        <item itemvalue="JUnit.MybatisTest.test6" />
         <item itemvalue="JUnit.MybatisTest.test" />
-        <item itemvalue="JUnit.MybatisTest" />
-        <item itemvalue="JUnit.MapperTest.test1" />
+        <item itemvalue="JUnit.MybatisTest.test2" />
+        <item itemvalue="JUnit.MybatisTest.test1 (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -302,7 +310,8 @@
       <workItem from="1597108811387" duration="49260000" />
       <workItem from="1597456602725" duration="28633000" />
       <workItem from="1597584252504" duration="3950000" />
-      <workItem from="1597632894392" duration="70817000" />
+      <workItem from="1597632894392" duration="88133000" />
+      <workItem from="1597998384103" duration="4966000" />
     </task>
     <servers />
   </component>
@@ -314,10 +323,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="245" y="44" key="#Inspections/0.0.1366.728@0.0.1366.728" timestamp="1597723062324" />
-    <state x="0" y="44" key="#Project_Structure" timestamp="1597890213893">
+    <state x="0" y="44" key="#Project_Structure" timestamp="1597969582489">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="0" y="44" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1597890213893" />
+    <state x="0" y="44" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1597969582489" />
     <state x="759" y="135" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1597111855843">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -334,10 +343,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="441" y="240" key="#com.intellij.framework.addSupport.AddSupportForSingleFrameworkDialog/0.0.1366.728@0.0.1366.728" timestamp="1597285625674" />
-    <state x="667" y="68" key="#com.intellij.ide.util.MemberChooser" timestamp="1597913078400">
+    <state x="667" y="68" key="#com.intellij.ide.util.MemberChooser" timestamp="1597997327673">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="667" y="68" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1597913078400" />
+    <state x="667" y="68" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1597997327673" />
     <state x="578" y="41" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1597287278304">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -370,42 +379,42 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="737" y="218" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.728@0.0.1366.728" timestamp="1597573255233" />
-    <state x="692" y="108" key="FileChooserDialogImpl" timestamp="1597914341308">
+    <state x="692" y="108" key="FileChooserDialogImpl" timestamp="1597998354428">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="692" y="108" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1597914341308" />
-    <state width="958" height="396" key="GridCell.Tab.0.bottom" timestamp="1597916954277">
+    <state x="692" y="108" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1597998354428" />
+    <state width="1040" height="231" key="GridCell.Tab.0.bottom" timestamp="1598001301470">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="958" height="396" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1597916954277" />
-    <state width="958" height="396" key="GridCell.Tab.0.center" timestamp="1597916954277">
+    <state width="1040" height="231" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1598001301470" />
+    <state width="1040" height="231" key="GridCell.Tab.0.center" timestamp="1598001301469">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="958" height="396" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1597916954277" />
-    <state width="958" height="396" key="GridCell.Tab.0.left" timestamp="1597916954277">
+    <state width="1040" height="231" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1598001301469" />
+    <state width="1040" height="231" key="GridCell.Tab.0.left" timestamp="1598001301469">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="958" height="396" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1597916954277" />
-    <state width="958" height="396" key="GridCell.Tab.0.right" timestamp="1597916954277">
+    <state width="1040" height="231" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1598001301469" />
+    <state width="1040" height="231" key="GridCell.Tab.0.right" timestamp="1598001301470">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="958" height="396" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1597916954277" />
-    <state width="958" height="309" key="GridCell.Tab.1.bottom" timestamp="1597914125707">
+    <state width="1040" height="231" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1598001301470" />
+    <state width="958" height="309" key="GridCell.Tab.1.bottom" timestamp="1597998361739">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="958" height="309" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1597914125707" />
-    <state width="958" height="309" key="GridCell.Tab.1.center" timestamp="1597914125707">
+    <state width="958" height="309" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1597998361739" />
+    <state width="958" height="309" key="GridCell.Tab.1.center" timestamp="1597998361739">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="958" height="309" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1597914125707" />
-    <state width="958" height="309" key="GridCell.Tab.1.left" timestamp="1597914125707">
+    <state width="958" height="309" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1597998361739" />
+    <state width="958" height="309" key="GridCell.Tab.1.left" timestamp="1597998361739">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="958" height="309" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1597914125707" />
-    <state width="958" height="309" key="GridCell.Tab.1.right" timestamp="1597914125707">
+    <state width="958" height="309" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1597998361739" />
+    <state width="958" height="309" key="GridCell.Tab.1.right" timestamp="1597998361739">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="958" height="309" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1597914125707" />
+    <state width="958" height="309" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1597998361739" />
     <state width="958" height="215" key="GridCell.Tab.2.bottom" timestamp="1597891643963">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -426,10 +435,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="220" height="477" key="HiddenNamespacesPopup/0.0.1366.728@0.0.1366.728" timestamp="1597885702506" />
-    <state x="124" y="0" key="SettingsEditor" timestamp="1597884788779">
+    <state x="124" y="0" key="SettingsEditor" timestamp="1598003608556">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="124" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1597884788779" />
+    <state x="124" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1598003608556" />
     <state x="539" y="110" key="com.intellij.database.view.ui.DbObjectDialog" timestamp="1597884619262">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -438,10 +447,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="363" y="187" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1597632922140" />
-    <state x="115" y="68" width="1251" height="572" key="new project wizard" timestamp="1597911687856">
+    <state x="115" y="68" width="1251" height="572" key="new project wizard" timestamp="1597979540385">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="115" y="68" width="1251" height="572" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1597911687856" />
+    <state x="115" y="68" width="1251" height="572" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1597979540385" />
     <state x="375" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1597906530502">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -466,6 +475,22 @@
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/lyy_mybatis_anno/src/main/java/cn/gsxt/domain/User.java</url>
+          <line>76</line>
+          <properties class="cn.gsxt.domain.User">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/lyy_mybatis_anno/src/main/java/cn/gsxt/domain/User.java</url>
+          <line>77</line>
+          <properties class="cn.gsxt.domain.User">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
