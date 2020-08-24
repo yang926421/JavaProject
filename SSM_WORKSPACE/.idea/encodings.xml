@@ -3,8 +3,11 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/Mybatis_test_demo1/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Mybatis_test_demo1/src/main/resources" charset="UTF-8" />
+<<<<<<< HEAD
     <file url="file://$PROJECT_DIR$/lyy_mybatis_sql/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lyy_mybatis_sql/src/main/resources" charset="UTF-8" />
+=======
+>>>>>>> f447bfe4ea2b02306c7a197ab68c1cb822f64c74
     <file url="file://$PROJECT_DIR$/lyy_mybatis_test/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lyy_mybatis_test/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lyy_mybatis_test2/src/main/java" charset="UTF-8" />
@@ -17,5 +20,7 @@
     <file url="file://$PROJECT_DIR$/spring_lyy_mvc/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring_mvc_web/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring_mvc_web/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ssm_lyy_project/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ssm_lyy_project/src/main/resources" charset="UTF-8" />
   </component>
 </project>
