@@ -1,5 +1,7 @@
 # Spring
 
+为了解决企业级应用开发的复杂性而创建的,简化开发
+
 ## spring快速入门
 
 ![1597041625130](assets/1597041625130.png)	1.方便解耦，简化开发
@@ -1757,7 +1759,9 @@ maven的聚合
 
 parent工程一般用来做项目的引用的包和框架的版本锁定  子类不考虑版本
 
+# 分布式架构的学习(简单了解了下)
 
+![1598325517019](assets/1598325517019.png)
 
 
 
@@ -1765,61 +1769,447 @@ parent工程一般用来做项目的引用的包和框架的版本锁定  子类
 
 
 
+使用dubbo需要关闭linux的防火墙
 
+# vue.js
 
+mvvm
 
+![1598403357762](assets/1598403357762.png)
 
+![1598403459312](assets/1598403459312.png)
 
 
 
 
 
+![1598403964680](assets/1598403964680.png)
 
 
 
+vue.js的插值应用
 
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs初始</title>
+    <script src="js/vue-2.6.10.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>{{name}}</h2>非常牛逼
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:"#app",
+            data:{
+                name:"公示系统"
+            }
+        });
+    </script>
+</body>
+</html>
+```
 
+### v-model(双向绑定) 和 v-on(事件处理)指令
 
+```html
+ <div id="app">
+        <input type="text" v-model="num"><button v-on:click="num++">点我可以实现自增哦</button>
+        <h2>{{name}} 非常牛逼  有{{num}}个功能</h2>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:"#app",
+            data:{
+                name:"公示系统",
+                num: 1
+            }
+        });
+    </script>
+```
 
 
 
+### vue实例的生命周期及钩子函数
 
+创建vue实例的时候可以指定模板id,数据和方法;而如果要在实例化,模板渲染的过程中需要执行一些其他操作的话,可以使用钩子函数
 
+钩子函数会在vue实例的各个声明周期阶段自动调用,具体有beforeCreate created, beforeMount,增加mounted, 更新updated,beforeUpdated 销毁destoryed beforeDestroy
 
+created钩子函数最为常用:用于初始化数据
 
+钩子函数不要使用剪头函数的方式编写
 
+### 指令
 
+指令是带有v-前缀的特殊属性 
 
+插值可以使用在有需要显示vue实例数据的地方,可以在插值表达式中调用实例的数据属性和函数
 
+v-model  双向绑定
 
+v-text  直接展示vue实例数据
 
+v-html  可以解析属性中的html标签
 
+![1598408986436](assets/1598408986436.png)
 
+![1598408743010](assets/1598408743010.png)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+### 指令v-model使用
+
+v-model的双向绑定
+
+```
+
+<div id="app">
+<input type="checkbox" value="Java" v-model="language">Java <br>
+<input type="checkbox" value="Python" v-model="language">Python <br>
+<input type="checkbox" value="Php" v-model="language">Php <br>
+<h2>
+    你选择了: {{language}}
+</h2></div>
+<script type="text/javascript">
+   var app = new Vue({
+       el:"#app",
+       data:{
+           language:[]
+       }
+   });
+</script>
+```
+
+![1598410095476](assets/1598410095476.png)
+
+多个checkbox对应一个model的时候,model的类型是一个数组,单个checkBox的值是一个布尔值
+
+v-model还可以用在
+
+radio对应的值是input的value的值
+
+input和textarea默认对应的model是字符串
+
+select单选框对应字符串  多选对应也是数组
+
+
+
+### 指令v-on的使用
+
+```
+
+<div id="app">
+    <button v-on:click="num++">增加</button>
+    <button @click="decrement">减少</button>
+<h2>
+num={{num}}
+</h2></div>
+<script type="text/javascript">
+   var app = new Vue({
+       el:"#app",
+       data:{
+           num:1
+       },
+       methods:{
+           //递减函数
+           decrement(){
+               this.num--;
+           }
+       }
+   });
+</script>
+```
+
+![1598411455223](assets/1598411455223.png)
+
+
+
+### v-for的使用
+
+实现对数组对象的遍历
+
+![1598413465290](assets/1598413465290.png)
+
+![1598413780549](assets/1598413780549.png)
+
+### 遍历对象和数组
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+    <script src="js/vue-2.6.10.js"></script>
+</head>
+<body>
+<div id="app">
+   <ul>
+       <li v-for="(user,index) in users">
+            <!--           -->
+           {{user.index}}---{{user.name}}----{{user.age}}-----{{user.gender}}
+       </li>
+   </ul>
+    <br>
+    <ul>
+        <li v-for="(value, key, index) in person">
+            {{index}}----{{key}}-----{{value}}
+        </li>
+    </ul>
+<h2>
+num={{num}}
+</h2></div>
+<script type="text/javascript">
+   var app = new Vue({
+       el:"#app",
+       data:{
+          users:[
+              {"name":"lyy","age":13,"gender":"女"},
+              {"name":"lyy1","age":12,"gender":"男"},
+              {"name":"lyy3","age":6,"gender":"女"},
+          ],
+           person:{"name":"lyy3","age":6,"gender":"女","address":"中国"}
+       },
+       methods:{
+           //递减函数
+           decrement(){
+               this.num--;
+           }
+       }
+   });
+</script>
+</body>
+</html>
+```
+
+![1598413985337](assets/1598413985337.png)
+
+### 给遍历的元素添加key
+
+![1598414142929](assets/1598414142929.png)
+
+### v-if和v-show
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+    <script src="js/vue-2.6.10.js"></script>
+</head>
+<body>
+<div id="app">
+    <button @click="show=!show">点我来进行切换</button><br>
+    <h2 v-if="show">
+        Hello Vue.js
+    </h2>
+   <ul>
+       <li v-for="(user,index) in users" v-if="user.gender=='女'">
+            <!--           -->
+           {{user.index}}---{{user.name}}----{{user.age}}-----{{user.gender}}
+       </li>
+       <li v-else style="background-color: brown">
+           <!--           -->
+           {{user.index}}---{{user.name}}----{{user.age}}-----{{user.gender}}
+       </li>
+   </ul>
+    <br>
+    <ul>
+        <li v-for="(value, key, index) in person">
+            {{index}}----{{key}}-----{{value}}
+        </li>
+    </ul>
+    <br>
+    <h1 v-show="show">
+        hello,lyy!
+    </h1>
+
+<h2>
+num={{num}}
+</h2></div>
+<script type="text/javascript">
+   var app = new Vue({
+       el:"#app",
+       data:{
+           num:1,
+            show:true,
+            users:[
+              {"name":"lyy","age":13,"gender":"女"},
+              {"name":"lyy1","age":12,"gender":"男"},
+              {"name":"lyy3","age":6,"gender":"女"},
+          ],
+           person:{"name":"lyy3","age":6,"gender":"女","address":"中国"}
+       },
+       methods:{
+           //递减函数
+           decrement(){
+               this.num--;
+           }
+       }
+   });
+</script>
+</body>
+</html>
+```
+
+v-if在条件不满足的时候元素不存在;v-show条件不满足的时候是对元素进行隐藏
+
+### v-bind的使用
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs初始</title>
+    <script src="js/vue-2.6.10.js"></script>
+    <style type="text/css">
+        div{
+            width: 100px;
+            height: 100px;
+            color: white;
+        }
+        .red{
+            background-color: red;
+        }
+        .blue{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="color='red'">红色</button>
+        <button @click="color='blue'">蓝色</button>
+        <div v-bind:class="color">
+            点击按钮改变背景颜色
+        </div>
+        <br>
+        <br>
+        <button @click="bool=!bool">点击这里改变颜色</button>
+        <div v-bind:class="{red:bool,blue:!bool}">
+            点击按钮改变背景颜色
+        </div>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:"#app",
+            data:{
+                color:"red",
+                bool:true,
+                name:"公示系统",
+                num: 1
+            }
+        });
+    </script>
+</body>
+</html>
+```
+
+v-bind的作用
+
+可以对所有元素的属性设置vue实例的数据.
+
+### 计算属性的使用
+
+将日期毫秒值转换为格式化时间
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs初始</title>
+    <script src="js/vue-2.6.10.js"></script>
+</head>
+<body>
+    <div id="app">
+       <h2>
+           你的生日:
+           {{birth}}
+       </h2>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:"#app",
+            data:{
+                birthday:1429032123201
+            },
+            computed:{
+                birth(){
+                    const date = new Date(this.birthday);
+                    return date.getFullYear()+"--"+(date.getMonth()+1)+"--"+date.getDay();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+```
+
+computed计算属性的应用场景:可以应用在插值或者指令表示式复杂的时候
+
+可以将一些属性数据经过方法处理之后返回
+
+### watch基本和深度监控
+
+目标:watch的使用场景;并使用其监听简单属性值及其对象中属性值的变花
+
+在vue实例中数据属性   因为在页面中修改发生了变花 考科一通过watch监控其改变前后的值.如果是修改的对象数据属性,可以开启深度监控获取修改后最新的对象数据
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs初始</title>
+    <script src="js/vue-2.6.10.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="message">
+        <br>
+        <input type="text" v-model="person.age"><button @click="person.age++"></button>
+        <h2>
+            姓名为:{{person.name}};年龄为:{{person.age}}
+        </h2>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:"#app",
+            data:{
+                message:"公示系统",
+                person:{"name":"lyy","age":20}
+            },
+            watch:{
+                message(newValue, oldValue){
+                    console.log("新值:"+newValue,"旧值:"+oldValue);
+                },
+                //对象的监控
+                person: {//
+                    //开启深度监控，监控对象中属性值变化
+                    deep:true,
+                    //可以获取到最新的对象
+                    handler(obj){
+                        console.log("name="+obj.name+"; age="+obj.age);
+                    }
+                     }
+            }
+        });
+    </script>
+</body>
+</html>
+```
+
+### axios的概述
+
+![1598431088324](assets/1598431088324.png)![1598431506341](assets/1598431506341.png)
+
+总结
+
+![1598431847830](assets/1598431847830.png)![1598432014782](assets/1598432014782.png)![1598432043784](assets/1598432043784.png)

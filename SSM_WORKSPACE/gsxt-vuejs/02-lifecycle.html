@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+    <script src="js/vue-2.6.10.js"></script>
+</head>
+<body>
+<div id="app">
+    {{msg}}
+</div>
+<script type="text/javascript">
+    var app = new Vue({
+        //设置属性
+        el:"#app",
+        data:{
+            msg:""
+        },
+        //钩子函数
+        created(){
+            //this表示vue实例
+            this.msg = "hello vue.created.";
+        }
+    });
+</script>
+</body>
+</html>

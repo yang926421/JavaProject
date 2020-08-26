@@ -17,6 +17,7 @@
     <file type="web" url="file://$PROJECT_DIR$/ssm_lyy_project" />
     <file type="web" url="file://$PROJECT_DIR$/ssm_lyy_project1" />
     <file type="web" url="file://$PROJECT_DIR$/ssm_maven_parent" />
+    <file type="web" url="file://$PROJECT_DIR$/ssm_maven_parent2/maven_web1" />
     <file type="web" url="file://$PROJECT_DIR$/ssm_web_all" />
     <file type="web" url="file://$PROJECT_DIR$/../../一些文件/ssm/04-就业课(2.1)-SpringMVC/day03_SpringMVC的文件上传/代码/代码/itheima_spring_exception" />
     <type id="Spring" />
@@ -48,12 +49,14 @@
         <option value="$PROJECT_DIR$/ssm_web_all/pom.xml" />
         <option value="$PROJECT_DIR$/maven_parent/pom.xml" />
         <option value="$PROJECT_DIR$/ssm_maven_parent/pom.xml" />
+        <option value="$PROJECT_DIR$/ssm_maven_parent2/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/maven_parent/maven_son/pom.xml" />
         <option value="$PROJECT_DIR$/ssm_maven_parent/maven_web/pom.xml" />
+        <option value="$PROJECT_DIR$/ssm_maven_parent/pom.xml" />
       </set>
     </option>
   </component>

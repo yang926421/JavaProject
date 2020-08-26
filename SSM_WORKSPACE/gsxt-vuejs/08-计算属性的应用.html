@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs初始</title>
+    <script src="js/vue-2.6.10.js"></script>
+</head>
+<body>
+    <div id="app">
+       <h2>
+           你的生日:
+           {{birth}}
+       </h2>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:"#app",
+            data:{
+                birthday:1429032123201
+            },
+            computed:{
+                birth(){
+                    const date = new Date(this.birthday);
+                    return date.getFullYear()+"--"+(date.getMonth()+1)+"--"+date.getDay();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

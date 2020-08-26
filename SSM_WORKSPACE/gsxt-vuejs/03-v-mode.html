@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+    <script src="js/vue-2.6.10.js"></script>
+</head>
+<body>
+<div id="app">
+<input type="checkbox" value="Java" v-model="language">Java <br>
+<input type="checkbox" value="Python" v-model="language">Python <br>
+<input type="checkbox" value="Php" v-model="language">Php <br>
+<h2>
+    你选择了: {{language}}
+</h2></div>
+<script type="text/javascript">
+   var app = new Vue({
+       el:"#app",
+       data:{
+           language:[]
+       }
+   });
+</script>
+</body>
+</html>

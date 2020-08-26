@@ -7,28 +7,32 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="lyy_mybatis_sql" />
+        <module name="maven_pojo1" />
         <module name="maven_son" />
-        <module name="maven_dao" />
-        <module name="ssm_lyy_project1" />
+        <module name="itheima_spring_exception" />
+        <module name="spring_test" />
         <module name="spring_jdbc" />
         <module name="maven_web" />
         <module name="spring_aop_1" />
         <module name="spring_mvc_web" />
+        <module name="maven_service1" />
         <module name="ssm_lyy_project" />
+        <module name="maven_web1" />
         <module name="maven_pojo" />
-        <module name="spring_ioc_anno" />
         <module name="lyy_mybatis_test2" />
+        <module name="maven_dao1" />
         <module name="spring_inter" />
         <module name="spring_exception" />
         <module name="spring_lyy_mvc" />
         <module name="maven_service" />
         <module name="spring_ioc_1" />
-        <module name="ssm_web_all" />
-        <module name="itheima_spring_exception" />
+        <module name="maven_dao" />
+        <module name="ssm_lyy_project1" />
         <module name="lyy_mybatis_test" />
         <module name="Mybatis_test_demo1" />
         <module name="lyy_mybatis_anno" />
-        <module name="spring_test" />
+        <module name="spring_ioc_anno" />
+        <module name="ssm_web_all" />
         <module name="spring_tx" />
       </profile>
     </annotationProcessing>
@@ -39,11 +43,15 @@
       <module name="lyy_mybatis_test" target="1.7" />
       <module name="lyy_mybatis_test2" target="1.7" />
       <module name="maven_dao" target="1.8" />
+      <module name="maven_dao1" target="1.8" />
       <module name="maven_parent" target="1.7" />
       <module name="maven_pojo" target="1.8" />
+      <module name="maven_pojo1" target="1.8" />
       <module name="maven_service" target="1.8" />
+      <module name="maven_service1" target="1.8" />
       <module name="maven_son" target="1.7" />
       <module name="maven_web" target="1.8" />
+      <module name="maven_web1" target="1.8" />
       <module name="Mybatis_test_demo1" target="1.7" />
       <module name="spring_aop_1" target="1.5" />
       <module name="spring_exception" target="1.7" />
@@ -58,6 +66,7 @@
       <module name="ssm_lyy_project" target="1.7" />
       <module name="ssm_lyy_project1" target="1.7" />
       <module name="ssm_maven_parent" target="1.8" />
+      <module name="ssm_maven_parent2" target="1.8" />
       <module name="ssm_web" target="1.7" />
       <module name="ssm_web_all" target="1.8" />
     </bytecodeTargetLevel>
