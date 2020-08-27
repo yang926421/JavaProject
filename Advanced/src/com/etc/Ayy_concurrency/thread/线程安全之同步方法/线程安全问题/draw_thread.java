@@ -1,9 +1,10 @@
 package com.etc.Ayy_concurrency.thread.线程安全之同步方法.线程安全问题;
 
-public class draw_thread extends Thread{
+public class draw_thread extends Thread {
     //定义一个成员变量接收账户信息
     private Account acc;
-    public draw_thread(Account acc , String name){
+
+    public draw_thread(Account acc, String name) {
         super(name);
         this.acc = acc;
     }

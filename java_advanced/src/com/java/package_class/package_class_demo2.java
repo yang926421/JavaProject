@@ -25,8 +25,5 @@ public class package_class_demo2 {
         System.out.println(dou2);
 
 
-
-
-
     }
 }

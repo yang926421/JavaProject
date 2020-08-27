@@ -1,137 +1,137 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>国家企业信用信息公示系统</title>
-		<link rel="stylesheet" href="../../static/css/common.css">
-		<link rel="stylesheet" href="../../static/css/mui.min.css">
-		<link rel="stylesheet" href="../../static/css/show-asset-inf.css">
-		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
-		<script type="text/javascript" src="../../static/js/common.js"></script>
-		
-		<script>
-			
-			var ancheid=GetRequest("ANCHEID");
-			$(function(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/c/an/assetsCondition/get.json",
-					async:true,
-					data:{"ANCHEID":ancheid,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
-					dataType:"json",
-					success:function(res){
-						if(res.success==true){
-							if(res.data.PRIYEASALESDIS==1){  
-								$("#PRIYEASALES").html(res.data.PRIYEASALES);
-							}else{
-								$("#PRIYEASALES").html("农民专业合作社选择不公示");
-							}
-							if(res.data.PRIYEAPROFITDIS==1){   
-								$("#PRIYEAPROFIT").html(res.data.PRIYEAPROFIT);
-							}else{
-								$("#PRIYEAPROFIT").html("农民专业合作社选择不公示");
-							}
-							if(res.data.PRIYEASUBDIS==1){   
-								$("#PRIYEASUB").html(res.data.PRIYEASUB);
-							}else{
-								$("#PRIYEASUB").html("农民专业合作社选择不公示");
-							}
-							if(res.data.RATGRODIS==1){   
-								$("#RATGRO").html(res.data.RATGRO);
-							}else{
-								$("#RATGRO").html("农民专业合作社选择不公示");
-							}
-							if(res.data.PRIYEALOANDIS==1){  
-								$("#PRIYEALOAN").html(res.data.PRIYEALOAN);
-							}else{
-								$("#PRIYEALOAN").html("农民专业合作社选择不公示");
-							}
-							
-							
-						}
-					}
-				});
-			})
-			
-		</script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="show-report.html"></a>
-		    <h1 class="mui-title">资产状况信息</h1>
-		</header>
-		
-		<!--资产状况信息-->
-		<div id="common-box">
-			<div class="web-box">
-					<ul>
-						<li>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>国家企业信用信息公示系统</title>
+    <link rel="stylesheet" href="../../static/css/common.css">
+    <link rel="stylesheet" href="../../static/css/mui.min.css">
+    <link rel="stylesheet" href="../../static/css/show-asset-inf.css">
+    <script type="text/javascript" src="../../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../../static/js/common.js"></script>
+
+    <script>
+
+        var ancheid = GetRequest("ANCHEID");
+        $(function () {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/c/an/assetsCondition/get.json",
+                async: true,
+                data: {"ANCHEID": ancheid, "TOKEN": TOKEN, "SESSIONID": SESSIONID},
+                dataType: "json",
+                success: function (res) {
+                    if (res.success == true) {
+                        if (res.data.PRIYEASALESDIS == 1) {
+                            $("#PRIYEASALES").html(res.data.PRIYEASALES);
+                        } else {
+                            $("#PRIYEASALES").html("农民专业合作社选择不公示");
+                        }
+                        if (res.data.PRIYEAPROFITDIS == 1) {
+                            $("#PRIYEAPROFIT").html(res.data.PRIYEAPROFIT);
+                        } else {
+                            $("#PRIYEAPROFIT").html("农民专业合作社选择不公示");
+                        }
+                        if (res.data.PRIYEASUBDIS == 1) {
+                            $("#PRIYEASUB").html(res.data.PRIYEASUB);
+                        } else {
+                            $("#PRIYEASUB").html("农民专业合作社选择不公示");
+                        }
+                        if (res.data.RATGRODIS == 1) {
+                            $("#RATGRO").html(res.data.RATGRO);
+                        } else {
+                            $("#RATGRO").html("农民专业合作社选择不公示");
+                        }
+                        if (res.data.PRIYEALOANDIS == 1) {
+                            $("#PRIYEALOAN").html(res.data.PRIYEALOAN);
+                        } else {
+                            $("#PRIYEALOAN").html("农民专业合作社选择不公示");
+                        }
+
+
+                    }
+                }
+            });
+        })
+
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="show-report.html"></a>
+    <h1 class="mui-title">资产状况信息</h1>
+</header>
+
+<!--资产状况信息-->
+<div id="common-box">
+    <div class="web-box">
+        <ul>
+            <li>
 							<span style="width: 32%;">
 								销售额或营业收入
 							</span>
-							<div id="PRIYEASALES" class="asset-con">
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
+                <div id="PRIYEASALES" class="asset-con">
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="web-box">
+        <ul>
+            <li>
 							<span>
 								盈余总额
 							</span>
-							<div id="PRIYEAPROFIT" class="asset-con">
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
+                <div id="PRIYEAPROFIT" class="asset-con">
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="web-box">
+        <ul>
+            <li>
 							<span>
 								纳税金额
 							</span>
-							<div id="RATGRO" class="asset-con">
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
+                <div id="RATGRO" class="asset-con">
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="web-box">
+        <ul>
+            <li>
 							<span style="width: 32%;">
 								获得政府扶持资金、补助
 							</span>
-							<div id="PRIYEASUB" class="asset-con">
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
+                <div id="PRIYEASUB" class="asset-con">
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="web-box">
+        <ul>
+            <li>
 							<span>
 								金融贷款
 							</span>
-							<div id="PRIYEALOAN" class="asset-con">
-							</div>
-						</li>
-					</ul>
-			</div>
-			<!--提示信息-->
-			<div class="tip">
+                <div id="PRIYEALOAN" class="asset-con">
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--提示信息-->
+    <div class="tip">
 				<span style="font-size: 16px;">
-					*说明：以上单位为<img src="../../static/img/million.gif"  style="height: 25px;vertical-align:middle;"/>
+					*说明：以上单位为<img src="../../static/img/million.gif" style="height: 25px;vertical-align:middle;"/>
 				</span>
-			</div>
-		</div>
-		
-	</body>
+    </div>
+</div>
+
+</body>
 </html>

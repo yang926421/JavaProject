@@ -5,36 +5,36 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-<!--   加载外部的配置文件-->
-<!--    <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>-->
-        <context:property-placeholder location="classpath:jdbc.properties"/>
-        <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-            <property name="driverClass" value="${jdbc.driver}"></property>
-            <property name="jdbcUrl" value="${jdbc.url}"></property>
-            <property name="user" value="${jdbc.username}"></property>
-            <property name="password" value="${jdbc.password}"></property>
-        </bean>
+    <!--   加载外部的配置文件-->
+    <!--    <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>-->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${jdbc.driver}"></property>
+        <property name="jdbcUrl" value="${jdbc.url}"></property>
+        <property name="user" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
 
-<!--    <bean id="userService" class="cn.gsxt.service.impl.UserServiceImpl"></bean>-->
-<!--    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
-<!--        <property name="driverClass" value="${jdbc.driver}"></property>-->
-<!--        <property name="jdbcUrl" value="${jdbc.url}"></property>-->
-<!--        <property name="user" value="${jdbc.username}"></property>-->
-<!--        <property name="password" value="${jdbc.password}"></property>-->
-<!--    </bean>-->
-<!--    <bean id="dataSource1" class="com.alibaba.druid.pool.DruidDataSource">-->
-<!--        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>-->
-<!--        <property name="url" value="jdbc:mysql://localhost:3306/jdbc_mysql1"></property>-->
-<!--        <property name="username" value="root"></property>-->
-<!--        <property name="password" value="123"></property>-->
-<!--    </bean>-->
+    <!--    <bean id="userService" class="cn.gsxt.service.impl.UserServiceImpl"></bean>-->
+    <!--    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
+    <!--        <property name="driverClass" value="${jdbc.driver}"></property>-->
+    <!--        <property name="jdbcUrl" value="${jdbc.url}"></property>-->
+    <!--        <property name="user" value="${jdbc.username}"></property>-->
+    <!--        <property name="password" value="${jdbc.password}"></property>-->
+    <!--    </bean>-->
+    <!--    <bean id="dataSource1" class="com.alibaba.druid.pool.DruidDataSource">-->
+    <!--        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>-->
+    <!--        <property name="url" value="jdbc:mysql://localhost:3306/jdbc_mysql1"></property>-->
+    <!--        <property name="username" value="root"></property>-->
+    <!--        <property name="password" value="123"></property>-->
+    <!--    </bean>-->
 
-<!--    <bean id="userDao" class="cn.gsxt.dao.impl.UserDaoImpl"></bean>-->
-<!--    <bean id="userService" class="cn.gsxt.service.impl.UserServiceImpl" >-->
-<!--        <property name="userDao" ref="userDao"></property>-->
-<!--    </bean>-->
-    
-<!--    配置组件扫描, 扫描包下有注解的bean-->
+    <!--    <bean id="userDao" class="cn.gsxt.dao.impl.UserDaoImpl"></bean>-->
+    <!--    <bean id="userService" class="cn.gsxt.service.impl.UserServiceImpl" >-->
+    <!--        <property name="userDao" ref="userDao"></property>-->
+    <!--    </bean>-->
+
+    <!--    配置组件扫描, 扫描包下有注解的bean-->
     <context:component-scan base-package="cn.gsxt"></context:component-scan>
 
 </beans>

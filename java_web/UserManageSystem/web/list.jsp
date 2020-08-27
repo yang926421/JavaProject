@@ -29,13 +29,14 @@
     <script>
         function deleteUser(id) {
             //用户安全提示
-            if(confirm("您确定要删除吗？")){
+            if (confirm("您确定要删除吗？")) {
                 //访问路径
-                location.href="${pageContext.request.contextPath}/delUserServlet?id="+id;
+                location.href = "${pageContext.request.contextPath}/delUserServlet?id=" + id;
             }
 
         }
-        window.onload = function(){
+
+        window.onload = function () {
             document.getElementById("delSelected").onclick = function () {
                 alert(111111)
                 document.getElementById("form").submit();
@@ -52,16 +53,16 @@
         <form class="form-inline" action="" method="post">
             <div class="form-group">
                 <label for="exampleInputName2">姓名</label>
-                <input type="text" name="name" value="" class="form-control" id="exampleInputName2" >
+                <input type="text" name="name" value="" class="form-control" id="exampleInputName2">
             </div>
             <div class="form-group">
                 <label for="exampleInputName3">籍贯</label>
-                <input type="text" name="address" value="" class="form-control" id="exampleInputName3" >
+                <input type="text" name="address" value="" class="form-control" id="exampleInputName3">
             </div>
 
             <div class="form-group">
                 <label for="exampleInputEmail2">邮箱</label>
-                <input type="text" name="email" value="" class="form-control" id="exampleInputEmail2"  >
+                <input type="text" name="email" value="" class="form-control" id="exampleInputEmail2">
             </div>
             <button type="submit" class="btn btn-default">查询</button>
         </form>
@@ -76,33 +77,34 @@
     </div>
     <form id="form" action="${pageContext.request.contextPath}/delSelectedServlet" method="post">
         <table border="1" class="table table-bordered table-hover">
-        <tr class="success">
-            <th><input type="checkbox" ></th>
-            <th>编号</th>
-            <th>姓名</th>
-            <th>性别</th>
-            <th>年龄</th>
-            <th>籍贯</th>
-            <th>QQ</th>
-            <th>邮箱</th>
-            <th>操作</th>
-        </tr>
-        <c:forEach items="${pb.list}" var="user" varStatus="s">
-            <tr>
-                <td><input type="checkbox" name="uid" value="${user.id}"></td>
-                <td>${s.count}</td>
-                <td>${user.name}</td>
-                <td>${user.gender}</td>
-                <td>${user.age}</td>
-                <td>${user.address}</td>
-                <td>${user.qq}</td>
-                <td>${user.email}</td>
-                <td><a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/findUserServlet?id=${user.id}">修改</a>&nbsp;
-                    <a class="btn btn-default btn-sm" href="javascript:deleteUser(${user.id});">删除</a></td>
+            <tr class="success">
+                <th><input type="checkbox"></th>
+                <th>编号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>籍贯</th>
+                <th>QQ</th>
+                <th>邮箱</th>
+                <th>操作</th>
             </tr>
-        </c:forEach>
+            <c:forEach items="${pb.list}" var="user" varStatus="s">
+                <tr>
+                    <td><input type="checkbox" name="uid" value="${user.id}"></td>
+                    <td>${s.count}</td>
+                    <td>${user.name}</td>
+                    <td>${user.gender}</td>
+                    <td>${user.age}</td>
+                    <td>${user.address}</td>
+                    <td>${user.qq}</td>
+                    <td>${user.email}</td>
+                    <td><a class="btn btn-default btn-sm"
+                           href="${pageContext.request.contextPath}/findUserServlet?id=${user.id}">修改</a>&nbsp;
+                        <a class="btn btn-default btn-sm" href="javascript:deleteUser(${user.id});">删除</a></td>
+                </tr>
+            </c:forEach>
 
-    </table>
+        </table>
     </form>
     <div>
         <nav aria-label="Page navigation">
@@ -112,31 +114,37 @@
                     </c:if>
 
                     <c:if test="${pb.currentPage != 1}">
-                         <li>
+                <li>
                     </c:if>
 
 
-                    <a href="${pageContext.request.contextPath}/findUserByPageServlet?currentPage=${pb.currentPage - 1}" aria-label="Previous">
+                    <a href="${pageContext.request.contextPath}/findUserByPageServlet?currentPage=${pb.currentPage - 1}"
+                       aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
 
 
-                <c:forEach begin="1" end="${pb.totalPage}" var="i" >
+                <c:forEach begin="1" end="${pb.totalPage}" var="i">
 
 
                     <c:if test="${pb.currentPage == i}">
-                        <li class="active"><a href="${pageContext.request.contextPath}/findUserByPageServlet?currentPage=${i}&rows=5">${i}</a></li>
+                        <li class="active"><a
+                                href="${pageContext.request.contextPath}/findUserByPageServlet?currentPage=${i}&rows=5">${i}</a>
+                        </li>
                     </c:if>
                     <c:if test="${pb.currentPage != i}">
-                        <li><a href="${pageContext.request.contextPath}/findUserByPageServlet?currentPage=${i}&rows=5">${i}</a></li>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/findUserByPageServlet?currentPage=${i}&rows=5">${i}</a>
+                        </li>
                     </c:if>
 
                 </c:forEach>
 
 
                 <li>
-                    <a href="${pageContext.request.contextPath}/findUserByPageServlet?currentPage=${pb.currentPage + 1}&rows=5" aria-label="Next">
+                    <a href="${pageContext.request.contextPath}/findUserByPageServlet?currentPage=${pb.currentPage + 1}&rows=5"
+                       aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>

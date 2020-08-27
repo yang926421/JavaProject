@@ -3,28 +3,28 @@ package com.lyy._06反射获取method的方法并执行;
 
 public class Dog {
 
-    private String name ;
+    private String name;
 
-    public Dog(){
+    public Dog() {
     }
 
     public Dog(String name) {
         this.name = name;
     }
 
-    public void run(){
+    public void run() {
         System.out.println("狗跑的贼快~~");
     }
 
-    private void eat(){
+    private void eat() {
         System.out.println("狗吃骨头");
     }
 
-    private void eat(String name){
-        System.out.println("狗吃"+name);
+    private void eat(String name) {
+        System.out.println("狗吃" + name);
     }
 
-    public static void inAddr(){
+    public static void inAddr() {
         System.out.println("在吉山区有一只单身狗！");
     }
 

@@ -1,6 +1,7 @@
 package cn.gsxt.service;
 
 import cn.gsxt.exception.MyException;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -9,12 +10,12 @@ public class DemoServiceImpl implements DemoService {
     public void show1() {
         System.out.println("抛出类型转换异常....");
         Object str = "zhangsan";
-        Integer num = (Integer)str;
+        Integer num = (Integer) str;
     }
 
     public void show2() {
         System.out.println("抛出除零异常....");
-        int i = 1/0;
+        int i = 1 / 0;
     }
 
     public void show3() throws FileNotFoundException {

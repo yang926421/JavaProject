@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <title>跳转首页</title>
     <style>
-        p{
+        p {
             text-align: center;
         }
-        span{
+
+        span {
             color: blue;
         }
     </style>
@@ -20,13 +21,15 @@
 
 <script>
     var number = 5;
+
     function fun() {
-        number -- ;
-        if (number < 0){
+        number--;
+        if (number < 0) {
             location.href = "https://www.baidu.com"
         }
         document.getElementById("time").innerHTML = number;
     }
+
     setInterval(fun, 1000)
 </script>
 </body>

@@ -7,7 +7,7 @@
 <body>
 
 <script>
-//window对象创建可以直接使用 window.方法名
+    //window对象创建可以直接使用 window.方法名
     window.alert();
     /*
     方法
@@ -20,10 +20,9 @@
            可以获取用户输入
     * */
     var flag = window.confirm("你是个傻逼吧");
-    if (flag){
+    if (flag) {
         alert("你还真是个傻逼")
-    }
-    else{
+    } else {
         alert("看起来你不是啊")
     }
 
@@ -33,11 +32,10 @@
 </script>
 
 
-
 <input id="btn" type="button" value="打开窗口">
 <script>
     var openBtn = document.getElementById("btn")
-    openBtn.onclick = function(){
+    openBtn.onclick = function () {
         open();
     }
 </script>

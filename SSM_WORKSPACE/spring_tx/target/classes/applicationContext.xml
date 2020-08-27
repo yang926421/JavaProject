@@ -12,7 +12,7 @@
 
 ">
 
-    <context:component-scan base-package="cn.gsxt" />
+    <context:component-scan base-package="cn.gsxt"/>
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
         <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/spring_test"/>
@@ -24,46 +24,46 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-<!--    <bean id="accountDao" class="cn.gsxt.dao.impl.AccountDaoImpl">-->
-<!--        <property name="jdbcTemplate" ref="jdbcTemplate"/>-->
-<!--</bean>-->
+    <!--    <bean id="accountDao" class="cn.gsxt.dao.impl.AccountDaoImpl">-->
+    <!--        <property name="jdbcTemplate" ref="jdbcTemplate"/>-->
+    <!--</bean>-->
 
-<!--        目标对象,内部的方法就是切点-->
-<!--    <bean id="accountService" class="cn.gsxt.service.impl.AccountServiceImpl">-->
-<!--        <property name="accountDao" ref="accountDao"/>-->
-<!--    </bean>-->
-<!--    配置平台事务管理器
-transactionManger 底层会从DataSource拿一个连接来进行事务控制
--->
+    <!--        目标对象,内部的方法就是切点-->
+    <!--    <bean id="accountService" class="cn.gsxt.service.impl.AccountServiceImpl">-->
+    <!--        <property name="accountDao" ref="accountDao"/>-->
+    <!--    </bean>-->
+    <!--    配置平台事务管理器
+    transactionManger 底层会从DataSource拿一个连接来进行事务控制
+    -->
     <bean id="transactionManger" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
-<!--    使用注解配置的时候事物的注解驱动  -->
+    <!--    使用注解配置的时候事物的注解驱动  -->
     <tx:annotation-driven transaction-manager="transactionManger"/>
 
-<!--    <tx:advice id="txAdvice" transaction-manager="transactionManger">-->
-<!--        <tx:attributes>-->
-<!--            <tx:method name="*"/>-->
-<!--        </tx:attributes>-->
-<!--    </tx:advice>-->
+    <!--    <tx:advice id="txAdvice" transaction-manager="transactionManger">-->
+    <!--        <tx:attributes>-->
+    <!--            <tx:method name="*"/>-->
+    <!--        </tx:attributes>-->
+    <!--    </tx:advice>-->
 
-<!--    <aop:config>-->
-<!--        <aop:pointcut id="myPointCut" expression="execution(* cn.gsxt.*.*(..))"/>-->
-<!--        <aop:advisor advice-ref="txAdvice"></aop:advisor>-->
-<!--    </aop:config>-->
-<!--    通知,事物的增强-->
+    <!--    <aop:config>-->
+    <!--        <aop:pointcut id="myPointCut" expression="execution(* cn.gsxt.*.*(..))"/>-->
+    <!--        <aop:advisor advice-ref="txAdvice"></aop:advisor>-->
+    <!--    </aop:config>-->
+    <!--    通知,事物的增强-->
     <tx:advice id="txAdvice" transaction-manager="transactionManger">
-<!--        设置事务的属性信息-->
+        <!--        设置事务的属性信息-->
         <tx:attributes>
-<!--        可以配置多个,对不同的方法进行不同的事务控制    <tx:method name="transfer"/>-->
-<!--            <tx:method name="transfer" isolation="REPEATABLE_READ" timeout="-1"/>-->
+            <!--        可以配置多个,对不同的方法进行不同的事务控制    <tx:method name="transfer"/>-->
+            <!--            <tx:method name="transfer" isolation="REPEATABLE_READ" timeout="-1"/>-->
             <tx:method name="*"/>
         </tx:attributes>
     </tx:advice>
 
-<!--    需要配置事务的AOP注入-->
+    <!--    需要配置事务的AOP注入-->
     <aop:config>
-<!--        事务增强用advice-->
+        <!--        事务增强用advice-->
         <aop:advisor advice-ref="txAdvice" pointcut="execution(* cn.gsxt.service.impl.*.*(..))"></aop:advisor>
     </aop:config>
 

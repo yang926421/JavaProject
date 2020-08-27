@@ -1,93 +1,97 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>司法协助信息</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/modify-record.css">	
-		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../static/js/common.js" ></script>
-		<style>
-			.web{padding-top:15px;}
-		</style>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="report.html"></a>
-		    <h1 class="mui-title">司法协助信息(<span id="count"></span>)</h1>
-		</header>
-		
-		<!--修改信息-->
-		<div id="common-box">
-			<!--<div class="web-box">
-				<div class="web-name">
-					<ul class="web">
-						<li><span>被执行人：</span> <span>易开</span></li>
-						<li><span>股权数额：</span><span>20%</span></li>
-						<li><span>执行法院：</span><span>金水区人民法院</span></li>
-						<li><span>执行通知书文号：</span><span>45124578</span></li>
-						<li><span>类型：</span><span>冻结资产</span></li>
-					</ul>
-				</div>
-			</div>
-			
-			<div class="web-box">
-				<div class="web-name">
-					<ul class="web">
-						<li><span>被执行人：</span> <span>易开</span></li>
-						<li><span>股权数额：</span><span>20%</span></li>
-						<li><span>执行法院：</span><span>金水区人民法院</span></li>
-						<li><span>执行通知书文号：</span><span>45124578</span></li>
-						<li><span>类型：</span><span>冻结资产</span></li>
-					</ul>
-				</div>
-			</div>-->
-		</div>
-		<script type="text/javascript">
-			//获取企业id
-			var pripid= sessionStorage.getItem("PRIPID");
-			$(function(){
-				getData();
-			});
-			//获取企业司法协助信息
-			function getData(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/p/judicial/assist/by/pripid/list.json",
-					data:{"PRIPID":pripid},
-					async:true,
-					dataType:"json",
-					success:function(res){
-						console.log(res)
-						if(res.success==true){
-							createElem(res.data)
-						}
-					}
-				});
-			}
-			//创建司法协助信息数据
-			function createElem(data){			
-				$("#count").html(data.length);
-				for (var i = 0; i < data.length; i++) {
-					var elem = "<a href='sifaxiezhu-inf.html?PARENT_ID="+data[i].PARENT_ID+"'>"
-					+"<div class='web-box'><div class='web-name'><ul class='web'>"
-					+"<li><span>被执行人：</span> <span>"+data[i].INV+"</span></li>"
-					+"<li><span>股权数额：</span><span>"+data[i].FROAM+data[i].REGCAPCUR_CN+"</span></li>"
-					+"<li><span>执行法院：</span><span>"+data[i].FROAUTH+"</span></li>"
-					+"<li><span>执行通知书文号：</span><span>"+data[i].EXECUTENO+"</span></li>"
-					+"<li class='type'><span>类型：</span><span>"+data[i].FROZSTATE_CN+"</span></li>"
-					+"<div class='arrow-right'>"
-					+"<img src='../static/img/arrow-right.png'/>"
-					+"</div>"
-					+"</ul></div></div>";
-					+"</a>"
-					$("#common-box").append(elem);
-				}
-			}
-		</script>
-	</body>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>司法协助信息</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/modify-record.css">
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <style>
+        .web {
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="report.html"></a>
+    <h1 class="mui-title">司法协助信息(<span id="count"></span>)</h1>
+</header>
+
+<!--修改信息-->
+<div id="common-box">
+    <!--<div class="web-box">
+        <div class="web-name">
+            <ul class="web">
+                <li><span>被执行人：</span> <span>易开</span></li>
+                <li><span>股权数额：</span><span>20%</span></li>
+                <li><span>执行法院：</span><span>金水区人民法院</span></li>
+                <li><span>执行通知书文号：</span><span>45124578</span></li>
+                <li><span>类型：</span><span>冻结资产</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="web-box">
+        <div class="web-name">
+            <ul class="web">
+                <li><span>被执行人：</span> <span>易开</span></li>
+                <li><span>股权数额：</span><span>20%</span></li>
+                <li><span>执行法院：</span><span>金水区人民法院</span></li>
+                <li><span>执行通知书文号：</span><span>45124578</span></li>
+                <li><span>类型：</span><span>冻结资产</span></li>
+            </ul>
+        </div>
+    </div>-->
+</div>
+<script type="text/javascript">
+    //获取企业id
+    var pripid = sessionStorage.getItem("PRIPID");
+    $(function () {
+        getData();
+    });
+
+    //获取企业司法协助信息
+    function getData() {
+        $.ajax({
+            type: "get",
+            url: httpUrl + "/p/judicial/assist/by/pripid/list.json",
+            data: {"PRIPID": pripid},
+            async: true,
+            dataType: "json",
+            success: function (res) {
+                console.log(res)
+                if (res.success == true) {
+                    createElem(res.data)
+                }
+            }
+        });
+    }
+
+    //创建司法协助信息数据
+    function createElem(data) {
+        $("#count").html(data.length);
+        for (var i = 0; i < data.length; i++) {
+            var elem = "<a href='sifaxiezhu-inf.html?PARENT_ID=" + data[i].PARENT_ID + "'>"
+                + "<div class='web-box'><div class='web-name'><ul class='web'>"
+                + "<li><span>被执行人：</span> <span>" + data[i].INV + "</span></li>"
+                + "<li><span>股权数额：</span><span>" + data[i].FROAM + data[i].REGCAPCUR_CN + "</span></li>"
+                + "<li><span>执行法院：</span><span>" + data[i].FROAUTH + "</span></li>"
+                + "<li><span>执行通知书文号：</span><span>" + data[i].EXECUTENO + "</span></li>"
+                + "<li class='type'><span>类型：</span><span>" + data[i].FROZSTATE_CN + "</span></li>"
+                + "<div class='arrow-right'>"
+                + "<img src='../static/img/arrow-right.png'/>"
+                + "</div>"
+                + "</ul></div></div>";
+            +"</a>"
+            $("#common-box").append(elem);
+        }
+    }
+</script>
+</body>
 </html>

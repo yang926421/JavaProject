@@ -26,7 +26,7 @@ public class TCPServer {
             // 字符输出流
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 
-            while(true) {
+            while (true) {
                 //接收对方的数据
                 System.out.println("客户端说：" + br.readLine()); // 你好
                 System.out.println("我说：");

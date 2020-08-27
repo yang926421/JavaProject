@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-<!--    加载配置文件-->
+    <!--    加载配置文件-->
     <properties resource="jdbc.properties"></properties>
-<!--    配置别名-->
+    <!--    配置别名-->
     <typeAliases>
         <typeAlias type="cn.gsxt.domain.User" alias="user"></typeAlias>
     </typeAliases>
-<!--    配置数据源的环境-->
-<!--    可以配置多个环境  default默认使用配置的哪个环境-->
+    <!--    配置数据源的环境-->
+    <!--    可以配置多个环境  default默认使用配置的哪个环境-->
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"></transactionManager>
@@ -22,8 +22,8 @@
     </environments>
 
 
-<!--    加载映射文件-->
-<!--    resource 相对于类加载路径的下资源引用-->
+    <!--    加载映射文件-->
+    <!--    resource 相对于类加载路径的下资源引用-->
     <mappers>
         <mapper resource="UserMapper.xml"></mapper>
     </mappers>

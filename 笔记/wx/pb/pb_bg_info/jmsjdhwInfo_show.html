@@ -1,199 +1,199 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>海关减免税监督货物</title>
-		<link rel="stylesheet" href="../../static/css/common.css">
-		<link rel="stylesheet" href="../../static/css/mui.min.css">
-		<link rel="stylesheet" href="../../static/css/essential-inf.css">
-	
-		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
-		<script type="text/javascript" src="../../static/js/common.js"></script>
-		<script>
-			var ancheId=GetRequest("ANCHEID");
-			$(function(){
-				getData();
-			});
-			
-			function getData(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/h/an/cu/pbreginfo/get.json",
-					data:{"ANCHEID":ancheId,"SESSIONID":SESSIONID,"TOKEN":TOKEN},
-					async:true,
-					success:function(res){
-						if(res.success){
-							$("input[name='ISFIXEDASSETS'][value='"+res.data.ISFIXEDASSETS+"']").attr("checked","checked");
-							if(data.HASTAXRELIEFGOODS==1){
-								$("#HASTAXRELIEFGOODS").html("是");
-								$("#cont").show();
-							}else if(data.HASTAXRELIEFGOODS==2){
-								$("#HASTAXRELIEFGOODS").html("否");
-								$("#cont").hide();
-							}else{
-								$("#HASTAXRELIEFGOODS").html("");
-								$("#cont").show();
-							}
-							if(res.data.INSTALLLOCATION==1){
-								$("#INSTALLLOCATION").html("正常");
-							}else if(res.data.INSTALLLOCATION==2){
-								$("#INSTALLLOCATION").html("异常");
-							}else{
-								$("#INSTALLLOCATION").html("");
-							}
-							if(res.data.HANDLINGSITUATION==1){
-								$("#HANDLINGSITUATION").html("有");
-							}else if(res.data.HANDLINGSITUATION==2){
-								$("#HANDLINGSITUATION").html("无");
-							}else{
-								$("#HANDLINGSITUATION").html("");
-							}
-							if(res.data.ILLEGALUSED==1){
-								$("#ILLEGALUSED").html("有");
-							}else if(res.data.ILLEGALUSED==2){
-								$("#ILLEGALUSED").html("无");
-							}else{
-								$("#ILLEGALUSED").html("");
-							}
-							if(res.data.THESAMEASDECLARE==1){
-								$("#THESAMEASDECLARE").html("是");
-							}else if(res.data.THESAMEASDECLARE==2){
-								$("#THESAMEASDECLARE").html("否");
-							}else{
-								$("#THESAMEASDECLARE").html("");
-							}
-							if(res.data.RECAPITALISE==1){
-								$("#RECAPITALISE").html("有");
-							}else if(res.data.RECAPITALISE==2){
-								$("#RECAPITALISE").html("无");
-							}else{
-								$("#RECAPITALISE").html("");
-							}
-							if(res.data.ISFIXEDASSETS==1){
-								$("#ISFIXEDASSETS").html("是");
-							}else if(res.data.ISFIXEDASSETS==2){
-								$("#ISFIXEDASSETS").html("否");
-							}else{
-								$("#ISFIXEDASSETS").html("");
-							}
-							
-							$("#OTHERMATTERS").html(res.data.OTHERMATTERS);
-						}
-					}
-				});
-			}
-			
-			
-		</script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" ></a>
-		    <h1 class="mui-title"><span id="saveOrUpdate"></span>海关减免税监督货物</h1>
-		</header>
-		
-		<!--股东信息-->
-		<form id="addForm">
-		<div id="common-box">
-			<div id="line-block">
-				
-				<div class="web-box">
-					<ul>
-						<li style="color: red;">
-							*以下信息为海关年报信息预览，不进行公示
-						</li>
-					</ul>
-				</div>
-				<div class="web-box">
-					<ul>
-						<li>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>海关减免税监督货物</title>
+    <link rel="stylesheet" href="../../static/css/common.css">
+    <link rel="stylesheet" href="../../static/css/mui.min.css">
+    <link rel="stylesheet" href="../../static/css/essential-inf.css">
+
+    <script type="text/javascript" src="../../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../../static/js/common.js"></script>
+    <script>
+        var ancheId = GetRequest("ANCHEID");
+        $(function () {
+            getData();
+        });
+
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/h/an/cu/pbreginfo/get.json",
+                data: {"ANCHEID": ancheId, "SESSIONID": SESSIONID, "TOKEN": TOKEN},
+                async: true,
+                success: function (res) {
+                    if (res.success) {
+                        $("input[name='ISFIXEDASSETS'][value='" + res.data.ISFIXEDASSETS + "']").attr("checked", "checked");
+                        if (data.HASTAXRELIEFGOODS == 1) {
+                            $("#HASTAXRELIEFGOODS").html("是");
+                            $("#cont").show();
+                        } else if (data.HASTAXRELIEFGOODS == 2) {
+                            $("#HASTAXRELIEFGOODS").html("否");
+                            $("#cont").hide();
+                        } else {
+                            $("#HASTAXRELIEFGOODS").html("");
+                            $("#cont").show();
+                        }
+                        if (res.data.INSTALLLOCATION == 1) {
+                            $("#INSTALLLOCATION").html("正常");
+                        } else if (res.data.INSTALLLOCATION == 2) {
+                            $("#INSTALLLOCATION").html("异常");
+                        } else {
+                            $("#INSTALLLOCATION").html("");
+                        }
+                        if (res.data.HANDLINGSITUATION == 1) {
+                            $("#HANDLINGSITUATION").html("有");
+                        } else if (res.data.HANDLINGSITUATION == 2) {
+                            $("#HANDLINGSITUATION").html("无");
+                        } else {
+                            $("#HANDLINGSITUATION").html("");
+                        }
+                        if (res.data.ILLEGALUSED == 1) {
+                            $("#ILLEGALUSED").html("有");
+                        } else if (res.data.ILLEGALUSED == 2) {
+                            $("#ILLEGALUSED").html("无");
+                        } else {
+                            $("#ILLEGALUSED").html("");
+                        }
+                        if (res.data.THESAMEASDECLARE == 1) {
+                            $("#THESAMEASDECLARE").html("是");
+                        } else if (res.data.THESAMEASDECLARE == 2) {
+                            $("#THESAMEASDECLARE").html("否");
+                        } else {
+                            $("#THESAMEASDECLARE").html("");
+                        }
+                        if (res.data.RECAPITALISE == 1) {
+                            $("#RECAPITALISE").html("有");
+                        } else if (res.data.RECAPITALISE == 2) {
+                            $("#RECAPITALISE").html("无");
+                        } else {
+                            $("#RECAPITALISE").html("");
+                        }
+                        if (res.data.ISFIXEDASSETS == 1) {
+                            $("#ISFIXEDASSETS").html("是");
+                        } else if (res.data.ISFIXEDASSETS == 2) {
+                            $("#ISFIXEDASSETS").html("否");
+                        } else {
+                            $("#ISFIXEDASSETS").html("");
+                        }
+
+                        $("#OTHERMATTERS").html(res.data.OTHERMATTERS);
+                    }
+                }
+            });
+        }
+
+
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left"></a>
+    <h1 class="mui-title"><span id="saveOrUpdate"></span>海关减免税监督货物</h1>
+</header>
+
+<!--股东信息-->
+<form id="addForm">
+    <div id="common-box">
+        <div id="line-block">
+
+            <div class="web-box">
+                <ul>
+                    <li style="color: red;">
+                        *以下信息为海关年报信息预览，不进行公示
+                    </li>
+                </ul>
+            </div>
+            <div class="web-box">
+                <ul>
+                    <li>
 							<span>
 								是否有海关减免税监管货物
 							</span>
-							<span id="HASTAXRELIEFGOODS" class="asset-con" style="text-align: center;"></span>
-						</li>
-					</ul>
-				</div>
-				<div id="cont">
-				<div class="web-box">
-					<ul>
-						<li>
+                        <span id="HASTAXRELIEFGOODS" class="asset-con" style="text-align: center;"></span>
+                    </li>
+                </ul>
+            </div>
+            <div id="cont">
+                <div class="web-box">
+                    <ul>
+                        <li>
 							<span>
 								减免税进口货物安装地点、使用情况
 							</span>
-							<span id="INSTALLLOCATION" class="asset-con" style="text-align: center;"></span>
-						</li>
-					</ul>
-				</div>
-			
-			
-				<div class="web-box">
-					<ul>
-						<li>
+                            <span id="INSTALLLOCATION" class="asset-con" style="text-align: center;"></span>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="web-box">
+                    <ul>
+                        <li>
 							<span>
 								减免税进口货物调换、抵押、质押、留置、转让、出售、移作他用、退运境外或进行其他处置的情事
 							</span>
-							<span id="HANDLINGSITUATION" class="asset-con" style="text-align: center;"></span>
-						</li>
-					</ul>
-				</div>
-				<div class="web-box">
-					<ul>
-						<li>
+                            <span id="HANDLINGSITUATION" class="asset-con" style="text-align: center;"></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="web-box">
+                    <ul>
+                        <li>
 							<span>
 								减免税进口货物未按照特定用途、特定地区、特定企业使用的情事
 							</span>
-							<span id="ILLEGALUSED" class="asset-con" style="text-align: center;"></span>
-						</li>
-					</ul>
-				</div>
-				<div class="web-box">
-					<ul>
-						<li>
+                            <span id="ILLEGALUSED" class="asset-con" style="text-align: center;"></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="web-box">
+                    <ul>
+                        <li>
 							<span>
 								实际进口的减免税货物的规格、型号和技术参数是否与申报减免税申请时相同
 							</span>
-							<span id="THESAMEASDECLARE" class="asset-con" style="text-align: center;"></span>
-						</li>
-					</ul>
-				</div>
-				<div class="web-box">
-					<ul>
-						<li>
+                            <span id="THESAMEASDECLARE" class="asset-con" style="text-align: center;"></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="web-box">
+                    <ul>
+                        <li>
 							<span>
 								减免税申请人改制、股权转让、合并、分立及其他资产重组情况
 							</span>
-							<span id="RECAPITALISE" class="asset-con" style="text-align: center;"></span>
-						</li>
-					</ul>
-				</div>
-				<div class="web-box">
-					<ul>
-						<li>
+                            <span id="RECAPITALISE" class="asset-con" style="text-align: center;"></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="web-box">
+                    <ul>
+                        <li>
 							<span>
 								减免税进口货物是否已入本单位固定资产账
 							</span>
-							<span id="ISFIXEDASSETS" class="asset-con" style="text-align: center;"></span>
-						</li>
-					</ul>
-				</div>
-				<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                            <span id="ISFIXEDASSETS" class="asset-con" style="text-align: center;"></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="web-box">
+                    <ul>
+                        <li>
+							<span>
 								其他需要向海关说明的情况
 							</span>
-							<span id="OTHERMATTERS" class="asset-con" style="text-align: center;"></span>
-						</li>
-					</ul>
-				</div>
-			
-			</div>
-			
-			</div>
-		</div>	
-	</body>
+                            <span id="OTHERMATTERS" class="asset-con" style="text-align: center;"></span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
 </html>

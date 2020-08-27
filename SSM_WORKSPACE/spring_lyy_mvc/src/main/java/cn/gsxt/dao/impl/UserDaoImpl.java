@@ -38,9 +38,9 @@ public class UserDaoImpl implements UserDao {
         PreparedStatementCreator creator = new PreparedStatementCreator() {
             @Override
             public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
-               //使用原始的jdbc完成有个prepartedState组件
+                //使用原始的jdbc完成有个prepartedState组件
 //                 PreparedStatement.RETURN_GENERATED_KEYS  代表返回生成主键
-                PreparedStatement preparedStatement =  connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+                PreparedStatement preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
                 preparedStatement.setObject(1, null);
                 preparedStatement.setObject(2, user.getUsername());
                 preparedStatement.setObject(3, user.getEmail());
@@ -54,7 +54,7 @@ public class UserDaoImpl implements UserDao {
         GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(creator, keyHolder);
         //通过keyholder获得生成的主键
-        Long userId =  keyHolder.getKey().longValue();
+        Long userId = keyHolder.getKey().longValue();
         return userId;
     }
 
@@ -80,8 +80,8 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void del(Long userId) {
-    String sql = "delete from sys_user where id = ?";
-    jdbcTemplate.update(sql, userId);
+        String sql = "delete from sys_user where id = ?";
+        jdbcTemplate.update(sql, userId);
     }
 
     //

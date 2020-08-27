@@ -9,10 +9,10 @@ public class Person {
 
 
     private String name;
-    private int age ;
+    private int age;
     private String gender;
 
-//    @JsonIgnore  //转换成json字符串的时候忽略该属性
+    //    @JsonIgnore  //转换成json字符串的时候忽略该属性
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
 

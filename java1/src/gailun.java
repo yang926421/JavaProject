@@ -5,12 +5,12 @@ public class gailun {
     String skill_e;
     String skill_r;
 
-    public gailun(String name){
+    public gailun(String name) {
         this.name = name;
     }
 
-    public gailun(String name, String skill_q, String skill_w, String skill_e, String skill_r){
-            // 调用当前类中的其他构造方法
+    public gailun(String name, String skill_q, String skill_w, String skill_e, String skill_r) {
+        // 调用当前类中的其他构造方法
         this(name);
         this.skill_r = skill_r;
         this.skill_e = skill_e;
@@ -19,8 +19,8 @@ public class gailun {
 
     }
 
-    public void fight(){
-        System.out.println(this.name+"在上阵杀敌,"+"用了"+this.skill_r+"技能");
+    public void fight() {
+        System.out.println(this.name + "在上阵杀敌," + "用了" + this.skill_r + "技能");
     }
 
     public static void main(String[] args) {

@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
 //    @Resource(name="userDao")   相当于 Autowired + Qualifier
     private UserDao userDao;
 
-//    @Value("我是lyy")  鸡肋不用
+    //    @Value("我是lyy")  鸡肋不用
     @Value("${jdbc.driver}") //xml配置文件已加载properties
     private String lyy;
 

@@ -1,61 +1,61 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title></title>
-		<link rel="stylesheet" href="../../static/css/common.css">
-		<link rel="stylesheet" href="../../static/css/mui.min.css">
-		<link rel="stylesheet" href="../../static/css/add-website.css">
-		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
-		<script type="text/javascript" src="../../static/js/common.js"></script>
-		
-		<script>
-			//农专的分支机构信息
-			var ancheid=GetRequest("ANCHEID");
-			$(function(){
-				$("#ANCHEID").val(ancheid);
-				$("#TOKEN").val(TOKEN);
-				$("#SESSIONID").val(SESSIONID);
-				var brid=GetRequest("BRID");  //从url中获取brid分支机构id
-				if(brid!=null && brid!=""){
-					$("#BRID").val(brid);
-					$("#saveOrUpdate").html("修改");
-					$("#sure").html("<a href='javascript:;' onclick='addData()'>确定</a>");
-					$("#addBtn").hide();
-					$("#delBtn").show();
-					getData(brid);
-				}else{
-					$("#saveOrUpdate").html("添加");
-					$("#addBtn").show();
-					$("#delBtn").hide();
-				}
-			});
-			
-			
-			function getData(id){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/c/an/branchOrg/get.json",
-					async:true,
-					data:{"BRID":id,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
-					dataType:"json",
-					success:function(res){
-						if(res.success==true){
-							$("#BRID").val(res.data.BRID);
-							$("#ANCHEID").val(res.data.ANCHEID);
-							$("#BRNAME").val(res.data.BRNAME);
-							$("#UNISCID").val(res.data.UNISCID);
-						}
-					}
-				});
-			}
-			
-			/**
-			 * 添加or修改
-			 */
-			function addData(){
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title></title>
+    <link rel="stylesheet" href="../../static/css/common.css">
+    <link rel="stylesheet" href="../../static/css/mui.min.css">
+    <link rel="stylesheet" href="../../static/css/add-website.css">
+    <script type="text/javascript" src="../../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../../static/js/common.js"></script>
+
+    <script>
+        //农专的分支机构信息
+        var ancheid = GetRequest("ANCHEID");
+        $(function () {
+            $("#ANCHEID").val(ancheid);
+            $("#TOKEN").val(TOKEN);
+            $("#SESSIONID").val(SESSIONID);
+            var brid = GetRequest("BRID");  //从url中获取brid分支机构id
+            if (brid != null && brid != "") {
+                $("#BRID").val(brid);
+                $("#saveOrUpdate").html("修改");
+                $("#sure").html("<a href='javascript:;' onclick='addData()'>确定</a>");
+                $("#addBtn").hide();
+                $("#delBtn").show();
+                getData(brid);
+            } else {
+                $("#saveOrUpdate").html("添加");
+                $("#addBtn").show();
+                $("#delBtn").hide();
+            }
+        });
+
+
+        function getData(id) {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/c/an/branchOrg/get.json",
+                async: true,
+                data: {"BRID": id, "TOKEN": TOKEN, "SESSIONID": SESSIONID},
+                dataType: "json",
+                success: function (res) {
+                    if (res.success == true) {
+                        $("#BRID").val(res.data.BRID);
+                        $("#ANCHEID").val(res.data.ANCHEID);
+                        $("#BRNAME").val(res.data.BRNAME);
+                        $("#UNISCID").val(res.data.UNISCID);
+                    }
+                }
+            });
+        }
+
+        /**
+         * 添加or修改
+         */
+        function addData() {
 //				var brname=$("#BRNAME").val();
 //				if(!isNotNull(brname)){
 //					mui.toast("请输入分支机构名称");
@@ -66,95 +66,95 @@
 //					mui.toast("请输入统一社会信用代码/注册号");
 //					return;
 //				}
-				$.ajax({
-					type:"post",
-					url:httpUrl+"/c/an/branchOrg/save.json",
-					async:true,
-					data:$("#addForm").serialize(),
-					dataType:'json',
-					success:function(res){
-						if(res.success==true){
-							window.location.href="branchinfo-list.html?ANCHEID="+ancheid;
-						}
-					}
-				});
-			}
-			
-			/**
-			 * 删除
-			 */
-			function delData(){
-				mui.confirm("您确定要删除吗？","提示",btnArray,function(e){
-					if(e.index==1){
-						$.ajax({
-							type:"get",
-							url:httpUrl+"/c/an/branchOrg/delete.json",
-							async:true,
-							data:{"BRID":$("#BRID").val(),"ANCHEID":ancheid,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
-							dataType:'json',
-							success:function(res){
-								if(res.success==true){
-									window.location.href="branchinfo-list.html?ANCHEID="+ancheid;
-								}
-							}
-						});
-						
-					}
-				});
-			}
-		</script>
-		
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="website-inf.html"></a>
-		    <h1 class="mui-title"><span id="saveOrUpdate"></span>分支机构信息</h1>
-		    <span id="sure">
+            $.ajax({
+                type: "post",
+                url: httpUrl + "/c/an/branchOrg/save.json",
+                async: true,
+                data: $("#addForm").serialize(),
+                dataType: 'json',
+                success: function (res) {
+                    if (res.success == true) {
+                        window.location.href = "branchinfo-list.html?ANCHEID=" + ancheid;
+                    }
+                }
+            });
+        }
+
+        /**
+         * 删除
+         */
+        function delData() {
+            mui.confirm("您确定要删除吗？", "提示", btnArray, function (e) {
+                if (e.index == 1) {
+                    $.ajax({
+                        type: "get",
+                        url: httpUrl + "/c/an/branchOrg/delete.json",
+                        async: true,
+                        data: {"BRID": $("#BRID").val(), "ANCHEID": ancheid, "TOKEN": TOKEN, "SESSIONID": SESSIONID},
+                        dataType: 'json',
+                        success: function (res) {
+                            if (res.success == true) {
+                                window.location.href = "branchinfo-list.html?ANCHEID=" + ancheid;
+                            }
+                        }
+                    });
+
+                }
+            });
+        }
+    </script>
+
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="website-inf.html"></a>
+    <h1 class="mui-title"><span id="saveOrUpdate"></span>分支机构信息</h1>
+    <span id="sure">
 		    	<!--<a href="javascript:;" onclick="addData()">确定</a>-->
 		    </span>
-		</header>
-		
-		<form id="addForm">
-		<input type="hidden" name="BRID" id="BRID" />
-		<input type="hidden" name="ANCHEID" id="ANCHEID" />
-		<input type="hidden" name="SESSIONID" id="SESSIONID" />
-		<input type="hidden" name="TOKEN" id="TOKEN" />
-		<div id="common-box">
-			<div class="web-box">
-					<ul>
-						<li>
+</header>
+
+<form id="addForm">
+    <input type="hidden" name="BRID" id="BRID"/>
+    <input type="hidden" name="ANCHEID" id="ANCHEID"/>
+    <input type="hidden" name="SESSIONID" id="SESSIONID"/>
+    <input type="hidden" name="TOKEN" id="TOKEN"/>
+    <div id="common-box">
+        <div class="web-box">
+            <ul>
+                <li>
 							<span>
 								分支机构名称
 							</span>
-							<div class="web-write">
-								<input type="text" name="BRNAME" id="BRNAME" placeholder="请输入分支机构名称" />
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
+                    <div class="web-write">
+                        <input type="text" name="BRNAME" id="BRNAME" placeholder="请输入分支机构名称"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
 							<span>
 								统一社会信用代码/注册号
 							</span>
-							<div class="web-write">
-								<input type="text" name="UNISCID" id="UNISCID" placeholder="请输入统一社会信用代码/注册号" />
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-		</div>
-		</form>
-		<!--一个按钮-->
-		 <div id="addBtn" class="yy">
-	    	<a onClick="addData()">添   加</a>
-	    </div>
-	    <div id="delBtn" class="yy-delete" style="display: none;">
-	    	<a onClick="delData()">删   除</a>
-	    </div>
-	</body>
+                    <div class="web-write">
+                        <input type="text" name="UNISCID" id="UNISCID" placeholder="请输入统一社会信用代码/注册号"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</form>
+<!--一个按钮-->
+<div id="addBtn" class="yy">
+    <a onClick="addData()">添 加</a>
+</div>
+<div id="delBtn" class="yy-delete" style="display: none;">
+    <a onClick="delData()">删 除</a>
+</div>
+</body>
 </html>

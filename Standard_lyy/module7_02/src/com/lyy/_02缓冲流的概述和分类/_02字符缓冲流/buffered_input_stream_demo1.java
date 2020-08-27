@@ -3,7 +3,7 @@ package com.lyy._02缓冲流的概述和分类._02字符缓冲流;
 import java.io.*;
 
 public class buffered_input_stream_demo1 {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         Reader wr1 = new FileReader("module7_02/src/hht.txt");
         BufferedReader BD = new BufferedReader(wr1);
         //
@@ -20,10 +20,10 @@ public class buffered_input_stream_demo1 {
         //定义一个数组来取数据    缓冲流效果比普通字符流快，但是只有在大文件中才能看出来效果
         char[] char1 = new char[1024];
         int len;
-        while((len = BD.read(char1))!=-1){
-            System.out.println(new String(char1));}
+        while ((len = BD.read(char1)) != -1) {
+            System.out.println(new String(char1));
+        }
     }
-
 
 
 }

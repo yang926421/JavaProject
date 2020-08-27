@@ -4,11 +4,12 @@ public class Person {
     String name;
     int age;
 
-    public void eat(){
-        System.out.println(this.name+"吃饭呀");
+    public void eat() {
+        System.out.println(this.name + "吃饭呀");
     }
-    public void sleep(){
-        System.out.println(this.name+"睡觉");
+
+    public void sleep() {
+        System.out.println(this.name + "睡觉");
     }
 
     public String getName() {

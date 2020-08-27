@@ -1,4 +1,5 @@
 package cn.gsxt.service.impl;
+
 import cn.gsxt.dao.impl.userDaoImpl;
 import cn.gsxt.dao.userDao;
 import cn.gsxt.domain.PageBean;
@@ -9,8 +10,9 @@ import java.util.List;
 
 public class userServiceImpl implements userService {
     private userDao dao = new userDaoImpl();
+
     @Override
-    public List<User> findAll(){
+    public List<User> findAll() {
         //调用dao来完成查询
         return dao.findAll();
     }
@@ -58,7 +60,7 @@ public class userServiceImpl implements userService {
     public PageBean<User> findUserByPages(String _currentPage, String _rows) {
         //
         int currentPage = Integer.parseInt(_currentPage);
-        if(currentPage <=0) {
+        if (currentPage <= 0) {
             currentPage = 1;
         }
         int rows = Integer.parseInt(_rows);
@@ -71,13 +73,13 @@ public class userServiceImpl implements userService {
         int totalPage = (totalCount % rows) == 0 ? (totalCount % rows) : (totalCount % rows) + 1;
         pb.setTotalCount(totalCount);
         //计算总页码数
-        if(currentPage >= totalPage){
+        if (currentPage >= totalPage) {
             currentPage = totalPage;
         }
         pb.setCurrentPage(currentPage);
         //查询当前页码list,计算开始记录
-        int start =  (currentPage - 1)*rows;
-        List<User> list =  dao.findByPage(start, rows);
+        int start = (currentPage - 1) * rows;
+        List<User> list = dao.findByPage(start, rows);
         pb.setList(list);
         pb.setTotalPage(totalPage);
         return pb;

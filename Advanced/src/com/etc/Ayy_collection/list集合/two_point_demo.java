@@ -10,7 +10,7 @@ public class two_point_demo {
     public static void main(String[] args) {
 
 
-        List<Integer> resultList= new ArrayList<>();
+        List<Integer> resultList = new ArrayList<>();
         resultList.add(1);
         resultList.add(4);
         resultList.add(6);
@@ -20,40 +20,37 @@ public class two_point_demo {
         resultList.add(79);
         //二分查找
         Scanner sc = new Scanner(System.in);
-        Integer num= sc.nextInt();
+        Integer num = sc.nextInt();
         int start = 0;
         int end = resultList.size() - 1;
 //        find(resultList, num);
-        int index = find(resultList, num,  start , end );
-        if (index==(-1)){
+        int index = find(resultList, num, start, end);
+        if (index == (-1)) {
             System.out.println("找不到啊");
-        }
-        else{
+        } else {
             System.out.println(index + "是这个位置上的");
         }
 
     }
 
-//
-    public static int find(List list1, int number, int start, int end ){
-        int middle = (start + end) /2;
+    //
+    public static int find(List list1, int number, int start, int end) {
+        int middle = (start + end) / 2;
         int num = (int) list1.get(middle);
-        if (number > (int)list1.get(end)){
+        if (number > (int) list1.get(end)) {
             return -1;
         }
-        if  (number < (int)list1.get(start)){
+        if (number < (int) list1.get(start)) {
             return -1;
         }
-        if (number < num){
-            end = middle -1;
+        if (number < num) {
+            end = middle - 1;
             find(list1, number, start, end);
         }
-        if (number > num){
+        if (number > num) {
             start = middle + 1;
             find(list1, number, start, end);
-        }
-
-        else{
+        } else {
             return middle;
         }
         return -1;

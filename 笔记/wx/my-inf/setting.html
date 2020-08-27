@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>国家企业信用信息公示系统</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/setting.css">
-		<script src="../static/js/jquery.min.js"></script>
-		<script src="../static/js/login.js"></script>
-		<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
-		<script type="text/javascript" src="../static/js/common.js" ></script>
-		<script>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>国家企业信用信息公示系统</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/setting.css">
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/login.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script>
 
-            var	app;
-            var noncestr="";  //生成签名的随机串
-            var signature=""; //签名
-            var timestamp="";  //生成签名的时间戳
-            var url="";
-            $(function () {
+        var app;
+        var noncestr = "";  //生成签名的随机串
+        var signature = ""; //签名
+        var timestamp = "";  //生成签名的时间戳
+        var url = "";
+        $(function () {
 
 
 //              $.ajax({
@@ -47,93 +47,94 @@
 //
 //              });
 
-            })
+        })
 
-            function goScan() {
-                wx.scanQRCode({
-                    needResult: 0, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
-                    scanType: ["qrCode","barCode"], // 可以指定扫二维码还是一维码，默认二者都有
-                    success: function (res) {
-                        var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
-                    }
+        function goScan() {
+            wx.scanQRCode({
+                needResult: 0, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+                scanType: ["qrCode", "barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+                success: function (res) {
+                    var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
+                }
 
-                });
+            });
 
-            }
+        }
 
-		</script>
-		<script>
-		
-			$(function(){
+    </script>
+    <script>
+
+        $(function () {
 //				if(write==1){
 //					$("#delBtn").hide();
 //				}else{
 //					$("#delBtn").show();
 //				}
-			})
-			function exitLogin(){
-				window.name="";
-				sessionStorage.removeItem('loginInfo');
-				window.location.href="../index.html"
-			}
-		</script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="my-index.html"></a>
-		    <h1 class="mui-title">设置 </h1>
-		</header>
-		
-		<!--设置-->
-		<div id="common-box">
-			<div id="login-write">
-			    <!--单行列表-->
-				<!--<ul class="mui-table-view mui-table-view-chevron">
-					<li class="mui-table-view-cell">
-						<a href="#" class="mui-navigate-right">检查更新 
-							<i class="mui-pull-right update">
-								V1.0
-								<span id="red-tip"></span>
-							</i>
-							
-						</a>
-					</li>
-				</ul>-->
-				<!--单行列表-->
-				<!--<ul class="mui-table-view mui-table-view-chevron">
-					<li class="mui-table-view-cell">
-						<a href="#" class="mui-navigate-right">修改密码 </a>
-					</li>
-				</ul>-->
-				<!--单行列表-->
-				<!--<ul class="mui-table-view mui-table-view-chevron">
-					<li class="mui-table-view-cell">
-						<a href="#" class="mui-navigate-right">清除缓存 <i class="mui-pull-right update">0kb</i></a>
-					</li>
-				</ul>-->
-				<!--单行列表-->
-				<ul class="mui-table-view mui-table-view-chevron">
-					<li class="mui-table-view-cell">
-						<a href="about-us.html" class="mui-navigate-right">关于我们</a>
-					</li>
-				</ul>
-				<!--单行列表-->
-				<!--<ul class="mui-table-view mui-table-view-chevron">
-					<li class="mui-table-view-cell">
-						<a href="javascript:;" onclick="goScan();" class="mui-navigate-right">扫一扫</a>
-					</li>
-				</ul>-->
-			</div>
-			
-		</div>
-		
-	    <!--一个按钮-->
-		<div class="yy-delete" id="delBtn">
-	    	<a onClick="exitLogin()">退出登录</a>
-	    </div>
+        })
 
-		
-	</body>
+        function exitLogin() {
+            window.name = "";
+            sessionStorage.removeItem('loginInfo');
+            window.location.href = "../index.html"
+        }
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="my-index.html"></a>
+    <h1 class="mui-title">设置 </h1>
+</header>
+
+<!--设置-->
+<div id="common-box">
+    <div id="login-write">
+        <!--单行列表-->
+        <!--<ul class="mui-table-view mui-table-view-chevron">
+            <li class="mui-table-view-cell">
+                <a href="#" class="mui-navigate-right">检查更新
+                    <i class="mui-pull-right update">
+                        V1.0
+                        <span id="red-tip"></span>
+                    </i>
+
+                </a>
+            </li>
+        </ul>-->
+        <!--单行列表-->
+        <!--<ul class="mui-table-view mui-table-view-chevron">
+            <li class="mui-table-view-cell">
+                <a href="#" class="mui-navigate-right">修改密码 </a>
+            </li>
+        </ul>-->
+        <!--单行列表-->
+        <!--<ul class="mui-table-view mui-table-view-chevron">
+            <li class="mui-table-view-cell">
+                <a href="#" class="mui-navigate-right">清除缓存 <i class="mui-pull-right update">0kb</i></a>
+            </li>
+        </ul>-->
+        <!--单行列表-->
+        <ul class="mui-table-view mui-table-view-chevron">
+            <li class="mui-table-view-cell">
+                <a href="about-us.html" class="mui-navigate-right">关于我们</a>
+            </li>
+        </ul>
+        <!--单行列表-->
+        <!--<ul class="mui-table-view mui-table-view-chevron">
+            <li class="mui-table-view-cell">
+                <a href="javascript:;" onclick="goScan();" class="mui-navigate-right">扫一扫</a>
+            </li>
+        </ul>-->
+    </div>
+
+</div>
+
+<!--一个按钮-->
+<div class="yy-delete" id="delBtn">
+    <a onClick="exitLogin()">退出登录</a>
+</div>
+
+
+</body>
 
 </html>

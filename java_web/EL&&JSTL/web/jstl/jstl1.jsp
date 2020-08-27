@@ -6,7 +6,7 @@
     <title>Title</title>
 </head>
 <body>
-<h1>常用标签   if  choose   foreach</h1>
+<h1>常用标签 if choose foreach</h1>
 <h2>if标签</h2>
 <c:if test="3<4">
 

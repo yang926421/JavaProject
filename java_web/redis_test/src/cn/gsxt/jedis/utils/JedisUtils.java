@@ -12,7 +12,7 @@ import java.util.Properties;
 public class JedisUtils {
     private static JedisPool jedispool;
 
-    static{
+    static {
         //读取配置文件
         InputStream is = JedisPool.class.getClassLoader().getResourceAsStream("jedis.properties");
         //创建properties对象
@@ -32,7 +32,7 @@ public class JedisUtils {
     }
 
     //获取连接方法
-    public static Jedis getJedis(){
+    public static Jedis getJedis() {
         return jedispool.getResource();
     }
 

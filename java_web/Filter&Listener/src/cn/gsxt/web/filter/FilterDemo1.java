@@ -3,6 +3,7 @@ package cn.gsxt.web.filter;
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
+
 //filter  javax.servlet
 //@WebFilter("/*") //  /*访问所有资源之前都会被过滤器拦截
 public class FilterDemo1 implements Filter {

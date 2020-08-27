@@ -16,6 +16,7 @@ public class UserServiceImpl implements UserService {
     }
 
     private RoleDao roleDao;
+
     public void setRoleDao(RoleDao roleDao) {
         this.roleDao = roleDao;
     }

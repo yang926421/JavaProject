@@ -9,8 +9,8 @@
         <package name="cn.gsxt.domain"/>
     </typeAliases>
     <!--    加载与数据库配置的映射-->
-<!--    <mappers>-->
-<!--        <mapper resource="AccountMapper.xml"></mapper>-->
-<!--        &lt;!&ndash;        <package name="cn.gsxt.mapper"></package>&ndash;&gt;-->
-<!--    </mappers>-->
+    <!--    <mappers>-->
+    <!--        <mapper resource="AccountMapper.xml"></mapper>-->
+    <!--        &lt;!&ndash;        <package name="cn.gsxt.mapper"></package>&ndash;&gt;-->
+    <!--    </mappers>-->
 </configuration>

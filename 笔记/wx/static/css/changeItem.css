@@ -10,8 +10,9 @@
     border-bottom: 2px solid #ac812e;
     color: #ac812e;
 }
-.item{
-	line-height: 38px;
+
+.item {
+    line-height: 38px;
     display: table-cell;
     overflow: hidden;
     width: 1%;

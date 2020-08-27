@@ -3,11 +3,11 @@ package cn.gsxt.aop2;
 import org.aspectj.lang.ProceedingJoinPoint;
 
 public class MyAspect {
-    public void before(){
+    public void before() {
         System.out.println("前置增强");
     }
 
-    public void after(){
+    public void after() {
         System.out.println("后置增强");
     }
 

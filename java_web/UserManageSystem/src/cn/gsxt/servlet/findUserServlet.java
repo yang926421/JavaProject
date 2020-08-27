@@ -17,7 +17,7 @@ public class findUserServlet extends HttpServlet {
         String id = request.getParameter("id");
         //使用service去查询
         userServiceImpl service = new userServiceImpl();
-        User user  =   service.findUserById(Integer.parseInt(id));
+        User user = service.findUserById(Integer.parseInt(id));
         //将user存入到request域中
         request.setAttribute("user", user);
         //将这个user转发update.jsp页面中， 可以共享request域

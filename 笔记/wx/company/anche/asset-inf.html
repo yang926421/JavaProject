@@ -1,138 +1,139 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>企业资产状况信息</title>
-		<link rel="stylesheet" href="../../static/css/common.css">
-		<link rel="stylesheet" href="../../static/css/mui.min.css">
-		<link rel="stylesheet" href="../../static/css/mui.min.css">
-		<link rel="stylesheet" href="../../static/css/asset-inf.css">
-		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
-		<script type="text/javascript" src="../../static/js/common.js"></script>
-		
-		<script>
-			//获取年报id
-			var ancheid=GetRequest("ANCHEID");
-			$(function(){
-				$("#ANCHEID").val(ancheid);
-				$("#TOKEN").val(TOKEN);
-				$("#SESSIONID").val(SESSIONID);
-				
-				//从session中获取要显示的项
-			    var isShowAll=sessionStorage.getItem("ALL_PRODUCTION");
-				if(isShowAll==1){
-					$("#ASSGRO_MENU").show();
-					$("#TOTEQU_MENU").show();
-					$("#LIAGRO_MENU").show();
-					$("#VENDINC_MENU").show();
-					$("#PROGRO_MENU").show();
-				}else{
-					$("#ASSGRO_MENU").hide();
-					$("#TOTEQU_MENU").hide();
-					$("#LIAGRO_MENU").hide();
-					$("#VENDINC_MENU").hide();
-					$("#PROGRO_MENU").hide();
-				}
-				
-				if(ancheid!=null && ancheid!=""){
-					getData();
-				}
-			});
-			//获取资产数据
-			function getData(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/e/an/assetsCondition/get.json",
-					async:true,
-					data:{"ANCHEID":ancheid,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
-					dataType:"json",
-					success:function(res){
-						if(res.success==true){
-							$("#ASSGRO").val(res.data.ASSGRO);
-							if(res.data.ASSGRODIS!=null && res.data.ASSGRODIS!=""){
-								$("#ASSGRODIS").val(res.data.ASSGRODIS);
-							}
-							if(res.data.ASSGRODIS==1){   
-								document.getElementById("assgrodisImg").src="../../static/img/show.png";
-							}else{
-								document.getElementById("assgrodisImg").src="../../static/img/show-no.png";
-							}
-							
-							$("#TOTEQU").val(res.data.TOTEQU);
-							if(res.data.TOTEQUDIS!=null && res.data.TOTEQUDIS!=""){
-								$("#TOTEQUDIS").val(res.data.TOTEQUDIS);
-							}
-							if(res.data.TOTEQUDIS==1){   
-								document.getElementById("totequdisImg").src="../../static/img/show.png";
-							}else{
-								document.getElementById("totequdisImg").src="../../static/img/show-no.png";
-							}
-							$("#LIAGRO").val(res.data.LIAGRO);
-							if(res.data.LIAGRODIS!=null && res.data.LIAGRODIS!=""){
-								$("#LIAGRODIS").val(res.data.LIAGRODIS);
-							}
-							if(res.data.LIAGRODIS==1){   
-								document.getElementById("liagrodisImg").src="../../static/img/show.png";
-							}else{
-								document.getElementById("liagrodisImg").src="../../static/img/show-no.png";
-							}
-							
-							$("#VENDINC").val(res.data.VENDINC);
-							if(res.data.VENDINCDIS!=null && res.data.VENDINCDIS!=""){
-								$("#VENDINCDIS").val(res.data.VENDINCDIS);
-							}
-							if(res.data.VENDINCDIS==1){   
-								document.getElementById("vendincdisImg").src="../../static/img/show.png";
-							}else{
-								document.getElementById("vendincdisImg").src="../../static/img/show-no.png";
-							}
-							$("#MAIBUSINC").val(res.data.MAIBUSINC);
-							if(res.data.MAIBUSINCDIS!=null && res.data.MAIBUSINCDIS!=""){
-								$("#MAIBUSINCDIS").val(res.data.MAIBUSINCDIS);
-							}
-							if(res.data.MAIBUSINCDIS==1){   
-								document.getElementById("maibusincdisImg").src="../../static/img/show.png";
-							}else{
-								document.getElementById("maibusincdisImg").src="../../static/img/show-no.png";
-							}
-							$("#PROGRO").val(res.data.PROGRO);
-							if(res.data.PROGRODIS!=null && res.data.PROGRODIS!=""){
-								$("#PROGRODIS").val(res.data.PROGRODIS);
-							}
-							if(res.data.PROGRODIS==1){   
-								document.getElementById("progrodisImg").src="../../static/img/show.png";
-							}else{
-								document.getElementById("progrodisImg").src="../../static/img/show-no.png";
-							}
-							
-							$("#NETINC").val(res.data.NETINC);
-							if(res.data.NETINCDIS!=null && res.data.NETINCDIS!=""){
-								$("#NETINCDIS").val(res.data.NETINCDIS);
-							}
-							if(res.data.NETINCDIS==1){   
-								document.getElementById("netincdisImg").src="../../static/img/show.png";
-							}else{
-								document.getElementById("netincdisImg").src="../../static/img/show-no.png";
-							}
-							$("#RATGRO").val(res.data.RATGRO);
-							if(res.data.RATGRODIS!=null && res.data.RATGRODIS!=""){
-								$("#RATGRODIS").val(res.data.RATGRODIS);
-							}
-							if(res.data.RATGRODIS==1){   
-								document.getElementById("ratgrodisImg").src="../../static/img/show.png";
-							}else{
-								document.getElementById("ratgrodisImg").src="../../static/img/show-no.png";
-							}
-							
-						}
-					}
-				});
-			}
-			
-			//添加or修改
-			function addData(){
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>企业资产状况信息</title>
+    <link rel="stylesheet" href="../../static/css/common.css">
+    <link rel="stylesheet" href="../../static/css/mui.min.css">
+    <link rel="stylesheet" href="../../static/css/mui.min.css">
+    <link rel="stylesheet" href="../../static/css/asset-inf.css">
+    <script type="text/javascript" src="../../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../../static/js/common.js"></script>
+
+    <script>
+        //获取年报id
+        var ancheid = GetRequest("ANCHEID");
+        $(function () {
+            $("#ANCHEID").val(ancheid);
+            $("#TOKEN").val(TOKEN);
+            $("#SESSIONID").val(SESSIONID);
+
+            //从session中获取要显示的项
+            var isShowAll = sessionStorage.getItem("ALL_PRODUCTION");
+            if (isShowAll == 1) {
+                $("#ASSGRO_MENU").show();
+                $("#TOTEQU_MENU").show();
+                $("#LIAGRO_MENU").show();
+                $("#VENDINC_MENU").show();
+                $("#PROGRO_MENU").show();
+            } else {
+                $("#ASSGRO_MENU").hide();
+                $("#TOTEQU_MENU").hide();
+                $("#LIAGRO_MENU").hide();
+                $("#VENDINC_MENU").hide();
+                $("#PROGRO_MENU").hide();
+            }
+
+            if (ancheid != null && ancheid != "") {
+                getData();
+            }
+        });
+
+        //获取资产数据
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/e/an/assetsCondition/get.json",
+                async: true,
+                data: {"ANCHEID": ancheid, "TOKEN": TOKEN, "SESSIONID": SESSIONID},
+                dataType: "json",
+                success: function (res) {
+                    if (res.success == true) {
+                        $("#ASSGRO").val(res.data.ASSGRO);
+                        if (res.data.ASSGRODIS != null && res.data.ASSGRODIS != "") {
+                            $("#ASSGRODIS").val(res.data.ASSGRODIS);
+                        }
+                        if (res.data.ASSGRODIS == 1) {
+                            document.getElementById("assgrodisImg").src = "../../static/img/show.png";
+                        } else {
+                            document.getElementById("assgrodisImg").src = "../../static/img/show-no.png";
+                        }
+
+                        $("#TOTEQU").val(res.data.TOTEQU);
+                        if (res.data.TOTEQUDIS != null && res.data.TOTEQUDIS != "") {
+                            $("#TOTEQUDIS").val(res.data.TOTEQUDIS);
+                        }
+                        if (res.data.TOTEQUDIS == 1) {
+                            document.getElementById("totequdisImg").src = "../../static/img/show.png";
+                        } else {
+                            document.getElementById("totequdisImg").src = "../../static/img/show-no.png";
+                        }
+                        $("#LIAGRO").val(res.data.LIAGRO);
+                        if (res.data.LIAGRODIS != null && res.data.LIAGRODIS != "") {
+                            $("#LIAGRODIS").val(res.data.LIAGRODIS);
+                        }
+                        if (res.data.LIAGRODIS == 1) {
+                            document.getElementById("liagrodisImg").src = "../../static/img/show.png";
+                        } else {
+                            document.getElementById("liagrodisImg").src = "../../static/img/show-no.png";
+                        }
+
+                        $("#VENDINC").val(res.data.VENDINC);
+                        if (res.data.VENDINCDIS != null && res.data.VENDINCDIS != "") {
+                            $("#VENDINCDIS").val(res.data.VENDINCDIS);
+                        }
+                        if (res.data.VENDINCDIS == 1) {
+                            document.getElementById("vendincdisImg").src = "../../static/img/show.png";
+                        } else {
+                            document.getElementById("vendincdisImg").src = "../../static/img/show-no.png";
+                        }
+                        $("#MAIBUSINC").val(res.data.MAIBUSINC);
+                        if (res.data.MAIBUSINCDIS != null && res.data.MAIBUSINCDIS != "") {
+                            $("#MAIBUSINCDIS").val(res.data.MAIBUSINCDIS);
+                        }
+                        if (res.data.MAIBUSINCDIS == 1) {
+                            document.getElementById("maibusincdisImg").src = "../../static/img/show.png";
+                        } else {
+                            document.getElementById("maibusincdisImg").src = "../../static/img/show-no.png";
+                        }
+                        $("#PROGRO").val(res.data.PROGRO);
+                        if (res.data.PROGRODIS != null && res.data.PROGRODIS != "") {
+                            $("#PROGRODIS").val(res.data.PROGRODIS);
+                        }
+                        if (res.data.PROGRODIS == 1) {
+                            document.getElementById("progrodisImg").src = "../../static/img/show.png";
+                        } else {
+                            document.getElementById("progrodisImg").src = "../../static/img/show-no.png";
+                        }
+
+                        $("#NETINC").val(res.data.NETINC);
+                        if (res.data.NETINCDIS != null && res.data.NETINCDIS != "") {
+                            $("#NETINCDIS").val(res.data.NETINCDIS);
+                        }
+                        if (res.data.NETINCDIS == 1) {
+                            document.getElementById("netincdisImg").src = "../../static/img/show.png";
+                        } else {
+                            document.getElementById("netincdisImg").src = "../../static/img/show-no.png";
+                        }
+                        $("#RATGRO").val(res.data.RATGRO);
+                        if (res.data.RATGRODIS != null && res.data.RATGRODIS != "") {
+                            $("#RATGRODIS").val(res.data.RATGRODIS);
+                        }
+                        if (res.data.RATGRODIS == 1) {
+                            document.getElementById("ratgrodisImg").src = "../../static/img/show.png";
+                        } else {
+                            document.getElementById("ratgrodisImg").src = "../../static/img/show-no.png";
+                        }
+
+                    }
+                }
+            });
+        }
+
+        //添加or修改
+        function addData() {
 //				var addgro=$("#ASSGRO").val();
 //				if(!isNotNull(addgro)){
 //					mui.toast("资产总额不能为空");
@@ -149,298 +150,314 @@
 //					return;
 //				}
 //				
-				$.ajax({
-					type:"post",
-					url:httpUrl+"/e/an/assetsCondition/save.json",
-					async:true,
-					data:$("#addForm").serialize(),
-					dataType:"json",
-					success:function(res){
-						if(res.success==true){
-						//	mui.toast(res.codeMsg);
-							window.location.href="report.html?ANCHEID="+ancheid;
-						}
-					}
-				});
-			}
-			
-		</script>
-		
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="report.html"></a>
-		    <h1 class="mui-title">企业资产状况信息</h1>
-		    <span id="sure">
+            $.ajax({
+                type: "post",
+                url: httpUrl + "/e/an/assetsCondition/save.json",
+                async: true,
+                data: $("#addForm").serialize(),
+                dataType: "json",
+                success: function (res) {
+                    if (res.success == true) {
+                        //	mui.toast(res.codeMsg);
+                        window.location.href = "report.html?ANCHEID=" + ancheid;
+                    }
+                }
+            });
+        }
+
+    </script>
+
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="report.html"></a>
+    <h1 class="mui-title">企业资产状况信息</h1>
+    <span id="sure">
 		    	<a href="javascript:;" onclick="addData()">保存</a>
 		    </span>
-		</header>
-		
-		<!--资产状况信息-->
-		<form id="addForm">
-			<input type="hidden" name="ANCHEID" id="ANCHEID" />
-			<input type="hidden" name="TOKEN" id="TOKEN" />
-			<input type="hidden" name="SESSIONID" id="SESSIONID" />
-		<div id="common-box">
-			<div class="web-box" id="ASSGRO_MENU">
-					<ul>
-						<li>
-							<span >
+</header>
+
+<!--资产状况信息-->
+<form id="addForm">
+    <input type="hidden" name="ANCHEID" id="ANCHEID"/>
+    <input type="hidden" name="TOKEN" id="TOKEN"/>
+    <input type="hidden" name="SESSIONID" id="SESSIONID"/>
+    <div id="common-box">
+        <div class="web-box" id="ASSGRO_MENU">
+            <ul>
+                <li>
+							<span>
 								资产总额
 							</span>
-							<div class="select-time">
-								<div class="web-write">
-									<input type="text" name="ASSGRO" id="ASSGRO" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
-								</div>
-								<input type="hidden" name="ASSGRODIS" id="ASSGRODIS" value="2" />
-								<span class="contribution-arrow-right"><img id="assgrodisImg" src="../../static/img/show-no.png"/></span>
-							</div>
-							
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box" id="TOTEQU_MENU">
-					<ul>
-						<li>
-							<span >
+                    <div class="select-time">
+                        <div class="web-write">
+                            <input type="text" name="ASSGRO" id="ASSGRO" oninput="inputNumPoint(this)"
+                                   placeholder="请输入金额"/>
+                        </div>
+                        <input type="hidden" name="ASSGRODIS" id="ASSGRODIS" value="2"/>
+                        <span class="contribution-arrow-right"><img id="assgrodisImg"
+                                                                    src="../../static/img/show-no.png"/></span>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box" id="TOTEQU_MENU">
+            <ul>
+                <li>
+							<span>
 								所有者权益合计
 							</span>
-							<div class="select-time">
-								<div class="web-write">
-									<input type="text" name="TOTEQU" id="TOTEQU" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
-								</div>
-								<input type="hidden" name="TOTEQUDIS" id="TOTEQUDIS" value="2" />
-								<span class="contribution-arrow-right"><img id="totequdisImg" src="../../static/img/show-no.png"/></span>
-							</div>
-							
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box" id="LIAGRO_MENU">
-					<ul>
-						<li>
-							<span >
+                    <div class="select-time">
+                        <div class="web-write">
+                            <input type="text" name="TOTEQU" id="TOTEQU" oninput="inputNumPoint(this)"
+                                   placeholder="请输入金额"/>
+                        </div>
+                        <input type="hidden" name="TOTEQUDIS" id="TOTEQUDIS" value="2"/>
+                        <span class="contribution-arrow-right"><img id="totequdisImg"
+                                                                    src="../../static/img/show-no.png"/></span>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box" id="LIAGRO_MENU">
+            <ul>
+                <li>
+							<span>
 								负债总额
 							</span>
-							<div class="select-time">
-								<div class="web-write">
-									<input type="text" name="LIAGRO" id="LIAGRO" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
-								</div>
-								<input type="hidden" name="LIAGRODIS" id="LIAGRODIS" value="2"/>
-								<span class="contribution-arrow-right"><img id="liagrodisImg" src="../../static/img/show-no.png"/></span>
-							</div>
-							
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box" id="VENDINC_MENU">
-					<ul>
-						<li>
-							<span >
+                    <div class="select-time">
+                        <div class="web-write">
+                            <input type="text" name="LIAGRO" id="LIAGRO" oninput="inputNumPoint(this)"
+                                   placeholder="请输入金额"/>
+                        </div>
+                        <input type="hidden" name="LIAGRODIS" id="LIAGRODIS" value="2"/>
+                        <span class="contribution-arrow-right"><img id="liagrodisImg"
+                                                                    src="../../static/img/show-no.png"/></span>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box" id="VENDINC_MENU">
+            <ul>
+                <li>
+							<span>
 								营业总收入
 							</span>
-							<div class="select-time">
-								<div class="web-write">
-									<input type="text" name="VENDINC" id="VENDINC" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
-								</div>
-								<input type="hidden" name="VENDINCDIS" id="VENDINCDIS" value="2"/>
-								<span class="contribution-arrow-right"><img id="vendincdisImg" src="../../static/img/show-no.png"/></span>
-							</div>
-							
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                    <div class="select-time">
+                        <div class="web-write">
+                            <input type="text" name="VENDINC" id="VENDINC" oninput="inputNumPoint(this)"
+                                   placeholder="请输入金额"/>
+                        </div>
+                        <input type="hidden" name="VENDINCDIS" id="VENDINCDIS" value="2"/>
+                        <span class="contribution-arrow-right"><img id="vendincdisImg"
+                                                                    src="../../static/img/show-no.png"/></span>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								其中主营业务收入
 							</span>
-							<div class="select-time">
-								<div class="web-write">
-									<input type="text" name="MAIBUSINC" id="MAIBUSINC" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
-								</div>
-								<input type="hidden" name="MAIBUSINCDIS" id="MAIBUSINCDIS" value="2"/>
-								<span class="contribution-arrow-right"><img id="maibusincdisImg" src="../../static/img/show-no.png"/></span>
-							</div>
-							
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box" id="PROGRO_MENU">
-					<ul>
-						<li>
-							<span >
+                    <div class="select-time">
+                        <div class="web-write">
+                            <input type="text" name="MAIBUSINC" id="MAIBUSINC" oninput="inputNumPoint(this)"
+                                   placeholder="请输入金额"/>
+                        </div>
+                        <input type="hidden" name="MAIBUSINCDIS" id="MAIBUSINCDIS" value="2"/>
+                        <span class="contribution-arrow-right"><img id="maibusincdisImg"
+                                                                    src="../../static/img/show-no.png"/></span>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box" id="PROGRO_MENU">
+            <ul>
+                <li>
+							<span>
 								利润总额
 							</span>
-							<div class="select-time">
-								<div class="web-write">
-									<input type="text" name="PROGRO" id="PROGRO" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
-								</div>
-								<input type="hidden" name="PROGRODIS" id="PROGRODIS" value="2"/>
-								<span class="contribution-arrow-right"><img id="progrodisImg" src="../../static/img/show-no.png"/></span>
-							</div>
-							
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                    <div class="select-time">
+                        <div class="web-write">
+                            <input type="text" name="PROGRO" id="PROGRO" oninput="inputNumPoint(this)"
+                                   placeholder="请输入金额"/>
+                        </div>
+                        <input type="hidden" name="PROGRODIS" id="PROGRODIS" value="2"/>
+                        <span class="contribution-arrow-right"><img id="progrodisImg"
+                                                                    src="../../static/img/show-no.png"/></span>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								净利润
 							</span>
-							<div class="select-time">
-								<div class="web-write">
-									<input type="text" name="NETINC" id="NETINC" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
-								</div>
-								<input type="hidden" name="NETINCDIS" id="NETINCDIS" value="2"/>
-								<span class="contribution-arrow-right" ><img id="netincdisImg" src="../../static/img/show-no.png"/></span>
-							</div>
-							
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                    <div class="select-time">
+                        <div class="web-write">
+                            <input type="text" name="NETINC" id="NETINC" oninput="inputNumPoint(this)"
+                                   placeholder="请输入金额"/>
+                        </div>
+                        <input type="hidden" name="NETINCDIS" id="NETINCDIS" value="2"/>
+                        <span class="contribution-arrow-right"><img id="netincdisImg"
+                                                                    src="../../static/img/show-no.png"/></span>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								纳税总额
 							</span>
-							<div class="select-time">
-								<div class="web-write">
-									<input type="text" name="RATGRO" id="RATGRO" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
-								</div>
-								<input type="hidden" name="RATGRODIS" id="RATGRODIS" value="2"/>
-								<span class="contribution-arrow-right" ><img id="ratgrodisImg" src="../../static/img/show-no.png"/></span>
-							</div>
-							
-						</li>
-					</ul>
-			</div>
-			</form>
-			<!--提示信息-->
-			<div class="tip">
+                    <div class="select-time">
+                        <div class="web-write">
+                            <input type="text" name="RATGRO" id="RATGRO" oninput="inputNumPoint(this)"
+                                   placeholder="请输入金额"/>
+                        </div>
+                        <input type="hidden" name="RATGRODIS" id="RATGRODIS" value="2"/>
+                        <span class="contribution-arrow-right"><img id="ratgrodisImg"
+                                                                    src="../../static/img/show-no.png"/></span>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+</form>
+<!--提示信息-->
+<div class="tip">
 				<span style="font-size:16px;">
-					*说明：以上单位为<img src="../../static/img/million.gif"  style="height: 25px;vertical-align:middle;"/>
+					*说明：以上单位为<img src="../../static/img/million.gif" style="height: 25px;vertical-align:middle;"/>
 				</span>
-			</div>
-		</div>
-		<script type="text/javascript">
-		
-		   /******** start 设置资产状况对外公示or隐藏*************/
-			document.getElementById("assgrodisImg").addEventListener('tap', function() {
-				var assgrodis=$("#ASSGRODIS").val();
-				if(assgrodis==2){
-					document.getElementById("assgrodisImg").src="../../static/img/show.png";
-					$("#ASSGRODIS").val(1);
-					mui.toast('您设置了资产总额对外公示');
-				}else{
-					document.getElementById("assgrodisImg").src="../../static/img/show-no.png";
-					$("#ASSGRODIS").val(2);
-					mui.toast('您设置了资产总额对外隐藏');
-				}
-			});
-			
-			document.getElementById("totequdisImg").addEventListener('tap', function() {
-				var totequdis=$("#TOTEQUDIS").val();
-				if(totequdis==2){
-					document.getElementById("totequdisImg").src="../../static/img/show.png";
-					$("#TOTEQUDIS").val(1);
-					mui.toast('您设置了所有者权益对外公示');
-				}else{
-					document.getElementById("totequdisImg").src="../../static/img/show-no.png";
-					$("#TOTEQUDIS").val(2);
-					mui.toast('您设置了所有者权益对外隐藏');
-				}
-			});
-			
-			document.getElementById("liagrodisImg").addEventListener('tap', function() {
-				var liagrodis=$("#LIAGRODIS").val();
-				if(liagrodis==2){
-					document.getElementById("liagrodisImg").src="../../static/img/show.png";
-					$("#LIAGRODIS").val(1);
-					mui.toast('您设置了负债总额对外公示');
-				}else{
-					document.getElementById("liagrodisImg").src="../../static/img/show-no.png";
-					$("#LIAGRODIS").val(2);
-					mui.toast('您设置了负债总额对外隐藏');
-				}
-			});
-			
-			document.getElementById("vendincdisImg").addEventListener('tap', function() {
-				var vendincdis=$("#VENDINCDIS").val();
-				if(vendincdis==2){
-					document.getElementById("vendincdisImg").src="../../static/img/show.png";
-					$("#VENDINCDIS").val(1);
-					mui.toast('您设置了营业总收入对外公示');
-				}else{
-					document.getElementById("vendincdisImg").src="../../static/img/show-no.png";
-					$("#VENDINCDIS").val(2);
-					mui.toast('您设置了营业总收入对外隐藏');
-				}
-			});
-			
-			document.getElementById("maibusincdisImg").addEventListener('tap', function() {
-				var maibusincdis=$("#MAIBUSINCDIS").val();
-				if(maibusincdis==2){
-					document.getElementById("maibusincdisImg").src="../../static/img/show.png";
-					$("#MAIBUSINCDIS").val(1);
-					mui.toast('您设置了主营业务收入对外公示');
-				}else{
-					document.getElementById("maibusincdisImg").src="../../static/img/show-no.png";
-					$("#MAIBUSINCDIS").val(2);
-					mui.toast('您设置了主营业务收入对外隐藏');
-				}
-			});
-			
-			document.getElementById("progrodisImg").addEventListener('tap', function() {
-				var progrodis=$("#PROGRODIS").val();
-				if(progrodis==2){
-					document.getElementById("progrodisImg").src="../../static/img/show.png";
-					$("#PROGRODIS").val(1);
-					mui.toast('您设置了利润总额对外公示');
-				}else{
-					document.getElementById("progrodisImg").src="../../static/img/show-no.png";
-					$("#PROGRODIS").val(2);
-					mui.toast('您设置了利润总额对外隐藏');
-				}
-			});
-			
-			document.getElementById("netincdisImg").addEventListener('tap', function() {
-				var netincdis=$("#NETINCDIS").val();
-				if(netincdis==2){
-					document.getElementById("netincdisImg").src="../../static/img/show.png";
-					$("#NETINCDIS").val(1);
-					mui.toast('您设置了净利润对外公示');
-				}else{
-					document.getElementById("netincdisImg").src="../../static/img/show-no.png";
-					$("#NETINCDIS").val(2);
-					mui.toast('您设置了净利润对外隐藏');
-				}
-			});
-			
-			document.getElementById("ratgrodisImg").addEventListener('tap', function() {
-				var ratgrodis=$("#RATGRODIS").val();
-				if(ratgrodis==2){
-					document.getElementById("ratgrodisImg").src="../../static/img/show.png";
-					$("#RATGRODIS").val(1);
-					mui.toast('您设置了纳税总额对外公示');
-				}else{
-					document.getElementById("ratgrodisImg").src="../../static/img/show-no.png";
-					$("#RATGRODIS").val(2);
-					mui.toast('您设置了纳税总额对外隐藏');
-				}
-			});
-			/******** end 设置资产状况对外公示or隐藏*************/
-		</script>
-	</body>
+</div>
+</div>
+<script type="text/javascript">
+
+    /******** start 设置资产状况对外公示or隐藏*************/
+    document.getElementById("assgrodisImg").addEventListener('tap', function () {
+        var assgrodis = $("#ASSGRODIS").val();
+        if (assgrodis == 2) {
+            document.getElementById("assgrodisImg").src = "../../static/img/show.png";
+            $("#ASSGRODIS").val(1);
+            mui.toast('您设置了资产总额对外公示');
+        } else {
+            document.getElementById("assgrodisImg").src = "../../static/img/show-no.png";
+            $("#ASSGRODIS").val(2);
+            mui.toast('您设置了资产总额对外隐藏');
+        }
+    });
+
+    document.getElementById("totequdisImg").addEventListener('tap', function () {
+        var totequdis = $("#TOTEQUDIS").val();
+        if (totequdis == 2) {
+            document.getElementById("totequdisImg").src = "../../static/img/show.png";
+            $("#TOTEQUDIS").val(1);
+            mui.toast('您设置了所有者权益对外公示');
+        } else {
+            document.getElementById("totequdisImg").src = "../../static/img/show-no.png";
+            $("#TOTEQUDIS").val(2);
+            mui.toast('您设置了所有者权益对外隐藏');
+        }
+    });
+
+    document.getElementById("liagrodisImg").addEventListener('tap', function () {
+        var liagrodis = $("#LIAGRODIS").val();
+        if (liagrodis == 2) {
+            document.getElementById("liagrodisImg").src = "../../static/img/show.png";
+            $("#LIAGRODIS").val(1);
+            mui.toast('您设置了负债总额对外公示');
+        } else {
+            document.getElementById("liagrodisImg").src = "../../static/img/show-no.png";
+            $("#LIAGRODIS").val(2);
+            mui.toast('您设置了负债总额对外隐藏');
+        }
+    });
+
+    document.getElementById("vendincdisImg").addEventListener('tap', function () {
+        var vendincdis = $("#VENDINCDIS").val();
+        if (vendincdis == 2) {
+            document.getElementById("vendincdisImg").src = "../../static/img/show.png";
+            $("#VENDINCDIS").val(1);
+            mui.toast('您设置了营业总收入对外公示');
+        } else {
+            document.getElementById("vendincdisImg").src = "../../static/img/show-no.png";
+            $("#VENDINCDIS").val(2);
+            mui.toast('您设置了营业总收入对外隐藏');
+        }
+    });
+
+    document.getElementById("maibusincdisImg").addEventListener('tap', function () {
+        var maibusincdis = $("#MAIBUSINCDIS").val();
+        if (maibusincdis == 2) {
+            document.getElementById("maibusincdisImg").src = "../../static/img/show.png";
+            $("#MAIBUSINCDIS").val(1);
+            mui.toast('您设置了主营业务收入对外公示');
+        } else {
+            document.getElementById("maibusincdisImg").src = "../../static/img/show-no.png";
+            $("#MAIBUSINCDIS").val(2);
+            mui.toast('您设置了主营业务收入对外隐藏');
+        }
+    });
+
+    document.getElementById("progrodisImg").addEventListener('tap', function () {
+        var progrodis = $("#PROGRODIS").val();
+        if (progrodis == 2) {
+            document.getElementById("progrodisImg").src = "../../static/img/show.png";
+            $("#PROGRODIS").val(1);
+            mui.toast('您设置了利润总额对外公示');
+        } else {
+            document.getElementById("progrodisImg").src = "../../static/img/show-no.png";
+            $("#PROGRODIS").val(2);
+            mui.toast('您设置了利润总额对外隐藏');
+        }
+    });
+
+    document.getElementById("netincdisImg").addEventListener('tap', function () {
+        var netincdis = $("#NETINCDIS").val();
+        if (netincdis == 2) {
+            document.getElementById("netincdisImg").src = "../../static/img/show.png";
+            $("#NETINCDIS").val(1);
+            mui.toast('您设置了净利润对外公示');
+        } else {
+            document.getElementById("netincdisImg").src = "../../static/img/show-no.png";
+            $("#NETINCDIS").val(2);
+            mui.toast('您设置了净利润对外隐藏');
+        }
+    });
+
+    document.getElementById("ratgrodisImg").addEventListener('tap', function () {
+        var ratgrodis = $("#RATGRODIS").val();
+        if (ratgrodis == 2) {
+            document.getElementById("ratgrodisImg").src = "../../static/img/show.png";
+            $("#RATGRODIS").val(1);
+            mui.toast('您设置了纳税总额对外公示');
+        } else {
+            document.getElementById("ratgrodisImg").src = "../../static/img/show-no.png";
+            $("#RATGRODIS").val(2);
+            mui.toast('您设置了纳税总额对外隐藏');
+        }
+    });
+    /******** end 设置资产状况对外公示or隐藏*************/
+</script>
+</body>
 </html>

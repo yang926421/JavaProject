@@ -13,7 +13,7 @@ public class SpringMvcTest {
     @Autowired
     private DemoController demoController;
 
-    public void test1() throws Exception{
+    public void test1() throws Exception {
         demoController.show();
     }
 

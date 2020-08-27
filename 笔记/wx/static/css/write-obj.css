@@ -1,108 +1,125 @@
-.web-box{
-	border-bottom:solid #EAEAEA 1px ;
-	background-color: #FFFFFF;
+.web-box {
+    border-bottom: solid #EAEAEA 1px;
+    background-color: #FFFFFF;
 }
-.web-box ul{
-	margin: auto;
-	width: 92%;
-	/*border: #000000 solid 1px;*/
+
+.web-box ul {
+    margin: auto;
+    width: 92%;
+    /*border: #000000 solid 1px;*/
 }
-.web-box li{
-	line-height: 5rem;
-	overflow: hidden;
-	font-size: 1.5rem;
+
+.web-box li {
+    line-height: 5rem;
+    overflow: hidden;
+    font-size: 1.5rem;
 }
-.web-box li span{
-	float: left;
-	display: inline-block;
+
+.web-box li span {
+    float: left;
+    display: inline-block;
 }
-.web-box:nth-child(2) li span{
-	/*border: #000000 solid 1px;*/
-	width: 30%;
-	float: left;
-	display: inline-block;
-	line-height: 2.0rem;
-	padding: 1.3rem 0rem;
+
+.web-box:nth-child(2) li span {
+    /*border: #000000 solid 1px;*/
+    width: 30%;
+    float: left;
+    display: inline-block;
+    line-height: 2.0rem;
+    padding: 1.3rem 0rem;
 }
-.web-write{
-	width:66%;
-	overflow: hidden;
-	/*border: #000000 solid 1px;*/
-	float: right;
-	
+
+.web-write {
+    width: 66%;
+    overflow: hidden;
+    /*border: #000000 solid 1px;*/
+    float: right;
+
 }
-.web-write input{
-	border: none;
-	display: inline-block;
-	font-size: 1.5rem;
-	height: 2.2rem;
-	padding: 0px 0px;
+
+.web-write input {
+    border: none;
+    display: inline-block;
+    font-size: 1.5rem;
+    height: 2.2rem;
+    padding: 0px 0px;
 }
+
 /*验证码*/
-#Code-box{
-	/*border: dashed 1px;*/
-	width: 66%; 
-	float: right;
-	overflow: hidden;
+#Code-box {
+    /*border: dashed 1px;*/
+    width: 66%;
+    float: right;
+    overflow: hidden;
 }
-#Code-write{
-	float: left;
-	width: 60%;
+
+#Code-write {
+    float: left;
+    width: 60%;
 }
-#Code-write input{
-	/*border: dashed 1px;*/
-	width: 80%; 
+
+#Code-write input {
+    /*border: dashed 1px;*/
+    width: 80%;
 }
-.web-box #getVerification{
-	-webkit-appearance: none;
-	font-size: 1.2rem;
-	line-height: 3.9rem;
-	color: #ac812e;
-	float: right;
-	border:none;
-	padding:auto 0;
+
+.web-box #getVerification {
+    -webkit-appearance: none;
+    font-size: 1.2rem;
+    line-height: 3.9rem;
+    color: #ac812e;
+    float: right;
+    border: none;
+    padding: auto 0;
 }
+
 /*上传照片*/
-#uploaderFiles{
-	width: 100%;
+#uploaderFiles {
+    width: 100%;
 }
-#upload-container{
-	position: relative;
+
+#upload-container {
+    position: relative;
 }
-#scImg{
-	position:relative;
-	overflow:hidden;
-	display:inline-block;
+
+#scImg {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
 }
-#upload-img{
-	width: 70px;	
-	display: block;
+
+#upload-img {
+    width: 70px;
+    display: block;
 }
-#uploaded{
-	width: 70px;
-	height: 70px;
-	border: #000000 solid 1px;
-	float: right;
+
+#uploaded {
+    width: 70px;
+    height: 70px;
+    border: #000000 solid 1px;
+    float: right;
 }
+
 /*删除照片*/
-.delete-img{
-	width:1.8rem;
-	height:1.8rem;
-	position:absolute;
-	right:0.2rem;
-	top: -1.2rem;
-	z-index: 10;
+.delete-img {
+    width: 1.8rem;
+    height: 1.8rem;
+    position: absolute;
+    right: 0.2rem;
+    top: -1.2rem;
+    z-index: 10;
 }
 
 /*需要隐藏的信息*/
-.network{
-	margin-top: 4%;
-	text-align: center;
-	color: #999999;
-	font-size: 1.4rem;
+.network {
+    margin-top: 4%;
+    text-align: center;
+    color: #999999;
+    font-size: 1.4rem;
 }
-#obj-textarea{
-	border-bottom:#EAEAEA solid 1px;
-	border-radius:0px ;
-	font-size: 1.5rem;
+
+#obj-textarea {
+    border-bottom: #EAEAEA solid 1px;
+    border-radius: 0px;
+    font-size: 1.5rem;
 }

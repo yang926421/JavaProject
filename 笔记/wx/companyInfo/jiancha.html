@@ -1,102 +1,106 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>双随机抽查结果信息</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/modify-record.css">
-		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../static/js/common.js" ></script>
-		<style>
-			.web{padding-top:15px;}
-		</style>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>双随机抽查结果信息</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/modify-record.css">
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <style>
+        .web {
+            padding-top: 15px;
+        }
+    </style>
 
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="report.html"></a>
-		    <h1 class="mui-title">双随机抽查结果信息(<span id="count"></span>)</h1>
-		</header>
-		
-		<!--修改信息-->
-		<div id="common-box">
-			<!--<div class="web-box">
-				<div class="web-name">
-					<ul class="web">
-						<li><span>检查实施机关：</span> <span>郑州市金水区市监局</span></li>
-						<li><span>类型：</span><span>抽查</span></li>
-						<li><span>日期：</span><span>2017年5月31日</span></li>
-						<li><span>结果：</span><span>通过登记的住所(经营场所)无法联系</span></li>
-					</ul>
-				</div>
-			</div>
-			
-			<div class="web-box">
-				<div class="web-name">
-					<ul class="web">
-						<li><span>检查实施机关：</span> <span>郑州市金水区市监局</span></li>
-						<li><span>类型：</span><span>抽查</span></li>
-						<li><span>日期：</span><span>2017年5月31日</span></li>
-						<li><span>结果：</span><span>通过登记的住所(经营场所)无法联系</span></li>
-					</ul>
-				</div>
-			</div>	-->
-		</div>
-		<script type="text/javascript">
-			//获取企业id
-			var pripid=sessionStorage.getItem("PRIPID");;
-			$(function(){
-				getData();
-			});
-			//获取企业双随机抽查信息
-			function getData(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/p/double/result/list.json",
-					data:{"PRIPID":pripid},
-					async:true,
-					dataType:"json",
-					success:function(res){
-						console.log(res)
-						if(res.success==true){
-							createElem(res.data)
-						}
-					}
-				});
-			}
-				//创建双随机抽查数据						
-			function createElem(data){			
-				$("#count").html(data.length);
-				for (var i = 0; i < data.length; i++) {
-					var type="";
-					if(data[i].RANINSTYPE==1){
-						type="定向";
-					}else if(data[i].RANINSTYPE==2){
-						type="不定向";
-					}
-					var elem = "<div class='web-box'><div class='web-name'><ul class='web'>"
-					+"<li><span>抽查计划编号：</span> <span>"+data[i].RANINSPLANID+"</span></li>"
-					+"<li><span>抽查计划名称：</span><span>"+data[i].RANINSPLANNAME+"</span></li>"
-					+"<li><span>抽查任务编号：</span><span>"+data[i].RANINSTASKID+"</span></li>"
-					+"<li><span>抽查任务名称：</span><span>"+data[i].RANINSTASKNAME+"</span></li>"
-					+"<li><span>抽查类型：</span><span>"+type+"</span></li>"
-					+"<li><span>检查机关：</span><span>"+data[i].INSAUTH+"</span></li>"
-					+"<li><span>检查事项：</span><span>"+data[i].RANINSITEMNAME+"</span></li>"
-					+"<li><span>检查完成日期：</span><span>"+getFormatDateByLong(data[i].INSDATE,"yyyy年MM月dd日")+"</span></li>"
-					+"<li class='type'><span>检查结果：</span><span>"+data[i].CHECKRESNAME+"</span></li>"
-					"</ul></div></div>";
-					$("#common-box").append(elem);
-				}
-			}
-			
-		
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="report.html"></a>
+    <h1 class="mui-title">双随机抽查结果信息(<span id="count"></span>)</h1>
+</header>
 
-		</script>
-	</body>
+<!--修改信息-->
+<div id="common-box">
+    <!--<div class="web-box">
+        <div class="web-name">
+            <ul class="web">
+                <li><span>检查实施机关：</span> <span>郑州市金水区市监局</span></li>
+                <li><span>类型：</span><span>抽查</span></li>
+                <li><span>日期：</span><span>2017年5月31日</span></li>
+                <li><span>结果：</span><span>通过登记的住所(经营场所)无法联系</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="web-box">
+        <div class="web-name">
+            <ul class="web">
+                <li><span>检查实施机关：</span> <span>郑州市金水区市监局</span></li>
+                <li><span>类型：</span><span>抽查</span></li>
+                <li><span>日期：</span><span>2017年5月31日</span></li>
+                <li><span>结果：</span><span>通过登记的住所(经营场所)无法联系</span></li>
+            </ul>
+        </div>
+    </div>	-->
+</div>
+<script type="text/javascript">
+    //获取企业id
+    var pripid = sessionStorage.getItem("PRIPID");
+    ;
+    $(function () {
+        getData();
+    });
+
+    //获取企业双随机抽查信息
+    function getData() {
+        $.ajax({
+            type: "get",
+            url: httpUrl + "/p/double/result/list.json",
+            data: {"PRIPID": pripid},
+            async: true,
+            dataType: "json",
+            success: function (res) {
+                console.log(res)
+                if (res.success == true) {
+                    createElem(res.data)
+                }
+            }
+        });
+    }
+
+    //创建双随机抽查数据
+    function createElem(data) {
+        $("#count").html(data.length);
+        for (var i = 0; i < data.length; i++) {
+            var type = "";
+            if (data[i].RANINSTYPE == 1) {
+                type = "定向";
+            } else if (data[i].RANINSTYPE == 2) {
+                type = "不定向";
+            }
+            var elem = "<div class='web-box'><div class='web-name'><ul class='web'>"
+                + "<li><span>抽查计划编号：</span> <span>" + data[i].RANINSPLANID + "</span></li>"
+                + "<li><span>抽查计划名称：</span><span>" + data[i].RANINSPLANNAME + "</span></li>"
+                + "<li><span>抽查任务编号：</span><span>" + data[i].RANINSTASKID + "</span></li>"
+                + "<li><span>抽查任务名称：</span><span>" + data[i].RANINSTASKNAME + "</span></li>"
+                + "<li><span>抽查类型：</span><span>" + type + "</span></li>"
+                + "<li><span>检查机关：</span><span>" + data[i].INSAUTH + "</span></li>"
+                + "<li><span>检查事项：</span><span>" + data[i].RANINSITEMNAME + "</span></li>"
+                + "<li><span>检查完成日期：</span><span>" + getFormatDateByLong(data[i].INSDATE, "yyyy年MM月dd日") + "</span></li>"
+                + "<li class='type'><span>检查结果：</span><span>" + data[i].CHECKRESNAME + "</span></li>"
+            "</ul></div></div>";
+            $("#common-box").append(elem);
+        }
+    }
+
+
+</script>
+</body>
 </html>
 
 

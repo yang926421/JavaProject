@@ -24,7 +24,7 @@ public class ProxyTest {
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                 System.out.println("invoke方法执行了");
                 //增强参数方式
-                if(method.getName().equals("sale")){
+                if (method.getName().equals("sale")) {
                     double money = (double) args[0];
                     money *= 0.85;
                     System.out.println("代理对象增强方法体逻辑,专车接");
@@ -34,9 +34,8 @@ public class ProxyTest {
                     String obj = (String) method.invoke(lenovo, money);
                     System.out.println("增强方法体逻辑 免费送货");
                     return obj + "鼠标垫";
-                }
-                else{
-                    Object obj = method.invoke(lenovo,args);
+                } else {
+                    Object obj = method.invoke(lenovo, args);
                     return obj;
                 }
             }

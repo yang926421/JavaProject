@@ -16,17 +16,19 @@ import java.util.List;
 
 
 /**
- * 操纵数据库层*/
+ * 操纵数据库层
+ */
 public class userDao {
     //    声明JDBCTemplate对象共用
     private JdbcTemplate template = new JdbcTemplate(JDBCUtils.getDataSource());
 
     /**
      * 登录方法
+     *
      * @param loginUser 只有用户名和密码
-     * @return user包含用户全部数据,没有查询到，返回null
+     * @return user包含用户全部数据, 没有查询到，返回null
      */
-    public user login(user loginUser){
+    public user login(user loginUser) {
         try {
             //1.编写sql
             String sql = "select * from users where username = ? and password = ?";

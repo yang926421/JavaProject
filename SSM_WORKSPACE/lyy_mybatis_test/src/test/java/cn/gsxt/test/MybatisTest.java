@@ -13,7 +13,7 @@ import java.util.List;
 public class MybatisTest {
 
     @Test
-    public void test1() throws Exception{
+    public void test1() throws Exception {
         //获得核心配置文件
         InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
         //获得session工厂对象
@@ -29,7 +29,7 @@ public class MybatisTest {
     }
 
     @Test
-    public void test2() throws Exception{
+    public void test2() throws Exception {
         //模拟user对象
         User user = new User();
         user.setUsername("tom");
@@ -44,15 +44,15 @@ public class MybatisTest {
         int insert = sqlSession.insert("userMapper.save", user);
         //测试打印
 //        System.out.println(userList);
-       //默认jdbc的事务  事务默认是不提交的,需要手动去提交
+        //默认jdbc的事务  事务默认是不提交的,需要手动去提交
         sqlSession.commit();
         //释放资源
         sqlSession.close();
     }
 
-//    修改操作
+    //    修改操作
     @Test
-    public void test3() throws Exception{
+    public void test3() throws Exception {
         //模拟user对象
         User user = new User();
         user.setId(3);
@@ -74,7 +74,7 @@ public class MybatisTest {
 
     //删除操作
     @Test
-    public void test4() throws Exception{
+    public void test4() throws Exception {
         //获得核心配置文件
         InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
         //获得session工厂对象
@@ -91,7 +91,7 @@ public class MybatisTest {
 
     //根据id查询一条数据
     @Test
-    public void test5() throws Exception{
+    public void test5() throws Exception {
         InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
         //想要获取sqlSession先要获取sqlSessionFactory要获取工厂就需要工厂构造器创建要使用工厂构造器创建需要传入流
         SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
@@ -107,10 +107,9 @@ public class MybatisTest {
     }
 
 
-
     //根据多个字段查询
     @Test
-    public void test6() throws Exception{
+    public void test6() throws Exception {
         //模拟user对象
         User user = new User();
         user.setUsername("lisi");
@@ -130,7 +129,7 @@ public class MybatisTest {
     }
 
     @Test
-    public void test7() throws Exception{
+    public void test7() throws Exception {
         String username = "zhangsan";
         //获取
         InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
@@ -140,7 +139,7 @@ public class MybatisTest {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         //
         Object o = sqlSession.selectOne("userMapper.findByUsername", username);
-        System.out.println((User)o);
+        System.out.println((User) o);
     }
 
 }

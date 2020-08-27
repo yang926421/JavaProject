@@ -1,680 +1,698 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>基本信息</title>
-		<link rel="stylesheet" href="../../static/css/common.css">
-		<link rel="stylesheet" href="../../static/css/mui.min.css">
-		<link rel="stylesheet" href="../../static/css/essential-inf.css">
-		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
-		<script type="text/javascript" src="../../static/js/common.js"></script>
-		<script>
-			//获取年度报告年份
-			var ANCHEYEAR=GetRequest("ANCHEYEAR");
-			//获取年报id
-			var ancheId=GetRequest("ANCHEID");
-			var isShowProd=sessionStorage.getItem("ALL_PRODUCTION");
-			var HOLDINGSMSG_SIGN = sessionStorage.getItem("HOLDINGSMSG_SIGN");
-			$(document).ready(function(){
-  				$("#ANCHEYEAR").val(ANCHEYEAR);
-  				$("#TOKEN").val(TOKEN);
-  				$("#SESSIONID").val(SESSIONID);
-  				$("#PRIPID").val(PRIPID);
-  				$("#ENTNAME").val(BODY_NAME);  //企业名称
-  				$("#BODY_NO").val(BODY_NO); //信用代码、注册号
-  				$("#REGNO").val(REGNO);
-  				$("#UNISCID").val(UNISCID);
-  				$("#ENTTYPE").val(BODY_TYPE);//市场主体类型
-  				
-  				loadData("CD24","BUSST");  //经营状态
-  				
-  				//四个是否是否显示
-  				var EDISYCONTBUSIRELA= JSON.parse(sessionStorage.getItem("EDISYCONTBUSIRELA"));
-  				for(i=0;i<EDISYCONTBUSIRELA.length;i++){
-					if(EDISYCONTBUSIRELA[i].BUSINESS_ITEMTYPE=="01"){  //判断是否是表级的菜单
-						$("#"+EDISYCONTBUSIRELA[i].BUSINESS_ITEM).show();
-		  			}
-				}
-				
-  				//四大人员是否显示
-  				var isShowAll=sessionStorage.getItem("HAS_FOUR_PERSON");
-				if(isShowAll!=1){  
-					$("#HAS_FOUR_PERSON").hide();
-					
-				}
-				//企业控股情况、隶属企业名称是否显示
-				if(isShowProd!=1){
-					$("#HOLDINGSMSG_MENU").hide();//企业控股 
-					$("#DEPENDENTENTNAME_MENU").show();
-					$("#SUP_UNISCID_MENU").show();
-				}else{
-					if(HOLDINGSMSG_SIGN=="true"){
-						$("#open2").show().css("display","inline-block");
-						$("#konggu").hide();
-					}else{
-						$("#open2").hide();
-						$("#konggu").show().css("display","inline-block");
-						loadData("CW06","HOLDINGSMSG");  //企业控股 
-					}
-					$("#DEPENDENTENTNAME_MENU").hide();
-					$("#SUP_UNISCID_MENU").hide();
-					
-				}
-  				
-  				if(ancheId!=null && ancheId!="" && ancheId!="null"){
-  					getData();
-  				}
-			});
-			
-			//获取企业年报基本信息
-			function getData(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/e/an/base/get.json",
-					async:true,
-					data:{"ANCHEID":ancheId,"TOKEN":TOKEN,"SESSIONID":SESSIONID,"BODY_TYPE":BODY_TYPE},
-					dataType:'json',
-					success:function(res){
-						if(res.success==true){
-							createData(res.data[0]);
-						}
-					}
-				});
-			}
-			
-			    //创建年报基本信息
-				function createData(obj){
-					$("#ANTYPE").val(obj.ANTYPE);
-					$("#ANCHEID").val(obj.ANCHEID); //年报id
-					$("#PRIPID").val(PRIPID); //企业id
-					$("#ANCHEYEAR").val(obj.ANCHEYEAR); //报告年度
-					$("#ENTNAME").val(obj.ENTNAME); //企业名称
-					
-					$("#ADDR").val(obj.ADDR);  //通信地址
-					$("#POSTALCODE").val(obj.POSTALCODE); //邮政编码
-					$("#TEL").val(obj.TEL);   //联系电话
-					$("#EMAIL").val(obj.EMAIL); //邮箱
-					$("#EMPNUM").val(obj.EMPNUM); //从业人数
-					$("#EMPNUMDIS").val(obj.EMPNUMDIS);
-					if(obj.EMPNUMDIS==1){  //从业人数是否选择公示
-						document.getElementById("empnumdisImg").src="../../static/img/show.png";
-					}else{
-						document.getElementById("empnumdisImg").src="../../static/img/show-no.png";
-					}
-					if(obj.SUP_INFO!=null && obj.SUP_INFO!=""){
-						$("#MAINBUSIACT").val(obj.SUP_INFO.MAINBUSIACT); //主营业务活动
-						$("#WOMEMPNUM").val(obj.SUP_INFO.WOMEMPNUM); //女性从业人数
-						$("#WOMEMPNUMDIS").val(obj.SUP_INFO.WOMEMPNUMDIS);
-						if(obj.SUP_INFO.WOMEMPNUMDIS==1){ //女性从业人数是否选择公示
-							document.getElementById("womempnumdisImg").src="../../static/img/show.png";
-						}else{
-							document.getElementById("womempnumdisImg").src="../../static/img/show-no.png";
-						}
-						$("#DEPENDENTENTNAME").val(obj.SUP_INFO.DEPENDENTENTNAME);
-						$("#SUP_UNISCID").val(obj.SUP_INFO.UNISCID);
-						$("#HOLDINGSMSG").find("option[value='"+obj.SUP_INFO.HOLDINGSMSG+"']").attr("selected",true);//企业控股情况
-						$("#HOLDINGSMSG_CN").val(obj.SUP_INFO.HOLDINGSMSG_CN);
-						$("#HOLDINGSMSGDIS").val(obj.SUP_INFO.HOLDINGSMSGDIS);
-						if(obj.SUP_INFO.HOLDINGSMSGDIS==1){  //企业控股情况是否公示
-							document.getElementById("holdingsmsgdisImg").src="../../static/img/show.png";
-						}else{
-							document.getElementById("holdingsmsgdisImg").src="../../static/img/show-no.png";
-						}
-					}
-					
-					$("#BUSST").find("option[value='"+obj.BUSST+"']").attr("selected",true);//经营状态
-					$("#BUSST_CN").val(obj.BUSST_CN);//经营状态中文
-					
-					
-					$("#COLGRANUM").val(obj.COLGRANUM);
-					$("#COLEMPLNUM").val(obj.COLEMPLNUM);
-					$("#RETSOLNUM").val(obj.RETSOLNUM);
-					$("#RETEMPLNUM").val(obj.RETEMPLNUM);
-					$("#DISPERNUM").val(obj.DISPERNUM);
-					$("#DISEMPLNUM").val(obj.DISEMPLNUM);
-					$("#UNENUM").val(obj.UNENUM);
-					$("#UNEEMPLNUM").val(obj.UNEEMPLNUM);
-	
-					//是否有股权变更信息，1有 2否
-					if(obj.ISCHANGE==1){
-						 $("input[name='ISCHANGE'][value=1]").attr("checked","checked");
-					}
-					//是否有对外担保，1有 2否
-					if(obj.ISFORGUARANTEE==1){
-						 $("input[name='ISFORGUARANTEE'][value=1]").attr("checked","checked");
-					}
-					//是否有对外投资信息，1有 2否
-					if(obj.ISLETTER==1){
-						 $("input[name='ISLETTER'][value=1]").attr("checked","checked");
-					}
-					//是否有网站或网店信息，1有 2否
-					if(obj.ISWEB==1){
-						 $("input[name='ISWEB'][value=1]").attr("checked","checked");
-					}
-			}
-			
-			//保存年报基本信息
-			function saveAnche(){
-				//四个是否
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>基本信息</title>
+    <link rel="stylesheet" href="../../static/css/common.css">
+    <link rel="stylesheet" href="../../static/css/mui.min.css">
+    <link rel="stylesheet" href="../../static/css/essential-inf.css">
+    <script type="text/javascript" src="../../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../../static/js/common.js"></script>
+    <script>
+        //获取年度报告年份
+        var ANCHEYEAR = GetRequest("ANCHEYEAR");
+        //获取年报id
+        var ancheId = GetRequest("ANCHEID");
+        var isShowProd = sessionStorage.getItem("ALL_PRODUCTION");
+        var HOLDINGSMSG_SIGN = sessionStorage.getItem("HOLDINGSMSG_SIGN");
+        $(document).ready(function () {
+            $("#ANCHEYEAR").val(ANCHEYEAR);
+            $("#TOKEN").val(TOKEN);
+            $("#SESSIONID").val(SESSIONID);
+            $("#PRIPID").val(PRIPID);
+            $("#ENTNAME").val(BODY_NAME);  //企业名称
+            $("#BODY_NO").val(BODY_NO); //信用代码、注册号
+            $("#REGNO").val(REGNO);
+            $("#UNISCID").val(UNISCID);
+            $("#ENTTYPE").val(BODY_TYPE);//市场主体类型
+
+            loadData("CD24", "BUSST");  //经营状态
+
+            //四个是否是否显示
+            var EDISYCONTBUSIRELA = JSON.parse(sessionStorage.getItem("EDISYCONTBUSIRELA"));
+            for (i = 0; i < EDISYCONTBUSIRELA.length; i++) {
+                if (EDISYCONTBUSIRELA[i].BUSINESS_ITEMTYPE == "01") {  //判断是否是表级的菜单
+                    $("#" + EDISYCONTBUSIRELA[i].BUSINESS_ITEM).show();
+                }
+            }
+
+            //四大人员是否显示
+            var isShowAll = sessionStorage.getItem("HAS_FOUR_PERSON");
+            if (isShowAll != 1) {
+                $("#HAS_FOUR_PERSON").hide();
+
+            }
+            //企业控股情况、隶属企业名称是否显示
+            if (isShowProd != 1) {
+                $("#HOLDINGSMSG_MENU").hide();//企业控股
+                $("#DEPENDENTENTNAME_MENU").show();
+                $("#SUP_UNISCID_MENU").show();
+            } else {
+                if (HOLDINGSMSG_SIGN == "true") {
+                    $("#open2").show().css("display", "inline-block");
+                    $("#konggu").hide();
+                } else {
+                    $("#open2").hide();
+                    $("#konggu").show().css("display", "inline-block");
+                    loadData("CW06", "HOLDINGSMSG");  //企业控股
+                }
+                $("#DEPENDENTENTNAME_MENU").hide();
+                $("#SUP_UNISCID_MENU").hide();
+
+            }
+
+            if (ancheId != null && ancheId != "" && ancheId != "null") {
+                getData();
+            }
+        });
+
+        //获取企业年报基本信息
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/e/an/base/get.json",
+                async: true,
+                data: {"ANCHEID": ancheId, "TOKEN": TOKEN, "SESSIONID": SESSIONID, "BODY_TYPE": BODY_TYPE},
+                dataType: 'json',
+                success: function (res) {
+                    if (res.success == true) {
+                        createData(res.data[0]);
+                    }
+                }
+            });
+        }
+
+        //创建年报基本信息
+        function createData(obj) {
+            $("#ANTYPE").val(obj.ANTYPE);
+            $("#ANCHEID").val(obj.ANCHEID); //年报id
+            $("#PRIPID").val(PRIPID); //企业id
+            $("#ANCHEYEAR").val(obj.ANCHEYEAR); //报告年度
+            $("#ENTNAME").val(obj.ENTNAME); //企业名称
+
+            $("#ADDR").val(obj.ADDR);  //通信地址
+            $("#POSTALCODE").val(obj.POSTALCODE); //邮政编码
+            $("#TEL").val(obj.TEL);   //联系电话
+            $("#EMAIL").val(obj.EMAIL); //邮箱
+            $("#EMPNUM").val(obj.EMPNUM); //从业人数
+            $("#EMPNUMDIS").val(obj.EMPNUMDIS);
+            if (obj.EMPNUMDIS == 1) {  //从业人数是否选择公示
+                document.getElementById("empnumdisImg").src = "../../static/img/show.png";
+            } else {
+                document.getElementById("empnumdisImg").src = "../../static/img/show-no.png";
+            }
+            if (obj.SUP_INFO != null && obj.SUP_INFO != "") {
+                $("#MAINBUSIACT").val(obj.SUP_INFO.MAINBUSIACT); //主营业务活动
+                $("#WOMEMPNUM").val(obj.SUP_INFO.WOMEMPNUM); //女性从业人数
+                $("#WOMEMPNUMDIS").val(obj.SUP_INFO.WOMEMPNUMDIS);
+                if (obj.SUP_INFO.WOMEMPNUMDIS == 1) { //女性从业人数是否选择公示
+                    document.getElementById("womempnumdisImg").src = "../../static/img/show.png";
+                } else {
+                    document.getElementById("womempnumdisImg").src = "../../static/img/show-no.png";
+                }
+                $("#DEPENDENTENTNAME").val(obj.SUP_INFO.DEPENDENTENTNAME);
+                $("#SUP_UNISCID").val(obj.SUP_INFO.UNISCID);
+                $("#HOLDINGSMSG").find("option[value='" + obj.SUP_INFO.HOLDINGSMSG + "']").attr("selected", true);//企业控股情况
+                $("#HOLDINGSMSG_CN").val(obj.SUP_INFO.HOLDINGSMSG_CN);
+                $("#HOLDINGSMSGDIS").val(obj.SUP_INFO.HOLDINGSMSGDIS);
+                if (obj.SUP_INFO.HOLDINGSMSGDIS == 1) {  //企业控股情况是否公示
+                    document.getElementById("holdingsmsgdisImg").src = "../../static/img/show.png";
+                } else {
+                    document.getElementById("holdingsmsgdisImg").src = "../../static/img/show-no.png";
+                }
+            }
+
+            $("#BUSST").find("option[value='" + obj.BUSST + "']").attr("selected", true);//经营状态
+            $("#BUSST_CN").val(obj.BUSST_CN);//经营状态中文
+
+
+            $("#COLGRANUM").val(obj.COLGRANUM);
+            $("#COLEMPLNUM").val(obj.COLEMPLNUM);
+            $("#RETSOLNUM").val(obj.RETSOLNUM);
+            $("#RETEMPLNUM").val(obj.RETEMPLNUM);
+            $("#DISPERNUM").val(obj.DISPERNUM);
+            $("#DISEMPLNUM").val(obj.DISEMPLNUM);
+            $("#UNENUM").val(obj.UNENUM);
+            $("#UNEEMPLNUM").val(obj.UNEEMPLNUM);
+
+            //是否有股权变更信息，1有 2否
+            if (obj.ISCHANGE == 1) {
+                $("input[name='ISCHANGE'][value=1]").attr("checked", "checked");
+            }
+            //是否有对外担保，1有 2否
+            if (obj.ISFORGUARANTEE == 1) {
+                $("input[name='ISFORGUARANTEE'][value=1]").attr("checked", "checked");
+            }
+            //是否有对外投资信息，1有 2否
+            if (obj.ISLETTER == 1) {
+                $("input[name='ISLETTER'][value=1]").attr("checked", "checked");
+            }
+            //是否有网站或网店信息，1有 2否
+            if (obj.ISWEB == 1) {
+                $("input[name='ISWEB'][value=1]").attr("checked", "checked");
+            }
+        }
+
+        //保存年报基本信息
+        function saveAnche() {
+            //四个是否
 //				var danbao=$('input:radio[name="ISFORGUARANTEE"]:checked').val();
 //				var web=$('input:radio[name="ISWEB"]:checked').val();
 //				var gudong=$('input:radio[name="ISCHANGE"]:checked').val();
 //	            var touzi=$('input:radio[name="ISLETTER"]:checked').val();
-				
-				var addr=$("#ADDR").val();
-				if(!isNotNull(addr)){
-					mui.toast("企业通信地址不能为空");
-					return;
-				}
-				var postalcode=$("#POSTALCODE").val();
-				if(isNotNull(postalcode)){
-					if(!zipCode.test(postalcode)){
-						mui.toast("邮政编码输入错误");
-						return;
-					}
-				}
-				var telphone=$("#TEL").val();
-				if(isNotNull(telphone)){
-					if(!(phone.test(telphone) || tel.test(telphone))){
-						mui.toast("联系电话输入错误");
-						return;
-					}
-				}
-				var EMPNUM=$("#EMPNUM").val(); //从业人数
-				var WOMEMPNUM=$("#WOMEMPNUM").val(); //女性从业人数
-				if(EMPNUM!=null && EMPNUM!="" && WOMEMPNUM!=null && WOMEMPNUM!=""){
-					if(parseInt( EMPNUM)<parseInt(WOMEMPNUM)){
-						mui.toast("从业人数不能小于女性从业人数");
-						return;
-					}
-				}
-				$("#BUSST_CN").val($("#BUSST").find("option:selected").text());  //经营状态
-				if(isShowProd!=1){
-					$("#HOLDINGSMSG_CN").val("");
-					$("#HOLDINGSMSG ").val("");
-				}else{
-					if(HOLDINGSMSG_SIGN!="true"){
-						$("#HOLDINGSMSG_CN").val($("#HOLDINGSMSG").find("option:selected").text()); //企业控股的文本
-					}
-				}
-				
-				$.ajax({
-					type:"post",
-					url:httpUrl+"/e/an/base/save.json",
-					data:$("#addForm").serialize(),
-					async:true,
-					dataType:'json',
-					success:function(res){
-						if(res.success){
-							mui.toast(res.codeMsg);
-							window.location.href="report.html?ANCHEID="+res.data.ANCHEID;
-						}
-					}
-				});
-			}
-			
-			
-		</script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="report.html"></a>
-		    <h1 class="mui-title">基本信息</h1>
-		    <span id="sure">
+
+            var addr = $("#ADDR").val();
+            if (!isNotNull(addr)) {
+                mui.toast("企业通信地址不能为空");
+                return;
+            }
+            var postalcode = $("#POSTALCODE").val();
+            if (isNotNull(postalcode)) {
+                if (!zipCode.test(postalcode)) {
+                    mui.toast("邮政编码输入错误");
+                    return;
+                }
+            }
+            var telphone = $("#TEL").val();
+            if (isNotNull(telphone)) {
+                if (!(phone.test(telphone) || tel.test(telphone))) {
+                    mui.toast("联系电话输入错误");
+                    return;
+                }
+            }
+            var EMPNUM = $("#EMPNUM").val(); //从业人数
+            var WOMEMPNUM = $("#WOMEMPNUM").val(); //女性从业人数
+            if (EMPNUM != null && EMPNUM != "" && WOMEMPNUM != null && WOMEMPNUM != "") {
+                if (parseInt(EMPNUM) < parseInt(WOMEMPNUM)) {
+                    mui.toast("从业人数不能小于女性从业人数");
+                    return;
+                }
+            }
+            $("#BUSST_CN").val($("#BUSST").find("option:selected").text());  //经营状态
+            if (isShowProd != 1) {
+                $("#HOLDINGSMSG_CN").val("");
+                $("#HOLDINGSMSG ").val("");
+            } else {
+                if (HOLDINGSMSG_SIGN != "true") {
+                    $("#HOLDINGSMSG_CN").val($("#HOLDINGSMSG").find("option:selected").text()); //企业控股的文本
+                }
+            }
+
+            $.ajax({
+                type: "post",
+                url: httpUrl + "/e/an/base/save.json",
+                data: $("#addForm").serialize(),
+                async: true,
+                dataType: 'json',
+                success: function (res) {
+                    if (res.success) {
+                        mui.toast(res.codeMsg);
+                        window.location.href = "report.html?ANCHEID=" + res.data.ANCHEID;
+                    }
+                }
+            });
+        }
+
+
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="report.html"></a>
+    <h1 class="mui-title">基本信息</h1>
+    <span id="sure">
 		    	<a href="javascript:;" onclick="saveAnche()" class="">保存</a>
 		    </span>
-		</header>
-		
-		<!--基本信息-->
-		<form id="addForm">
-			<input type="hidden" name="TOKEN" id="TOKEN"  />
-			<input type="hidden" name="SESSIONID" id="SESSIONID"  />
-			<input type="hidden" name="ANCHEID" id="ANCHEID"  />
-			<input type="hidden" name="PRIPID" id="PRIPID"  />
-			<input type="hidden" name="REGNO" id="REGNO"  />
-			<input type="hidden" name="UNISCID" id="UNISCID"  />
-			<input type="hidden" name="ENTTYPE" id="ENTTYPE"  />
-			<input type="hidden" name="ANTYPE" id="ANTYPE" />
-			
-		<div id="common-box">
-			<div id="line-block">
-				<div class="web-box">
-						<ul>
-							<li>
-								<span >
+</header>
+
+<!--基本信息-->
+<form id="addForm">
+    <input type="hidden" name="TOKEN" id="TOKEN"/>
+    <input type="hidden" name="SESSIONID" id="SESSIONID"/>
+    <input type="hidden" name="ANCHEID" id="ANCHEID"/>
+    <input type="hidden" name="PRIPID" id="PRIPID"/>
+    <input type="hidden" name="REGNO" id="REGNO"/>
+    <input type="hidden" name="UNISCID" id="UNISCID"/>
+    <input type="hidden" name="ENTTYPE" id="ENTTYPE"/>
+    <input type="hidden" name="ANTYPE" id="ANTYPE"/>
+
+    <div id="common-box">
+        <div id="line-block">
+            <div class="web-box">
+                <ul>
+                    <li>
+								<span>
 									报告年度
 								</span>
-								<div class="web-write">
-									<input type="text" name="ANCHEYEAR" id="ANCHEYEAR" readonly="readonly" />
-								</div>
-							</li>
-						</ul>
-				</div>
-				
-				<div class="web-box">
-						<ul>
-							<li>
-								<span >
+                        <div class="web-write">
+                            <input type="text" name="ANCHEYEAR" id="ANCHEYEAR" readonly="readonly"/>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="web-box">
+                <ul>
+                    <li>
+								<span>
 									企业名称
 								</span>
-								<div class="web-write">
-									<input type="text" name="ENTNAME" id="ENTNAME" readonly="readonly"  placeholder="请填写企业名称" />
-								</div>
-							</li>
-						</ul>
-				</div>
-				
-				<div class="web-box">
-						<ul>
-							<li>
-								<span >
+                        <div class="web-write">
+                            <input type="text" name="ENTNAME" id="ENTNAME" readonly="readonly" placeholder="请填写企业名称"/>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="web-box">
+                <ul>
+                    <li>
+								<span>
 									统一社会信用代码/注册号
 								</span>
-								<div class="web-write">
-									<input type="text" name="BODY_NO" id="BODY_NO" readonly="readonly" placeholder="请填写统一社会信用代码"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-				<div class="web-box">
-						<ul>
-							<li>
-								<span >
+                        <div class="web-write">
+                            <input type="text" name="BODY_NO" id="BODY_NO" readonly="readonly"
+                                   placeholder="请填写统一社会信用代码"/>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="web-box">
+                <ul>
+                    <li>
+								<span>
 									企业联系电话
 								</span>
-								<div class="web-write">
-									<input type="text" name="TEL" id="TEL" onkeyup="inputNum(this)"  placeholder="请填写联系电话"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-				
-				<div class="web-box">
-						<ul>
-							<li>
-								<span >
+                        <div class="web-write">
+                            <input type="text" name="TEL" id="TEL" onkeyup="inputNum(this)" placeholder="请填写联系电话"/>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="web-box">
+                <ul>
+                    <li>
+								<span>
 									企业电子邮箱
 								</span>
-								<div class="web-write">
-									<input type="text" name="EMAIL" id="EMAIL" value="" placeholder="请填写电子邮箱"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-				<div class="web-box">
-						<ul>
-							<li>
-								<span >
+                        <div class="web-write">
+                            <input type="text" name="EMAIL" id="EMAIL" value="" placeholder="请填写电子邮箱"/>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="web-box">
+                <ul>
+                    <li>
+								<span>
 									企业通信地址
 								</span>
-								<div class="web-write">
-									<input type="text" name="ADDR" id="ADDR" value="" placeholder="请填写通信地址"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-			</div>
-			
-			<!--第三列开始-->
-			<div id="line-block">
-				<div class="web-box">
-						<ul>
-							
-							<li>
-								<span >
+                        <div class="web-write">
+                            <input type="text" name="ADDR" id="ADDR" value="" placeholder="请填写通信地址"/>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!--第三列开始-->
+        <div id="line-block">
+            <div class="web-box">
+                <ul>
+
+                    <li>
+								<span>
 									邮政编码
 								</span>
-								<div class="web-write">
-									<input type="text" name="POSTALCODE" id="POSTALCODE" onkeyup="inputNum(this)" maxlength="6" placeholder="请填写邮政编码"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-				
-				<div class="web-box" id="DEPENDENTENTNAME_MENU" style="display: none;">
-						<ul>
-							<li>
-								<span >
+                        <div class="web-write">
+                            <input type="text" name="POSTALCODE" id="POSTALCODE" onkeyup="inputNum(this)" maxlength="6"
+                                   placeholder="请填写邮政编码"/>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="web-box" id="DEPENDENTENTNAME_MENU" style="display: none;">
+                <ul>
+                    <li>
+								<span>
 									隶属企业名称
 								</span>
-								<div class="web-write">
-									<input type="text" name="DEPENDENTENTNAME" id="DEPENDENTENTNAME" value="" placeholder="请填写隶属企业名称"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-				<div class="web-box" id="SUP_UNISCID_MENU" style="display: none;">
-						<ul>
-							<li>
-								<span >
+                        <div class="web-write">
+                            <input type="text" name="DEPENDENTENTNAME" id="DEPENDENTENTNAME" value=""
+                                   placeholder="请填写隶属企业名称"/>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="web-box" id="SUP_UNISCID_MENU" style="display: none;">
+                <ul>
+                    <li>
+								<span>
 									隶属企业统一社会信用代码/注册号
 								</span>
-								<div class="web-write">
-									<input type="text" name="SUP_UNISCID" id="SUP_UNISCID"  placeholder="请填写隶属企业社会信用代码/注册号"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-				<div class="web-box">
-						<ul>
-							<li>
-								<span >
+                        <div class="web-write">
+                            <input type="text" name="SUP_UNISCID" id="SUP_UNISCID" placeholder="请填写隶属企业社会信用代码/注册号"/>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="web-box">
+                <ul>
+                    <li>
+								<span>
 									企业经营状态
 								</span>
-								<div class="web-write">
-									<div id="open" style="position: relative;width: 100%;">
-										<input type="hidden" name="BUSST_CN" id="BUSST_CN" />
-										<select name="BUSST"  id="BUSST" class="service_opt" style="margin-bottom: 0; display:block;width:100%;background: url(../../static/img/rt.png) no-repeat right center;">
-						                </select>
-									</div>
-								</div>
-							</li>
-						</ul>
-				</div>
-				<div class="web-box" id="HOLDINGSMSG_MENU">
-						<ul>
-							<li>
-								<span >
+                        <div class="web-write">
+                            <div id="open" style="position: relative;width: 100%;">
+                                <input type="hidden" name="BUSST_CN" id="BUSST_CN"/>
+                                <select name="BUSST" id="BUSST" class="service_opt"
+                                        style="margin-bottom: 0; display:block;width:100%;background: url(../../static/img/rt.png) no-repeat right center;">
+                                </select>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="web-box" id="HOLDINGSMSG_MENU">
+                <ul>
+                    <li>
+								<span>
 									企业控股情况
 								</span>
-								<div class="web-write" >
-									<div id="konggu" style="position: relative;width: 80%;display:none">
-										<!--<input type="hidden" name="HOLDINGSMSG_CN" id="HOLDINGSMSG_CN" />-->
-										<select name="HOLDINGSMSG" id="HOLDINGSMSG" class="service_opt" style="margin-bottom: 0; display:block;width:100%;background: url(../../static/img/rt.png) no-repeat right center;">
-										 <option value="">请选择</option>
-										</select>
-									</div>
-									<div id="open2" style=" position: relative;width: 80%;display: none;">
-										<input type="text" name="HOLDINGSMSG_CN" id="HOLDINGSMSG_CN" value="私营企业" readonly="readonly"/>
-									</div>
-									<input type="hidden" name="HOLDINGSMSGDIS" id="HOLDINGSMSGDIS" value="2" /> 
-									<div class="contribution-show-right" style="display: inline-block;"><img id="holdingsmsgdisImg" src="../../static/img/show-no.png"/></div>
-									
-								</div>
-							</li>
-						</ul>
-				</div>
-				<div class="web-box">
-						<ul>
-							<li>
-								<span >
+                        <div class="web-write">
+                            <div id="konggu" style="position: relative;width: 80%;display:none">
+                                <!--<input type="hidden" name="HOLDINGSMSG_CN" id="HOLDINGSMSG_CN" />-->
+                                <select name="HOLDINGSMSG" id="HOLDINGSMSG" class="service_opt"
+                                        style="margin-bottom: 0; display:block;width:100%;background: url(../../static/img/rt.png) no-repeat right center;">
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                            <div id="open2" style=" position: relative;width: 80%;display: none;">
+                                <input type="text" name="HOLDINGSMSG_CN" id="HOLDINGSMSG_CN" value="私营企业"
+                                       readonly="readonly"/>
+                            </div>
+                            <input type="hidden" name="HOLDINGSMSGDIS" id="HOLDINGSMSGDIS" value="2"/>
+                            <div class="contribution-show-right" style="display: inline-block;"><img
+                                    id="holdingsmsgdisImg" src="../../static/img/show-no.png"/></div>
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="web-box">
+                <ul>
+                    <li>
+								<span>
 									企业主营业务活动
 								</span>
-								<div class="web-write">
-									<textarea name="MAINBUSIACT" id="MAINBUSIACT"  rows="5" placeholder="请填写企业主营业务活动"></textarea>
-								</div>
-							</li>
-						</ul>
-				</div>
-				
-			</div>
-			
-			<!--第三列开始-->
-			<div id="line-block">
-				<div class="web-box">
-						<ul>
-							
-							<li>
-								<span >
+                        <div class="web-write">
+                            <textarea name="MAINBUSIACT" id="MAINBUSIACT" rows="5" placeholder="请填写企业主营业务活动"></textarea>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!--第三列开始-->
+        <div id="line-block">
+            <div class="web-box">
+                <ul>
+
+                    <li>
+								<span>
 									从业人数
 								</span>
-								<div class="web-write">
-									<input type="text" name="EMPNUM" id="EMPNUM" onkeyup="inputNum(this)" placeholder="请输入人数" style="width: 60%;"/>
-									<input type="hidden" name="EMPNUMDIS" id="EMPNUMDIS" value="2"/> <!--从业人数是否公示-->
-									<div class="contribution-show-right"><img id="empnumdisImg" src="../../static/img/show-no.png"/></div>
-								</div>
-							</li>
-						</ul>
-				</div>
-				
-				<div class="web-box">
-						<ul>
-							<li>
-								<span >
+                        <div class="web-write">
+                            <input type="text" name="EMPNUM" id="EMPNUM" onkeyup="inputNum(this)" placeholder="请输入人数"
+                                   style="width: 60%;"/>
+                            <input type="hidden" name="EMPNUMDIS" id="EMPNUMDIS" value="2"/> <!--从业人数是否公示-->
+                            <div class="contribution-show-right"><img id="empnumdisImg"
+                                                                      src="../../static/img/show-no.png"/></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="web-box">
+                <ul>
+                    <li>
+								<span>
 									女性从业人数
 								</span>
-								<div class="web-write">
-									<input type="text" name="WOMEMPNUM" id="WOMEMPNUM" onkeyup="inputNum(this)" placeholder="请输入人数" style="width: 60%;"/>
-									<input type="hidden" name="WOMEMPNUMDIS" id="WOMEMPNUMDIS" value="2" /> <!--女性从业人数是否公示-->
-									<div class="contribution-show-right"><img id="womempnumdisImg" src="../../static/img/show-no.png"/></div>
-								</div>
-							</li>
-						</ul>
-				</div>
-				
-				<div class="web-box" id="GUARANTEE" style="display: none;">
-						<ul>
-							<li>
-								<span >
+                        <div class="web-write">
+                            <input type="text" name="WOMEMPNUM" id="WOMEMPNUM" onkeyup="inputNum(this)"
+                                   placeholder="请输入人数" style="width: 60%;"/>
+                            <input type="hidden" name="WOMEMPNUMDIS" id="WOMEMPNUMDIS" value="2"/> <!--女性从业人数是否公示-->
+                            <div class="contribution-show-right"><img id="womempnumdisImg"
+                                                                      src="../../static/img/show-no.png"/></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="web-box" id="GUARANTEE" style="display: none;">
+                <ul>
+                    <li>
+								<span>
 									是否有对外担保
 								</span>
-								<div class="essential-write">
-									<label><input type="radio" value="1" name="ISFORGUARANTEE"  />是</label>
-									<label><input type="radio" value="2" name="ISFORGUARANTEE" checked="checked" />否</label>
-								</div>
-							</li>
-						</ul>
-				</div>
-				
-				<div class="web-box" id="WEBSITE" style="display: none;">
-						<ul>
-							<li>
-								<span >
+                        <div class="essential-write">
+                            <label><input type="radio" value="1" name="ISFORGUARANTEE"/>是</label>
+                            <label><input type="radio" value="2" name="ISFORGUARANTEE" checked="checked"/>否</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="web-box" id="WEBSITE" style="display: none;">
+                <ul>
+                    <li>
+								<span>
 									是否有网站或网店
 								</span>
-								<div class="essential-write">
-									<label><input type="radio" value="1" name="ISWEB" />是</label>
-									<label><input type="radio" value="2" name="ISWEB" checked="checked"/>否</label>
-								</div>
-							</li>
-						</ul>
-				</div>
-				
-				<div class="web-box" id="STOCK_ALTER" style="display: none;">
-						<ul>
-							<li>
-								<span >
+                        <div class="essential-write">
+                            <label><input type="radio" value="1" name="ISWEB"/>是</label>
+                            <label><input type="radio" value="2" name="ISWEB" checked="checked"/>否</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="web-box" id="STOCK_ALTER" style="display: none;">
+                <ul>
+                    <li>
+								<span>
 									有限责任公司本年度是否发生股东股权转让
 								</span>
-								<div class="essential-write">
-									<label><input type="radio" value="1" name="ISCHANGE" />是</label>
-									<label><input type="radio" value="2" name="ISCHANGE" checked="checked"/>否</label>
-								</div>
-							</li>
-						</ul>
-				</div>
-				
-				<div class="web-box" id="INVESTMENT" style="display: none;" >
-						<ul>
-							<li>
-								<span >
+                        <div class="essential-write">
+                            <label><input type="radio" value="1" name="ISCHANGE"/>是</label>
+                            <label><input type="radio" value="2" name="ISCHANGE" checked="checked"/>否</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="web-box" id="INVESTMENT" style="display: none;">
+                <ul>
+                    <li>
+								<span>
 									是否有投资信息或购买其他公司股权
 								</span>
-								<div class="essential-write">
-									<label><input type="radio" value="1" name="ISLETTER" />是</label>
-									<label><input type="radio" value="2" name="ISLETTER" checked="checked"/>否</label>
-								</div>
-							</li>
-						</ul>
-				</div>
-			</div>
-			
-		</div>
-		<div id="HAS_FOUR_PERSON">
-			<!--新增不公示信息-->
-				<div id="no-show">
-					<p>以下为不公示信息</p>
-				</div>
-				<!--不展示的信息-->
-				<div class="web-box">
-					<div id="social-title">
-						<h4>高校毕业生人数</h4> 
-						<!--<span class="contribution-arrow-right"><img src="img/show-no.png"/></span>-->
-					</div>
-						<ul>
-							<li>
-								<span >
+                        <div class="essential-write">
+                            <label><input type="radio" value="1" name="ISLETTER"/>是</label>
+                            <label><input type="radio" value="2" name="ISLETTER" checked="checked"/>否</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div id="HAS_FOUR_PERSON">
+        <!--新增不公示信息-->
+        <div id="no-show">
+            <p>以下为不公示信息</p>
+        </div>
+        <!--不展示的信息-->
+        <div class="web-box">
+            <div id="social-title">
+                <h4>高校毕业生人数</h4>
+                <!--<span class="contribution-arrow-right"><img src="img/show-no.png"/></span>-->
+            </div>
+            <ul>
+                <li>
+								<span>
 									经营者（人）
 								</span>
-								<div class="web-write">
-									<input type="text" name="COLGRANUM" id="COLGRANUM" onkeyup="inputNum(this)" placeholder="请输入人数"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-				<div class="web-box">
-						<ul>
-							<li>
-								<span >
+                    <div class="web-write">
+                        <input type="text" name="COLGRANUM" id="COLGRANUM" onkeyup="inputNum(this)"
+                               placeholder="请输入人数"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="web-box">
+            <ul>
+                <li>
+								<span>
 									雇员
 								</span>
-								<div class="web-write">
-									<input type="text" name="COLEMPLNUM" id="COLEMPLNUM" onkeyup="inputNum(this)" placeholder="请输入人数"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-				
-				<!--不展示的信息-->
-				<div class="web-box">
-					<div id="social-title">
-						<h4>退役士兵人数</h4> 
-						<!--<span class="contribution-arrow-right"><img src="img/show-no.png"/></span>-->
-					</div>
-						<ul>
-							<li>
-								<span >
+                    <div class="web-write">
+                        <input type="text" name="COLEMPLNUM" id="COLEMPLNUM" onkeyup="inputNum(this)"
+                               placeholder="请输入人数"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!--不展示的信息-->
+        <div class="web-box">
+            <div id="social-title">
+                <h4>退役士兵人数</h4>
+                <!--<span class="contribution-arrow-right"><img src="img/show-no.png"/></span>-->
+            </div>
+            <ul>
+                <li>
+								<span>
 									经营者（人）
 								</span>
-								<div class="web-write">
-									<input type="text" name="RETSOLNUM" id="RETSOLNUM" onkeyup="inputNum(this)" placeholder="请输入人数"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-			
-				<div class="web-box">
-						<ul>
-							<li>
-								<span >
+                    <div class="web-write">
+                        <input type="text" name="RETSOLNUM" id="RETSOLNUM" onkeyup="inputNum(this)"
+                               placeholder="请输入人数"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
+								<span>
 									雇员
 								</span>
-								<div class="web-write">
-									<input type="text" name="RETEMPLNUM" id="RETEMPLNUM" onkeyup="inputNum(this)" placeholder="请输入人数"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-				
-				<!--不展示的信息-->
-				<div class="web-box">
-					<div id="social-title">
-						<h4>残疾人人数</h4> 
-						<!--<span class="contribution-arrow-right"><img src="img/show-no.png"/></span>-->
-					</div>
-						<ul>
-							<li>
-								<span >
+                    <div class="web-write">
+                        <input type="text" name="RETEMPLNUM" id="RETEMPLNUM" onkeyup="inputNum(this)"
+                               placeholder="请输入人数"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!--不展示的信息-->
+        <div class="web-box">
+            <div id="social-title">
+                <h4>残疾人人数</h4>
+                <!--<span class="contribution-arrow-right"><img src="img/show-no.png"/></span>-->
+            </div>
+            <ul>
+                <li>
+								<span>
 									经营者（人）
 								</span>
-								<div class="web-write">
-									<input type="text" name="DISPERNUM" id="DISPERNUM" onkeyup="inputNum(this)" placeholder="请输入人数"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-			
-				<div class="web-box">
-						<ul>
-							<li>
-								<span >
+                    <div class="web-write">
+                        <input type="text" name="DISPERNUM" id="DISPERNUM" onkeyup="inputNum(this)"
+                               placeholder="请输入人数"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
+								<span>
 									雇员
 								</span>
-								<div class="web-write">
-									<input type="text" name="DISEMPLNUM" id="DISEMPLNUM" onkeyup="inputNum(this)" placeholder="请输入人数"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-				
-				<!--不展示的信息-->
-				<div class="web-box">
-					<div id="social-title">
-						<h4>失业人员再就业人数</h4> 
-						<!--<span class="contribution-arrow-right"><img src="img/show-no.png"/></span>-->
-					</div>
-						<ul>
-							<li>
-								<span >
+                    <div class="web-write">
+                        <input type="text" name="DISEMPLNUM" id="DISEMPLNUM" onkeyup="inputNum(this)"
+                               placeholder="请输入人数"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!--不展示的信息-->
+        <div class="web-box">
+            <div id="social-title">
+                <h4>失业人员再就业人数</h4>
+                <!--<span class="contribution-arrow-right"><img src="img/show-no.png"/></span>-->
+            </div>
+            <ul>
+                <li>
+								<span>
 									经营者（人）
 								</span>
-								<div class="web-write">
-									<input type="text" name="UNENUM" id="UNENUM" onkeyup="inputNum(this)" placeholder="请输入人数"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-			
-				<div class="web-box">
-						<ul>
-							<li>
-								<span >
+                    <div class="web-write">
+                        <input type="text" name="UNENUM" id="UNENUM" onkeyup="inputNum(this)" placeholder="请输入人数"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
+								<span>
 									雇员
 								</span>
-								<div class="web-write">
-									<input type="text" name="UNEEMPLNUM" id="UNEEMPLNUM" onkeyup="inputNum(this)" placeholder="请输入人数"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-			</div>
-				<!--新增不公示信息-->
-		</form>	
-		<script type="text/javascript">
-			/*** ---------start 设置从业人数、女性从业人数、企业控股情况是否对外公示 ****/
-			document.getElementById("empnumdisImg").addEventListener('tap', function() {
-				var empnumdis=$("#EMPNUMDIS").val();
-				if(empnumdis==2){
-					document.getElementById("empnumdisImg").src="../../static/img/show.png";
-					$("#EMPNUMDIS").val(1);
-					mui.toast('您设置了从业人数对外公示');
-				}else{
-					document.getElementById("empnumdisImg").src="../../static/img/show-no.png";
-					$("#EMPNUMDIS").val(2);
-					mui.toast('您设置了从业人数对外隐藏');
-				}
-			});
-			
-			document.getElementById("womempnumdisImg").addEventListener('tap', function() {
-				var womempnumdis=$("#WOMEMPNUMDIS").val();
-				if(womempnumdis==2){
-					document.getElementById("womempnumdisImg").src="../../static/img/show.png";
-					$("#WOMEMPNUMDIS").val(1);
-					mui.toast('您设置了女性从业人数对外公示');
-				}else{
-					document.getElementById("womempnumdisImg").src="../../static/img/show-no.png";
-					$("#WOMEMPNUMDIS").val(2);
-					mui.toast('您设置了女性从业人数对外隐藏');
-				}
-			});
-			document.getElementById("holdingsmsgdisImg").addEventListener('tap', function() {
-				var holdingsmsgdis=$("#HOLDINGSMSGDIS").val();
-				if(holdingsmsgdis==2){
-					document.getElementById("holdingsmsgdisImg").src="../../static/img/show.png";
-					$("#HOLDINGSMSGDIS").val(1);
-					mui.toast('您设置了企业控股对外公示');
-				}else{
-					document.getElementById("holdingsmsgdisImg").src="../../static/img/show-no.png";
-					$("#HOLDINGSMSGDIS").val(2);
-					mui.toast('您设置了企业控股对外隐藏');
-				}
-			});
-			
-			/*** ---------end 设置从业人数、女性从业人数、企业控股情况是否对外公示 ****/
-		</script>
-		
-	</body>
+                    <div class="web-write">
+                        <input type="text" name="UNEEMPLNUM" id="UNEEMPLNUM" onkeyup="inputNum(this)"
+                               placeholder="请输入人数"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--新增不公示信息-->
+</form>
+<script type="text/javascript">
+    /*** ---------start 设置从业人数、女性从业人数、企业控股情况是否对外公示 ****/
+    document.getElementById("empnumdisImg").addEventListener('tap', function () {
+        var empnumdis = $("#EMPNUMDIS").val();
+        if (empnumdis == 2) {
+            document.getElementById("empnumdisImg").src = "../../static/img/show.png";
+            $("#EMPNUMDIS").val(1);
+            mui.toast('您设置了从业人数对外公示');
+        } else {
+            document.getElementById("empnumdisImg").src = "../../static/img/show-no.png";
+            $("#EMPNUMDIS").val(2);
+            mui.toast('您设置了从业人数对外隐藏');
+        }
+    });
+
+    document.getElementById("womempnumdisImg").addEventListener('tap', function () {
+        var womempnumdis = $("#WOMEMPNUMDIS").val();
+        if (womempnumdis == 2) {
+            document.getElementById("womempnumdisImg").src = "../../static/img/show.png";
+            $("#WOMEMPNUMDIS").val(1);
+            mui.toast('您设置了女性从业人数对外公示');
+        } else {
+            document.getElementById("womempnumdisImg").src = "../../static/img/show-no.png";
+            $("#WOMEMPNUMDIS").val(2);
+            mui.toast('您设置了女性从业人数对外隐藏');
+        }
+    });
+    document.getElementById("holdingsmsgdisImg").addEventListener('tap', function () {
+        var holdingsmsgdis = $("#HOLDINGSMSGDIS").val();
+        if (holdingsmsgdis == 2) {
+            document.getElementById("holdingsmsgdisImg").src = "../../static/img/show.png";
+            $("#HOLDINGSMSGDIS").val(1);
+            mui.toast('您设置了企业控股对外公示');
+        } else {
+            document.getElementById("holdingsmsgdisImg").src = "../../static/img/show-no.png";
+            $("#HOLDINGSMSGDIS").val(2);
+            mui.toast('您设置了企业控股对外隐藏');
+        }
+    });
+
+    /*** ---------end 设置从业人数、女性从业人数、企业控股情况是否对外公示 ****/
+</script>
+
+</body>
 </html>

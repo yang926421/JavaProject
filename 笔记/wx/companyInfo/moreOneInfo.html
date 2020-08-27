@@ -1,93 +1,97 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>多证合一</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/modify-record.css">
-			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-			<script type="text/javascript" src="../static/js/common.js" ></script>
-		<style>
-			.web{padding-top:15px;}
-		</style>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>多证合一</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/modify-record.css">
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <style>
+        .web {
+            padding-top: 15px;
+        }
+    </style>
 
-     <script>
-     	//获取企业id
-     	var pripid=sessionStorage.getItem("PRIPID"); 
-     	
-     	$(function(){
-     		getData();
-     	})
-     	//获取企业多证合一信息
-     	function getData(){
-     		$.ajax({
-     			type:"get",
-     			url:httpUrl+"/p/multiCard/inone/list.json",
-     			data:{"PRIPID":pripid},
-     			dataType:"json",
-     			async:true,
-     			success:function(res){
-     				if(res.success==true){
-     					createData(res.data);
-     				}
-     			}
-     		});
-     	}
-     	//创建多证合一数据
-     	function createData(obj){
-     		if(obj!=null && obj.length>0){
-     			$("#count").html(obj.length);
-     			var htmlData="";
-     			for(var i=0;i<obj.length;i++){
-     				htmlData+="<div class='web-box'>"+
-								"<div class='web-name'>"+
-								"	<ul class='web'>"+
-								"		<li><span>备案事项名称：</span> <span>"+obj[i].RECITENAME+"</span></li>"+
-								"		<li><span>备注：</span><span>"+obj[i].LICREMARK+"</span></li>"+
-								"	</ul>"+
-					        	 "</div></div> ";		
-     			}
-     			
-     			$("#common-box").html(htmlData);
-     		}else{
-     			$("#count").html(0);
-     		}
-     	}
-     	
-     </script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="companyDetail.htmll"></a>
-		    <h1 class="mui-title">多证合一(<span id="count"></span>)</h1>
-		</header>
-		
-		<!--修改信息-->
-		<div id="common-box">
-			<!--<div class="web-box">
-				<div class="web-name">
-					<ul class="web">
-						<li><span>证照事件：</span> <span>4578457574</span></li>
-						<li><span>接收部门：</span><span>类型类型</span></li>
-						<li><span>接收状态：</span><span>吊销营业执照，责令一个月整改</span></li>
-					</ul>
-				</div>
-			</div>
-			
-			<div class="web-box">
-				<div class="web-name">
-					<ul class="web">
-						<li><span>证照事件：</span> <span>4578457574</span></li>
-						<li><span>接收部门：</span><span>类型类型</span></li>
-						<li><span>接收状态：</span><span>吊销营业执照，责令一个月整改</span></li>
-					</ul>
-				</div>
-			</div>-->
-		</div>
-		
-	</body>
+    <script>
+        //获取企业id
+        var pripid = sessionStorage.getItem("PRIPID");
+
+        $(function () {
+            getData();
+        })
+
+        //获取企业多证合一信息
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/p/multiCard/inone/list.json",
+                data: {"PRIPID": pripid},
+                dataType: "json",
+                async: true,
+                success: function (res) {
+                    if (res.success == true) {
+                        createData(res.data);
+                    }
+                }
+            });
+        }
+
+        //创建多证合一数据
+        function createData(obj) {
+            if (obj != null && obj.length > 0) {
+                $("#count").html(obj.length);
+                var htmlData = "";
+                for (var i = 0; i < obj.length; i++) {
+                    htmlData += "<div class='web-box'>" +
+                        "<div class='web-name'>" +
+                        "	<ul class='web'>" +
+                        "		<li><span>备案事项名称：</span> <span>" + obj[i].RECITENAME + "</span></li>" +
+                        "		<li><span>备注：</span><span>" + obj[i].LICREMARK + "</span></li>" +
+                        "	</ul>" +
+                        "</div></div> ";
+                }
+
+                $("#common-box").html(htmlData);
+            } else {
+                $("#count").html(0);
+            }
+        }
+
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="companyDetail.htmll"></a>
+    <h1 class="mui-title">多证合一(<span id="count"></span>)</h1>
+</header>
+
+<!--修改信息-->
+<div id="common-box">
+    <!--<div class="web-box">
+        <div class="web-name">
+            <ul class="web">
+                <li><span>证照事件：</span> <span>4578457574</span></li>
+                <li><span>接收部门：</span><span>类型类型</span></li>
+                <li><span>接收状态：</span><span>吊销营业执照，责令一个月整改</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="web-box">
+        <div class="web-name">
+            <ul class="web">
+                <li><span>证照事件：</span> <span>4578457574</span></li>
+                <li><span>接收部门：</span><span>类型类型</span></li>
+                <li><span>接收状态：</span><span>吊销营业执照，责令一个月整改</span></li>
+            </ul>
+        </div>
+    </div>-->
+</div>
+
+</body>
 </html>

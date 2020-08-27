@@ -9,7 +9,6 @@
                         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-
     <!--    配置Controller的组件扫描-->
     <context:component-scan base-package="cn.gsxt.controller"/>
     <!--    配置MVC的注解驱动-->
@@ -23,12 +22,12 @@
         <property name="prefix" value="/pages/"></property>
         <property name="suffix" value=".jsp"></property>
     </bean>
-<!--    配置权限拦截器-->
+    <!--    配置权限拦截器-->
     <mvc:interceptors>
         <mvc:interceptor>
-<!--            /**代表访问所有资源都需要进行验证是否登录权限过滤  -->
+            <!--            /**代表访问所有资源都需要进行验证是否登录权限过滤  -->
             <mvc:mapping path="/**"/>
-<!--            配置哪些资源不进行拦截操作-->
+            <!--            配置哪些资源不进行拦截操作-->
             <mvc:exclude-mapping path="/user/login"/>
             <bean class="cn.gsxt.interceptor.PrivilegeInter"/>
         </mvc:interceptor>

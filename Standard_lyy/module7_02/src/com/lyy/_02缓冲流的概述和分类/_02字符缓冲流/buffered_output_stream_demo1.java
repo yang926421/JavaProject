@@ -5,7 +5,7 @@ import java.io.FileWriter;
 import java.io.Writer;
 
 public class buffered_output_stream_demo1 {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         Writer wr1 = new FileWriter("module7_02/src/hht.txt");
         //将低级字符输出流 包装到高级字符输出流中
         BufferedWriter bw = new BufferedWriter(wr1);

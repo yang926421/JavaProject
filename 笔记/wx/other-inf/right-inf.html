@@ -1,124 +1,125 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>国家企业信用信息公示系统</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/right-inf.css">
-			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-			<script type="text/javascript" src="../static/js/common.js" ></script>
-			<script>
-				
-				$(function(){
-					getData();
-				});
-				function getData(){
-					$.ajax({
-						type:"get",
-						url:httpUrl+"/e/self/ippldg/list.json",
-						async:true,
-						data:{"PRIPID":PRIPID,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
-						dataType:"json",
-						success:function(res){
-							if(res.success==true){
-								createData(res.data);
-							}else{
-								mui.toast(res.codeMsg);
-							}
-						}
-					});
-				}
-				
-				function createData(obj){
-					$("#count").html(obj.length);
-					var htmlData="";
-					for (var i=0;i<obj.length;i++) {
-						var type="";
-						var status="";
-						if(obj[i].TYPE==1){
-							type="有效";
-						}else if(obj[i].TYPE==2){
-							type="无效";
-						}
-						var hrefUrl="";
-						if(obj[i].STATUS!=null && obj[i].STATUS!="" && obj[i].STATUS=="已公示"){
-							hrefUrl="modify-right-inf.html";
-						}else{
-							hrefUrl="add-right-inf.html";
-						}
-						var KINDS_CN="";
-						if(obj[i].KINDS==1){
-							KINDS_CN="商标";
-						}else if(obj[i].KINDS==2){
-							KINDS_CN="版权";
-						}else if(obj[i].KINDS==3){
-							KINDS_CN="专利";
-						}
-						htmlData+=" <div class='web-box'>"+
-									"<a href='"+hrefUrl+"?PLEID="+obj[i].PLEID+"'>"+
-									"	<div class='web-name'>"+
-									"		<ul class='web'>"+
-									"			<li><span>知识产权登记证号：</span> <span>"+obj[i].TMREGNO+"</span> <span class='right-state' style='color:#ac812e'>"+type+"</span></li>"+
-									"			<li><span>名称：</span> <span>"+obj[i].TMNAME+"</span></li>"+
-									"			<li><span>种类：</span> <span>"+KINDS_CN+"</span></li>"+
-									"			<li><span>出质人名称：</span> <span>"+obj[i].PLEDGOR+"</span></li>"+
-									"			<li><span>质权人名称：</span> <span>"+obj[i].IMPORG+"</span></li>"+
-									"			<li><span>质权登记期限自：</span> <span>"+getFormatDateByLong(obj[i].PLEREGPERFROM,"yyyy年MM月dd日") +"</span></li>"+
-									"			<li><span>质权登记期限止：</span> <span>"+getFormatDateByLong(obj[i].PLEREGPERTO,"yyyy年MM月dd日")+"</span></li>"+
-									"			<li><span>公示状态：</span> <span>"+obj[i].STATUS+"</span></li>"+
-									"		</ul>"+
-									"		<div class='arrow-right'>"+
-									"			<img src='../static/img/arrow-right.png'/>"+
-									"		</div>"+
-									"	</div>"+
-									"</a>"+
-								"</div>";
-					}
-					
-					$("#common-box").html(htmlData);
-					
-				}
-			</script>
-		
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-icon mui-icon-back mui-pull-left" onclick="returnOtherInfoIndex()"></a>
-		    <h1 class="mui-title">知识产权出质登记信息(<span id="count"></span>)</h1>
-		    <span id="add">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>国家企业信用信息公示系统</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/right-inf.css">
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script>
+
+        $(function () {
+            getData();
+        });
+
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/e/self/ippldg/list.json",
+                async: true,
+                data: {"PRIPID": PRIPID, "TOKEN": TOKEN, "SESSIONID": SESSIONID},
+                dataType: "json",
+                success: function (res) {
+                    if (res.success == true) {
+                        createData(res.data);
+                    } else {
+                        mui.toast(res.codeMsg);
+                    }
+                }
+            });
+        }
+
+        function createData(obj) {
+            $("#count").html(obj.length);
+            var htmlData = "";
+            for (var i = 0; i < obj.length; i++) {
+                var type = "";
+                var status = "";
+                if (obj[i].TYPE == 1) {
+                    type = "有效";
+                } else if (obj[i].TYPE == 2) {
+                    type = "无效";
+                }
+                var hrefUrl = "";
+                if (obj[i].STATUS != null && obj[i].STATUS != "" && obj[i].STATUS == "已公示") {
+                    hrefUrl = "modify-right-inf.html";
+                } else {
+                    hrefUrl = "add-right-inf.html";
+                }
+                var KINDS_CN = "";
+                if (obj[i].KINDS == 1) {
+                    KINDS_CN = "商标";
+                } else if (obj[i].KINDS == 2) {
+                    KINDS_CN = "版权";
+                } else if (obj[i].KINDS == 3) {
+                    KINDS_CN = "专利";
+                }
+                htmlData += " <div class='web-box'>" +
+                    "<a href='" + hrefUrl + "?PLEID=" + obj[i].PLEID + "'>" +
+                    "	<div class='web-name'>" +
+                    "		<ul class='web'>" +
+                    "			<li><span>知识产权登记证号：</span> <span>" + obj[i].TMREGNO + "</span> <span class='right-state' style='color:#ac812e'>" + type + "</span></li>" +
+                    "			<li><span>名称：</span> <span>" + obj[i].TMNAME + "</span></li>" +
+                    "			<li><span>种类：</span> <span>" + KINDS_CN + "</span></li>" +
+                    "			<li><span>出质人名称：</span> <span>" + obj[i].PLEDGOR + "</span></li>" +
+                    "			<li><span>质权人名称：</span> <span>" + obj[i].IMPORG + "</span></li>" +
+                    "			<li><span>质权登记期限自：</span> <span>" + getFormatDateByLong(obj[i].PLEREGPERFROM, "yyyy年MM月dd日") + "</span></li>" +
+                    "			<li><span>质权登记期限止：</span> <span>" + getFormatDateByLong(obj[i].PLEREGPERTO, "yyyy年MM月dd日") + "</span></li>" +
+                    "			<li><span>公示状态：</span> <span>" + obj[i].STATUS + "</span></li>" +
+                    "		</ul>" +
+                    "		<div class='arrow-right'>" +
+                    "			<img src='../static/img/arrow-right.png'/>" +
+                    "		</div>" +
+                    "	</div>" +
+                    "</a>" +
+                    "</div>";
+            }
+
+            $("#common-box").html(htmlData);
+
+        }
+    </script>
+
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-icon mui-icon-back mui-pull-left" onclick="returnOtherInfoIndex()"></a>
+    <h1 class="mui-title">知识产权出质登记信息(<span id="count"></span>)</h1>
+    <span id="add">
 		    	<a href="add-right-inf.html" class=""><img src="../static/img/add.png"/></a>
 		    </span>
-		</header>
-		
-		<!--登记信息-->
-		<div id="common-box">
-			<!--<div class="web-box">
-				<a href="add-right-inf.html">
-					<div class="web-name">
-						<ul class="web">
-							<li><span>知识产权登记证号：</span> <span >450002</span> <span class="right-state">有效</span></li>
-							<li><span>名称：</span> <span >XXX软件著作权</span></li>
-							<li><span>种类：</span> <span >货币</span></li>
-							<li><span>出质人名称：</span> <span >张大明</span></li>
-							<li><span>质权人名称：</span> <span >李大强</span></li>
-							<li><span>质权登记期限自：</span> <span >2017年6月30日</span></li>
-							<li><span>质权登记期限止：</span> <span >2017年5月30日</span></li>
-							<li><span>公示状态：</span> <span >未公示</span></li>
-						</ul>
-						
-						<div class="arrow-right">
-							<img src="../static/img/arrow-right.png"/>
-						</div>
-					</div>
-				</a>
-			</div>-->
-			
-		</div>
-		
-		
-	</body>
+</header>
+
+<!--登记信息-->
+<div id="common-box">
+    <!--<div class="web-box">
+        <a href="add-right-inf.html">
+            <div class="web-name">
+                <ul class="web">
+                    <li><span>知识产权登记证号：</span> <span >450002</span> <span class="right-state">有效</span></li>
+                    <li><span>名称：</span> <span >XXX软件著作权</span></li>
+                    <li><span>种类：</span> <span >货币</span></li>
+                    <li><span>出质人名称：</span> <span >张大明</span></li>
+                    <li><span>质权人名称：</span> <span >李大强</span></li>
+                    <li><span>质权登记期限自：</span> <span >2017年6月30日</span></li>
+                    <li><span>质权登记期限止：</span> <span >2017年5月30日</span></li>
+                    <li><span>公示状态：</span> <span >未公示</span></li>
+                </ul>
+
+                <div class="arrow-right">
+                    <img src="../static/img/arrow-right.png"/>
+                </div>
+            </div>
+        </a>
+    </div>-->
+
+</div>
+
+
+</body>
 </html>

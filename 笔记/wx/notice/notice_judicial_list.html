@@ -1,228 +1,229 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>司法协助公告</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/notice.css">
-		<link rel="stylesheet" href="../static/css/changeItem.css" />
-		<script src="../static/js/jquery.min.js"></script>
-		<script type="text/javascript" src="../static/js/common.js" ></script>
-		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-		<script>
-			//定义要搜索的关键字
-			var title="";
-			//定义要筛选的地区
-			var region="";
-			//查询类型
-			var noticeType="21";
-			var typeTxt="司法股权冻结公告";
-			$(function(){				
-				$("#segmentedControl a").click(function(){					
-					$("#segmentedControl a").removeClass("active");
-					$(this).addClass("active");
-					typeTxt= $(this).text();
-					noticeType=getNoticeType(3,typeTxt);   //获取筛选的公告类型
-						goSearch();
-				});
-				var flag=true;
-				$("#chose").click(function(){
-					if(flag){
-						$("#proList").stop().animate({
-							right:0
-						})
-						flag=false;
-					}else{
-						$("#proList").stop().animate({
-							right:"-70%"
-						})
-						flag=true;
-						goSearch();
-					}
-				});
-				$(".oAs a").click(function(){					
-					$(".oAs a").removeClass("chosedCity");
-					$(this).addClass("chosedCity");
-					$("#proList").stop().animate({
-							right:"-70%"
-					});
-					var txt=$(this).text();
-					if(txt!="不限"){
-						$("#chose").text(txt);
-						region= getArea(txt); 
-					}else{
-						$("#chose").text("筛选");
-						region= ""; 
-					}
-					flag=true;
-					goSearch();
-				});
-				
-				goSearch();
-			});
-			
-			
-			
-				//切换类型和区域时重新设置当前页码并清除之前的数据
-			function clearData(){
-				$("#page").val(1);  
-				$("#noticeList").html("");
-				$("#loadData").hide();
-				$("#noData").hide();
-				$("#no-show").hide();
-			}
-			function goSearch(){
-				clearData();
-				if(noticeType==21){   //先查冻结公告，变更先不管
-					getData();
-				}else{
-					$("#no-show").show();
-				}
-			}
-			//获取司法协助公告数据
-			function getData(){
-				title=$("#title").val();
-				page=$("#page").val();
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/p/esfinfo/list.json",
-					async:true,
-					data:{ "noticeType":noticeType,"title":title,"region":region,"page":page,"pageSize":pageSize},
-					dataType:"json",
-					beforeSend:function(){
-						$("#loading").show();
-					},
-					success:function(res){
-						$("#loading").hide();
-						if(res.success==true){
-							loadPage(res);
-							createData(res.data);
-						}/*else{
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>司法协助公告</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/notice.css">
+    <link rel="stylesheet" href="../static/css/changeItem.css"/>
+    <script src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script>
+        //定义要搜索的关键字
+        var title = "";
+        //定义要筛选的地区
+        var region = "";
+        //查询类型
+        var noticeType = "21";
+        var typeTxt = "司法股权冻结公告";
+        $(function () {
+            $("#segmentedControl a").click(function () {
+                $("#segmentedControl a").removeClass("active");
+                $(this).addClass("active");
+                typeTxt = $(this).text();
+                noticeType = getNoticeType(3, typeTxt);   //获取筛选的公告类型
+                goSearch();
+            });
+            var flag = true;
+            $("#chose").click(function () {
+                if (flag) {
+                    $("#proList").stop().animate({
+                        right: 0
+                    })
+                    flag = false;
+                } else {
+                    $("#proList").stop().animate({
+                        right: "-70%"
+                    })
+                    flag = true;
+                    goSearch();
+                }
+            });
+            $(".oAs a").click(function () {
+                $(".oAs a").removeClass("chosedCity");
+                $(this).addClass("chosedCity");
+                $("#proList").stop().animate({
+                    right: "-70%"
+                });
+                var txt = $(this).text();
+                if (txt != "不限") {
+                    $("#chose").text(txt);
+                    region = getArea(txt);
+                } else {
+                    $("#chose").text("筛选");
+                    region = "";
+                }
+                flag = true;
+                goSearch();
+            });
+
+            goSearch();
+        });
+
+
+        //切换类型和区域时重新设置当前页码并清除之前的数据
+        function clearData() {
+            $("#page").val(1);
+            $("#noticeList").html("");
+            $("#loadData").hide();
+            $("#noData").hide();
+            $("#no-show").hide();
+        }
+
+        function goSearch() {
+            clearData();
+            if (noticeType == 21) {   //先查冻结公告，变更先不管
+                getData();
+            } else {
+                $("#no-show").show();
+            }
+        }
+
+        //获取司法协助公告数据
+        function getData() {
+            title = $("#title").val();
+            page = $("#page").val();
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/p/esfinfo/list.json",
+                async: true,
+                data: {"noticeType": noticeType, "title": title, "region": region, "page": page, "pageSize": pageSize},
+                dataType: "json",
+                beforeSend: function () {
+                    $("#loading").show();
+                },
+                success: function (res) {
+                    $("#loading").hide();
+                    if (res.success == true) {
+                        loadPage(res);
+                        createData(res.data);
+                    }/*else{
 							mui.toast(res.codeMsg);
 						}*/
-					}
-				});
-			}
-			//创建数据
-			function createData(obj){
-				if(obj!=null && obj.length>0){
-					var htmlData="";
-					for(var i=0;i<obj.length;i++){
-						htmlData+="<li>"+
-								"<a href='notice_judicial_detail.html?FROID="+obj[i].FROID+"'>"+
-								"	<p>"+obj[i].CORENTNAME+"的司法股权冻结公告</p>"+
-								"  <div><span>"+obj[i].FROAUTH+"</span><span class='rightFloat'>"+getFormatDateByLong(obj[i].PUBLICDATE,"yyyy年MM月dd日") +"</span><div>"+
-								"</a>"+
-							"</li>";
-					}
-					$("#noticeList").append(htmlData);
-					
-				}else{
-					$("#no-show").show();
-				}
-			}
-			
-		</script>
-	
-		
-	</head>
-	
-	<body>		
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="notice_index.html"></a>
-		    <h1 class="mui-title"><span id="saveOrUpdate"></span>司法协助公告</h1>
-		    <span id="sure">
+                }
+            });
+        }
+
+        //创建数据
+        function createData(obj) {
+            if (obj != null && obj.length > 0) {
+                var htmlData = "";
+                for (var i = 0; i < obj.length; i++) {
+                    htmlData += "<li>" +
+                        "<a href='notice_judicial_detail.html?FROID=" + obj[i].FROID + "'>" +
+                        "	<p>" + obj[i].CORENTNAME + "的司法股权冻结公告</p>" +
+                        "  <div><span>" + obj[i].FROAUTH + "</span><span class='rightFloat'>" + getFormatDateByLong(obj[i].PUBLICDATE, "yyyy年MM月dd日") + "</span><div>" +
+                        "</a>" +
+                        "</li>";
+                }
+                $("#noticeList").append(htmlData);
+
+            } else {
+                $("#no-show").show();
+            }
+        }
+
+    </script>
+
+
+</head>
+
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="notice_index.html"></a>
+    <h1 class="mui-title"><span id="saveOrUpdate"></span>司法协助公告</h1>
+    <span id="sure">
 		    	<a href="javascript:;" class="chose" id="chose">筛选</a>
 		    </span>
-		</header>	
-		
-		<div id="common-boxJ">
-			<div id="proList">
-				<h3>区域筛选</h3>
-				<div class="oAs"><a class="chosedCity">不限</a></div>
-				<div class="oAs">
-					<a>郑州</a>
-					<a>开封</a>
-					<a>洛阳</a>
-					<a>平顶山</a>
-					<a>新乡</a>
-					<a>安阳</a>
-					<a>焦作</a>
-					<a>鹤壁</a>
-					<a>濮阳</a>
-					<a>三门峡</a>
-					<a>许昌</a>
-					<a>漯河</a>
-					<a>南阳</a>
-					<a>商丘</a>
-					<a>信阳</a>
-					<a>驻马店</a>
-					<a>周口</a>
-					<a>济源</a>
-					<a>巩义</a>
-					<a>兰考</a>
-					<a>汝州</a>
-					<a>滑县</a>
-					<a>邓州</a>
-					<a>永城</a>
-					<a>固始</a>
-					<a>鹿邑</a>
-					<a>新蔡</a>
-					<a>长垣</a>
-				</div>
-			</div>
-			<div style="padding: 0px 10px;background: #fff;overflow: hidden;">
-				<div id="segmentedControl" class="mui-segmented-control">
-					<a class="item active">司法股权冻结公告</a>
-					<a class="item">司法股东变更公告</a>
-				</div>
-			</div>
-			<div class="sss" style="padding: 13px 10px;">
-				<div class="searchBoxs">
-					<img src="../static/img/icon/ic_search.png" />
-					<input type="text" id="title" placeholder="搜索" style="padding-top: 0rem;">
-					<a onclick="goSearch()">搜索</a>
-				</div>
-			</div>	
-			<ul id="noticeList" class="noticeList" style="background: #fff;">
-				<!--<li>
-					<a href="notice_detail1.html">
-						<p>关于洛阳神都信息技术有限公司列入</p>
-						<span>2017.03.06 15:55:25</span>
-					</a>
-				</li>
-				<li>
-					<a href="notice_detail1.html">
-						<p>关于洛阳神都信息技术有限公司列入</p>
-						<span>2017.03.06 15:55:25</span>
-					</a>
-				</li>-->
-				
-			</ul>
-			
-			<div id="no-show" class="weui-loadmore weui-loadmore_line" style="display: none;">
-           		 <span class="weui-loadmore__tips">暂无数据</span>
-       		 </div>
-				<input type="hidden" name="page" id="page" value="1" />
-				<input type="hidden" name="totalPage" id="totalPage" value="1"/>
-				
-				<div id="loadData" style="display: none;" onclick="getData();">点击加载更多...</div>
-				<!--加载点-->
-				<div id="loading" style="display: none;" class="spinner">
-					 <div class="bounce1"></div>
-					 <div class="bounce2"></div>
-					 <div class="bounce3"></div>
-				</div>
-				
-				<div id="noData" style="display: none;" >没有更多了...</div>
-			
-			
-		</div>
-		
-		
-	   
-	</body>
+</header>
+
+<div id="common-boxJ">
+    <div id="proList">
+        <h3>区域筛选</h3>
+        <div class="oAs"><a class="chosedCity">不限</a></div>
+        <div class="oAs">
+            <a>郑州</a>
+            <a>开封</a>
+            <a>洛阳</a>
+            <a>平顶山</a>
+            <a>新乡</a>
+            <a>安阳</a>
+            <a>焦作</a>
+            <a>鹤壁</a>
+            <a>濮阳</a>
+            <a>三门峡</a>
+            <a>许昌</a>
+            <a>漯河</a>
+            <a>南阳</a>
+            <a>商丘</a>
+            <a>信阳</a>
+            <a>驻马店</a>
+            <a>周口</a>
+            <a>济源</a>
+            <a>巩义</a>
+            <a>兰考</a>
+            <a>汝州</a>
+            <a>滑县</a>
+            <a>邓州</a>
+            <a>永城</a>
+            <a>固始</a>
+            <a>鹿邑</a>
+            <a>新蔡</a>
+            <a>长垣</a>
+        </div>
+    </div>
+    <div style="padding: 0px 10px;background: #fff;overflow: hidden;">
+        <div id="segmentedControl" class="mui-segmented-control">
+            <a class="item active">司法股权冻结公告</a>
+            <a class="item">司法股东变更公告</a>
+        </div>
+    </div>
+    <div class="sss" style="padding: 13px 10px;">
+        <div class="searchBoxs">
+            <img src="../static/img/icon/ic_search.png"/>
+            <input type="text" id="title" placeholder="搜索" style="padding-top: 0rem;">
+            <a onclick="goSearch()">搜索</a>
+        </div>
+    </div>
+    <ul id="noticeList" class="noticeList" style="background: #fff;">
+        <!--<li>
+            <a href="notice_detail1.html">
+                <p>关于洛阳神都信息技术有限公司列入</p>
+                <span>2017.03.06 15:55:25</span>
+            </a>
+        </li>
+        <li>
+            <a href="notice_detail1.html">
+                <p>关于洛阳神都信息技术有限公司列入</p>
+                <span>2017.03.06 15:55:25</span>
+            </a>
+        </li>-->
+
+    </ul>
+
+    <div id="no-show" class="weui-loadmore weui-loadmore_line" style="display: none;">
+        <span class="weui-loadmore__tips">暂无数据</span>
+    </div>
+    <input type="hidden" name="page" id="page" value="1"/>
+    <input type="hidden" name="totalPage" id="totalPage" value="1"/>
+
+    <div id="loadData" style="display: none;" onclick="getData();">点击加载更多...</div>
+    <!--加载点-->
+    <div id="loading" style="display: none;" class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+    </div>
+
+    <div id="noData" style="display: none;">没有更多了...</div>
+
+
+</div>
+
+
+</body>
 </html>

@@ -3,12 +3,13 @@ package com.etc.Ayy_collection.set_demo.card;
 public class card_demo {
     // 这是一个card类
     private String number;
-    private  String color;
+    private String color;
 
-    public card_demo(){
+    public card_demo() {
 
     }
-    public card_demo(String number, String color){
+
+    public card_demo(String number, String color) {
         this.color = color;
         this.number = number;
     }
@@ -31,6 +32,6 @@ public class card_demo {
 
     @Override
     public String toString() {
-        return number + color ;
+        return number + color;
     }
 }

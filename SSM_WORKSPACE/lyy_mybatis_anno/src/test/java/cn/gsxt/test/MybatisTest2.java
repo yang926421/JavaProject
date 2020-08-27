@@ -15,8 +15,9 @@ import java.util.List;
 
 public class MybatisTest2 {
     private OrderMapper mapper;
+
     @Before
-    public void before() throws Exception{
+    public void before() throws Exception {
         InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
         SqlSession sqlSession = sqlSessionFactory.openSession(true);
@@ -24,7 +25,7 @@ public class MybatisTest2 {
     }
 
     @Test
-    public void test1(){
+    public void test1() {
         List<Order> orders = mapper.findAll();
         for (Order order : orders) {
             System.out.println(order);

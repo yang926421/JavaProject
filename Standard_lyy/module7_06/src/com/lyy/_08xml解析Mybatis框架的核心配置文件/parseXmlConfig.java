@@ -10,11 +10,11 @@ import java.util.List;
 import java.util.jar.Attributes;
 
 /**
-
+ *
  */
 public class parseXmlConfig {
     @Test
-    public void parse_xml() throws Exception{
+    public void parse_xml() throws Exception {
         SAXReader saxReader = new SAXReader();
         // 指向文件对象创建document树
         Document document = saxReader.read(parseXmlConfig.class.getResourceAsStream("/sqlMapConfig.xml"));
@@ -28,7 +28,7 @@ public class parseXmlConfig {
         Element dataSource = root.element("dataSource");
         List<Element> pro = dataSource.elements();
         for (Element element : pro) {
-            System.out.println(element.getName() + "====>" +element.attributeValue("value"));
+            System.out.println(element.getName() + "====>" + element.attributeValue("value"));
         }
     }
 }

@@ -1,363 +1,378 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>国家企业信用信息公示系统</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/add-right-inf.css">
-		<link rel="stylesheet" type="text/css" href="../static/css/mui.picker.min.css" /><!--填写时间-->
-		<script src="../static/js/mui.min.js"></script>
-		<script src="../static/js/mui.picker.min.js"></script>
-		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../static/js/common.js" ></script>
-		
-		<script>
-			var CASEID=GetRequest("CASEID");  //行政处罚id
-			var updateUrl="";
-			$(function(){
-				$("#PRIPID").val(PRIPID);
-				$("#ENTNAME").val(BODY_NAME);
-				$("#REGNO").val(REGNO);
-				$("#UNISCID").val(UNISCID);
-				$("#TOKEN").val(TOKEN);
-				$("#SESSIONID").val(SESSIONID);
-				loadData("CE16","PENTYPE");
-				
-				if(CASEID!=null && CASEID!=""){
-					$("#saveOrUpdate").html("修改");
-					$("#CASEID").val(CASEID);
-					$("#sure").html("<a href='javascript:;' onclick='updateData();'>保存</a>");
-					$("#delDiv").show();
-					$("#addDiv").hide();
-					updateUrl="/e/self/publishedPunish/update.json";
-					getData();
-				}else{
-					$("#saveOrUpdate").html("添加");
-					$("#delDiv").hide();
-					$("#addDiv").show();
-					updateUrl="/e/self/publishedPunish/save.json";
-				}
-			});
-			
-			function addData(){
-				$("#PENTYPE_CN").val($("#PENTYPE").find("option:selected").text());
-				$.ajax({
-					type:"post",
-					url:httpUrl+"/e/self/publishedPunish/save.json",
-					data:$("#addForm").serialize(),
-					dataType:"json",
-					async:false,
-					success:function(res){
-						if(res.success==true){
-							//mui.toast(res.codeMsg);
-							window.location.href="penalty-inf.html";
-						}
-					}
-				});
-			}
-			
-			function updateData(){
-				$("#PENTYPE_CN").val($("#PENTYPE").find("option:selected").text());
-				$.ajax({
-					type:"post",
-					url:httpUrl+"/e/self/publishedPunish/update.json",
-					data:$("#addForm").serialize(),
-					dataType:"json",
-					async:false,
-					success:function(res){
-						if(res.success==true){
-							//mui.toast(res.codeMsg);
-							window.location.href="penalty-inf.html";
-						}
-					}
-				});
-			}
-			function getData(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/e/self/publishedPunish/get.json",
-					data:{"CASEID":CASEID,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
-					dataType:"json",
-					async:false,
-					success:function(res){
-						if(res.success==true){
-							createData(res.data);
-						}
-					}
-				});
-			}
-			
-			function createData(obj){
-				$("#PENDECNO").val(obj.PENDECNO);
-				$("#PENDECISSDATE").val(getSmpFormatDateByLong(obj.PENDECISSDATE,false) );
-				$("#JUDAUTH").val(obj.JUDAUTH);
-				$("#ILLEGACTTYPE").val(obj.ILLEGACTTYPE);
-				$("#PENTYPE").find("option[value='"+obj.PENTYPE+"']").attr("selected",true);
-				$("#PENTYPE_CN").val(obj.PENTYPE_CN);
-				$("#PENAM").val(obj.PENAM);
-				$("#REMARK").val(obj.REMARK);
-				findType(obj.PENTYPE);
-				$("#PENAM").val(obj.PENAM);
-				$("#FORFAM").val(obj.FORFAM);
-			}
-			
-			function delData(){
-				mui.confirm("确定要删除吗？","提示",btnArray,function(e){
-					if(e.index==1){
-						$.ajax({
-							type:"get",
-							url:httpUrl+"/e/self/publishedPunish/delete.json",
-							data:{"CASEID":CASEID,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
-							dataType:"json",
-							async:false,
-							success:function(res){
-								if(res.success==true){
-									window.location.href="penalty-inf.html";
-								}
-							}
-						});
-					}
-				});
-			}
-			
-			function addAndPublic(){
-				mui.confirm("确定要公示吗？","提示",btnArray,function(e){
-					if(e.index==1){
-						$("#PENTYPE_CN").val($("#PENTYPE").find("option:selected").text());
-						$.ajax({
-							type:"post",
-							url:httpUrl+updateUrl,
-							async:false,
-							data:$("#addForm").serialize(),
-							dataType:"json",
-							success:function(res){
-								if(res.success==true){
-									$.ajax({
-										type:"post",
-										url:httpUrl+"/e/self/publishedPunish/publish.json",
-										async:false,
-										data:{"PRIPID":PRIPID,"ENT_TYPE":TYPE,"SELFPUBLISH_ID":res.data.CASEID,
-										"SELFPUBLISH_TYPE":"05","ENT_NAME":BODY_NAME,"DATA_FROM":"02","TOKEN":TOKEN,"SESSIONID":SESSIONID},
-										dataType:"json",
-										success:function(rest){
-											if(rest.success==true){
-												mui.toast(rest.codeMsg);
-												window.location.href="penalty-inf.html";
-											}
-										}
-									});
-								}
-							}
-						});
-					}
-					
-				});
-			}
-			
-			//是否显示没收和罚款金额
-			function findType(val){
-				$("#PENAM").val("");
-				$("#FORFAM").val("");
-				if(val=="02"){
-					$("#PENAM_DIV").show();
-					$("#FORFAM_DIV").hide();
-				}else if(val=="03"){
-					$("#PENAM_DIV").hide();
-					$("#FORFAM_DIV").show();
-				}else{
-					$("#PENAM_DIV").hide();
-					$("#FORFAM_DIV").hide();
-				}
-			}
-			
-		</script>
-		
-		
-		
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="penalty-inf.html"></a>
-		    <h1 class="mui-title"><span id="saveOrUpdate"></span>行政处罚信息</h1>
-		    <span id="sure">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>国家企业信用信息公示系统</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/add-right-inf.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/mui.picker.min.css"/><!--填写时间-->
+    <script src="../static/js/mui.min.js"></script>
+    <script src="../static/js/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+
+    <script>
+        var CASEID = GetRequest("CASEID");  //行政处罚id
+        var updateUrl = "";
+        $(function () {
+            $("#PRIPID").val(PRIPID);
+            $("#ENTNAME").val(BODY_NAME);
+            $("#REGNO").val(REGNO);
+            $("#UNISCID").val(UNISCID);
+            $("#TOKEN").val(TOKEN);
+            $("#SESSIONID").val(SESSIONID);
+            loadData("CE16", "PENTYPE");
+
+            if (CASEID != null && CASEID != "") {
+                $("#saveOrUpdate").html("修改");
+                $("#CASEID").val(CASEID);
+                $("#sure").html("<a href='javascript:;' onclick='updateData();'>保存</a>");
+                $("#delDiv").show();
+                $("#addDiv").hide();
+                updateUrl = "/e/self/publishedPunish/update.json";
+                getData();
+            } else {
+                $("#saveOrUpdate").html("添加");
+                $("#delDiv").hide();
+                $("#addDiv").show();
+                updateUrl = "/e/self/publishedPunish/save.json";
+            }
+        });
+
+        function addData() {
+            $("#PENTYPE_CN").val($("#PENTYPE").find("option:selected").text());
+            $.ajax({
+                type: "post",
+                url: httpUrl + "/e/self/publishedPunish/save.json",
+                data: $("#addForm").serialize(),
+                dataType: "json",
+                async: false,
+                success: function (res) {
+                    if (res.success == true) {
+                        //mui.toast(res.codeMsg);
+                        window.location.href = "penalty-inf.html";
+                    }
+                }
+            });
+        }
+
+        function updateData() {
+            $("#PENTYPE_CN").val($("#PENTYPE").find("option:selected").text());
+            $.ajax({
+                type: "post",
+                url: httpUrl + "/e/self/publishedPunish/update.json",
+                data: $("#addForm").serialize(),
+                dataType: "json",
+                async: false,
+                success: function (res) {
+                    if (res.success == true) {
+                        //mui.toast(res.codeMsg);
+                        window.location.href = "penalty-inf.html";
+                    }
+                }
+            });
+        }
+
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/e/self/publishedPunish/get.json",
+                data: {"CASEID": CASEID, "TOKEN": TOKEN, "SESSIONID": SESSIONID},
+                dataType: "json",
+                async: false,
+                success: function (res) {
+                    if (res.success == true) {
+                        createData(res.data);
+                    }
+                }
+            });
+        }
+
+        function createData(obj) {
+            $("#PENDECNO").val(obj.PENDECNO);
+            $("#PENDECISSDATE").val(getSmpFormatDateByLong(obj.PENDECISSDATE, false));
+            $("#JUDAUTH").val(obj.JUDAUTH);
+            $("#ILLEGACTTYPE").val(obj.ILLEGACTTYPE);
+            $("#PENTYPE").find("option[value='" + obj.PENTYPE + "']").attr("selected", true);
+            $("#PENTYPE_CN").val(obj.PENTYPE_CN);
+            $("#PENAM").val(obj.PENAM);
+            $("#REMARK").val(obj.REMARK);
+            findType(obj.PENTYPE);
+            $("#PENAM").val(obj.PENAM);
+            $("#FORFAM").val(obj.FORFAM);
+        }
+
+        function delData() {
+            mui.confirm("确定要删除吗？", "提示", btnArray, function (e) {
+                if (e.index == 1) {
+                    $.ajax({
+                        type: "get",
+                        url: httpUrl + "/e/self/publishedPunish/delete.json",
+                        data: {"CASEID": CASEID, "TOKEN": TOKEN, "SESSIONID": SESSIONID},
+                        dataType: "json",
+                        async: false,
+                        success: function (res) {
+                            if (res.success == true) {
+                                window.location.href = "penalty-inf.html";
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        function addAndPublic() {
+            mui.confirm("确定要公示吗？", "提示", btnArray, function (e) {
+                if (e.index == 1) {
+                    $("#PENTYPE_CN").val($("#PENTYPE").find("option:selected").text());
+                    $.ajax({
+                        type: "post",
+                        url: httpUrl + updateUrl,
+                        async: false,
+                        data: $("#addForm").serialize(),
+                        dataType: "json",
+                        success: function (res) {
+                            if (res.success == true) {
+                                $.ajax({
+                                    type: "post",
+                                    url: httpUrl + "/e/self/publishedPunish/publish.json",
+                                    async: false,
+                                    data: {
+                                        "PRIPID": PRIPID,
+                                        "ENT_TYPE": TYPE,
+                                        "SELFPUBLISH_ID": res.data.CASEID,
+                                        "SELFPUBLISH_TYPE": "05",
+                                        "ENT_NAME": BODY_NAME,
+                                        "DATA_FROM": "02",
+                                        "TOKEN": TOKEN,
+                                        "SESSIONID": SESSIONID
+                                    },
+                                    dataType: "json",
+                                    success: function (rest) {
+                                        if (rest.success == true) {
+                                            mui.toast(rest.codeMsg);
+                                            window.location.href = "penalty-inf.html";
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
+
+            });
+        }
+
+        //是否显示没收和罚款金额
+        function findType(val) {
+            $("#PENAM").val("");
+            $("#FORFAM").val("");
+            if (val == "02") {
+                $("#PENAM_DIV").show();
+                $("#FORFAM_DIV").hide();
+            } else if (val == "03") {
+                $("#PENAM_DIV").hide();
+                $("#FORFAM_DIV").show();
+            } else {
+                $("#PENAM_DIV").hide();
+                $("#FORFAM_DIV").hide();
+            }
+        }
+
+    </script>
+
+
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="penalty-inf.html"></a>
+    <h1 class="mui-title"><span id="saveOrUpdate"></span>行政处罚信息</h1>
+    <span id="sure">
 		    	<!--<a href="penalty-inf.html" class="">保存</a>-->
 		    </span>
-		</header>
-		
-		<!--股东信息-->
-		<form id="addForm">
-			<input type="hidden" name="CASEID" id="CASEID" />
-			<input type="hidden" name="TOKEN" id="TOKEN" />
-			<input type="hidden" name="SESSIONID" id="SESSIONID" />
-			<input type="hidden" name="PRIPID" id="PRIPID" />
-				<input type="hidden" name="ENTNAME" id="ENTNAME" />
-			<input type="hidden" name="REGNO" id="REGNO" />
-			<input type="hidden" name="UNISCID" id="UNISCID" />
-		<div id="common-box">
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+</header>
+
+<!--股东信息-->
+<form id="addForm">
+    <input type="hidden" name="CASEID" id="CASEID"/>
+    <input type="hidden" name="TOKEN" id="TOKEN"/>
+    <input type="hidden" name="SESSIONID" id="SESSIONID"/>
+    <input type="hidden" name="PRIPID" id="PRIPID"/>
+    <input type="hidden" name="ENTNAME" id="ENTNAME"/>
+    <input type="hidden" name="REGNO" id="REGNO"/>
+    <input type="hidden" name="UNISCID" id="UNISCID"/>
+    <div id="common-box">
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								决定书文号
 							</span>
-							<div class="web-write">
-								<input type="text" name="PENDECNO" id="PENDECNO"  placeholder="请输入决定书文号"/>
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
+                    <div class="web-write">
+                        <input type="text" name="PENDECNO" id="PENDECNO" placeholder="请输入决定书文号"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
 							<span style="width: 45%;">
 								处罚决定书签发日期
 							</span>
-							<div class="web-write"  >
-								<div id="open" style="position: relative;width: 100%;">
-								<input name="PENDECISSDATE" id='PENDECISSDATE' data-options='{"type":"date"}' placeholder="请选择日期" class="btn mui-btn mui-btn-block" style="margin-top: 1.4rem;text-align: left;"/>
-						       </div>
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                    <div class="web-write">
+                        <div id="open" style="position: relative;width: 100%;">
+                            <input name="PENDECISSDATE" id='PENDECISSDATE' data-options='{"type":"date"}'
+                                   placeholder="请选择日期" class="btn mui-btn mui-btn-block"
+                                   style="margin-top: 1.4rem;text-align: left;"/>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								处罚机关
 							</span>
-							<div class="web-write">
-								<input type="text" name="JUDAUTH" id="JUDAUTH"  placeholder="请输入处罚机关"/>
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                    <div class="web-write">
+                        <input type="text" name="JUDAUTH" id="JUDAUTH" placeholder="请输入处罚机关"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								违法行为类型
 							</span>
-							<div class="web-write">
-								<input type="text" name="ILLEGACTTYPE" id="ILLEGACTTYPE"  placeholder="请输入违法行为类型"/>
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                    <div class="web-write">
+                        <input type="text" name="ILLEGACTTYPE" id="ILLEGACTTYPE" placeholder="请输入违法行为类型"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								处罚种类
 							</span>
-							<div class="web-write" >
-								<div id="open" style="position: relative;width: 100%;">
-								<input type="hidden" name="PENTYPE_CN" id="PENTYPE_CN"/>
-								<select  class="service_opt" name="PENTYPE" id="PENTYPE" onchange="findType(this.value)" style="height: 50px; margin-bottom: 0; display:block;width:100%;background: url(../static/img/rt.png) no-repeat right center;">
-						        </select>
-						       </div>
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box"  id="PENAM_DIV" style="display: none;">
-					<ul>
-						<li>
+                    <div class="web-write">
+                        <div id="open" style="position: relative;width: 100%;">
+                            <input type="hidden" name="PENTYPE_CN" id="PENTYPE_CN"/>
+                            <select class="service_opt" name="PENTYPE" id="PENTYPE" onchange="findType(this.value)"
+                                    style="height: 50px; margin-bottom: 0; display:block;width:100%;background: url(../static/img/rt.png) no-repeat right center;">
+                            </select>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box" id="PENAM_DIV" style="display: none;">
+            <ul>
+                <li>
 							<span>
 								罚款金额（元）
 							</span>
-							<div class="web-write">
-								<input type="text" name="PENAM" id="PENAM" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
-							</div>
-						</li>
-					</ul>
-			</div>
-			<div class="web-box" id="FORFAM_DIV" style="display: none;">
-					<ul>
-						<li>
+                    <div class="web-write">
+                        <input type="text" name="PENAM" id="PENAM" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="web-box" id="FORFAM_DIV" style="display: none;">
+            <ul>
+                <li>
 							<span>
 								没收金额（元）
 							</span>
-							<div class="web-write">
-								<input type="text" name="FORFAM" id="FORFAM" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                    <div class="web-write">
+                        <input type="text" name="FORFAM" id="FORFAM" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								备注
 							</span>
-							<div class="web-write">
-								<textarea name="REMARK" id="REMARK" rows="" cols="" placeholder="请输入备注信息"></textarea>
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-		</div>
-		</form>
-	
-	    <div id="addDiv" class="yy" >
-	    	<a id="addBtn" onClick="addData()" style="width: 40%;display: inline-block;">保存</a><a id="pubBtn" onClick="addAndPublic()" style="width: 40%;display: inline-block;">保存并公示</a>
-	    </div>
-		<div id="delDiv" class="yy"  >
-	    	<a id="delBtn" onClick="delData()" style="width: 40%;display: inline-block;">删除</a><a id="pubBtn" onClick="addAndPublic()" style="width: 40%;display: inline-block;">保存并公示</a>
-	    </div>
-		<script>
-			(function($) {
-				$.init();
-				var result = $('#result')[0];
-				var btns = $('.btn');
-				btns.each(function(i, btn) {
-					btn.addEventListener('tap', function() {
-						var optionsJson = this.getAttribute('data-options') || '{}';
-						var options = JSON.parse(optionsJson);
-						var id = this.getAttribute('id');
-						/*
-						 * 首次显示时实例化组件
-						 * 示例为了简洁，将 options 放在了按钮的 dom 上
-						 * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
-						 */
-						var picker = new $.DtPicker(options);
-						picker.show(function(rs) {
-							/*
-							 * rs.value 拼合后的 value
-							 * rs.text 拼合后的 text
-							 * rs.y 年，可以通过 rs.y.vaue 和 rs.y.text 获取值和文本
-							 * rs.m 月，用法同年
-							 * rs.d 日，用法同年
-							 * rs.h 时，用法同年
-							 * rs.i 分（minutes 的第二个字母），用法同年
-							 */
-							document.getElementById(id).value=rs.value;
-							/* 
-							 * 返回 false 可以阻止选择框的关闭
-							 * return false;
-							 */
-							/*
-							 * 释放组件资源，释放后将将不能再操作组件
-							 * 通常情况下，不需要示放组件，new DtPicker(options) 后，可以一直使用。
-							 * 当前示例，因为内容较多，如不进行资原释放，在某些设备上会较慢。
-							 * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。
-							 */
-							picker.dispose();
-						});
-					}, false);
-				});
-			})(mui);
-		</script>
-		
-	</body>
+                    <div class="web-write">
+                        <textarea name="REMARK" id="REMARK" rows="" cols="" placeholder="请输入备注信息"></textarea>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</form>
+
+<div id="addDiv" class="yy">
+    <a id="addBtn" onClick="addData()" style="width: 40%;display: inline-block;">保存</a><a id="pubBtn"
+                                                                                          onClick="addAndPublic()"
+                                                                                          style="width: 40%;display: inline-block;">保存并公示</a>
+</div>
+<div id="delDiv" class="yy">
+    <a id="delBtn" onClick="delData()" style="width: 40%;display: inline-block;">删除</a><a id="pubBtn"
+                                                                                          onClick="addAndPublic()"
+                                                                                          style="width: 40%;display: inline-block;">保存并公示</a>
+</div>
+<script>
+    (function ($) {
+        $.init();
+        var result = $('#result')[0];
+        var btns = $('.btn');
+        btns.each(function (i, btn) {
+            btn.addEventListener('tap', function () {
+                var optionsJson = this.getAttribute('data-options') || '{}';
+                var options = JSON.parse(optionsJson);
+                var id = this.getAttribute('id');
+                /*
+                 * 首次显示时实例化组件
+                 * 示例为了简洁，将 options 放在了按钮的 dom 上
+                 * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
+                 */
+                var picker = new $.DtPicker(options);
+                picker.show(function (rs) {
+                    /*
+                     * rs.value 拼合后的 value
+                     * rs.text 拼合后的 text
+                     * rs.y 年，可以通过 rs.y.vaue 和 rs.y.text 获取值和文本
+                     * rs.m 月，用法同年
+                     * rs.d 日，用法同年
+                     * rs.h 时，用法同年
+                     * rs.i 分（minutes 的第二个字母），用法同年
+                     */
+                    document.getElementById(id).value = rs.value;
+                    /*
+                     * 返回 false 可以阻止选择框的关闭
+                     * return false;
+                     */
+                    /*
+                     * 释放组件资源，释放后将将不能再操作组件
+                     * 通常情况下，不需要示放组件，new DtPicker(options) 后，可以一直使用。
+                     * 当前示例，因为内容较多，如不进行资原释放，在某些设备上会较慢。
+                     * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。
+                     */
+                    picker.dispose();
+                });
+            }, false);
+        });
+    })(mui);
+</script>
+
+</body>
 </html>

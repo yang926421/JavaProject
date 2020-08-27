@@ -1,8 +1,8 @@
 package 面向对象相关._02abstruct作业._03test;
 
 public abstract class employee {
-private String name;
-private String bianHao;
+    private String name;
+    private String bianHao;
 
     public employee(String name, String bianHao) {
         this.name = name;

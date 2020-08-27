@@ -12,7 +12,7 @@ import java.io.IOException;
 @WebServlet("/findUserServlet")
 public class FindUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            //从session中获取user对象
+        //从session中获取user对象
         System.out.println(123456);
         //从session中获取登录用户
         Object user = request.getSession().getAttribute("user");
@@ -20,8 +20,7 @@ public class FindUserServlet extends HttpServlet {
 
         ObjectMapper mapper = new ObjectMapper();
         response.setContentType("application/json;charset=utf-8");
-        mapper.writeValue(response.getOutputStream(),user);
-
+        mapper.writeValue(response.getOutputStream(), user);
 
 
     }

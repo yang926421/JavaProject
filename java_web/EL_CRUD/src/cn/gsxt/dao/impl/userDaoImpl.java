@@ -10,6 +10,7 @@ import java.util.List;
 
 public class userDaoImpl implements userDao {
     private JdbcTemplate template = new JdbcTemplate(JDBCUtils.getDataSource());
+
     @Override
     public List<User> findAll() {
         //使用jdbc连接数据库的查询
@@ -22,7 +23,7 @@ public class userDaoImpl implements userDao {
     @Override
     public void addOne(User user) {
         //1.定义sql
-        String sql = "insert  into el_user values(null, ?,?,?,?,?,?);" ;
+        String sql = "insert  into el_user values(null, ?,?,?,?,?,?);";
 
         template.update(sql, user.getName(), user.getGender(), user.getAge(),
                 user.getAddress(), user.getQq(), user.getEmail());

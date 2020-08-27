@@ -1,106 +1,108 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>列入严重违法失信企业名单</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-			<script type="text/javascript" src="../static/js/common.js" ></script>
-<style>
-	
-body{
-	background-color: #F2F2F2;
-}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>列入严重违法失信企业名单</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <style>
 
-.headertop{
-	width: 100%;
-	height: 44px;
-}
+        body {
+            background-color: #F2F2F2;
+        }
 
-.biangentitle,.biangencontent{	
-	background-color: #FFFFFF;
-	padding: 15px;
-	border-bottom: 1px solid #F2F2F2;
-}
+        .headertop {
+            width: 100%;
+            height: 44px;
+        }
 
-.martop{
-	margin-top: 15px;
-}
-.contentColor{
-	color: #000000;
-}
-</style>
-<script>
-	//获取企业id
-	var pripid=sessionStorage.getItem("PRIPID"); 
-	$(function(){
-		//获取企业严重违法信息
-		$.ajax({
-			type:"get",
-			url:httpUrl+"/p/blacklist/by/pripid/list.json",
-			async:true,
-			data:{"PRIPID":pripid},
-			dataType:"json",
-			success:function(res){
-				if(res.success==true){
-					createData(res.data);
-				}
-			}
-		});
-	});
-	//创建违法信息数据
-	function createData(obj){
-		if(obj!=null && obj.length>0){
-			$("#count").html(obj.length);
-			var htmlData="";
-			for(var i=0;i<obj.length;i++){
-				htmlData+=" <div class= 'biangencontent' style='margin-bottom:10px;'>"+
-					 "<p><span>列入日期：</span><span class='contentColor'>"+getFormatDateByLong(obj[i].ABNTIME,"yyyy年MM月dd日")+"</span></p>"+
-					 "<p>列入严重违法失信企业名单(黑名单)原因：</p>"+
-					 "<p class='contentColor'>"+obj[i].SERILLREA+"</p>"+	
-					 "<p>作出列入决定机关：</p>"+
-					 "<p class='contentColor'>"+obj[i].DECORG_CN+"</p>"+
-					 /*"<hr style='height:1px;border:none;border-top:1px solid #F2F2F2;padding-bottom: 5px;' />"+
-					 "<p><span>移出日期：</span><span class='contentColor'>"+getFormatDateByLong(obj[i].REMDATE,"yyyy年MM月dd日") +"</span></p>"+
-					 "<p>移出严重违法失信企业名单(黑名单)原因：</p>"+
-					 "<p class='contentColor'>"+obj[i].REMEXCPRES_CN+"</p>"+
-					 "<p>作出移出决定机关</p>"+
-					 "<p class='contentColor'> "+obj[i].REDECORG_CN+"</p>"*/
-				"</div> ";
-			}
-			$("#content").html(htmlData);
-		}else{
-			$("#count").html(0);
-		}
-	}
-</script>
-		
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="searchMain.html"></a>
-		    <h1 class="mui-title">列入严重违法失信企业名单(<span id="count"></span>)</h1>
-		</header>
-		
-		<div class="headertop"></div>
-		<div id="content">
-		<!--<div class="biangencontent">
-			 <p><span>列入日期：</span><span class="contentColor">2015年5月31日</span></p>
-			 <p>列入严重违法失信企业名单(黑名单)原因：</p>
-			 <p class="contentColor">通过登记的住所或者经营场所无法联系的</p>	
-			 <p>作出列入决定机关：</p>
-			 <p class="contentColor">郑州市市场监督管理局郑东新区分局</p>
-			 <hr style="height:1px;border:none;border-top:1px solid #F2F2F2;padding-bottom: 5px;" />
-			 <p><span>移出日期：</span><span class="contentColor">2017年5月31日</span></p>
-			 <p>移出严重违法失信企业名单(黑名单)原因：</p>
-			 <p class="contentColor">列入经营异常名录3年内且依照《经营异常名录管理办法》第九条规定被列入经营异常名录的企业，提出通过登记的住所或者经营场所可以重新取得联系，申请移出</p>
-			 <p>作出移出决定机关</p>
-			 <p class="contentColor"> 郑州市市场监督管理局郑东新区分局</p>
-		</div>-->
-		</div>  
-	</body>
+        .biangentitle, .biangencontent {
+            background-color: #FFFFFF;
+            padding: 15px;
+            border-bottom: 1px solid #F2F2F2;
+        }
+
+        .martop {
+            margin-top: 15px;
+        }
+
+        .contentColor {
+            color: #000000;
+        }
+    </style>
+    <script>
+        //获取企业id
+        var pripid = sessionStorage.getItem("PRIPID");
+        $(function () {
+            //获取企业严重违法信息
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/p/blacklist/by/pripid/list.json",
+                async: true,
+                data: {"PRIPID": pripid},
+                dataType: "json",
+                success: function (res) {
+                    if (res.success == true) {
+                        createData(res.data);
+                    }
+                }
+            });
+        });
+
+        //创建违法信息数据
+        function createData(obj) {
+            if (obj != null && obj.length > 0) {
+                $("#count").html(obj.length);
+                var htmlData = "";
+                for (var i = 0; i < obj.length; i++) {
+                    htmlData += " <div class= 'biangencontent' style='margin-bottom:10px;'>" +
+                        "<p><span>列入日期：</span><span class='contentColor'>" + getFormatDateByLong(obj[i].ABNTIME, "yyyy年MM月dd日") + "</span></p>" +
+                        "<p>列入严重违法失信企业名单(黑名单)原因：</p>" +
+                        "<p class='contentColor'>" + obj[i].SERILLREA + "</p>" +
+                        "<p>作出列入决定机关：</p>" +
+                        "<p class='contentColor'>" + obj[i].DECORG_CN + "</p>" +
+                        /*"<hr style='height:1px;border:none;border-top:1px solid #F2F2F2;padding-bottom: 5px;' />"+
+                        "<p><span>移出日期：</span><span class='contentColor'>"+getFormatDateByLong(obj[i].REMDATE,"yyyy年MM月dd日") +"</span></p>"+
+                        "<p>移出严重违法失信企业名单(黑名单)原因：</p>"+
+                        "<p class='contentColor'>"+obj[i].REMEXCPRES_CN+"</p>"+
+                        "<p>作出移出决定机关</p>"+
+                        "<p class='contentColor'> "+obj[i].REDECORG_CN+"</p>"*/
+                        "</div> ";
+                }
+                $("#content").html(htmlData);
+            } else {
+                $("#count").html(0);
+            }
+        }
+    </script>
+
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="searchMain.html"></a>
+    <h1 class="mui-title">列入严重违法失信企业名单(<span id="count"></span>)</h1>
+</header>
+
+<div class="headertop"></div>
+<div id="content">
+    <!--<div class="biangencontent">
+         <p><span>列入日期：</span><span class="contentColor">2015年5月31日</span></p>
+         <p>列入严重违法失信企业名单(黑名单)原因：</p>
+         <p class="contentColor">通过登记的住所或者经营场所无法联系的</p>
+         <p>作出列入决定机关：</p>
+         <p class="contentColor">郑州市市场监督管理局郑东新区分局</p>
+         <hr style="height:1px;border:none;border-top:1px solid #F2F2F2;padding-bottom: 5px;" />
+         <p><span>移出日期：</span><span class="contentColor">2017年5月31日</span></p>
+         <p>移出严重违法失信企业名单(黑名单)原因：</p>
+         <p class="contentColor">列入经营异常名录3年内且依照《经营异常名录管理办法》第九条规定被列入经营异常名录的企业，提出通过登记的住所或者经营场所可以重新取得联系，申请移出</p>
+         <p>作出移出决定机关</p>
+         <p class="contentColor"> 郑州市市场监督管理局郑东新区分局</p>
+    </div>-->
+</div>
+</body>
 </html>

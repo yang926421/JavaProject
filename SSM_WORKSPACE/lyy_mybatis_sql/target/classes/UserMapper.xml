@@ -7,10 +7,10 @@
         <result column="username" property="username"/>
         <result column="password" property="password"/>
         <result column="birthday" property="birthday"/>
-<!--        配置集合信息
-        property  user中定义的集合属性名称  orderList
-        ofType  当前集合中的数据类型   order
--->
+        <!--        配置集合信息
+                property  user中定义的集合属性名称  orderList
+                ofType  当前集合中的数据类型   order
+        -->
         <collection property="orderList" ofType="order">
             <id column="oid" property="id"/>
             <id column="ordertime" property="ordertime"/>
@@ -22,13 +22,13 @@
     </select>
 
 
-<!--        查询用户还有自己的角色-->
+    <!--        查询用户还有自己的角色-->
     <resultMap id="userRoleMap" type="user">
         <id column="userId" property="id"/>
         <result column="username" property="username"/>
         <result column="password" property="password"/>
         <result column="birthday" property="birthday"/>
-<!--        封装roleList-->
+        <!--        封装roleList-->
         <collection property="roleList" ofType="role">
             <id column="roleId" property="id"/>
             <result column="rolename" property="roleName"/>

@@ -23,22 +23,22 @@ public class RouteDaoImpl implements RouteDao {
 
         List params = new ArrayList();//条件们
         //2.判断参数是否有值
-        if(cid != 0){
-            sb.append( " and cid = ? ");
+        if (cid != 0) {
+            sb.append(" and cid = ? ");
 
             params.add(cid);//添加？对应的值
         }
 
-        if(rname != null && rname.length() > 0 && !"null".equals(rname)){
+        if (rname != null && rname.length() > 0 && !"null".equals(rname)) {
             sb.append(" and rname like ? ");
 
-            params.add("%"+rname+"%");
+            params.add("%" + rname + "%");
         }
 
         sql = sb.toString();
 
 
-        return template.queryForObject(sql,Integer.class,params.toArray());
+        return template.queryForObject(sql, Integer.class, params.toArray());
     }
 
 
@@ -53,8 +53,8 @@ public class RouteDaoImpl implements RouteDao {
 
         List params = new ArrayList();//条件们
         //2.判断参数是否有值
-        if(cid != 0){
-            sb.append( " and cid = ? ");
+        if (cid != 0) {
+            sb.append(" and cid = ? ");
 
             params.add(cid);//添加？对应的值
         }
@@ -63,10 +63,10 @@ public class RouteDaoImpl implements RouteDao {
         System.out.println(rname != null);
 //        System.out.println(rname.length());
 
-        if(rname != null && rname.length() > 0 && !"null".equals(rname)){
+        if (rname != null && rname.length() > 0 && !"null".equals(rname)) {
             sb.append(" and rname like ? ");
 
-            params.add("%"+rname+"%");
+            params.add("%" + rname + "%");
         }
         sb.append(" limit ? , ? ");//分页条件
 
@@ -76,13 +76,13 @@ public class RouteDaoImpl implements RouteDao {
         params.add(pageSize);
 
 
-        return template.query(sql,new BeanPropertyRowMapper<Route>(Route.class),params.toArray());
+        return template.query(sql, new BeanPropertyRowMapper<Route>(Route.class), params.toArray());
 
     }
 
     @Override
     public Route findOne(int rid) {
         String sql = "select * from tab_route where rid = ?";
-        return template.queryForObject(sql,new BeanPropertyRowMapper<Route>(Route.class),rid);
+        return template.queryForObject(sql, new BeanPropertyRowMapper<Route>(Route.class), rid);
     }
 }

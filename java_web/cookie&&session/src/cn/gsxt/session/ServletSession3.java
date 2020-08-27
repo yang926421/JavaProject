@@ -15,8 +15,8 @@ public class ServletSession3 extends HttpServlet {
 
 
         //期望客户端关闭后，session也能相同
-        Cookie c = new Cookie("JSESSIONID",session.getId());
-        c.setMaxAge(60*60);
+        Cookie c = new Cookie("JSESSIONID", session.getId());
+        c.setMaxAge(60 * 60);
         response.addCookie(c);
 
     }

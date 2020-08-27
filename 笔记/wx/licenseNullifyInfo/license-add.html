@@ -1,205 +1,209 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>国家企业信用信息公示系统</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/add-contribution.css">
-		<link rel="stylesheet" type="text/css" href="../static/css/mui.picker.min.css" /><!--填写时间-->
-		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../static/js/common.js" ></script>
-		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-		<script>
-			
-			var reDate= getFormatDate(new Date(),"yyyy年MM月dd日");
-			var RECID=GetRequest("RECID");  //声明id
-			$(function(){
-				if(!window.name) {
-			        //console.log("第一次打开");
-			        window.name = "license-add" //第一次打开时设置name
-			        mui.alert('该公告在国家企业信用信息公示系统正式发布后，'+
-						  '您可以向登记机关申请办理营业执照补领手续。', function() {
-					});
-			    }
-				loadData("CD93","ISORICOP");
-				$("#PRIPID").val(PRIPID);
-				$("#ENTNAME").val(BODY_NAME);
-				$("#REGNO").val(REGNO);
-				$("#UNISCID").val(UNISCID);
-				$("#REGORG").val(REGORG);
-				$("#REGORG_CN").val(REGORG_CN);
-			
-				$("#TOKEN").val(TOKEN);
-				$("#SESSIONID").val(SESSIONID);
-			
-			if(RECID!=null && RECID!=""){
-				$("#saveOrUpdate").html("修改");
-				$("#RECID").val(RECID);
-				getData();
-			}else{
-				$("#LICCANTIME").val(reDate);
-				$("#saveOrUpdate").html("添加");
-			}
-			
-			
-		});
-		//获取信息
-		function getData(){
-			$.ajax({
-				type:"get",
-				url:httpUrl+"/e/licenseNullify/get.json",
-				data:{"RECID":RECID,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
-				async:false,
-				dataType:"json",
-				success:function(res){
-					if(res.success==true){
-						//mui.toast(res.codeMsg);
-						$("#ISORICOP").val(res.data.ISORICOP);
-						$("#LICCOPYNO").val(res.data.LICCOPYNO);
-						$("#LICCANTIME").val(res.data.LICCANDATE_CN);
-						$("#LICCANSTA").val(res.data.LICCANSTA);
-					}
-				}
-			});
-		}
-		//保存	
-		function addData(){
-			var LICCOPYNO=$("#LICCOPYNO").val();
-			if(LICCOPYNO==null || LICCOPYNO.length<1){
-					mui.toast("请输入营业执照编号");
-					return;
-				}
-			$.ajax({
-				type:'post',
-				url:httpUrl+'/e/licenseNullify/save.json',
-				data:$("#addForm").serialize(),
-				dataType:'json',
-				success:function(res){
-					if(res.success==true){
-						mui.toast(res.codeMsg);
-						window.location.href="license-list.html";
-					}
-				}
-			})
-		}
-		//保存并公示
-		function addAndPublic(){
-			var LICCOPYNO=$("#LICCOPYNO").val();
-			if(LICCOPYNO==null || LICCOPYNO.length<1){
-					mui.toast("请输入营业执照编号");
-					return;
-				}
-			$.ajax({
-				type:'post',
-				url:httpUrl+'/e/licenseNullify/public.json',
-				data:$("#addForm").serialize(),
-				dataType:'json',
-				success:function(res){
-					if(res.success==true){
-						mui.toast(res.codeMsg);
-						window.location.href="license-list.html";
-					}
-				}
-			})
-		}
-			
-		function changeOricop(){
-			var licText= $("#ISORICOP").find("option:selected").text();
-			var content="本企业不慎将营业执照"+licText+"丢失，特此声明作废。";
-			$("#LICCANSTA").val(content)
-			$("#licContent").text(content);
-		}
-		</script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="contribution-list.html"></a>
-		    <h1 class="mui-title"><span id="saveOrUpdate"></span>营业执照作废声明</h1>
-		    <span id="sure">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>国家企业信用信息公示系统</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/add-contribution.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/mui.picker.min.css"/><!--填写时间-->
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script>
+
+        var reDate = getFormatDate(new Date(), "yyyy年MM月dd日");
+        var RECID = GetRequest("RECID");  //声明id
+        $(function () {
+            if (!window.name) {
+                //console.log("第一次打开");
+                window.name = "license-add" //第一次打开时设置name
+                mui.alert('该公告在国家企业信用信息公示系统正式发布后，' +
+                    '您可以向登记机关申请办理营业执照补领手续。', function () {
+                });
+            }
+            loadData("CD93", "ISORICOP");
+            $("#PRIPID").val(PRIPID);
+            $("#ENTNAME").val(BODY_NAME);
+            $("#REGNO").val(REGNO);
+            $("#UNISCID").val(UNISCID);
+            $("#REGORG").val(REGORG);
+            $("#REGORG_CN").val(REGORG_CN);
+
+            $("#TOKEN").val(TOKEN);
+            $("#SESSIONID").val(SESSIONID);
+
+            if (RECID != null && RECID != "") {
+                $("#saveOrUpdate").html("修改");
+                $("#RECID").val(RECID);
+                getData();
+            } else {
+                $("#LICCANTIME").val(reDate);
+                $("#saveOrUpdate").html("添加");
+            }
+
+
+        });
+
+        //获取信息
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/e/licenseNullify/get.json",
+                data: {"RECID": RECID, "TOKEN": TOKEN, "SESSIONID": SESSIONID},
+                async: false,
+                dataType: "json",
+                success: function (res) {
+                    if (res.success == true) {
+                        //mui.toast(res.codeMsg);
+                        $("#ISORICOP").val(res.data.ISORICOP);
+                        $("#LICCOPYNO").val(res.data.LICCOPYNO);
+                        $("#LICCANTIME").val(res.data.LICCANDATE_CN);
+                        $("#LICCANSTA").val(res.data.LICCANSTA);
+                    }
+                }
+            });
+        }
+
+        //保存
+        function addData() {
+            var LICCOPYNO = $("#LICCOPYNO").val();
+            if (LICCOPYNO == null || LICCOPYNO.length < 1) {
+                mui.toast("请输入营业执照编号");
+                return;
+            }
+            $.ajax({
+                type: 'post',
+                url: httpUrl + '/e/licenseNullify/save.json',
+                data: $("#addForm").serialize(),
+                dataType: 'json',
+                success: function (res) {
+                    if (res.success == true) {
+                        mui.toast(res.codeMsg);
+                        window.location.href = "license-list.html";
+                    }
+                }
+            })
+        }
+
+        //保存并公示
+        function addAndPublic() {
+            var LICCOPYNO = $("#LICCOPYNO").val();
+            if (LICCOPYNO == null || LICCOPYNO.length < 1) {
+                mui.toast("请输入营业执照编号");
+                return;
+            }
+            $.ajax({
+                type: 'post',
+                url: httpUrl + '/e/licenseNullify/public.json',
+                data: $("#addForm").serialize(),
+                dataType: 'json',
+                success: function (res) {
+                    if (res.success == true) {
+                        mui.toast(res.codeMsg);
+                        window.location.href = "license-list.html";
+                    }
+                }
+            })
+        }
+
+        function changeOricop() {
+            var licText = $("#ISORICOP").find("option:selected").text();
+            var content = "本企业不慎将营业执照" + licText + "丢失，特此声明作废。";
+            $("#LICCANSTA").val(content)
+            $("#licContent").text(content);
+        }
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="contribution-list.html"></a>
+    <h1 class="mui-title"><span id="saveOrUpdate"></span>营业执照作废声明</h1>
+    <span id="sure">
 		    	<!--<a href="contribution-inf-con.html" class="">保存</a>-->
 		    </span>
-		</header>
-		
-		<!--股东信息-->
-		<form id="addForm">
-					<input type="hidden" name="PRIPID" id="PRIPID" />
-					<input type="hidden" name="ENTNAME" id="ENTNAME" />
-					<input type="hidden" name="REGNO" id="REGNO" />
-					<input type="hidden" name="UNISCID" id="UNISCID" />
-					<input type="hidden" name="REGORG" id="REGORG" />
-					<input type="hidden" name="REGORG_CN" id="REGORG_CN" />
-					<input type="hidden" name="TOKEN" id="TOKEN" />
-					<input type="hidden" name="SESSIONID" id="SESSIONID" />
-					<input type="hidden" name="RECID" id="RECID" />
-			<div id="common-box">
-				<div class="web-box">
-					<ul>
-						<li>
-							<span >
+</header>
+
+<!--股东信息-->
+<form id="addForm">
+    <input type="hidden" name="PRIPID" id="PRIPID"/>
+    <input type="hidden" name="ENTNAME" id="ENTNAME"/>
+    <input type="hidden" name="REGNO" id="REGNO"/>
+    <input type="hidden" name="UNISCID" id="UNISCID"/>
+    <input type="hidden" name="REGORG" id="REGORG"/>
+    <input type="hidden" name="REGORG_CN" id="REGORG_CN"/>
+    <input type="hidden" name="TOKEN" id="TOKEN"/>
+    <input type="hidden" name="SESSIONID" id="SESSIONID"/>
+    <input type="hidden" name="RECID" id="RECID"/>
+    <div id="common-box">
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								是否正副本
 							</span>
-							<div class="web-write">
-								<div id="open" style="position: relative;width: 100%;">
-								<select  class="service_opt" name="ISORICOP" id="ISORICOP" onchange="changeOricop()" style="height: 50px; margin-bottom: 0; display:block;width:100%;background: url(../static/img/rt.png) no-repeat right center;">
-						           <!--<option value="1">正副本</option>
-						           <option value="2">正本</option>
-						           <option value="3">副本</option>-->
-								</select>
-							</div>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</div>
-				<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                    <div class="web-write">
+                        <div id="open" style="position: relative;width: 100%;">
+                            <select class="service_opt" name="ISORICOP" id="ISORICOP" onchange="changeOricop()"
+                                    style="height: 50px; margin-bottom: 0; display:block;width:100%;background: url(../static/img/rt.png) no-repeat right center;">
+                                <!--<option value="1">正副本</option>
+                                <option value="2">正本</option>
+                                <option value="3">副本</option>-->
+                            </select>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="web-box">
+        <ul>
+            <li>
+							<span>
 								营业执照副本编号
 							</span>
-							<div class="web-write">
-								<input type="text" name="LICCOPYNO" id="LICCOPYNO"  placeholder="请输入营业执照副本编号"/>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                <div class="web-write">
+                    <input type="text" name="LICCOPYNO" id="LICCOPYNO" placeholder="请输入营业执照副本编号"/>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="web-box">
+        <ul>
+            <li>
+							<span>
 								声明时间
 							</span>
-							<div class="web-write">
-								<input type="text" name="LICCANTIME" id="LICCANTIME" readonly="readonly" />
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                <div class="web-write">
+                    <input type="text" name="LICCANTIME" id="LICCANTIME" readonly="readonly"/>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="web-box">
+        <ul>
+            <li>
+							<span>
 								声明内容
 							</span>
-							<div class="web-write" >
-								<input type="hidden" name="LICCANSTA" id="LICCANSTA" value="本企业不慎将营业执照正副本丢失，特此声明作废。" />
-								<p style="color: red;line-height: 3rem;" id="licContent">
-									本企业不慎将营业执照正副本丢失，特此声明作废。
-								</p>
-								
-							</div>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</form>
-	
-		<div id="addBtn" class="yy" style="" >
-	    	<a href="javascript:;" onClick="addData()" style="width: 40%;">保存</a>
-	    	<a href="javascript:;" onClick="addAndPublic()" style="width: 40%;">保存并公示</a>
-	    </div>
-	</body>
+                <div class="web-write">
+                    <input type="hidden" name="LICCANSTA" id="LICCANSTA" value="本企业不慎将营业执照正副本丢失，特此声明作废。"/>
+                    <p style="color: red;line-height: 3rem;" id="licContent">
+                        本企业不慎将营业执照正副本丢失，特此声明作废。
+                    </p>
+
+                </div>
+            </li>
+        </ul>
+    </div>
+    </div>
+</form>
+
+<div id="addBtn" class="yy" style="">
+    <a href="javascript:;" onClick="addData()" style="width: 40%;">保存</a>
+    <a href="javascript:;" onClick="addAndPublic()" style="width: 40%;">保存并公示</a>
+</div>
+</body>
 </html>

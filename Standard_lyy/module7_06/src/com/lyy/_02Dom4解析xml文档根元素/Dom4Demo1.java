@@ -9,11 +9,11 @@ import java.io.File;
 import java.io.InputStream;
 
 /**
- 使用流程
-    1.先导入dom4j框架
- 2.创建一个dom4j解析对象 SAXReader
- 通过解析对象把xml文件解析成document文档对象
- 从document文档对象中获取xml信息
+ * 使用流程
+ * 1.先导入dom4j框架
+ * 2.创建一个dom4j解析对象 SAXReader
+ * 通过解析对象把xml文件解析成document文档对象
+ * 从document文档对象中获取xml信息
  */
 public class Dom4Demo1 {
     public static void main(String[] args) throws DocumentException {
@@ -31,7 +31,6 @@ public class Dom4Demo1 {
         //从document文档树对象中获取根元素对象
         Element root = document.getRootElement();
         System.out.println(root.getName());
-
 
 
     }

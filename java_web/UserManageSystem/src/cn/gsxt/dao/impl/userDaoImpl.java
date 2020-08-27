@@ -10,6 +10,7 @@ import java.util.List;
 
 public class userDaoImpl implements userDao {
     private JdbcTemplate template = new JdbcTemplate(JDBCUtils.getDataSource());
+
     @Override
     public List<User> findAll() {
         //使用jdbc连接数据库的查询
@@ -22,7 +23,7 @@ public class userDaoImpl implements userDao {
     @Override
     public void addOne(User user) {
         //1.定义sql
-        String sql = "insert  into el_user values(null, ?,?,?,?,?,?,null,null );" ;
+        String sql = "insert  into el_user values(null, ?,?,?,?,?,?,null,null );";
 
         template.update(sql, user.getName(), user.getGender(), user.getAge(),
                 user.getAddress(), user.getQq(), user.getEmail());
@@ -50,7 +51,7 @@ public class userDaoImpl implements userDao {
     @Override
     public User findUserById(int parseInt) {
         String sql = "select * from el_user where id = ?";
-        return  template.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class), parseInt);
+        return template.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class), parseInt);
     }
 
     @Override
@@ -64,12 +65,12 @@ public class userDaoImpl implements userDao {
     public int findUsersCount() {
         //查询所有的记录数
         String sql = "select count(*) from el_user";
-        return  template.queryForObject(sql, Integer.class);
+        return template.queryForObject(sql, Integer.class);
     }
 
     @Override
     public List<User> findByPage(int start, int rows) {
         String sql = "select * from el_user limit ?, ? ";
-        return template.query(sql, new BeanPropertyRowMapper<User>(User.class),start,rows );
+        return template.query(sql, new BeanPropertyRowMapper<User>(User.class), start, rows);
     }
 }

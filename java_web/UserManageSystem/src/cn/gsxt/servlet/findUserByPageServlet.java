@@ -19,22 +19,22 @@ public class findUserByPageServlet extends HttpServlet {
         String currentPage = request.getParameter("currentPage");
         String rows = request.getParameter("rows");
 
-        if(currentPage == null || "1".equals(currentPage)){
+        if (currentPage == null || "1".equals(currentPage)) {
 
-                currentPage = "1";
+            currentPage = "1";
 
 
         }
 
 
-        if(rows == null || "".equals(rows)){
+        if (rows == null || "".equals(rows)) {
             rows = "5";
         }
         System.out.println(currentPage);
         System.out.println(rows);
         //创建service
         userService service = new userServiceImpl();
-        PageBean<User> pb =  service.findUserByPages(currentPage, rows);
+        PageBean<User> pb = service.findUserByPages(currentPage, rows);
         //调用service去数据库查询
         //将pageBean存到request中
         request.setAttribute("pb", pb);

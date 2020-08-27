@@ -4,14 +4,15 @@ public class HWPhone {
     private String type;
     private double price;
     private String color;
-    public static  String brand;
+    public static String brand;
 
-    public HWPhone(String type,double price, String color ){
+    public HWPhone(String type, double price, String color) {
         this.type = type;
         this.color = color;
-        this.price =price;
+        this.price = price;
     }
-    public void call(){
+
+    public void call() {
         System.out.println(this.type + "打电话");
     }
 

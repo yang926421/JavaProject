@@ -12,7 +12,7 @@
     <script>
         window.onload = function () {
             document.getElementById("img").onclick = function () {
-                this.src = "/cookie_session/checkCodeServlet?time="+new Date().getTime();
+                this.src = "/cookie_session/checkCodeServlet?time=" + new Date().getTime();
             }
 
         }

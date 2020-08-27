@@ -25,14 +25,13 @@ public class LoginServlet extends HttpServlet {
         String verifycode = request.getParameter("verifycode");
         //校验验证码，拿到生成验证码的时候存进session的值
         HttpSession session = request.getSession();
-        String checkcode_server =(String) session.getAttribute("CHECKCODE_SERVER");
+        String checkcode_server = (String) session.getAttribute("CHECKCODE_SERVER");
         //获取完之后就删除这个属性，来确保验证码一次性
         session.removeAttribute("CHECKCODE_SERVER");
-        if (!checkcode_server.equalsIgnoreCase(verifycode))
-        {
+        if (!checkcode_server.equalsIgnoreCase(verifycode)) {
             //验证码不正确，提示信息，跳转登陆
-            request.setAttribute("login_msg","验证码错误");
-            request.getRequestDispatcher("/login.jsp").forward(request,response);
+            request.setAttribute("login_msg", "验证码错误");
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
             return;
 
         }
@@ -55,16 +54,15 @@ public class LoginServlet extends HttpServlet {
         userService service = new userServiceImpl();
         //判断是否登陆成功
         User loginUser = service.login(user);
-        if (loginUser != null){
+        if (loginUser != null) {
             //登陆成功,将用户数据存入session
             session.setAttribute("user", loginUser);
 
-            response.sendRedirect(request.getContextPath()+"/index.jsp");
+            response.sendRedirect(request.getContextPath() + "/index.jsp");
 
-        }
-        else{
+        } else {
             //登陆失败，跳转登陆界面
-            request.setAttribute("login_msg","用户名或密码错误！");
+            request.setAttribute("login_msg", "用户名或密码错误！");
             request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
 

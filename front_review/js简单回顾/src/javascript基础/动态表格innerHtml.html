@@ -5,17 +5,18 @@
     <title>动态表格</title>
 
     <style>
-        table{
+        table {
             border: 1px solid;
             margin: auto;
             width: 500px;
         }
 
-        td,th{
+        td, th {
             text-align: center;
             border: 1px solid;
         }
-        div{
+
+        div {
             text-align: center;
             margin: 50px;
         }
@@ -26,8 +27,8 @@
 
 <div>
     <input type="text" id="id" placeholder="请输入编号">
-    <input type="text" id="name"  placeholder="请输入姓名">
-    <input type="text" id="gender"  placeholder="请输入性别">
+    <input type="text" id="name" placeholder="请输入姓名">
+    <input type="text" id="gender" placeholder="请输入性别">
     <input type="button" value="添加" id="btn_add">
 
 </div>
@@ -60,7 +61,7 @@
         <td>3</td>
         <td>岳不群</td>
         <td>?</td>
-        <td><a href="javascript:void(0);" onclick="delTr(this);" >删除</a></td>
+        <td><a href="javascript:void(0);" onclick="delTr(this);">删除</a></td>
     </tr>
 
 
@@ -127,7 +128,7 @@
      }*/
 
     //使用innerHTML添加
-    document.getElementById("btn_add").onclick = function() {
+    document.getElementById("btn_add").onclick = function () {
         //2.获取文本框的内容
         var id = document.getElementById("id").value;
         var name = document.getElementById("name").value;
@@ -138,16 +139,16 @@
 
         //追加一行
         table.innerHTML += "<tr>\n" +
-            "        <td>"+id+"</td>\n" +
-            "        <td>"+name+"</td>\n" +
-            "        <td>"+gender+"</td>\n" +
+            "        <td>" + id + "</td>\n" +
+            "        <td>" + name + "</td>\n" +
+            "        <td>" + gender + "</td>\n" +
             "        <td><a href=\"javascript:void(0);\" onclick=\"delTr(this);\" >删除</a></td>\n" +
             "    </tr>";
     }
 
 
     //删除方法
-    function delTr(obj){
+    function delTr(obj) {
         var table = obj.parentNode.parentNode.parentNode;
         var tr = obj.parentNode.parentNode;
 

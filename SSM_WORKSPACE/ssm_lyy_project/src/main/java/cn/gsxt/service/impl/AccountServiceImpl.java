@@ -17,7 +17,7 @@ import java.util.List;
 @Service("accountService")
 public class AccountServiceImpl implements AccountService {
     @Override
-    public void save(Account account){
+    public void save(Account account) {
         try {
             //获得mapper进行相关操作
             InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");

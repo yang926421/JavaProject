@@ -20,7 +20,8 @@ import java.io.IOException;
 public class RouteServlet extends BaseServlet {
     private RouteService service = new RouteServiceImpl();
     private FavoriteService favoriteService = new FavoriteServiceImpl();
-    public void pageQuery(HttpServletRequest request, HttpServletResponse response) throws Exception{
+
+    public void pageQuery(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String currentPageStr = request.getParameter("currentPage");
         String pageSizeStr = request.getParameter("pageSize");
         //要去查询的哪一个目录下的内容
@@ -33,30 +34,30 @@ public class RouteServlet extends BaseServlet {
         //rname传递过来是乱码
         System.out.println("-----2-----");
         rname = new String(rname.getBytes("iso-8859-1"), "utf-8");
-        if(rname.length()<=0){ //如果rname为空字符串"" 让其为null
+        if (rname.length() <= 0) { //如果rname为空字符串"" 让其为null
             rname = null;
         }
         //处理这些参数
         int cid = 0;
         //字符串的null判断是因为传的时候首页地方的cid传的是null
-        if(cidStr != null && cidStr.length() > 0 &&!"null".equalsIgnoreCase(cidStr)){
+        if (cidStr != null && cidStr.length() > 0 && !"null".equalsIgnoreCase(cidStr)) {
             cid = Integer.parseInt(cidStr);
         }
         int currentPage = 0;
-        if(currentPageStr != null && currentPageStr.length() > 0){
+        if (currentPageStr != null && currentPageStr.length() > 0) {
             currentPage = Integer.parseInt(currentPageStr);
         }
         //第一次访问没有值定currentPage
-        else{
+        else {
             currentPage = 1;
         }
         //每页显示条数，如果不指定，则默认为5条
         int pageSize = 0;
-        if(pageSizeStr != null && pageSizeStr.length() > 0){
+        if (pageSizeStr != null && pageSizeStr.length() > 0) {
             pageSize = Integer.parseInt(pageSizeStr);
         }
         //第一次访问没有值定currentPage
-        else{
+        else {
             pageSize = 5;
         }
         //调用servlet来查询出PageBean对象
@@ -71,7 +72,7 @@ public class RouteServlet extends BaseServlet {
         //接收id
         String rid = request.getParameter("rid");
         //
-        Route route =  service.findOne(rid);
+        Route route = service.findOne(rid);
         //返回到客户端
         writeValue(route, response);
     }
@@ -80,27 +81,27 @@ public class RouteServlet extends BaseServlet {
         //获取线路id
         String rid = request.getParameter("rid");
         //获取当前用户登录的user
-        User user =  (User) request.getSession().getAttribute("user");
+        User user = (User) request.getSession().getAttribute("user");
         int uid;
-        if (user == null){
+        if (user == null) {
             //用户尚未登录
             return;
-        }
-        else{
+        } else {
             //用户已经登录
             uid = user.getUid();
         }
-    //调用favoriteService查询
+        //调用favoriteService查询
         //3. 调用FavoriteService查询是否收藏
         boolean flag = favoriteService.isFavorite(rid, uid);
 
         //4. 写回客户端
-        writeValue(flag,response);
+        writeValue(flag, response);
 
     }
 
     /**
      * 添加收藏
+     *
      * @param request
      * @param response
      * @throws ServletException
@@ -112,17 +113,17 @@ public class RouteServlet extends BaseServlet {
         //2. 获取当前登录的用户
         User user = (User) request.getSession().getAttribute("user");
         int uid;//用户id
-        if(user == null){
+        if (user == null) {
             //用户尚未登录
-            return ;
-        }else{
+            return;
+        } else {
             //用户已经登录
             uid = user.getUid();
         }
 
 
         //3. 调用service添加
-        favoriteService.add(rid,uid);
+        favoriteService.add(rid, uid);
 
     }
-    }
+}

@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class User {
     private String name;
-    private  int age;
+    private int age;
     private Date birthday;
 
     public User() {

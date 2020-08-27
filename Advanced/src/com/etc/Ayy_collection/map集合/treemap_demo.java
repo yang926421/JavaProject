@@ -16,11 +16,11 @@ public class treemap_demo {
                 //正数从小到大排序  负数大到小排序
 //                return o1.getPrice() - o2.getPrice();
 //                因为方法是 int 如果要比较的是double类型  就要直接调用人家写好的接口 Double.compare
-                return Double.compare(o1.getWeight() , o2.getWeight());
+                return Double.compare(o1.getWeight(), o2.getWeight());
             }
         });
         oranges.put(new orange(99, "黄色", 78.9), "rib");
-        oranges.put(new orange(78,"色色", 98.8), "澳大利亚");
+        oranges.put(new orange(78, "色色", 98.8), "澳大利亚");
         System.out.println(oranges);
 
     }

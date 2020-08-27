@@ -1,4 +1,5 @@
 package cn.gsxt.controller;
+
 import cn.gsxt.domain.Role;
 import cn.gsxt.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +21,14 @@ public class RoleController {
 
     @RequestMapping("/list")
     @ResponseBody
-    public ModelAndView list(ModelAndView modelAndView){
+    public ModelAndView list(ModelAndView modelAndView) {
         //从service查询
         List<Role> roleList = roleService.list();
         for (Role role : roleList) {
             System.out.println(role.getRoleName());
         }
         System.out.println(roleList);
-        modelAndView.addObject("roleList",roleList);
+        modelAndView.addObject("roleList", roleList);
         //设置视图
         modelAndView.setViewName("role-list");
         return modelAndView;
@@ -36,7 +37,7 @@ public class RoleController {
 
     @RequestMapping("/save")
     //springMVC接收到的参数会自动封装到role
-    public String save(Role role){
+    public String save(Role role) {
         //保存操作
         roleService.save(role);
         return "redirect:/role/list";
@@ -44,10 +45,10 @@ public class RoleController {
     }
 
     @RequestMapping("/target")
-    public ModelAndView show(){
+    public ModelAndView show() {
         System.out.println("目标资源执行......");
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("name","itcast");
+        modelAndView.addObject("name", "itcast");
         modelAndView.setViewName("index");
         return modelAndView;
     }

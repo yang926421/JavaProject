@@ -4,11 +4,11 @@ public class Student {
     private String name;
     private int age;
 
-    private Student(){
+    private Student() {
         System.out.println("无参构造器被执行");
     }
 
-    public Student(String name, int age){
+    public Student(String name, int age) {
         System.out.println("有参构造器被执行");
         this.name = name;
         this.age = age;

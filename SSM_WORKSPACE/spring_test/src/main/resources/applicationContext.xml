@@ -7,22 +7,22 @@
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
        http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd">
 
-<!--<bean  id="userDao" class="cn.gsxt.dao.userDao">-->
-<!--        <property name="str" value="123456"/>-->
-<!--        <property name="list">-->
-<!--            <list>-->
-<!--                <value>aaa</value>-->
-<!--                <value>bbbb</value>-->
-<!--                <value>cccc</value>-->
-<!--            </list>-->
-<!--        </property>-->
-<!--        <property name="map">-->
-<!--            <map>-->
-<!--                <entry key="123" value="234"></entry>-->
-<!--                <entry key="456" value="789"></entry>-->
-<!--            </map>-->
-<!--        </property>-->
-<!--    </bean>-->
+    <!--<bean  id="userDao" class="cn.gsxt.dao.userDao">-->
+    <!--        <property name="str" value="123456"/>-->
+    <!--        <property name="list">-->
+    <!--            <list>-->
+    <!--                <value>aaa</value>-->
+    <!--                <value>bbbb</value>-->
+    <!--                <value>cccc</value>-->
+    <!--            </list>-->
+    <!--        </property>-->
+    <!--        <property name="map">-->
+    <!--            <map>-->
+    <!--                <entry key="123" value="234"></entry>-->
+    <!--                <entry key="456" value="789"></entry>-->
+    <!--            </map>-->
+    <!--        </property>-->
+    <!--    </bean>-->
     <context:property-placeholder location="classpath:jdbc.properties"/>
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="${jdbc.driver}"/>
@@ -37,12 +37,12 @@
     <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
     <context:component-scan base-package="cn.gsxt"></context:component-scan>
 
-<!--    <bean id="aop" class="cn.gsxt.aop"></bean>-->
-<!--    <bean id="myAspect" class="cn.gsxt.MyAspect"></bean>-->
-<!--    <aop:config>-->
-<!--        <aop:aspect ref="myAspect">-->
-<!--            <aop:before method="fast" pointcut="execution(* cn.gsxt.*.*(..))"></aop:before>-->
-<!--        </aop:aspect>-->
-<!--    </aop:config>-->
+    <!--    <bean id="aop" class="cn.gsxt.aop"></bean>-->
+    <!--    <bean id="myAspect" class="cn.gsxt.MyAspect"></bean>-->
+    <!--    <aop:config>-->
+    <!--        <aop:aspect ref="myAspect">-->
+    <!--            <aop:before method="fast" pointcut="execution(* cn.gsxt.*.*(..))"></aop:before>-->
+    <!--        </aop:aspect>-->
+    <!--    </aop:config>-->
 
 </beans>

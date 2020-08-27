@@ -1,104 +1,104 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>行政许可详细信息</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/dongcandiya-inf.css">
-		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-		<script type="text/javascript" src="../static/js/common.js" ></script>
-		<script>
-			var LICID=GetRequest("LICID");
-			var type=sessionStorage.getItem("TYPE");   //1企业 2农专 3个体
-			
-			$(function(){
-				getData();
-			});
-			function getData(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/p/licence/get.json",
-					data:{"LICID":LICID,"TYPE":type},
-					async:true,
-					dataType:"json",
-					success:function(res){
-						if(res.success==true){
-							createData(res.data);
-						}
-					}
-				});
-			}
-			
-			function createData(obj){
-					var htmlData="";
-					if(obj.TYPE==2){ // 2是注销就显示注销信息
-						htmlData+="<div class='web-box'><div class='web-name'>"+
-										"<h4>行政许可注销详细信息</h4>"+
-										"<ul class='web'>"+
-										"	<li><span>注销日期：</span> <span id='CANDATE'>"+getFormatDateByLong(obj.CANDATE,"yyyy年MM月dd日") +"</span></li>"+
-										"	<li><span>注销原因：</span> <span id='EQUPLECANREA'>"+obj.EQUPLECANREA+"</span></li>"+
-										"</ul>"+
-								"</div> </div> ";
-					}else if(obj.TYPE==1){  //1是没有注销就显示变更信息
-						if(obj.EIMPRMTALTS.length>0){
-							for(var i=0;i<obj.EIMPRMTALTS.length;i++){
-								htmlData+="<div class='web-box'><div class='web-name'>"+
-											"<h4>行政许可变更详细信息</h4>"+
-											"<ul class='web'>"+
-											"	<li><span>变更事项：</span> <span id='ALT'>"+obj.EIMPRMTALTS[i].ALT+"</span></li>"+
-											"	<li><span>变更时间：</span> <span id='ALTDATE'>"+getFormatDateByLong(obj.EIMPRMTALTS[i].ALTDATE,"yyyy年MM月dd日") +"</span></li>"+
-											"	<li><span>变更前内容：</span> <span id='ALTBE'>"+obj.EIMPRMTALTS[i].ALTBE+"</span></li>"+
-											"	<li><span>变更后内容：</span> <span id='ALTAF'>"+obj.EIMPRMTALTS[i].ALTAF+"</span></li>"+
-											"</ul>"+
-									"</div> </div>";
-							}
-						}else{
-							mui.toast("没有更多数据了")
-						}
-					}
-					$("#common-box").html(htmlData);
-					
-				
-				
-			}
-			
-		</script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="anche_xingzhengxuke.html"></a>
-		    <h1 class="mui-title">行政许可详细信息</h1>
-		</header>
-		
-		<!--修改信息-->
-		<div id="common-box">
-			<!--<div class="web-box">
-					<div class="web-name">
-						<h4>知识产权出质登记变更信息</h4>
-						<ul class="web">
-							<li><span>变更事项：</span> <span id="ALT"></span></li>
-							<li><span>变更时间：</span> <span id="ALTDATE"></span></li>
-							<li><span>变更前内容：</span> <span id="ALTBE"></span></li>
-							<li><span>变更后内容：</span> <span id="ALTAF"></span></li>
-						</ul>
-					</div>
-			</div>
-			<div class="web-box">
-					<div class="web-name">
-						<h4>知识产权出质登记变更信息</h4>
-						<ul class="web">
-							<li><span>变更事项：</span> <span id="ALT"></span></li>
-							<li><span>变更时间：</span> <span id="ALTDATE"></span></li>
-							<li><span>变更前内容：</span> <span id="ALTBE"></span></li>
-							<li><span>变更后内容：</span> <span id="ALTAF"></span></li>
-						</ul>
-					</div>
-			</div>-->
-			
-		</div>
-	</body>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>行政许可详细信息</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/dongcandiya-inf.css">
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script>
+        var LICID = GetRequest("LICID");
+        var type = sessionStorage.getItem("TYPE");   //1企业 2农专 3个体
+
+        $(function () {
+            getData();
+        });
+
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/p/licence/get.json",
+                data: {"LICID": LICID, "TYPE": type},
+                async: true,
+                dataType: "json",
+                success: function (res) {
+                    if (res.success == true) {
+                        createData(res.data);
+                    }
+                }
+            });
+        }
+
+        function createData(obj) {
+            var htmlData = "";
+            if (obj.TYPE == 2) { // 2是注销就显示注销信息
+                htmlData += "<div class='web-box'><div class='web-name'>" +
+                    "<h4>行政许可注销详细信息</h4>" +
+                    "<ul class='web'>" +
+                    "	<li><span>注销日期：</span> <span id='CANDATE'>" + getFormatDateByLong(obj.CANDATE, "yyyy年MM月dd日") + "</span></li>" +
+                    "	<li><span>注销原因：</span> <span id='EQUPLECANREA'>" + obj.EQUPLECANREA + "</span></li>" +
+                    "</ul>" +
+                    "</div> </div> ";
+            } else if (obj.TYPE == 1) {  //1是没有注销就显示变更信息
+                if (obj.EIMPRMTALTS.length > 0) {
+                    for (var i = 0; i < obj.EIMPRMTALTS.length; i++) {
+                        htmlData += "<div class='web-box'><div class='web-name'>" +
+                            "<h4>行政许可变更详细信息</h4>" +
+                            "<ul class='web'>" +
+                            "	<li><span>变更事项：</span> <span id='ALT'>" + obj.EIMPRMTALTS[i].ALT + "</span></li>" +
+                            "	<li><span>变更时间：</span> <span id='ALTDATE'>" + getFormatDateByLong(obj.EIMPRMTALTS[i].ALTDATE, "yyyy年MM月dd日") + "</span></li>" +
+                            "	<li><span>变更前内容：</span> <span id='ALTBE'>" + obj.EIMPRMTALTS[i].ALTBE + "</span></li>" +
+                            "	<li><span>变更后内容：</span> <span id='ALTAF'>" + obj.EIMPRMTALTS[i].ALTAF + "</span></li>" +
+                            "</ul>" +
+                            "</div> </div>";
+                    }
+                } else {
+                    mui.toast("没有更多数据了")
+                }
+            }
+            $("#common-box").html(htmlData);
+
+
+        }
+
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="anche_xingzhengxuke.html"></a>
+    <h1 class="mui-title">行政许可详细信息</h1>
+</header>
+
+<!--修改信息-->
+<div id="common-box">
+    <!--<div class="web-box">
+            <div class="web-name">
+                <h4>知识产权出质登记变更信息</h4>
+                <ul class="web">
+                    <li><span>变更事项：</span> <span id="ALT"></span></li>
+                    <li><span>变更时间：</span> <span id="ALTDATE"></span></li>
+                    <li><span>变更前内容：</span> <span id="ALTBE"></span></li>
+                    <li><span>变更后内容：</span> <span id="ALTAF"></span></li>
+                </ul>
+            </div>
+    </div>
+    <div class="web-box">
+            <div class="web-name">
+                <h4>知识产权出质登记变更信息</h4>
+                <ul class="web">
+                    <li><span>变更事项：</span> <span id="ALT"></span></li>
+                    <li><span>变更时间：</span> <span id="ALTDATE"></span></li>
+                    <li><span>变更前内容：</span> <span id="ALTBE"></span></li>
+                    <li><span>变更后内容：</span> <span id="ALTAF"></span></li>
+                </ul>
+            </div>
+    </div>-->
+
+</div>
+</body>
 </html>

@@ -1,162 +1,171 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>国家企业信用信息公示系统</title>
-		<link rel="stylesheet" href="static/css/common.css">
-		<link rel="stylesheet" href="static/css/mui.min.css">
-		<link rel="stylesheet" href="static/css/my-index.css">
-		
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="login.html"></a>
-		    <h1 class="mui-title">企业联络员变更</h1>
-		</header>
-		<div  class="registerTip" >*系统目前不支持外省移动、联通的手机号码</div>
-		<!--填写注册信息-->
-		<div id="common-box" style="margin-top: 84px;">		
-			<div id="login-write" >
-				
-				<form action="" method="post">
-					<div class="mui-input-row">
-						<input type="text" id="NO" class="mui-input-clear" placeholder="统一社会信用代码/注册号*" >
-						<i class="input_clear"><img src="static/img/close.png"/></i>
-					</div>
-					
-					<!--分割-->
-					<div class="mui-input-row">
-						<input type="text" id="LEGAL_PERSON" class="mui-input-clear" placeholder="法定代表人(负责人)姓名*" >
-						<i class="input_clear"><img src="static/img/close.png"/></i>
-					</div>
-					
-					<!--分割-->
-					<div class="mui-input-row">
-						<input type="text" id="LP_CARD_NO"  class="mui-input-clear" placeholder="法定代表人(负责人)证件号码*" >
-						<i class="input_clear"><img src="static/img/close.png"/></i>
-					</div>
-					<!--分割-->
-					<div class="mui-input-row">
-						<input type="text" id="OLDNAME" class="mui-input-clear" placeholder="原联络员姓名*" >
-						<i class="input_clear"><img src="static/img/close.png"/></i>
-					</div>
-					
-					<!--分割-->
-					<div class="mui-input-row">
-						<input type="text" id="OLDCERNO"  class="mui-input-clear" placeholder="原联络员证件号码*" >
-						<i class="input_clear"><img src="static/img/close.png"/></i>
-					</div>
-					<div class="mui-input-row">
-						<input type="text" id="OLDMOBTEL"  class="mui-input-clear" placeholder="原联络员手机号码*" >
-						<i class="input_clear"><img src="static/img/close.png"/></i>
-					</div>
-					<!--分割-->
-					<div class="mui-input-row">
-						<input type="text" id="NAME" class="mui-input-clear" placeholder="新联络员姓名*" >
-						<i class="input_clear"><img src="static/img/close.png"/></i>
-					</div>					
-					<!--分割-->
-					<div class="mui-input-row">
-						<select id="CERTYPE" style="height: 56px;margin-bottom: 1px;margin-top: 0px; width: 100%;padding-left: 4%;line-height: 56px;font-size: 16px;">
-								<!--<option value="1">中华人民共和国居民身份证</option>
-								<option value="2">中华人民共和国军官证</option>
-								<option value="3">中华人民共和国警官证</option>
-								<option value="4">外国(地区)护照</option>
-								<option >香港特别行政区护照</option>
-								<option >香港(永久性)居民身份证</option>
-								<option >澳门特别行政区护照</option>
-								<option >澳门(永久性)居民身份证</option>
-								<option >港澳居民来往内地通行证</option>
-								<option >台湾居民身份证</option>
-								<option >台湾居民来往大陆通行证</option>
-								<option >台湾农民身份有关证明</option>
-								<option >户口薄</option>
-								<option >其他有效身份证件</option>-->
-						</select>
-						<img src="static/img/arrow-down.png" style="width: 17px;position: absolute;right: 15px;top: 23px;"/>
-					</div>
-					
-						<!--分割-->
-					<div class="mui-input-row" style="margin-top: 0;">
-						<input type="text" id="CERNO"  class="mui-input-clear" placeholder="新联络人证件号码*" >
-						<i class="input_clear"><img src="static/img/close.png"/></i>
-					</div>
-					
-					<!--分割-->
-					<div class="mui-input-row">
-						<input type="text" id="MOBTEL" class="mui-input-clear" placeholder="新联络人手机号码*" >
-						<i class="input_clear"><img src="img/close.png"/></i>
-					</div>
-					
-				</form>
-								
-				<!--一个按钮-->
-				<div class="yy">
-			    	<a onClick="save()">保存</a>
-			   </div>			    
-			</div>		    
-		</div>
-		
-	    
-		<script src="static/js/jquery.min.js"></script>
-		<script type="text/javascript" src="static/js/mui.min.js" ></script>
-		<script type="text/javascript" src="static/js/common.js" ></script>
-		<script type="text/javascript">
-			
-			$(function(){
-				//获取证件类型
-				loadData("CB16","CERTYPE");
-			});
-			//企业联络员变更信息
-			function save(){
-			   var NO = $("#NO").val();
-			   var LEGAL_PERSON = $("#LEGAL_PERSON").val();
-			   var LP_CARD_NO = $("#LP_CARD_NO").val();
-			   var OLDNAME = $("#OLDNAME").val();
-			   var OLDCERNO = $("#OLDCERNO").val();
-			   var OLDMOBTEL = $("#OLDMOBTEL").val();
-			   var NAME = $("#NAME").val();
-			   var CERTYPE = $("#CERTYPE").val();
-			   var CERNO = $("#CERNO").val();
-			   var MOBTEL = $("#MOBTEL").val();
-			     
-			   if(NO.length == 0 || LEGAL_PERSON.length == 0 || LP_CARD_NO.length == 0 || 
-			   	  OLDNAME.length == 0 || OLDCERNO.length == 0 || OLDMOBTEL.length == 0 ||
-			      NAME.length==0 ||  CERTYPE.length==0 ||  CERNO.length==0 || MOBTEL.length==0){
-			   		mui.toast("信息不能为空");
-			   		return;
-			   }
-			   if(!phone.test(MOBTEL)){
-			  	  	 mui.toast("手机号格式输入不正确");
-			  	  	 return;
-			   }		
-				$.ajax({
-					type:"post",
-					url:httpUrl+"/p/contact/change.json",
-					data:{"NO":NO,"LEGAL_PERSON":LEGAL_PERSON,"LP_CARD_NO":LP_CARD_NO,"OLDNAME":OLDNAME,
-					      "OLDCERNO":OLDCERNO,"OLDMOBTEL":OLDMOBTEL,"NAME":NAME,"CERTYPE":CERTYPE,"CERNO":CERNO,"MOBTEL":MOBTEL},
-					async:true,
-					dataType:"json",
-					success:function(res){
-						console.log(res);
-						if(res.success==true){
-						//	window.location.href = "login.html";
-							mui.toast(res.codeMsg);
-						}
-					},
-					error:function(XMLHttpRequest, textStatus, errorThrown){
-		                mui.toast('服务器异常');		
-		            }
-				});
-				
-			}
-			
-		
-			
-			
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>国家企业信用信息公示系统</title>
+    <link rel="stylesheet" href="static/css/common.css">
+    <link rel="stylesheet" href="static/css/mui.min.css">
+    <link rel="stylesheet" href="static/css/my-index.css">
 
-		</script>
-	</body>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="login.html"></a>
+    <h1 class="mui-title">企业联络员变更</h1>
+</header>
+<div class="registerTip">*系统目前不支持外省移动、联通的手机号码</div>
+<!--填写注册信息-->
+<div id="common-box" style="margin-top: 84px;">
+    <div id="login-write">
+
+        <form action="" method="post">
+            <div class="mui-input-row">
+                <input type="text" id="NO" class="mui-input-clear" placeholder="统一社会信用代码/注册号*">
+                <i class="input_clear"><img src="static/img/close.png"/></i>
+            </div>
+
+            <!--分割-->
+            <div class="mui-input-row">
+                <input type="text" id="LEGAL_PERSON" class="mui-input-clear" placeholder="法定代表人(负责人)姓名*">
+                <i class="input_clear"><img src="static/img/close.png"/></i>
+            </div>
+
+            <!--分割-->
+            <div class="mui-input-row">
+                <input type="text" id="LP_CARD_NO" class="mui-input-clear" placeholder="法定代表人(负责人)证件号码*">
+                <i class="input_clear"><img src="static/img/close.png"/></i>
+            </div>
+            <!--分割-->
+            <div class="mui-input-row">
+                <input type="text" id="OLDNAME" class="mui-input-clear" placeholder="原联络员姓名*">
+                <i class="input_clear"><img src="static/img/close.png"/></i>
+            </div>
+
+            <!--分割-->
+            <div class="mui-input-row">
+                <input type="text" id="OLDCERNO" class="mui-input-clear" placeholder="原联络员证件号码*">
+                <i class="input_clear"><img src="static/img/close.png"/></i>
+            </div>
+            <div class="mui-input-row">
+                <input type="text" id="OLDMOBTEL" class="mui-input-clear" placeholder="原联络员手机号码*">
+                <i class="input_clear"><img src="static/img/close.png"/></i>
+            </div>
+            <!--分割-->
+            <div class="mui-input-row">
+                <input type="text" id="NAME" class="mui-input-clear" placeholder="新联络员姓名*">
+                <i class="input_clear"><img src="static/img/close.png"/></i>
+            </div>
+            <!--分割-->
+            <div class="mui-input-row">
+                <select id="CERTYPE"
+                        style="height: 56px;margin-bottom: 1px;margin-top: 0px; width: 100%;padding-left: 4%;line-height: 56px;font-size: 16px;">
+                    <!--<option value="1">中华人民共和国居民身份证</option>
+                    <option value="2">中华人民共和国军官证</option>
+                    <option value="3">中华人民共和国警官证</option>
+                    <option value="4">外国(地区)护照</option>
+                    <option >香港特别行政区护照</option>
+                    <option >香港(永久性)居民身份证</option>
+                    <option >澳门特别行政区护照</option>
+                    <option >澳门(永久性)居民身份证</option>
+                    <option >港澳居民来往内地通行证</option>
+                    <option >台湾居民身份证</option>
+                    <option >台湾居民来往大陆通行证</option>
+                    <option >台湾农民身份有关证明</option>
+                    <option >户口薄</option>
+                    <option >其他有效身份证件</option>-->
+                </select>
+                <img src="static/img/arrow-down.png" style="width: 17px;position: absolute;right: 15px;top: 23px;"/>
+            </div>
+
+            <!--分割-->
+            <div class="mui-input-row" style="margin-top: 0;">
+                <input type="text" id="CERNO" class="mui-input-clear" placeholder="新联络人证件号码*">
+                <i class="input_clear"><img src="static/img/close.png"/></i>
+            </div>
+
+            <!--分割-->
+            <div class="mui-input-row">
+                <input type="text" id="MOBTEL" class="mui-input-clear" placeholder="新联络人手机号码*">
+                <i class="input_clear"><img src="img/close.png"/></i>
+            </div>
+
+        </form>
+
+        <!--一个按钮-->
+        <div class="yy">
+            <a onClick="save()">保存</a>
+        </div>
+    </div>
+</div>
+
+
+<script src="static/js/jquery.min.js"></script>
+<script type="text/javascript" src="static/js/mui.min.js"></script>
+<script type="text/javascript" src="static/js/common.js"></script>
+<script type="text/javascript">
+
+    $(function () {
+        //获取证件类型
+        loadData("CB16", "CERTYPE");
+    });
+
+    //企业联络员变更信息
+    function save() {
+        var NO = $("#NO").val();
+        var LEGAL_PERSON = $("#LEGAL_PERSON").val();
+        var LP_CARD_NO = $("#LP_CARD_NO").val();
+        var OLDNAME = $("#OLDNAME").val();
+        var OLDCERNO = $("#OLDCERNO").val();
+        var OLDMOBTEL = $("#OLDMOBTEL").val();
+        var NAME = $("#NAME").val();
+        var CERTYPE = $("#CERTYPE").val();
+        var CERNO = $("#CERNO").val();
+        var MOBTEL = $("#MOBTEL").val();
+
+        if (NO.length == 0 || LEGAL_PERSON.length == 0 || LP_CARD_NO.length == 0 ||
+            OLDNAME.length == 0 || OLDCERNO.length == 0 || OLDMOBTEL.length == 0 ||
+            NAME.length == 0 || CERTYPE.length == 0 || CERNO.length == 0 || MOBTEL.length == 0) {
+            mui.toast("信息不能为空");
+            return;
+        }
+        if (!phone.test(MOBTEL)) {
+            mui.toast("手机号格式输入不正确");
+            return;
+        }
+        $.ajax({
+            type: "post",
+            url: httpUrl + "/p/contact/change.json",
+            data: {
+                "NO": NO,
+                "LEGAL_PERSON": LEGAL_PERSON,
+                "LP_CARD_NO": LP_CARD_NO,
+                "OLDNAME": OLDNAME,
+                "OLDCERNO": OLDCERNO,
+                "OLDMOBTEL": OLDMOBTEL,
+                "NAME": NAME,
+                "CERTYPE": CERTYPE,
+                "CERNO": CERNO,
+                "MOBTEL": MOBTEL
+            },
+            async: true,
+            dataType: "json",
+            success: function (res) {
+                console.log(res);
+                if (res.success == true) {
+                    //	window.location.href = "login.html";
+                    mui.toast(res.codeMsg);
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                mui.toast('服务器异常');
+            }
+        });
+
+    }
+
+
+</script>
+</body>
 </html>

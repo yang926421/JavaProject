@@ -22,16 +22,14 @@ public interface OrderMapper {
                     column = "uid",    //根据当前查询结果的哪个字段去user表查询
                     javaType = User.class,   //要封装的实体的类型
                     // select 代表查询哪个接口的方法获得数据
-                    one=@One(select = "cn.gsxt.mapper.UserMapper.findById")
+                    one = @One(select = "cn.gsxt.mapper.UserMapper.findById")
             )
     })
     public List<Order> findAll();
 
 
-
     @Select("select * from orders where uid=#{uid}")
     public List<Order> findByUid(int uid);
-
 
 
 //    @Select("select *, o.id oid from orders o, user u where o.uid = u.id")

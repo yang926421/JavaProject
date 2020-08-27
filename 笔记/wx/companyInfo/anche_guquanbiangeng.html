@@ -1,77 +1,80 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>股权变更信息</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/modify-record.css">
-			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-			<script type="text/javascript" src="../static/js/common.js" ></script>
-		<style>
-			.web{padding-top:15px;}
-		</style>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>股权变更信息</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/modify-record.css">
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <style>
+        .web {
+            padding-top: 15px;
+        }
+    </style>
 
-       <script>
-       	//这是企业年报的股权变更
-       	var pripid=sessionStorage.getItem("PRIPID");
-       //	pripid="111921998489190400";
-       	var type=sessionStorage.getItem("TYPE"); //1是企业 2农专 3个体
-       	$(function(){
-       		getData();
-       	});
-       	function getData(){
-       		$.ajax({
-       			type:"get",
-       			url:httpUrl+"/p/equityChange/list.json",
-       			data:{"PRIPID":pripid,"TYPE":type},
-       			dataType:"json",
-       			async:true,
-       			success:function(res){
-       				if(res.success==true){
-       					createData(res.data);
-       				}
-       			}
-       		});
-       	}
-       	
-       	function createData(obj){
-       		if(obj!=null && obj.length>0){
-       			$("#count").html(obj.length);
-       			var htmlData="";
-       			for(var i=0;i<obj.length;i++){
-       				htmlData+="<div class='web-box'>"+
-							"<div class='web-name'>"+
-							"	<ul class='web'>"+
-							"		<li>"+obj[i].INV+"</li>"+
-							"		<li><span>变更前股权比例：</span><span>"+obj[i].TRANSAMPRBF+"%</span></li>"+
-							"		<li><span>变更后股权比例：</span><span>"+obj[i].TRANSAMPRAF+"%</span></li>"+
-							"		<li><span>变更日期：</span><span>"+getFormatDateByLong(obj[i].ALTDATE,"yyyy年MM月dd日") +"</span></li>"+
-							"		<li><span>公示日期：</span><span>"+getFormatDateByLong(obj[i].PUBLICDATE,"yyyy年MM月dd日") +"</span></li>"+
-							"	</ul>"+
-							"</div>"+
-						"</div> ";
-       			}
-       			
-       			$("#common-box").html(htmlData);
-       		}else{
-       			$("#count").html(0);
-       		}
-       	}
-       </script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="companyDetail.html"></a>
-		    <h1 class="mui-title">股权变更信息(<span id="count"></span>)</h1>
-		</header>
-		
-		<!--修改信息-->
-		<div id="common-box">
-		</div>
-		
-	</body>
+    <script>
+        //这是企业年报的股权变更
+        var pripid = sessionStorage.getItem("PRIPID");
+        //	pripid="111921998489190400";
+        var type = sessionStorage.getItem("TYPE"); //1是企业 2农专 3个体
+        $(function () {
+            getData();
+        });
+
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/p/equityChange/list.json",
+                data: {"PRIPID": pripid, "TYPE": type},
+                dataType: "json",
+                async: true,
+                success: function (res) {
+                    if (res.success == true) {
+                        createData(res.data);
+                    }
+                }
+            });
+        }
+
+        function createData(obj) {
+            if (obj != null && obj.length > 0) {
+                $("#count").html(obj.length);
+                var htmlData = "";
+                for (var i = 0; i < obj.length; i++) {
+                    htmlData += "<div class='web-box'>" +
+                        "<div class='web-name'>" +
+                        "	<ul class='web'>" +
+                        "		<li>" + obj[i].INV + "</li>" +
+                        "		<li><span>变更前股权比例：</span><span>" + obj[i].TRANSAMPRBF + "%</span></li>" +
+                        "		<li><span>变更后股权比例：</span><span>" + obj[i].TRANSAMPRAF + "%</span></li>" +
+                        "		<li><span>变更日期：</span><span>" + getFormatDateByLong(obj[i].ALTDATE, "yyyy年MM月dd日") + "</span></li>" +
+                        "		<li><span>公示日期：</span><span>" + getFormatDateByLong(obj[i].PUBLICDATE, "yyyy年MM月dd日") + "</span></li>" +
+                        "	</ul>" +
+                        "</div>" +
+                        "</div> ";
+                }
+
+                $("#common-box").html(htmlData);
+            } else {
+                $("#count").html(0);
+            }
+        }
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="companyDetail.html"></a>
+    <h1 class="mui-title">股权变更信息(<span id="count"></span>)</h1>
+</header>
+
+<!--修改信息-->
+<div id="common-box">
+</div>
+
+</body>
 </html>

@@ -16,13 +16,13 @@
     <script type="text/javascript">
     </script>
     <script>
-        function refreshCode(){
-        //    切换验证码图像
+        function refreshCode() {
+            //    切换验证码图像
             var vcode = document.getElementById("vcode");
             //设置图片的SRC给加属性
-            vcode.src = "${pageContext.request.contextPath}/checkCodeServlet?time="+new Date().getTime();
+            vcode.src = "${pageContext.request.contextPath}/checkCodeServlet?time=" + new Date().getTime();
 
-            
+
         }
     </script>
 
@@ -43,7 +43,8 @@
 
         <div class="form-inline">
             <label for="vcode">验证码：</label>
-            <input type="text" name="verifycode" class="form-control" id="verifycode" placeholder="请输入验证码" style="width: 120px;"/>
+            <input type="text" name="verifycode" class="form-control" id="verifycode" placeholder="请输入验证码"
+                   style="width: 120px;"/>
             <a href="javascript:refreshCode()">
                 <img src="${pageContext.request.contextPath}/checkCodeServlet" title="看不清点击刷新" id="vcode"/>
             </a>
@@ -56,7 +57,7 @@
 
     <!-- 出错显示的信息框 -->
     <div class="alert alert-warning alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" >
+        <button type="button" class="close" data-dismiss="alert">
             <span>&times;</span></button>
         <strong>${requestScope.login_msg}</strong>
     </div>

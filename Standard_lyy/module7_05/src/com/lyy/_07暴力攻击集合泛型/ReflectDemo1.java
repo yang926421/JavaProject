@@ -20,9 +20,8 @@ public class ReflectDemo1 {
         //从Arraylist的Class对象中定位add方法   第二个参数为方法需要的入参值
         Method add = c1.getDeclaredMethod("add", Object.class);
         //触发scores集合对象中的add执行(运行阶段 泛型不能约束了)
-        add.invoke(scores,"波妞");
+        add.invoke(scores, "波妞");
         System.out.println(scores);
-
 
 
     }

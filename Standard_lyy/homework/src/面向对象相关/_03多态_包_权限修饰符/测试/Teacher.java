@@ -1,6 +1,6 @@
 package 面向对象相关._03多态_包_权限修饰符.测试;
 
-public class Teacher extends Person{
+public class Teacher extends Person {
     public Teacher(String name, int age) {
         super(name, age);
     }

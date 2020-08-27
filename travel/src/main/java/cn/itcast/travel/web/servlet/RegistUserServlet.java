@@ -26,7 +26,7 @@ public class RegistUserServlet extends HttpServlet {
         String checkcode_server = (String) session.getAttribute("CHECKCODE_SERVER");
         session.removeAttribute("CHECKCODE_SERVER");//为了保证验证码只能使用一次
         //比较
-        if(checkcode_server == null || !checkcode_server.equalsIgnoreCase(check)){
+        if (checkcode_server == null || !checkcode_server.equalsIgnoreCase(check)) {
             //验证码错误
             ResultInfo info = new ResultInfo();
             //注册失败
@@ -45,7 +45,7 @@ public class RegistUserServlet extends HttpServlet {
         //获取到map集合之后，封装User对象
         User user = new User();
         try {
-            BeanUtils.populate(user,map);
+            BeanUtils.populate(user, map);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -54,11 +54,10 @@ public class RegistUserServlet extends HttpServlet {
         Boolean flag = service.register(user);
         //resultInfo用来封装后端返回的信息
         ResultInfo info = new ResultInfo();
-        if (flag){
+        if (flag) {
             //注册成功
             info.setFlag(true);
-        }
-        else{
+        } else {
             info.setFlag(false);
             info.setErrorMsg("注册失败，请重新尝试");
         }

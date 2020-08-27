@@ -1,133 +1,134 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title></title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/notice.css">
-			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-			<script type="text/javascript" src="../static/js/common.js" ></script>
-			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-	<script>
-		var pageFrom=GetRequest("pageFrom");
-		$(function(){
-			window.name=pageFrom;
-			$("#noticeImg1").attr("src",imgUrl+"notice_abnormal-operation.png");
-			$("#noticeImg2").attr("src",imgUrl+"notice_seriousviolations.png");
-			$("#noticeImg3").attr("src",imgUrl+"notice_penalize.png");
-			$("#noticeImg4").attr("src",imgUrl+"notice_judicial.png");
-			$("#noticeImg5").attr("src",imgUrl+"notice_suggest.png");
-			$("#noticeImg6").attr("src",imgUrl+"notice_spotcheck.png");
-			$("#noticeImg7").attr("src",imgUrl+"notice_others.png");
-			$("#noticeImg8").attr("src",imgUrl+"notice_qszba.png");
-			$("#noticeImg9").attr("src",imgUrl+"notice_zqrgg.png");
-			$("#noticeImg10").attr("src",imgUrl+"notice_yyzzzfsm.png");
-		})
-		function goBack(){
-			if(pageFrom=="more"){
-				window.location.href="../more.html"
-			}else{
-				window.location.href="../query-inf.html"
-			}
-		}
-	</script>
-		
-	</head>
-	
-	<body>
-		<!--导航栏-->
-		<header id="header" class="mui-bar mui-bar-nav">
-			<a class="mui-icon mui-icon-left-nav mui-pull-left" onclick="goBack()"></a>
-		    <h1 class="mui-title">公告</h1>
-		</header>	
-		
-		<div id="common-boxJ">
-			<ul class="mui-table-view mui-table-view-chevron">
-				<li class="mui-table-view-cell mui-media">
-					<a class="mui-navigate-right" href="notice_OperaError.html">
-						<img class="mui-media-object mui-pull-left" id="noticeImg1">
-						<div class="mui-media-body content">
-							经营异常名录公告						
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a class='mui-navigate-right' href="notice_promise_list.html">
-						<img class="mui-media-object mui-pull-left" id="noticeImg2">
-						<div class="mui-media-body content">
-							严重违法失信企业名单公告
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a class="mui-navigate-right" href="notice_penalty_list.html">
-						<img class="mui-media-object mui-pull-left" id="noticeImg3">
-						<div class="mui-media-body content">
-							行政处罚公告
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a class="mui-navigate-right" href="notice_judicial_list.html">
-						<img class="mui-media-object mui-pull-left" id="noticeImg4">
-						<div class="mui-media-body content">
-							司法协助公告
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a class="mui-navigate-right" href="notice_cancellation_list.html">
-						<img class="mui-media-object mui-pull-left" id="noticeImg5">
-						<div class="mui-media-body content">
-							简易注销公告
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a class="mui-navigate-right" href="notice_nliquidation_list.html">
-						<img class="mui-media-object mui-pull-left" id="noticeImg8">
-						<div class="mui-media-body content">
-							清算组备案
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a class="mui-navigate-right" href="notice_nliq_cre_list.html">
-						<img class="mui-media-object mui-pull-left" id="noticeImg9">
-						<div class="mui-media-body content">
-							债权人公告
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a class="mui-navigate-right" href="notice_license_nullify_list.html">
-						<img class="mui-media-object mui-pull-left" id="noticeImg10">
-						<div class="mui-media-body content">
-							营业执照作废声明
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a class="mui-navigate-right" href="notice_suiji.html">
-						<img class="mui-media-object mui-pull-left" id="noticeImg6">
-						<div class="mui-media-body content">
-							双随机-公开公告
-						</div>
-					</a> 
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a class="mui-navigate-right" href="notice_rests_list.html">
-						<img class="mui-media-object mui-pull-left" id="noticeImg7">
-						<div class="mui-media-body content">
-							其他公告
-						</div>
-					</a>
-				</li>
-			</ul>		
-		</div>
-		
-	   
-	</body>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title></title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/notice.css">
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script>
+        var pageFrom = GetRequest("pageFrom");
+        $(function () {
+            window.name = pageFrom;
+            $("#noticeImg1").attr("src", imgUrl + "notice_abnormal-operation.png");
+            $("#noticeImg2").attr("src", imgUrl + "notice_seriousviolations.png");
+            $("#noticeImg3").attr("src", imgUrl + "notice_penalize.png");
+            $("#noticeImg4").attr("src", imgUrl + "notice_judicial.png");
+            $("#noticeImg5").attr("src", imgUrl + "notice_suggest.png");
+            $("#noticeImg6").attr("src", imgUrl + "notice_spotcheck.png");
+            $("#noticeImg7").attr("src", imgUrl + "notice_others.png");
+            $("#noticeImg8").attr("src", imgUrl + "notice_qszba.png");
+            $("#noticeImg9").attr("src", imgUrl + "notice_zqrgg.png");
+            $("#noticeImg10").attr("src", imgUrl + "notice_yyzzzfsm.png");
+        })
+
+        function goBack() {
+            if (pageFrom == "more") {
+                window.location.href = "../more.html"
+            } else {
+                window.location.href = "../query-inf.html"
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+<!--导航栏-->
+<header id="header" class="mui-bar mui-bar-nav">
+    <a class="mui-icon mui-icon-left-nav mui-pull-left" onclick="goBack()"></a>
+    <h1 class="mui-title">公告</h1>
+</header>
+
+<div id="common-boxJ">
+    <ul class="mui-table-view mui-table-view-chevron">
+        <li class="mui-table-view-cell mui-media">
+            <a class="mui-navigate-right" href="notice_OperaError.html">
+                <img class="mui-media-object mui-pull-left" id="noticeImg1">
+                <div class="mui-media-body content">
+                    经营异常名录公告
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a class='mui-navigate-right' href="notice_promise_list.html">
+                <img class="mui-media-object mui-pull-left" id="noticeImg2">
+                <div class="mui-media-body content">
+                    严重违法失信企业名单公告
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a class="mui-navigate-right" href="notice_penalty_list.html">
+                <img class="mui-media-object mui-pull-left" id="noticeImg3">
+                <div class="mui-media-body content">
+                    行政处罚公告
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a class="mui-navigate-right" href="notice_judicial_list.html">
+                <img class="mui-media-object mui-pull-left" id="noticeImg4">
+                <div class="mui-media-body content">
+                    司法协助公告
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a class="mui-navigate-right" href="notice_cancellation_list.html">
+                <img class="mui-media-object mui-pull-left" id="noticeImg5">
+                <div class="mui-media-body content">
+                    简易注销公告
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a class="mui-navigate-right" href="notice_nliquidation_list.html">
+                <img class="mui-media-object mui-pull-left" id="noticeImg8">
+                <div class="mui-media-body content">
+                    清算组备案
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a class="mui-navigate-right" href="notice_nliq_cre_list.html">
+                <img class="mui-media-object mui-pull-left" id="noticeImg9">
+                <div class="mui-media-body content">
+                    债权人公告
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a class="mui-navigate-right" href="notice_license_nullify_list.html">
+                <img class="mui-media-object mui-pull-left" id="noticeImg10">
+                <div class="mui-media-body content">
+                    营业执照作废声明
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a class="mui-navigate-right" href="notice_suiji.html">
+                <img class="mui-media-object mui-pull-left" id="noticeImg6">
+                <div class="mui-media-body content">
+                    双随机-公开公告
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a class="mui-navigate-right" href="notice_rests_list.html">
+                <img class="mui-media-object mui-pull-left" id="noticeImg7">
+                <div class="mui-media-body content">
+                    其他公告
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+</body>
 </html>

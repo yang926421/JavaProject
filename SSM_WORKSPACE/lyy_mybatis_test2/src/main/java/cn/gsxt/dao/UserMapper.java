@@ -8,6 +8,6 @@ import java.util.List;
 public interface UserMapper {
     public List<User> findAll() throws IOException;
 
-//    根据Id查询
+    //    根据Id查询
     public User findById(int id);
 }

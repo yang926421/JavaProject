@@ -7,21 +7,23 @@ import java.net.Socket;
  * 定义枚举类，用来标识错误
  */
 enum ErrorCode {
-    PASSWORD_ERROR,USERNAME_NOT_EXIST,RIGHT
+    PASSWORD_ERROR, USERNAME_NOT_EXIST, RIGHT
 }
 
-public class LoginThread extends Thread{
+public class LoginThread extends Thread {
     // 客户端socket对象
     private Socket socket;
+
     // 构造方法
     public LoginThread(Socket socket) {
         this.socket = socket;
     }
+
     @Override
     public void run() {
         try {
             // 根据字节输入流对象创建字符缓冲输入流
-            BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream())) ;
+            BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             // 读取客户端发送过来的用户名和密码
             String content = br.readLine();
             System.out.println(content); // jack=123456
@@ -31,12 +33,12 @@ public class LoginThread extends Thread{
             // ErrorCode status = login(content);
 
             int status = login(content);
-            if(status == 0) { // 用户名和密码正确
+            if (status == 0) { // 用户名和密码正确
                 bw.write("登录成功");
-            } else if(status == 1){ // 用户名正确，密码错误
+            } else if (status == 1) { // 用户名正确，密码错误
                 bw.write("密码错误");
             } else { // 用户名不存在，使用用户名和密码注册一个账号
-                if(register(content)){
+                if (register(content)) {
                     bw.write("注册成功");
                 } else {
                     bw.write("注册失败");
@@ -55,12 +57,12 @@ public class LoginThread extends Thread{
     /**
      * 注册用户方法
      */
-    public boolean register(String content){ // zhangsan=123456
+    public boolean register(String content) { // zhangsan=123456
         // 声明一个字符输出缓冲流对象
         BufferedWriter bw = null;
         try {
             // 创建字符缓冲输出流并关联目标文件，追加形式
-            bw = new BufferedWriter(new FileWriter("user.txt",true));
+            bw = new BufferedWriter(new FileWriter("user.txt", true));
             // 将用户名和密码输出到目标文件中
             bw.write(content);
             // 换行
@@ -73,7 +75,7 @@ public class LoginThread extends Thread{
             return false;
         } finally {
             try {
-                if(bw != null) bw.close();
+                if (bw != null) bw.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -83,11 +85,11 @@ public class LoginThread extends Thread{
     /*
      *  登录方法：判断用户名和密码是否存在，存在则登录成功，否则登录失败
      */
-    public int login(String content) throws IOException{ //zhangsan=123456
+    public int login(String content) throws IOException { //zhangsan=123456
         // 根据目标文件名创建文件对象
         File file = new File("user.txt");
         // 判断文件是否存在，如果不存在，则创建
-        if(!file.exists()) {
+        if (!file.exists()) {
             // 创建目标文件
             file.createNewFile();
             // 用户名不存在
@@ -100,15 +102,15 @@ public class LoginThread extends Thread{
         // 定义字符串用来接收读取到每一行内容:用户名=密码
         String line = null;
         // 循环读取文件内容
-        while((line = br.readLine())!= null) {  // zhangsan=123
+        while ((line = br.readLine()) != null) {  // zhangsan=123
             // 使用=号分割字符串
             String[] strs = line.split("=");
             // 判断用户名是否相同
-            if(strs[0].equals(strArr[0])){
+            if (strs[0].equals(strArr[0])) {
                 // 关闭流
                 br.close();
                 // 判断密码是否相同
-                if(strs[1].equals(strArr[1])) {
+                if (strs[1].equals(strArr[1])) {
                     // 密码正确
                     return 0;
                 } else {

@@ -28,7 +28,6 @@
     request.setAttribute("users", users);
 
 
-
 %>
 
 <h3>使用EL来获取</h3>

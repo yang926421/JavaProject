@@ -1,122 +1,124 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>通知公告</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/notice.css">
-		<script src="../static/js/jquery.min.js"></script>
-		<script type="text/javascript" src="../static/js/common.js" ></script>
-		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-		<script>
-			var title="";
-			$(function(){				
-				getData();
-			});
-			function goSearch(){
-				$("#noticeList").html("");
-				$("#page").val(1);
-				getData();
-			}
-				//获取数据
-			function getData(){
-				title=$("#title").val();
-				page=$("#page").val();
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/p/notice/list.json",
-					async:true,
-					data:{"TITLE":title,"page":page,"pageSize":pageSize},
-					dataType:"json",
-					beforeSend:function(){
-						$("#loading").show();
-					},
-					success:function(res){
-						$("#loading").hide();
-						if(res.success==true){
-							loadPage(res);
-							createData(res.data);
-						}
-					}
-				});
-			}
-			//创建数据
-			function createData(obj){
-				if(obj!=null && obj.length>0){
-					var htmlData="";
-					for(var i=0;i<obj.length;i++){
-						sessionStorage.setItem(obj[i].NOTICEID,JSON.stringify(obj[i]) );
-						htmlData+="<li>"+
-								"<a href='announcement_detail.html?NOTICEID="+obj[i].NOTICEID+"'>"+
-								"	<p>"+obj[i].NOTICETITLE+"</p>"+
-								"	<span>"+obj[i].JUDAUTH_CN+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+getFormatDateByLong(obj[i].NOTICEDATE,"yyyy年MM月dd日") +"</span>"+
-								"</a>"+
-							"</li>";
-					}
-					$("#noticeList").append(htmlData);
-					
-				}else{
-					$("#no-show").show();
-				}
-			}
-			
-		</script>
-	
-		
-	</head>
-	
-	<body>		
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="notice_index.html"></a>
-		    <h1 class="mui-title"><span id="saveOrUpdate"></span>通知公告</h1>
-		</header>	
-		
-		<div id="common-boxJ">
-			<div class="sss" style="padding: 13px 10px;">
-				<div class="searchBoxs">
-					<img src="../static/img/icon/ic_search.png" />
-					<input type="text" id="title" placeholder="请输入公告标题" style="padding-top: 0rem;">
-					<a onclick="goSearch()">搜索</a>
-				</div>
-			</div>	
-			<ul id="noticeList" class="noticeList" style="background: #fff;">
-				<!--<li>
-					<a href="notice_detail1.html">
-						<p>关于洛阳神都信息技术有限公司列入</p>
-						<span>2017.03.06 15:55:25</span>
-					</a>
-				</li>
-				<li>
-					<a href="notice_detail1.html">
-						<p>关于洛阳神都信息技术有限公司</p>
-						<span>2017.03.06 15:55:25</span>
-					</a>
-				</li>-->
-			</ul>
-			
-			<div id="no-show" class="weui-loadmore weui-loadmore_line" style="display: none;">
-           		 <span class="weui-loadmore__tips">暂无数据</span>
-       		 </div>
-			
-			  	<input type="hidden" name="page" id="page" value="1" />
-				<input type="hidden" name="totalPage" id="totalPage" value="1"/>
-				
-				<div id="loadData" style="display: none;" onclick="getData();">点击加载更多...</div>
-				<!--加载点-->
-				<div id="loading" style="display: none;" class="spinner">
-					 <div class="bounce1"></div>
-					 <div class="bounce2"></div>
-					 <div class="bounce3"></div>
-				</div>
-				
-				<div id="noData" style="display: none;" >没有更多了...</div>
-		</div>
-		</div>
-		
-		
-	   
-	</body>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>通知公告</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/notice.css">
+    <script src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script>
+        var title = "";
+        $(function () {
+            getData();
+        });
+
+        function goSearch() {
+            $("#noticeList").html("");
+            $("#page").val(1);
+            getData();
+        }
+
+        //获取数据
+        function getData() {
+            title = $("#title").val();
+            page = $("#page").val();
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/p/notice/list.json",
+                async: true,
+                data: {"TITLE": title, "page": page, "pageSize": pageSize},
+                dataType: "json",
+                beforeSend: function () {
+                    $("#loading").show();
+                },
+                success: function (res) {
+                    $("#loading").hide();
+                    if (res.success == true) {
+                        loadPage(res);
+                        createData(res.data);
+                    }
+                }
+            });
+        }
+
+        //创建数据
+        function createData(obj) {
+            if (obj != null && obj.length > 0) {
+                var htmlData = "";
+                for (var i = 0; i < obj.length; i++) {
+                    sessionStorage.setItem(obj[i].NOTICEID, JSON.stringify(obj[i]));
+                    htmlData += "<li>" +
+                        "<a href='announcement_detail.html?NOTICEID=" + obj[i].NOTICEID + "'>" +
+                        "	<p>" + obj[i].NOTICETITLE + "</p>" +
+                        "	<span>" + obj[i].JUDAUTH_CN + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + getFormatDateByLong(obj[i].NOTICEDATE, "yyyy年MM月dd日") + "</span>" +
+                        "</a>" +
+                        "</li>";
+                }
+                $("#noticeList").append(htmlData);
+
+            } else {
+                $("#no-show").show();
+            }
+        }
+
+    </script>
+
+
+</head>
+
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="notice_index.html"></a>
+    <h1 class="mui-title"><span id="saveOrUpdate"></span>通知公告</h1>
+</header>
+
+<div id="common-boxJ">
+    <div class="sss" style="padding: 13px 10px;">
+        <div class="searchBoxs">
+            <img src="../static/img/icon/ic_search.png"/>
+            <input type="text" id="title" placeholder="请输入公告标题" style="padding-top: 0rem;">
+            <a onclick="goSearch()">搜索</a>
+        </div>
+    </div>
+    <ul id="noticeList" class="noticeList" style="background: #fff;">
+        <!--<li>
+            <a href="notice_detail1.html">
+                <p>关于洛阳神都信息技术有限公司列入</p>
+                <span>2017.03.06 15:55:25</span>
+            </a>
+        </li>
+        <li>
+            <a href="notice_detail1.html">
+                <p>关于洛阳神都信息技术有限公司</p>
+                <span>2017.03.06 15:55:25</span>
+            </a>
+        </li>-->
+    </ul>
+
+    <div id="no-show" class="weui-loadmore weui-loadmore_line" style="display: none;">
+        <span class="weui-loadmore__tips">暂无数据</span>
+    </div>
+
+    <input type="hidden" name="page" id="page" value="1"/>
+    <input type="hidden" name="totalPage" id="totalPage" value="1"/>
+
+    <div id="loadData" style="display: none;" onclick="getData();">点击加载更多...</div>
+    <!--加载点-->
+    <div id="loading" style="display: none;" class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+    </div>
+
+    <div id="noData" style="display: none;">没有更多了...</div>
+</div>
+</div>
+
+
+</body>
 </html>

@@ -1,25 +1,29 @@
-.web-box{
-	border-bottom:solid #EAEAEA 1px ;
-	background-color: #FFFFFF;
+.web-box {
+    border-bottom: solid #EAEAEA 1px;
+    background-color: #FFFFFF;
 }
-.web-box ul{
-	margin: auto;
-	width: 92%;
-	/*border: #000000 solid 1px;*/
+
+.web-box ul {
+    margin: auto;
+    width: 92%;
+    /*border: #000000 solid 1px;*/
 }
-.web-box li{
-	line-height: 5rem;
-	overflow: hidden;
-	font-size: 1.6rem;
+
+.web-box li {
+    line-height: 5rem;
+    overflow: hidden;
+    font-size: 1.6rem;
 }
-.web-box li span{
-	/*border: #000000 solid 1px;*/
-	width: 40%;
-	float: left;
-	display: inline-block;
-	line-height: 2.0rem;
-	padding: 1.3rem 0rem;
+
+.web-box li span {
+    /*border: #000000 solid 1px;*/
+    width: 40%;
+    float: left;
+    display: inline-block;
+    line-height: 2.0rem;
+    padding: 1.3rem 0rem;
 }
+
 /*.web-box:nth-child(2) li span{
 	width: 40%;
 	float: left;
@@ -27,16 +31,17 @@
 	line-height: 2.0rem;
 	padding: 1.3rem 0rem;
 }*/
-.web-write{
-	width:55%;
-	overflow: hidden;
-	/*border: #000000 solid 1px;*/
-	float: right;
+.web-write {
+    width: 55%;
+    overflow: hidden;
+    /*border: #000000 solid 1px;*/
+    float: right;
 }
-.web-write input{
-	border: none;
-	display: inline-block;
-	font-size: 1.6rem;
-	height: 2.2rem;
-	padding: 0px 0px;
+
+.web-write input {
+    border: none;
+    display: inline-block;
+    font-size: 1.6rem;
+    height: 2.2rem;
+    padding: 0px 0px;
 }

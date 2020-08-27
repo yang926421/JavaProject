@@ -1,6 +1,6 @@
 package 面向对象相关._02abstruct作业._03test;
 
-public class Lecturer extends Teacher{
+public class Lecturer extends Teacher {
     public Lecturer(String name, String bianHao) {
         super(name, bianHao);
     }

@@ -20,18 +20,17 @@ public class AccountController {
     //保存账户信息
     @RequestMapping(value = "/save", produces = "text/html;charset=UTF-8")
     @ResponseBody
-    public String save(Account account){
+    public String save(Account account) {
         accountService.save(account);
         return "保存成功";
     }
 
 
-
     //查询账户信息
     @RequestMapping("/findAll")
-    public ModelAndView findAll(ModelAndView modelAndView){
+    public ModelAndView findAll(ModelAndView modelAndView) {
         List<Account> accountList = accountService.findAll();
-        modelAndView.addObject("accountList",accountList);
+        modelAndView.addObject("accountList", accountList);
         modelAndView.setViewName("accountList");
         return modelAndView;
     }

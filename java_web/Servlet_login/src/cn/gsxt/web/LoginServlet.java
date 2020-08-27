@@ -43,15 +43,15 @@ public class LoginServlet extends HttpServlet {
         System.out.println(user);
         //判断
         //5.判断user
-        if(user == null){
+        if (user == null) {
             //登录失败
-            request.getRequestDispatcher("/FailServlet").forward(request,response);
-        }else{
+            request.getRequestDispatcher("/FailServlet").forward(request, response);
+        } else {
             //登录成功
             //存储数据
-            request.setAttribute("user",user);
+            request.setAttribute("user", user);
             //转发
-            request.getRequestDispatcher("/SuccessServlet").forward(request,response);
+            request.getRequestDispatcher("/SuccessServlet").forward(request, response);
         }
 
 

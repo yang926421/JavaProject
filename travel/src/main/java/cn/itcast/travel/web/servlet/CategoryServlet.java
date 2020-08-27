@@ -16,6 +16,7 @@ import java.util.List;
 @WebServlet("/category/*")
 public class CategoryServlet extends BaseServlet {
     private CategoryService service = new CategoryServiceImpl();
+
     public void findAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
         //调用service查询数据
         List<Category> cs = service.findAll();

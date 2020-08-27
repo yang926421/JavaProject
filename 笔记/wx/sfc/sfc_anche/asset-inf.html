@@ -1,302 +1,311 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>资产状况信息</title>
-		<link rel="stylesheet" href="../../static/css/common.css">
-		<link rel="stylesheet" href="../../static/css/mui.min.css">
-		<link rel="stylesheet" href="../../static/css/mui.min.css">
-		<link rel="stylesheet" href="../../static/css/asset-inf.css">
-		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
-		<script type="text/javascript" src="../../static/js/common.js"></script>
-		
-		<script>
-			var ancheid=GetRequest("ANCHEID");
-			$(function(){
-				$("#SESSIONID").val(SESSIONID);
-				$("#TOKEN").val(TOKEN);
-				if(ancheid!=null && ancheid!=""){
-					$("#ANCHEID").val(ancheid);
-					getData();
-				}
-			});
-			
-			
-			//获取资产数据
-			function getData(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/c/an/assetsCondition/get.json",
-					async:true,
-					data:{"ANCHEID":ancheid,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
-					dataType:"json",
-					success:function(res){
-						if(res.success==true){
-							createData(res.data);
-						}
-					}
-				});
-			}
-			
-			
-			function createData(obj){
-				$("#PRIYEASALES").val(obj.PRIYEASALES);//销售额或营业收入
-				if(obj.PRIYEASALESDIS!=null && obj.PRIYEASALESDIS!=""){
-					$("#PRIYEASALESDIS").val(obj.PRIYEASALESDIS);
-				}
-				if(obj.PRIYEASALESDIS==1){
-					document.getElementById("priyeasalesImg").src="../../static/img/show.png";
-				}else{
-					document.getElementById("priyeasalesImg").src="../../static/img/show-no.png";
-				}
-				
-				$("#PRIYEAPROFIT").val(obj.PRIYEAPROFIT);//盈余总额
-				if(obj.PRIYEAPROFITDIS!=null && obj.PRIYEAPROFITDIS!=""){
-					$("#PRIYEAPROFITDIS").val(obj.PRIYEAPROFITDIS);
-				}
-				if(obj.PRIYEAPROFITDIS==1){
-					document.getElementById("priyeaprofitImg").src="../../static/img/show.png";
-				}else{
-					document.getElementById("priyeaprofitImg").src="../../static/img/show-no.png";
-				}
-				$("#PRIYEASUB").val(obj.PRIYEASUB);  //获得政府扶持资金、补助
-				if(obj.PRIYEASUBDIS!=null && obj.PRIYEASUBDIS!=""){
-					$("#PRIYEASUBDIS").val(obj.PRIYEASUBDIS);
-				}
-				if(obj.PRIYEASUBDIS==1){
-					document.getElementById("priyeasubImg").src="../../static/img/show.png";
-				}else{
-					document.getElementById("priyeasubImg").src="../../static/img/show-no.png";
-				}
-				$("#RATGRO").val(obj.RATGRO);  //纳税金额
-				if(obj.RATGRODIS!=null && obj.RATGRODIS!=""){
-					$("#RATGRODIS").val(obj.RATGRODIS);
-				}
-				if(obj.RATGRODIS==1){
-					document.getElementById("ratgroImg").src="../../static/img/show.png";
-				}else{
-					document.getElementById("ratgroImg").src="../../static/img/show-no.png";
-				}	
-				$("#PRIYEALOAN").val(obj.PRIYEALOAN);//金融贷款
-				if(obj.PRIYEALOANDIS!=null && obj.PRIYEALOANDIS!=""){
-					$("#PRIYEALOANDIS").val(obj.PRIYEALOANDIS);
-				}
-				if(obj.PRIYEALOANDIS==1){
-					document.getElementById("priyealoanImg").src="../../static/img/show.png";
-				}else{
-					document.getElementById("priyealoanImg").src="../../static/img/show-no.png";
-				}
-			}
-			
-			
-			//添加资产数据
-			function addData(){
-				$.ajax({
-					type:"post",
-					url:httpUrl+"/c/an/assetsCondition/save.json",
-					async:true,
-					data:$("#addForm").serialize(),
-					dataType:"json",
-					success:function(res){
-						if(res.success==true){
-							//mui.toast(res.codeMsg);
-							window.location.href="report.html?ANCHEID="+ancheid;
-						}else{
-							mui.toast(res.codeMsg);
-						}
-					}
-				});
-			}
-			
-		</script>
-		
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="report.html"></a>
-		    <h1 class="mui-title">资产状况信息</h1>
-		    <span id="sure">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>资产状况信息</title>
+    <link rel="stylesheet" href="../../static/css/common.css">
+    <link rel="stylesheet" href="../../static/css/mui.min.css">
+    <link rel="stylesheet" href="../../static/css/mui.min.css">
+    <link rel="stylesheet" href="../../static/css/asset-inf.css">
+    <script type="text/javascript" src="../../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../../static/js/common.js"></script>
+
+    <script>
+        var ancheid = GetRequest("ANCHEID");
+        $(function () {
+            $("#SESSIONID").val(SESSIONID);
+            $("#TOKEN").val(TOKEN);
+            if (ancheid != null && ancheid != "") {
+                $("#ANCHEID").val(ancheid);
+                getData();
+            }
+        });
+
+
+        //获取资产数据
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/c/an/assetsCondition/get.json",
+                async: true,
+                data: {"ANCHEID": ancheid, "TOKEN": TOKEN, "SESSIONID": SESSIONID},
+                dataType: "json",
+                success: function (res) {
+                    if (res.success == true) {
+                        createData(res.data);
+                    }
+                }
+            });
+        }
+
+
+        function createData(obj) {
+            $("#PRIYEASALES").val(obj.PRIYEASALES);//销售额或营业收入
+            if (obj.PRIYEASALESDIS != null && obj.PRIYEASALESDIS != "") {
+                $("#PRIYEASALESDIS").val(obj.PRIYEASALESDIS);
+            }
+            if (obj.PRIYEASALESDIS == 1) {
+                document.getElementById("priyeasalesImg").src = "../../static/img/show.png";
+            } else {
+                document.getElementById("priyeasalesImg").src = "../../static/img/show-no.png";
+            }
+
+            $("#PRIYEAPROFIT").val(obj.PRIYEAPROFIT);//盈余总额
+            if (obj.PRIYEAPROFITDIS != null && obj.PRIYEAPROFITDIS != "") {
+                $("#PRIYEAPROFITDIS").val(obj.PRIYEAPROFITDIS);
+            }
+            if (obj.PRIYEAPROFITDIS == 1) {
+                document.getElementById("priyeaprofitImg").src = "../../static/img/show.png";
+            } else {
+                document.getElementById("priyeaprofitImg").src = "../../static/img/show-no.png";
+            }
+            $("#PRIYEASUB").val(obj.PRIYEASUB);  //获得政府扶持资金、补助
+            if (obj.PRIYEASUBDIS != null && obj.PRIYEASUBDIS != "") {
+                $("#PRIYEASUBDIS").val(obj.PRIYEASUBDIS);
+            }
+            if (obj.PRIYEASUBDIS == 1) {
+                document.getElementById("priyeasubImg").src = "../../static/img/show.png";
+            } else {
+                document.getElementById("priyeasubImg").src = "../../static/img/show-no.png";
+            }
+            $("#RATGRO").val(obj.RATGRO);  //纳税金额
+            if (obj.RATGRODIS != null && obj.RATGRODIS != "") {
+                $("#RATGRODIS").val(obj.RATGRODIS);
+            }
+            if (obj.RATGRODIS == 1) {
+                document.getElementById("ratgroImg").src = "../../static/img/show.png";
+            } else {
+                document.getElementById("ratgroImg").src = "../../static/img/show-no.png";
+            }
+            $("#PRIYEALOAN").val(obj.PRIYEALOAN);//金融贷款
+            if (obj.PRIYEALOANDIS != null && obj.PRIYEALOANDIS != "") {
+                $("#PRIYEALOANDIS").val(obj.PRIYEALOANDIS);
+            }
+            if (obj.PRIYEALOANDIS == 1) {
+                document.getElementById("priyealoanImg").src = "../../static/img/show.png";
+            } else {
+                document.getElementById("priyealoanImg").src = "../../static/img/show-no.png";
+            }
+        }
+
+
+        //添加资产数据
+        function addData() {
+            $.ajax({
+                type: "post",
+                url: httpUrl + "/c/an/assetsCondition/save.json",
+                async: true,
+                data: $("#addForm").serialize(),
+                dataType: "json",
+                success: function (res) {
+                    if (res.success == true) {
+                        //mui.toast(res.codeMsg);
+                        window.location.href = "report.html?ANCHEID=" + ancheid;
+                    } else {
+                        mui.toast(res.codeMsg);
+                    }
+                }
+            });
+        }
+
+    </script>
+
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="report.html"></a>
+    <h1 class="mui-title">资产状况信息</h1>
+    <span id="sure">
 		    	<a href="javascript:;" onclick="addData()">保存</a>
 		    </span>
-		</header>
-		
-		<!--资产状况信息-->
-		<form id="addForm">
-			<input type="hidden" name="ANCHEID" id="ANCHEID" />
-			<input type="hidden" name="TOKEN" id="TOKEN" />
-			<input type="hidden" name="SESSIONID" id="SESSIONID" />
-		<div id="common-box">
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+</header>
+
+<!--资产状况信息-->
+<form id="addForm">
+    <input type="hidden" name="ANCHEID" id="ANCHEID"/>
+    <input type="hidden" name="TOKEN" id="TOKEN"/>
+    <input type="hidden" name="SESSIONID" id="SESSIONID"/>
+    <div id="common-box">
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								销售额或营业收入
 							</span>
-							<div class="select-time">
-								<div class="web-write">
-									<input type="text" name="PRIYEASALES" id="PRIYEASALES" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
-								</div>
-								<input type="hidden" name="PRIYEASALESDIS" id="PRIYEASALESDIS" value="2" />
-								<span class="contribution-arrow-right"><img id="priyeasalesImg" src="../../static/img/show-no.png"/></span>
-							</div>
-							
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                    <div class="select-time">
+                        <div class="web-write">
+                            <input type="text" name="PRIYEASALES" id="PRIYEASALES" oninput="inputNumPoint(this)"
+                                   placeholder="请输入金额"/>
+                        </div>
+                        <input type="hidden" name="PRIYEASALESDIS" id="PRIYEASALESDIS" value="2"/>
+                        <span class="contribution-arrow-right"><img id="priyeasalesImg"
+                                                                    src="../../static/img/show-no.png"/></span>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								盈余总额
 							</span>
-							<div class="select-time">
-								<div class="web-write">
-									<input type="text" name="PRIYEAPROFIT" id="PRIYEAPROFIT" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
-								</div>
-								<input type="hidden" name="PRIYEAPROFITDIS" id="PRIYEAPROFITDIS" value="2" />
-								<span class="contribution-arrow-right"><img id="priyeaprofitImg" src="../../static/img/show-no.png"/></span>
-							</div>
-							
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                    <div class="select-time">
+                        <div class="web-write">
+                            <input type="text" name="PRIYEAPROFIT" id="PRIYEAPROFIT" oninput="inputNumPoint(this)"
+                                   placeholder="请输入金额"/>
+                        </div>
+                        <input type="hidden" name="PRIYEAPROFITDIS" id="PRIYEAPROFITDIS" value="2"/>
+                        <span class="contribution-arrow-right"><img id="priyeaprofitImg"
+                                                                    src="../../static/img/show-no.png"/></span>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								纳税金额
 							</span>
-							<div class="select-time">
-								<div class="web-write">
-									<input type="text" name="RATGRO" id="RATGRO" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
-								</div>
-								<input type="hidden" name="RATGRODIS" id="RATGRODIS" value="2"/>
-								<span class="contribution-arrow-right"><img id="ratgroImg" src="../../static/img/show-no.png"/></span>
-							</div>
-							
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                    <div class="select-time">
+                        <div class="web-write">
+                            <input type="text" name="RATGRO" id="RATGRO" oninput="inputNumPoint(this)"
+                                   placeholder="请输入金额"/>
+                        </div>
+                        <input type="hidden" name="RATGRODIS" id="RATGRODIS" value="2"/>
+                        <span class="contribution-arrow-right"><img id="ratgroImg" src="../../static/img/show-no.png"/></span>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								获得政府扶持资金、补助
 							</span>
-							<div class="select-time">
-								<div class="web-write">
-									<input type="text" name="PRIYEASUB" id="PRIYEASUB" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
-								</div>
-								<input type="hidden" name="PRIYEASUBDIS" id="PRIYEASUBDIS" value="2"/>
-								<span class="contribution-arrow-right"><img id="priyeasubImg" src="../../static/img/show-no.png"/></span>
-							</div>
-							
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                    <div class="select-time">
+                        <div class="web-write">
+                            <input type="text" name="PRIYEASUB" id="PRIYEASUB" oninput="inputNumPoint(this)"
+                                   placeholder="请输入金额"/>
+                        </div>
+                        <input type="hidden" name="PRIYEASUBDIS" id="PRIYEASUBDIS" value="2"/>
+                        <span class="contribution-arrow-right"><img id="priyeasubImg"
+                                                                    src="../../static/img/show-no.png"/></span>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								金融贷款
 							</span>
-							<div class="select-time">
-								<div class="web-write">
-									<input type="text" name="PRIYEALOAN" id="PRIYEALOAN" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
-								</div>
-								<input type="hidden" name="PRIYEALOANDIS" id="PRIYEALOANDIS" value="2"/>
-								<span class="contribution-arrow-right"><img id="priyealoanImg" src="../../static/img/show-no.png"/></span>
-							</div>
-							
-						</li>
-					</ul>
-			</div>
-			
-			</form>
-			<!--提示信息-->
-			<div class="tip">
+                    <div class="select-time">
+                        <div class="web-write">
+                            <input type="text" name="PRIYEALOAN" id="PRIYEALOAN" oninput="inputNumPoint(this)"
+                                   placeholder="请输入金额"/>
+                        </div>
+                        <input type="hidden" name="PRIYEALOANDIS" id="PRIYEALOANDIS" value="2"/>
+                        <span class="contribution-arrow-right"><img id="priyealoanImg"
+                                                                    src="../../static/img/show-no.png"/></span>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+</form>
+<!--提示信息-->
+<div class="tip">
 				<span style="font-size: 16px;">
-					*说明：以上单位为<img src="../../static/img/million.gif"  style="height: 25px;vertical-align:middle;"/>
+					*说明：以上单位为<img src="../../static/img/million.gif" style="height: 25px;vertical-align:middle;"/>
 				</span>
-			</div>
-		</div>
-		<script type="text/javascript">
-		
-		   /******** start 设置资产状况对外公示or隐藏*************/
-			document.getElementById("priyeasalesImg").addEventListener('tap', function() {
-				var priyeasalesdis=$("#PRIYEASALESDIS").val();
-				if(priyeasalesdis==2){
-					document.getElementById("priyeasalesImg").src="../../static/img/show.png";
-					$("#PRIYEASALESDIS").val(1);
-					mui.toast('您设置了销售额或营业收入对外公示');
-				}else{
-					document.getElementById("priyeasalesImg").src="../../static/img/show-no.png";
-					$("#PRIYEASALESDIS").val(2);
-					mui.toast('您设置了销售额或营业收入对外隐藏');
-				}
-			});
-			
-			document.getElementById("priyeaprofitImg").addEventListener('tap', function() {
-				var priyeaprofitdis=$("#PRIYEAPROFITDIS").val();
-				if(priyeaprofitdis==2){
-					document.getElementById("priyeaprofitImg").src="../../static/img/show.png";
-					$("#PRIYEAPROFITDIS").val(1);
-					mui.toast('您设置了盈余总额对外公示');
-				}else{
-					document.getElementById("priyeaprofitImg").src="../../static/img/show-no.png";
-					$("#PRIYEAPROFITDIS").val(2);
-					mui.toast('您设置了盈余总额对外隐藏');
-				}
-			});
-			
-			document.getElementById("ratgroImg").addEventListener('tap', function() {
-				var ratgrodis=$("#RATGRODIS").val();
-				if(ratgrodis==2){
-					document.getElementById("ratgroImg").src="../../static/img/show.png";
-					$("#RATGRODIS").val(1);
-					mui.toast('您设置了纳税总额对外公示');
-				}else{
-					document.getElementById("ratgroImg").src="../../static/img/show-no.png";
-					$("#RATGRODIS").val(2);
-					mui.toast('您设置了纳税总额对外隐藏');
-				}
-			});
-			
-			document.getElementById("priyeasubImg").addEventListener('tap', function() {
-				var priyeasubdis=$("#PRIYEASUBDIS").val();
-				if(priyeasubdis==2){
-					document.getElementById("priyeasubImg").src="../../static/img/show.png";
-					$("#PRIYEASUBDIS").val(1);
-					mui.toast('您设置了政府扶持资金、补助对外公示');
-				}else{
-					document.getElementById("priyeasubImg").src="../../static/img/show-no.png";
-					$("#PRIYEASUBDIS").val(2);
-					mui.toast('您设置了政府扶持资金、补助对外隐藏');
-				}
-			});
-			
-			document.getElementById("priyealoanImg").addEventListener('tap', function() {
-				var priyealoandis=$("#PRIYEALOANDIS").val();
-				if(priyealoandis==2){
-					document.getElementById("priyealoanImg").src="../../static/img/show.png";
-					$("#PRIYEALOANDIS").val(1);
-					mui.toast('您设置了金融贷款对外公示');
-				}else{
-					document.getElementById("priyealoanImg").src="../../static/img/show-no.png";
-					$("#PRIYEALOANDIS").val(2);
-					mui.toast('您设置了金融贷款对外隐藏');
-				}
-			});
-			
-			
-			/******** end 设置资产状况对外公示or隐藏*************/
-		</script>
-	</body>
+</div>
+</div>
+<script type="text/javascript">
+
+    /******** start 设置资产状况对外公示or隐藏*************/
+    document.getElementById("priyeasalesImg").addEventListener('tap', function () {
+        var priyeasalesdis = $("#PRIYEASALESDIS").val();
+        if (priyeasalesdis == 2) {
+            document.getElementById("priyeasalesImg").src = "../../static/img/show.png";
+            $("#PRIYEASALESDIS").val(1);
+            mui.toast('您设置了销售额或营业收入对外公示');
+        } else {
+            document.getElementById("priyeasalesImg").src = "../../static/img/show-no.png";
+            $("#PRIYEASALESDIS").val(2);
+            mui.toast('您设置了销售额或营业收入对外隐藏');
+        }
+    });
+
+    document.getElementById("priyeaprofitImg").addEventListener('tap', function () {
+        var priyeaprofitdis = $("#PRIYEAPROFITDIS").val();
+        if (priyeaprofitdis == 2) {
+            document.getElementById("priyeaprofitImg").src = "../../static/img/show.png";
+            $("#PRIYEAPROFITDIS").val(1);
+            mui.toast('您设置了盈余总额对外公示');
+        } else {
+            document.getElementById("priyeaprofitImg").src = "../../static/img/show-no.png";
+            $("#PRIYEAPROFITDIS").val(2);
+            mui.toast('您设置了盈余总额对外隐藏');
+        }
+    });
+
+    document.getElementById("ratgroImg").addEventListener('tap', function () {
+        var ratgrodis = $("#RATGRODIS").val();
+        if (ratgrodis == 2) {
+            document.getElementById("ratgroImg").src = "../../static/img/show.png";
+            $("#RATGRODIS").val(1);
+            mui.toast('您设置了纳税总额对外公示');
+        } else {
+            document.getElementById("ratgroImg").src = "../../static/img/show-no.png";
+            $("#RATGRODIS").val(2);
+            mui.toast('您设置了纳税总额对外隐藏');
+        }
+    });
+
+    document.getElementById("priyeasubImg").addEventListener('tap', function () {
+        var priyeasubdis = $("#PRIYEASUBDIS").val();
+        if (priyeasubdis == 2) {
+            document.getElementById("priyeasubImg").src = "../../static/img/show.png";
+            $("#PRIYEASUBDIS").val(1);
+            mui.toast('您设置了政府扶持资金、补助对外公示');
+        } else {
+            document.getElementById("priyeasubImg").src = "../../static/img/show-no.png";
+            $("#PRIYEASUBDIS").val(2);
+            mui.toast('您设置了政府扶持资金、补助对外隐藏');
+        }
+    });
+
+    document.getElementById("priyealoanImg").addEventListener('tap', function () {
+        var priyealoandis = $("#PRIYEALOANDIS").val();
+        if (priyealoandis == 2) {
+            document.getElementById("priyealoanImg").src = "../../static/img/show.png";
+            $("#PRIYEALOANDIS").val(1);
+            mui.toast('您设置了金融贷款对外公示');
+        } else {
+            document.getElementById("priyealoanImg").src = "../../static/img/show-no.png";
+            $("#PRIYEALOANDIS").val(2);
+            mui.toast('您设置了金融贷款对外隐藏');
+        }
+    });
+
+
+    /******** end 设置资产状况对外公示or隐藏*************/
+</script>
+</body>
 </html>

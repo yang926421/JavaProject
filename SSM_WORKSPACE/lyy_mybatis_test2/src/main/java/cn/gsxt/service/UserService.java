@@ -12,7 +12,7 @@ import java.io.InputStream;
 import java.util.List;
 
 public class UserService {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 //        //手动创建dao层
 //        UserMapper userMapper = new UserMapperImpl();
 //        List<User> userList = userMapper.findAll();

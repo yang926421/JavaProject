@@ -16,7 +16,7 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public List<Role> list() {
         System.out.println("roleService");
-        List<Role> roleList =  roleDao.findAll();
+        List<Role> roleList = roleDao.findAll();
         System.out.println(roleList);
         return roleList;
     }

@@ -3,25 +3,25 @@ package com.etc.Ayy_concurrency.变量原子性并发包._09并发包_CountDownL
 import java.util.concurrent.CountDownLatch;
 
 /**
-    目标：CountDownLatch的使用。
-
-     CountDownLatch允许一个或多个线程等待其他线程完成操作，再执行自己。
-     例如：线程1要执行打印：A和C，线程2要执行打印：B，但线程1在打印A后，
-        要线程2打印B之后才能打印C，所以：线程1在打印A后，
-        必须等待线程2打印完B之后才能继续执行
-
-     需求：
-        提供A线程，打印 A , C
-        提供B线程，打印 B
-
-     构造器：
-         public CountDownLatch(int count)// 初始化唤醒需要的down几步。
-     方法：
-         public void await() throws InterruptedException// 让当前线程等待，必须down完初始化的数字才可以被唤醒，否则进入无限等待
-         public void countDown()	// 计数器进行减1 （down 1）
-     小结：
-         CountDownLatch可以用于让某个线程等待几步才可以继续执行，
-         从而可以实现控制线程执行的流程！
+ * 目标：CountDownLatch的使用。
+ * <p>
+ * CountDownLatch允许一个或多个线程等待其他线程完成操作，再执行自己。
+ * 例如：线程1要执行打印：A和C，线程2要执行打印：B，但线程1在打印A后，
+ * 要线程2打印B之后才能打印C，所以：线程1在打印A后，
+ * 必须等待线程2打印完B之后才能继续执行
+ * <p>
+ * 需求：
+ * 提供A线程，打印 A , C
+ * 提供B线程，打印 B
+ * <p>
+ * 构造器：
+ * public CountDownLatch(int count)// 初始化唤醒需要的down几步。
+ * 方法：
+ * public void await() throws InterruptedException// 让当前线程等待，必须down完初始化的数字才可以被唤醒，否则进入无限等待
+ * public void countDown()	// 计数器进行减1 （down 1）
+ * 小结：
+ * CountDownLatch可以用于让某个线程等待几步才可以继续执行，
+ * 从而可以实现控制线程执行的流程！
  */
 public class CountDownLatchDemo {
     public static void main(String[] args) {
@@ -32,11 +32,13 @@ public class CountDownLatchDemo {
     }
 }
 
-class ThreadA extends Thread{
+class ThreadA extends Thread {
     private CountDownLatch down;
-    public ThreadA(CountDownLatch down){
+
+    public ThreadA(CountDownLatch down) {
         this.down = down;
     }
+
     @Override
     public void run() {
         System.out.println("A");
@@ -49,11 +51,13 @@ class ThreadA extends Thread{
     }
 }
 
-class ThreadB extends Thread{
+class ThreadB extends Thread {
     private CountDownLatch down;
-    public ThreadB(CountDownLatch down){
+
+    public ThreadB(CountDownLatch down) {
         this.down = down;
     }
+
     @Override
     public void run() {
         System.out.println("B");

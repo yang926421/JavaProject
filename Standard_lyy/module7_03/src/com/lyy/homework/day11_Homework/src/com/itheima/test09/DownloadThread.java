@@ -12,7 +12,7 @@ import java.util.HashSet;
  * @Package com.itheima.test09
  * @date 2018/5/4  下午6:41
  */
-public class DownloadThread extends Thread{
+public class DownloadThread extends Thread {
     // 创建集合存放ip地址
     HashSet<String> ips = new HashSet<String>();
     // 客户端socket对象
@@ -32,15 +32,15 @@ public class DownloadThread extends Thread{
             // 循环读取文件数据
             int len = -1;
             byte[] buf = new byte[1024];
-            while((len = fis.read(buf)) != -1) {
+            while ((len = fis.read(buf)) != -1) {
                 // 向客户端写出图片数据
-                os.write(buf,0,len);
+                os.write(buf, 0, len);
             }
 
             // 获得客户端的ip地址
             String ip = socket.getInetAddress().getHostAddress();
-            if(ips.add(ip)){
-                System.out.println("恭喜"+ip+"同学，下载成功！！ 当前下载的人数是："+ips.size());
+            if (ips.add(ip)) {
+                System.out.println("恭喜" + ip + "同学，下载成功！！ 当前下载的人数是：" + ips.size());
             }
             // 释放资源
             fis.close();

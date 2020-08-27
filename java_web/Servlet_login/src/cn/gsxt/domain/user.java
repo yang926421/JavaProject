@@ -1,7 +1,7 @@
 package cn.gsxt.domain;
 
 /**
- 用户的实体类
+ * 用户的实体类
  */
 public class user {
     private int uid;

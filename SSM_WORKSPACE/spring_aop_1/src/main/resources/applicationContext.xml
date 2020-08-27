@@ -10,22 +10,22 @@
         http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
-<!--    配置目标对象-->
+    <!--    配置目标对象-->
     <bean id="target" class="cn.gsxt.aop2.Target"></bean>
-<!--    切面对象-->
+    <!--    切面对象-->
     <bean id="myAspect" class="cn.gsxt.aop2.MyAspect"></bean>
 
 
-<!--    配置织入 高速spring框架哪些方法(切点)需要进行哪些增强(前置,后置)-->
+    <!--    配置织入 高速spring框架哪些方法(切点)需要进行哪些增强(前置,后置)-->
     <aop:config>
         <aop:aspect ref="myAspect">
-<!--            抽取切点表达式-->
+            <!--            抽取切点表达式-->
             <aop:pointcut id="myPointCut" expression="execution(* cn.gsxt.aop2.*.*(..))"/>
-<!--            <aop:before method="before" pointcut="execution(public void cn.gsxt.aop2.Target.save())"></aop:before>-->
-<!--            <aop:after method="after" pointcut="execution(public void cn.gsxt.aop2.Target.save())"></aop:after>-->
-<!--            <aop:around method="around" pointcut="execution(* cn.gsxt.aop2.*.*(..))"></aop:around>-->
-<!--            使用切点表达式-->
-                <aop:around method="around" pointcut-ref="myPointCut"></aop:around>
+            <!--            <aop:before method="before" pointcut="execution(public void cn.gsxt.aop2.Target.save())"></aop:before>-->
+            <!--            <aop:after method="after" pointcut="execution(public void cn.gsxt.aop2.Target.save())"></aop:after>-->
+            <!--            <aop:around method="around" pointcut="execution(* cn.gsxt.aop2.*.*(..))"></aop:around>-->
+            <!--            使用切点表达式-->
+            <aop:around method="around" pointcut-ref="myPointCut"></aop:around>
         </aop:aspect>
     </aop:config>
 </beans>

@@ -1,104 +1,115 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>企业年报信息</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-			<script type="text/javascript" src="../static/js/common.js" ></script>
-		<style>
-			p{padding: 0;margin: 0;}
-			.yearselect{color: #3E3E3E;}
-			.mui-content>.mui-table-view:first-child { margin-top: 0px; }
-		</style>
-		<script>
-			//获取企业id
-			var pripid=sessionStorage.getItem("PRIPID"); 
-			//获取企业类型
-			var type=sessionStorage.getItem("TYPE");
-			$(function(){
-				getData();
-			});
-			//获取企业年报信息列表
-			function getData(){
-				$.ajax({
-  					type:'get',
-  					url:httpUrl+'/p/an/list.json',
-  					data:{"PRIPID":pripid,"TYPE":type},
-  					dataType:'json',
-  					success:function(res){
-  						if(res.success==true){
-  							createData(res.data);
-  						}
-  					}
-  				})
-			}
-			//创建企业年报信息列表
-			function createData(obj){
-				if(obj!=null && obj.length>0){
-					$("#count").html(obj.length);
-					var htmlData="";
-					for(var i=0;i<obj.length;i++){
-						if(obj[i].PUBLICFORMAT=="00"){
-							htmlData+="<li class='mui-table-view-cell'>"+
-								"<a class='mui-navigate-right' onclick='returnPage(\""+obj[i].ANCHEID+"\")' href='javascript:;'>"+
-								"	<p class='yearselect'>"+obj[i].ANCHEYEAR+"年度</p>"+
-								"	<p>公示日期："+getFormatDateByLong(obj[i].PUBLICTIME,'yyyy年MM月dd日') +"</p>"+
-								"</a>"+
-							"</li> ";
-						}else if(obj[i].PUBLICFORMAT=="01"){
-							htmlData+="<li class='mui-table-view-cell'>"+
-								"	<p class='yearselect'>"+obj[i].ANCHEYEAR+"年度</p>"+
-								"	<p>公示状态：已上传纸质版年报</p>"+
-								"	<p>公示日期："+getFormatDateByLong(obj[i].PUBLICTIME,'yyyy年MM月dd日') +"</p>"+
-							"</li> ";
-						}
-					}
-					$("#content").html(htmlData);
-				}else{
-					$("#count").html(0);
-				}
-			}
-			
-			function returnPage(aId){
-				if(type==1){
-					window.location.href="company_anche/show-report.html?ANCHEID="+aId;
-				}else if(type==2){
-					window.location.href="sfc_anche/show-report.html?ANCHEID="+aId;
-				}else if(type==3){
-					window.location.href="pb_anche/show-report.html?ANCHEID="+aId;
-				}
-					
-				
-			}
-			
-		</script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" ></a>
-		    <h1 class="mui-title">企业年报信息(<span id="count"></span>)</h1>
-		</header>
-		
-		<div class="mui-content">		
-				<ul id="content" class="mui-table-view">
-					<!--<li class="mui-table-view-cell">
-						<a class="mui-navigate-right" href="">
-							<p class="yearselect">2016年度</p>
-							<p>公示日期：2017年5月31日</p>
-						</a>
-					</li>
-					<li class="mui-table-view-cell">
-						<a class="mui-navigate-right" href="">
-							<p class="yearselect">2016年度</p>
-							<p>公示日期：2017年5月31日</p>
-						</a>
-					</li>-->
-				</ul>			
-		</div>
-	</body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>企业年报信息</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <style>
+        p {
+            padding: 0;
+            margin: 0;
+        }
+
+        .yearselect {
+            color: #3E3E3E;
+        }
+
+        .mui-content > .mui-table-view:first-child {
+            margin-top: 0px;
+        }
+    </style>
+    <script>
+        //获取企业id
+        var pripid = sessionStorage.getItem("PRIPID");
+        //获取企业类型
+        var type = sessionStorage.getItem("TYPE");
+        $(function () {
+            getData();
+        });
+
+        //获取企业年报信息列表
+        function getData() {
+            $.ajax({
+                type: 'get',
+                url: httpUrl + '/p/an/list.json',
+                data: {"PRIPID": pripid, "TYPE": type},
+                dataType: 'json',
+                success: function (res) {
+                    if (res.success == true) {
+                        createData(res.data);
+                    }
+                }
+            })
+        }
+
+        //创建企业年报信息列表
+        function createData(obj) {
+            if (obj != null && obj.length > 0) {
+                $("#count").html(obj.length);
+                var htmlData = "";
+                for (var i = 0; i < obj.length; i++) {
+                    if (obj[i].PUBLICFORMAT == "00") {
+                        htmlData += "<li class='mui-table-view-cell'>" +
+                            "<a class='mui-navigate-right' onclick='returnPage(\"" + obj[i].ANCHEID + "\")' href='javascript:;'>" +
+                            "	<p class='yearselect'>" + obj[i].ANCHEYEAR + "年度</p>" +
+                            "	<p>公示日期：" + getFormatDateByLong(obj[i].PUBLICTIME, 'yyyy年MM月dd日') + "</p>" +
+                            "</a>" +
+                            "</li> ";
+                    } else if (obj[i].PUBLICFORMAT == "01") {
+                        htmlData += "<li class='mui-table-view-cell'>" +
+                            "	<p class='yearselect'>" + obj[i].ANCHEYEAR + "年度</p>" +
+                            "	<p>公示状态：已上传纸质版年报</p>" +
+                            "	<p>公示日期：" + getFormatDateByLong(obj[i].PUBLICTIME, 'yyyy年MM月dd日') + "</p>" +
+                            "</li> ";
+                    }
+                }
+                $("#content").html(htmlData);
+            } else {
+                $("#count").html(0);
+            }
+        }
+
+        function returnPage(aId) {
+            if (type == 1) {
+                window.location.href = "company_anche/show-report.html?ANCHEID=" + aId;
+            } else if (type == 2) {
+                window.location.href = "sfc_anche/show-report.html?ANCHEID=" + aId;
+            } else if (type == 3) {
+                window.location.href = "pb_anche/show-report.html?ANCHEID=" + aId;
+            }
+
+
+        }
+
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left"></a>
+    <h1 class="mui-title">企业年报信息(<span id="count"></span>)</h1>
+</header>
+
+<div class="mui-content">
+    <ul id="content" class="mui-table-view">
+        <!--<li class="mui-table-view-cell">
+            <a class="mui-navigate-right" href="">
+                <p class="yearselect">2016年度</p>
+                <p>公示日期：2017年5月31日</p>
+            </a>
+        </li>
+        <li class="mui-table-view-cell">
+            <a class="mui-navigate-right" href="">
+                <p class="yearselect">2016年度</p>
+                <p>公示日期：2017年5月31日</p>
+            </a>
+        </li>-->
+    </ul>
+</div>
+</body>
 </html>

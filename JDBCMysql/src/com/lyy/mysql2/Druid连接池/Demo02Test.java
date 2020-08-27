@@ -5,7 +5,7 @@ import utlis.DruidUtils;
 import java.sql.Connection;
 
 public class Demo02Test {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         Connection con = DruidUtils.getConnection();
     }
 }

@@ -14,8 +14,7 @@ public class Exception异常处理进阶 {
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("功能执行失败！！");
-        }
-        finally {
+        } finally {
             System.out.println("程序结束。。。。。");
         }
 

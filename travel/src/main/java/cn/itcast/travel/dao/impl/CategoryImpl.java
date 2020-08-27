@@ -10,6 +10,7 @@ import java.util.List;
 
 public class CategoryImpl implements CategoryDao {
     private JdbcTemplate template = new JdbcTemplate(JDBCUtils.getDataSource());
+
     @Override
     public List<Category> findAll() {
         String sql = "select * from tab_category";

@@ -4,6 +4,7 @@ public interface FavoriteService {
 
     /**
      * 判断是否收藏
+     *
      * @param rid
      * @param uid
      * @return
@@ -12,6 +13,7 @@ public interface FavoriteService {
 
     /**
      * 添加收藏
+     *
      * @param rid
      * @param uid
      */

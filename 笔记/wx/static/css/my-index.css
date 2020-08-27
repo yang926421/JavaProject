@@ -1,135 +1,155 @@
-.mui-table-view .mui-media-object{
-	max-width: 54px;
-	height: 54px;
+.mui-table-view .mui-media-object {
+    max-width: 54px;
+    height: 54px;
 }
-.mui-media-body span{
-	/*border: dashed 1px;*/
-	margin-top: 0.8rem;
-	display: inline-block;
+
+.mui-media-body span {
+    /*border: dashed 1px;*/
+    margin-top: 0.8rem;
+    display: inline-block;
 }
-#login-header{
-	margin-bottom: 0.5rem;
+
+#login-header {
+    margin-bottom: 0.5rem;
 }
-.mui-navigate-right:after, .mui-push-right:after{
-	right:2%;
+
+.mui-navigate-right:after, .mui-push-right:after {
+    right: 2%;
 }
+
 /*单行列表*/
-#list-box{
-	background-color:#FFFFFF ;
-	height: 5.6rem;
+#list-box {
+    background-color: #FFFFFF;
+    height: 5.6rem;
 }
-.my-list{
-	margin-bottom: 0.5rem;
+
+.my-list {
+    margin-bottom: 0.5rem;
 }
-.my-list #list-box{
-	background-color:#FFFFFF ;
-	margin-bottom: 0rem;
-	border-bottom: #EAEAEA solid 1px;
+
+.my-list #list-box {
+    background-color: #FFFFFF;
+    margin-bottom: 0rem;
+    border-bottom: #EAEAEA solid 1px;
 }
-#list-box .line{
-	margin: auto;
-	width: 92%;
-	overflow: hidden;
+
+#list-box .line {
+    margin: auto;
+    width: 92%;
+    overflow: hidden;
 }
-#list-box .line span{
-	font-size: 1.6rem;
-	line-height: 5.6rem;
-	border: #000000 solid red;
+
+#list-box .line span {
+    font-size: 1.6rem;
+    line-height: 5.6rem;
+    border: #000000 solid red;
 }
-.list-img{
-	display: inline-block;
-	width: 2.6rem;
-	float: left;
+
+.list-img {
+    display: inline-block;
+    width: 2.6rem;
+    float: left;
 }
-.list-img img{
-	padding-top: 1.4rem;
-	/*padding-bottom: 0.8rem;*/
+
+.list-img img {
+    padding-top: 1.4rem;
+    /*padding-bottom: 0.8rem;*/
 }
-.list-name{
-	color:#333333;
-	line-height: 5.6rem;
-	margin-left: 4%;
+
+.list-name {
+    color: #333333;
+    line-height: 5.6rem;
+    margin-left: 4%;
 }
-#arrow-right{
-	float: right;
-	width: 0.6rem;
-	height: 1.2rem;
-	/*padding-top: 1.4rem;*/
+
+#arrow-right {
+    float: right;
+    width: 0.6rem;
+    height: 1.2rem;
+    /*padding-top: 1.4rem;*/
 }
 
 
 /*登录*/
-.mui-input-row .mui-input-clear{
-	position: relative;	
-	border-radius:0rem ;
-	padding: 2.6rem 4%;
-	border: none;
-	border-bottom:#EAEAEA solid 1px;
-	margin-bottom: 0;
-	font-size: 1.6rem;
+.mui-input-row .mui-input-clear {
+    position: relative;
+    border-radius: 0rem;
+    padding: 2.6rem 4%;
+    border: none;
+    border-bottom: #EAEAEA solid 1px;
+    margin-bottom: 0;
+    font-size: 1.6rem;
 }
-.mui-input-row:last-child{
-	position: relative;	
+
+.mui-input-row:last-child {
+    position: relative;
 }
-.input_clear{
-	display: none;
-	width: 1.4rem;
-	position: absolute;
-	right:4%;
-	top: 1.8rem;
+
+.input_clear {
+    display: none;
+    width: 1.4rem;
+    position: absolute;
+    right: 4%;
+    top: 1.8rem;
 }
-#getVerification{
-	position: absolute;
-	-webkit-appearance: none;
-	font-size: 1.2rem;
-	line-height: 3.9rem;
-	color: #ac812e;
-	border:none;
-	padding:auto 0;
-	top: 0;
-	right: 4%;
+
+#getVerification {
+    position: absolute;
+    -webkit-appearance: none;
+    font-size: 1.2rem;
+    line-height: 3.9rem;
+    color: #ac812e;
+    border: none;
+    padding: auto 0;
+    top: 0;
+    right: 4%;
 }
-.people-change{
-	overflow: hidden;
+
+.people-change {
+    overflow: hidden;
 }
-.people-change span{
-	float: right;
-	margin-right: 4%;
-	color: #666666;
-	font-size: 1.5rem;
+
+.people-change span {
+    float: right;
+    margin-right: 4%;
+    color: #666666;
+    font-size: 1.5rem;
 }
-.people-register{
-	text-align: center;
-	color: #ac812e;	
-	font-size: 1.6rem;
-	margin-top: 15%;
+
+.people-register {
+    text-align: center;
+    color: #ac812e;
+    font-size: 1.6rem;
+    margin-top: 15%;
 }
 
 /*个人信息样式*/
-#person-inf{
-	font-size:1.6rem ;
-}
-.mui-pull-right{
-	color: #999999;
-}
-.mui-pull-right #head-img1{
-	position: absolute;
-	bottom: 5px;
-	right: 40px;
-	width: 40px;
-	height: 40px;
+#person-inf {
+    font-size: 1.6rem;
 }
 
-.mui-table-view-cell p{
-	color: #333333;
+.mui-pull-right {
+    color: #999999;
 }
 
-.registerTip{
-	
-	position: fixed;
-	top: 44px;
-	padding-top: 0;
-	margin-top: 0;
+.mui-pull-right #head-img1 {
+    position: absolute;
+    bottom: 5px;
+    right: 40px;
+    width: 40px;
+    height: 40px;
+}
+
+.mui-table-view-cell p {
+    color: #333333;
+}
+
+.registerTip {
+
+    position: fixed;
+    top: 44px;
+    padding-top: 0;
+    margin-top: 0;
     z-index: 10;
     right: 0;
     left: 0;

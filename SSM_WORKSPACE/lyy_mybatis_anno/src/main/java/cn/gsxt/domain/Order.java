@@ -8,6 +8,7 @@ public class Order {
     private double total;
     //表示当前订单属于哪一个用户
     private User user;
+
     public double getTotal() {
         return total;
     }

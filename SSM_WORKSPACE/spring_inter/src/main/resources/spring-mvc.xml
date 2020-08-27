@@ -23,17 +23,17 @@
 
     <!--4、组件扫描  扫描Controller-->
     <context:component-scan base-package="cn.gsxt.controller"/>
-    
-<!--    配置拦截器-->
+
+    <!--    配置拦截器-->
     <mvc:interceptors>
         <mvc:interceptor>
-<!--            对哪些方法执行拦截操作-->
+            <!--            对哪些方法执行拦截操作-->
             <mvc:mapping path="/**"/>
             <bean class="cn.gsxt.interceptor.MyInterceptor1"/>
         </mvc:interceptor>
     </mvc:interceptors>
 
-<!--    拦截器2-->
+    <!--    拦截器2-->
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>

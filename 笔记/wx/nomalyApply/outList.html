@@ -1,179 +1,184 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>国家企业信用信息公示系统</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" type="text/css" href="../static/css/mui.picker.min.css" /><!--填写时间-->
-		<link rel="stylesheet" href="../static/css/objection.css">
-		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-		<script src="../static/js/mui.picker.min.js"></script>
-			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-			<script type="text/javascript" src="../static/js/common.js" ></script>
-			<script>
-				$(function(){
-					var code="";
-					if(TYPE==1){
-			           code='CD71';
-			         }else if(TYPE==2 && BODY_TYPE=='9100'){
-			           code='CD77';
-			         }else if(TYPE==2 && BODY_TYPE=='9200'){
-			           code='CD79';
-			         }else if(TYPE==3){
-			           code='CD75';
-			         }
-			         loadData(code,'reason');
-					 $("#chose").click(function(){
-						$("#proList").stop().animate({
-								right:"0"
-						})
-					});
-			         $("#cancelChose").click(function(){
-						$("#proList").stop().animate({
-								right:"-100%"
-						})
-					});
-			         $("#surechose").click(function(){
-						$("#proList").stop().animate({
-								right:"-100%"
-						})
-						getData();
-					});
-					getData();
-				});
-				function getData(){
-					var SPECAUSE=$("#reason").val();
-					var startDate=$("#startDate").val();
-					var endDate=$("#endDate").val();
-					$.ajax({
-						type:"get",
-						url:httpUrl+"/e/opa/out/list.json",
-						async:true,
-						data:{"PRIPID":PRIPID,"TYPE":TYPE, 
-						"SPECAUSE":SPECAUSE,"startDate":startDate,"endDate":endDate,
-						"SESSIONID":SESSIONID,"TOKEN":TOKEN
-						},
-						dataType:"json",
-						success:function(res){
-							$("#loading").hide();
-							if(res.success==true){
-								createData(res.data);
-							}
-						}
-					});
-				}
-				
-				function createData(obj){
-					$("#count").html(obj.length);
-					var htmlData="";
-					if(obj.length>0){
-						for (var i=0;i<obj.length;i++) {
-							var pageUrl="";
-							sessionStorage.setItem(obj[i].BUSEXCLIST,JSON.stringify(obj[i]));
-							if(obj[i].ALLOWUPDATE==true){
-								pageUrl="outApply.html?BUSEXCLIST="+obj[i].BUSEXCLIST+"&ID="+obj[i].ID;
-							}else{
-								pageUrl="outApplyInfo.html?BUSEXCLIST="+obj[i].BUSEXCLIST;
-							}
-							htmlData+=" <div class='web-box'>"+
-										"<a href='"+pageUrl+"'>"+
-										"	<div class='web-name'>"+
-										"		<ul class='web'>"+
-										"			<li><span>列入原因：</span> <span>"+obj[i].SPECAUSE_CN+"</span></li>"+
-										"			<li><span>列入日期：</span> <span>"+getFormatDateByLong(obj[i].ABNTIME,"yyyy年MM月dd日")+"</span></li>"+
-										"			<li><span>列入机关：</span>"+obj[i].DECORG_CN+"<span></span></li>"+
-										"			<li><span>受理结果：</span> <span>"+obj[i].RESULT+"</span></li>"+
-										"		</ul>"+
-										"		<div class='arrow-right'>"+
-										"			<img src='../static/img/arrow-right.png'/>"+
-										"		</div>"+
-										"	</div>"+
-										"</a>"+
-									"</div>";
-						}
-					}else{
-						mui.toast("没有更多数据了");
-					}
-					
-					$("#common-box").html(htmlData);
-					
-				}
-				
-				function goSearch(){
-					$("#common-box").html("");
-					$("#page").val(1);
-					getData();
-				}
-			</script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" ></a>
-		    <h1 class="mui-title">经营异常信息移出申请</h1>
-		     <span id="sure">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>国家企业信用信息公示系统</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/mui.picker.min.css"/><!--填写时间-->
+    <link rel="stylesheet" href="../static/css/objection.css">
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script src="../static/js/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script>
+        $(function () {
+            var code = "";
+            if (TYPE == 1) {
+                code = 'CD71';
+            } else if (TYPE == 2 && BODY_TYPE == '9100') {
+                code = 'CD77';
+            } else if (TYPE == 2 && BODY_TYPE == '9200') {
+                code = 'CD79';
+            } else if (TYPE == 3) {
+                code = 'CD75';
+            }
+            loadData(code, 'reason');
+            $("#chose").click(function () {
+                $("#proList").stop().animate({
+                    right: "0"
+                })
+            });
+            $("#cancelChose").click(function () {
+                $("#proList").stop().animate({
+                    right: "-100%"
+                })
+            });
+            $("#surechose").click(function () {
+                $("#proList").stop().animate({
+                    right: "-100%"
+                })
+                getData();
+            });
+            getData();
+        });
+
+        function getData() {
+            var SPECAUSE = $("#reason").val();
+            var startDate = $("#startDate").val();
+            var endDate = $("#endDate").val();
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/e/opa/out/list.json",
+                async: true,
+                data: {
+                    "PRIPID": PRIPID, "TYPE": TYPE,
+                    "SPECAUSE": SPECAUSE, "startDate": startDate, "endDate": endDate,
+                    "SESSIONID": SESSIONID, "TOKEN": TOKEN
+                },
+                dataType: "json",
+                success: function (res) {
+                    $("#loading").hide();
+                    if (res.success == true) {
+                        createData(res.data);
+                    }
+                }
+            });
+        }
+
+        function createData(obj) {
+            $("#count").html(obj.length);
+            var htmlData = "";
+            if (obj.length > 0) {
+                for (var i = 0; i < obj.length; i++) {
+                    var pageUrl = "";
+                    sessionStorage.setItem(obj[i].BUSEXCLIST, JSON.stringify(obj[i]));
+                    if (obj[i].ALLOWUPDATE == true) {
+                        pageUrl = "outApply.html?BUSEXCLIST=" + obj[i].BUSEXCLIST + "&ID=" + obj[i].ID;
+                    } else {
+                        pageUrl = "outApplyInfo.html?BUSEXCLIST=" + obj[i].BUSEXCLIST;
+                    }
+                    htmlData += " <div class='web-box'>" +
+                        "<a href='" + pageUrl + "'>" +
+                        "	<div class='web-name'>" +
+                        "		<ul class='web'>" +
+                        "			<li><span>列入原因：</span> <span>" + obj[i].SPECAUSE_CN + "</span></li>" +
+                        "			<li><span>列入日期：</span> <span>" + getFormatDateByLong(obj[i].ABNTIME, "yyyy年MM月dd日") + "</span></li>" +
+                        "			<li><span>列入机关：</span>" + obj[i].DECORG_CN + "<span></span></li>" +
+                        "			<li><span>受理结果：</span> <span>" + obj[i].RESULT + "</span></li>" +
+                        "		</ul>" +
+                        "		<div class='arrow-right'>" +
+                        "			<img src='../static/img/arrow-right.png'/>" +
+                        "		</div>" +
+                        "	</div>" +
+                        "</a>" +
+                        "</div>";
+                }
+            } else {
+                mui.toast("没有更多数据了");
+            }
+
+            $("#common-box").html(htmlData);
+
+        }
+
+        function goSearch() {
+            $("#common-box").html("");
+            $("#page").val(1);
+            getData();
+        }
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+    <h1 class="mui-title">经营异常信息移出申请</h1>
+    <span id="sure">
 		    	<a href="javascript:;" class="chose" id="chose">筛选</a>
 		    </span>
-		</header>
-		<div id="common-boxJ">
-			<div id="proList" >
-					<input id="startDate" data-options='{"type":"date"}' placeholder="请选择开始日期" class="btn mui-btn mui-btn-block" style="width: 100%;border-bottom: 1px solid #ccc; padding: 10px 10px; font-size: 14px; text-align: left;background: url(../static/img/rt.png) no-repeat right center;"/>
-					<input id="endDate" data-options='{"type":"date"}' placeholder="请选择结束日期" class="btn mui-btn mui-btn-block" style="width: 100%; border-bottom: 1px solid #ccc;padding: 10px 10px;font-size: 14px; text-align: left;background: url(../static/img/rt.png) no-repeat right center;"/>
-				<div class="oAs">
-					<a class="chosedDate" id="cancelChose" style="border-right: 1px solid #ccc;">取消</a>
-					<a class="chosedDate" id="surechose" >确定</a>
-				</div>
-			</div>
-		</div>
-		<div class="web-box">
-					<ul>
-						<li>
-							<div class="web-write" >
-								<div id="open" style="position: relative;width: 100%;">
-						        <select id="reason" name="reason" onchange="getData()" class="service_opt" style="height: 50px; margin-bottom: 0; display:block;width:100%;background: url(../static/img/rt.png) no-repeat right center;">
-									<option value="">请选择列入原因</option>
-								</select>
-						       </div>
-							</div>
-						</li>
-					</ul>
-			</div>
-		<!--登记信息-->
-		<div id="common-box" style="margin-top: 0;">
-			<!--<div class="web-box">
-				<a href="add-penalty-inf.html">
-					<div class="web-name">
-						<ul class="web">
-							<li><span>处罚机关：</span> <span >卫生局</span></li>
-							<li><span>处罚决定书文号：</span> <span >54435456</span></li>
-							<li><span>处罚决定书签发日期：</span> <span >2017年6月30日</span></li>
-							<li><span>违法行为类型：</span> <span >拖欠工资</span></li>
-							<li><span>处罚种类：</span> <span >责令停产停业</span></li>
-							<li><span>公示状态：</span> <span >已公示</span></li>
-						</ul>
-						
-						<div class="arrow-right-01">
-							<img src="../static/img/arrow-right.png"/>
-						</div>
-					</div>
-				</a>
-			</div>-->
-			
-		</div>
-		<input type="hidden" name="page" id="page" value="1" />
-	<input type="hidden" name="totalPage" id="totalPage" value="1"/>
-	
-	<!--加载点-->
-	<div id="loading" style="display: none;" class="spinner">
-		 <div class="bounce1"></div>
-		 <div class="bounce2"></div>
-		 <div class="bounce3"></div>
-	</div>
-	
-	<div id="loadData" style="display: none;" onclick="getData();">点击加载更多...</div>
-	<div id="noData" style="display: none;" >没有更多了...</div>
-		
-	</body>
+</header>
+<div id="common-boxJ">
+    <div id="proList">
+        <input id="startDate" data-options='{"type":"date"}' placeholder="请选择开始日期" class="btn mui-btn mui-btn-block"
+               style="width: 100%;border-bottom: 1px solid #ccc; padding: 10px 10px; font-size: 14px; text-align: left;background: url(../static/img/rt.png) no-repeat right center;"/>
+        <input id="endDate" data-options='{"type":"date"}' placeholder="请选择结束日期" class="btn mui-btn mui-btn-block"
+               style="width: 100%; border-bottom: 1px solid #ccc;padding: 10px 10px;font-size: 14px; text-align: left;background: url(../static/img/rt.png) no-repeat right center;"/>
+        <div class="oAs">
+            <a class="chosedDate" id="cancelChose" style="border-right: 1px solid #ccc;">取消</a>
+            <a class="chosedDate" id="surechose">确定</a>
+        </div>
+    </div>
+</div>
+<div class="web-box">
+    <ul>
+        <li>
+            <div class="web-write">
+                <div id="open" style="position: relative;width: 100%;">
+                    <select id="reason" name="reason" onchange="getData()" class="service_opt"
+                            style="height: 50px; margin-bottom: 0; display:block;width:100%;background: url(../static/img/rt.png) no-repeat right center;">
+                        <option value="">请选择列入原因</option>
+                    </select>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<!--登记信息-->
+<div id="common-box" style="margin-top: 0;">
+    <!--<div class="web-box">
+        <a href="add-penalty-inf.html">
+            <div class="web-name">
+                <ul class="web">
+                    <li><span>处罚机关：</span> <span >卫生局</span></li>
+                    <li><span>处罚决定书文号：</span> <span >54435456</span></li>
+                    <li><span>处罚决定书签发日期：</span> <span >2017年6月30日</span></li>
+                    <li><span>违法行为类型：</span> <span >拖欠工资</span></li>
+                    <li><span>处罚种类：</span> <span >责令停产停业</span></li>
+                    <li><span>公示状态：</span> <span >已公示</span></li>
+                </ul>
+
+                <div class="arrow-right-01">
+                    <img src="../static/img/arrow-right.png"/>
+                </div>
+            </div>
+        </a>
+    </div>-->
+
+</div>
+<input type="hidden" name="page" id="page" value="1"/>
+<input type="hidden" name="totalPage" id="totalPage" value="1"/>
+
+<!--加载点-->
+<div id="loading" style="display: none;" class="spinner">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+</div>
+
+<div id="loadData" style="display: none;" onclick="getData();">点击加载更多...</div>
+<div id="noData" style="display: none;">没有更多了...</div>
+
+</body>
 </html>

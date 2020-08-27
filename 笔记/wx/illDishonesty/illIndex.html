@@ -1,60 +1,59 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>国家企业信用信息公示系统</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/report.css">
-		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../static/js/common.js" ></script>
-		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-		<script>
-			
-			
-			
-		</script>
-			
-		
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-icon mui-icon-back mui-pull-left" href="../write-inf.html"></a>
-		    <h1 class="mui-title">选择申请类别</h1>
-		</header>
-		
-		<div id="com-name-box">
-			<a href="objectDisdetail.html">
-				<div id="list-box">
-						<div class="line">
-							<span>异议申请 </span> <span class="inf-num"></span>
-							<span id="arrow-right"><img src="../static/img/arrow-right.png"/></span>
-						</div>
-				</div>
-			</a>
-		</div>
-		
-		<a href="applyDisdetail.html">
-			<div id="list-box">
-					<div class="line">
-						<span>移出申请 </span> <span class="inf-num"></span>
-						<span id="arrow-right"><img src="../static/img/arrow-right.png"/></span>
-					</div>
-			</div>
-		</a>
-		
-		<div id="list-box" onclick="downloadFile()">
-				<div class="line">
-					<span>模板下载 </span> <span class="inf-num"></span>
-					<!--<span id="arrow-right"><img src="../static/img/arrow-right.png"/></span>-->
-				</div>
-		</div>
-	</body>
-	<script type="text/javascript">
-		function downloadFile(){
-			window.location.href=downLoadUrl+"ycyzwf.doc"+"?attName=严重违法移出模板.doc";
-		}
-	</script>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>国家企业信用信息公示系统</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/report.css">
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script>
+
+
+    </script>
+
+
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-icon mui-icon-back mui-pull-left" href="../write-inf.html"></a>
+    <h1 class="mui-title">选择申请类别</h1>
+</header>
+
+<div id="com-name-box">
+    <a href="objectDisdetail.html">
+        <div id="list-box">
+            <div class="line">
+                <span>异议申请 </span> <span class="inf-num"></span>
+                <span id="arrow-right"><img src="../static/img/arrow-right.png"/></span>
+            </div>
+        </div>
+    </a>
+</div>
+
+<a href="applyDisdetail.html">
+    <div id="list-box">
+        <div class="line">
+            <span>移出申请 </span> <span class="inf-num"></span>
+            <span id="arrow-right"><img src="../static/img/arrow-right.png"/></span>
+        </div>
+    </div>
+</a>
+
+<div id="list-box" onclick="downloadFile()">
+    <div class="line">
+        <span>模板下载 </span> <span class="inf-num"></span>
+        <!--<span id="arrow-right"><img src="../static/img/arrow-right.png"/></span>-->
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    function downloadFile() {
+        window.location.href = downLoadUrl + "ycyzwf.doc" + "?attName=严重违法移出模板.doc";
+    }
+</script>
 </html>

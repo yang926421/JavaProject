@@ -1,6 +1,6 @@
 package com.lyy._09工厂设计模式;
 
-public class Dog extends Animal{
+public class Dog extends Animal {
     @Override
     public void eat() {
         super.eat();

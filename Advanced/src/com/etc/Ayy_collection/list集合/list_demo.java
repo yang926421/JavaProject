@@ -2,21 +2,19 @@ package com.etc.Ayy_collection.list集合;
 
 import java.util.ArrayList;
 import java.util.List;
+
 /**
-
- list系列 有序 可重复 有索引
- ArrayList 实现类集合底层基于数组存储数据的,查询快,增删慢
- 开发中ArrayList集合用的最多  增删慢只是相对的,相对于链表来说 实际使用是很不错的
-
- LinkedList 也是list的实现类,底层是基于链表的,增删比较快,查询慢
-    支持双链表.定位前后增删首位的元素是非常快的
- 除了拥有List集合的全部功能还多了很多操作首尾元素的特殊功能
- LinkedList 提供了很多操作首尾元素的特殊API,可以做栈和队列的实现
-
- 如果查询多 增删少 用ArrayLisy  (用的最多)
- 如果查询少而增删多  用LinkedList
-
-
+ * list系列 有序 可重复 有索引
+ * ArrayList 实现类集合底层基于数组存储数据的,查询快,增删慢
+ * 开发中ArrayList集合用的最多  增删慢只是相对的,相对于链表来说 实际使用是很不错的
+ * <p>
+ * LinkedList 也是list的实现类,底层是基于链表的,增删比较快,查询慢
+ * 支持双链表.定位前后增删首位的元素是非常快的
+ * 除了拥有List集合的全部功能还多了很多操作首尾元素的特殊功能
+ * LinkedList 提供了很多操作首尾元素的特殊API,可以做栈和队列的实现
+ * <p>
+ * 如果查询多 增删少 用ArrayLisy  (用的最多)
+ * 如果查询少而增删多  用LinkedList
  */
 public class list_demo {
     public static void main(String[] args) {

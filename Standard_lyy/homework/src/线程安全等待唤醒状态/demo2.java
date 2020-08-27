@@ -13,27 +13,29 @@ public class demo2 {
 }
 
 
-class Mythread extends Thread{
+class Mythread extends Thread {
     private int count = 100;
     private int saleCount;
-    public Mythread(String name){
+
+    public Mythread(String name) {
         super(name);
     }
+
     @Override
     public void run() {
         String name = Thread.currentThread().getName();
 
-        while(true){
-            synchronized (this){
-            if(count>0){
-                count --;
-                saleCount += 1;
-                System.out.println(name+"卖出了");
+        while (true) {
+            synchronized (this) {
+                if (count > 0) {
+                    count--;
+                    saleCount += 1;
+                    System.out.println(name + "卖出了");
+                } else {
+                    break;
+                }
             }
-            else {
-                break;
-            }
-        }}
+        }
 
     }
 }

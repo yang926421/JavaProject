@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class userDaoTest {
     @Test
-    public void testLogin(){
+    public void testLogin() {
         user loginUser1 = new user();
         loginUser1.setUsername("admin");
         loginUser1.setPassword("123456");

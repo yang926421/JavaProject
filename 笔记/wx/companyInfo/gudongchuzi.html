@@ -1,99 +1,101 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>股东及出资信息</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/chuzi.css" />
-		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-		<script type="text/javascript" src="../static/js/common.js" ></script>
-		<script>
-			//获取企业id
-			var pripid=sessionStorage.getItem("PRIPID");
-			//获取企业类型
-			var type=sessionStorage.getItem("TYPE");   //1企业 2农专 3个体、
-			$(function(){
-				getData();
-			});
-			//获取股东出资信息
-			function getData(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/p/e/self/investment/list.json",
-					data:{"PRIPID":pripid,"TYPE":type},
-					dataType:"json",
-					async:true,
-					success:function(res){
-						if(res.success==true){
-							createData(res.data);
-						}
-					}
-				});
-			}
-			//创建股东出资信息
-			function createData(obj){
-				if(obj!=null && obj.length>0){
-					$("#count").html(obj.length);
-					var htmlData="";
-					for(var i=0;i<obj.length;i++){
-						if(i==0){
-							htmlData+="<a href='gudongchuzidetail.html?INVID="+obj[i].baseInfo.INVID+"'> <div class='shareholderDiv'>"+
-									 "<div class='holdername'><span>"+obj[i].baseInfo.INV+"</span></div>"+	
-									 "<div class='holderCard'>"+
-									 "	  <div class='holderone'><span>认缴额（万元）：</span><span>"+obj[i].baseInfo.SUBAMOUNT+"</span></div>"+
-									 "	  <div class='holdertwo'><span>实缴额（万元）： </span><span>"+obj[i].baseInfo.PAIDAMOUNT+"</span></div>"+
-									 "</div>"+
-								"</div></a> ";
-						}else{
-							htmlData+="<a href='gudongchuzidetail.html?INVID="+obj[i].baseInfo.INVID+"'><div class='shareholderDiv top'>"+
-									" <div class='holdername'><span>"+obj[i].baseInfo.INV+"</span></div>"+	
-									" <div class='holderCard'>"+
-									 "	  <div class='holderone'><span>认缴额（万元）: </span><span>"+obj[i].baseInfo.SUBAMOUNT+"</span></div>"+
-									 "	  <div class='holdertwo'><span>实缴额（万元）：</span><span>"+obj[i].baseInfo.PAIDAMOUNT+"</span></div>"+
-									 "</div>"+
-								"</div></a> ";
-						}
-					}
-					$("#content").html(htmlData);
-					
-				}else{
-					$("#count").html(0);
-				}
-			}
-			
-		</script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href=""></a>
-		    <h1 class="mui-title">股东及出资信息(<span id="count"></span>)</h1>
-		</header>
-		<div class="repair-record">
-			<a href="gudongchuziUpdateRecord.html">查看修改记录 >></a>
-		</div>
-		<div id="content">
-			
-			<!--<div class="shareholderDiv martop">
-				 <div class="holdername"><span>王天霸</span></div>	
-				 <div class="holderCard">
-				 	  <div class="holderone"><span>认缴额（万元）: </span><span>500</span></div>
-				 	  <div class="holdertwo"><span>实缴额（万元）: </span><span>300</span></div>
-				 	  <img src="../static/img/arrow-right.png" />
-				 </div>
-			</div>
-			
-			<div class="shareholderDiv top">
-				 <div class="holdername"><span>王天霸</span></div>	
-				 <div class="holderCard">
-				 	   <div class="holderone"><span>认缴额（万元）: </span><span>500</span></div>
-				 	  <div class="holdertwo"><span>实缴额（万元）:</span><span>200</span></div>
-				 	  <img src="../static/img/arrow-right.png" />
-				 </div>
-			</div>-->
-		</div>
-	</body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>股东及出资信息</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/chuzi.css"/>
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script>
+        //获取企业id
+        var pripid = sessionStorage.getItem("PRIPID");
+        //获取企业类型
+        var type = sessionStorage.getItem("TYPE");   //1企业 2农专 3个体、
+        $(function () {
+            getData();
+        });
+
+        //获取股东出资信息
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/p/e/self/investment/list.json",
+                data: {"PRIPID": pripid, "TYPE": type},
+                dataType: "json",
+                async: true,
+                success: function (res) {
+                    if (res.success == true) {
+                        createData(res.data);
+                    }
+                }
+            });
+        }
+
+        //创建股东出资信息
+        function createData(obj) {
+            if (obj != null && obj.length > 0) {
+                $("#count").html(obj.length);
+                var htmlData = "";
+                for (var i = 0; i < obj.length; i++) {
+                    if (i == 0) {
+                        htmlData += "<a href='gudongchuzidetail.html?INVID=" + obj[i].baseInfo.INVID + "'> <div class='shareholderDiv'>" +
+                            "<div class='holdername'><span>" + obj[i].baseInfo.INV + "</span></div>" +
+                            "<div class='holderCard'>" +
+                            "	  <div class='holderone'><span>认缴额（万元）：</span><span>" + obj[i].baseInfo.SUBAMOUNT + "</span></div>" +
+                            "	  <div class='holdertwo'><span>实缴额（万元）： </span><span>" + obj[i].baseInfo.PAIDAMOUNT + "</span></div>" +
+                            "</div>" +
+                            "</div></a> ";
+                    } else {
+                        htmlData += "<a href='gudongchuzidetail.html?INVID=" + obj[i].baseInfo.INVID + "'><div class='shareholderDiv top'>" +
+                            " <div class='holdername'><span>" + obj[i].baseInfo.INV + "</span></div>" +
+                            " <div class='holderCard'>" +
+                            "	  <div class='holderone'><span>认缴额（万元）: </span><span>" + obj[i].baseInfo.SUBAMOUNT + "</span></div>" +
+                            "	  <div class='holdertwo'><span>实缴额（万元）：</span><span>" + obj[i].baseInfo.PAIDAMOUNT + "</span></div>" +
+                            "</div>" +
+                            "</div></a> ";
+                    }
+                }
+                $("#content").html(htmlData);
+
+            } else {
+                $("#count").html(0);
+            }
+        }
+
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href=""></a>
+    <h1 class="mui-title">股东及出资信息(<span id="count"></span>)</h1>
+</header>
+<div class="repair-record">
+    <a href="gudongchuziUpdateRecord.html">查看修改记录 >></a>
+</div>
+<div id="content">
+
+    <!--<div class="shareholderDiv martop">
+         <div class="holdername"><span>王天霸</span></div>
+         <div class="holderCard">
+               <div class="holderone"><span>认缴额（万元）: </span><span>500</span></div>
+               <div class="holdertwo"><span>实缴额（万元）: </span><span>300</span></div>
+               <img src="../static/img/arrow-right.png" />
+         </div>
+    </div>
+
+    <div class="shareholderDiv top">
+         <div class="holdername"><span>王天霸</span></div>
+         <div class="holderCard">
+                <div class="holderone"><span>认缴额（万元）: </span><span>500</span></div>
+               <div class="holdertwo"><span>实缴额（万元）:</span><span>200</span></div>
+               <img src="../static/img/arrow-right.png" />
+         </div>
+    </div>-->
+</div>
+</body>
 </html>

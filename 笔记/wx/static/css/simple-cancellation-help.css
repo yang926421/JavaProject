@@ -1,39 +1,44 @@
 /*企业名称*/
-#com-name-box{
-	margin-top: 4.4rem;
-	background-color:#FFFFFF ;
-}
-.com-name{
-	margin: auto;
-	width: 92%;
-	padding-bottom: 2%;
-}
-.com-name h3{
-	padding-top: 1.8rem;
-	font-size: 1.6rem;
-	font-weight: bold;
-	margin-top: 1.4rem;
-	text-align: center;
-}
-.help-con h4{
-	padding-top: 1.3rem;
-	padding-bottom: 0.6rem;
-	font-size: 1.5rem;
-	font-weight: bold;
-}
-.help-con p{
-	font-size: 1.4rem;
-	color: #333333;
+#com-name-box {
+    margin-top: 4.4rem;
+    background-color: #FFFFFF;
 }
 
-.help-con b{
-	margin: 1.2rem 0 0.6rem 0;
-	display: block;
+.com-name {
+    margin: auto;
+    width: 92%;
+    padding-bottom: 2%;
 }
 
-.help-con p:nth-child(even){
-	color: #ac812e;
+.com-name h3 {
+    padding-top: 1.8rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-top: 1.4rem;
+    text-align: center;
 }
-.help-con p:nth-child(odd){
-	text-indent: 2em;
+
+.help-con h4 {
+    padding-top: 1.3rem;
+    padding-bottom: 0.6rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.help-con p {
+    font-size: 1.4rem;
+    color: #333333;
+}
+
+.help-con b {
+    margin: 1.2rem 0 0.6rem 0;
+    display: block;
+}
+
+.help-con p:nth-child(even) {
+    color: #ac812e;
+}
+
+.help-con p:nth-child(odd) {
+    text-indent: 2em;
 }

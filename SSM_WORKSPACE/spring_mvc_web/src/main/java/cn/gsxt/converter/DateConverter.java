@@ -6,8 +6,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DateConverter implements Converter<String, Date>{
-    public Date convert(String dateStr){
+public class DateConverter implements Converter<String, Date> {
+    public Date convert(String dateStr) {
 //        将日期字符串转换为日期对象
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date = null;
@@ -17,5 +17,5 @@ public class DateConverter implements Converter<String, Date>{
             e.printStackTrace();
         }
         return date;
-        }
+    }
 }

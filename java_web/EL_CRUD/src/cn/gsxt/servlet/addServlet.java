@@ -15,7 +15,7 @@ import java.util.Map;
 @WebServlet("/addServlet")
 public class addServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       request.setCharacterEncoding("utf-8");
+        request.setCharacterEncoding("utf-8");
         //获取到提交的数据
         Map<String, String[]> map = request.getParameterMap();
         User user = new User();
@@ -30,11 +30,10 @@ public class addServlet extends HttpServlet {
 //        System.out.println(user1);
 
         //跳转到userListServer
-        response.sendRedirect(request.getContextPath()+"/userListServlet");
+        response.sendRedirect(request.getContextPath() + "/userListServlet");
 
 
 //        request.setAttribute("user", user);
-
 
 
         //调用userService完成查询

@@ -1,59 +1,59 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title></title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/notice.css">
-		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../static/js/common.js" ></script>
-		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-		<script>
-			var NOTICEID=GetRequest("NOTICEID");
-			$(function(){
-			  var obj=JSON.parse( sessionStorage.getItem(NOTICEID));
-			  createData(obj);
-			});
-			
-			
-			function createData(obj){
-				$("#NOTICETITLE").html(obj.NOTICETITLE);
-				$("#NOTICECONTENT").html(obj.NOTICECONTENT);
-				$("#JUDAUTH_CN").html(obj.JUDAUTH_CN);
-				$("#NOTICEDATE").html(getFormatDateByLong(obj.NOTICEDATE,"yyyy年MM月dd日") );
-			}
-		</script>
-		
-	</head>
-	
-	<body>		
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="notice_OperaError.html"></a>
-		    <h1 class="mui-title"><span id="saveOrUpdate"></span>公告详情</h1>
-		    <span id="sure">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title></title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/notice.css">
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script>
+        var NOTICEID = GetRequest("NOTICEID");
+        $(function () {
+            var obj = JSON.parse(sessionStorage.getItem(NOTICEID));
+            createData(obj);
+        });
+
+
+        function createData(obj) {
+            $("#NOTICETITLE").html(obj.NOTICETITLE);
+            $("#NOTICECONTENT").html(obj.NOTICECONTENT);
+            $("#JUDAUTH_CN").html(obj.JUDAUTH_CN);
+            $("#NOTICEDATE").html(getFormatDateByLong(obj.NOTICEDATE, "yyyy年MM月dd日"));
+        }
+    </script>
+
+</head>
+
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="notice_OperaError.html"></a>
+    <h1 class="mui-title"><span id="saveOrUpdate"></span>公告详情</h1>
+    <span id="sure">
 		    	<a href="javascript:;" class="chose" id="chose"></a>
 		    </span>
-		</header>	
-		
-		<div id="common-boxJ">
-			<div class="detailBox">
-				<p id="NOTICETITLE" style="padding-top: 10px;text-align: center;font-size: 20px;font-weight: bold;line-height: 35px;"></p>
-				<!--<p class="p1">
-					洛阳神都信息技术有限公司:
-				</p>-->
-				<p id="NOTICECONTENT" class="p2">
-				</p>
-				<p id="JUDAUTH_CN" class="p3"></p>
-				<p id="NOTICEDATE" class="p3"></p>
-			</div>
-		</div>
-		
-		
-	   
-	</body>
+</header>
+
+<div id="common-boxJ">
+    <div class="detailBox">
+        <p id="NOTICETITLE"
+           style="padding-top: 10px;text-align: center;font-size: 20px;font-weight: bold;line-height: 35px;"></p>
+        <!--<p class="p1">
+            洛阳神都信息技术有限公司:
+        </p>-->
+        <p id="NOTICECONTENT" class="p2">
+        </p>
+        <p id="JUDAUTH_CN" class="p3"></p>
+        <p id="NOTICEDATE" class="p3"></p>
+    </div>
+</div>
+
+
+</body>
 </html>
 
 

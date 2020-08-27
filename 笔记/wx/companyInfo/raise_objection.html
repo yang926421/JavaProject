@@ -1,253 +1,254 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title></title>
-		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<link rel="stylesheet" href="../static/css/write-obj.css">
-		<link rel="stylesheet" href="../static/css/newgsj.css" />
-		<link rel="stylesheet" href="../static/css/weui.css">
-			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../static/js/load-img-more.js"></script>
-		<script type="text/javascript" src="../static/js/common.js" ></script>
-		<script type="text/javascript" src="../static/js/login.js" ></script>
-		
-		<script>
-			var SCID=GetRequest("SCID");
-			//从session中获取企业id
-			var pripid=sessionStorage.getItem("PRIPID");
-			//获取公司基本信息
-			var companyDetail=JSON.parse(sessionStorage.getItem(pripid));
-			console.info(JSON.stringify(companyDetail) +"============")
-			$(function(){
-				$("ul.tabs").eq(0).show();
-				$("#userType").change(function(){
-					var v=$("#userType").val();
-					
-					$("ul.tabs").hide();
-					$("ul.tabs").eq(v-1).show();
-				})
-				$("#body_name").html(companyDetail.ENTNAME);
-				if(companyDetail.UNISCID!=null && companyDetail.UNISCID!=""){
-					$("#body_no").html(companyDetail.UNISCID);
-				}else{
-					$("#body_no").html(companyDetail.REGNO);
-				}
-				$("#body_reg").html(companyDetail.REGORG_CN);
-				
-				
-				//获取异议内容
-				getContent();
-			});
-			
-			function getContent(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/code.json",
-					data:{"CODETYPE":"CD84"},
-					dataType:"json",
-					async: true,
-					success:function(res){
-						if(res.success==true){
-							var obj = res.data;
-							if(obj!=null && obj.length>0){
-								var htmlData="";
-								for(var i=0;i<obj.length;i++){
-						        	htmlData+="<p><input type='checkbox' name='FLAG' value='"+obj[i].ID+"' />"+obj[i].CODE_NAME+"</p>"; 
-								}
-								
-								$("#personContent").html(htmlData);
-								$("#companyContent").html(htmlData);
-								$("#otherContent").html(htmlData);
-							}
-						}else{
-							mui.toast(res.codeMsg);
-						}
-					}
-				});
-			}
-			
-			function addData(){
-				var userType=$("#userType").val();
-				var form = new FormData(document.getElementById('addForm'+userType));
-				form.append("MAIN_TYPE",userType);
-				form.append("SCID",SCID);
-				var str=document.getElementsByName("FLAG");
-				var objarray=str.length;
-				var chestr="";
-				for (i=0;i<objarray;i++){
-				  if(str[i].checked == true) {
-				  	 chestr+=str[i].value+",";
-				  }
-				}
-				
-				if(userType==1){
-					var ID_NAME1=$("#ID_NAME1").val();
-					var ID_NO1=$("#ID_NO1").val();
-					var uploaderInput1=$("#uploaderInput1").val();
-					var uploaderInput2=$("#uploaderInput2").val();
-					var MOBILE1=$("#MOBILE1").val();
-					var yzm1=$("#yzm1").val();
-					if(ID_NAME1==null || ID_NAME1.trim() ==""  ){
-						mui.toast("请输入姓名");
-				 		 return;
-					}
-					if( ID_NO1==null || ID_NO1.trim()=="" ){
-						mui.toast("请输入身份证号码");
-				 		 return;
-					}else if(!idCard.test(ID_NO1)){
-						mui.toast("请输入正确的身份证号码");
-				 		 return;
-					}
-					if(uploaderInput1 =="" || uploaderInput1==null){
-						mui.toast("请上传身份证正面照片");
-				 		 return;
-					}
-					if(uploaderInput2 =="" || uploaderInput2==null){
-						mui.toast("请上传身份证反面照片");
-				 		 return;
-					}
-					if(MOBILE1==null || MOBILE1.trim()=="" ){
-						mui.toast("请输入移动电话");
-				 		 return;
-					}else if(!phone.test(MOBILE1)){
-						mui.toast("请输入正确的移动电话");
-				 		 return;
-					}
-					if(chestr == ""){
-				 		 mui.toast("请选择异议内容");
-				 		 return;
-					}
-					if(yzm1.length==0){
-						 mui.toast("请输入验证码");
-				 		 return;
-					}else if(yzm1!=code){
-						 mui.toast("请输入正确的验证码");
-				 		 return;
-					}
-					
-				}else if(userType==2){
-					var ENTNAME2=$("#ENTNAME2").val();
-					var UNISCID2=$("#UNISCID2").val();
-					var ID_NAME2=$("#ID_NAME2").val();
-					var ID_NO2=$("#ID_NO2").val();
-					var uploaderInput3=$("#uploaderInput3").val();
-					var LM_NAME2=$("#LM_NAME2").val();
-					var LM_NAME2=$("#LM_NAME2").val();
-					var MOBILE2=$("#MOBILE2").val();
-					var yzm2=$("#yzm2").val();
-					if(ENTNAME2==null || ENTNAME2.trim()==""){
-						mui.toast("请输入企业名称");
-				 		 return;
-					}
-					if(UNISCID2==null || UNISCID2.trim()==""){
-						mui.toast("请输入信用代码/注册号");
-				 		 return;
-					}
-					if(ID_NAME2==null || ID_NAME2.trim()==""){
-						mui.toast("请输入法定代表人");
-				 		 return;
-					}
-					if(ID_NO2==null || ID_NO2.trim()==""){
-						mui.toast("请输入法定代表人证件号码");
-				 		 return;
-					}
-					if(uploaderInput3==null || uploaderInput3.trim()==""){
-						mui.toast("请输入上传营业执照照片");
-				 		 return;
-					}
-					if(MOBILE2==null || MOBILE2.trim()=="" ){
-						mui.toast("请输入移动电话");
-				 		 return;
-					}else if(!phone.test(MOBILE2)){
-						mui.toast("请输入正确的移动电话");
-				 		 return;
-					}
-					if(yzm2.length==0){
-						 mui.toast("请输入验证码");
-				 		 return;
-					}else if(yzm2!=code){
-						 mui.toast("请输入正确的验证码");
-				 		 return;
-					}
-					if(chestr == ""){
-				 		 mui.toast("请选择异议内容");
-				 		 return;
-					}
-				}else if(userType==3){
-					var ENTNAME3=$("#ENTNAME3").val();
-					var UNISCID3=$("#UNISCID3").val();
-					var uploaderInput4=$("#uploaderInput4").val();
-					var LM_NAME3=$("#LM_NAME3").val();
-					var MOBILE3=$("#MOBILE3").val();
-					var yzm3=$("#yzm3").val();
-					if(ENTNAME3==null || ENTNAME3.trim()==""){
-						mui.toast("请输入单位名称");
-				 		 return;
-					}
-					if(UNISCID3==null || UNISCID3.trim()==""){
-						mui.toast("请输入社会信用代码/注册码");
-				 		 return;
-					}
-					if(uploaderInput4==null || uploaderInput4.trim()==""){
-						mui.toast("请上传单位证照照片");
-				 		 return;
-					}
-					if(LM_NAME3==null || LM_NAME3.trim()==""){
-						mui.toast("请输入联络员姓名");
-				 		 return;
-					}
-					if(MOBILE3==null || MOBILE3.trim()=="" ){
-						mui.toast("请输入移动电话");
-				 		 return;
-					}else if(!phone.test(MOBILE3)){
-						mui.toast("请输入正确的移动电话");
-				 		 return;
-					}
-					if(yzm3.length==0){
-						 mui.toast("请输入验证码");
-				 		 return;
-					}else if(yzm3!=code){
-						 mui.toast("请输入正确的验证码");
-				 		 return;
-					}
-					if(chestr == ""){
-				 		 mui.toast("请选择异议内容");
-				 		 return;
-					}
-				}
-				
-				$.ajax({
-					type:"post",
-					url:httpUrl+"/p/escobjection/save.json",
-					data:form,
-					dataType:"json",
-					async: false,
-					processData: false, 
-			        contentType:false,
-					success:function(res){
-					//	mui.toast(res.codeMsg);
-					   window.location.href="objectionInfo.html";
-					}
-				});
-			}
-			
-			var code="";
-			function getYzm(val){
-				var userType=$("#userType").val();
-				var mobile="";
-				if(userType==1){
-					mobile=$("#MOBILE1").val();
-				}else if(userType==2){
-					mobile=$("#MOBILE2").val();
-				}else if(userType==3){
-					mobile=$("#MOBILE3").val();
-				}
-				if(mobile!=null && mobile!=""){
-					settimeHtml($("#"+val.id) );
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../static/css/write-obj.css">
+    <link rel="stylesheet" href="../static/css/newgsj.css"/>
+    <link rel="stylesheet" href="../static/css/weui.css">
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/load-img-more.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script type="text/javascript" src="../static/js/login.js"></script>
+
+    <script>
+        var SCID = GetRequest("SCID");
+        //从session中获取企业id
+        var pripid = sessionStorage.getItem("PRIPID");
+        //获取公司基本信息
+        var companyDetail = JSON.parse(sessionStorage.getItem(pripid));
+        console.info(JSON.stringify(companyDetail) + "============")
+        $(function () {
+            $("ul.tabs").eq(0).show();
+            $("#userType").change(function () {
+                var v = $("#userType").val();
+
+                $("ul.tabs").hide();
+                $("ul.tabs").eq(v - 1).show();
+            })
+            $("#body_name").html(companyDetail.ENTNAME);
+            if (companyDetail.UNISCID != null && companyDetail.UNISCID != "") {
+                $("#body_no").html(companyDetail.UNISCID);
+            } else {
+                $("#body_no").html(companyDetail.REGNO);
+            }
+            $("#body_reg").html(companyDetail.REGORG_CN);
+
+
+            //获取异议内容
+            getContent();
+        });
+
+        function getContent() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/code.json",
+                data: {"CODETYPE": "CD84"},
+                dataType: "json",
+                async: true,
+                success: function (res) {
+                    if (res.success == true) {
+                        var obj = res.data;
+                        if (obj != null && obj.length > 0) {
+                            var htmlData = "";
+                            for (var i = 0; i < obj.length; i++) {
+                                htmlData += "<p><input type='checkbox' name='FLAG' value='" + obj[i].ID + "' />" + obj[i].CODE_NAME + "</p>";
+                            }
+
+                            $("#personContent").html(htmlData);
+                            $("#companyContent").html(htmlData);
+                            $("#otherContent").html(htmlData);
+                        }
+                    } else {
+                        mui.toast(res.codeMsg);
+                    }
+                }
+            });
+        }
+
+        function addData() {
+            var userType = $("#userType").val();
+            var form = new FormData(document.getElementById('addForm' + userType));
+            form.append("MAIN_TYPE", userType);
+            form.append("SCID", SCID);
+            var str = document.getElementsByName("FLAG");
+            var objarray = str.length;
+            var chestr = "";
+            for (i = 0; i < objarray; i++) {
+                if (str[i].checked == true) {
+                    chestr += str[i].value + ",";
+                }
+            }
+
+            if (userType == 1) {
+                var ID_NAME1 = $("#ID_NAME1").val();
+                var ID_NO1 = $("#ID_NO1").val();
+                var uploaderInput1 = $("#uploaderInput1").val();
+                var uploaderInput2 = $("#uploaderInput2").val();
+                var MOBILE1 = $("#MOBILE1").val();
+                var yzm1 = $("#yzm1").val();
+                if (ID_NAME1 == null || ID_NAME1.trim() == "") {
+                    mui.toast("请输入姓名");
+                    return;
+                }
+                if (ID_NO1 == null || ID_NO1.trim() == "") {
+                    mui.toast("请输入身份证号码");
+                    return;
+                } else if (!idCard.test(ID_NO1)) {
+                    mui.toast("请输入正确的身份证号码");
+                    return;
+                }
+                if (uploaderInput1 == "" || uploaderInput1 == null) {
+                    mui.toast("请上传身份证正面照片");
+                    return;
+                }
+                if (uploaderInput2 == "" || uploaderInput2 == null) {
+                    mui.toast("请上传身份证反面照片");
+                    return;
+                }
+                if (MOBILE1 == null || MOBILE1.trim() == "") {
+                    mui.toast("请输入移动电话");
+                    return;
+                } else if (!phone.test(MOBILE1)) {
+                    mui.toast("请输入正确的移动电话");
+                    return;
+                }
+                if (chestr == "") {
+                    mui.toast("请选择异议内容");
+                    return;
+                }
+                if (yzm1.length == 0) {
+                    mui.toast("请输入验证码");
+                    return;
+                } else if (yzm1 != code) {
+                    mui.toast("请输入正确的验证码");
+                    return;
+                }
+
+            } else if (userType == 2) {
+                var ENTNAME2 = $("#ENTNAME2").val();
+                var UNISCID2 = $("#UNISCID2").val();
+                var ID_NAME2 = $("#ID_NAME2").val();
+                var ID_NO2 = $("#ID_NO2").val();
+                var uploaderInput3 = $("#uploaderInput3").val();
+                var LM_NAME2 = $("#LM_NAME2").val();
+                var LM_NAME2 = $("#LM_NAME2").val();
+                var MOBILE2 = $("#MOBILE2").val();
+                var yzm2 = $("#yzm2").val();
+                if (ENTNAME2 == null || ENTNAME2.trim() == "") {
+                    mui.toast("请输入企业名称");
+                    return;
+                }
+                if (UNISCID2 == null || UNISCID2.trim() == "") {
+                    mui.toast("请输入信用代码/注册号");
+                    return;
+                }
+                if (ID_NAME2 == null || ID_NAME2.trim() == "") {
+                    mui.toast("请输入法定代表人");
+                    return;
+                }
+                if (ID_NO2 == null || ID_NO2.trim() == "") {
+                    mui.toast("请输入法定代表人证件号码");
+                    return;
+                }
+                if (uploaderInput3 == null || uploaderInput3.trim() == "") {
+                    mui.toast("请输入上传营业执照照片");
+                    return;
+                }
+                if (MOBILE2 == null || MOBILE2.trim() == "") {
+                    mui.toast("请输入移动电话");
+                    return;
+                } else if (!phone.test(MOBILE2)) {
+                    mui.toast("请输入正确的移动电话");
+                    return;
+                }
+                if (yzm2.length == 0) {
+                    mui.toast("请输入验证码");
+                    return;
+                } else if (yzm2 != code) {
+                    mui.toast("请输入正确的验证码");
+                    return;
+                }
+                if (chestr == "") {
+                    mui.toast("请选择异议内容");
+                    return;
+                }
+            } else if (userType == 3) {
+                var ENTNAME3 = $("#ENTNAME3").val();
+                var UNISCID3 = $("#UNISCID3").val();
+                var uploaderInput4 = $("#uploaderInput4").val();
+                var LM_NAME3 = $("#LM_NAME3").val();
+                var MOBILE3 = $("#MOBILE3").val();
+                var yzm3 = $("#yzm3").val();
+                if (ENTNAME3 == null || ENTNAME3.trim() == "") {
+                    mui.toast("请输入单位名称");
+                    return;
+                }
+                if (UNISCID3 == null || UNISCID3.trim() == "") {
+                    mui.toast("请输入社会信用代码/注册码");
+                    return;
+                }
+                if (uploaderInput4 == null || uploaderInput4.trim() == "") {
+                    mui.toast("请上传单位证照照片");
+                    return;
+                }
+                if (LM_NAME3 == null || LM_NAME3.trim() == "") {
+                    mui.toast("请输入联络员姓名");
+                    return;
+                }
+                if (MOBILE3 == null || MOBILE3.trim() == "") {
+                    mui.toast("请输入移动电话");
+                    return;
+                } else if (!phone.test(MOBILE3)) {
+                    mui.toast("请输入正确的移动电话");
+                    return;
+                }
+                if (yzm3.length == 0) {
+                    mui.toast("请输入验证码");
+                    return;
+                } else if (yzm3 != code) {
+                    mui.toast("请输入正确的验证码");
+                    return;
+                }
+                if (chestr == "") {
+                    mui.toast("请选择异议内容");
+                    return;
+                }
+            }
+
+            $.ajax({
+                type: "post",
+                url: httpUrl + "/p/escobjection/save.json",
+                data: form,
+                dataType: "json",
+                async: false,
+                processData: false,
+                contentType: false,
+                success: function (res) {
+                    //	mui.toast(res.codeMsg);
+                    window.location.href = "objectionInfo.html";
+                }
+            });
+        }
+
+        var code = "";
+
+        function getYzm(val) {
+            var userType = $("#userType").val();
+            var mobile = "";
+            if (userType == 1) {
+                mobile = $("#MOBILE1").val();
+            } else if (userType == 2) {
+                mobile = $("#MOBILE2").val();
+            } else if (userType == 3) {
+                mobile = $("#MOBILE3").val();
+            }
+            if (mobile != null && mobile != "") {
+                settimeHtml($("#" + val.id));
 //					$.ajax({
 //						type:"get",
 //						url:httpUrl+"/p/sms/common/send.json",
@@ -261,291 +262,292 @@
 //							}
 //						}
 //					});
-				}else{
-					mui.toast("请输入手机号码");
-				}
-				
-				
-				
-				
-				
-			}
-		</script>
-	</head>
-	<body>
-	<!--<h1 class="topTitle">异议申请人信息
-			<a href="objectionInfo.html" class="back"><img src="../static/img/arrow _left.png"></a>			
-			<a class="confirmBtn" onclick="addData()">确定</a>
-	</h1>-->
-	<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-			<a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="objectionInfo.html"></a>
-		    <h1 class="mui-title">异议申请人信息</h1>
-		    <span id="sure" style="height: 44px;">
-		    	<a href='javascript:;' onclick="addData();" >确定</a>
+            } else {
+                mui.toast("请输入手机号码");
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+<!--<h1 class="topTitle">异议申请人信息
+        <a href="objectionInfo.html" class="back"><img src="../static/img/arrow _left.png"></a>
+        <a class="confirmBtn" onclick="addData()">确定</a>
+</h1>-->
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="objectionInfo.html"></a>
+    <h1 class="mui-title">异议申请人信息</h1>
+    <span id="sure" style="height: 44px;">
+		    	<a href='javascript:;' onclick="addData();">确定</a>
 		    </span>
-		</header>
-	<div class="baseInfo" style="margin-top: 2.8rem;" >
-		<h2>异议对象</h2>
-		<ul>
-			<li>异议对象:<span id="body_name"></span></li>
-			<li>统一社会信用代码/注册号:<span id="body_no"></span></li>
-			<li>登记机关:<span id="body_reg"></span></li>
-		</ul>
-	</div>
-	<div class="personInfo">
-		<h2>异议申请人信息</h2>
-		<p>
-			<span class="red">*</span>
-			<label>异议申请人类型</label>
-			<select name="MAIN_TYPE" id="userType">				
-				<option value="1" >自然人</option>
-				<option value="2">企业</option>
-				<option value="3">其他相关单位</option>
-			</select>
-		</p>
-		<form id="addForm1" method="post" enctype="multipart/form-data">
-		<ul class="tabs">
-			<li>
-				<span class="red">*</span>
-				<label>姓名</label>
-				<input type="text" name="ID_NAME" id="ID_NAME1" placeholder="请输入姓名">
-			</li>
-			<li>
-				<span class="red">*</span>
-				<label>身份证号码</label>
-				<input type="text" name="ID_NO" id="ID_NO1" placeholder="请输入身份证号码"> 
-			</li>
-			<li>
-				<span class="red" style="vertical-align: top;margin-top: 50px;display: inline-block;">*</span>
-				<label style="display: inline-block;vertical-align: top;margin: 30px 20px 0 0;">身份证件<br>正面照片</label>
-					<div id="upload-container" style="display: inline-block;padding-top: 14px;">
-								<div class="page__bd">
-									<!--图片浏览、删除-->
-							        <div class="weui-gallery" id="gallery1">
-							            <span class="weui-gallery__img" id="galleryImg1"></span>
-							            <div class="weui-gallery__opr">
-							                <a href="javascript:" class="weui-gallery__del">
-							                    <i class="weui-icon-delete weui-icon_gallery-delete" onclick="deleteImg()"></i>
-							                </a>
-							            </div>
-							        </div>
-									
-									<!--图片添加模块-->
-				              	 <div class="weui-uploader__bd">
-				               	<!--图片预览-->
-	                           			 <ul class="weui-uploader__files" id="uploaderFiles1"> </ul>
-			                            <div id="uploadDiv1" class="weui-uploader__input-box">
-			                                <input name="file" id="uploaderInput1" class="weui-uploader__input" type="file"  accept="image/*" capture="camera" multiple/>
-			                            </div>
-                      			  </div>
-			                        
-							    </div>
-					</div>
-			</li>
-			<li> 
-				<span class="red" style="vertical-align: top;margin-top: 50px;display: inline-block;">*</span>
-				<label style="display: inline-block;vertical-align: top;margin:30px 20px 0 0;">身份证件<br>反面照片</label>
-					<div id="upload-container" style="display: inline-block;padding-top: 14px;">
-								<div class="page__bd">
-									<!--图片浏览、删除-->
-							        <div class="weui-gallery" id="gallery2">
-							            <span class="weui-gallery__img" id="galleryImg2"></span>
-							            <div class="weui-gallery__opr">
-							                <a href="javascript:" class="weui-gallery__del">
-							                    <i class="weui-icon-delete weui-icon_gallery-delete" onclick="deleteImg()"></i>
-							                </a>
-							            </div>
-							        </div>
-									
-									<!--图片添加模块-->
-				               <div class="weui-uploader__bd">
-				               	<!--图片预览-->
-	                           			 <ul class="weui-uploader__files" id="uploaderFiles2"> </ul>
-	                            <div id="uploadDiv2" class="weui-uploader__input-box">
-	                                <input name="file" id="uploaderInput2" class="weui-uploader__input" type="file"  accept="image/*" capture="camera" multiple/>
-	                            </div>
+</header>
+<div class="baseInfo" style="margin-top: 2.8rem;">
+    <h2>异议对象</h2>
+    <ul>
+        <li>异议对象:<span id="body_name"></span></li>
+        <li>统一社会信用代码/注册号:<span id="body_no"></span></li>
+        <li>登记机关:<span id="body_reg"></span></li>
+    </ul>
+</div>
+<div class="personInfo">
+    <h2>异议申请人信息</h2>
+    <p>
+        <span class="red">*</span>
+        <label>异议申请人类型</label>
+        <select name="MAIN_TYPE" id="userType">
+            <option value="1">自然人</option>
+            <option value="2">企业</option>
+            <option value="3">其他相关单位</option>
+        </select>
+    </p>
+    <form id="addForm1" method="post" enctype="multipart/form-data">
+        <ul class="tabs">
+            <li>
+                <span class="red">*</span>
+                <label>姓名</label>
+                <input type="text" name="ID_NAME" id="ID_NAME1" placeholder="请输入姓名">
+            </li>
+            <li>
+                <span class="red">*</span>
+                <label>身份证号码</label>
+                <input type="text" name="ID_NO" id="ID_NO1" placeholder="请输入身份证号码">
+            </li>
+            <li>
+                <span class="red" style="vertical-align: top;margin-top: 50px;display: inline-block;">*</span>
+                <label style="display: inline-block;vertical-align: top;margin: 30px 20px 0 0;">身份证件<br>正面照片</label>
+                <div id="upload-container" style="display: inline-block;padding-top: 14px;">
+                    <div class="page__bd">
+                        <!--图片浏览、删除-->
+                        <div class="weui-gallery" id="gallery1">
+                            <span class="weui-gallery__img" id="galleryImg1"></span>
+                            <div class="weui-gallery__opr">
+                                <a href="javascript:" class="weui-gallery__del">
+                                    <i class="weui-icon-delete weui-icon_gallery-delete" onclick="deleteImg()"></i>
+                                </a>
+                            </div>
                         </div>
-			</li>
-			<li>
-				<span class="red">*</span>
-				<label>移动电话</label>
-				<input type="text" name="MOBILE" id="MOBILE1" placeholder="请输入电话号码">
-			</li>
-			<li>
-				<span class="red">*</span>
-				<label>验证码</label>				
-				<a id="code1" onclick="getYzm(this);">获取验证码</a>
-				<input type="text" name="yzm" id="yzm1"  style="width: 50%; text-align: left;" placeholder="请输入验证码">
-			</li>
-			<li>
-				<span class="red">*</span>
-				<label>异议内容</label>
-			</li>
-			<div id="personContent">
-				<!--<p><input type="checkbox" />有债权债务未结清</p>
-				<p><input type="checkbox" />属于涉及国家规定实施准入特别管理措施的外商投资企业</p>
-				<p><input type="checkbox" />正在被列入企业经营异常名录或严重违法失信企业名单</p>
-				<p><input type="checkbox" />存在股权（投资权益）被冻结，出质或动产抵押等情形</p>
-				<p><input type="checkbox" />有正在被立案调查或采取行政强制，司法协助，被予以行政处罚等情形的</p>
-				<p><input type="checkbox" />企业所属的非法人分支机构未办理注销登记曾被终止简易注销程</p>
-				<p><input type="checkbox" />属于法律，行政法规或者国务院决定规定在注销登记前需经批准的企业</p>-->
-			</div>
-		</ul>
-		</form>
-		<form id="addForm2" method="post" enctype="multipart/form-data">
-		<ul class="tabs">
-			<li>
-				<span class="red">*</span>
-				<label>企业名称</label>
-				<input type="text" name="ENTNAME" id="ENTNAME2" placeholder="请输入姓名">
-			</li>
-			<li>
-				<span class="red">*</span>
-				<label>统一社会信用<br>代码/注册号</label>
-				<input type="text" name="UNISCID" id="UNISCID2" placeholder="请输入姓名">
-			</li>
-			<li>
-				<span class="red">*</span>
-				<label>法定代表人<br>（负责人）</label>
-				<input type="text" name="ID_NAME" id="ID_NAME2"  placeholder="请输入法定代表人">
-			</li>
-			<li>
-				<span class="red">*</span>
-				<label>法定代表人<br>证件号码</label>
-				<input type="text" name="ID_NO" id="ID_NO2"  placeholder="请输入法定代表人证件号">
-			</li>
-			<li>
-				<span class="red" style="vertical-align: top;margin-top: 50px;display: inline-block;">*</span>
-				<label style="display: inline-block;vertical-align: top;margin: 30px 20px 0 0;">营业执照<br/>正面照片</label>
-					<div id="upload-container" style="display: inline-block;padding-top: 14px;">
-								<div class="page__bd">
-									<!--图片浏览、删除-->
-							        <div class="weui-gallery" id="gallery3">
-							            <span class="weui-gallery__img" id="galleryImg3"></span>
-							            <div class="weui-gallery__opr">
-							                <a href="javascript:" class="weui-gallery__del">
-							                    <i class="weui-icon-delete weui-icon_gallery-delete" onclick="deleteImg()"></i>
-							                </a>
-							            </div>
-							        </div>
-									
-									<!--图片添加模块-->
-				              	 <div class="weui-uploader__bd">
-				               	<!--图片预览-->
-	                           			 <ul class="weui-uploader__files" id="uploaderFiles3"> </ul>
-			                            <div id="uploadDiv3" class="weui-uploader__input-box">
-			                                <input name="file" id="uploaderInput3" class="weui-uploader__input" type="file"  accept="image/*" capture="camera" multiple/>
-			                            </div>
-                      			  </div>
-			                        
-							    </div>
-					</div>
-			</li>			
-			<li>
-				<span class="red">*</span>
-				<label>联络员姓名</label>
-				<input type="text" name="LM_NAME" id="LM_NAME2" placeholder="联络员姓名">
-			</li>
-			<li>
-				<span class="red">*</span>
-				<label>联络员电话</label>
-				<input type="text" name="MOBILE" id="MOBILE2"   placeholder="联络员电话">
-			</li>
-			<li>
-				<span class="red">*</span>
-				<label>验证码</label>				
-				<a id="code2" onclick="getYzm(this)">获取验证码</a>
-				<input type="text" name="yzm" id="yzm2" placeholder="请输入验证码" style="width: 50%; text-align: left;">
-			</li>
-			<li>
-				<span class="red">*</span>
-				<label>异议内容</label>
-			</li>
-			<div id="companyContent">
-				<!--<p><input type="checkbox" />有债权债务未结清</p>
-				<p><input type="checkbox" />属于涉及国家规定实施准入特别管理措施的外商投资企业</p>
-				<p><input type="checkbox" />正在被列入企业经营异常名录或严重违法失信企业名单</p>
-				<p><input type="checkbox" />存在股权（投资权益）被冻结，出质或动产抵押等情形</p>
-				<p><input type="checkbox" />有正在被立案调查或采取行政强制，司法协助，被予以行政处罚等情形的</p>
-				<p><input type="checkbox" />企业所属的非法人分支机构未办理注销登记曾被终止简易注销程</p>
-				<p><input type="checkbox" />属于法律，行政法规或者国务院决定规定在注销登记前需经批准的企业</p>-->
-			</div>
-		</ul>
-		
-		</form>
-		<form id="addForm3" method="post" enctype="multipart/form-data">
-		<ul class="tabs">
-			<li>
-				<span class="red">*</span>
-				<label>单位名称</label>
-				<input type="text" name="ENTNAME" id="ENTNAME3" placeholder="请输入单位名称">
-			</li>
-			<li>
-				<span class="red">*</span>
-				<label>统一社会信用<br/>&nbsp;&nbsp;&nbsp;代码/注册号</label>
-				<input type="text" name="UNISCID" id="UNISCID3" placeholder="请输入信用代码/注册号">
-			</li>			
-			<li>
-					<span class="red" style="vertical-align: top;margin-top: 50px;display: inline-block;">*</span>
-				<label style="display: inline-block;vertical-align: top;margin: 30px 20px 0 0;">单位证照<br/>正面照片</label>
-					<div id="upload-container" style="display: inline-block;padding-top: 14px;">
-					
-					
-								<div class="page__bd">
-									<!--图片浏览、删除-->
-							        <div class="weui-gallery" id="gallery4">
-							            <span class="weui-gallery__img" id="galleryImg4"></span>
-							            <div class="weui-gallery__opr">
-							                <a href="javascript:" class="weui-gallery__del">
-							                    <i class="weui-icon-delete weui-icon_gallery-delete" onclick="deleteImg()"></i>
-							                </a>
-							            </div>
-							        </div>
-									
-									<!--图片添加模块-->
-				              	 <div class="weui-uploader__bd">
-				               	<!--图片预览-->
-	                           			 <ul class="weui-uploader__files" id="uploaderFiles4"> </ul>
-			                            <div id="uploadDiv4" class="weui-uploader__input-box">
-			                                <input name="file" id="uploaderInput4" class="weui-uploader__input" type="file"  accept="image/*" capture="camera" multiple/>
-			                            </div>
-                      			  </div>
-			                        
-							    </div>
-					</div>
-			</li>			
-			<li>
-				<span class="red">*</span>
-				<label>联络员姓名</label>
-				<input type="text" name="LM_NAME" id="LM_NAME3" placeholder="请输入联络员姓名">
-			</li>
-			<li>
-				<span class="red">*</span>
-				<label>联络员电话</label>
-				<input type="text" name="MOBILE" id="MOBILE3" placeholder="请输入联络员电话">
-			</li>
-			<li>
-				<span class="red">*</span>
-				<label>验证码</label>				
-				<a id="code3" onclick="getYzm(this)">获取验证码</a>
-				<input type="text" name="yzm" id="yzm3" placeholder="请输入验证码" style="width: 50%; text-align: left;">
-			</li>
-			<li>
-				<span class="red">*</span>
-				<label>异议内容</label>
-			</li>
-			<div id="otherContent">
-				<!--<p><input type="checkbox" />有债权债务未结清</p>
-				<p><input type="checkbox" />属于涉及国家规定实施准入特别管理措施的外商投资企业</p>
-				<p><input type="checkbox" />正在被列入企业经营异常名录或严重违法失信企业名单</p>
-				<p><input type="checkbox" />存在股权（投资权益）被冻结，出质或动产抵押等情形</p>
-				<p><input type="checkbox" />有正在被立案调查或采取行政强制，司法协助，被予以行政处罚等情形的</p>
-				<p><input type="checkbox" />企业所属的非法人分支机构未办理注销登记曾被终止简易注销程</p>
-				<p><input type="checkbox" />属于法律，行政法规或者国务院决定规定在注销登记前需经批准的企业</p>-->
-			</div>
-		</ul>
-		</form>
-	</div>
-	</body>
+
+                        <!--图片添加模块-->
+                        <div class="weui-uploader__bd">
+                            <!--图片预览-->
+                            <ul class="weui-uploader__files" id="uploaderFiles1"></ul>
+                            <div id="uploadDiv1" class="weui-uploader__input-box">
+                                <input name="file" id="uploaderInput1" class="weui-uploader__input" type="file"
+                                       accept="image/*" capture="camera" multiple/>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <li>
+                <span class="red" style="vertical-align: top;margin-top: 50px;display: inline-block;">*</span>
+                <label style="display: inline-block;vertical-align: top;margin:30px 20px 0 0;">身份证件<br>反面照片</label>
+                <div id="upload-container" style="display: inline-block;padding-top: 14px;">
+                    <div class="page__bd">
+                        <!--图片浏览、删除-->
+                        <div class="weui-gallery" id="gallery2">
+                            <span class="weui-gallery__img" id="galleryImg2"></span>
+                            <div class="weui-gallery__opr">
+                                <a href="javascript:" class="weui-gallery__del">
+                                    <i class="weui-icon-delete weui-icon_gallery-delete" onclick="deleteImg()"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!--图片添加模块-->
+                        <div class="weui-uploader__bd">
+                            <!--图片预览-->
+                            <ul class="weui-uploader__files" id="uploaderFiles2"></ul>
+                            <div id="uploadDiv2" class="weui-uploader__input-box">
+                                <input name="file" id="uploaderInput2" class="weui-uploader__input" type="file"
+                                       accept="image/*" capture="camera" multiple/>
+                            </div>
+                        </div>
+            </li>
+            <li>
+                <span class="red">*</span>
+                <label>移动电话</label>
+                <input type="text" name="MOBILE" id="MOBILE1" placeholder="请输入电话号码">
+            </li>
+            <li>
+                <span class="red">*</span>
+                <label>验证码</label>
+                <a id="code1" onclick="getYzm(this);">获取验证码</a>
+                <input type="text" name="yzm" id="yzm1" style="width: 50%; text-align: left;" placeholder="请输入验证码">
+            </li>
+            <li>
+                <span class="red">*</span>
+                <label>异议内容</label>
+            </li>
+            <div id="personContent">
+                <!--<p><input type="checkbox" />有债权债务未结清</p>
+                <p><input type="checkbox" />属于涉及国家规定实施准入特别管理措施的外商投资企业</p>
+                <p><input type="checkbox" />正在被列入企业经营异常名录或严重违法失信企业名单</p>
+                <p><input type="checkbox" />存在股权（投资权益）被冻结，出质或动产抵押等情形</p>
+                <p><input type="checkbox" />有正在被立案调查或采取行政强制，司法协助，被予以行政处罚等情形的</p>
+                <p><input type="checkbox" />企业所属的非法人分支机构未办理注销登记曾被终止简易注销程</p>
+                <p><input type="checkbox" />属于法律，行政法规或者国务院决定规定在注销登记前需经批准的企业</p>-->
+            </div>
+        </ul>
+    </form>
+    <form id="addForm2" method="post" enctype="multipart/form-data">
+        <ul class="tabs">
+            <li>
+                <span class="red">*</span>
+                <label>企业名称</label>
+                <input type="text" name="ENTNAME" id="ENTNAME2" placeholder="请输入姓名">
+            </li>
+            <li>
+                <span class="red">*</span>
+                <label>统一社会信用<br>代码/注册号</label>
+                <input type="text" name="UNISCID" id="UNISCID2" placeholder="请输入姓名">
+            </li>
+            <li>
+                <span class="red">*</span>
+                <label>法定代表人<br>（负责人）</label>
+                <input type="text" name="ID_NAME" id="ID_NAME2" placeholder="请输入法定代表人">
+            </li>
+            <li>
+                <span class="red">*</span>
+                <label>法定代表人<br>证件号码</label>
+                <input type="text" name="ID_NO" id="ID_NO2" placeholder="请输入法定代表人证件号">
+            </li>
+            <li>
+                <span class="red" style="vertical-align: top;margin-top: 50px;display: inline-block;">*</span>
+                <label style="display: inline-block;vertical-align: top;margin: 30px 20px 0 0;">营业执照<br/>正面照片</label>
+                <div id="upload-container" style="display: inline-block;padding-top: 14px;">
+                    <div class="page__bd">
+                        <!--图片浏览、删除-->
+                        <div class="weui-gallery" id="gallery3">
+                            <span class="weui-gallery__img" id="galleryImg3"></span>
+                            <div class="weui-gallery__opr">
+                                <a href="javascript:" class="weui-gallery__del">
+                                    <i class="weui-icon-delete weui-icon_gallery-delete" onclick="deleteImg()"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!--图片添加模块-->
+                        <div class="weui-uploader__bd">
+                            <!--图片预览-->
+                            <ul class="weui-uploader__files" id="uploaderFiles3"></ul>
+                            <div id="uploadDiv3" class="weui-uploader__input-box">
+                                <input name="file" id="uploaderInput3" class="weui-uploader__input" type="file"
+                                       accept="image/*" capture="camera" multiple/>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <li>
+                <span class="red">*</span>
+                <label>联络员姓名</label>
+                <input type="text" name="LM_NAME" id="LM_NAME2" placeholder="联络员姓名">
+            </li>
+            <li>
+                <span class="red">*</span>
+                <label>联络员电话</label>
+                <input type="text" name="MOBILE" id="MOBILE2" placeholder="联络员电话">
+            </li>
+            <li>
+                <span class="red">*</span>
+                <label>验证码</label>
+                <a id="code2" onclick="getYzm(this)">获取验证码</a>
+                <input type="text" name="yzm" id="yzm2" placeholder="请输入验证码" style="width: 50%; text-align: left;">
+            </li>
+            <li>
+                <span class="red">*</span>
+                <label>异议内容</label>
+            </li>
+            <div id="companyContent">
+                <!--<p><input type="checkbox" />有债权债务未结清</p>
+                <p><input type="checkbox" />属于涉及国家规定实施准入特别管理措施的外商投资企业</p>
+                <p><input type="checkbox" />正在被列入企业经营异常名录或严重违法失信企业名单</p>
+                <p><input type="checkbox" />存在股权（投资权益）被冻结，出质或动产抵押等情形</p>
+                <p><input type="checkbox" />有正在被立案调查或采取行政强制，司法协助，被予以行政处罚等情形的</p>
+                <p><input type="checkbox" />企业所属的非法人分支机构未办理注销登记曾被终止简易注销程</p>
+                <p><input type="checkbox" />属于法律，行政法规或者国务院决定规定在注销登记前需经批准的企业</p>-->
+            </div>
+        </ul>
+
+    </form>
+    <form id="addForm3" method="post" enctype="multipart/form-data">
+        <ul class="tabs">
+            <li>
+                <span class="red">*</span>
+                <label>单位名称</label>
+                <input type="text" name="ENTNAME" id="ENTNAME3" placeholder="请输入单位名称">
+            </li>
+            <li>
+                <span class="red">*</span>
+                <label>统一社会信用<br/>&nbsp;&nbsp;&nbsp;代码/注册号</label>
+                <input type="text" name="UNISCID" id="UNISCID3" placeholder="请输入信用代码/注册号">
+            </li>
+            <li>
+                <span class="red" style="vertical-align: top;margin-top: 50px;display: inline-block;">*</span>
+                <label style="display: inline-block;vertical-align: top;margin: 30px 20px 0 0;">单位证照<br/>正面照片</label>
+                <div id="upload-container" style="display: inline-block;padding-top: 14px;">
+
+
+                    <div class="page__bd">
+                        <!--图片浏览、删除-->
+                        <div class="weui-gallery" id="gallery4">
+                            <span class="weui-gallery__img" id="galleryImg4"></span>
+                            <div class="weui-gallery__opr">
+                                <a href="javascript:" class="weui-gallery__del">
+                                    <i class="weui-icon-delete weui-icon_gallery-delete" onclick="deleteImg()"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!--图片添加模块-->
+                        <div class="weui-uploader__bd">
+                            <!--图片预览-->
+                            <ul class="weui-uploader__files" id="uploaderFiles4"></ul>
+                            <div id="uploadDiv4" class="weui-uploader__input-box">
+                                <input name="file" id="uploaderInput4" class="weui-uploader__input" type="file"
+                                       accept="image/*" capture="camera" multiple/>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <li>
+                <span class="red">*</span>
+                <label>联络员姓名</label>
+                <input type="text" name="LM_NAME" id="LM_NAME3" placeholder="请输入联络员姓名">
+            </li>
+            <li>
+                <span class="red">*</span>
+                <label>联络员电话</label>
+                <input type="text" name="MOBILE" id="MOBILE3" placeholder="请输入联络员电话">
+            </li>
+            <li>
+                <span class="red">*</span>
+                <label>验证码</label>
+                <a id="code3" onclick="getYzm(this)">获取验证码</a>
+                <input type="text" name="yzm" id="yzm3" placeholder="请输入验证码" style="width: 50%; text-align: left;">
+            </li>
+            <li>
+                <span class="red">*</span>
+                <label>异议内容</label>
+            </li>
+            <div id="otherContent">
+                <!--<p><input type="checkbox" />有债权债务未结清</p>
+                <p><input type="checkbox" />属于涉及国家规定实施准入特别管理措施的外商投资企业</p>
+                <p><input type="checkbox" />正在被列入企业经营异常名录或严重违法失信企业名单</p>
+                <p><input type="checkbox" />存在股权（投资权益）被冻结，出质或动产抵押等情形</p>
+                <p><input type="checkbox" />有正在被立案调查或采取行政强制，司法协助，被予以行政处罚等情形的</p>
+                <p><input type="checkbox" />企业所属的非法人分支机构未办理注销登记曾被终止简易注销程</p>
+                <p><input type="checkbox" />属于法律，行政法规或者国务院决定规定在注销登记前需经批准的企业</p>-->
+            </div>
+        </ul>
+    </form>
+</div>
+</body>
 </html>

@@ -2,13 +2,14 @@ package com.lyy._01lambda_l.简化comparator接口;
 
 public class student {
     private String name;
-    private int age ;
-    private char sex ;
+    private int age;
+    private char sex;
 
-    public student(){
+    public student() {
 
     }
-    public student(String name, int age, char sex){
+
+    public student(String name, int age, char sex) {
         this.name = name;
         this.age = age;
         this.sex = sex;

@@ -3,7 +3,7 @@ package com.lyy._04转换流;
 import java.io.*;
 
 public class Output_stream_demo1 {
-    public static void main(String[] args)  throws Exception{
+    public static void main(String[] args) throws Exception {
         OutputStream RD1 = new FileOutputStream("D:\\新建文本文档.txt");
         Writer WR2 = new OutputStreamWriter(RD1);
 

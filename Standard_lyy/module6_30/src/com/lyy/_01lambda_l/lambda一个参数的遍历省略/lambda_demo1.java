@@ -10,16 +10,16 @@ public class lambda_demo1 {
         names.add("lyy");
         names.add("hht");
         names.add("lll1");
-    /**
-     * foreach的底层写法 接受的是一个Consumer对象
-     default void forEach(Consumer<? super T> action) {
-     Objects.requireNonNull(action);
-     for (T t : this) {
-     action.accept(t);
-     }
-     }
-     */
-    //调用匿名内部类写法
+        /**
+         * foreach的底层写法 接受的是一个Consumer对象
+         default void forEach(Consumer<? super T> action) {
+         Objects.requireNonNull(action);
+         for (T t : this) {
+         action.accept(t);
+         }
+         }
+         */
+        //调用匿名内部类写法
         names.forEach(new Consumer<String>() {
             @Override
             public void accept(String s) {
@@ -27,7 +27,7 @@ public class lambda_demo1 {
             }
         });
         //使用lambda表达式省略
-        names.forEach((String s1) ->{
+        names.forEach((String s1) -> {
             System.out.println(s1);
         });
         //省略参数和大括号

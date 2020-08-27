@@ -2,7 +2,7 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <!--    引入properties文件-->
-    <properties resource="jdbc.properties" ></properties>
+    <properties resource="jdbc.properties"></properties>
     <typeAliases>
         <typeAlias type="cn.gsxt.domain.User" alias="user"/>
         <typeAlias type="cn.gsxt.domain.Order" alias="order"/>

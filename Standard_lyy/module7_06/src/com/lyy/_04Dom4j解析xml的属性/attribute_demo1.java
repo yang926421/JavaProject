@@ -16,15 +16,15 @@ public class attribute_demo1 {
         //获取到根节点root对象
         Element root = document.getRootElement();
         //获取book子元素
-        Element bookEle =root.element("book");
+        Element bookEle = root.element("book");
         //5获取book元素的全部属性对象
         List<Attribute> attributes = bookEle.attributes();
         for (Attribute attribute : attributes) {
-            System.out.println(attribute.getName()+"====>"+attribute.getValue());
+            System.out.println(attribute.getName() + "====>" + attribute.getValue());
         }
         //6获取Book元素的某个属性值
         Attribute descAttr = bookEle.attribute("desc");
-        System.out.println(descAttr.getName()+"------"+descAttr.getValue());
+        System.out.println(descAttr.getName() + "------" + descAttr.getValue());
 
         //可以直接获取元素的属性值
         System.out.println(bookEle.attributeValue("id"));

@@ -16,9 +16,9 @@ public class ItemController {
     private ItemService itemService;
 
     @RequestMapping("/showItem/{id}")
-    public String findById(@PathVariable("id") int id, Model model){
+    public String findById(@PathVariable("id") int id, Model model) {
         Item item = itemService.findById(id);
-        model.addAttribute("item",item);
+        model.addAttribute("item", item);
         return "item";
     }
 }

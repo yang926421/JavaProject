@@ -12,8 +12,8 @@ public class MyInterceptor2 implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         System.out.println("之前执行22222");
         String param = request.getParameter("param");
-       return true;
-      //代表之后的要不要放行,true放行,是否允许访问目标资源
+        return true;
+        //代表之后的要不要放行,true放行,是否允许访问目标资源
     }
 
     @Override

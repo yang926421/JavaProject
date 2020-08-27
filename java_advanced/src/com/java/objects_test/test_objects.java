@@ -1,14 +1,14 @@
 package com.java.objects_test;
+
 import java.util.Objects;
 import java.util.Date;
+
 /**
- *
- *
  * 源码中的书写方法
- public static boolean equals(Object a, Object b) {
- return (a == b) || (a != null && a.equals(b));
- }
- * */
+ * public static boolean equals(Object a, Object b) {
+ * return (a == b) || (a != null && a.equals(b));
+ * }
+ */
 
 public class test_objects {
 

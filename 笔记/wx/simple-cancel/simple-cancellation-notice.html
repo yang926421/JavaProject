@@ -1,177 +1,178 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>国家企业信用信息公示系统</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/simple-cancellation-notice.css">
-	    <script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../static/js/common.js" ></script>
-		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-		<script>
-			//获取简易注销id
-	    	var SCID=GetRequest("SCID");
-	    	//获取企业类型
-			var type=GetRequest("type");
-			$(function(){
-				getData();
-				if(type == 1){
-					//$("#commit").hide();
-				}else if(type == 2){
-					$("#cancel").hide();
-				}else if(type == 3){
-						$("#cancel").hide();
-						//$("#commit").hide();
-				}
-			});
-			//获取简易注销公告详情
-			function getData(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/e/escnotice/getByPripid.json",
-					async:false,
-					data:{"PRIPID":PRIPID,"SESSIONID":SESSIONID,"TOKEN":TOKEN},
-					dataType:"json",
-					success:function(res){
-						if(res.success==true){
-							createData(res.data);
-						}/*else{
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>国家企业信用信息公示系统</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/simple-cancellation-notice.css">
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script>
+        //获取简易注销id
+        var SCID = GetRequest("SCID");
+        //获取企业类型
+        var type = GetRequest("type");
+        $(function () {
+            getData();
+            if (type == 1) {
+                //$("#commit").hide();
+            } else if (type == 2) {
+                $("#cancel").hide();
+            } else if (type == 3) {
+                $("#cancel").hide();
+                //$("#commit").hide();
+            }
+        });
+
+        //获取简易注销公告详情
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/e/escnotice/getByPripid.json",
+                async: false,
+                data: {"PRIPID": PRIPID, "SESSIONID": SESSIONID, "TOKEN": TOKEN},
+                dataType: "json",
+                success: function (res) {
+                    if (res.success == true) {
+                        createData(res.data);
+                    }/*else{
 							mui.toast(res.codeMsg);
 						}*/
-					}
-					
-				});
-			}
-			function createData(obj){
-				var htmlData ="";
-			if(typeof(obj.SCID) !="undefined"){
-				SCID=obj.SCID;
-				htmlData+="<div class='web-name' id='web-name'><div>"+
-						"<h4>"+obj.ENTNAME+"简易注销公告信息</h4></div>"+
-					"<ul class='web'>"+
-						"<li><span>企业名称：</span> <span>"+obj.ENTNAME+"</span></li>"+
-						"<li><span>统一社会信用代码/注册号：</span> <span>"+obj.UNISCID+"</span></li>"+
-						"<li><span>登记机关：</span> <span>"+obj.REGORG+"</span></li>"+
-						"<li><span>公示期：</span> <span id='notice-date'>"+getFormatDateByLong(obj.NOTICEFROM,"yyyy年MM月dd日")+" - "+getFormatDateByLong(obj.NOTICETO,"yyyy年MM月dd日")
-						if(obj.TIMESTATE==-1){
-						htmlData+="<a>（已到期 ）</a></span></li>"
-						}else{
-							htmlData+="<a>（余"+obj.TIMESTATE+"天 ）</a></span></li>"
-						}
-						htmlData+="<li><span>全体投资人承诺书：</span> <span id='watch'><a href='../notice/notice_cancellation_picture.html?SCID="+obj.SCID+"&LOC_FILENAME="+obj.LOC_FILENAME+"'>点击查看</a></span></li>"+
-						"<li><span>备注：</span> "+
-							"<div id='remarks'>如需对该企业简易注销公告提出异议，查看该企业简易注销被提出的异议信息、简易注销结果等详细信息，请到公示系统首页查询</div></li>"+
-					"</ul></div>"+
-					"<a href='view-obj.html?SCID="+obj.SCID+"'>"+
-					"<div class='objection'>"+
-						"<span>共计<em>"+obj.OBJECTIONCOUNT+"</em>条异议</span>"+
-						"<span id='arrow-right'><img src='../static/img/arrow-right.png'/></span></div></a>";
-				$("#web-box").html(htmlData);	
-		}
-			}
-			
-			//撤销简易注销公告
-			function cancelnotice(){
-				mui.confirm('确定要撤销本公告吗？该公告一旦撤销，不能再次提交', function(e) {
-					if (e.index == 1) {
-						$.ajax({
-					type:"post",
-					url:httpUrl+"/e/escnotice/cancel.json",
-					async:true,
-					data:{"SCID":SCID,"SESSIONID":SESSIONID,"TOKEN":TOKEN},
-					dataType:"json",
-					success:function(res){
-						if(res.success==true){
-							mui.alert(res.codeMsg)
-							 window.location.href="../simple-cancel/simple-cancellation.html";
-						
-						}/*else{
+                }
+
+            });
+        }
+
+        function createData(obj) {
+            var htmlData = "";
+            if (typeof (obj.SCID) != "undefined") {
+                SCID = obj.SCID;
+                htmlData += "<div class='web-name' id='web-name'><div>" +
+                    "<h4>" + obj.ENTNAME + "简易注销公告信息</h4></div>" +
+                    "<ul class='web'>" +
+                    "<li><span>企业名称：</span> <span>" + obj.ENTNAME + "</span></li>" +
+                    "<li><span>统一社会信用代码/注册号：</span> <span>" + obj.UNISCID + "</span></li>" +
+                    "<li><span>登记机关：</span> <span>" + obj.REGORG + "</span></li>" +
+                    "<li><span>公示期：</span> <span id='notice-date'>" + getFormatDateByLong(obj.NOTICEFROM, "yyyy年MM月dd日") + " - " + getFormatDateByLong(obj.NOTICETO, "yyyy年MM月dd日")
+                if (obj.TIMESTATE == -1) {
+                    htmlData += "<a>（已到期 ）</a></span></li>"
+                } else {
+                    htmlData += "<a>（余" + obj.TIMESTATE + "天 ）</a></span></li>"
+                }
+                htmlData += "<li><span>全体投资人承诺书：</span> <span id='watch'><a href='../notice/notice_cancellation_picture.html?SCID=" + obj.SCID + "&LOC_FILENAME=" + obj.LOC_FILENAME + "'>点击查看</a></span></li>" +
+                    "<li><span>备注：</span> " +
+                    "<div id='remarks'>如需对该企业简易注销公告提出异议，查看该企业简易注销被提出的异议信息、简易注销结果等详细信息，请到公示系统首页查询</div></li>" +
+                    "</ul></div>" +
+                    "<a href='view-obj.html?SCID=" + obj.SCID + "'>" +
+                    "<div class='objection'>" +
+                    "<span>共计<em>" + obj.OBJECTIONCOUNT + "</em>条异议</span>" +
+                    "<span id='arrow-right'><img src='../static/img/arrow-right.png'/></span></div></a>";
+                $("#web-box").html(htmlData);
+            }
+        }
+
+        //撤销简易注销公告
+        function cancelnotice() {
+            mui.confirm('确定要撤销本公告吗？该公告一旦撤销，不能再次提交', function (e) {
+                if (e.index == 1) {
+                    $.ajax({
+                        type: "post",
+                        url: httpUrl + "/e/escnotice/cancel.json",
+                        async: true,
+                        data: {"SCID": SCID, "SESSIONID": SESSIONID, "TOKEN": TOKEN},
+                        dataType: "json",
+                        success: function (res) {
+                            if (res.success == true) {
+                                mui.alert(res.codeMsg)
+                                window.location.href = "../simple-cancel/simple-cancellation.html";
+
+                            }/*else{
 							mui.toast(res.codeMsg);
 							
 						}*/
-					}
-					
-				});
-					} 
-				})
-				
-			}
-			</script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="report.html"></a>
-		    <h1 class="mui-title">公告详情</h1>
-		</header>
-		
-		<!--股东信息-->
-		<div id="common-box">
-			<div class="web-box" id="web-box">
-				<!--<div class="web-name">
-					<div class="">
-						<h4>南阳市因扎吉文化传播有限公司简易注销公告信息</h4>
-					</div>
-					<ul class="web">
-						<li><span>企业名称：</span> <span >南阳市因扎吉文化传播有限公司</span></li>
-						<li><span>统一社会信用代码/注册号：</span> <span >41139300002737</span></li>
-						<li><span>登记机关：</span> <span >南阳市市场监督管理局高新技术开发区分局</span></li>
-						<li><span>公示期：</span> <span id="notice-date">2017年3月1日 - 2017年4月14日<a>（已到期 ）</a></span></li>
-						<li><span>全体投资人承诺书：</span> <span id="watch"><a href="#">点击查看</a></span></li>
-						<li><span>备注：</span> 
-							<div id="remarks">如需对该企业简易注销公告提出异议，查看该企
+                        }
+
+                    });
+                }
+            })
+
+        }
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="report.html"></a>
+    <h1 class="mui-title">公告详情</h1>
+</header>
+
+<!--股东信息-->
+<div id="common-box">
+    <div class="web-box" id="web-box">
+        <!--<div class="web-name">
+            <div class="">
+                <h4>南阳市因扎吉文化传播有限公司简易注销公告信息</h4>
+            </div>
+            <ul class="web">
+                <li><span>企业名称：</span> <span >南阳市因扎吉文化传播有限公司</span></li>
+                <li><span>统一社会信用代码/注册号：</span> <span >41139300002737</span></li>
+                <li><span>登记机关：</span> <span >南阳市市场监督管理局高新技术开发区分局</span></li>
+                <li><span>公示期：</span> <span id="notice-date">2017年3月1日 - 2017年4月14日<a>（已到期 ）</a></span></li>
+                <li><span>全体投资人承诺书：</span> <span id="watch"><a href="#">点击查看</a></span></li>
+                <li><span>备注：</span>
+                    <div id="remarks">如需对该企业简易注销公告提出异议，查看该企
 业简易注销被提出的异议信息、简易注销结果等
 详细信息，请到公示系统首页查询</div></li>
-					</ul>
-					
-				</div>
-				<a href="view-obj.html">
-					<div class="objection">
-						<span>共计<em>3</em>条异议</span>
-						<span id="arrow-right"><img src="../img/arrow-right.png"/></span>
-					</div>
-				</a>-->
-			</div>
-			
-			
-			
-			<!--一个按钮-->
-			<div id="cancel" class="yy">
-		    	<a onClick="cancelnotice()" class="cancel" id="confirmBtn">撤销本公告</a>
-		    </div>
-		    	<!--一个按钮-->
-			<!--<div id="commit" class="yy">
-		    	<a onClick="commitnotice()" class="cancel" id="confirmBtn">提交注销公告</a>
-		    </div>-->
-		</div>
-		
-		<!--查看承诺书图片-->
-	<!--	<div id="book-box">
-			<img src="../img/book.png"/>
-		</div>
-		-->
-	
-		<script type="text/javascript">
-	/*		$(function(){
-				$("#watch").click(function(){
-					$("#book-box").show();
-				})
-				$("#book-box").click(function(){
-					$("#book-box").hide();
-				})
-			})
-			*/
-			
-//			撤销提醒
-		/*	document.getElementById("confirmBtn").addEventListener('tap', function() {
-				mui.confirm('确定要撤销本公告吗？该公告一旦撤销，不能再次提交', function(e) {
-					if (e.index == 1) {
-						window.location.href='simple-cancellation.html';
-					} 
-				})
-			});*/
-		</script>
-	</body>
+            </ul>
+
+        </div>
+        <a href="view-obj.html">
+            <div class="objection">
+                <span>共计<em>3</em>条异议</span>
+                <span id="arrow-right"><img src="../img/arrow-right.png"/></span>
+            </div>
+        </a>-->
+    </div>
+
+
+    <!--一个按钮-->
+    <div id="cancel" class="yy">
+        <a onClick="cancelnotice()" class="cancel" id="confirmBtn">撤销本公告</a>
+    </div>
+    <!--一个按钮-->
+    <!--<div id="commit" class="yy">
+        <a onClick="commitnotice()" class="cancel" id="confirmBtn">提交注销公告</a>
+    </div>-->
+</div>
+
+<!--查看承诺书图片-->
+<!--	<div id="book-box">
+        <img src="../img/book.png"/>
+    </div>
+    -->
+
+<script type="text/javascript">
+    /*		$(function(){
+                $("#watch").click(function(){
+                    $("#book-box").show();
+                })
+                $("#book-box").click(function(){
+                    $("#book-box").hide();
+                })
+            })
+            */
+
+    //			撤销提醒
+    /*	document.getElementById("confirmBtn").addEventListener('tap', function() {
+            mui.confirm('确定要撤销本公告吗？该公告一旦撤销，不能再次提交', function(e) {
+                if (e.index == 1) {
+                    window.location.href='simple-cancellation.html';
+                }
+            })
+        });*/
+</script>
+</body>
 </html>

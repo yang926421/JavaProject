@@ -44,7 +44,7 @@ public class userDaoImpl implements userDao {
         System.out.println("userDaoImpl创建...");
     }
 
-    public void init(){
+    public void init() {
         System.out.println("初始化方法");
     }
 
@@ -55,7 +55,7 @@ public class userDaoImpl implements userDao {
         System.out.println(properties);
     }
 
-    public void destory(){
+    public void destory() {
         System.out.println("销毁方法");
     }
 }

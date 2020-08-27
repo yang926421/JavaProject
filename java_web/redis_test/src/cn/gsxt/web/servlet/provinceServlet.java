@@ -16,8 +16,8 @@ import java.util.List;
 @WebServlet("/provinceServlet")
 public class provinceServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    // 点击请选择省份，前台发送ajax请求，发送json数据给前台
-        provinceService service =  new provinceServiceImpl();
+        // 点击请选择省份，前台发送ajax请求，发送json数据给前台
+        provinceService service = new provinceServiceImpl();
 //        List<Province> list = service.findAll();
 //        //获取到list数据将其转换成json字符串
 //        ObjectMapper mapper = new ObjectMapper();

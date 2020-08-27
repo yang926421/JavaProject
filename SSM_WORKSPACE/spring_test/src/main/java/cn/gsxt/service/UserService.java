@@ -12,7 +12,7 @@ public class UserService {
     @Autowired
     private userDao userDao;
 
-    public void save(){
+    public void save() {
         System.out.println("save running....");
     }
 }

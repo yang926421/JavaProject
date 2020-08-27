@@ -24,13 +24,13 @@ public class Jdbc_test {
     private JdbcTemplate jdbcTemplate;
 
     @Test
-    public void test1(){
+    public void test1() {
         int row = jdbcTemplate.update("insert into account values(?,?)", "lisi", 5000);
         System.out.println(row);
     }
 
     @Test
-    public void test2(){
+    public void test2() {
         String sql = "select * from account where name= ?";
         Account account = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<Account>(Account.class), "tom");
         System.out.println(account);

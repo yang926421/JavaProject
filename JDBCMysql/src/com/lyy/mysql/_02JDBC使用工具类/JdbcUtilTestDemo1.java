@@ -8,7 +8,7 @@ import utlis.JDBCUtilsFinal;
 import java.sql.Connection;
 
 public class JdbcUtilTestDemo1 {
-    public static void main(String[] args) throws Exception  {
+    public static void main(String[] args) throws Exception {
 //        Connection con = JDBCUtils01.getConnection();
 //        System.out.println(con);
 //        Connection con = JDBCUtils02.getConnection();

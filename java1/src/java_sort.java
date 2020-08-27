@@ -2,10 +2,10 @@ import java.util.Arrays;
 
 public class java_sort {
     public static int[] compare(int[] arr) {
-        int num = arr.length/2;
-        int[] left = Arrays.copyOfRange(arr,0, num);
+        int num = arr.length / 2;
+        int[] left = Arrays.copyOfRange(arr, 0, num);
 //        int[] right = Arrays.copyOfRange(arr,num,-1);
-        for (int i=0; i<left.length;i++){
+        for (int i = 0; i < left.length; i++) {
             System.out.println(left[i]);
         }
         return left;

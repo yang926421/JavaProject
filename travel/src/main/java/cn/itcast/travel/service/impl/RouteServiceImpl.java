@@ -18,6 +18,7 @@ public class RouteServiceImpl implements RouteService {
     private RouteImgDao routeImgDao = new RouteImgDaoImpl();
     private SellerDao sellerDao = new SellerDaoImpl();
     private FavoriteDao favoriteDao = new FavoriteDaoImpl();
+
     @Override
     public PageBean<Route> pageQuery(int cid, int currentPage, int pageSize, String rname) {
         System.out.println("routeServiceImpl查");
@@ -31,7 +32,7 @@ public class RouteServiceImpl implements RouteService {
         pageBean.setCurrentPage(currentPage);
         pageBean.setPageSize(pageSize);
         int totalCount = 0;
-        totalCount =  dao.findTotalCount(cid, rname);
+        totalCount = dao.findTotalCount(cid, rname);
         System.out.println(totalCount);
         pageBean.setTotalCount(totalCount);
         int start = 0;
@@ -41,7 +42,7 @@ public class RouteServiceImpl implements RouteService {
         pageBean.setList(list);
         //设置总页数
         int totalPage = 0;
-        totalPage = totalCount % pageSize == 0 ? (totalCount/pageSize):(totalCount/pageSize)+1;
+        totalPage = totalCount % pageSize == 0 ? (totalCount / pageSize) : (totalCount / pageSize) + 1;
         pageBean.setTotalPage(totalPage);
         return pageBean;
     }
@@ -50,7 +51,7 @@ public class RouteServiceImpl implements RouteService {
     public Route findOne(String rid) {
         //调用rid去dao层查询,返回一个route对象
         System.out.println("去dao层查询");
-        Route route =  dao.findOne(Integer.parseInt(rid));
+        Route route = dao.findOne(Integer.parseInt(rid));
         //根据routeid去查询图片的集合
         List<RouteImg> routeImgList = routeImgDao.findByRid(route.getRid());
         route.setRouteImgList(routeImgList);

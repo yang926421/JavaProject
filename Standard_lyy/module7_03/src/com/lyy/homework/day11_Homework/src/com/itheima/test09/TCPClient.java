@@ -22,8 +22,8 @@ public class TCPClient {
         // 使用循环读取服务器返回的数据
         byte[] buf = new byte[1024];
         int len = -1;
-        while((len = in.read(buf)) != -1) {
-            fos.write(buf,0,len);
+        while ((len = in.read(buf)) != -1) {
+            fos.write(buf, 0, len);
         }
         // 关闭资源
         socket.close();

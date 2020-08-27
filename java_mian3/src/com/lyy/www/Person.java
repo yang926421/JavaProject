@@ -3,7 +3,7 @@ package com.lyy.www;
 public class Person {
     String name = "4FFD";
     private int age;
-    
+
 //    public void setName(String name){
 //        this.name = name;
 //    }
@@ -29,10 +29,9 @@ public class Person {
         this.age = age;
     }
 
-    public void chi(){
+    public void chi() {
         System.out.println("吃东西啊沙雕");
     }
-
 
 
 }

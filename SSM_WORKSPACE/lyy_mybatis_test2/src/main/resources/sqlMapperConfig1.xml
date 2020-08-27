@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-<!--    引入properties文件-->
-    <properties resource="jdbc.properties" ></properties>
+    <!--    引入properties文件-->
+    <properties resource="jdbc.properties"></properties>
     <typeAliases>
         <typeAlias type="cn.gsxt.domain.User" alias="user"/>
     </typeAliases>
-<!--    自定义注册的类型处理器-->
+    <!--    自定义注册的类型处理器-->
     <typeHandlers>
         <typeHandler handler="cn.gsxt.handler.DateTypeHandler"></typeHandler>
     </typeHandlers>
-<!--    配置分页助手插件-->
+    <!--    配置分页助手插件-->
     <plugins>
         <plugin interceptor="com.github.pagehelper.PageHelper">
-<!--            不同的数据库使用的分页都不一样-->
+            <!--            不同的数据库使用的分页都不一样-->
             <property name="dialect" value="mysql"/>
         </plugin>
     </plugins>

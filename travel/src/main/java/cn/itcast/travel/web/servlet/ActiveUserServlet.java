@@ -15,7 +15,7 @@ public class ActiveUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //1.获取激活码
         String code = request.getParameter("code");
-        if(code != null){
+        if (code != null) {
             //2.调用service完成激活
             UserService service = new UserServiceImpl();
             System.out.println(code);
@@ -23,10 +23,10 @@ public class ActiveUserServlet extends HttpServlet {
 
             //3.判断标记
             String msg = null;
-            if(flag){
+            if (flag) {
                 //激活成功
                 msg = "激活成功，请<a href='login.html'>登录</a>";
-            }else{
+            } else {
                 //激活失败
                 msg = "激活失败，请联系管理员!";
             }

@@ -6,6 +6,7 @@ public interface FavoriteDao {
 
     /**
      * 根据rid和uid查询收藏信息
+     *
      * @param rid
      * @param uid
      * @return
@@ -14,6 +15,7 @@ public interface FavoriteDao {
 
     /**
      * 根据rid 查询收藏次数
+     *
      * @param rid
      * @return
      */
@@ -21,6 +23,7 @@ public interface FavoriteDao {
 
     /**
      * 添加收藏
+     *
      * @param i
      * @param uid
      */

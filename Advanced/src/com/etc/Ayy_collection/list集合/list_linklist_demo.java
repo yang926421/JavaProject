@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public class list_linklist_demo {
     public static void main(String[] args) {
-       // 用linkedlist做一个队列先进先出
+        // 用linkedlist做一个队列先进先出
         LinkedList<String> queue = new LinkedList<>();
         // 入队
         queue.addLast("1号");
@@ -17,7 +17,7 @@ public class list_linklist_demo {
 
 
 //        做一个栈
-        LinkedList<String> stack  = new LinkedList<>();
+        LinkedList<String> stack = new LinkedList<>();
         stack.push("第一颗子弹");  //内部调用了addFirst()
         stack.push("第二颗子弹");
         stack.push("第三颗子弹");

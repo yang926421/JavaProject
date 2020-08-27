@@ -18,22 +18,21 @@ import java.util.Map;
 public class FindUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //获取用户名
-        String username =  request.getParameter("username");
+        String username = request.getParameter("username");
         //设置响应的数据格式为json
         response.setContentType("application/json;charset=utf-8");
-        Map<String,Object> map = new HashMap<String,Object>();
+        Map<String, Object> map = new HashMap<String, Object>();
         //调用service层调用dao层查询数据库
         userServiceImpl service = new userServiceImpl();
         User user = service.SelectUserByUsername(username);
-        if (user != null){
+        if (user != null) {
             //存在
-            map.put("userExsit",true);
-            map.put("msg","此用户名太受欢迎,请更换一个");
-        }
-        else{
+            map.put("userExsit", true);
+            map.put("msg", "此用户名太受欢迎,请更换一个");
+        } else {
             //不存在
-            map.put("userExsit",false);
-            map.put("msg","用户名可用");
+            map.put("userExsit", false);
+            map.put("msg", "用户名可用");
         }
 //        if("tom".equals(username)){
 //            //存在

@@ -1,263 +1,265 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title></title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/add-guarantee-inf.css">
-		<link rel="stylesheet" type="text/css" href="../static/css/mui.picker.min.css" /><!--填写时间-->
-	
-		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../static/js/mui.min.js"></script>
-		<script type="text/javascript" src="../static/js/common.js"></script>
-		<script type="text/javascript" src="../static/js/mui.picker.min.js"></script> <!--选择日期-->
-		<script>
-			
-			var MEMID=GetRequest("MEMID");  //成员id
-			$(function(){
-					loadData("CD92","GRPMEMTYPE");
-					$("#PRIPID").val(PRIPID);
-					$("#TOKEN").val(TOKEN);
-					$("#SESSIONID").val(SESSIONID);
-				if(MEMID!=null && MEMID!=""){
-					$("#saveOrUpdate").html("修改");
-					$("#MEMID").val(MEMID);
-					var updateBtn="<a href='javascript:;' onclick='del()'>移除</a>";
-					$("#sure").html(updateBtn);
-					getData();
-				}else{
-					$("#saveOrUpdate").html("添加");
-				}
-				
-				
-			});
-			
-			function getData(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/e/groupMenber/info.json",
-					data:{"MEMID":MEMID,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
-					async:false,
-					dataType:"json",
-					success:function(res){
-						if(res.success==true){
-							$("#GRPNAME").val(res.data.GRPNAME);  
-							$("#UNISCID").val(res.data.UNISCID);  
-							$("#GRPMEMTYPE").val(res.data.GRPMEMTYPE); 
-							$("#PCOMAGPROP").val(res.data.PCOMAGPROP); 
-							if(res.data.altList!=null && res.data.altList.length>0){
-								$("#updateDiv").show();
-							}
-							if(res.data.ANCHEIS==1){
-								$("#modifyDiv").show();
-								$("#addDiv").hide();
-							}
-							//mui.toast(res.codeMsg);
-						}
-					}
-				});
-			}
-			
-			function save(){
-				var grpname=$("#GRPNAME").val();
-				var uniscid=$("#UNISCID").val();
-				var grpmemtype=$("#GRPMEMTYPE").val();
-				var pcomagprop=$("#PCOMAGPROP").val();
-				if(grpname=="" || grpname==null){
-					mui.toast("成员名称不能为空");
-					return;
-				}
-				if(uniscid=="" || uniscid==null){
-					mui.toast("统一社会信用代码不能为空");
-					return;
-				}
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title></title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/add-guarantee-inf.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/mui.picker.min.css"/><!--填写时间-->
+
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script type="text/javascript" src="../static/js/mui.picker.min.js"></script> <!--选择日期-->
+    <script>
+
+        var MEMID = GetRequest("MEMID");  //成员id
+        $(function () {
+            loadData("CD92", "GRPMEMTYPE");
+            $("#PRIPID").val(PRIPID);
+            $("#TOKEN").val(TOKEN);
+            $("#SESSIONID").val(SESSIONID);
+            if (MEMID != null && MEMID != "") {
+                $("#saveOrUpdate").html("修改");
+                $("#MEMID").val(MEMID);
+                var updateBtn = "<a href='javascript:;' onclick='del()'>移除</a>";
+                $("#sure").html(updateBtn);
+                getData();
+            } else {
+                $("#saveOrUpdate").html("添加");
+            }
+
+
+        });
+
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/e/groupMenber/info.json",
+                data: {"MEMID": MEMID, "TOKEN": TOKEN, "SESSIONID": SESSIONID},
+                async: false,
+                dataType: "json",
+                success: function (res) {
+                    if (res.success == true) {
+                        $("#GRPNAME").val(res.data.GRPNAME);
+                        $("#UNISCID").val(res.data.UNISCID);
+                        $("#GRPMEMTYPE").val(res.data.GRPMEMTYPE);
+                        $("#PCOMAGPROP").val(res.data.PCOMAGPROP);
+                        if (res.data.altList != null && res.data.altList.length > 0) {
+                            $("#updateDiv").show();
+                        }
+                        if (res.data.ANCHEIS == 1) {
+                            $("#modifyDiv").show();
+                            $("#addDiv").hide();
+                        }
+                        //mui.toast(res.codeMsg);
+                    }
+                }
+            });
+        }
+
+        function save() {
+            var grpname = $("#GRPNAME").val();
+            var uniscid = $("#UNISCID").val();
+            var grpmemtype = $("#GRPMEMTYPE").val();
+            var pcomagprop = $("#PCOMAGPROP").val();
+            if (grpname == "" || grpname == null) {
+                mui.toast("成员名称不能为空");
+                return;
+            }
+            if (uniscid == "" || uniscid == null) {
+                mui.toast("统一社会信用代码不能为空");
+                return;
+            }
 //				if(grpmemtype=="" || grpmemtype==null){
 //					mui.toast("成员类型不能为空");
 //					return;
 //				}
-				if(pcomagprop=="" || pcomagprop==null){
-					mui.toast("母公司控股比例不能为空");
-					return;
-				}else if(pcomagprop<=0 || pcomagprop>100){
-					mui.toast("母公司控股比例不能小于等于0或大于100");
-					return;
-				}
-				$.ajax({
-					type:'post',
-					url:httpUrl+'/e/groupMenber/save.json',
-					data:$("#addForm").serialize(),
-					dataType:'json',
-					success:function(res){
-						if(res.success==true){
-							window.location.href="groupMenber-list.html";
-							mui.toast(res.codeMsg);
-						}
-					}
-				})
-			}
-			
-			function saveAndPublic(){
-				var grpname=$("#GRPNAME").val();
-				var uniscid=$("#UNISCID").val();
-				var grpmemtype=$("#GRPMEMTYPE").val();
-				var pcomagprop=$("#PCOMAGPROP").val();
-				if(grpname=="" || grpname==null){
-					mui.toast("成员名称不能为空");
-					return;
-				}
-				if(uniscid=="" || uniscid==null){
-					mui.toast("统一社会信用代码不能为空");
-					return;
-				}
+            if (pcomagprop == "" || pcomagprop == null) {
+                mui.toast("母公司控股比例不能为空");
+                return;
+            } else if (pcomagprop <= 0 || pcomagprop > 100) {
+                mui.toast("母公司控股比例不能小于等于0或大于100");
+                return;
+            }
+            $.ajax({
+                type: 'post',
+                url: httpUrl + '/e/groupMenber/save.json',
+                data: $("#addForm").serialize(),
+                dataType: 'json',
+                success: function (res) {
+                    if (res.success == true) {
+                        window.location.href = "groupMenber-list.html";
+                        mui.toast(res.codeMsg);
+                    }
+                }
+            })
+        }
+
+        function saveAndPublic() {
+            var grpname = $("#GRPNAME").val();
+            var uniscid = $("#UNISCID").val();
+            var grpmemtype = $("#GRPMEMTYPE").val();
+            var pcomagprop = $("#PCOMAGPROP").val();
+            if (grpname == "" || grpname == null) {
+                mui.toast("成员名称不能为空");
+                return;
+            }
+            if (uniscid == "" || uniscid == null) {
+                mui.toast("统一社会信用代码不能为空");
+                return;
+            }
 //				if(grpmemtype=="" || grpmemtype==null){
 //					mui.toast("成员类型不能为空");
 //					return;
 //				}
-				if(pcomagprop=="" || pcomagprop==null){
-					mui.toast("母公司控股比例不能为空");
-					return;
-				}else if(pcomagprop<=0 || pcomagprop>100){
-					mui.toast("母公司控股比例不能小于0或大于100");
-					return;
-				}
-				$.ajax({
-					type:'post',
-					url:httpUrl+'/e/groupMenber/public.json',
-					data:$("#addForm").serialize(),
-					dataType:'json',
-					success:function(res){
-						if(res.success==true){
-							window.location.href="groupMenber-list.html";
-							mui.toast(res.codeMsg);
-						}
-					}
-				})
-			}
-			
-			function del(){
-				mui.confirm("点击确认后将不可修改，是否确认？","提示",btnArray,function(e){
-					if (e.index == 1) {
-						$.ajax({
-							type:'get',
-							url:httpUrl+'/e/groupMenber/del.json',
-							data:{"MEMID":$("#MEMID").val(),"TOKEN":TOKEN,"SESSIONID":SESSIONID},
-							dataType:'json',
-							success:function(res){
-								if(res.success==true){
-									window.location.href="groupMenber-list.html";
-								}
-							}
-						});
-					}
-				});
-			}
-			
-			function toUpdateInfo(){
-				window.location.href="groupMenber-update-info.html?MEMID="+MEMID;
-			}
-			
-			function getEntName(){
-				$.ajax({
-					type:'get',
-					url:httpUrl+'/e/groupMenber/get/entName.json',
-					data:{"bodyNo":$("#UNISCID").val(),"TOKEN":TOKEN,"SESSIONID":SESSIONID},
-					dataType:'json',
-					success:function(res){
-						if(res.success==true){
-							$("#GRPNAME").val(res.data.entName);
-						}
-					}
-				});
-			}
-		</script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="guarantee-inf.html"></a>
-		    <h1 class="mui-title"><span id="saveOrUpdate"></span>集团成员信息</h1>
-		    <span id="sure">
+            if (pcomagprop == "" || pcomagprop == null) {
+                mui.toast("母公司控股比例不能为空");
+                return;
+            } else if (pcomagprop <= 0 || pcomagprop > 100) {
+                mui.toast("母公司控股比例不能小于0或大于100");
+                return;
+            }
+            $.ajax({
+                type: 'post',
+                url: httpUrl + '/e/groupMenber/public.json',
+                data: $("#addForm").serialize(),
+                dataType: 'json',
+                success: function (res) {
+                    if (res.success == true) {
+                        window.location.href = "groupMenber-list.html";
+                        mui.toast(res.codeMsg);
+                    }
+                }
+            })
+        }
+
+        function del() {
+            mui.confirm("点击确认后将不可修改，是否确认？", "提示", btnArray, function (e) {
+                if (e.index == 1) {
+                    $.ajax({
+                        type: 'get',
+                        url: httpUrl + '/e/groupMenber/del.json',
+                        data: {"MEMID": $("#MEMID").val(), "TOKEN": TOKEN, "SESSIONID": SESSIONID},
+                        dataType: 'json',
+                        success: function (res) {
+                            if (res.success == true) {
+                                window.location.href = "groupMenber-list.html";
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        function toUpdateInfo() {
+            window.location.href = "groupMenber-update-info.html?MEMID=" + MEMID;
+        }
+
+        function getEntName() {
+            $.ajax({
+                type: 'get',
+                url: httpUrl + '/e/groupMenber/get/entName.json',
+                data: {"bodyNo": $("#UNISCID").val(), "TOKEN": TOKEN, "SESSIONID": SESSIONID},
+                dataType: 'json',
+                success: function (res) {
+                    if (res.success == true) {
+                        $("#GRPNAME").val(res.data.entName);
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="guarantee-inf.html"></a>
+    <h1 class="mui-title"><span id="saveOrUpdate"></span>集团成员信息</h1>
+    <span id="sure">
 		    	<a>移除</a>
 		    </span>
-		</header>
-		
-		<!--股东信息-->
-		<form id="addForm">
-			<input type="hidden" name="PRIPID" id="PRIPID" />
-			<input type="hidden" name="TOKEN" id="TOKEN" />
-			<input type="hidden" name="SESSIONID" id="SESSIONID" />
-			<input type="hidden" name="MEMID" id="MEMID" />
-		<div id="common-box">
-			<div id="updateDiv" style="padding: 10px;text-align: center;color: red;display: none;">
-				<a onclick="toUpdateInfo()" style="text-decoration: underline;">修改记录</a>
-			</div>
-				<div class="web-box">
-					<ul>
-						<li>
-							<span >
+</header>
+
+<!--股东信息-->
+<form id="addForm">
+    <input type="hidden" name="PRIPID" id="PRIPID"/>
+    <input type="hidden" name="TOKEN" id="TOKEN"/>
+    <input type="hidden" name="SESSIONID" id="SESSIONID"/>
+    <input type="hidden" name="MEMID" id="MEMID"/>
+    <div id="common-box">
+        <div id="updateDiv" style="padding: 10px;text-align: center;color: red;display: none;">
+            <a onclick="toUpdateInfo()" style="text-decoration: underline;">修改记录</a>
+        </div>
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								统一社会信用代码
 							</span>
-							<div class="web-write">
-								<input type="text" name="UNISCID" id="UNISCID" onblur="getEntName()"  placeholder="请输入统一社会信用代码"/>
-							</div>
-						</li>
-					</ul>
-			</div>
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                    <div class="web-write">
+                        <input type="text" name="UNISCID" id="UNISCID" onblur="getEntName()" placeholder="请输入统一社会信用代码"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								成员名称
 							</span>
-							<div class="web-write">
-								<input type="text" name="GRPNAME" id="GRPNAME"  placeholder="请输入成员名称"/>
-							</div>
-						</li>
-					</ul>
-			</div>
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                    <div class="web-write">
+                        <input type="text" name="GRPNAME" id="GRPNAME" placeholder="请输入成员名称"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								成员类型
 							</span>
-							<div class="web-write">
-								<div id="open" style="position: relative;width: 100%;">
-								<select  class="service_opt" name="GRPMEMTYPE" id="GRPMEMTYPE" style="height: 50px; margin-bottom: 0; display:block;width:100%;background: url(../static/img/rt.png) no-repeat right center;">
-						          <!--<option value="1">子公司</option>
-						          <option value="2">参股公司</option>
-						          <option value="9">其他成员单位</option>-->
-								</select>
-							</div>
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                    <div class="web-write">
+                        <div id="open" style="position: relative;width: 100%;">
+                            <select class="service_opt" name="GRPMEMTYPE" id="GRPMEMTYPE"
+                                    style="height: 50px; margin-bottom: 0; display:block;width:100%;background: url(../static/img/rt.png) no-repeat right center;">
+                                <!--<option value="1">子公司</option>
+                                <option value="2">参股公司</option>
+                                <option value="9">其他成员单位</option>-->
+                            </select>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								母公司控股比例（%）
 							</span>
-							<div class="web-write">
-								<input type="text" name="PCOMAGPROP" id="PCOMAGPROP" oninput="inputNumPoint(this)"  placeholder="请输入母公司控股比例"/>
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-		</div>
-		</form>
-		<div id="addDiv" class="yy" >
-	    	<a id="addBtn" onClick="save()" style="width: 40%;display: inline-block;">保存</a>
-	    	<a id="pubBtn" onClick="saveAndPublic()" style="width: 40%;display: inline-block;">保存并公示</a>
-	    </div>
-		<div id="modifyDiv" class="yy" style="display: none;">
-			<a id="addBtn" onClick="save()" >保存</a>
-		</div>
-	</body>
+                    <div class="web-write">
+                        <input type="text" name="PCOMAGPROP" id="PCOMAGPROP" oninput="inputNumPoint(this)"
+                               placeholder="请输入母公司控股比例"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</form>
+<div id="addDiv" class="yy">
+    <a id="addBtn" onClick="save()" style="width: 40%;display: inline-block;">保存</a>
+    <a id="pubBtn" onClick="saveAndPublic()" style="width: 40%;display: inline-block;">保存并公示</a>
+</div>
+<div id="modifyDiv" class="yy" style="display: none;">
+    <a id="addBtn" onClick="save()">保存</a>
+</div>
+</body>
 </html>

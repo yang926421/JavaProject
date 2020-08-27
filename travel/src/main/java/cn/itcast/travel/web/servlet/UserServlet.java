@@ -21,7 +21,7 @@ import java.util.Map;
 @WebServlet("/user/*")
 public class UserServlet extends BaseServlet {
     //
-    public void register(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    public void register(HttpServletRequest request, HttpServletResponse response) throws Exception {
         //验证校验
         String check = request.getParameter("check");
         //从sesion中获取验证码
@@ -29,7 +29,7 @@ public class UserServlet extends BaseServlet {
         String checkcode_server = (String) session.getAttribute("CHECKCODE_SERVER");
         session.removeAttribute("CHECKCODE_SERVER");//为了保证验证码只能使用一次
         //比较
-        if(checkcode_server == null || !checkcode_server.equalsIgnoreCase(check)){
+        if (checkcode_server == null || !checkcode_server.equalsIgnoreCase(check)) {
             //验证码错误
             ResultInfo info = new ResultInfo();
             //注册失败
@@ -48,7 +48,7 @@ public class UserServlet extends BaseServlet {
         //获取到map集合之后，封装User对象
         User user = new User();
         try {
-            BeanUtils.populate(user,map);
+            BeanUtils.populate(user, map);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -57,11 +57,10 @@ public class UserServlet extends BaseServlet {
         Boolean flag = service.register(user);
         //resultInfo用来封装后端返回的信息
         ResultInfo info = new ResultInfo();
-        if (flag){
+        if (flag) {
             //注册成功
             info.setFlag(true);
-        }
-        else{
+        } else {
             info.setFlag(false);
             info.setErrorMsg("注册失败，请重新尝试");
         }
@@ -73,7 +72,7 @@ public class UserServlet extends BaseServlet {
         response.getWriter().write(json_info);
     }
 
-    public void login(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    public void login(HttpServletRequest request, HttpServletResponse response) throws Exception {
         System.out.println("跳转登陆servlet");
         Map<String, String[]> map = request.getParameterMap();
         User user = new User();
@@ -84,27 +83,27 @@ public class UserServlet extends BaseServlet {
         }
         //调用service查询
         UserService service = new UserServiceImpl();
-        User u =  service.login(user);
+        User u = service.login(user);
         System.out.println(u.getName());
-        System.out.println(u==null);
+        System.out.println(u == null);
         System.out.println(u.getStatus());
         ResultInfo info = new ResultInfo();
         //判断用户名或密码是否正确
-        if(u==null){
+        if (u == null) {
             //用户名密码错误
             info.setFlag(false);
             info.setErrorMsg("用户名或密码错误");
         }
         //判断用户是否激活
-        if(u!=null && !u.getStatus().equals("Y")){
+        if (u != null && !u.getStatus().equals("Y")) {
             //用户尚未激活
             info.setFlag(false);
             info.setErrorMsg("尚未激活,请登录邮箱激活");
 
         }
         //登录成功的判断
-        if(u!=null && "Y".equals(u.getStatus())){
-            request.getSession().setAttribute("user",u);//登录成功标记
+        if (u != null && "Y".equals(u.getStatus())) {
+            request.getSession().setAttribute("user", u);//登录成功标记
             info.setFlag(true);
         }
         //响应数据给前端
@@ -112,13 +111,13 @@ public class UserServlet extends BaseServlet {
 //        response.setContentType("application/json;character=utf-8");
 //        mapper.writeValue(response.getOutputStream(), info);
         //在BaseServlet封装了方法json功能
-        writeValue(info,response);
+        writeValue(info, response);
     }
 
-    public void active(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    public void active(HttpServletRequest request, HttpServletResponse response) throws Exception {
         //1.获取激活码
         String code = request.getParameter("code");
-        if(code != null){
+        if (code != null) {
             //2.调用service完成激活
             UserService service = new UserServiceImpl();
             System.out.println(code);
@@ -126,10 +125,10 @@ public class UserServlet extends BaseServlet {
 
             //3.判断标记
             String msg = null;
-            if(flag){
+            if (flag) {
                 //激活成功
                 msg = "激活成功，请<a href='login.html'>登录</a>";
-            }else{
+            } else {
                 //激活失败
                 msg = "激活失败，请联系管理员!";
             }
@@ -139,17 +138,17 @@ public class UserServlet extends BaseServlet {
 
     }
 
-    public void exit(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    public void exit(HttpServletRequest request, HttpServletResponse response) throws Exception {
         System.out.println("跳转推出界面");
         //销毁session中的user
         request.getSession().invalidate();
         System.out.println("destoryUser");
         //跳转页面
-        response.sendRedirect(request.getContextPath()+"/login.html");
+        response.sendRedirect(request.getContextPath() + "/login.html");
     }
 
     //从session中获取user对象
-    public void findOne(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    public void findOne(HttpServletRequest request, HttpServletResponse response) throws Exception {
         //从session中获取登录用户
         Object user = request.getSession().getAttribute("user");
         System.out.println(user);
@@ -158,11 +157,11 @@ public class UserServlet extends BaseServlet {
     }
 
     //
-    public void findFavoriteByUid(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    public void findFavoriteByUid(HttpServletRequest request, HttpServletResponse response) throws Exception {
         //根据uid获取用户喜欢的线路数据
         String uid = request.getParameter("uid");
         UserService service = new UserServiceImpl();
-        List<Route> list =  service.findFavoriteByUid(Integer.parseInt(uid));
+        List<Route> list = service.findFavoriteByUid(Integer.parseInt(uid));
         //将获取到的线路返回前端
         System.out.println(list);
         writeValue(list, response);

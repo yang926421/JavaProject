@@ -4,12 +4,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
-
- 线程池在java中的代表类  ExecutorService(接口)
- java在Executors类下提供了一个静态方法newFixedThreadPool得到一个线程池对象,返回值类型为
- ExecutorService
-
-
+ * 线程池在java中的代表类  ExecutorService(接口)
+ * java在Executors类下提供了一个静态方法newFixedThreadPool得到一个线程池对象,返回值类型为
+ * ExecutorService
  */
 
 public class thread_pool_demo2 {
@@ -30,11 +27,11 @@ public class thread_pool_demo2 {
     }
 }
 
-class myRunnable implements Runnable{
+class myRunnable implements Runnable {
     @Override
     public void run() {
-        for(int i = 0; i< 5; i++){
-            System.out.println(Thread.currentThread().getName()+"===>"+i);
+        for (int i = 0; i < 5; i++) {
+            System.out.println(Thread.currentThread().getName() + "===>" + i);
         }
     }
 }

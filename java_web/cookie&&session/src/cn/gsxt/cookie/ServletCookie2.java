@@ -12,7 +12,7 @@ import java.io.IOException;
 public class ServletCookie2 extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Cookie[] cookies = request.getCookies();
-        if (cookies != null){
+        if (cookies != null) {
             for (Cookie cookie : cookies) {
                 System.out.println(cookie.getName());
                 System.out.println(cookie.getValue());

@@ -10,6 +10,7 @@ import java.util.List;
 
 public class provinceDaoImpl implements provinceDao {
     private JdbcTemplate template = new JdbcTemplate(JDBCUtils.getDataSource());
+
     @Override
     public List<Province> findAll() {
         //使用sql语句去查询

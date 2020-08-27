@@ -7,18 +7,16 @@ import org.dom4j.io.SAXReader;
 import java.util.List;
 
 /**
- 解析xml文件的子元素
-
- getName()  取元素的名称
- List<Element> elements():获取当前元素下的全部子元素（一级）
- List<Element> elements(String name):获取当前元素下的指定名称的全部子元素（一级）
- Element element(String name):获取当前元素下的指定名称的某个子元素，默认取第一个（一级）
-
-
+ * 解析xml文件的子元素
+ * <p>
+ * getName()  取元素的名称
+ * List<Element> elements():获取当前元素下的全部子元素（一级）
+ * List<Element> elements(String name):获取当前元素下的指定名称的全部子元素（一级）
+ * Element element(String name):获取当前元素下的指定名称的某个子元素，默认取第一个（一级）
  */
 public class Dom4j_demo1 {
     //
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         //解析books.xml文件成为一个document文件数对象
         //创建一个dom4j解析器对象  代表整个dom4j框架
         SAXReader saxReader = new SAXReader();

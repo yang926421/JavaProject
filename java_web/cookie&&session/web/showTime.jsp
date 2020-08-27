@@ -18,7 +18,7 @@
     Cookie[] cookies = request.getCookies();
     boolean flag = false;//没有cookie为lastTime
     //2.遍历cookie数组
-    if(cookies != null && cookies.length > 0) {
+    if (cookies != null && cookies.length > 0) {
         //遍历cookies数组，有没有对应的cookie的值
         for (Cookie cookie : cookies) {
             String name = cookie.getName();
@@ -50,7 +50,7 @@
         }
     }
 
-    if(cookies == null || cookies.length == 0 || flag == false){
+    if (cookies == null || cookies.length == 0 || flag == false) {
         //第一次访问，没有cookie
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");

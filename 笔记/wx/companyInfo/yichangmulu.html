@@ -1,128 +1,130 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>列入异常目录信息</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/biangenInfo.css">
-			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-			<script type="text/javascript" src="../static/js/common.js" ></script>
-			<script>
-				//获取企业id
-				var pripid=sessionStorage.getItem("PRIPID");
-				//获取企业类型
-				var type=sessionStorage.getItem("TYPE"); //1企业2农专3个体
-				$(function(){
-					getData();
-				});
-				//获取企业异常目录信息
-				function getData(){
-					$.ajax({
-						type:"get",
-						url:httpUrl+"/p/abnormity/by/pripid/list.json",
-						data:{"PRIPID":pripid,"type":type},
-						dataType:"json",
-						async:true,
-						success:function(res){
-							if(res.success==true){
-								createData(res.data);
-							}
-						}
-					});
-				}
-				//创建异常目录信息数据
-				function createData(obj){
-					if(obj!=null && obj.length>0){
-						$("#count").html(obj.length);
-						var htmlData="";
-						for(var i=0;i<obj.length;i++){
-							if(i==0){
-								htmlData+="<div class='weifa'  > "
-							}else{
-								 htmlData+="<div class='weifa' style='margin-top:10px;' > "
-							}
-							var reason="";
-							var time="";
-							if(type==3){
-								reason=obj[i].baseInfo.EXCPSTARES_CN;
-								time=getFormatDateByLong(obj[i].baseInfo.COGDATE,"yyyy年MM月dd日");
-								htmlData+=" <p><span>列入日期：</span><span class='scolor'>"+time+"</span></p>"+
-									 "<p>列入经营异常名录原因：</p>"+
-									 "<p class='scolor'>"+reason+"</p>"+	
-									" <p>作出列入决定机关：</p>"+
-									 "<p class='scolor'>"+obj[i].baseInfo.DECORG_CN+"</p>";
-							}else{
-								reason=obj[i].subInfo.SPECAUSE_CN;
-								time=getFormatDateByLong(obj[i].subInfo.ABNTIME,"yyyy年MM月dd日");
-								htmlData+=" <p><span>列入日期：</span><span class='scolor'>"+time+"</span></p>"+
-									 "<p>列入经营异常名录原因：</p>"+
-									 "<p class='scolor'>"+reason+"</p>"+	
-									" <p>作出列入决定机关：</p>"+
-									 "<p class='scolor'>"+obj[i].subInfo.DECORG_CN+"</p>"+
-									 "<hr style='height:1px;border:none;border-top:1px solid #F2F2F2;padding-bottom: 5px;' />";
-								var remDate="";
-								if(obj[i].subInfo.REMDATE!=null && obj[i].subInfo.REMDATE!=""){
-									remDate=getFormatDateByLong(obj[i].subInfo.REMDATE,"yyyy年MM月dd日")
-								}
-								
-								htmlData+= "<p><span>移出日期：</span><span class='scolor'>"+remDate+"</span></p>"+
-									 "<p>移出经营异常名录原因：</p>"+
-									 "<p class='scolor'>"+obj[i].subInfo.REMEXCPRES_CN+"</p>"+
-									 "<p>作出移出决定机关：</p>"+
-									 "<p class='scolor'>"+obj[i].subInfo.REDECORG_CN+"</p>";
-							
-							}
-							htmlData+="</div> ";
-						
-						
-						$("#content").html(htmlData);
-						
-					}
-				}else{
-						$("#count").html(0);
-					}
-			}
-			</script>
-		
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="searchMain.html"></a>
-		    <h1 class="mui-title">列入异常目录信息(<span id="count"></span>)</h1>
-		</header>
-		<div class="headertop"></div>
-		<div id="content">
-		<!--<div class="weifa" >
-			 <p><span>列入日期：</span><span class="scolor">2015年5月31日</span></p>
-			 <p>列入经营异常名录原因：</p>
-			 <p class="scolor">通过登记的住所或者经营场所无法联系的</p>	
-			 <p>作出列入决定机关：</p>
-			 <p class="scolor">郑州市市场监督管理局郑东新区分局</p>
-			 <hr style="height:1px;border:none;border-top:1px solid #F2F2F2;padding-bottom: 5px;" />
-			 <p><span>移出日期：</span><span class="scolor">2017年5月31日</span></p>
-			 <p>移出经营异常名录原因：</p>
-			 <p class="scolor">列入经营异常名录3年内且依照《经营异常名录管理办法》第九条规定被列入经营异常名录的企业，提出通过登记的住所或者经营场所可以重新取得联系，申请移出</p>
-			 <p>作出移出决定机关</p>
-			 <p class="scolor">郑州市市场监督管理局郑东新区分局</p>
-		</div>
-	
-		<div class="weifa" style="margin-top:10px;">
-			 <p><span>列入日期：</span><span class="scolor">2015年5月31日</span></p>
-			 <p>列入经营异常名录原因：</p>
-			 <p class="scolor">通过登记的住所或者经营场所无法联系的</p>	
-			 <p>作出列入决定机关：</p>
-			 <p class="scolor">郑州市市场监督管理局郑东新区分局</p>
-			 <hr style="height:1px;border:none;border-top:1px solid #F2F2F2;padding-bottom: 5px;" />
-			 <p><span>移出日期：</span><span class="scolor">2017年5月31日</span></p>
-			 <p>移出经营异常名录原因：</p>
-			 <p class="scolor">列入经营异常名录3年内且依照《经营异常名录管理办法》第九条规定被列入经营异常名录的企业，提出通过登记的住所或者经营场所可以重新取得联系，申请移出</p>
-			 <p>作出移出决定机关</p>
-			 <p class="scolor">郑州市市场监督管理局郑东新区分局</p>
-		</div>-->
-		</div>
-	</body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>列入异常目录信息</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/biangenInfo.css">
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script>
+        //获取企业id
+        var pripid = sessionStorage.getItem("PRIPID");
+        //获取企业类型
+        var type = sessionStorage.getItem("TYPE"); //1企业2农专3个体
+        $(function () {
+            getData();
+        });
+
+        //获取企业异常目录信息
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/p/abnormity/by/pripid/list.json",
+                data: {"PRIPID": pripid, "type": type},
+                dataType: "json",
+                async: true,
+                success: function (res) {
+                    if (res.success == true) {
+                        createData(res.data);
+                    }
+                }
+            });
+        }
+
+        //创建异常目录信息数据
+        function createData(obj) {
+            if (obj != null && obj.length > 0) {
+                $("#count").html(obj.length);
+                var htmlData = "";
+                for (var i = 0; i < obj.length; i++) {
+                    if (i == 0) {
+                        htmlData += "<div class='weifa'  > "
+                    } else {
+                        htmlData += "<div class='weifa' style='margin-top:10px;' > "
+                    }
+                    var reason = "";
+                    var time = "";
+                    if (type == 3) {
+                        reason = obj[i].baseInfo.EXCPSTARES_CN;
+                        time = getFormatDateByLong(obj[i].baseInfo.COGDATE, "yyyy年MM月dd日");
+                        htmlData += " <p><span>列入日期：</span><span class='scolor'>" + time + "</span></p>" +
+                            "<p>列入经营异常名录原因：</p>" +
+                            "<p class='scolor'>" + reason + "</p>" +
+                            " <p>作出列入决定机关：</p>" +
+                            "<p class='scolor'>" + obj[i].baseInfo.DECORG_CN + "</p>";
+                    } else {
+                        reason = obj[i].subInfo.SPECAUSE_CN;
+                        time = getFormatDateByLong(obj[i].subInfo.ABNTIME, "yyyy年MM月dd日");
+                        htmlData += " <p><span>列入日期：</span><span class='scolor'>" + time + "</span></p>" +
+                            "<p>列入经营异常名录原因：</p>" +
+                            "<p class='scolor'>" + reason + "</p>" +
+                            " <p>作出列入决定机关：</p>" +
+                            "<p class='scolor'>" + obj[i].subInfo.DECORG_CN + "</p>" +
+                            "<hr style='height:1px;border:none;border-top:1px solid #F2F2F2;padding-bottom: 5px;' />";
+                        var remDate = "";
+                        if (obj[i].subInfo.REMDATE != null && obj[i].subInfo.REMDATE != "") {
+                            remDate = getFormatDateByLong(obj[i].subInfo.REMDATE, "yyyy年MM月dd日")
+                        }
+
+                        htmlData += "<p><span>移出日期：</span><span class='scolor'>" + remDate + "</span></p>" +
+                            "<p>移出经营异常名录原因：</p>" +
+                            "<p class='scolor'>" + obj[i].subInfo.REMEXCPRES_CN + "</p>" +
+                            "<p>作出移出决定机关：</p>" +
+                            "<p class='scolor'>" + obj[i].subInfo.REDECORG_CN + "</p>";
+
+                    }
+                    htmlData += "</div> ";
+
+
+                    $("#content").html(htmlData);
+
+                }
+            } else {
+                $("#count").html(0);
+            }
+        }
+    </script>
+
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="searchMain.html"></a>
+    <h1 class="mui-title">列入异常目录信息(<span id="count"></span>)</h1>
+</header>
+<div class="headertop"></div>
+<div id="content">
+    <!--<div class="weifa" >
+         <p><span>列入日期：</span><span class="scolor">2015年5月31日</span></p>
+         <p>列入经营异常名录原因：</p>
+         <p class="scolor">通过登记的住所或者经营场所无法联系的</p>
+         <p>作出列入决定机关：</p>
+         <p class="scolor">郑州市市场监督管理局郑东新区分局</p>
+         <hr style="height:1px;border:none;border-top:1px solid #F2F2F2;padding-bottom: 5px;" />
+         <p><span>移出日期：</span><span class="scolor">2017年5月31日</span></p>
+         <p>移出经营异常名录原因：</p>
+         <p class="scolor">列入经营异常名录3年内且依照《经营异常名录管理办法》第九条规定被列入经营异常名录的企业，提出通过登记的住所或者经营场所可以重新取得联系，申请移出</p>
+         <p>作出移出决定机关</p>
+         <p class="scolor">郑州市市场监督管理局郑东新区分局</p>
+    </div>
+
+    <div class="weifa" style="margin-top:10px;">
+         <p><span>列入日期：</span><span class="scolor">2015年5月31日</span></p>
+         <p>列入经营异常名录原因：</p>
+         <p class="scolor">通过登记的住所或者经营场所无法联系的</p>
+         <p>作出列入决定机关：</p>
+         <p class="scolor">郑州市市场监督管理局郑东新区分局</p>
+         <hr style="height:1px;border:none;border-top:1px solid #F2F2F2;padding-bottom: 5px;" />
+         <p><span>移出日期：</span><span class="scolor">2017年5月31日</span></p>
+         <p>移出经营异常名录原因：</p>
+         <p class="scolor">列入经营异常名录3年内且依照《经营异常名录管理办法》第九条规定被列入经营异常名录的企业，提出通过登记的住所或者经营场所可以重新取得联系，申请移出</p>
+         <p>作出移出决定机关</p>
+         <p class="scolor">郑州市市场监督管理局郑东新区分局</p>
+    </div>-->
+</div>
+</body>
 </html>

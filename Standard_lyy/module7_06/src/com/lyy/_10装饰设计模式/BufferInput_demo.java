@@ -1,8 +1,10 @@
 package com.lyy._10装饰设计模式;
+
 //装饰模式。提高原始功能
-public class BufferInput_demo extends InputStream_demo{
+public class BufferInput_demo extends InputStream_demo {
     private InputStream_demo is;
-    public BufferInput_demo(InputStream_demo is){
+
+    public BufferInput_demo(InputStream_demo is) {
         this.is = is;
     }
 

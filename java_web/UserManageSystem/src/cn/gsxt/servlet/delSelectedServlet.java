@@ -21,8 +21,7 @@ public class delSelectedServlet extends HttpServlet {
         //调用service
         userService service = new userServiceImpl();
         service.delSelectedUser(ids);
-        response.sendRedirect(request.getContextPath()+"/userListServlet");
-
+        response.sendRedirect(request.getContextPath() + "/userListServlet");
 
 
     }

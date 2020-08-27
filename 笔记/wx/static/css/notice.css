@@ -1,182 +1,211 @@
-.mui-media-body{
-	margin-top: 6px;
-}
-.content{
-	margin-top: 2px;
-}
-.mui-table-view{
-	font-size: 1.6rem;
-}
-.ui-bar.mui-bar-tab{	
-	background: red;
-}
-#common-boxJ{
-	padding-top: 4.3rem;
-	position: relative;
-	height: 100%;
-}
-#proList{
-	position: fixed;
-	width: 70%;
-	height: 100%;
-	background: #fff;
-	z-index: 99999;
-	right: -70%;
-	top: 4.4rem;
-	border-left: 1px solid #ccc;
-}
-#proList .oAs{
-	overflow: hidden;
-	padding-left: 1.8rem;
-}
-#proList h3{
-	border-bottom: 1px solid #ccc;
-	line-height: 4.4rem;
-	font-size: 1.7rem;
-	padding-left: 2rem;
-	
-}
-#proList a{
-	display:block;
-	float: left;
-	width: 25%;
-	height: 3rem;
-	border: 1px solid #ccc;
-	color: #3e3e3e;
-	margin: 5px 3%;
-	text-align: center;
-	font-size: 1.5rem;
-	line-height: 3rem;
-	border-radius: 3px;
-}
-#proList a.chosedCity{
-	color: #ac812e;
-	border-color: #ac812e;
-}
-.mui-segmented-control{
-	border-radius: 0;
-	border:none;
-	background: #fff;
-}
-#segmentedControl a.mui-control-item{
-	border:none;
-	background: none;
-	color: #3e3e3e;
-	line-height: 4.6rem;
-	border-bottom: 2px solid #fff;
-	
-}
-#segmentedControl a.mui-control-item.active{
-	border-bottom:2px solid #ac812e;
-	color: #ac812e;
-}
-#common-boxJ .sss .searchBoxs{
-	width:100%;
-	height: 40px;
-	border: 1px solid #e0e0e0;
-	border-radius: 3px;
-	background: #fff;
-	overflow: hidden;
-	padding-left: 10px;
-}
-.sss .searchBoxs input{
-	border:none;
-	float: left;
-	width: 77%;
-	height: 100%;
-	line-height: 100%;
-	margin-top: 0.6rem;
-}
-.sss .searchBoxs img{
-	float: left;
-	width: 6%;
-	padding-top: 10px;
-}
-.sss .searchBoxs a{
-	float: left;
-	width: 17%;	
-	height: 100%;
-	/*background: #ac812e;*/
-	background:#ac812e;
-	color: #fff;
-	text-align: center;
-	line-height: 40px;
-}
-.noticeList li{
-	border-bottom: 1px solid #e8e8e8;
-	padding-bottom: 16px;
-	padding-top: 16px;
-	padding-left: 12px;
-	padding-right: 12px;
-	
-}
-.noticeList li a{
-	color: #999999;	
-}
-.noticeList li div{
-	overflow: hidden;
-	margin-top: 1rem;
-}
-.noticeList li div span{
-	float: left;
-}
-.noticeList li div span.rightFloat{
-	float: right;
-}
-.noticeList li p{
-	font-size: 1.5rem;
-	color: #3e3e3e;
-}
-.noticeList li span{
-	display: block;
-	color: #999;
-	font-size: 1.4rem;
-}
-.detailBox{
-	background: #fff;
-	height: 100%;
-	padding-top: 8px;
-	padding-left: 10px;
-	padding-right: 10px;
-}
-.detailBox h3{
-	text-align: center;
-	font-weight: bold;
-	font-size: 1.7rem;
-	line-height: 5rem;
-	color: #3e3e3e;
-	
-}
-.detailBox p{
-	color:#333;
-	font-size: 1.5rem;
-}
-.detailBox p.p2{
-	text-indent: 2em;
-	line-height: 30px;
-	
-}
-.detailBox p.p3{
-	text-align:right;
-	
+.mui-media-body {
+    margin-top: 6px;
 }
 
-.detailBox2{
-	background: #fff;
-	padding-top: 8px;
-	padding-left: 10px;
-	padding-right: 10px;
+.content {
+    margin-top: 2px;
 }
 
-.detailBox2 p.p3{
-	color:#333;
-	font-size: 1.5rem;
-	text-align:right;
-	
+.mui-table-view {
+    font-size: 1.6rem;
 }
-.mui-table-view .mui-media-object.mui-pull-left{
-	width: 2.4rem;
-	height: 2.4rem;
+
+.ui-bar.mui-bar-tab {
+    background: red;
+}
+
+#common-boxJ {
+    padding-top: 4.3rem;
+    position: relative;
+    height: 100%;
+}
+
+#proList {
+    position: fixed;
+    width: 70%;
+    height: 100%;
+    background: #fff;
+    z-index: 99999;
+    right: -70%;
+    top: 4.4rem;
+    border-left: 1px solid #ccc;
+}
+
+#proList .oAs {
+    overflow: hidden;
+    padding-left: 1.8rem;
+}
+
+#proList h3 {
+    border-bottom: 1px solid #ccc;
+    line-height: 4.4rem;
+    font-size: 1.7rem;
+    padding-left: 2rem;
+
+}
+
+#proList a {
+    display: block;
+    float: left;
+    width: 25%;
+    height: 3rem;
+    border: 1px solid #ccc;
+    color: #3e3e3e;
+    margin: 5px 3%;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 3rem;
+    border-radius: 3px;
+}
+
+#proList a.chosedCity {
+    color: #ac812e;
+    border-color: #ac812e;
+}
+
+.mui-segmented-control {
+    border-radius: 0;
+    border: none;
+    background: #fff;
+}
+
+#segmentedControl a.mui-control-item {
+    border: none;
+    background: none;
+    color: #3e3e3e;
+    line-height: 4.6rem;
+    border-bottom: 2px solid #fff;
+
+}
+
+#segmentedControl a.mui-control-item.active {
+    border-bottom: 2px solid #ac812e;
+    color: #ac812e;
+}
+
+#common-boxJ .sss .searchBoxs {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+    background: #fff;
+    overflow: hidden;
+    padding-left: 10px;
+}
+
+.sss .searchBoxs input {
+    border: none;
+    float: left;
+    width: 77%;
+    height: 100%;
+    line-height: 100%;
+    margin-top: 0.6rem;
+}
+
+.sss .searchBoxs img {
+    float: left;
+    width: 6%;
+    padding-top: 10px;
+}
+
+.sss .searchBoxs a {
+    float: left;
+    width: 17%;
+    height: 100%;
+    /*background: #ac812e;*/
+    background: #ac812e;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+}
+
+.noticeList li {
+    border-bottom: 1px solid #e8e8e8;
+    padding-bottom: 16px;
+    padding-top: 16px;
+    padding-left: 12px;
+    padding-right: 12px;
+
+}
+
+.noticeList li a {
+    color: #999999;
+}
+
+.noticeList li div {
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.noticeList li div span {
+    float: left;
+}
+
+.noticeList li div span.rightFloat {
+    float: right;
+}
+
+.noticeList li p {
+    font-size: 1.5rem;
+    color: #3e3e3e;
+}
+
+.noticeList li span {
+    display: block;
+    color: #999;
+    font-size: 1.4rem;
+}
+
+.detailBox {
+    background: #fff;
+    height: 100%;
+    padding-top: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.detailBox h3 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.7rem;
+    line-height: 5rem;
+    color: #3e3e3e;
+
+}
+
+.detailBox p {
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.detailBox p.p2 {
+    text-indent: 2em;
+    line-height: 30px;
+
+}
+
+.detailBox p.p3 {
+    text-align: right;
+
+}
+
+.detailBox2 {
+    background: #fff;
+    padding-top: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.detailBox2 p.p3 {
+    color: #333;
+    font-size: 1.5rem;
+    text-align: right;
+
+}
+
+.mui-table-view .mui-media-object.mui-pull-left {
+    width: 2.4rem;
+    height: 2.4rem;
 }
 
 .weui-loadmore {
@@ -188,26 +217,29 @@
 }
 
 .weui-loadmore__tips {
-  display: inline-block;
-  vertical-align: middle;
+    display: inline-block;
+    vertical-align: middle;
 }
+
 .weui-loadmore_line .weui-loadmore__tips {
-  position: relative;
-  top: -0.9em;
-  padding: 0 .55em;
-  color: #999999;
+    position: relative;
+    top: -0.9em;
+    padding: 0 .55em;
+    color: #999999;
 }
+
 .weui-loadmore_dot .weui-loadmore__tips {
-  padding: 0 .16em;
+    padding: 0 .16em;
 }
+
 .weui-loadmore_dot .weui-loadmore__tips:before {
-  content: " ";
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background-color: #E5E5E5;
-  display: inline-block;
-  position: relative;
-  vertical-align: 0;
-  top: -0.16em;
+    content: " ";
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #E5E5E5;
+    display: inline-block;
+    position: relative;
+    vertical-align: 0;
+    top: -0.16em;
 }

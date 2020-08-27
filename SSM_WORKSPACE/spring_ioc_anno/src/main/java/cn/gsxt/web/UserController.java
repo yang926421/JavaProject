@@ -11,7 +11,7 @@ public class UserController {
     public static void main(String[] args) {
 //        ApplicationContext app = new ClassPathXmlApplicationContext("applicationContext.xml");
         ApplicationContext app = new AnnotationConfigApplicationContext(SpringConfiguration.class);
-        UserService service =app.getBean(UserService.class);
+        UserService service = app.getBean(UserService.class);
         service.save();
     }
 }

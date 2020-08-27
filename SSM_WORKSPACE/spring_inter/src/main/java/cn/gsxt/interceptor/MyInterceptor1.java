@@ -12,20 +12,20 @@ public class MyInterceptor1 implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         System.out.println("之前执行");
         String param = request.getParameter("param");
-        if("yes".equals(param)){
+        if ("yes".equals(param)) {
             return true;
-        }else{
+        } else {
             request.getRequestDispatcher("/jsp/error.jsp").forward(request, response);
             return false;
         }
-      //代表之后的要不要放行,true放行,是否允许访问目标资源
+        //代表之后的要不要放行,true放行,是否允许访问目标资源
     }
 
     @Override
     //目标方法执行之后,视图对象返回之前执行
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         System.out.println("之后执行");
-        modelAndView.addObject("name","lyyhht");
+        modelAndView.addObject("name", "lyyhht");
     }
 
     @Override

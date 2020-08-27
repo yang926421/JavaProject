@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Component("aop")
 public class aop {
-    public void run(){
+    public void run() {
         System.out.println("在跑啊");
     }
 }

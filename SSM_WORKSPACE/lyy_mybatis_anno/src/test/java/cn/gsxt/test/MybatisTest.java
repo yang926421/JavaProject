@@ -16,9 +16,10 @@ import java.util.Date;
 import java.util.List;
 
 public class MybatisTest {
-    private  UserMapper mapper;
+    private UserMapper mapper;
+
     @Before
-    public void before() throws Exception{
+    public void before() throws Exception {
         InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
         SqlSession sqlSession = sqlSessionFactory.openSession(true);
@@ -26,7 +27,7 @@ public class MybatisTest {
     }
 
     @Test
-    public void test1(){
+    public void test1() {
         User user = new User();
         user.setUsername("lyy");
         user.setPassword("123");
@@ -36,7 +37,7 @@ public class MybatisTest {
 
 
     @Test
-    public void test2(){
+    public void test2() {
         List<User> userList = mapper.findAll();
         for (User user : userList) {
             System.out.println(user);
@@ -44,13 +45,13 @@ public class MybatisTest {
     }
 
     @Test
-    public void test3(){
+    public void test3() {
         User user = mapper.findById(1);
         System.out.println(user);
     }
 
     @Test
-    public void test4(){
+    public void test4() {
         User user = new User();
         user.setId(3);
         user.setUsername("zhangsan");
@@ -59,13 +60,13 @@ public class MybatisTest {
     }
 
     @Test
-    public void test5(){
+    public void test5() {
         mapper.delete(4);
     }
 
     @Test
     //一对多的查询
-    public void test(){
+    public void test() {
         List<User> userAndOrder = mapper.findUserAndOrder();
         for (User user : userAndOrder) {
             System.out.println(user);
@@ -75,7 +76,7 @@ public class MybatisTest {
 
     @Test
     //一对多的查询
-    public void test6(){
+    public void test6() {
         List<User> userAndRole = mapper.findUserAndRole();
         for (User user : userAndRole) {
             System.out.println(user);

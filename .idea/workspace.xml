@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f6200988-baff-4ce6-8a46-4e5f08a75f5c" name="Default Changelist" comment="" />
+    <list default="true" id="7098e15d-0891-467e-9992-8d356d9e2829" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,28 +10,53 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1g7D9JQZBcDWRlmz3KbbNUv9BKi" />
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$PROJECT_DIR$/../../software/maven/apache-maven-3.5.2-bin/apache-maven-3.5.2" />
+        <option name="userSettingsFile" value="D:\lyy\software\maven\apache-maven-3.5.2-bin\apache-maven-3.5.2\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1gfL3C15VdRJF0zfkXpzI3WFJm7" />
   <component name="ProjectViewState">
+    <option name="flattenPackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
+    <option name="showVisibilityIcons" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/SSM_WORKSPACE" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/spring-boot/springboot-01" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Springboot02Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="project1" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.gsxt.springboot02.Springboot02Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f6200988-baff-4ce6-8a46-4e5f08a75f5c" name="Default Changelist" comment="" />
-      <created>1597456584810</created>
+      <changelist id="7098e15d-0891-467e-9992-8d356d9e2829" name="Default Changelist" comment="" />
+      <created>1598500498681</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1597456584810</updated>
-      <workItem from="1597456587031" duration="14000" />
+      <updated>1598500498681</updated>
+      <workItem from="1598500517326" duration="1150000" />
     </task>
     <servers />
   </component>
@@ -39,9 +64,9 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1597456598553">
+    <state x="623" y="118" key="FileChooserDialogImpl" timestamp="1598510023094">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1597456598553" />
+    <state x="623" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1598510023094" />
   </component>
 </project>

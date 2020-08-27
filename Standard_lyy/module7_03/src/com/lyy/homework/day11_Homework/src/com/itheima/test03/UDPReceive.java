@@ -32,7 +32,7 @@ public class UDPReceive {
         System.out.println(port);
 
         // 将接收到的数据转出字符串输出
-        String message = new String(buf,0,length);
+        String message = new String(buf, 0, length);
         System.out.println(message);
         System.out.println("come here");
         // 关闭资源：释放端口号

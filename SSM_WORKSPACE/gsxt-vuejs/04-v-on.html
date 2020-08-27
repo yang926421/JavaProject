@@ -9,22 +9,22 @@
 <div id="app">
     <button v-on:click="num++">增加</button>
     <button @click="decrement">减少</button>
-<h2>
-num={{num}}
-</h2></div>
+    <h2>
+        num={{num}}
+    </h2></div>
 <script type="text/javascript">
-   var app = new Vue({
-       el:"#app",
-       data:{
-           num:1
-       },
-       methods:{
-           //递减函数
-           decrement(){
-               this.num--;
-           }
-       }
-   });
+    var app = new Vue({
+        el: "#app",
+        data: {
+            num: 1
+        },
+        methods: {
+            //递减函数
+            decrement() {
+                this.num--;
+            }
+        }
+    });
 </script>
 </body>
 </html>

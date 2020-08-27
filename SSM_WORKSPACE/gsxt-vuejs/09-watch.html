@@ -6,36 +6,37 @@
     <script src="js/vue-2.6.10.js"></script>
 </head>
 <body>
-    <div id="app">
-        <input type="text" v-model="message">
-        <br>
-        <input type="text" v-model="person.age"><button @click="person.age++"></button>
-        <h2>
-            姓名为:{{person.name}};年龄为:{{person.age}}
-        </h2>
-    </div>
-    <script type="text/javascript">
-        var app = new Vue({
-            el:"#app",
-            data:{
-                message:"公示系统",
-                person:{"name":"lyy","age":20}
+<div id="app">
+    <input type="text" v-model="message">
+    <br>
+    <input type="text" v-model="person.age">
+    <button @click="person.age++"></button>
+    <h2>
+        姓名为:{{person.name}};年龄为:{{person.age}}
+    </h2>
+</div>
+<script type="text/javascript">
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: "公示系统",
+            person: {"name": "lyy", "age": 20}
+        },
+        watch: {
+            message(newValue, oldValue) {
+                console.log("新值:" + newValue, "旧值:" + oldValue);
             },
-            watch:{
-                message(newValue, oldValue){
-                    console.log("新值:"+newValue,"旧值:"+oldValue);
-                },
-                //对象的监控
-                person: {//
-                    //开启深度监控，监控对象中属性值变化
-                    deep:true,
-                    //可以获取到最新的对象
-                    handler(obj){
-                        console.log("name="+obj.name+"; age="+obj.age);
-                    }
-                     }
+            //对象的监控
+            person: {//
+                //开启深度监控，监控对象中属性值变化
+                deep: true,
+                //可以获取到最新的对象
+                handler(obj) {
+                    console.log("name=" + obj.name + "; age=" + obj.age);
+                }
             }
-        });
-    </script>
+        }
+    });
+</script>
 </body>
 </html>

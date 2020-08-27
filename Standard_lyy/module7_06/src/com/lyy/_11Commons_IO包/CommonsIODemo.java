@@ -9,18 +9,18 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 /**
- Commons-io包
- 一个类库 别人将底层的io操作封装
-    提高IO开发效率
- | 包                                  | 功能描述                                     |
- | ----------------------------------- | :------------------------------------------- |
- | org.apache.commons.io               | 有关Streams、Readers、Writers、Files的工具类 |
- | org.apache.commons.io.input         | 输入流相关的实现类，包含Reader和InputStream  |
- | org.apache.commons.io.output        | 输出流相关的实现类，包含Writer和OutputStream |
- | org.apache.commons.io.serialization | 序列化相关的类
-
-
- FileUtils 和 IOUtils可以方便的复制文件和文件夹
+ * Commons-io包
+ * 一个类库 别人将底层的io操作封装
+ * 提高IO开发效率
+ * | 包                                  | 功能描述                                     |
+ * | ----------------------------------- | :------------------------------------------- |
+ * | org.apache.commons.io               | 有关Streams、Readers、Writers、Files的工具类 |
+ * | org.apache.commons.io.input         | 输入流相关的实现类，包含Reader和InputStream  |
+ * | org.apache.commons.io.output        | 输出流相关的实现类，包含Writer和OutputStream |
+ * | org.apache.commons.io.serialization | 序列化相关的类
+ * <p>
+ * <p>
+ * FileUtils 和 IOUtils可以方便的复制文件和文件夹
  */
 public class CommonsIODemo {
     public static void main(String[] args) throws Exception {

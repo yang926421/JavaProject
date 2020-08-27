@@ -10,7 +10,7 @@ import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class Demo01Druid {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         Properties pros = new Properties();
         InputStream is = Demo01Druid.class.getClassLoader().getResourceAsStream("druid.properties");
         //把配置文件信息加载到properties集合对象中

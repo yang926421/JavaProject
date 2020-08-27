@@ -5,7 +5,7 @@ public class Animal {
     String color;
     double price;
 
-    public void eat(){
+    public void eat() {
         System.out.println(this.name + "在吃饭");
     }
 }

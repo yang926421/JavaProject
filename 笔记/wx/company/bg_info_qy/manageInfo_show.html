@@ -1,162 +1,161 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>经营补充信息</title>
-		<link rel="stylesheet" href="../../static/css/common.css">
-		<link rel="stylesheet" href="../../static/css/mui.min.css">
-		<link rel="stylesheet" href="../../static/css/add-guarantee-inf.css">
-		<link rel="stylesheet" type="text/css" href="../../static/css/mui.picker.min.css" /><!--填写时间-->
-	
-		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
-		<script type="text/javascript" src="../../static/js/common.js"></script>
-		<script type="text/javascript" src="../../static/js/mui.picker.min.js"></script> <!--选择日期-->
-		<script>
-			var ancheId=GetRequest("ANCHEID");
-			$(function(){
-				$("#TOKEN").val(TOKEN);
-		  		$("#SESSIONID").val(SESSIONID);
-		  		$("#ANCHEID").val(ancheId);
-		  		var GOODSINSTOCK= sessionStorage.getItem("GOODSINSTOCK");
-	  			if(GOODSINSTOCK==1){
-	  				$("#goodsDiv").show();
-	  				$("#danweiDiv").show();
-	  			}
-		  		
-		  		getData();
-			})
-			
-			function getData(){
-				$.ajax({
-					type:"GET",
-					url:httpUrl+"/h/an/cu/entreginfo/get.json",
-					async:true,
-					data:{"ANCHEID":ancheId,"SESSIONID":SESSIONID,"TOKEN":TOKEN},
-					success:function(res){
-						$("input[name='SUSTAINEDLOSSES'][value='"+res.data.ancUentreginfo.SUSTAINEDLOSSES+"']").attr("checked","checked");
-						if(res.data.ancUentreginfo.SUSTAINEDLOSSES==1){
-							$("#SUSTAINEDLOSSES").html("是");
-						}else if(res.data.ancUentreginfo.SUSTAINEDLOSSES==2){
-							$("#SUSTAINEDLOSSES").html("否");
-						}else{
-							$("#SUSTAINEDLOSSES").html("");
-						}
-						$("#GOODSINSTOCK").html(res.data.ancUentreginfo.GOODSINSTOCK);
-						$("#CASHLIABILITY").html(res.data.ancUentreginfo.CASHLIABILITY);
-						$("#CIRCULATINGASSETS").html(res.data.ancUentreginfo.CIRCULATINGASSETS);
-						$("#NETCASHFLOW").html(res.data.ancUentreginfo.NETCASHFLOW);
-						$("#OPERATINGPROFIT").html(res.data.ancUentreginfo.OPERATINGPROFIT);
-						$("#OWNERSEQUITY").html(res.data.ancUentreginfo.OWNERSEQUITY);
-					}
-				});
-			}
-		</script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" ></a>
-		    <h1 class="mui-title"><span id="saveOrUpdate"></span>经营补充信息</h1>
-		</header>
-		
-		<!--股东信息-->
-		<form id="addForm">
-		<div id="common-box">
-			<div class="web-box">
-						<ul>
-							<li style="color: red;">
-									*以下信息为海关年报信息预览，不进行公示
-							</li>
-						</ul>
-				</div>
-			<div class="web-box">
-					<ul>
-						<li>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>经营补充信息</title>
+    <link rel="stylesheet" href="../../static/css/common.css">
+    <link rel="stylesheet" href="../../static/css/mui.min.css">
+    <link rel="stylesheet" href="../../static/css/add-guarantee-inf.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/mui.picker.min.css"/><!--填写时间-->
+
+    <script type="text/javascript" src="../../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../../static/js/common.js"></script>
+    <script type="text/javascript" src="../../static/js/mui.picker.min.js"></script> <!--选择日期-->
+    <script>
+        var ancheId = GetRequest("ANCHEID");
+        $(function () {
+            $("#TOKEN").val(TOKEN);
+            $("#SESSIONID").val(SESSIONID);
+            $("#ANCHEID").val(ancheId);
+            var GOODSINSTOCK = sessionStorage.getItem("GOODSINSTOCK");
+            if (GOODSINSTOCK == 1) {
+                $("#goodsDiv").show();
+                $("#danweiDiv").show();
+            }
+
+            getData();
+        })
+
+        function getData() {
+            $.ajax({
+                type: "GET",
+                url: httpUrl + "/h/an/cu/entreginfo/get.json",
+                async: true,
+                data: {"ANCHEID": ancheId, "SESSIONID": SESSIONID, "TOKEN": TOKEN},
+                success: function (res) {
+                    $("input[name='SUSTAINEDLOSSES'][value='" + res.data.ancUentreginfo.SUSTAINEDLOSSES + "']").attr("checked", "checked");
+                    if (res.data.ancUentreginfo.SUSTAINEDLOSSES == 1) {
+                        $("#SUSTAINEDLOSSES").html("是");
+                    } else if (res.data.ancUentreginfo.SUSTAINEDLOSSES == 2) {
+                        $("#SUSTAINEDLOSSES").html("否");
+                    } else {
+                        $("#SUSTAINEDLOSSES").html("");
+                    }
+                    $("#GOODSINSTOCK").html(res.data.ancUentreginfo.GOODSINSTOCK);
+                    $("#CASHLIABILITY").html(res.data.ancUentreginfo.CASHLIABILITY);
+                    $("#CIRCULATINGASSETS").html(res.data.ancUentreginfo.CIRCULATINGASSETS);
+                    $("#NETCASHFLOW").html(res.data.ancUentreginfo.NETCASHFLOW);
+                    $("#OPERATINGPROFIT").html(res.data.ancUentreginfo.OPERATINGPROFIT);
+                    $("#OWNERSEQUITY").html(res.data.ancUentreginfo.OWNERSEQUITY);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left"></a>
+    <h1 class="mui-title"><span id="saveOrUpdate"></span>经营补充信息</h1>
+</header>
+
+<!--股东信息-->
+<form id="addForm">
+    <div id="common-box">
+        <div class="web-box">
+            <ul>
+                <li style="color: red;">
+                    *以下信息为海关年报信息预览，不进行公示
+                </li>
+            </ul>
+        </div>
+        <div class="web-box">
+            <ul>
+                <li>
 							<span id="name" style="width: 50%;">
 								最近三年是否连续亏损
 							</span>
-							<span id="SUSTAINEDLOSSES" class="asset-con" style="text-align: center;width: 40%;"></span>
-						</li>
-					</ul>
-			</div>
-			<div id="goodsDiv" style="display: none;">
-			<div class="web-box">
-					<ul>
-						<li>
+                    <span id="SUSTAINEDLOSSES" class="asset-con" style="text-align: center;width: 40%;"></span>
+                </li>
+            </ul>
+        </div>
+        <div id="goodsDiv" style="display: none;">
+            <div class="web-box">
+                <ul>
+                    <li>
 							<span style="width: 50%;">
 								存货
 							</span>
-							<span id="GOODSINSTOCK" class="asset-con" style="text-align: center;width: 40%;"></span>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<span  style="width: 50%;">
+                        <span id="GOODSINSTOCK" class="asset-con" style="text-align: center;width: 40%;"></span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="web-box">
+                <ul>
+                    <li>
+							<span style="width: 50%;">
 								流动负债
 							</span>
-							<span id="CASHLIABILITY" class="asset-con" style="text-align: center;width: 40%;"></span>
-						</li>
-					</ul>
-			</div>
-			
-			
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<span  style="width: 50%;">
+                        <span id="CASHLIABILITY" class="asset-con" style="text-align: center;width: 40%;"></span>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="web-box">
+                <ul>
+                    <li>
+							<span style="width: 50%;">
 								流动资产
 							</span>
-							<span id="CIRCULATINGASSETS" class="asset-con" style="text-align: center;width: 40%;"></span>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<span  style="width: 50%;">
+                        <span id="CIRCULATINGASSETS" class="asset-con" style="text-align: center;width: 40%;"></span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="web-box">
+                <ul>
+                    <li>
+							<span style="width: 50%;">
 								经营现金净流量
 							</span>
-							<span id="NETCASHFLOW" class="asset-con" style="text-align: center;width: 40%;"></span>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<span  style="width: 50%;">
+                        <span id="NETCASHFLOW" class="asset-con" style="text-align: center;width: 40%;"></span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="web-box">
+                <ul>
+                    <li>
+							<span style="width: 50%;">
 								营业利润
 							</span>
-							<span id="OPERATINGPROFIT" class="asset-con" style="text-align: center;width: 40%;"></span>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<span  style="width: 50%;">
+                        <span id="OPERATINGPROFIT" class="asset-con" style="text-align: center;width: 40%;"></span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="web-box">
+                <ul>
+                    <li>
+							<span style="width: 50%;">
 								年初所有者权益
 							</span>
-							<span id="OWNERSEQUITY" class="asset-con" style="text-align: center;width: 40%;"></span>
-						</li>
-					</ul>
-			</div>
-			</div>
-		</div>
-		</form>
-			
-		<div class="tip" id="danweiDiv" style="display: none;">
+                        <span id="OWNERSEQUITY" class="asset-con" style="text-align: center;width: 40%;"></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="tip" id="danweiDiv" style="display: none;">
 				<span style="font-size:16px;">
-					*说明：以上单位为<img src="../../static/img/million.gif"  style="height: 25px;vertical-align:middle;"/>
+					*说明：以上单位为<img src="../../static/img/million.gif" style="height: 25px;vertical-align:middle;"/>
 				</span>
-			</div>
-	</body>
+</div>
+</body>
 </html>

@@ -1,191 +1,192 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>国家企业信用信息公示系统</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/dongcandiya-inf.css">
-			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-			<script type="text/javascript" src="../static/js/common.js" ></script>
-			<script>
-				var MORREG_ID=GetRequest("MORREG_ID");
-				//MORREG_ID="141000013222337025";
-				$(function(){
-					getData();
-				})
-				function getData(){
-					$.ajax({
-						type:"get",  
-						url:httpUrl+"/p/mort/by/id/get.json",
-						data:{"MORREG_ID":MORREG_ID},
-						dataType:"json",
-						async:true,
-						success:function(res){
-							if(res.success==true){
-								createData(res.data[0]);
-							}
-						}
-					});
-				}
-				
-				function createData(obj){
-					$("#MORREGCNO").html(obj.MORREGCNO);
-					$("#REGORG_CN").html(obj.REGORG_CN);
-					$("#REGIDATE").html(getFormatDateByLong( obj.REGIDATE,"yyyy年MM月dd日"));
-					//抵押人信息MORTPERSONINFO
-					var MORTPERSONINFO="<h4>抵押权人概况信息</h4>";
-					for(var i=0;i<obj.MORTPERSONINFO.length;i++){
-						MORTPERSONINFO+="<ul class='web' >"+
-									"<li><span>抵押权人名称：</span> <span id=''>"+obj.MORTPERSONINFO[i].MORE+"</span></li>"+
-									"<li><span>抵押权人证照/证件类型：</span> <span id=''>"+obj.MORTPERSONINFO[i].BLICTYPE_CN+"</span></li>"+
-									"<li><span>证照/证件号码：</span> <span id=''>"+obj.MORTPERSONINFO[i].BLICNO+"</span></li>"+
-									"<li><span>住所地：</span> <span id=''>"+obj.MORTPERSONINFO[i].MOR_LOC+"</span></li>"+
-								"</ul> ";
-					}
-					$("#MORTPERSONINFO").html(MORTPERSONINFO);
-					
-					//抵押物信息MORTGUARANTEEINFO
-					var MORTGUARANTEEINFO="<h4>抵押物概况信息</h4>";
-					for(var j=0;j<obj.MORTGUARANTEEINFO.length;j++){
-						MORTGUARANTEEINFO+="<ul class='web'>"+
-									"<li><span>名称：</span> <span id='GUANAME'>"+obj.MORTGUARANTEEINFO[j].GUANAME+"</span></li>"+
-									"<li><span>所有权或使用权归属：</span> <span id='OWN'>"+obj.MORTGUARANTEEINFO[j].OWN+"</span></li>"+
-									"<li><span>数量、质量、状况、所在地等情况：</span> <span id='GUADES'>"+obj.MORTGUARANTEEINFO[j].GUADES+"</span></li>"+
-									"<li><span>备注：</span> <span id='GUA_REMARK'>"+obj.MORTGUARANTEEINFO[j].REMARK+"</span></li>"+
-								"</ul> ";
-					}
-					$("#MORTGUARANTEEINFO").html(MORTGUARANTEEINFO);
-					
-									
-					//被担保债权信息MORTPRINCIPALCLAIM
-					var MORTPRINCIPALCLAIM="<h4>被担保债权概况信息</h4>";
-					for(var m=0;m<obj.MORTPRINCIPALCLAIM.length;m++){
-						MORTPRINCIPALCLAIM+="<ul class='web' >"+
-							"<li><span>种类：</span> <span id='PRICLASECKIND_CN'>"+obj.MORTPRINCIPALCLAIM[m].PRICLASECKIND_CN+"</span></li>"+
-							"<li><span>数额：</span> <span id='PRICLASECAM'>"+obj.MORTPRINCIPALCLAIM[m].PRICLASECAM+obj.MORTPRINCIPALCLAIM[m].REGCAPCUR_CN+"</span></li>"+
-							"<li><span>担保的范围：</span> <span id='WARCOV'>"+obj.MORTPRINCIPALCLAIM[m].WARCOV+"</span></li>"+
-							"<li><span>债务人履行债务的期限：</span> <span id='PEFPERFORM'>"+getFormatDateByLong(obj.MORTPRINCIPALCLAIM[m].PEFPERFORM,"yyyy年MM月dd日") +"至"+getFormatDateByLong(obj.MORTPRINCIPALCLAIM[m].PEFPERTO
-								
-								,"yyyy年MM月dd日")+"</span></li>"+
-							"<li><span>备注：</span> <span id='REMARK'>"+obj.MORTPRINCIPALCLAIM[m].REMARK+"</span></li>"+
-						"</ul> ";
-					}
-					$("#MORTPRINCIPALCLAIM").html(MORTPRINCIPALCLAIM);
-					if(obj.TYPE==1){  //1是有效显示变更信息
-						//变更信息MORTALTITEMINFO
-						var MORTALTITEMINFO="<h4>变更信息</h4>";
-						for(var n=0;n<obj.MORTALTITEMINFO.length;n++){
-							MORTALTITEMINFO+="<ul class='web' style='border-bottom:groove 1px;'>"+
-								"<li><span>变更日期：</span> <span id='ALTDATE'>"+getFormatDateByLong(obj.MORTALTITEMINFO[n].ALTDATE,"yyyy年MM月dd日") +"</span></li>"+
-								"<li><span>变更内容：</span> <span id='ALT'>"+obj.MORTALTITEMINFO[n].ALT+"</span></li>"+
-							"</ul>";
-						}
-						$("#MORTALTITEMINFO").html(MORTALTITEMINFO);
-					}else{   //显示注销信息
-						$("#zhuxiao").show();
-						$("#MORCANREA_CN").html(obj.MORCANREA_CN);
-						$("#CANDATE").html(getFormatDateByLong(obj.CANDATE,"yyyy年MM月dd日") );
-					}
-					
-					
-				}
-			</script>
-		
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="dongcandiya.html" ></a>
-		    <h1 class="mui-title">动产抵押详细信息</h1>
-		</header>
-		
-		<!--修改信息-->
-		<div id="common-box">
-			<div class="web-box">
-			<!--	<a href="add-equity-record.html" class="">-->
-					<div class="web-name">
-						<h4>动产抵押登记信息</h4>
-						<ul class="web">
-							<li><span>登记编号：</span> <span id="MORREGCNO"></span></li>
-							<li><span>登记机关：</span> <span id="REGORG_CN"></span></li>
-							<li><span>登记日期：</span> <span id="REGIDATE"></span></li>
-						</ul>
-					</div>
-				<!--</a>-->
-			</div>
-			
-			<div class="web-box">
-					<div class="web-name" id="MORTPERSONINFO">
-						<!--<h4>抵押权人概况信息</h4>
-						<ul class="web" style="border-bottom:groove 1px;">
-							<li><span>抵押权人名称：</span> <span id="MORTGAGOR"></span></li>
-							<li><span>抵押权人证照/证件类型：</span> <span id="MORT_DOCTYPE"></span></li>
-							<li><span>证照/证件号码：</span> <span id="MORT_DOCID"></span></li>
-							<li><span>住所地：</span> <span id="MORT_LOC"></span></li>
-							<li><span>实缴出资时间：</span> <span ></span></li>
-							<li><span>实缴出资方式：</span> <span ></span></li>
-						</ul>
-						<ul class="web" style="border-bottom:groove 1px;">
-							<li><span>抵押权人名称：</span> <span id="MORTGAGOR"></span></li>
-							<li><span>抵押权人证照/证件类型：</span> <span id="MORT_DOCTYPE"></span></li>
-							<li><span>证照/证件号码：</span> <span id="MORT_DOCID"></span></li>
-							<li><span>住所地：</span> <span id="MORT_LOC"></span></li>
-							<li><span>实缴出资时间：</span> <span ></span></li>
-							<li><span>实缴出资方式：</span> <span ></span></li>
-						</ul>-->
-					</div>
-			</div>
-			
-			<div class="web-box">
-					<div class="web-name" id="MORTPRINCIPALCLAIM">
-						<!--<h4>被担保债权概况信息</h4>
-						<ul class="web">
-							<li><span>种类：</span> <span id="PRICLASECKIND_CN"></span></li>
-							<li><span>数额：</span> <span id="PRICLASECAM"></span></li>
-							<li><span>担保的范围：</span> <span id="WARCOV"></span></li>
-							<li><span>债务人履行债务的期限：</span> <span id="PEFPERFORM"></span></li>
-							<li><span>实缴出资时间：</span> <span ></span></li>
-							<li><span>备注：</span> <span id="REMARK"></span></li>
-						</ul>-->
-					</div>
-			</div>
-			
-			<div class="web-box">
-					<div class="web-name" id="MORTGUARANTEEINFO">
-						<!--<h4>抵押物概况信息</h4>
-						<ul class="web">
-							<li><span>名称：</span> <span id="GUANAME"></span></li>
-							<li><span>所有权或使用权归属：</span> <span id="OWN"></span></li>
-							<li><span>数量、质量、状况、所在地等情况：</span> <span id="GUADES"></span></li>
-							<li><span>备注：</span> <span id="GUA_REMARK"></span></li>
-						</ul>-->
-					</div>
-			</div>
-			
-			<div class="web-box"  >
-					<div class="web-name" id="MORTALTITEMINFO">
-						<!--<h4>变更信息</h4>
-						<ul class="web">
-							<li><span>变更日期：</span> <span id="GUANAME"></span></li>
-							<li><span>变更内容：</span> <span id="OWN"></span></li>
-						</ul>-->
-					</div>
-			</div>
-			
-			<div class="web-box" id="zhuxiao" style="display: none;">
-					<div class="web-name">
-						<h4>注销信息</h4>
-						<ul class="web">
-							<li><span>注销日期：</span> <span id="CANDATE"></span></li>
-							<li><span>注销原因：</span> <span id="MORCANREA_CN"></span></li>
-						</ul>
-					</div>
-			</div>
-		</div>
-		
-		
-	</body>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>国家企业信用信息公示系统</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/dongcandiya-inf.css">
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script>
+        var MORREG_ID = GetRequest("MORREG_ID");
+        //MORREG_ID="141000013222337025";
+        $(function () {
+            getData();
+        })
+
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/p/mort/by/id/get.json",
+                data: {"MORREG_ID": MORREG_ID},
+                dataType: "json",
+                async: true,
+                success: function (res) {
+                    if (res.success == true) {
+                        createData(res.data[0]);
+                    }
+                }
+            });
+        }
+
+        function createData(obj) {
+            $("#MORREGCNO").html(obj.MORREGCNO);
+            $("#REGORG_CN").html(obj.REGORG_CN);
+            $("#REGIDATE").html(getFormatDateByLong(obj.REGIDATE, "yyyy年MM月dd日"));
+            //抵押人信息MORTPERSONINFO
+            var MORTPERSONINFO = "<h4>抵押权人概况信息</h4>";
+            for (var i = 0; i < obj.MORTPERSONINFO.length; i++) {
+                MORTPERSONINFO += "<ul class='web' >" +
+                    "<li><span>抵押权人名称：</span> <span id=''>" + obj.MORTPERSONINFO[i].MORE + "</span></li>" +
+                    "<li><span>抵押权人证照/证件类型：</span> <span id=''>" + obj.MORTPERSONINFO[i].BLICTYPE_CN + "</span></li>" +
+                    "<li><span>证照/证件号码：</span> <span id=''>" + obj.MORTPERSONINFO[i].BLICNO + "</span></li>" +
+                    "<li><span>住所地：</span> <span id=''>" + obj.MORTPERSONINFO[i].MOR_LOC + "</span></li>" +
+                    "</ul> ";
+            }
+            $("#MORTPERSONINFO").html(MORTPERSONINFO);
+
+            //抵押物信息MORTGUARANTEEINFO
+            var MORTGUARANTEEINFO = "<h4>抵押物概况信息</h4>";
+            for (var j = 0; j < obj.MORTGUARANTEEINFO.length; j++) {
+                MORTGUARANTEEINFO += "<ul class='web'>" +
+                    "<li><span>名称：</span> <span id='GUANAME'>" + obj.MORTGUARANTEEINFO[j].GUANAME + "</span></li>" +
+                    "<li><span>所有权或使用权归属：</span> <span id='OWN'>" + obj.MORTGUARANTEEINFO[j].OWN + "</span></li>" +
+                    "<li><span>数量、质量、状况、所在地等情况：</span> <span id='GUADES'>" + obj.MORTGUARANTEEINFO[j].GUADES + "</span></li>" +
+                    "<li><span>备注：</span> <span id='GUA_REMARK'>" + obj.MORTGUARANTEEINFO[j].REMARK + "</span></li>" +
+                    "</ul> ";
+            }
+            $("#MORTGUARANTEEINFO").html(MORTGUARANTEEINFO);
+
+
+            //被担保债权信息MORTPRINCIPALCLAIM
+            var MORTPRINCIPALCLAIM = "<h4>被担保债权概况信息</h4>";
+            for (var m = 0; m < obj.MORTPRINCIPALCLAIM.length; m++) {
+                MORTPRINCIPALCLAIM += "<ul class='web' >" +
+                    "<li><span>种类：</span> <span id='PRICLASECKIND_CN'>" + obj.MORTPRINCIPALCLAIM[m].PRICLASECKIND_CN + "</span></li>" +
+                    "<li><span>数额：</span> <span id='PRICLASECAM'>" + obj.MORTPRINCIPALCLAIM[m].PRICLASECAM + obj.MORTPRINCIPALCLAIM[m].REGCAPCUR_CN + "</span></li>" +
+                    "<li><span>担保的范围：</span> <span id='WARCOV'>" + obj.MORTPRINCIPALCLAIM[m].WARCOV + "</span></li>" +
+                    "<li><span>债务人履行债务的期限：</span> <span id='PEFPERFORM'>" + getFormatDateByLong(obj.MORTPRINCIPALCLAIM[m].PEFPERFORM, "yyyy年MM月dd日") + "至" + getFormatDateByLong(obj.MORTPRINCIPALCLAIM[m].PEFPERTO
+
+                        , "yyyy年MM月dd日") + "</span></li>" +
+                    "<li><span>备注：</span> <span id='REMARK'>" + obj.MORTPRINCIPALCLAIM[m].REMARK + "</span></li>" +
+                    "</ul> ";
+            }
+            $("#MORTPRINCIPALCLAIM").html(MORTPRINCIPALCLAIM);
+            if (obj.TYPE == 1) {  //1是有效显示变更信息
+                //变更信息MORTALTITEMINFO
+                var MORTALTITEMINFO = "<h4>变更信息</h4>";
+                for (var n = 0; n < obj.MORTALTITEMINFO.length; n++) {
+                    MORTALTITEMINFO += "<ul class='web' style='border-bottom:groove 1px;'>" +
+                        "<li><span>变更日期：</span> <span id='ALTDATE'>" + getFormatDateByLong(obj.MORTALTITEMINFO[n].ALTDATE, "yyyy年MM月dd日") + "</span></li>" +
+                        "<li><span>变更内容：</span> <span id='ALT'>" + obj.MORTALTITEMINFO[n].ALT + "</span></li>" +
+                        "</ul>";
+                }
+                $("#MORTALTITEMINFO").html(MORTALTITEMINFO);
+            } else {   //显示注销信息
+                $("#zhuxiao").show();
+                $("#MORCANREA_CN").html(obj.MORCANREA_CN);
+                $("#CANDATE").html(getFormatDateByLong(obj.CANDATE, "yyyy年MM月dd日"));
+            }
+
+
+        }
+    </script>
+
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="dongcandiya.html"></a>
+    <h1 class="mui-title">动产抵押详细信息</h1>
+</header>
+
+<!--修改信息-->
+<div id="common-box">
+    <div class="web-box">
+        <!--	<a href="add-equity-record.html" class="">-->
+        <div class="web-name">
+            <h4>动产抵押登记信息</h4>
+            <ul class="web">
+                <li><span>登记编号：</span> <span id="MORREGCNO"></span></li>
+                <li><span>登记机关：</span> <span id="REGORG_CN"></span></li>
+                <li><span>登记日期：</span> <span id="REGIDATE"></span></li>
+            </ul>
+        </div>
+        <!--</a>-->
+    </div>
+
+    <div class="web-box">
+        <div class="web-name" id="MORTPERSONINFO">
+            <!--<h4>抵押权人概况信息</h4>
+            <ul class="web" style="border-bottom:groove 1px;">
+                <li><span>抵押权人名称：</span> <span id="MORTGAGOR"></span></li>
+                <li><span>抵押权人证照/证件类型：</span> <span id="MORT_DOCTYPE"></span></li>
+                <li><span>证照/证件号码：</span> <span id="MORT_DOCID"></span></li>
+                <li><span>住所地：</span> <span id="MORT_LOC"></span></li>
+                <li><span>实缴出资时间：</span> <span ></span></li>
+                <li><span>实缴出资方式：</span> <span ></span></li>
+            </ul>
+            <ul class="web" style="border-bottom:groove 1px;">
+                <li><span>抵押权人名称：</span> <span id="MORTGAGOR"></span></li>
+                <li><span>抵押权人证照/证件类型：</span> <span id="MORT_DOCTYPE"></span></li>
+                <li><span>证照/证件号码：</span> <span id="MORT_DOCID"></span></li>
+                <li><span>住所地：</span> <span id="MORT_LOC"></span></li>
+                <li><span>实缴出资时间：</span> <span ></span></li>
+                <li><span>实缴出资方式：</span> <span ></span></li>
+            </ul>-->
+        </div>
+    </div>
+
+    <div class="web-box">
+        <div class="web-name" id="MORTPRINCIPALCLAIM">
+            <!--<h4>被担保债权概况信息</h4>
+            <ul class="web">
+                <li><span>种类：</span> <span id="PRICLASECKIND_CN"></span></li>
+                <li><span>数额：</span> <span id="PRICLASECAM"></span></li>
+                <li><span>担保的范围：</span> <span id="WARCOV"></span></li>
+                <li><span>债务人履行债务的期限：</span> <span id="PEFPERFORM"></span></li>
+                <li><span>实缴出资时间：</span> <span ></span></li>
+                <li><span>备注：</span> <span id="REMARK"></span></li>
+            </ul>-->
+        </div>
+    </div>
+
+    <div class="web-box">
+        <div class="web-name" id="MORTGUARANTEEINFO">
+            <!--<h4>抵押物概况信息</h4>
+            <ul class="web">
+                <li><span>名称：</span> <span id="GUANAME"></span></li>
+                <li><span>所有权或使用权归属：</span> <span id="OWN"></span></li>
+                <li><span>数量、质量、状况、所在地等情况：</span> <span id="GUADES"></span></li>
+                <li><span>备注：</span> <span id="GUA_REMARK"></span></li>
+            </ul>-->
+        </div>
+    </div>
+
+    <div class="web-box">
+        <div class="web-name" id="MORTALTITEMINFO">
+            <!--<h4>变更信息</h4>
+            <ul class="web">
+                <li><span>变更日期：</span> <span id="GUANAME"></span></li>
+                <li><span>变更内容：</span> <span id="OWN"></span></li>
+            </ul>-->
+        </div>
+    </div>
+
+    <div class="web-box" id="zhuxiao" style="display: none;">
+        <div class="web-name">
+            <h4>注销信息</h4>
+            <ul class="web">
+                <li><span>注销日期：</span> <span id="CANDATE"></span></li>
+                <li><span>注销原因：</span> <span id="MORCANREA_CN"></span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+</body>
 </html>

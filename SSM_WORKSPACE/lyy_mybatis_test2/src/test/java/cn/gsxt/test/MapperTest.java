@@ -19,9 +19,9 @@ import java.util.List;
 
 public class MapperTest {
 
-//    private static Logger logger = LogManager.getLogger(MapperTest.class.getName());
+    //    private static Logger logger = LogManager.getLogger(MapperTest.class.getName());
     @Test
-    public void test1() throws Exception{
+    public void test1() throws Exception {
         InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapperConfig1.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -49,7 +49,7 @@ public class MapperTest {
     }
 
     @Test
-    public void test2() throws Exception{
+    public void test2() throws Exception {
         InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapperConfig1.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -57,31 +57,31 @@ public class MapperTest {
 
         //自定义类型转换器查询
         User user = mapper.findById(1);
-        System.out.println("user中类型转换存进去的"+user);
+        System.out.println("user中类型转换存进去的" + user);
         sqlSession.commit();
         sqlSession.close();
     }
 
     @Test
-    public void test3() throws Exception{
+    public void test3() throws Exception {
         InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapperConfig1.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();
         UserMapper1 mapper = sqlSession.getMapper(UserMapper1.class);
         //设置分页的相关参数 当前页+每页显示的条数
-        PageHelper.startPage(1,3);
+        PageHelper.startPage(1, 3);
 
         List<User> userList = mapper.findAll();
         for (User user : userList) {
-            System.out.println("查询的数据"+user);
+            System.out.println("查询的数据" + user);
         }
         //获得与分页相关的参数
         PageInfo<User> userPageInfo = new PageInfo<>(userList);
-        System.out.println("当前页码"+userPageInfo.getPageNum());
+        System.out.println("当前页码" + userPageInfo.getPageNum());
         System.out.println(userPageInfo.getLastPage());
         System.out.println(userPageInfo.getFirstPage());
         System.out.println(userPageInfo.getNextPage());
-        System.out.println("每页显示的条数"+userPageInfo.getPageSize());
+        System.out.println("每页显示的条数" + userPageInfo.getPageSize());
         System.out.println(userPageInfo.getTotal());
         System.out.println(userPageInfo.getPages());
         sqlSession.commit();

@@ -1,14 +1,17 @@
-.choucha{
-	background: #FFFFFF;
-	border-bottom: #EAEAEA 1px solid;
+.choucha {
+    background: #FFFFFF;
+    border-bottom: #EAEAEA 1px solid;
 }
-.choucha-con{
-	margin-left: 4%;
+
+.choucha-con {
+    margin-left: 4%;
 }
-.choucha-con li:first-child{
-	padding-top: 2.0rem;
-	padding-bottom: 1.0rem;
+
+.choucha-con li:first-child {
+    padding-top: 2.0rem;
+    padding-bottom: 1.0rem;
 }
-.choucha-con li:last-child{
-	padding-bottom: 2.0rem;
+
+.choucha-con li:last-child {
+    padding-bottom: 2.0rem;
 }

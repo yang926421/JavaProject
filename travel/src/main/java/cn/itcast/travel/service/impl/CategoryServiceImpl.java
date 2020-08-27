@@ -14,6 +14,7 @@ import java.util.Set;
 
 public class CategoryServiceImpl implements CategoryService {
     private CategoryDao dao = new CategoryImpl();
+
     @Override
     public List<Category> findAll() {
         //使用redis缓存查询
@@ -26,7 +27,7 @@ public class CategoryServiceImpl implements CategoryService {
         List<Category> list = null;
         //判断查询的集合是否为空//空说明缓存没有，需要去数据库查询
         //非空，则将redis查询到的数据返回
-        if(categorys == null || categorys.size()==0){
+        if (categorys == null || categorys.size() == 0) {
             //从数据库查询
             System.out.println("从数据库查询");
             list = dao.findAll();
@@ -35,9 +36,8 @@ public class CategoryServiceImpl implements CategoryService {
                 //根据cid的大小来存储
                 jedis.zadd("category", list.get(i).getCid(), list.get(i).getCname());
             }
-        }
-        else{
-            System.out.println("从resis查询"+"redis");
+        } else {
+            System.out.println("从resis查询" + "redis");
             //redis存储的是set集合的数据，但是我们需要的是list
             list = new ArrayList<Category>();
             for (Tuple tuple : categorys) {
@@ -45,7 +45,7 @@ public class CategoryServiceImpl implements CategoryService {
                 //将存储在redis的数据取出来
                 Category category = new Category();
                 category.setCname(tuple.getElement());
-                category.setCid((int)tuple.getScore());
+                category.setCid((int) tuple.getScore());
                 list.add(category);
             }
         }

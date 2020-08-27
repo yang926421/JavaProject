@@ -1,440 +1,440 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>国家企业信用信息公示系统</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/simple-cancellation.css">
-		<script src="../static/js/jquery.min.js"></script>
-		<script type="text/javascript" src="../static/js/common.js" ></script>
-	    <script type="text/javascript" src="../static/js/mui.min.js" ></script>
-	    <script>
-			$(function() {
-				$("#UNISCID").html(BODY_NO);
-				$("#ENTNAME").html(BODY_NAME);
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/e/escnotice/status.json",
-					async:false,
-					data:{"PRIPID":PRIPID,"SESSIONID":SESSIONID,"TOKEN":TOKEN},
-					dataType:"json",
-					success:function(res){
-						if(res.success==true){
-							getstatus(res.data.STATUS);
-						}/*else{
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>国家企业信用信息公示系统</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/simple-cancellation.css">
+    <script src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script>
+        $(function () {
+            $("#UNISCID").html(BODY_NO);
+            $("#ENTNAME").html(BODY_NAME);
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/e/escnotice/status.json",
+                async: false,
+                data: {"PRIPID": PRIPID, "SESSIONID": SESSIONID, "TOKEN": TOKEN},
+                dataType: "json",
+                success: function (res) {
+                    if (res.success == true) {
+                        getstatus(res.data.STATUS);
+                    }/*else{
 							mui.toast(res.codeMsg);
 						}*/
-					}
-					
-				});
-				
-			});
-			/**
-     * 简易注销公告_状态
-     * status 0 无简易注销记录
-     * status 1 已保存未公示
-     * status 2 已公示且在公示期
-     * status 3 公示结束未申请登记且在申请登记期
-     * status 4 公示结束未申请登记已过申请登记期
-     * status 5 已申请登记
-     * status 6 准予简易注销
-     * status 7 不予简易注销
-     * status 8 不予受理
-     * status 9 已撤销简易注销公告
-     **/
-	    	function getstatus(status){
-	    		if(status == 0 ){
-	    			$("#cancellation-can-box").show();
-	    			
-	    		}else if(status == 1){
-	    			$("#cancellation-already-box").show();
-	    		}else if(status == 2){
-	    			gettimeDate();
-	    			$("#cancellation-show-box").show();
-	    		}else if(status == 3 ){
-	    			
-	    			$("#cancellation-noregister-box").show();
-	    		}else if(status == 4 ){
-	    			  mui.alert('您未能在规定期限内注销登记，已逾期');
-	    			$("#mui-ellipsis-text").html("<red>您未能在规定期限内注销登记，已逾期</red>")
-	    			$("#cancellation-registerovertime-box").show();
-	    		}else if(status == 5){
-				     mui.alert('您简易注销公示期已结束，请尽快到相关部门提交简易注销登记');
-	    			$("#mui-ellipsis-text").html("<red>您已提交注销登记</red>")
-	    			$("#cancellation-registerovertime-box").show();
-	    		}else if(status == 6){
-	    				mui.alert('您简易注销申请已通过，该功能不能再使用' ,function() {
-	    			window.location.href ="../index.html"
-					});
-	    		}else if(status == 7){
-	    				mui.alert('您的简易注销申请未通过，该功能不能再使用' ,function() {
-	    			window.location.href ="../index.html"
-					});
-	    		}else if(status == 8){
-	    				mui.alert('您简易注销申请不予受理 ，该功能不能再使用' ,function() {
-	    			window.location.href ="../index.html"
-					});
-	    		}else if(status == 9){
-	    			mui.alert('您已经撤销简易注销，该功能不能再使用' ,function() {
-	    			window.location.href ="../index.html"
-					});
-	    		}
-	    			
-	    	};
-	    	
-	    	function gettimeDate(){
-	    		$.ajax({
-					type:"get",
-					url:httpUrl+"/e/escnotice/getByPripid.json",
-					async:false,
-					data:{"PRIPID":PRIPID,"SESSIONID":SESSIONID,"TOKEN":TOKEN},
-					dataType:"json",
-					success:function(res){
-						if(res.success==true){
-						//	createData(res.data);
-						var time ="公示期"+getFormatDateByLong(res.data.NOTICEFROM,"yyyy年MM月dd日")+" 至 "+getFormatDateByLong(res.data.NOTICETO,"yyyy年MM月dd日");
-						$("#mui-ellipsis-time").text(time)
-						}/*else{
+                }
+
+            });
+
+        });
+
+        /**
+         * 简易注销公告_状态
+         * status 0 无简易注销记录
+         * status 1 已保存未公示
+         * status 2 已公示且在公示期
+         * status 3 公示结束未申请登记且在申请登记期
+         * status 4 公示结束未申请登记已过申请登记期
+         * status 5 已申请登记
+         * status 6 准予简易注销
+         * status 7 不予简易注销
+         * status 8 不予受理
+         * status 9 已撤销简易注销公告
+         **/
+        function getstatus(status) {
+            if (status == 0) {
+                $("#cancellation-can-box").show();
+
+            } else if (status == 1) {
+                $("#cancellation-already-box").show();
+            } else if (status == 2) {
+                gettimeDate();
+                $("#cancellation-show-box").show();
+            } else if (status == 3) {
+
+                $("#cancellation-noregister-box").show();
+            } else if (status == 4) {
+                mui.alert('您未能在规定期限内注销登记，已逾期');
+                $("#mui-ellipsis-text").html("<red>您未能在规定期限内注销登记，已逾期</red>")
+                $("#cancellation-registerovertime-box").show();
+            } else if (status == 5) {
+                mui.alert('您简易注销公示期已结束，请尽快到相关部门提交简易注销登记');
+                $("#mui-ellipsis-text").html("<red>您已提交注销登记</red>")
+                $("#cancellation-registerovertime-box").show();
+            } else if (status == 6) {
+                mui.alert('您简易注销申请已通过，该功能不能再使用', function () {
+                    window.location.href = "../index.html"
+                });
+            } else if (status == 7) {
+                mui.alert('您的简易注销申请未通过，该功能不能再使用', function () {
+                    window.location.href = "../index.html"
+                });
+            } else if (status == 8) {
+                mui.alert('您简易注销申请不予受理 ，该功能不能再使用', function () {
+                    window.location.href = "../index.html"
+                });
+            } else if (status == 9) {
+                mui.alert('您已经撤销简易注销，该功能不能再使用', function () {
+                    window.location.href = "../index.html"
+                });
+            }
+
+        };
+
+        function gettimeDate() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/e/escnotice/getByPripid.json",
+                async: false,
+                data: {"PRIPID": PRIPID, "SESSIONID": SESSIONID, "TOKEN": TOKEN},
+                dataType: "json",
+                success: function (res) {
+                    if (res.success == true) {
+                        //	createData(res.data);
+                        var time = "公示期" + getFormatDateByLong(res.data.NOTICEFROM, "yyyy年MM月dd日") + " 至 " + getFormatDateByLong(res.data.NOTICETO, "yyyy年MM月dd日");
+                        $("#mui-ellipsis-time").text(time)
+                    }/*else{
 							mui.toast(res.codeMsg);
 						}*/
-					}
-					
-				});
-	    	}
-	    </script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-icon mui-icon-back mui-pull-left" href="../write-inf.html"></a>
-		    <h1 class="mui-title">简易注销</h1>
-		    <span id="add">
+                }
+
+            });
+        }
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-icon mui-icon-back mui-pull-left" href="../write-inf.html"></a>
+    <h1 class="mui-title">简易注销</h1>
+    <span id="add">
 		    	<a href="simple-cancellation-help.html" class=""><img src="../static/img/help.png"/></a>
 		    </span>
-		</header>
-		
-		<!--企业名称-->
-		<div id="com-name-box">
-			<div class="com-name">
-				<h3 id="ENTNAME"></h3>
-				<p>统一社会信用代码/注册号：<span id="UNISCID"></span></p>
-			</div>
-		</div>
-		<br/>
-		
-		<!--不同公告状态-->
-		<!--未填报，该企业不可以填报-->
-		<div id="cancellation-no-box" hidden="hidden">
-			<ul class="mui-table-view mui-table-view-chevron">
-				<li class="mui-table-view-cell mui-media"  id="alertBtn">
-					<a class="mui-navigate-right" >
-						<img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_fill_can.png">
-						<div class="mui-media-body">
-							<span class="zx-title">简易注销公告填报</span>
-							<p class='mui-ellipsis' id="mui-ellipsis-no">您的企业不可以进行注销</p>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a  href="javascript:;">
-						<img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_publicity_canot.png">
-						<div class="mui-media-body">
-							<span class="zx-title">简易注销公告公示</span>
-							<p class='mui-ellipsis'>简易注销公告公示期为45天</p>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a>
-						<img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_register_canot.png">
-						<div class="mui-media-body">
-							<span class="zx-title">简易注销登记</span>
-							<p class='mui-ellipsis'>公示期满后可以进行注销登记</p>
-						</div>
-					</a>
-				</li>
-			</ul>
-		</div>
-		
-		<!--不同公告状态-->
-		<!--未填报，该企业可以进行填报-->
-		<div id="cancellation-can-box" hidden="hidden">
-			<ul class="mui-table-view mui-table-view-chevron">
-				<li class="mui-table-view-cell mui-media">
-					<a class="mui-navigate-right" href="write-simple-cancellation.html">
-						<img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_fill_can.png">
-						<div class="mui-media-body">
-							<span class="zx-title">简易注销公告填报</span>
-							<p class='mui-ellipsis' id="mui-ellipsis-no">请先填报简易注销公告</p>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a  href="javascript:;">
-						<img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_publicity_canot.png">
-						<div class="mui-media-body">
-							<span class="zx-title">简易注销公告公示</span>
-							<p class='mui-ellipsis'>简易注销公告公示期为45天</p>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a>
-						<img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_register_canot.png">
-						<div class="mui-media-body">
-							<span class="zx-title">简易注销登记</span>
-							<p class='mui-ellipsis'>公示期满后可以进行注销登记</p>
-						</div>
-					</a>
-				</li>
-			</ul>
-		</div>
-		
-		<!--不同公告状态-->
-		<!--未填报，该企业可以进行填报-->
-		<div id="cancellation-already-box" hidden="hidden">
-			<ul class="mui-table-view mui-table-view-chevron">
-				<li class="mui-table-view-cell mui-media">
-					<a class="mui-navigate-right" href="write-simple-cancellation.html">
-						<img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_fill_can.png">
-						<div class="mui-media-body">
-							<span class="zx-title">简易注销公告填报</span>
-							<p class='mui-ellipsis' id="mui-ellipsis-no">已填报简易注销公告(可查看或修改)</p>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a  href="javascript:;">
-						<img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_publicity_canot.png">
-						<div class="mui-media-body">
-							<span class="zx-title">简易注销公告公示</span>
-							<p class='mui-ellipsis'>简易注销公告公示期为45天</p>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a>
-						<img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_register_canot.png">
-						<div class="mui-media-body">
-							<span class="zx-title">简易注销登记</span>
-							<p class='mui-ellipsis'>公示期满后可以进行注销登记</p>
-						</div>
-					</a>
-				</li>
-			</ul>
-		</div>
-		
-		
-		
-		<!--不同公告状态-->
-		<!--已填报-公示中-->
-		<div id="cancellation-show-box" hidden="hidden">
-			<ul class="mui-table-view mui-table-view-chevron">
-				<li class="mui-table-view-cell mui-media" >
-					<a>
-						<img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_fill_can.png">
-						<div class="mui-media-body">
-							<span class="zx-title">简易注销公告填报</span> <span class="cancell-state-a">（已填报）</span>
-							<p class='mui-ellipsis' id="mui-ellipsis-no">您已填报简易注销公告</p>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a class='mui-navigate-right' href="simple-cancellation-notice.html?type=1">
-						<img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_publicity_can.png">
-						<div class="mui-media-body">
-							<span class="zx-title">简易注销公告公示</span> <span class="cancell-state-b">（公示中）</span>
-							<p class='mui-ellipsis' id="mui-ellipsis-time"></p>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a>
-						<img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_register_canot.png">
-						<div class="mui-media-body">
-							<span class="zx-title">简易注销登记</span>
-							<p class='mui-ellipsis'>公示期满后可以进行注销登记</p>
-						</div>
-					</a>
-				</li>
-			</ul>
-		</div>
-		
-		<!--不同公告状态-->
-		<!--已填报-公示期结束-未登记注销-->
-		<div id="cancellation-noregister-box" hidden="hidden">
-			<ul class="mui-table-view mui-table-view-chevron">
-				<li class="mui-table-view-cell mui-media">
-					<a>
-						<img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_fill_can.png">
-						<div class="mui-media-body">
-							<span class="zx-title">简易注销公告填报</span> <span class="cancell-state-a">（已填报）</span>
-							<p class='mui-ellipsis'>您已填报简易注销公告</p>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-						<img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_publicity_can.png">
-						<div class="mui-media-body">
-							<span class="zx-title">简易注销公告公示</span> <span class="cancell-state-a">（公示期满）</span>
-							<p class='mui-ellipsis'>公示已结束，可以进行注销登记</p>
-						</div>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a class="mui-navigate-right" href="simple-cancellation-notice.html?type=2">
-						<img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_register_can.png">
-						<div class="mui-media-body">
-							<span class="zx-title">简易注销登记</span>
-							<p class='mui-ellipsis' id="mui-ellipsis-no">请进行简易注销登记</p>
-						</div>
-					</a>
-				</li>
-			</ul>
-		</div>
-		
-			<!--不同公告状态-->
-		<!--已填报-公示期结束-未登记注销-->
-		<div id="cancellation-registerovertime-box" hidden="hidden">
-			<ul class="mui-table-view mui-table-view-chevron">
-				<li class="mui-table-view-cell mui-media">
-					<a>
-						<img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_fill_can.png">
-						<div class="mui-media-body">
-							<span class="zx-title">简易注销公告填报</span> <span class="cancell-state-a">（已填报）</span>
-							<p class='mui-ellipsis'>您已填报简易注销公告</p>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-						<img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_publicity_can.png">
-						<div class="mui-media-body">
-							<span class="zx-title">简易注销公告公示</span> <span class="cancell-state-a">（公示期满）</span>
-							<p class='mui-ellipsis'>公示已结束，可以进行注销登记</p>
-						</div>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a class="mui-navigate-right" href="simple-cancellation-notice.html?type=3">
-						<img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_register_can.png">
-						<div class="mui-media-body">
-							<span class="zx-title">简易注销登记</span>
-							<p class='mui-ellipsis' id="mui-ellipsis-text"></p>
-						</div>
-					</a>
-				</li>
-			</ul>
-		</div>
-		
-		<!--不同公告状态-->
-		<!--已填报-公示期结束-登记注销后待审核-->
-		<div id="cancellation-nojudge-box" hidden="hidden">
-			<ul class="mui-table-view mui-table-view-chevron">
-				<li class="mui-table-view-cell mui-media">
-					<a>
-						<img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_fill_can.png">
-						<div class="mui-media-body">
-							<span class="zx-title">简易注销公告填报</span> <span class="cancell-state-a">（已填报）</span>
-							<p class='mui-ellipsis'>您已填报简易注销公告</p>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a class='mui-navigate-right' href="javascript:;">
-						<img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_publicity_can.png">
-						<div class="mui-media-body">
-							<span class="zx-title">简易注销公告公示</span> <span class="cancell-state-a">（公示期满）</span>
-							<p class='mui-ellipsis'>公示已结束，可以进行注销登记</p>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a class="mui-navigate-right" href="register-inf.html">
-						<img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_register_can.png">
-						<div class="mui-media-body">
-							<span class="zx-title">简易注销登记</span> <span class="cancell-state-b">（已登记，待审核）</span>
-							<p class='mui-ellipsis'>您已登记注销，请等待审核</p>
-						</div>
-					</a>
-				</li>
-			</ul>
-		</div>
-		
-		<!--不同公告状态-->
-		<!--已填报-公示期结束-登记注销后审核不过-->
-		<div id="cancellation-fail-box" hidden="hidden">
-			<ul class="mui-table-view mui-table-view-chevron">
-				<li class="mui-table-view-cell mui-media">
-					<a>
-						<img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_fill_can.png">
-						<div class="mui-media-body">
-							<span class="zx-title">简易注销公告填报</span> <span class="cancell-state-a">（已填报）</span>
-							<p class='mui-ellipsis'>您已填报简易注销公告</p>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a class='mui-navigate-right' href="javascript:;">
-						<img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_publicity_can.png">
-						<div class="mui-media-body">
-							<span class="zx-title">简易注销公告公示</span> <span class="cancell-state-a">（公示期满）</span>
-							<p class='mui-ellipsis'>公示已结束，可以进行注销登记</p>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a class="mui-navigate-right" href="register-inf.html">
-						<img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_register_can.png">
-						<div class="mui-media-body">
-							<span class="zx-title">简易注销登记</span> <span class="cancell-state-b">（已登记，审核未通过）</span>
-							<p class='mui-ellipsis'>您的注销申请审核不通过</p>
-						</div>
-					</a>
-				</li>
-			</ul>
-		</div>
-		
-		<!--不同公告状态-->
-		<!--审核通过-->
-		<div id="cancellation-success-box" hidden="hidden">
-			<ul class="mui-table-view mui-table-view-chevron">
-				<li class="mui-table-view-cell mui-media">
-					<a>
-						<img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_fill_can.png">
-						<div class="mui-media-body">
-							<span class="zx-title">简易注销公告填报</span> <span class="cancell-state-a">（已填报）</span>
-							<p class='mui-ellipsis'>您已填报简易注销公告</p>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a class='mui-navigate-right' href="javascript:;">
-						<img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_publicity_can.png">
-						<div class="mui-media-body">
-							<span class="zx-title">简易注销公告公示</span><span class="cancell-state-a">（公示期满）</span>
-							<p class='mui-ellipsis'>公示已结束，可以进行注销登记</p>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a class="mui-navigate-right" href="register-inf.html">
-						<img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_register_can.png">
-						<div class="mui-media-body">
-							<span class="zx-title">简易注销登记</span><span class="cancell-state-b">（已登记，审核通过）</span>
-							<p class='mui-ellipsis'>您的企业已注销</p>
-						</div>
-					</a>
-				</li>
-			</ul>
-		</div>
-		
-		<!--弹窗提醒-->
-		<script type="text/javascript"> 
-			document.getElementById("alertBtn").addEventListener('tap', function() {
-				/*mui.alert('您的企业不能进行简易注销，原因是：您已经进行过一次注销，仅能注销一次，具体请点击右上角查看简易注销须知');*/
-				mui.alert('您的企业不能进行简易注销');
-			});
-		</script>
-		
-	</body>
+</header>
+
+<!--企业名称-->
+<div id="com-name-box">
+    <div class="com-name">
+        <h3 id="ENTNAME"></h3>
+        <p>统一社会信用代码/注册号：<span id="UNISCID"></span></p>
+    </div>
+</div>
+<br/>
+
+<!--不同公告状态-->
+<!--未填报，该企业不可以填报-->
+<div id="cancellation-no-box" hidden="hidden">
+    <ul class="mui-table-view mui-table-view-chevron">
+        <li class="mui-table-view-cell mui-media" id="alertBtn">
+            <a class="mui-navigate-right">
+                <img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_fill_can.png">
+                <div class="mui-media-body">
+                    <span class="zx-title">简易注销公告填报</span>
+                    <p class='mui-ellipsis' id="mui-ellipsis-no">您的企业不可以进行注销</p>
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a href="javascript:;">
+                <img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_publicity_canot.png">
+                <div class="mui-media-body">
+                    <span class="zx-title">简易注销公告公示</span>
+                    <p class='mui-ellipsis'>简易注销公告公示期为45天</p>
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a>
+                <img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_register_canot.png">
+                <div class="mui-media-body">
+                    <span class="zx-title">简易注销登记</span>
+                    <p class='mui-ellipsis'>公示期满后可以进行注销登记</p>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<!--不同公告状态-->
+<!--未填报，该企业可以进行填报-->
+<div id="cancellation-can-box" hidden="hidden">
+    <ul class="mui-table-view mui-table-view-chevron">
+        <li class="mui-table-view-cell mui-media">
+            <a class="mui-navigate-right" href="write-simple-cancellation.html">
+                <img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_fill_can.png">
+                <div class="mui-media-body">
+                    <span class="zx-title">简易注销公告填报</span>
+                    <p class='mui-ellipsis' id="mui-ellipsis-no">请先填报简易注销公告</p>
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a href="javascript:;">
+                <img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_publicity_canot.png">
+                <div class="mui-media-body">
+                    <span class="zx-title">简易注销公告公示</span>
+                    <p class='mui-ellipsis'>简易注销公告公示期为45天</p>
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a>
+                <img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_register_canot.png">
+                <div class="mui-media-body">
+                    <span class="zx-title">简易注销登记</span>
+                    <p class='mui-ellipsis'>公示期满后可以进行注销登记</p>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<!--不同公告状态-->
+<!--未填报，该企业可以进行填报-->
+<div id="cancellation-already-box" hidden="hidden">
+    <ul class="mui-table-view mui-table-view-chevron">
+        <li class="mui-table-view-cell mui-media">
+            <a class="mui-navigate-right" href="write-simple-cancellation.html">
+                <img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_fill_can.png">
+                <div class="mui-media-body">
+                    <span class="zx-title">简易注销公告填报</span>
+                    <p class='mui-ellipsis' id="mui-ellipsis-no">已填报简易注销公告(可查看或修改)</p>
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a href="javascript:;">
+                <img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_publicity_canot.png">
+                <div class="mui-media-body">
+                    <span class="zx-title">简易注销公告公示</span>
+                    <p class='mui-ellipsis'>简易注销公告公示期为45天</p>
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a>
+                <img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_register_canot.png">
+                <div class="mui-media-body">
+                    <span class="zx-title">简易注销登记</span>
+                    <p class='mui-ellipsis'>公示期满后可以进行注销登记</p>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+<!--不同公告状态-->
+<!--已填报-公示中-->
+<div id="cancellation-show-box" hidden="hidden">
+    <ul class="mui-table-view mui-table-view-chevron">
+        <li class="mui-table-view-cell mui-media">
+            <a>
+                <img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_fill_can.png">
+                <div class="mui-media-body">
+                    <span class="zx-title">简易注销公告填报</span> <span class="cancell-state-a">（已填报）</span>
+                    <p class='mui-ellipsis' id="mui-ellipsis-no">您已填报简易注销公告</p>
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a class='mui-navigate-right' href="simple-cancellation-notice.html?type=1">
+                <img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_publicity_can.png">
+                <div class="mui-media-body">
+                    <span class="zx-title">简易注销公告公示</span> <span class="cancell-state-b">（公示中）</span>
+                    <p class='mui-ellipsis' id="mui-ellipsis-time"></p>
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a>
+                <img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_register_canot.png">
+                <div class="mui-media-body">
+                    <span class="zx-title">简易注销登记</span>
+                    <p class='mui-ellipsis'>公示期满后可以进行注销登记</p>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<!--不同公告状态-->
+<!--已填报-公示期结束-未登记注销-->
+<div id="cancellation-noregister-box" hidden="hidden">
+    <ul class="mui-table-view mui-table-view-chevron">
+        <li class="mui-table-view-cell mui-media">
+            <a>
+                <img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_fill_can.png">
+                <div class="mui-media-body">
+                    <span class="zx-title">简易注销公告填报</span> <span class="cancell-state-a">（已填报）</span>
+                    <p class='mui-ellipsis'>您已填报简易注销公告</p>
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_publicity_can.png">
+            <div class="mui-media-body">
+                <span class="zx-title">简易注销公告公示</span> <span class="cancell-state-a">（公示期满）</span>
+                <p class='mui-ellipsis'>公示已结束，可以进行注销登记</p>
+            </div>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a class="mui-navigate-right" href="simple-cancellation-notice.html?type=2">
+                <img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_register_can.png">
+                <div class="mui-media-body">
+                    <span class="zx-title">简易注销登记</span>
+                    <p class='mui-ellipsis' id="mui-ellipsis-no">请进行简易注销登记</p>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<!--不同公告状态-->
+<!--已填报-公示期结束-未登记注销-->
+<div id="cancellation-registerovertime-box" hidden="hidden">
+    <ul class="mui-table-view mui-table-view-chevron">
+        <li class="mui-table-view-cell mui-media">
+            <a>
+                <img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_fill_can.png">
+                <div class="mui-media-body">
+                    <span class="zx-title">简易注销公告填报</span> <span class="cancell-state-a">（已填报）</span>
+                    <p class='mui-ellipsis'>您已填报简易注销公告</p>
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_publicity_can.png">
+            <div class="mui-media-body">
+                <span class="zx-title">简易注销公告公示</span> <span class="cancell-state-a">（公示期满）</span>
+                <p class='mui-ellipsis'>公示已结束，可以进行注销登记</p>
+            </div>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a class="mui-navigate-right" href="simple-cancellation-notice.html?type=3">
+                <img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_register_can.png">
+                <div class="mui-media-body">
+                    <span class="zx-title">简易注销登记</span>
+                    <p class='mui-ellipsis' id="mui-ellipsis-text"></p>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<!--不同公告状态-->
+<!--已填报-公示期结束-登记注销后待审核-->
+<div id="cancellation-nojudge-box" hidden="hidden">
+    <ul class="mui-table-view mui-table-view-chevron">
+        <li class="mui-table-view-cell mui-media">
+            <a>
+                <img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_fill_can.png">
+                <div class="mui-media-body">
+                    <span class="zx-title">简易注销公告填报</span> <span class="cancell-state-a">（已填报）</span>
+                    <p class='mui-ellipsis'>您已填报简易注销公告</p>
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a class='mui-navigate-right' href="javascript:;">
+                <img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_publicity_can.png">
+                <div class="mui-media-body">
+                    <span class="zx-title">简易注销公告公示</span> <span class="cancell-state-a">（公示期满）</span>
+                    <p class='mui-ellipsis'>公示已结束，可以进行注销登记</p>
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a class="mui-navigate-right" href="register-inf.html">
+                <img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_register_can.png">
+                <div class="mui-media-body">
+                    <span class="zx-title">简易注销登记</span> <span class="cancell-state-b">（已登记，待审核）</span>
+                    <p class='mui-ellipsis'>您已登记注销，请等待审核</p>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<!--不同公告状态-->
+<!--已填报-公示期结束-登记注销后审核不过-->
+<div id="cancellation-fail-box" hidden="hidden">
+    <ul class="mui-table-view mui-table-view-chevron">
+        <li class="mui-table-view-cell mui-media">
+            <a>
+                <img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_fill_can.png">
+                <div class="mui-media-body">
+                    <span class="zx-title">简易注销公告填报</span> <span class="cancell-state-a">（已填报）</span>
+                    <p class='mui-ellipsis'>您已填报简易注销公告</p>
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a class='mui-navigate-right' href="javascript:;">
+                <img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_publicity_can.png">
+                <div class="mui-media-body">
+                    <span class="zx-title">简易注销公告公示</span> <span class="cancell-state-a">（公示期满）</span>
+                    <p class='mui-ellipsis'>公示已结束，可以进行注销登记</p>
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a class="mui-navigate-right" href="register-inf.html">
+                <img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_register_can.png">
+                <div class="mui-media-body">
+                    <span class="zx-title">简易注销登记</span> <span class="cancell-state-b">（已登记，审核未通过）</span>
+                    <p class='mui-ellipsis'>您的注销申请审核不通过</p>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<!--不同公告状态-->
+<!--审核通过-->
+<div id="cancellation-success-box" hidden="hidden">
+    <ul class="mui-table-view mui-table-view-chevron">
+        <li class="mui-table-view-cell mui-media">
+            <a>
+                <img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_fill_can.png">
+                <div class="mui-media-body">
+                    <span class="zx-title">简易注销公告填报</span> <span class="cancell-state-a">（已填报）</span>
+                    <p class='mui-ellipsis'>您已填报简易注销公告</p>
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a class='mui-navigate-right' href="javascript:;">
+                <img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_publicity_can.png">
+                <div class="mui-media-body">
+                    <span class="zx-title">简易注销公告公示</span><span class="cancell-state-a">（公示期满）</span>
+                    <p class='mui-ellipsis'>公示已结束，可以进行注销登记</p>
+                </div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <a class="mui-navigate-right" href="register-inf.html">
+                <img class="mui-media-object mui-pull-left" src="../static/img/notice_ic_register_can.png">
+                <div class="mui-media-body">
+                    <span class="zx-title">简易注销登记</span><span class="cancell-state-b">（已登记，审核通过）</span>
+                    <p class='mui-ellipsis'>您的企业已注销</p>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<!--弹窗提醒-->
+<script type="text/javascript">
+    document.getElementById("alertBtn").addEventListener('tap', function () {
+        /*mui.alert('您的企业不能进行简易注销，原因是：您已经进行过一次注销，仅能注销一次，具体请点击右上角查看简易注销须知');*/
+        mui.alert('您的企业不能进行简易注销');
+    });
+</script>
+
+</body>
 </html> 

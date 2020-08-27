@@ -10,12 +10,12 @@ import java.net.Socket;
  * @date 2018/5/4  下午6:41
  */
 public class TCPServer {
-    public static void main(String[] args)throws Exception {
+    public static void main(String[] args) throws Exception {
         // 创建服务器端socket
         ServerSocket serverSocket = new ServerSocket(9090);
         boolean flag = true;
         // 不断的接受客户端的连接
-        while(flag) {
+        while (flag) {
             // 接收客户连接并获得客户端socket
             Socket socket = serverSocket.accept();
             // 创建下载线程

@@ -1,155 +1,156 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>国家企业信用信息公示系统</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/add-right-inf.css">
-		<link rel="stylesheet" type="text/css" href="../static/css/mui.picker.min.css" /><!--填写时间-->
-		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../static/js/common.js" ></script>
-		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-		<script>
-			
-			var INVID=GetRequest("INVID");  //投资人id
-				$(function(){
-					$("#PRIPID").val(PRIPID);
-					$("#ENTNAME").val(BODY_NAME);
-					$("#REGNO").val(REGNO);
-					$("#UNISCID").val(UNISCID);
-				
-					$("#TOKEN").val(TOKEN);
-					$("#SESSIONID").val(SESSIONID);
-				
-				if(INVID!=null && INVID!=""){
-					$("#saveOrUpdate").html("修改");
-					$("#INVID").val(INVID);
-					var updateBtn="<a href='javascript:;' onclick='updateData();'>保存</a>";
-					$("#sure").html(updateBtn);
-					$("#delBtn").show();
-					$("#addBtn").hide();
-					getData();
-				}else{
-					$("#saveOrUpdate").html("添加");
-					$("#delBtn").hide();
-					$("#addBtn").show();
-				}
-				
-				
-			});
-			//获取股东及出资信息
-			function getData(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/e/self/investment/get.json",
-					data:{"INVID":INVID,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
-					async:false,
-					dataType:"json",
-					success:function(res){
-						if(res.success==true){
-							$("#INV").val(res.data.baseInfo.INV);  //股东
-							//mui.toast(res.codeMsg);
-						}
-					}
-				});
-			}
-			
-			function addData(){
-				$.ajax({
-					type:'post',
-					url:httpUrl+'/e/self/investment/save.json',
-					data:$("#addForm").serialize(),
-					dataType:'json',
-					success:function(res){
-						if(res.success==true){
-							window.location.href="contribution-info.html?INVID="+res.data.INVID;
-						}
-					}
-				})
-			}
-			
-			function updateData(){
-				$.ajax({
-					type:'post',
-					url:httpUrl+'/e/self/investment/update.json',
-					data:$("#addForm").serialize(),
-					dataType:'json',
-					success:function(res){
-						if(res.success==true){
-							//mui.toast(res.codeMsg);
-							window.location.href="contribution-info.html?INVID="+INVID;
-						}
-					}
-				})
-			}
-			
-			function delData(){
-				mui.confirm("删除该股东，股东的缴额明细也将删除，确定要删除吗？","提示",btnArray,function(e){
-					if(e.index==1){
-						$.ajax({
-							type:"get",
-							url:httpUrl+"/e/self/investment/delete.json",
-							data:{"INVID":INVID,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
-							async:false,
-							dataType:"json",
-							success:function(res){
-								if(res.success==true){
-									mui.toast(res.codeMsg);
-									window.location.href="contribution-list.html";
-								}
-							}
-						});
-					}
-				})
-			}
-		</script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="contribution-list.html"></a>
-		    <h1 class="mui-title"><span id="saveOrUpdate"></span>股东</h1>
-		    <span id="sure">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>国家企业信用信息公示系统</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/add-right-inf.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/mui.picker.min.css"/><!--填写时间-->
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script>
+
+        var INVID = GetRequest("INVID");  //投资人id
+        $(function () {
+            $("#PRIPID").val(PRIPID);
+            $("#ENTNAME").val(BODY_NAME);
+            $("#REGNO").val(REGNO);
+            $("#UNISCID").val(UNISCID);
+
+            $("#TOKEN").val(TOKEN);
+            $("#SESSIONID").val(SESSIONID);
+
+            if (INVID != null && INVID != "") {
+                $("#saveOrUpdate").html("修改");
+                $("#INVID").val(INVID);
+                var updateBtn = "<a href='javascript:;' onclick='updateData();'>保存</a>";
+                $("#sure").html(updateBtn);
+                $("#delBtn").show();
+                $("#addBtn").hide();
+                getData();
+            } else {
+                $("#saveOrUpdate").html("添加");
+                $("#delBtn").hide();
+                $("#addBtn").show();
+            }
+
+
+        });
+
+        //获取股东及出资信息
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/e/self/investment/get.json",
+                data: {"INVID": INVID, "TOKEN": TOKEN, "SESSIONID": SESSIONID},
+                async: false,
+                dataType: "json",
+                success: function (res) {
+                    if (res.success == true) {
+                        $("#INV").val(res.data.baseInfo.INV);  //股东
+                        //mui.toast(res.codeMsg);
+                    }
+                }
+            });
+        }
+
+        function addData() {
+            $.ajax({
+                type: 'post',
+                url: httpUrl + '/e/self/investment/save.json',
+                data: $("#addForm").serialize(),
+                dataType: 'json',
+                success: function (res) {
+                    if (res.success == true) {
+                        window.location.href = "contribution-info.html?INVID=" + res.data.INVID;
+                    }
+                }
+            })
+        }
+
+        function updateData() {
+            $.ajax({
+                type: 'post',
+                url: httpUrl + '/e/self/investment/update.json',
+                data: $("#addForm").serialize(),
+                dataType: 'json',
+                success: function (res) {
+                    if (res.success == true) {
+                        //mui.toast(res.codeMsg);
+                        window.location.href = "contribution-info.html?INVID=" + INVID;
+                    }
+                }
+            })
+        }
+
+        function delData() {
+            mui.confirm("删除该股东，股东的缴额明细也将删除，确定要删除吗？", "提示", btnArray, function (e) {
+                if (e.index == 1) {
+                    $.ajax({
+                        type: "get",
+                        url: httpUrl + "/e/self/investment/delete.json",
+                        data: {"INVID": INVID, "TOKEN": TOKEN, "SESSIONID": SESSIONID},
+                        async: false,
+                        dataType: "json",
+                        success: function (res) {
+                            if (res.success == true) {
+                                mui.toast(res.codeMsg);
+                                window.location.href = "contribution-list.html";
+                            }
+                        }
+                    });
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="contribution-list.html"></a>
+    <h1 class="mui-title"><span id="saveOrUpdate"></span>股东</h1>
+    <span id="sure">
 		    	<!--<a href="contribution-inf-con.html" class="">保存</a>-->
 		    </span>
-		</header>
-		
-		<!--股东信息-->
-		<div id="common-box">
-			<div class="web-box">
-				<form id="addForm">
-					<input type="hidden" name="PRIPID" id="PRIPID" />
-					<input type="hidden" name="ENTNAME" id="ENTNAME" />
-					<input type="hidden" name="REGNO" id="REGNO" />
-					<input type="hidden" name="UNISCID" id="UNISCID" />
-					<input type="hidden" name="TOKEN" id="TOKEN" />
-					<input type="hidden" name="SESSIONID" id="SESSIONID" />
-					<input type="hidden" name="INVID" id="INVID" />
-					<ul>
-						<li>
-							<span >
+</header>
+
+<!--股东信息-->
+<div id="common-box">
+    <div class="web-box">
+        <form id="addForm">
+            <input type="hidden" name="PRIPID" id="PRIPID"/>
+            <input type="hidden" name="ENTNAME" id="ENTNAME"/>
+            <input type="hidden" name="REGNO" id="REGNO"/>
+            <input type="hidden" name="UNISCID" id="UNISCID"/>
+            <input type="hidden" name="TOKEN" id="TOKEN"/>
+            <input type="hidden" name="SESSIONID" id="SESSIONID"/>
+            <input type="hidden" name="INVID" id="INVID"/>
+            <ul>
+                <li>
+							<span>
 								股东(发起人)
 							</span>
-							<div class="web-write">
-								<input type="text" name="INV" id="INV"  placeholder="请输入股东名称"/>
-							</div>
-						</li>
-					</ul>
-				</form>
-			</div>
-			
-			
-		</div>
-		
-		<div id="addBtn" class="yy" >
-	    	<a href="javascript:;" onClick="addData()">添加</a>
-	    </div>
-		<!--删除-->
-		<div id="delBtn" class="yy-delete" style="display: none;">
-	    	<a onClick="delData()">删除该股东</a>
-	    </div>
-		
-	</body>
+                    <div class="web-write">
+                        <input type="text" name="INV" id="INV" placeholder="请输入股东名称"/>
+                    </div>
+                </li>
+            </ul>
+        </form>
+    </div>
+
+
+</div>
+
+<div id="addBtn" class="yy">
+    <a href="javascript:;" onClick="addData()">添加</a>
+</div>
+<!--删除-->
+<div id="delBtn" class="yy-delete" style="display: none;">
+    <a onClick="delData()">删除该股东</a>
+</div>
+
+</body>
 </html>

@@ -8,7 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class SpringTest {
 
     @Test
-    public void test1(){
+    public void test1() {
         ApplicationContext app = new ClassPathXmlApplicationContext("applicationContext.xml");
         userDao userDao = (userDao) app.getBean("userDao");
         System.out.println(userDao);

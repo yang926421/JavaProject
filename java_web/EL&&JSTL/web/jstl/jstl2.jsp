@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+>
 <html>
 <head>
     <title>Title</title>
@@ -7,7 +8,7 @@
 <body>
 <h1>choose标签做一个类似于switch标签 数字案例对应星期几</h1>
 <%
-request.setAttribute("number", 3);
+    request.setAttribute("number", 3);
 %>
 <c:choose>
     <c:when test="${number == 1}"> 星期一</c:when>

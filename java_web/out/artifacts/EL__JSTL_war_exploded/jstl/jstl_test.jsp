@@ -12,13 +12,11 @@
 </head>
 <body>
 <%
-List list = new ArrayList<>();
-list.add(new User("z行三", 23, new Date()));
-list.add(new User("李四", 25, new Date()));
-list.add(new User("王五", 26, new Date()));
-request.setAttribute("list", list);
-
-
+    List list = new ArrayList<>();
+    list.add(new User("z行三", 23, new Date()));
+    list.add(new User("李四", 25, new Date()));
+    list.add(new User("王五", 26, new Date()));
+    request.setAttribute("list", list);
 
 
 %>
@@ -31,14 +29,14 @@ request.setAttribute("list", list);
         <th>出生日期</th>
     </tr>
     <h1>数据行</h1>
-   <c:forEach items="${list}" var="user" varStatus="s">
-       <tr>
-           <td>${s.count}</td>
-           <td>${user.name}</td>
-           <td>${user.age}</td>
+    <c:forEach items="${list}" var="user" varStatus="s">
+        <tr>
+            <td>${s.count}</td>
+            <td>${user.name}</td>
+            <td>${user.age}</td>
             <td>${user.birthday}</td>
-               </tr>
-   </c:forEach>
+        </tr>
+    </c:forEach>
 </table>
 
 </body>

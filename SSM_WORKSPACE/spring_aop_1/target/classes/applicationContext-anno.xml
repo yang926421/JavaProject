@@ -11,7 +11,7 @@
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<!--开启组件扫描-->
+    <!--开启组件扫描-->
     <context:component-scan base-package="cn.gsxt.anno_aop"></context:component-scan>
     <!--aop自动代理-->
     <aop:aspectj-autoproxy/>

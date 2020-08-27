@@ -7,7 +7,7 @@ blockquote, body, button, dd, dl, dt, fieldset, form, h1, h2, h3, i, h4, h5, h6,
 
 html, body {
     width: 100%;
-/*    height: 100%; */
+    /*    height: 100%; */
 }
 
 html {
@@ -47,7 +47,7 @@ b, i, em {
 
 img {
     border: none;
-	max-width:100%;
+    max-width: 100%;
 }
 
 button, input, select, textarea {
@@ -55,135 +55,146 @@ button, input, select, textarea {
 }
 
 /*离顶部*/
-#common-box{
-	margin-top: 4.4rem;
-	/*background-color:#FFFFFF ;*/
+#common-box {
+    margin-top: 4.4rem;
+    /*background-color:#FFFFFF ;*/
 }
-.common-name{
-	margin: auto;
-	width: 92%;
+
+.common-name {
+    margin: auto;
+    width: 92%;
 }
-.common-name h3{
-	padding-top: 1.8rem;
-	font-size: 1.7rem;
-	font-weight: bold;
-	margin-top: 1.4rem;
+
+.common-name h3 {
+    padding-top: 1.8rem;
+    font-size: 1.7rem;
+    font-weight: bold;
+    margin-top: 1.4rem;
 }
 
 
 /*导航*/
-header #sure{
-	color: #FFFFFF;
-	font-size:1.4rem;
-	float: right;
+header #sure {
+    color: #FFFFFF;
+    font-size: 1.4rem;
+    float: right;
 }
-header  #sure a{
-	display: block;
-	color: #FFFFFF;
-	font-size:1.6rem;
-	line-height: 44px;
-	width: 80px;
-	height: 44px;
-	text-align: right;
+
+header #sure a {
+    display: block;
+    color: #FFFFFF;
+    font-size: 1.6rem;
+    line-height: 44px;
+    width: 80px;
+    height: 44px;
+    text-align: right;
 }
-header #add{
-	float: right;
-	width: 1.8rem;
-	height: 1.8rem;
-	line-height: 5.0rem;
+
+header #add {
+    float: right;
+    width: 1.8rem;
+    height: 1.8rem;
+    line-height: 5.0rem;
 }
 
 
 /*一般按钮样式*/
-.yy{
-	width:100%;
+.yy {
+    width: 100%;
 }
-.yy a{ 
-	display:inline-block;
-	width:92%;
-	background-color:#ac812e;
-	border-radius:3px;
-	text-align:center;
-	line-height:50px;
-	font-size:1.6rem;
-	color:#FFF;
-	margin:5% 4%;
+
+.yy a {
+    display: inline-block;
+    width: 92%;
+    background-color: #ac812e;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 1.6rem;
+    color: #FFF;
+    margin: 5% 4%;
 }
+
 /*删除按钮样式*/
-.yy-delete{
-	width:100%;
+.yy-delete {
+    width: 100%;
 }
-.yy-delete a{ 
-	display:inline-block;
-	width:100%;
-	background-color:#FFFFFF;
-	border-radius:3px;
-	text-align:center;
-	line-height:50px;
-	font-size:1.6rem;
-	color:#d72830;
-	margin:5% 0%;
+
+.yy-delete a {
+    display: inline-block;
+    width: 100%;
+    background-color: #FFFFFF;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 1.6rem;
+    color: #d72830;
+    margin: 5% 0%;
 }
 
 }
-.yy .cancel{ 
-	display:inline-block;
-	width:92%;
-	background-color:#ff5454;
-	border-radius:3px;
-	text-align:center;
-	line-height:50px;
-	font-size:1.6rem;
-	color:#FFFFFF;
-	margin:5% 4%;
+.yy .cancel {
+    display: inline-block;
+    width: 92%;
+    background-color: #ff5454;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 1.6rem;
+    color: #FFFFFF;
+    margin: 5% 4%;
 }
 
 /*底部菜单*/
-.mui-tab-label{
-	line-height: 1.2rem;
+.mui-tab-label {
+    line-height: 1.2rem;
 }
-.mui-tab-label{
-	color:#666666;
+
+.mui-tab-label {
+    color: #666666;
 }
-#menu{
-	color: #ac812e;
+
+#menu {
+    color: #ac812e;
 }
 
 /*加载更多*/
-#loadData{
-	text-align: center;
-	font-size: 1.4rem;
-	margin-top: 2.0rem;
-	color: #666;
+#loadData {
+    text-align: center;
+    font-size: 1.4rem;
+    margin-top: 2.0rem;
+    color: #666;
 }
-#noData{
-	text-align: center;
-	font-size: 1.4rem;
-	margin-top: 2.0rem;
-	color: #666;
+
+#noData {
+    text-align: center;
+    font-size: 1.4rem;
+    margin-top: 2.0rem;
+    color: #666;
 }
+
 /*在加载点下面整一个遮罩层，这样加载点就可以显示到任意位置*/
-.overlayer{     
-     position: absolute;     
-     top: 0;     
-     left: 0;     
-     z-index: 10000;     
-     width: 100%;     
-     height:100%;     
-     background-color: #CCCCCC;     
-     filter:alpha(opacity=50);  /*适应IE的透明度*/
-     -moz-opacity: 0.6;     
-     opacity: 0.6;     
-     }     
-       
-.loadbox{     
-     position: absolute;     
-     top: 40%;     
-     left: 0;     
-     width: 100%;     
-     z-index: 10100;     
-     text-align: center;     
-     }  
+.overlayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    width: 100%;
+    height: 100%;
+    background-color: #CCCCCC;
+    filter: alpha(opacity=50); /*适应IE的透明度*/
+    -moz-opacity: 0.6;
+    opacity: 0.6;
+}
+
+.loadbox {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    width: 100%;
+    z-index: 10100;
+    text-align: center;
+}
 
 /*.spinner {
 	 margin: 10px auto 0;
@@ -192,39 +203,48 @@ header #add{
 
 }*/
 .loadbox > div {
-	 width: 10px;
-	 height: 10px;
-	 background-color:#ac812e;
-	 border-radius: 100%;
-	 display: inline-block;
-	 -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
-	 animation: bouncedelay 1.4s infinite ease-in-out;
-	 /* Prevent first frame from flickering when animation starts */
-	 -webkit-animation-fill-mode: both;
-	 animation-fill-mode: both;
-}
-.loadbox .bounce1 {
-	 -webkit-animation-delay: -0.32s;
-	 animation-delay: -0.32s;
-}
-.loadbox .bounce2 {
-	 -webkit-animation-delay: -0.16s;
-	 animation-delay: -0.16s;
-}
-@-webkit-keyframes bouncedelay {
-	 0%, 80%, 100% { -webkit-transform: scale(0.0) }
-	 40% { -webkit-transform: scale(1.0) }
-}
-@keyframes bouncedelay {
-	 0%, 80%, 100% {
-	 transform: scale(0.0);
-	 -webkit-transform: scale(0.0);
-	 } 40% {
-	 transform: scale(1.0);
-	 -webkit-transform: scale(1.0);
+    width: 10px;
+    height: 10px;
+    background-color: #ac812e;
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+    animation: bouncedelay 1.4s infinite ease-in-out;
+    /* Prevent first frame from flickering when animation starts */
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
 }
 
-			.weui-loadmore_line {
+.loadbox .bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+}
+
+.loadbox .bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+}
+
+@-webkit-keyframes bouncedelay {
+    0%, 80%, 100% {
+        -webkit-transform: scale(0.0)
+    }
+    40% {
+        -webkit-transform: scale(1.0)
+    }
+}
+
+@keyframes bouncedelay {
+    0%, 80%, 100% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+    }
+    40% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
+
+.weui-loadmore_line {
     border-top: 1px solid #E5E5E5;
     margin-top: 2.4em;
 }

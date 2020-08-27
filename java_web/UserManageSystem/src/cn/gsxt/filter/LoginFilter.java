@@ -18,23 +18,21 @@ public class LoginFilter implements Filter {
         String uri = request.getRequestURI();
         System.out.println(uri);
         //判断请求资源路径包含登陆相关的资源路径
-        if(uri.contains("/login.jsp") || uri.contains("/loginServlet") || uri.contains("/css/") || uri.contains("/js/") || uri.contains("/fonts/") || uri.contains("/checkCodeServlet") ){
+        if (uri.contains("/login.jsp") || uri.contains("/loginServlet") || uri.contains("/css/") || uri.contains("/js/") || uri.contains("/fonts/") || uri.contains("/checkCodeServlet")) {
             //包含这些信息，用户就是想登陆，放行
             System.out.println("用户就是要登陆");
             chain.doFilter(req, resp);
-        }
-        else{
+        } else {
             //不包含，需要验证是否已经登陆
             // 从session获取user
             Object user = request.getSession().getAttribute("user");
-            if(user != null){
+            if (user != null) {
                 System.out.println(123456);
                 chain.doFilter(req, resp);
-            }
-            else{
+            } else {
                 //没有登陆，跳转登陆界面
                 System.out.println("跳转登陆界面");
-                request.setAttribute("login_msg","尚未登陆，请先进性登陆");
+                request.setAttribute("login_msg", "尚未登陆，请先进性登陆");
                 request.getRequestDispatcher("/login.jsp").forward(request, resp);
 
             }

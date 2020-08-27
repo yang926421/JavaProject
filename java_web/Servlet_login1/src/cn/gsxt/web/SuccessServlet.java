@@ -13,14 +13,13 @@ import java.io.IOException;
 public class SuccessServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        获取request域中共享的user对象
-        user user = (cn.gsxt.domain.user)request.getAttribute("user");
+        user user = (cn.gsxt.domain.user) request.getAttribute("user");
         System.out.println("12344");
         System.out.println(user);
-        if(user != null)
-        {
+        if (user != null) {
             response.setContentType("text/html;charset=utf-8");
             //输出
-            response.getWriter().write("登录成功！"+user.getUsername()+",欢迎您");
+            response.getWriter().write("登录成功！" + user.getUsername() + ",欢迎您");
         }
 
     }

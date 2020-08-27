@@ -20,5 +20,5 @@ public class big_decimal_demo {
         // BigDecimal 只能解决精度丢失的问题,但是浮点型数据最后才是我们想要的
         double rs = c1.doubleValue();  //转换成double类型的API
 
-        }
+    }
 }

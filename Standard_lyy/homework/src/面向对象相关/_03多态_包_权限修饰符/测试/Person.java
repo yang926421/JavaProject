@@ -1,6 +1,6 @@
 package 面向对象相关._03多态_包_权限修饰符.测试;
 
-public  abstract class Person {
+public abstract class Person {
     private String name;
     private int age;
 
@@ -25,5 +25,5 @@ public  abstract class Person {
         this.age = age;
     }
 
-    public  abstract void eat();
+    public abstract void eat();
 }

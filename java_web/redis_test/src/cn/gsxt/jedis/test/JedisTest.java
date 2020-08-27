@@ -6,7 +6,7 @@ import redis.clients.jedis.Jedis;
 //jeids的测试类
 public class JedisTest {
     @Test
-    public void test1(){
+    public void test1() {
         //获取连接
         Jedis jedis = new Jedis("localhost", 6379);
 

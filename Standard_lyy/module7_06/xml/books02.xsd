@@ -2,7 +2,7 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
         targetNamespace="http://www.itcast.cn"
 
-        elementFormDefault="qualified" >
+        elementFormDefault="qualified">
     <!-- targetNamespace:申明约束文档的地址（命名空间）-->
     <element name='书架'>
         <!-- 写子元素 -->
@@ -26,5 +26,4 @@
 </schema>
 
 
-
-<!--有人把这个文档叫做模式文档,模板文档-->
+        <!--有人把这个文档叫做模式文档,模板文档-->

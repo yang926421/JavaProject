@@ -5,7 +5,7 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 public class Dom4j_demo1 {
-    public static void main(String[] args) throws  Exception{
+    public static void main(String[] args) throws Exception {
         //创建一个dom4j解析器对象,代表整个dom4j框架
         SAXReader saxReader = new SAXReader();
         //通过解析器对象去加载xml文件数据 成为一个document文档树对象

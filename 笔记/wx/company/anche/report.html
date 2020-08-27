@@ -1,266 +1,276 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title></title>
-		<link rel="stylesheet" href="../../static/css/common.css">
-		<link rel="stylesheet" href="../../static/css/mui.min.css">
-		<link rel="stylesheet" href="../../static/css/report.css">
-		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
-		<script type="text/javascript" src="../../static/js/common.js"></script>
-		<script type="text/javascript" src="../../static/js/path.js" ></script>
-		<script>
-			var ancheid = GetRequest("ANCHEID");  //年报id
-			var ANCHEYEAR=GetRequest("ANCHEYEAR");
-			
-			var ISCHANGE="";	//是否有股权变更信息，1有 2否
-			var ISFORGUARANTEE="";	//是否有对外担保，1有 2否
-			var ISLETTER="";	//是否有对外投资信息，1有 2否
-			var ISWEB="";	//是否有网站或网店信息，1有 2否
-			
-			
-			$(function(){
-			    $("#ANCHEYEAR").html(ANCHEYEAR);  //哪一年的年度报告
-		  	    $("#ENTNAME").html(BODY_NAME); //企业名称:要从登录的时候保存的企业名称中查询
-		  		$("#BODY_NO").html(BODY_NO); //社会信用代码：要从登录的时候保存的企业名称中查询
-				getData();
-				getRegInfo();
-			});
-			
-			//获取年报详情
-			function getData(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/e/an/base/get.json",
-					async:true,
-					data:{"ANCHEID":ancheid,"TOKEN":TOKEN,"SESSIONID":SESSIONID,"BODY_TYPE":BODY_TYPE,"PRIPID":PRIPID},
-					dataType:'json',
-					success:function(res){
-						if(res.success==true){
-							if(res.data!=null && res.data.length>0){
-								if(res.data[0].ANCHEYEAR!=null && res.data[0].ANCHEYEAR!=""){
-									ANCHEYEAR=res.data[0].ANCHEYEAR;
-									$("#ANCHEYEAR").html(res.data[0].ANCHEYEAR);
-									ISCHANGE=res.data[0].ISCHANGE;	
-									ISFORGUARANTEE=res.data[0].ISFORGUARANTEE;	
-									ISLETTER=res.data[0].ISLETTER;	
-									ISWEB=res.data[0].ISWEB;
-								}
-								
-							}
-							createMenu(res.data[0].EDISYCONTBUSIRELA);
-							sessionStorage.setItem("EDISYCONTBUSIRELA",JSON.stringify(res.data[0].EDISYCONTBUSIRELA));
-						}
-					}
-				});
-			}
-			
-		  
-		  function createMenu(obj){
-		  		var menuHtml="";
-				for(i=0;i<obj.length;i++){
-					if(obj[i].BUSINESS_ITEMTYPE=="01"){  //判断是否是表级的菜单
-						menuHtml+="<a href='javascript:;' onclick='returnPath(\""+obj[i].BUSINESS_ITEM+"\")'>"+
-								"<div id='list-box'>"+
-								"		<div class='line'>"+
-								"			<span>"+obj[i].BUSINESS_ITEMDISY+" </span>";
-						if( parseInt(obj[i].COUNT)>=0){
-							menuHtml+=" <span  class='inf-num'>(<span id='"+obj[i].BUSINESS_ITEM+"' class='inf-num'>"+obj[i].COUNT+"</span>)</span>";
-						}
-						menuHtml+="	<span id='arrow-right'><img src='../../static/img/arrow-right.png'/></span>"+
-								"		</div>"+
-								"</div>"+
-							"</a> ";
-		  			}else{
-		  				sessionStorage.setItem(obj[i].BUSINESS_ITEM,obj[i].BUSINESS_ITEMDESC );  
-		  			}
-				}
-				$("#menuData").html(menuHtml);
-				
-		  }
-		  
-		  function yulan(){
-		  	if(ancheid!=null && ancheid!="null" && ancheid!=""){
-		  		if(ISFORGUARANTEE==1){
-		  			var count= $("#GUARANTEE").text();
-			  		if(parseInt(count)<=0){
-			  			mui.toast("请填写基本信息中已经勾选的对外担保信息");
-			  			return;
-			  		}
-			  	}
-			  	if(ISWEB==1){
-			  		var count= $("#WEBSITE").text();
-			  		if(count<=0){
-			  			mui.toast("请填写基本信息中已经勾选的网站或网店信息");
-			  			return;
-			  		}
-			  	}
-			  	
-			  	if(ISCHANGE==1){
-			  		var count= $("#STOCK_ALTER").text();
-			  		if(parseInt(count)<=0){
-			  			mui.toast("请填写基本信息中已经勾选的股权变更信息");
-			  			return;
-			  		}
-			  	}
-			  	if(ISLETTER==1){
-			  		var count= $("#INVESTMENT").text();
-			  		if(parseInt(count)<=0){
-			  			mui.toast("请填写基本信息中已经勾选的对外投资信息");
-			  			return;
-			  		}
-			  	}
-		  		
-		  		window.location.href="show-report.html?ANCHEID="+ancheid+"&publicity=Y";
-		  	}else{
-		  		mui.toast("您尚未创建年报无法预览");
-		  	}
-	       
-		  	
-		  	
-		  }
-			//链接跳转
-		function returnPath(id){
-			if(ancheid!=null && ancheid!=""){
-				if(id=="CU_TAXRELIEFGOODS"){
-					if(regId==null || regId==""){
-						mui.toast("请先填写报关信息");
-						return;
-					}
-				}
-				getAnchePath(id,TYPE,ancheid);
-			}else{
-				mui.toast("请先填写年报《基本信息》");
-			}
-		}
-		var regId="";
-		function getRegInfo(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/h/an/cu/entreginfo/get.json",
-					async:true,
-					data:{"ANCHEID":ancheid,"SESSIONID":SESSIONID,"TOKEN":TOKEN},
-					success:function(res){
-						if(res.success){
-							if(res.data.ancUentreginfo!=null && res.data.ancUentreginfo!="" && JSON.stringify(res.data.ancUentreginfo)!="{}"){
-								regId=res.data.ancUentreginfo.REGID;
-							}
-						}
-					}
-				});
-			}
-		//跳转到基本信息页面
-		function goBaseInfo(){
-			window.location.href="essential-inf.html?ANCHEID="+ancheid+"&ANCHEYEAR="+ANCHEYEAR;
-		}
-		//跳转到年报列表页面
-		function returnList(){
-			window.location.href="report-list.html";
-		}
-		</script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-icon mui-icon-back mui-pull-left" onclick="returnList()"></a>
-		    <h1 class="mui-title"><span id="ANCHEYEAR"></span>年年度报告</h1>
-		</header>
-		
-		<!--企业名称-->
-		<div id="com-name-box">
-			<div class="com-name">
-				<h3 id="ENTNAME"></h3>
-				<p >统一社会信用代码/注册码：<span id="BODY_NO"></span> </p>
-			</div>
-		</div>
-		<!--单行列表-->
-		<div id="list-box">
-			<a href="javascript:;" onclick="goBaseInfo();">
-				<div class="line">
-					<span>基本信息</span>
-					<span id="arrow-right"><img src="../../static/img/arrow-right.png"/></span>
-				</div>
-			</a>
-		</div>
-		
-		<div id="menuData">
-		<!--单行列表-->
-		<!--<a href="../websiteinfo/website-inf.html">
-			<div id="list-box">
-					<div class="line">
-						<span>网站或网店信息 </span> <span id="CNT_WEBSITE" class="inf-num"></span>
-						<span id="arrow-right"><img src="../img/arrow-right.png"/></span>
-					</div>
-			</div>
-		</a>
-		
-		<a href="../subcapital/contribution.html">
-			<div id="list-box">
-				<div class="line">
-					<span>股东及出资信息 </span><span id="CNT_ANSUBCAPITAL" class="inf-num"></span>
-					<span id="arrow-right"><img src="../img/arrow-right.png"/></span>
-				</div>
-			</div>
-		</a>
-		
-		<a href="../forinvestment/investment-inf.html">
-			<div id="list-box">
-				<div class="line">
-					<span>对外投资信息 </span><span id="CNT_ANFORINVESTMENT" class="inf-num"></span>
-					<span id="arrow-right"><img src="../img/arrow-right.png"/></span>
-				</div>
-			</div>
-		</a>
-		
-		<a href="asset-inf.html">
-			<div id="list-box">
-				<div class="line">
-					<span>企业资产状况信息 </span><span class="inf-num"></span>
-					<span id="arrow-right"><img src="../img/arrow-right.png"/></span>
-				</div>
-			</div>
-		</a>
-		
-		<a href="../forguaranteeInfo/guarantee-inf.html">
-			<div id="list-box">
-				<div class="line">
-					<span>对外提供保证担保信息 </span><span id="CNT_ANFORGUARANTEE" class="inf-num"></span>
-					<span id="arrow-right"><img src="../img/arrow-right.png"/></span>
-				</div>
-			</div>
-		</a>
-		
-		<a href="../alterstockInfo/equity-record.html">
-			<div id="list-box">
-				<div class="line">
-					<span>股权变更信息</span> <span id="CNT_ANALTERSTOCK" class="inf-num"></span>
-					<span id="arrow-right"><img src="../img/arrow-right.png"/></span>
-				</div>
-			</div>
-		</a>
-		<a href="add-partyinfo.html">
-			<div id="list-box">
-				<div class="line">
-					<span>党建信息</span> <span  class="inf-num"></span>
-					<span id="arrow-right"><img src="../img/arrow-right.png"/></span>
-				</div>
-			</div>
-		</a>
-		<a href="../socsecinfo/social-security-inf.html">
-			<div id="list-box">
-				<div class="line">
-					<span>社保信息</span> <span id="CNT_ANSOCSECINFO" class="inf-num"></span>
-					<span id="arrow-right"><img src="../img/arrow-right.png"/></span>
-				</div>
-			</div>
-		</a>-->
-		</div>
-		
-		<!--一个按钮-->
-		<div class="yy">
-	    	<a onclick="yulan()" >预览并公示</a>
-	    </div>
-	</body>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title></title>
+    <link rel="stylesheet" href="../../static/css/common.css">
+    <link rel="stylesheet" href="../../static/css/mui.min.css">
+    <link rel="stylesheet" href="../../static/css/report.css">
+    <script type="text/javascript" src="../../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../../static/js/common.js"></script>
+    <script type="text/javascript" src="../../static/js/path.js"></script>
+    <script>
+        var ancheid = GetRequest("ANCHEID");  //年报id
+        var ANCHEYEAR = GetRequest("ANCHEYEAR");
+
+        var ISCHANGE = "";	//是否有股权变更信息，1有 2否
+        var ISFORGUARANTEE = "";	//是否有对外担保，1有 2否
+        var ISLETTER = "";	//是否有对外投资信息，1有 2否
+        var ISWEB = "";	//是否有网站或网店信息，1有 2否
+
+
+        $(function () {
+            $("#ANCHEYEAR").html(ANCHEYEAR);  //哪一年的年度报告
+            $("#ENTNAME").html(BODY_NAME); //企业名称:要从登录的时候保存的企业名称中查询
+            $("#BODY_NO").html(BODY_NO); //社会信用代码：要从登录的时候保存的企业名称中查询
+            getData();
+            getRegInfo();
+        });
+
+        //获取年报详情
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/e/an/base/get.json",
+                async: true,
+                data: {
+                    "ANCHEID": ancheid,
+                    "TOKEN": TOKEN,
+                    "SESSIONID": SESSIONID,
+                    "BODY_TYPE": BODY_TYPE,
+                    "PRIPID": PRIPID
+                },
+                dataType: 'json',
+                success: function (res) {
+                    if (res.success == true) {
+                        if (res.data != null && res.data.length > 0) {
+                            if (res.data[0].ANCHEYEAR != null && res.data[0].ANCHEYEAR != "") {
+                                ANCHEYEAR = res.data[0].ANCHEYEAR;
+                                $("#ANCHEYEAR").html(res.data[0].ANCHEYEAR);
+                                ISCHANGE = res.data[0].ISCHANGE;
+                                ISFORGUARANTEE = res.data[0].ISFORGUARANTEE;
+                                ISLETTER = res.data[0].ISLETTER;
+                                ISWEB = res.data[0].ISWEB;
+                            }
+
+                        }
+                        createMenu(res.data[0].EDISYCONTBUSIRELA);
+                        sessionStorage.setItem("EDISYCONTBUSIRELA", JSON.stringify(res.data[0].EDISYCONTBUSIRELA));
+                    }
+                }
+            });
+        }
+
+
+        function createMenu(obj) {
+            var menuHtml = "";
+            for (i = 0; i < obj.length; i++) {
+                if (obj[i].BUSINESS_ITEMTYPE == "01") {  //判断是否是表级的菜单
+                    menuHtml += "<a href='javascript:;' onclick='returnPath(\"" + obj[i].BUSINESS_ITEM + "\")'>" +
+                        "<div id='list-box'>" +
+                        "		<div class='line'>" +
+                        "			<span>" + obj[i].BUSINESS_ITEMDISY + " </span>";
+                    if (parseInt(obj[i].COUNT) >= 0) {
+                        menuHtml += " <span  class='inf-num'>(<span id='" + obj[i].BUSINESS_ITEM + "' class='inf-num'>" + obj[i].COUNT + "</span>)</span>";
+                    }
+                    menuHtml += "	<span id='arrow-right'><img src='../../static/img/arrow-right.png'/></span>" +
+                        "		</div>" +
+                        "</div>" +
+                        "</a> ";
+                } else {
+                    sessionStorage.setItem(obj[i].BUSINESS_ITEM, obj[i].BUSINESS_ITEMDESC);
+                }
+            }
+            $("#menuData").html(menuHtml);
+
+        }
+
+        function yulan() {
+            if (ancheid != null && ancheid != "null" && ancheid != "") {
+                if (ISFORGUARANTEE == 1) {
+                    var count = $("#GUARANTEE").text();
+                    if (parseInt(count) <= 0) {
+                        mui.toast("请填写基本信息中已经勾选的对外担保信息");
+                        return;
+                    }
+                }
+                if (ISWEB == 1) {
+                    var count = $("#WEBSITE").text();
+                    if (count <= 0) {
+                        mui.toast("请填写基本信息中已经勾选的网站或网店信息");
+                        return;
+                    }
+                }
+
+                if (ISCHANGE == 1) {
+                    var count = $("#STOCK_ALTER").text();
+                    if (parseInt(count) <= 0) {
+                        mui.toast("请填写基本信息中已经勾选的股权变更信息");
+                        return;
+                    }
+                }
+                if (ISLETTER == 1) {
+                    var count = $("#INVESTMENT").text();
+                    if (parseInt(count) <= 0) {
+                        mui.toast("请填写基本信息中已经勾选的对外投资信息");
+                        return;
+                    }
+                }
+
+                window.location.href = "show-report.html?ANCHEID=" + ancheid + "&publicity=Y";
+            } else {
+                mui.toast("您尚未创建年报无法预览");
+            }
+
+
+        }
+
+        //链接跳转
+        function returnPath(id) {
+            if (ancheid != null && ancheid != "") {
+                if (id == "CU_TAXRELIEFGOODS") {
+                    if (regId == null || regId == "") {
+                        mui.toast("请先填写报关信息");
+                        return;
+                    }
+                }
+                getAnchePath(id, TYPE, ancheid);
+            } else {
+                mui.toast("请先填写年报《基本信息》");
+            }
+        }
+
+        var regId = "";
+
+        function getRegInfo() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/h/an/cu/entreginfo/get.json",
+                async: true,
+                data: {"ANCHEID": ancheid, "SESSIONID": SESSIONID, "TOKEN": TOKEN},
+                success: function (res) {
+                    if (res.success) {
+                        if (res.data.ancUentreginfo != null && res.data.ancUentreginfo != "" && JSON.stringify(res.data.ancUentreginfo) != "{}") {
+                            regId = res.data.ancUentreginfo.REGID;
+                        }
+                    }
+                }
+            });
+        }
+
+        //跳转到基本信息页面
+        function goBaseInfo() {
+            window.location.href = "essential-inf.html?ANCHEID=" + ancheid + "&ANCHEYEAR=" + ANCHEYEAR;
+        }
+
+        //跳转到年报列表页面
+        function returnList() {
+            window.location.href = "report-list.html";
+        }
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-icon mui-icon-back mui-pull-left" onclick="returnList()"></a>
+    <h1 class="mui-title"><span id="ANCHEYEAR"></span>年年度报告</h1>
+</header>
+
+<!--企业名称-->
+<div id="com-name-box">
+    <div class="com-name">
+        <h3 id="ENTNAME"></h3>
+        <p>统一社会信用代码/注册码：<span id="BODY_NO"></span></p>
+    </div>
+</div>
+<!--单行列表-->
+<div id="list-box">
+    <a href="javascript:;" onclick="goBaseInfo();">
+        <div class="line">
+            <span>基本信息</span>
+            <span id="arrow-right"><img src="../../static/img/arrow-right.png"/></span>
+        </div>
+    </a>
+</div>
+
+<div id="menuData">
+    <!--单行列表-->
+    <!--<a href="../websiteinfo/website-inf.html">
+        <div id="list-box">
+                <div class="line">
+                    <span>网站或网店信息 </span> <span id="CNT_WEBSITE" class="inf-num"></span>
+                    <span id="arrow-right"><img src="../img/arrow-right.png"/></span>
+                </div>
+        </div>
+    </a>
+
+    <a href="../subcapital/contribution.html">
+        <div id="list-box">
+            <div class="line">
+                <span>股东及出资信息 </span><span id="CNT_ANSUBCAPITAL" class="inf-num"></span>
+                <span id="arrow-right"><img src="../img/arrow-right.png"/></span>
+            </div>
+        </div>
+    </a>
+
+    <a href="../forinvestment/investment-inf.html">
+        <div id="list-box">
+            <div class="line">
+                <span>对外投资信息 </span><span id="CNT_ANFORINVESTMENT" class="inf-num"></span>
+                <span id="arrow-right"><img src="../img/arrow-right.png"/></span>
+            </div>
+        </div>
+    </a>
+
+    <a href="asset-inf.html">
+        <div id="list-box">
+            <div class="line">
+                <span>企业资产状况信息 </span><span class="inf-num"></span>
+                <span id="arrow-right"><img src="../img/arrow-right.png"/></span>
+            </div>
+        </div>
+    </a>
+
+    <a href="../forguaranteeInfo/guarantee-inf.html">
+        <div id="list-box">
+            <div class="line">
+                <span>对外提供保证担保信息 </span><span id="CNT_ANFORGUARANTEE" class="inf-num"></span>
+                <span id="arrow-right"><img src="../img/arrow-right.png"/></span>
+            </div>
+        </div>
+    </a>
+
+    <a href="../alterstockInfo/equity-record.html">
+        <div id="list-box">
+            <div class="line">
+                <span>股权变更信息</span> <span id="CNT_ANALTERSTOCK" class="inf-num"></span>
+                <span id="arrow-right"><img src="../img/arrow-right.png"/></span>
+            </div>
+        </div>
+    </a>
+    <a href="add-partyinfo.html">
+        <div id="list-box">
+            <div class="line">
+                <span>党建信息</span> <span  class="inf-num"></span>
+                <span id="arrow-right"><img src="../img/arrow-right.png"/></span>
+            </div>
+        </div>
+    </a>
+    <a href="../socsecinfo/social-security-inf.html">
+        <div id="list-box">
+            <div class="line">
+                <span>社保信息</span> <span id="CNT_ANSOCSECINFO" class="inf-num"></span>
+                <span id="arrow-right"><img src="../img/arrow-right.png"/></span>
+            </div>
+        </div>
+    </a>-->
+</div>
+
+<!--一个按钮-->
+<div class="yy">
+    <a onclick="yulan()">预览并公示</a>
+</div>
+</body>
 </html>

@@ -14,7 +14,7 @@ public class TestServlet extends HttpServlet {
         String name = request.getParameter("name");
         String msg = request.getParameter("msg");
 
-        System.out.println(name+":"+msg);
+        System.out.println(name + ":" + msg);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

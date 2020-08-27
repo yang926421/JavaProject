@@ -8,17 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
-
- Dom4j解析XML文件  Contact.xml成为一个java对象(集合对象)
- contact.xml   ===>List<Contact>
-
-
- 分析
-    1.定义一个人类封装联系人数据'
-    2.解析成List集合
-
-
-
+ * Dom4j解析XML文件  Contact.xml成为一个java对象(集合对象)
+ * contact.xml   ===>List<Contact>
+ * <p>
+ * <p>
+ * 分析
+ * 1.定义一个人类封装联系人数据'
+ * 2.解析成List集合
  */
 public class Dom4j_demo1 {
     public static void main(String[] args) throws Exception {
@@ -32,7 +28,7 @@ public class Dom4j_demo1 {
         List<Element> sonElements = root.elements();
         // 5.遍历子元素 封装成List集合对象
         List<Contact> contactList = new ArrayList<>();
-        if(sonElements != null && sonElements.size() > 0) {
+        if (sonElements != null && sonElements.size() > 0) {
             for (Element sonElement : sonElements) {
                 Contact contact = new Contact();
                 contact.setId(Integer.valueOf(sonElement.attributeValue("id")));

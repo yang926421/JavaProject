@@ -30,14 +30,14 @@ public class UploadThread implements Runnable {
             File dir = new File("c:\\java\\uploads");
             dir.mkdirs();
             // 文件名：域名+当前时间毫秒值+6位随机数.png
-            String filename = "com.itheima" + System.currentTimeMillis()+".png";
+            String filename = "com.itheima" + System.currentTimeMillis() + ".png";
             FileOutputStream fos = new FileOutputStream(new File(dir, filename));
             // 通过socket对象获得字节输入流对象
             InputStream in = socket.getInputStream();
             // 读取客户端上传的图片数据
             int len = 0;
             byte[] buf = new byte[1024];
-            while((len = in.read(buf)) != -1){
+            while ((len = in.read(buf)) != -1) {
                 fos.write(buf, 0, len);
             }
             // 向客户端写出：上传成功

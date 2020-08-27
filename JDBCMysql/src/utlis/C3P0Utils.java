@@ -9,10 +9,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- 封装C3P0连接池工具类获取连接对象
-    特点
-        1.构造方法private修饰
-        2.所有的方法都是static修饰的
+ * 封装C3P0连接池工具类获取连接对象
+ * 特点
+ * 1.构造方法private修饰
+ * 2.所有的方法都是static修饰的
  */
 public class C3P0Utils {
     /**
@@ -34,9 +34,10 @@ public class C3P0Utils {
     }
 
     //定义静态方法  获取连接池对象
-    public static DataSource getDataSource(){
+    public static DataSource getDataSource() {
         return cpds;
     }
+
     //关闭静态资源,但是关闭的时候调用的close方法是C3p重写过的方法 是把连接对象返回到连接池中重复使用
     public static void release(Connection con, PreparedStatement pstmt, ResultSet resultSet) {
         //关闭资源

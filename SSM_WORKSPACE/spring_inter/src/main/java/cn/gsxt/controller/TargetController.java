@@ -9,10 +9,10 @@ import org.springframework.web.servlet.ModelAndView;
 public class TargetController {
 
     @RequestMapping("/target")
-    public ModelAndView show(){
+    public ModelAndView show() {
         System.out.println("目标资源执行......");
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("name","itcast");
+        modelAndView.addObject("name", "itcast");
         modelAndView.setViewName("index");
         return modelAndView;
     }

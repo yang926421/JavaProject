@@ -1,283 +1,284 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>企业自律管理情况</title>
-		<link rel="stylesheet" href="../../static/css/common.css">
-		<link rel="stylesheet" href="../../static/css/mui.min.css">
-		<link rel="stylesheet" href="../../static/css/essential-inf.css">
-	
-		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
-		<script type="text/javascript" src="../../static/js/common.js"></script>
-		<script type="text/javascript" src="../../static/js/entreginfo_sfc.js"></script>
-		
-		<script>
-			var ancheId=GetRequest("ANCHEID");
-			$(function(){
-				$("#SESSIONID").val(SESSIONID);
-				$("#TOKEN").val(TOKEN);
-				$("#ANCHEID").val(ancheId);
-				//是否开展内外部审计
-		  		$("input[name='ISAUDITED']").click(
-					function(){
-						if(this.value==1){
-							$("#shenjiDiv").hide();
-						}else{
-							$("#shenjiDiv").show();
-							if(flag==1){
-								addHtml();
-							}
-							
-						}
-					}
-				);
-				$("input[name='EXISTINGPROBLEMS']").click(
-					function(){
-						if(this.value==1){
-							$("#problemDiv").show();
-						}else{
-							$("#PROBLEMS").val("");
-							$("#problemDiv").hide();
-						}
-					}
-				);
-				
-				 getData();
-			})
-			
-			var flag=1;   //增加审计机构的时候定义的一个计数标记
-			//添加审计机构
-			function addHtml(){
-				if(flag!=1){
-					$("#delBtn").show();
-				}
-				var html="<div id='shenji"+flag+"'> <div class='web-box'>"+
-						"	<ul>"+
-						"		<li>"+
-						"			<span >"+
-						"				审计执行机构名称"+flag+" "+
-						"			</span>"+
-						"			<div class='web-write'>"+
-						"				<input type='text' name='AUDITINSTITUTION"+flag+"' id='AUDITINSTITUTION"+flag+"'  placeholder='请填写机构名称' />"+
-						"			</div>"+
-						"		</li>"+
-						"	</ul>"+
-						"</div>"+
-						"<div class='web-box'>"+
-						"		<ul>"+
-						"			<li>"+
-						"				<span >"+
-						"					审计期间"+
-						"				</span>"+
-						"				<div class='web-write'>"+
-						"					<input type='text' name='AUDITPERIOD"+flag+"' id='AUDITPERIOD"+flag+"'  placeholder='请填写审计期间' />"+
-						"				</div>"+
-						"			</li>"+
-						"		</ul>"+
-						"</div></div>";
-				$("#addShenji").append(html);
-				flag+=1;
-			}
-			//删除审计机构
-			var delFlag=1;
-			function delHtml(){
-				delFlag=flag-1;
-				$("#shenji"+delFlag).remove();
-				flag-=1;
-				delFlag-=1;
-				if(delFlag==1){
-					$("#delBtn").hide();
-				}
-			}
-			
-			
-			
-			function addData(){
-				var ISAUDITED= $('input:radio[name="ISAUDITED"]:checked').val();
-				var EXTERNALAUDITS=[];
-				if(ISAUDITED==2){
-					for(var i=1;i<flag;i++){
-						var jigou=$("#AUDITINSTITUTION"+i).val();
-						var qijian=$("#AUDITPERIOD"+i).val();
-						EXTERNALAUDITS.push({"AUDITINSTITUTION":jigou,"AUDITPERIOD":qijian});
-					}
-				}
-			//	$("#EXTERNALAUDITS").val(JSON.stringify(EXTERNALAUDITS));
-				delete entreginfo.S_EXT_DATATIME;
-				entreginfo.ISAUDITED=ISAUDITED;
-				entreginfo.EXISTINGPROBLEMS=$('input:radio[name="EXISTINGPROBLEMS"]:checked').val();
-				entreginfo.PROBLEMS=$("#PROBLEMS").val();
-				entreginfo.fauditJson=JSON.stringify(EXTERNALAUDITS);
-				entreginfo.SESSIONID=SESSIONID;
-				entreginfo.TOKEN=TOKEN;
-				$.ajax({
-					type:"post",
-					url:httpUrl+"/h/an/cu/sfcaudit/save.json",
-					async:true,
-					data:entreginfo,
-					success:function(res){
-						if(res.success){
-							mui.toast(res.codeMsg)
-							window.location.href="customs_index.html?ANCHEID="+ancheId;
-						}
-					}
-				});
-			}
-			
-			function getData(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/h/an/cu/sfcreginfo/get.json",
-					async:true,
-					data:{"ANCHEID":ancheId,"SESSIONID":SESSIONID,"TOKEN":TOKEN},
-					success:function(res){
-						if(res.success){
-							entreginfo=res.data.ancUsfcreginfo;
-							$("#PROBLEMS").val(res.data.ancUsfcreginfo.PROBLEMS);
-							if(res.data.ancUsfcreginfo.EXISTINGPROBLEMS==1){
-								$("#problemDiv").show();
-						 		$("input[name='EXISTINGPROBLEMS'][value=1]").attr("checked","checked");
-							}else{
-								$("#problemDiv").hide();
-								$("input[name='EXISTINGPROBLEMS'][value=2]").attr("checked","checked");
-							}
-							if(res.data.kzkANCUsfauditList!="" && res.data.kzkANCUsfauditList!=null){
-								createData(res.data.ancUsfcreginfo ,res.data.kzkANCUsfauditList);
-							}
-						
-						}
-					}
-				});
-				
-				
-			}
-			
-			
-		 function createData(regInfo,obj){
-				if(regInfo.ISAUDITED==2){
-					$("input[name='ISAUDITED'][value=2]").attr("checked","checked");
-					$("#shenjiDiv").show();
-					flag=obj.length+1;
-					if(flag>1){
-						$("#delBtn").show();
-					}
-					for(var i in obj){
-						var m=parseInt(i)+1;
-						var html="<div id='shenji"+m+"'> <div class='web-box'>"+
-									"	<ul>"+
-									"		<li>"+
-									"			<span >"+
-									"				审计执行机构名称"+m+" "+
-									"			</span>"+
-									"			<div class='web-write'>"+
-									"				<input type='text' name='AUDITINSTITUTION"+m+"' id='AUDITINSTITUTION"+m+"' value='"+obj[i].AUDITINSTITUTION+"'   placeholder='请填写机构名称' />"+
-									"			</div>"+
-									"		</li>"+
-									"	</ul>"+
-									"</div>"+
-									"<div class='web-box'>"+
-									"		<ul>"+
-									"			<li>"+
-									"				<span >"+
-									"					审计期间"+
-									"				</span>"+
-									"				<div class='web-write'>"+
-									"					<input type='text' name='AUDITPERIOD"+m+"' id='AUDITPERIOD"+m+"' value='"+obj[i].AUDITPERIOD+"'  placeholder='请填写审计期间' />"+
-									"				</div>"+
-									"			</li>"+
-									"		</ul>"+
-									"</div></div>";
-									$("#addShenji").append(html);
-					}
-				}else{
-					$("input[name='ISAUDITED'][value=1]").attr("checked","checked");
-				}
-			}	
-			
-			
-		</script>
-		
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" ></a>
-		    <h1 class="mui-title"><span id="saveOrUpdate"></span>企业自律管理情况</h1>
-		     <span id="sure">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>企业自律管理情况</title>
+    <link rel="stylesheet" href="../../static/css/common.css">
+    <link rel="stylesheet" href="../../static/css/mui.min.css">
+    <link rel="stylesheet" href="../../static/css/essential-inf.css">
+
+    <script type="text/javascript" src="../../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../../static/js/common.js"></script>
+    <script type="text/javascript" src="../../static/js/entreginfo_sfc.js"></script>
+
+    <script>
+        var ancheId = GetRequest("ANCHEID");
+        $(function () {
+            $("#SESSIONID").val(SESSIONID);
+            $("#TOKEN").val(TOKEN);
+            $("#ANCHEID").val(ancheId);
+            //是否开展内外部审计
+            $("input[name='ISAUDITED']").click(
+                function () {
+                    if (this.value == 1) {
+                        $("#shenjiDiv").hide();
+                    } else {
+                        $("#shenjiDiv").show();
+                        if (flag == 1) {
+                            addHtml();
+                        }
+
+                    }
+                }
+            );
+            $("input[name='EXISTINGPROBLEMS']").click(
+                function () {
+                    if (this.value == 1) {
+                        $("#problemDiv").show();
+                    } else {
+                        $("#PROBLEMS").val("");
+                        $("#problemDiv").hide();
+                    }
+                }
+            );
+
+            getData();
+        })
+
+        var flag = 1;   //增加审计机构的时候定义的一个计数标记
+        //添加审计机构
+        function addHtml() {
+            if (flag != 1) {
+                $("#delBtn").show();
+            }
+            var html = "<div id='shenji" + flag + "'> <div class='web-box'>" +
+                "	<ul>" +
+                "		<li>" +
+                "			<span >" +
+                "				审计执行机构名称" + flag + " " +
+                "			</span>" +
+                "			<div class='web-write'>" +
+                "				<input type='text' name='AUDITINSTITUTION" + flag + "' id='AUDITINSTITUTION" + flag + "'  placeholder='请填写机构名称' />" +
+                "			</div>" +
+                "		</li>" +
+                "	</ul>" +
+                "</div>" +
+                "<div class='web-box'>" +
+                "		<ul>" +
+                "			<li>" +
+                "				<span >" +
+                "					审计期间" +
+                "				</span>" +
+                "				<div class='web-write'>" +
+                "					<input type='text' name='AUDITPERIOD" + flag + "' id='AUDITPERIOD" + flag + "'  placeholder='请填写审计期间' />" +
+                "				</div>" +
+                "			</li>" +
+                "		</ul>" +
+                "</div></div>";
+            $("#addShenji").append(html);
+            flag += 1;
+        }
+
+        //删除审计机构
+        var delFlag = 1;
+
+        function delHtml() {
+            delFlag = flag - 1;
+            $("#shenji" + delFlag).remove();
+            flag -= 1;
+            delFlag -= 1;
+            if (delFlag == 1) {
+                $("#delBtn").hide();
+            }
+        }
+
+
+        function addData() {
+            var ISAUDITED = $('input:radio[name="ISAUDITED"]:checked').val();
+            var EXTERNALAUDITS = [];
+            if (ISAUDITED == 2) {
+                for (var i = 1; i < flag; i++) {
+                    var jigou = $("#AUDITINSTITUTION" + i).val();
+                    var qijian = $("#AUDITPERIOD" + i).val();
+                    EXTERNALAUDITS.push({"AUDITINSTITUTION": jigou, "AUDITPERIOD": qijian});
+                }
+            }
+            //	$("#EXTERNALAUDITS").val(JSON.stringify(EXTERNALAUDITS));
+            delete entreginfo.S_EXT_DATATIME;
+            entreginfo.ISAUDITED = ISAUDITED;
+            entreginfo.EXISTINGPROBLEMS = $('input:radio[name="EXISTINGPROBLEMS"]:checked').val();
+            entreginfo.PROBLEMS = $("#PROBLEMS").val();
+            entreginfo.fauditJson = JSON.stringify(EXTERNALAUDITS);
+            entreginfo.SESSIONID = SESSIONID;
+            entreginfo.TOKEN = TOKEN;
+            $.ajax({
+                type: "post",
+                url: httpUrl + "/h/an/cu/sfcaudit/save.json",
+                async: true,
+                data: entreginfo,
+                success: function (res) {
+                    if (res.success) {
+                        mui.toast(res.codeMsg)
+                        window.location.href = "customs_index.html?ANCHEID=" + ancheId;
+                    }
+                }
+            });
+        }
+
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/h/an/cu/sfcreginfo/get.json",
+                async: true,
+                data: {"ANCHEID": ancheId, "SESSIONID": SESSIONID, "TOKEN": TOKEN},
+                success: function (res) {
+                    if (res.success) {
+                        entreginfo = res.data.ancUsfcreginfo;
+                        $("#PROBLEMS").val(res.data.ancUsfcreginfo.PROBLEMS);
+                        if (res.data.ancUsfcreginfo.EXISTINGPROBLEMS == 1) {
+                            $("#problemDiv").show();
+                            $("input[name='EXISTINGPROBLEMS'][value=1]").attr("checked", "checked");
+                        } else {
+                            $("#problemDiv").hide();
+                            $("input[name='EXISTINGPROBLEMS'][value=2]").attr("checked", "checked");
+                        }
+                        if (res.data.kzkANCUsfauditList != "" && res.data.kzkANCUsfauditList != null) {
+                            createData(res.data.ancUsfcreginfo, res.data.kzkANCUsfauditList);
+                        }
+
+                    }
+                }
+            });
+
+
+        }
+
+
+        function createData(regInfo, obj) {
+            if (regInfo.ISAUDITED == 2) {
+                $("input[name='ISAUDITED'][value=2]").attr("checked", "checked");
+                $("#shenjiDiv").show();
+                flag = obj.length + 1;
+                if (flag > 1) {
+                    $("#delBtn").show();
+                }
+                for (var i in obj) {
+                    var m = parseInt(i) + 1;
+                    var html = "<div id='shenji" + m + "'> <div class='web-box'>" +
+                        "	<ul>" +
+                        "		<li>" +
+                        "			<span >" +
+                        "				审计执行机构名称" + m + " " +
+                        "			</span>" +
+                        "			<div class='web-write'>" +
+                        "				<input type='text' name='AUDITINSTITUTION" + m + "' id='AUDITINSTITUTION" + m + "' value='" + obj[i].AUDITINSTITUTION + "'   placeholder='请填写机构名称' />" +
+                        "			</div>" +
+                        "		</li>" +
+                        "	</ul>" +
+                        "</div>" +
+                        "<div class='web-box'>" +
+                        "		<ul>" +
+                        "			<li>" +
+                        "				<span >" +
+                        "					审计期间" +
+                        "				</span>" +
+                        "				<div class='web-write'>" +
+                        "					<input type='text' name='AUDITPERIOD" + m + "' id='AUDITPERIOD" + m + "' value='" + obj[i].AUDITPERIOD + "'  placeholder='请填写审计期间' />" +
+                        "				</div>" +
+                        "			</li>" +
+                        "		</ul>" +
+                        "</div></div>";
+                    $("#addShenji").append(html);
+                }
+            } else {
+                $("input[name='ISAUDITED'][value=1]").attr("checked", "checked");
+            }
+        }
+
+
+    </script>
+
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left"></a>
+    <h1 class="mui-title"><span id="saveOrUpdate"></span>企业自律管理情况</h1>
+    <span id="sure">
 		    	<a href="javascript:;" onclick="addData()">保存</a>
 		    </span>
-		</header>
-		
-		<!--股东信息-->
-		<form id="addForm">
-			<input type="hidden" name="EXTERNALAUDITS" id="EXTERNALAUDITS"/>
-			<input type="hidden" name="SESSIONID" id="SESSIONID"/>
-			<input type="hidden" name="TOKEN" id="TOKEN"/>
-			<input type="hidden" name="ANCHEID" id="ANCHEID"/>
-		<div id="common-box">
-			<div id="line-block">
-			<div class="web-box">
-					<ul>
-						<li>
+</header>
+
+<!--股东信息-->
+<form id="addForm">
+    <input type="hidden" name="EXTERNALAUDITS" id="EXTERNALAUDITS"/>
+    <input type="hidden" name="SESSIONID" id="SESSIONID"/>
+    <input type="hidden" name="TOKEN" id="TOKEN"/>
+    <input type="hidden" name="ANCHEID" id="ANCHEID"/>
+    <div id="common-box">
+        <div id="line-block">
+            <div class="web-box">
+                <ul>
+                    <li>
 							<span>
 								年度内是否开展内外部审计
 							</span>
-							<div class="essential-write">
-								<label><input type="radio" value="1" name="ISAUDITED" id="ISAUDITED1" checked="checked" />内部</label>
-								<label><input type="radio" value="2" name="ISAUDITED" id="ISAUDITED2" />外部</label>
-							</div>
-						</li>
-					</ul>
-			</div>
-			<div id="shenjiDiv" style="display: none;">
-				<div id="addShenji"></div>
-				<div class="web-box" style="text-align: center;color:#ac812e;">
-					<ul>
-						<li>
-							<a onclick="addHtml()" >新增</a>&nbsp;&nbsp;&nbsp;&nbsp;
-							<a id="delBtn" onclick="delHtml()" style="display: none;" >删除</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			
-			
-				<div class="web-box">
-					<ul>
-						<li>
+                        <div class="essential-write">
+                            <label><input type="radio" value="1" name="ISAUDITED" id="ISAUDITED1" checked="checked"/>内部</label>
+                            <label><input type="radio" value="2" name="ISAUDITED" id="ISAUDITED2"/>外部</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div id="shenjiDiv" style="display: none;">
+                <div id="addShenji"></div>
+                <div class="web-box" style="text-align: center;color:#ac812e;">
+                    <ul>
+                        <li>
+                            <a onclick="addHtml()">新增</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a id="delBtn" onclick="delHtml()" style="display: none;">删除</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="web-box">
+                <ul>
+                    <li>
 							<span>
 								在内外部审计等企业自律管理中是否发现一般贸易业务、加工贸易及保税业务、
 减免税业务或其他进出口业务存在违反海关管理规定的问题
 							</span>
-							<div class="essential-write">
-								<label><input type="radio" value="1" name="EXISTINGPROBLEMS" id="EXISTINGPROBLEMS1" />是</label>
-								<label><input type="radio" value="2" name="EXISTINGPROBLEMS" id="EXISTINGPROBLEMS2" checked="checked"/>否</label>
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			
-			
-			<div class="web-box" id="problemDiv">
-					<ul>
-						<li>
-							<span >
+                        <div class="essential-write">
+                            <label><input type="radio" value="1" name="EXISTINGPROBLEMS"
+                                          id="EXISTINGPROBLEMS1"/>是</label>
+                            <label><input type="radio" value="2" name="EXISTINGPROBLEMS" id="EXISTINGPROBLEMS2"
+                                          checked="checked"/>否</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="web-box" id="problemDiv">
+                <ul>
+                    <li>
+							<span>
 								具体问题
 							</span>
-							<div class="web-write">
-								<textarea name="PROBLEMS" id="PROBLEMS"  rows="5" placeholder="请填写具体问题" style="border: none;"></textarea>
-							</div>
-						</li>
-					</ul>
-			</div>
-			</div>
-			
-			
-			
-			
-		</div>	
-	</body>
+                        <div class="web-write">
+                            <textarea name="PROBLEMS" id="PROBLEMS" rows="5" placeholder="请填写具体问题"
+                                      style="border: none;"></textarea>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+</body>
 </html>

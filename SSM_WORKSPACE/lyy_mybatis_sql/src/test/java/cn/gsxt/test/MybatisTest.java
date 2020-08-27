@@ -15,7 +15,7 @@ import java.util.List;
 
 public class MybatisTest {
     @Test
-    public void test1() throws Exception{
+    public void test1() throws Exception {
         InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
         SqlSession sqlSession = sqlSessionFactory.openSession(true);
@@ -26,9 +26,9 @@ public class MybatisTest {
         }
     }
 
-//    查询一对多的  用户和订单
+    //    查询一对多的  用户和订单
     @Test
-    public void test2() throws Exception{
+    public void test2() throws Exception {
         InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
         SqlSession sqlSession = sqlSessionFactory.openSession(true);
@@ -41,7 +41,7 @@ public class MybatisTest {
 
     //查询多对多的
     @Test
-    public void test3() throws Exception{
+    public void test3() throws Exception {
         InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
         SqlSession sqlSession = sqlSessionFactory.openSession(true);

@@ -5,7 +5,7 @@ public abstract class employee {
     private String name;
     private String money;
 
-    public employee(String gongHao,String name,String money ){
+    public employee(String gongHao, String name, String money) {
         this.gongHao = gongHao;
         this.name = name;
         this.money = money;
@@ -34,9 +34,12 @@ public abstract class employee {
     public void setMoney(String money) {
         this.money = money;
     }
+
     abstract void eat();
+
     abstract void work();
-    public  void run(){
+
+    public void run() {
         System.out.println("我是定义在抽象类中的方法");
     }
 }

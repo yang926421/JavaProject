@@ -1,7 +1,8 @@
 package 面向对象相关._01面向对象基础._05test;
 
-public class Student extends Person{
+public class Student extends Person {
     private String score;
+
     public Student() {
         super();
     }
@@ -38,7 +39,8 @@ public class Student extends Person{
     public void setAge(int age) {
         super.setAge(age);
     }
-    public void test_own(){
+
+    public void test_own() {
         System.out.println(this.getName() + "考试呀");
     }
 }

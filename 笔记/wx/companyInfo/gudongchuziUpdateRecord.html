@@ -1,73 +1,75 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>股东及出资信息修改记录</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/guarantee-inf.css" />
-		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-		<script type="text/javascript" src="../static/js/common.js" ></script>
-		<script>
-			//获取企业id
-			var pripid=sessionStorage.getItem("PRIPID");
-			//获取企业类型
-			var type=sessionStorage.getItem("TYPE");   //1企业 2农专 3个体
-			$(function(){
-				getData();
-			});
-			//获取股东出资修改记录信息
-			function getData(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/p/shareholderChanging/list.json",
-					data:{"PRIPID":pripid,"TYPE":type},
-					dataType:"json",
-					async:true,
-					success:function(res){
-						if(res.success==true){
-							createData(res.data);
-						}
-					}
-				});
-			}
-			//创建股东出资修改记录数据
-			function createData(obj){
-				if(obj!=null && obj.length>0){
-					$("#count").html(obj.length);
-					var htmlData="";
-					for(var i=0;i<obj.length;i++){
-						
-						htmlData+=	"<div class='web-box'>"+
-									"	<div class='web-name'>"+
-									"		<ul class='web'>"+
-									"			<li>"+obj[i].ALITEM+"</li>"+
-									"			<li><span>变更前内容：</span><span>"+obj[i].ALTBE+"</span></li>"+
-									"			<li><span>变更后内容：</span><span>"+obj[i].ALTAF+"</span></li>"+
-									"			<li><span>变更日期：</span><span>"+getSmpFormatDateByLong(obj[i].ALTDATE,false)+"</span></li>"+
-									"		</ul>"+
-									"	</div>"+
-									"</div> ";
-					}
-					$("#common-box").html(htmlData);
-					
-				}else{
-					$("#count").html(0);
-				}
-			}
-			
-		</script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="gudongchuzi.html"></a>
-		    <h1 class="mui-title">股东及出资信息修改记录(<span id="count"></span>)</h1>
-		</header>
-		
-		<div id="common-box">
-		</div>
-	</body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>股东及出资信息修改记录</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/guarantee-inf.css"/>
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script>
+        //获取企业id
+        var pripid = sessionStorage.getItem("PRIPID");
+        //获取企业类型
+        var type = sessionStorage.getItem("TYPE");   //1企业 2农专 3个体
+        $(function () {
+            getData();
+        });
+
+        //获取股东出资修改记录信息
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/p/shareholderChanging/list.json",
+                data: {"PRIPID": pripid, "TYPE": type},
+                dataType: "json",
+                async: true,
+                success: function (res) {
+                    if (res.success == true) {
+                        createData(res.data);
+                    }
+                }
+            });
+        }
+
+        //创建股东出资修改记录数据
+        function createData(obj) {
+            if (obj != null && obj.length > 0) {
+                $("#count").html(obj.length);
+                var htmlData = "";
+                for (var i = 0; i < obj.length; i++) {
+
+                    htmlData += "<div class='web-box'>" +
+                        "	<div class='web-name'>" +
+                        "		<ul class='web'>" +
+                        "			<li>" + obj[i].ALITEM + "</li>" +
+                        "			<li><span>变更前内容：</span><span>" + obj[i].ALTBE + "</span></li>" +
+                        "			<li><span>变更后内容：</span><span>" + obj[i].ALTAF + "</span></li>" +
+                        "			<li><span>变更日期：</span><span>" + getSmpFormatDateByLong(obj[i].ALTDATE, false) + "</span></li>" +
+                        "		</ul>" +
+                        "	</div>" +
+                        "</div> ";
+                }
+                $("#common-box").html(htmlData);
+
+            } else {
+                $("#count").html(0);
+            }
+        }
+
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="gudongchuzi.html"></a>
+    <h1 class="mui-title">股东及出资信息修改记录(<span id="count"></span>)</h1>
+</header>
+
+<div id="common-box">
+</div>
+</body>
 </html>

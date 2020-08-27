@@ -8,7 +8,7 @@ import java.util.List;
 
 public class itemsTest {
     @Test
-    public void findAll() throws Exception{
+    public void findAll() throws Exception {
         itemsDaoImpl itemsDao = new itemsDaoImpl();
         List<items> items = itemsDao.findAll();
         for (items item : items) {

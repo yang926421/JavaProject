@@ -4,9 +4,9 @@ public abstract class Animal {
     private String age;
     private String color;
 
-    public Animal(String age, String color){
+    public Animal(String age, String color) {
         this.age = age;
-        this.color =color;
+        this.color = color;
     }
 
     public String getAge() {
@@ -24,11 +24,16 @@ public abstract class Animal {
     public void setColor(String color) {
         this.color = color;
     }
-     abstract void eat();
-    public void run(){
+
+    abstract void eat();
+
+    public void run() {
         System.out.println("动物在跑啊");
-    };
-    public void show(){
+    }
+
+    ;
+
+    public void show() {
         System.out.println("我是父类呀");
     }
 }

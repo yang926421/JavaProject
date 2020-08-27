@@ -12,6 +12,6 @@ import javax.sql.DataSource;
 @ComponentScan("cn.gsxt")  //组件扫描
 //@PropertySource("classpath:jdbc.properties")
 @Import(DataSourceConfiguration.class)
-public class SpringConfiguration  {
+public class SpringConfiguration {
 
 }

@@ -6,10 +6,11 @@ public class person {
 //        d.eat();
 //    }
 
-    public void feed(animal ani){
+    public void feed(animal ani) {
         ani.eat();
     }
-    void need(){
+
+    void need() {
 
     }
 }

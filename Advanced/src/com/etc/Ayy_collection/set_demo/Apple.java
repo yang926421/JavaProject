@@ -9,7 +9,7 @@ public class Apple implements Comparable<Apple> {
     // 比较者：this
     // 被比较者：o
     // 需求：按照jiage比较
-    public Apple(){
+    public Apple() {
 
     }
 
@@ -17,11 +17,12 @@ public class Apple implements Comparable<Apple> {
     private double price;
     private String color;
 
-    public Apple(String name, Double price, String color){
+    public Apple(String name, Double price, String color) {
         this.name = name;
         this.color = color;
         this.price = price;
     }
+
     @Override
     public int compareTo(Apple o) {
         System.out.println(this.color);

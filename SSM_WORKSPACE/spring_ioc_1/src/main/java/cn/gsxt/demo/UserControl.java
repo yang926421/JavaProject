@@ -9,7 +9,7 @@ public class UserControl {
     public static void main(String[] args) {
         //模拟wab层
         ApplicationContext app = new ClassPathXmlApplicationContext("applicationContext.xml");
-        UserService userService= (UserService) app.getBean("userService");
+        UserService userService = (UserService) app.getBean("userService");
         userService.save();
     }
 }

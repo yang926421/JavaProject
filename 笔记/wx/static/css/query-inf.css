@@ -1,17 +1,20 @@
-.mui-media-body{
-	/*margin-top: 8px;*/
-	line-height: 42px;
+.mui-media-body {
+    /*margin-top: 8px;*/
+    line-height: 42px;
 }
-.mui-table-view{
-	font-size: 1.6rem;
+
+.mui-table-view {
+    font-size: 1.6rem;
 }
-.ui-bar.mui-bar-tab{	
-	background: red;
+
+.ui-bar.mui-bar-tab {
+    background: red;
 }
-#common-boxJ{
-	padding-top: 4.3rem;
-	position: relative;
-	height: 100%;
+
+#common-boxJ {
+    padding-top: 4.3rem;
+    position: relative;
+    height: 100%;
 }
 
 /*新增*/
@@ -19,17 +22,20 @@
 	height: 4.0rem;
 	width: 4.0rem;
 }*/
-.mui-table-view{
-	background-color: #f1f3f4;
+.mui-table-view {
+    background-color: #f1f3f4;
 }
-.mui-media{
-	/*border: #000000 solid 1px;*/
-	margin-bottom: 0.5rem;
-	background-color: #FFFFFF;
+
+.mui-media {
+    /*border: #000000 solid 1px;*/
+    margin-bottom: 0.5rem;
+    background-color: #FFFFFF;
 }
-.mui-table-view-cell:after{
-	background: #FFFFFF;
+
+.mui-table-view-cell:after {
+    background: #FFFFFF;
 }
-.mui-table-view-cell{
-	padding: 12px 13px;
+
+.mui-table-view-cell {
+    padding: 12px 13px;
 }

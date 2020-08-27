@@ -2,7 +2,7 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <!--    引入properties文件-->
-    <properties resource="jdbc.properties" ></properties>
+    <properties resource="jdbc.properties"></properties>
     <typeAliases>
         <typeAlias type="cn.gsxt.domain.User" alias="user"/>
         <typeAlias type="cn.gsxt.domain.Order" alias="order"/>
@@ -20,14 +20,14 @@
         </environment>
     </environments>
 
-<!--    xml方式配置  加载映射文件-->
-<!--    <mappers>-->
-<!--        <mapper resource="UserMapper.xml"/>-->
-<!--    </mappers>-->
+    <!--    xml方式配置  加载映射文件-->
+    <!--    <mappers>-->
+    <!--        <mapper resource="UserMapper.xml"/>-->
+    <!--    </mappers>-->
 
-<!--    加载注解配置的映射关系-->
+    <!--    加载注解配置的映射关系-->
     <mappers>
-<!--        指定接口所在的包  加载映射关系-->
+        <!--        指定接口所在的包  加载映射关系-->
         <package name="cn.gsxt.mapper"/>
     </mappers>
 </configuration>

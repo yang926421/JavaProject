@@ -1,5 +1,7 @@
 package com.lyy.mysql2.lombok测试;
+
 import domain.authors;
+
 public class lombokDemo1 {
     public static void main(String[] args) {
 //        authors author = new authors();

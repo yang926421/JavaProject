@@ -16,10 +16,10 @@ import java.util.Scanner;
 public class TCPClient {
     public static void main(String[] args) throws IOException {
         // 创建客户端Socket对象
-        Socket socket = new Socket(InetAddress.getLocalHost(),8080);
+        Socket socket = new Socket(InetAddress.getLocalHost(), 8080);
 
         // 获得字节输入输出流对象
-        OutputStream os =  socket.getOutputStream();
+        OutputStream os = socket.getOutputStream();
         InputStream in = socket.getInputStream();
 
         // 创建键盘录入对象
@@ -30,7 +30,7 @@ public class TCPClient {
         System.out.println("请输入密码：");
         String password = sc.nextLine();
         // 按指定的格式拼接字符串
-        String content = username+"="+password; //jack=123456
+        String content = username + "=" + password; //jack=123456
 
 
         // 发送数据给服务器
@@ -42,7 +42,7 @@ public class TCPClient {
         byte[] buffer = new byte[1024];
         // 读取服务器返回的数据
         int len = in.read(buffer);
-        System.out.println(new String(buffer,0,len));
+        System.out.println(new String(buffer, 0, len));
         // 关闭socket对象，断开服务器连接
         socket.close();
     }

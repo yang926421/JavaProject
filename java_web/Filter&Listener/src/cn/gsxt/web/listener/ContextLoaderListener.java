@@ -12,8 +12,9 @@ public class ContextLoaderListener implements ServletContextListener {
 
     /**
      * 监听ServletContext对象创建的。ServletContext对象服务器启动后自动创建。
-     *
+     * <p>
      * 在服务器启动后自动调用
+     *
      * @param servletContextEvent
      */
     @Override
@@ -29,10 +30,10 @@ public class ContextLoaderListener implements ServletContextListener {
         String realPath = servletContext.getRealPath(contextConfigLocation);
 
         //4.加载进内存
-        try{
+        try {
             FileInputStream fis = new FileInputStream(realPath);
             System.out.println(fis);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         System.out.println("ServletContext对象被创建了。。。");
@@ -40,6 +41,7 @@ public class ContextLoaderListener implements ServletContextListener {
 
     /**
      * 在服务器关闭后，ServletContext对象被销毁。当服务器正常关闭后该方法被调用
+     *
      * @param servletContextEvent
      */
     @Override

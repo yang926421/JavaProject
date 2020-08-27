@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AddStudentDemo {
-    public static List<student> addStudent(){
+    public static List<student> addStudent() {
 //        String sc = s
         return new ArrayList<>();
     }

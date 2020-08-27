@@ -7,8 +7,8 @@ public class test {
     public static void main(String[] args) {
         Random ran = new Random();
         HashSet<Integer> hs = new HashSet<>();
-        while (hs.size()<6){
-            hs.add(ran.nextInt(33)+1);
+        while (hs.size() < 6) {
+            hs.add(ran.nextInt(33) + 1);
         }
         // 5.在生成一个红球
         int blueBall = ran.nextInt(16) + 1;

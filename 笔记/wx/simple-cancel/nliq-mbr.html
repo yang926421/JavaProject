@@ -1,291 +1,293 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>国家企业信用信息公示系统</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/add-right-inf.css">
-		<link rel="stylesheet" href="../static/css/essential-inf.css" />
-		<link rel="stylesheet" type="text/css" href="../static/css/mui.picker.min.css" /><!--填写时间-->
-		<script src="../static/js/mui.min.js"></script>
-		<script src="../static/js/mui.picker.min.js"></script>
-		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../static/js/common.js" ></script>
-		<script type="text/javascript" src="../static/js/jquery.serializejson.min.js" ></script>
-		
-		<script>
-			
-			var LIID=GetRequest("LIID");
-			var LIMEID=GetRequest("LIMEID");
-			var enliquidation="";
-			$(function(){
-				loadData("CB16","CERTYPE");
-				$("#PRIPID").val(PRIPID);
-				$("#TOKEN").val(TOKEN);
-				$("#SESSIONID").val(SESSIONID);
-				$("#LIID").val(LIID);
-				enliquidation=sessionStorage.getItem("enliquidation");
-				console.info(enliquidation);
-				if(LIMEID!=null && LIMEID!=""){
-					$("#saveOrUpdate").html("修改");
-					$("#LIMEID").val(LIMEID);
-					$("#sure").show();
-					$("#delDiv").show();
-					$("#addDiv").hide();
-					getData();
-				}else{
-					$("#saveOrUpdate").html("添加");
-				}
-			});
-			
-			function addData(){
-				
-				var liqmem= $("#LIQMEM").val();
-				var certype = $("#CERTYPE").val();
-				var cerno = $("#CERNO").val();
-				var tel = $("#TEL").val();
-			 	var addr = $("#ADDR").val();
-				var ligpriSign = $("#LIGPRISIGN").val();
-				if(liqmem==null || liqmem.length<1){
-					mui.toast("请输入成员名称");
-					return;
-				}
-				if(certype==null || certype.length<1){
-					mui.toast("请选择证件类型");
-					return;
-				}
-				if(cerno==null || cerno.length<1){
-					mui.toast("请输入证件号码");
-					return;
-				}
-				if(tel==null || tel.length<1){
-					mui.toast("请输入联系电话");
-					return;
-				}
-				if(addr==null || addr.length<1){
-					mui.toast("请输入地址");
-					return;
-				}
-				var entaudit=$("#addForm").serializeJSON();
-				var data=[];
-				data.push(entaudit);
-				var dataJson=JSON.parse(enliquidation);
-				dataJson.entauditJson=JSON.stringify(data);
-				dataJson.PRIPID=PRIPID;
-				dataJson.LIID=LIID;
-				dataJson.type=2;
-				dataJson.SESSIONID=SESSIONID;
-				dataJson.TOKEN=TOKEN;
-				$.ajax({
-					type:"post",
-					url:httpUrl+"/h/en/enliquidation/save.json",
-					data:dataJson,
-					dataType:"json",
-					async:false,
-					success:function(res){
-						if(res.success==true){
-							mui.toast(res.codeMsg);
-							window.location.href="nliq-info-edit.html?LIID="+LIID;
-						}
-					}
-				});
-			}
-			
-			function getData(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/h/en/liqmbr/get.json",
-					data:{"LIMEID":LIMEID,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
-					dataType:"json",
-					async:false,
-					success:function(res){
-						if(res.success==true){
-							createData(res.data);
-						}
-					}
-				});
-			}
-			
-			function createData(obj){
-				$("#LIQMEM").val(obj.LIQMEM);
-				$("#CERTYPE").find("option[value='"+obj.CERTYPE+"']").attr("selected",true);
-				$("#CERNO").val(obj.CERNO);
-				$("#TEL").val(obj.TEL);
-				$("#ADDR").val(obj.ADDR);
-				$("input[name='LIGPRISIGN'][value='"+obj.LIGPRISIGN+"']").attr("checked",true);
-			}
-			function delData(){
-				mui.confirm("  提示：删除后不可恢复！","提示",btnArray,function(e){
-					if(e.index==1){
-						$.ajax({
-							type:"get",
-							url:httpUrl+"/h/en/liqmbr/delete.json",
-							data:{"LIMEID":LIMEID,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
-							dataType:"json",
-							async:false,
-							success:function(res){
-								if(res.success==true){
-									window.location.href="nliq-info-edit.html?LIID="+LIID;
-								}
-							}
-						});
-					}
-				})
-				
-			}
-		</script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="right-inf.html"></a>
-		    <h1 class="mui-title"><span id="saveOrUpdate"></span>清算组成员信息</h1>
-		    <span id="sure" style="display: none;">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>国家企业信用信息公示系统</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/add-right-inf.css">
+    <link rel="stylesheet" href="../static/css/essential-inf.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/mui.picker.min.css"/><!--填写时间-->
+    <script src="../static/js/mui.min.js"></script>
+    <script src="../static/js/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.serializejson.min.js"></script>
+
+    <script>
+
+        var LIID = GetRequest("LIID");
+        var LIMEID = GetRequest("LIMEID");
+        var enliquidation = "";
+        $(function () {
+            loadData("CB16", "CERTYPE");
+            $("#PRIPID").val(PRIPID);
+            $("#TOKEN").val(TOKEN);
+            $("#SESSIONID").val(SESSIONID);
+            $("#LIID").val(LIID);
+            enliquidation = sessionStorage.getItem("enliquidation");
+            console.info(enliquidation);
+            if (LIMEID != null && LIMEID != "") {
+                $("#saveOrUpdate").html("修改");
+                $("#LIMEID").val(LIMEID);
+                $("#sure").show();
+                $("#delDiv").show();
+                $("#addDiv").hide();
+                getData();
+            } else {
+                $("#saveOrUpdate").html("添加");
+            }
+        });
+
+        function addData() {
+
+            var liqmem = $("#LIQMEM").val();
+            var certype = $("#CERTYPE").val();
+            var cerno = $("#CERNO").val();
+            var tel = $("#TEL").val();
+            var addr = $("#ADDR").val();
+            var ligpriSign = $("#LIGPRISIGN").val();
+            if (liqmem == null || liqmem.length < 1) {
+                mui.toast("请输入成员名称");
+                return;
+            }
+            if (certype == null || certype.length < 1) {
+                mui.toast("请选择证件类型");
+                return;
+            }
+            if (cerno == null || cerno.length < 1) {
+                mui.toast("请输入证件号码");
+                return;
+            }
+            if (tel == null || tel.length < 1) {
+                mui.toast("请输入联系电话");
+                return;
+            }
+            if (addr == null || addr.length < 1) {
+                mui.toast("请输入地址");
+                return;
+            }
+            var entaudit = $("#addForm").serializeJSON();
+            var data = [];
+            data.push(entaudit);
+            var dataJson = JSON.parse(enliquidation);
+            dataJson.entauditJson = JSON.stringify(data);
+            dataJson.PRIPID = PRIPID;
+            dataJson.LIID = LIID;
+            dataJson.type = 2;
+            dataJson.SESSIONID = SESSIONID;
+            dataJson.TOKEN = TOKEN;
+            $.ajax({
+                type: "post",
+                url: httpUrl + "/h/en/enliquidation/save.json",
+                data: dataJson,
+                dataType: "json",
+                async: false,
+                success: function (res) {
+                    if (res.success == true) {
+                        mui.toast(res.codeMsg);
+                        window.location.href = "nliq-info-edit.html?LIID=" + LIID;
+                    }
+                }
+            });
+        }
+
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/h/en/liqmbr/get.json",
+                data: {"LIMEID": LIMEID, "TOKEN": TOKEN, "SESSIONID": SESSIONID},
+                dataType: "json",
+                async: false,
+                success: function (res) {
+                    if (res.success == true) {
+                        createData(res.data);
+                    }
+                }
+            });
+        }
+
+        function createData(obj) {
+            $("#LIQMEM").val(obj.LIQMEM);
+            $("#CERTYPE").find("option[value='" + obj.CERTYPE + "']").attr("selected", true);
+            $("#CERNO").val(obj.CERNO);
+            $("#TEL").val(obj.TEL);
+            $("#ADDR").val(obj.ADDR);
+            $("input[name='LIGPRISIGN'][value='" + obj.LIGPRISIGN + "']").attr("checked", true);
+        }
+
+        function delData() {
+            mui.confirm("  提示：删除后不可恢复！", "提示", btnArray, function (e) {
+                if (e.index == 1) {
+                    $.ajax({
+                        type: "get",
+                        url: httpUrl + "/h/en/liqmbr/delete.json",
+                        data: {"LIMEID": LIMEID, "TOKEN": TOKEN, "SESSIONID": SESSIONID},
+                        dataType: "json",
+                        async: false,
+                        success: function (res) {
+                            if (res.success == true) {
+                                window.location.href = "nliq-info-edit.html?LIID=" + LIID;
+                            }
+                        }
+                    });
+                }
+            })
+
+        }
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="right-inf.html"></a>
+    <h1 class="mui-title"><span id="saveOrUpdate"></span>清算组成员信息</h1>
+    <span id="sure" style="display: none;">
 		    	<a onclick="addData()">保存</a>
 		    </span>
-		</header>
-		
-		<!--股东信息-->
-		<form id="addForm">
-			<input type="hidden" name="LIMEID" id="LIMEID" />
-		<div id="common-box">
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+</header>
+
+<!--股东信息-->
+<form id="addForm">
+    <input type="hidden" name="LIMEID" id="LIMEID"/>
+    <div id="common-box">
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								清算组成员
 							</span>
-							<div class="web-write">
-								<input type="text" name="LIQMEM" id="LIQMEM" placeholder="请输入成员名称"/>
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                    <div class="web-write">
+                        <input type="text" name="LIQMEM" id="LIQMEM" placeholder="请输入成员名称"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								证件类型
 							</span>
-							<div class="web-write">
-								<div id="open" style="position: relative;width: 100%;">
-								<select class="service_opt" name="CERTYPE"  id="CERTYPE" style="height: 50px; margin-bottom: 0; display:block;width:100%;background: url(../static/img/rt.png) no-repeat right center;" >
-								    <!--<option value="1" >商标</option>
-								    <option value="2" >版权</option>	
-								    <option value="3" >专利</option>				    -->
-						        </select>
-						       </div>
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                    <div class="web-write">
+                        <div id="open" style="position: relative;width: 100%;">
+                            <select class="service_opt" name="CERTYPE" id="CERTYPE"
+                                    style="height: 50px; margin-bottom: 0; display:block;width:100%;background: url(../static/img/rt.png) no-repeat right center;">
+                                <!--<option value="1" >商标</option>
+                                <option value="2" >版权</option>
+                                <option value="3" >专利</option>				    -->
+                            </select>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								证件号码
 							</span>
-							<div class="web-write">
-								<input type="text" name="CERNO" id="CERNO" placeholder="请输入证件号码"/>
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                    <div class="web-write">
+                        <input type="text" name="CERNO" id="CERNO" placeholder="请输入证件号码"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								联系电话
 							</span>
-							<div class="web-write">
-								<input type="text" name="TEL" id="TEL" placeholder="请输入联系电话"/>
-							</div>
-						</li>
-					</ul>
-			</div>
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                    <div class="web-write">
+                        <input type="text" name="TEL" id="TEL" placeholder="请输入联系电话"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								地址
 							</span>
-							<div class="web-write">
-								<input type="text" name="ADDR" id="ADDR" placeholder="请输入地址"/>
-							</div>
-						</li>
-					</ul>
-			</div>
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                    <div class="web-write">
+                        <input type="text" name="ADDR" id="ADDR" placeholder="请输入地址"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								是否清算组负责人
 							</span>
-							<div class="essential-write">
-									<label><input type="radio" value="1" name="LIGPRISIGN"/>是</label>
-									<label><input type="radio" value="2" name="LIGPRISIGN"  checked="checked" />否</label>
-								</div>
-						</li>
-					</ul>
-			</div>
-		</div>
-	    <div id="addDiv" class="yy" >
-	    	<a id="addBtn" onClick="addData()">保存</a>
-	    </div>
-		<div id="delDiv" class="yy" style="display: none;" >
-	    	<a id="delBtn" onClick="delData()">删除</a>
-	    </div>
-	</form>
-		
-		<script>
-			(function($) {
-				$.init();
-				var result = $('#result')[0];
-				var btns = $('.btn');
-				btns.each(function(i, btn) {
-					btn.addEventListener('tap', function() {
-						var optionsJson = this.getAttribute('data-options') || '{}';
-						var options = JSON.parse(optionsJson);
-						var id = this.getAttribute('id');
-						/*
-						 * 首次显示时实例化组件
-						 * 示例为了简洁，将 options 放在了按钮的 dom 上
-						 * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
-						 */
-						var picker = new $.DtPicker(options);
-						picker.show(function(rs) {
-							/*
-							 * rs.value 拼合后的 value
-							 * rs.text 拼合后的 text
-							 * rs.y 年，可以通过 rs.y.vaue 和 rs.y.text 获取值和文本
-							 * rs.m 月，用法同年
-							 * rs.d 日，用法同年
-							 * rs.h 时，用法同年
-							 * rs.i 分（minutes 的第二个字母），用法同年
-							 */
-								document.getElementById(id).value=rs.y.text+"年"+rs.m.text+"月"+rs.d.text+"日";
-							/* 
-							 * 返回 false 可以阻止选择框的关闭
-							 * return false;
-							 */
-							/*
-							 * 释放组件资源，释放后将将不能再操作组件
-							 * 通常情况下，不需要示放组件，new DtPicker(options) 后，可以一直使用。
-							 * 当前示例，因为内容较多，如不进行资原释放，在某些设备上会较慢。
-							 * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。
-							 */
-							picker.dispose();
-						});
-					}, false);
-				});
-			})(mui);
-		</script>
-		
-	</body>
+                    <div class="essential-write">
+                        <label><input type="radio" value="1" name="LIGPRISIGN"/>是</label>
+                        <label><input type="radio" value="2" name="LIGPRISIGN" checked="checked"/>否</label>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="addDiv" class="yy">
+        <a id="addBtn" onClick="addData()">保存</a>
+    </div>
+    <div id="delDiv" class="yy" style="display: none;">
+        <a id="delBtn" onClick="delData()">删除</a>
+    </div>
+</form>
+
+<script>
+    (function ($) {
+        $.init();
+        var result = $('#result')[0];
+        var btns = $('.btn');
+        btns.each(function (i, btn) {
+            btn.addEventListener('tap', function () {
+                var optionsJson = this.getAttribute('data-options') || '{}';
+                var options = JSON.parse(optionsJson);
+                var id = this.getAttribute('id');
+                /*
+                 * 首次显示时实例化组件
+                 * 示例为了简洁，将 options 放在了按钮的 dom 上
+                 * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
+                 */
+                var picker = new $.DtPicker(options);
+                picker.show(function (rs) {
+                    /*
+                     * rs.value 拼合后的 value
+                     * rs.text 拼合后的 text
+                     * rs.y 年，可以通过 rs.y.vaue 和 rs.y.text 获取值和文本
+                     * rs.m 月，用法同年
+                     * rs.d 日，用法同年
+                     * rs.h 时，用法同年
+                     * rs.i 分（minutes 的第二个字母），用法同年
+                     */
+                    document.getElementById(id).value = rs.y.text + "年" + rs.m.text + "月" + rs.d.text + "日";
+                    /*
+                     * 返回 false 可以阻止选择框的关闭
+                     * return false;
+                     */
+                    /*
+                     * 释放组件资源，释放后将将不能再操作组件
+                     * 通常情况下，不需要示放组件，new DtPicker(options) 后，可以一直使用。
+                     * 当前示例，因为内容较多，如不进行资原释放，在某些设备上会较慢。
+                     * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。
+                     */
+                    picker.dispose();
+                });
+            }, false);
+        });
+    })(mui);
+</script>
+
+</body>
 </html>

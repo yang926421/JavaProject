@@ -1,6 +1,6 @@
 package 面向对象相关._02abstruct作业._02test;
 
-public class Manager extends employee{
+public class Manager extends employee {
     public Manager(String gongHao, String name, String money) {
         super(gongHao, name, money);
     }

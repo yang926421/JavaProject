@@ -1,173 +1,177 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>国家企业信用信息公示系统</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/contribution-inf.css">
-			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-			<script type="text/javascript" src="../static/js/common.js" ></script>
-			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-		<script>
-			var LIID=GetRequest("LIID");
-			
-			$(function(){
-				getData();
-			});
-			
-			function getData(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/h/en/kzkenliquidation/get.json",
-					data:{"LIID":LIID, "TOKEN":TOKEN,"SESSIONID":SESSIONID},
-					async:true,
-					dataType:"json",
-					success:function(res){
-						if(res.success==true){
-							createData(res.data);
-						}
-					}
-				});
-			}
-			
-			function createData(obj){
-					var enliquidation=obj.enliquidation;
-					enliquidation.RECDATE=getFormatDateByLong(obj.enliquidation.RECDATE,"yyyy-MM-dd");
-					enliquidation.LIGEATDATE=getFormatDateByLong(obj.enliquidation.LIGEATDATE,"yyyy-MM-dd");
-					console.info(enliquidation)
-					sessionStorage.setItem("enliquidation",JSON.stringify(enliquidation) );
-					$("#RECDATE").html(obj.enliquidation.RECDATE);
-					$("#LIGEATDATE").html(obj.enliquidation.LIGEATDATE);
-					$("#DISREADESC").html(obj.enliquidation.DISREADESC);
-					$("#ADDR").html(obj.enliquidation.ADDR);
-					$("#TEL").html(obj.enliquidation.TEL);
-					var mbrHtml="";
-					if(obj.enliqmbrList!=null && obj.enliqmbrList.length>0){  
-						sessionStorage.setItem("entauditJson",JSON.stringify( obj.enliqmbrList));
-						for(var i=0;i<obj.enliqmbrList.length;i++){
-							var liqmen="清算组成员";
-							if(obj.enliqmbrList[i].LIGPRISIGN==1){
-								liqmen="清算组负责人";
-							}
-							var hrefUrl="nliq-mbr.html?LIMEID="+obj.enliqmbrList[i].LIMEID+"&LIID="+obj.enliqmbrList[i].LIID;
-						    mbrHtml+="<a href='"+hrefUrl+"' >"+
-										"<div class='web-name'>"+
-										"	<ul class='web'>"+
-										"		<li><span>"+liqmen+"：</span> <span>"+obj.enliqmbrList[i].LIQMEM+"</span></li>"+
-										"		<li><span>证件类型：</span> <span>"+obj.enliqmbrList[i].CERTYPENAME+"</span></li>"+
-										"		<li><span>证件号码：</span> <span>"+obj.enliqmbrList[i].CERNO+"</span></li>"+
-										"		<li><span>联系电话：</span> <span>"+obj.enliqmbrList[i].TEL+"</span></li>"+
-										"		<li><span>地址：</span> <span>"+obj.enliqmbrList[i].ADDR+"</span></li>"+
-										"	</ul>"+
-										"	<div class='arrow-right'>"+
-										"		<img src='../static/img/arrow-right.png'/>"+
-										"	</div>"+
-										"</div>"+
-									"</a> ";
-						}
-					}
-					$("#mbrInfo").html(mbrHtml);
-					
-			}
-			function addDetail(){
-				window.location.href="nliq-mbr.html?LIID="+LIID;
-			}
-			function updateBaseInfo(){
-				window.location.href="nliq-uidation.html?LIID="+LIID;
-			}
-			function toPublic(){
-				mui.confirm("  提示：备案后不能修改！","提示",btnArray,function(e){
-					if(e.index==1){
-						var dataJson=JSON.parse(sessionStorage.getItem("enliquidation"));
-						dataJson.ANCHEIS=1;
-						dataJson.entauditJson= sessionStorage.getItem("entauditJson");
-						dataJson.PRIPID=PRIPID;
-						dataJson.LIID=LIID;
-						dataJson.type=1;
-						dataJson.SESSIONID=SESSIONID;
-						dataJson.TOKEN=TOKEN;
-						console.info(dataJson)
-						$.ajax({
-							type:"post",
-							url:httpUrl+"/h/en/enliquidation/save.json",
-							data:dataJson,
-							dataType:"json",
-							async:false,
-							success:function(res){
-								if(res.success==true){
-									mui.toast(res.codeMsg);
-								//	window.location.href="nliq-info.html?LIID="+LIID
-								}
-							}
-						});
-					}
-				})
-			}
-		</script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-icon-back mui-icon mui-icon-back mui-pull-left" href="nliq-index.html"></a>
-		    <h1 class="mui-title">清算组备案信息	</h1>
-		</header>
-		
-		<!--股东出资信息-->
-		<div id="common-box">
-			<div class="web-box">
-				<div class="web-name">
-					<h4>清算组基本信息</h4><a onclick="updateBaseInfo()"><span class="name-repair"><img src="../static/img/name-repair.png"/></span></a>
-					<ul class="web">
-						<li><span>清算组备案日期：</span> <span id="RECDATE"></span></li>
-						<li><span>清算组成立日期：</span> <span id="LIGEATDATE"></span></li>
-						<li><span>市场主体解散事由：</span> <span id="DISREADESC"></span></li>
-						<li><span>清算组办公地址：</span> <span id="ADDR"></span></li>
-						<li><span>清算组联系电话：</span> <span id="TEL"></span></li>
-					</ul>
-				</div>
-			</div>
-			
-			<div class="con-name">
-				<h4>清算组成员</h4> <a onclick="addDetail()">+ 添加清算组成员</a>
-			</div>
-			<div class="web-box" id="mbrInfo">
-				<!--<a href="#">
-					<div class="web-name">
-						<ul class="web">
-							<li><span>清算组成员：</span> <span >李向阳</span></li>
-							<li><span>证件类型：</span> <span >身份证</span></li>
-							<li><span>证件号码：</span> <span >****</span></li>
-							<li><span>联系电话：</span> <span >****</span></li>
-							<li><span>地址：</span> <span >***</span></li>
-						</ul>
-						<div class="arrow-right">
-							<img src="../static/img/arrow-right.png"/>
-						</div>
-					</div>
-				</a>
-				
-				<a href="#">
-					<div class="web-name">
-						<ul class="web">
-							<li><span>清算组成员：</span> <span >李向阳</span></li>
-							<li><span>证件类型：</span> <span >身份证</span></li>
-							<li><span>证件号码：</span> <span >****</span></li>
-							<li><span>联系电话：</span> <span >****</span></li>
-							<li><span>地址：</span> <span >***</span></li>
-						</ul>
-						<div class="arrow-right">
-							<img src="../static/img/arrow-right.png"/>
-						</div>
-					</div>
-				</a>-->
-			</div>
-		</div>
-			<nav class="mui-bar mui-bar-tab" style="background:#ac812e;">
-			<a class="mui-tab-item" onclick="toPublic()">
-				<span class="mui-tab-label" style="color:#FFFFFF;">公示</span>
-			</a>
-		</nav>
-	</body>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>国家企业信用信息公示系统</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/contribution-inf.css">
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script>
+        var LIID = GetRequest("LIID");
+
+        $(function () {
+            getData();
+        });
+
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/h/en/kzkenliquidation/get.json",
+                data: {"LIID": LIID, "TOKEN": TOKEN, "SESSIONID": SESSIONID},
+                async: true,
+                dataType: "json",
+                success: function (res) {
+                    if (res.success == true) {
+                        createData(res.data);
+                    }
+                }
+            });
+        }
+
+        function createData(obj) {
+            var enliquidation = obj.enliquidation;
+            enliquidation.RECDATE = getFormatDateByLong(obj.enliquidation.RECDATE, "yyyy-MM-dd");
+            enliquidation.LIGEATDATE = getFormatDateByLong(obj.enliquidation.LIGEATDATE, "yyyy-MM-dd");
+            console.info(enliquidation)
+            sessionStorage.setItem("enliquidation", JSON.stringify(enliquidation));
+            $("#RECDATE").html(obj.enliquidation.RECDATE);
+            $("#LIGEATDATE").html(obj.enliquidation.LIGEATDATE);
+            $("#DISREADESC").html(obj.enliquidation.DISREADESC);
+            $("#ADDR").html(obj.enliquidation.ADDR);
+            $("#TEL").html(obj.enliquidation.TEL);
+            var mbrHtml = "";
+            if (obj.enliqmbrList != null && obj.enliqmbrList.length > 0) {
+                sessionStorage.setItem("entauditJson", JSON.stringify(obj.enliqmbrList));
+                for (var i = 0; i < obj.enliqmbrList.length; i++) {
+                    var liqmen = "清算组成员";
+                    if (obj.enliqmbrList[i].LIGPRISIGN == 1) {
+                        liqmen = "清算组负责人";
+                    }
+                    var hrefUrl = "nliq-mbr.html?LIMEID=" + obj.enliqmbrList[i].LIMEID + "&LIID=" + obj.enliqmbrList[i].LIID;
+                    mbrHtml += "<a href='" + hrefUrl + "' >" +
+                        "<div class='web-name'>" +
+                        "	<ul class='web'>" +
+                        "		<li><span>" + liqmen + "：</span> <span>" + obj.enliqmbrList[i].LIQMEM + "</span></li>" +
+                        "		<li><span>证件类型：</span> <span>" + obj.enliqmbrList[i].CERTYPENAME + "</span></li>" +
+                        "		<li><span>证件号码：</span> <span>" + obj.enliqmbrList[i].CERNO + "</span></li>" +
+                        "		<li><span>联系电话：</span> <span>" + obj.enliqmbrList[i].TEL + "</span></li>" +
+                        "		<li><span>地址：</span> <span>" + obj.enliqmbrList[i].ADDR + "</span></li>" +
+                        "	</ul>" +
+                        "	<div class='arrow-right'>" +
+                        "		<img src='../static/img/arrow-right.png'/>" +
+                        "	</div>" +
+                        "</div>" +
+                        "</a> ";
+                }
+            }
+            $("#mbrInfo").html(mbrHtml);
+
+        }
+
+        function addDetail() {
+            window.location.href = "nliq-mbr.html?LIID=" + LIID;
+        }
+
+        function updateBaseInfo() {
+            window.location.href = "nliq-uidation.html?LIID=" + LIID;
+        }
+
+        function toPublic() {
+            mui.confirm("  提示：备案后不能修改！", "提示", btnArray, function (e) {
+                if (e.index == 1) {
+                    var dataJson = JSON.parse(sessionStorage.getItem("enliquidation"));
+                    dataJson.ANCHEIS = 1;
+                    dataJson.entauditJson = sessionStorage.getItem("entauditJson");
+                    dataJson.PRIPID = PRIPID;
+                    dataJson.LIID = LIID;
+                    dataJson.type = 1;
+                    dataJson.SESSIONID = SESSIONID;
+                    dataJson.TOKEN = TOKEN;
+                    console.info(dataJson)
+                    $.ajax({
+                        type: "post",
+                        url: httpUrl + "/h/en/enliquidation/save.json",
+                        data: dataJson,
+                        dataType: "json",
+                        async: false,
+                        success: function (res) {
+                            if (res.success == true) {
+                                mui.toast(res.codeMsg);
+                                //	window.location.href="nliq-info.html?LIID="+LIID
+                            }
+                        }
+                    });
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-icon-back mui-icon mui-icon-back mui-pull-left" href="nliq-index.html"></a>
+    <h1 class="mui-title">清算组备案信息 </h1>
+</header>
+
+<!--股东出资信息-->
+<div id="common-box">
+    <div class="web-box">
+        <div class="web-name">
+            <h4>清算组基本信息</h4><a onclick="updateBaseInfo()"><span class="name-repair"><img
+                src="../static/img/name-repair.png"/></span></a>
+            <ul class="web">
+                <li><span>清算组备案日期：</span> <span id="RECDATE"></span></li>
+                <li><span>清算组成立日期：</span> <span id="LIGEATDATE"></span></li>
+                <li><span>市场主体解散事由：</span> <span id="DISREADESC"></span></li>
+                <li><span>清算组办公地址：</span> <span id="ADDR"></span></li>
+                <li><span>清算组联系电话：</span> <span id="TEL"></span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="con-name">
+        <h4>清算组成员</h4> <a onclick="addDetail()">+ 添加清算组成员</a>
+    </div>
+    <div class="web-box" id="mbrInfo">
+        <!--<a href="#">
+            <div class="web-name">
+                <ul class="web">
+                    <li><span>清算组成员：</span> <span >李向阳</span></li>
+                    <li><span>证件类型：</span> <span >身份证</span></li>
+                    <li><span>证件号码：</span> <span >****</span></li>
+                    <li><span>联系电话：</span> <span >****</span></li>
+                    <li><span>地址：</span> <span >***</span></li>
+                </ul>
+                <div class="arrow-right">
+                    <img src="../static/img/arrow-right.png"/>
+                </div>
+            </div>
+        </a>
+
+        <a href="#">
+            <div class="web-name">
+                <ul class="web">
+                    <li><span>清算组成员：</span> <span >李向阳</span></li>
+                    <li><span>证件类型：</span> <span >身份证</span></li>
+                    <li><span>证件号码：</span> <span >****</span></li>
+                    <li><span>联系电话：</span> <span >****</span></li>
+                    <li><span>地址：</span> <span >***</span></li>
+                </ul>
+                <div class="arrow-right">
+                    <img src="../static/img/arrow-right.png"/>
+                </div>
+            </div>
+        </a>-->
+    </div>
+</div>
+<nav class="mui-bar mui-bar-tab" style="background:#ac812e;">
+    <a class="mui-tab-item" onclick="toPublic()">
+        <span class="mui-tab-label" style="color:#FFFFFF;">公示</span>
+    </a>
+</nav>
+</body>
 </html>

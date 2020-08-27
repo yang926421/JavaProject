@@ -1,132 +1,130 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>党建信息</title>
-		<link rel="stylesheet" href="../../static/css/common.css">
-		<link rel="stylesheet" href="../../static/css/mui.min.css">
-		<link rel="stylesheet" href="../../static/css/add-website.css">
-		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
-		<script type="text/javascript" src="../../static/js/common.js"></script>
-		
-		<script>
-			var ancheid=GetRequest("ANCHEID");
-			$(function(){
-				if(ancheid!=null && ancheid!=""){
-					$("#ANCHEID").val(ancheid);
-				//	getData();
-				}
-			});
-			
-			
-			//获取数据
-			function getData(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/i/an/party/get.json",
-					async:true,
-					data:{"ANCHEID":ancheid,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
-					dataType:"json",
-					success:function(res){
-						if(res.success==true){
-							createData(res.data[0]);
-						}
-					}
-				});
-			}
-			
-			
-			function createData(obj){
-				$("#NUMPARM").html(obj.NUMPARM);
-				$("#PARINS_CN").html(obj.PARINS_CN);
-				if(obj.RESPARMSIGN==1){
-					$("#RESPARMSIGN").html("是");
-				}else{
-					$("#RESPARMSIGN").html("否");
-				}
-				if(obj.RESPARSECSIGN==1){
-					$("#RESPARSECSIGN").html("是");
-				}else{
-					$("#RESPARSECSIGN").html("否");
-				}
-				
-				
-			}
-			
-			
-		
-			
-		</script>
-		
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="report.html"></a>
-		    <h1 class="mui-title">党建信息</h1>
-		</header>
-		
-		<!--资产状况信息-->
-		<form id="addForm">
-		<div id="common-box">
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>党建信息</title>
+    <link rel="stylesheet" href="../../static/css/common.css">
+    <link rel="stylesheet" href="../../static/css/mui.min.css">
+    <link rel="stylesheet" href="../../static/css/add-website.css">
+    <script type="text/javascript" src="../../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../../static/js/common.js"></script>
+
+    <script>
+        var ancheid = GetRequest("ANCHEID");
+        $(function () {
+            if (ancheid != null && ancheid != "") {
+                $("#ANCHEID").val(ancheid);
+                //	getData();
+            }
+        });
+
+
+        //获取数据
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/i/an/party/get.json",
+                async: true,
+                data: {"ANCHEID": ancheid, "TOKEN": TOKEN, "SESSIONID": SESSIONID},
+                dataType: "json",
+                success: function (res) {
+                    if (res.success == true) {
+                        createData(res.data[0]);
+                    }
+                }
+            });
+        }
+
+
+        function createData(obj) {
+            $("#NUMPARM").html(obj.NUMPARM);
+            $("#PARINS_CN").html(obj.PARINS_CN);
+            if (obj.RESPARMSIGN == 1) {
+                $("#RESPARMSIGN").html("是");
+            } else {
+                $("#RESPARMSIGN").html("否");
+            }
+            if (obj.RESPARSECSIGN == 1) {
+                $("#RESPARSECSIGN").html("是");
+            } else {
+                $("#RESPARSECSIGN").html("否");
+            }
+
+
+        }
+
+
+    </script>
+
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="report.html"></a>
+    <h1 class="mui-title">党建信息</h1>
+</header>
+
+<!--资产状况信息-->
+<form id="addForm">
+    <div id="common-box">
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								中共党员（包括预备党员）人数：
 							</span>
-								<span id="NUMPARM" class="asset-con">
+                    <span id="NUMPARM" class="asset-con">
 									不公示
 								</span>
-							
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								党组织建制：
 							</span>
-								<span id="PARINS_CN" class="asset-con">
+                    <span id="PARINS_CN" class="asset-con">
 									不公示
 								</span>
-							
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								经营者是否为党员：
 							</span>
-								<span id="RESPARMSIGN" class="asset-con">
+                    <span id="RESPARMSIGN" class="asset-con">
 									不公示
 								</span>
-							
-						</li>
-					</ul>
-			</div>
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+
+                </li>
+            </ul>
+        </div>
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								经营者是否为党组织书记：
 							</span>
-								<span id="RESPARSECSIGN" class="asset-con">
+                    <span id="RESPARSECSIGN" class="asset-con">
 									不公示
 								</span>
-							
-						</li>
-					</ul>
-			</div>
-			</form>
-			
-		</div>
-	</body>
+
+                </li>
+            </ul>
+        </div>
+</form>
+
+</div>
+</body>
 </html>

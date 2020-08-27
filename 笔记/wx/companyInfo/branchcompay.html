@@ -1,109 +1,111 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>分支机构信息</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/contribution.css">
-			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-			<script type="text/javascript" src="../static/js/common.js" ></script>
-		<style type="text/css">
-			.arrow-right{
-					top: 5.5rem;
-			 }
-		</style>
-		<script>
-			//获取企业id
-			var pripid=sessionStorage.getItem("PRIPID"); 
-			$(function(){
-				getData();
-			})
-			//获取企业分支机构信息
-			function getData(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/p/branchorg/by/pripid/list.json",
-					data:{"PRIPID":pripid},
-					dataType:"json",
-					async:true,
-					success:function(res){
-						if(res.success==true){
-							createData(res.data);
-						}
-					}
-				});
-			}
-			//创建分支机构数据
-			function createData(obj){
-				if(obj!=null && obj.length>0){
-					$("#count").html(obj.length);
-					var htmlData="";
-					for(var i=0;i<obj.length;i++){
-						var regno="";
-						if(obj[i].REGNO==null || obj[i].REGNO==""){
-							regno=obj[i].UNISCID;
-						}else{
-							regno=obj[i].REGNO;
-						}
-						htmlData+=" <div class='web-box'> "+
-									"<div class='web-name'>"+
-									"	         <h4>"+obj[i].BRNAME+"</h4>"+
-									"			 <ul class='web'>"+
-									"					<li><span>统一社会信用代码/注册号：</span> <span>"+regno+"</span></li>"+
-									"					<li><span>登记机关：</span> <span>"+obj[i].REGORG_CN+"</span></li>"+
-									"			 </ul>"+
-									"</div>"+
-							"</div> ";
-					}
-					$("#common-box").html(htmlData);
-				}else{
-					$("#count").html(0);
-				}
-			}
-		</script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="companyDetail.html"></a>
-		    <h1 class="mui-title">分支机构信息(<span id="count"></span>)</h1>
-		</header>
-		<!--分支机构信息-->
-		<div id="common-box">
-			<!--<div class='web-box'>
-				<a href="">
-					<div class='web-name'>
-						         <h4>中国石油化工股份有限公司</h4>
-								 <ul class='web'>
-										<li><span>法定代表人：</span> <span>华为</span></li>
-										<li><span>注册资本：</span> <span>200万</span></li>
-										<li><span>成立日期：</span> <span>2017年5月31日</span></li>
-								 </ul>
-								 <div class='arrow-right'>
-										<img src='../static/img/arrow-right.png'/>
-								 </div>
-					</div>
-				</a>
-			</div> 
-			<div class='web-box'>
-				<a href="">
-					<div class='web-name'>
-						         <h4>中国石油化工股份有限公司</h4>
-								 <ul class='web'>
-										<li><span>法定代表人：</span> <span>华为</span></li>
-										<li><span>注册资本：</span> <span>200万</span></li>
-										<li><span>成立日期：</span> <span>2017年5月31日</span></li>
-								 </ul>
-								 <div class='arrow-right'>
-										<img src='../static/img/arrow-right.png'/>
-								 </div>
-					</div>
-				</a>
-			</div> -->
-		</div>
-		
-	</body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>分支机构信息</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/contribution.css">
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <style type="text/css">
+        .arrow-right {
+            top: 5.5rem;
+        }
+    </style>
+    <script>
+        //获取企业id
+        var pripid = sessionStorage.getItem("PRIPID");
+        $(function () {
+            getData();
+        })
+
+        //获取企业分支机构信息
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/p/branchorg/by/pripid/list.json",
+                data: {"PRIPID": pripid},
+                dataType: "json",
+                async: true,
+                success: function (res) {
+                    if (res.success == true) {
+                        createData(res.data);
+                    }
+                }
+            });
+        }
+
+        //创建分支机构数据
+        function createData(obj) {
+            if (obj != null && obj.length > 0) {
+                $("#count").html(obj.length);
+                var htmlData = "";
+                for (var i = 0; i < obj.length; i++) {
+                    var regno = "";
+                    if (obj[i].REGNO == null || obj[i].REGNO == "") {
+                        regno = obj[i].UNISCID;
+                    } else {
+                        regno = obj[i].REGNO;
+                    }
+                    htmlData += " <div class='web-box'> " +
+                        "<div class='web-name'>" +
+                        "	         <h4>" + obj[i].BRNAME + "</h4>" +
+                        "			 <ul class='web'>" +
+                        "					<li><span>统一社会信用代码/注册号：</span> <span>" + regno + "</span></li>" +
+                        "					<li><span>登记机关：</span> <span>" + obj[i].REGORG_CN + "</span></li>" +
+                        "			 </ul>" +
+                        "</div>" +
+                        "</div> ";
+                }
+                $("#common-box").html(htmlData);
+            } else {
+                $("#count").html(0);
+            }
+        }
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="companyDetail.html"></a>
+    <h1 class="mui-title">分支机构信息(<span id="count"></span>)</h1>
+</header>
+<!--分支机构信息-->
+<div id="common-box">
+    <!--<div class='web-box'>
+        <a href="">
+            <div class='web-name'>
+                         <h4>中国石油化工股份有限公司</h4>
+                         <ul class='web'>
+                                <li><span>法定代表人：</span> <span>华为</span></li>
+                                <li><span>注册资本：</span> <span>200万</span></li>
+                                <li><span>成立日期：</span> <span>2017年5月31日</span></li>
+                         </ul>
+                         <div class='arrow-right'>
+                                <img src='../static/img/arrow-right.png'/>
+                         </div>
+            </div>
+        </a>
+    </div>
+    <div class='web-box'>
+        <a href="">
+            <div class='web-name'>
+                         <h4>中国石油化工股份有限公司</h4>
+                         <ul class='web'>
+                                <li><span>法定代表人：</span> <span>华为</span></li>
+                                <li><span>注册资本：</span> <span>200万</span></li>
+                                <li><span>成立日期：</span> <span>2017年5月31日</span></li>
+                         </ul>
+                         <div class='arrow-right'>
+                                <img src='../static/img/arrow-right.png'/>
+                         </div>
+            </div>
+        </a>
+    </div> -->
+</div>
+
+</body>
 </html>

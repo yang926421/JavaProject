@@ -1,212 +1,307 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title></title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-			<link rel="stylesheet" href="../static/css/weui.css">
-		<link rel="stylesheet" href="../static/css/apply-write.css">
-		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../static/js/mui.min.js"></script>
-		<script type="text/javascript" src="../static/js/common.js"></script>
-		<script type="text/javascript" src="../static/js/nomalApply.js"></script>
-		 <style>
-    li{list-style-type: none;}
-    a,input{outline: none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
-    #choose{display: none;}
-    canvas{width: 100%;border: 1px solid #000000;}
-    #upload{display: block;margin: 10px;height: 60px;text-align: center;line-height: 60px;border: 1px solid;border-radius: 5px;cursor: pointer;}
-    .touch{background-color: #ddd;}
-    .img-list{margin: 10px 5px;}
-    .img-list li{position: relative;display: inline-block;width: 100px;height: 100px;margin: 5px 5px 20px 5px;border: 1px solid rgb(100,149,198);background: #fff no-repeat center;background-size: cover;}
-    .progress{position: absolute;width: 100%;height: 20px;line-height: 20px;bottom: 0;left: 0;background-color:rgba(100,149,198,.5);}
-    .progress span{display: block;width: 0;height: 100%;background-color:rgb(100,149,198);text-align: center;color: #FFF;font-size: 13px;}
-    .size{position: absolute;width: 100%;height: 15px;line-height: 15px;bottom: -18px;text-align: center;font-size: 13px;color: #666;}
-    .tips{display: block;text-align:center;font-size: 13px;margin: 10px;color: #999;}
-    .pic-list{margin: 10px;line-height: 18px;font-size: 13px;}
-    .pic-list a{display: block;margin: 10px 0;}
-    .pic-list a img{vertical-align: middle;max-width: 30px;max-height: 30px;margin: -4px 0 0 10px;}
-  </style>
-		<script>
-			var ID=GetRequest("ID")
-			var BUSEXCLIST=GetRequest("BUSEXCLIST")
-			$(function(){
-				var objection =JSON.parse(sessionStorage.getItem(BUSEXCLIST));
-				$("#SPECAUSE_CN").html(objection.SPECAUSE_CN);
-				$("#DECORG_CN").html(objection.DECORG_CN);
-				$("#ABNTIME").html(getSmpFormatDateByLong(objection.ABNTIME,false) );
-				console.log(objection);
-				if(ID!=null && ID!=""){
-					$.ajax({
-						type:"get",
-						url:httpUrl+"/e/opa/objection/get.json",
-						async:true,
-						data:{
-							"SESSIONID": SESSIONID,
-			                "TOKEN":TOKEN,
-			                "ID":ID
-						},
-						dataType:"json",
-						success:function(res){
-							$("#REASONS").val(res.data.REASONS);
-							createImg(res.data.FILES);
-						}
-					});
-         		}
-			});
-			function createImg(files){
-				count=files.length;
-			  	var html="";
-			  	for(var i=0;i<files.length;i++){
-					html+="<li id='oldImg"+(i+1)+"' class='weui-uploader__file' style='background-image:url("+files[i].FILEPATH+")'>"+
-							"<a onclick='delImg(\""+files[i].ID+"\")' style='float:right;top:0px;right:0;display:block;'>"+
-				            "<img src='../static/img/delete.png' width='20px'  ></a>"+
-							"</li>";
-				}
-			  	$("#uploaderFiles").html(html);
-			}
-			//从数据库中读取图片的删除
-			var delFlag=1;
-			function delImg(id){
-				delFlag=2;
-				mui.confirm("您确定要删除吗？","提示",btnArray,function(e){
-					if (e.index == 1) {
-						$.ajax({
-							type:"post",
-							url:httpUrl+"/e/opa/objection/files/del.json",
-							async:true,
-							data:{
-								"SESSIONID":SESSIONID,
-								"TOKEN":TOKEN,
-								"ID":id
-							},
-							dataType:"json",
-							success:function(res){
-								if(res.success){
-									mui.toast("删除成功");
-								}
-							}
-						});
-					}
-					delFlag=1;
-				})
-			}
-			function goInfo(){
-				window.location.href="objectionApplyInfo.html?BUSEXCLIST="+BUSEXCLIST;
-			}
-		</script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="report.html"></a>
-		    <h1 class="mui-title">经营异常异议编辑</h1>
-		    <span id="sure">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title></title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/weui.css">
+    <link rel="stylesheet" href="../static/css/apply-write.css">
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script type="text/javascript" src="../static/js/nomalApply.js"></script>
+    <style>
+        li {
+            list-style-type: none;
+        }
+
+        a, input {
+            outline: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        #choose {
+            display: none;
+        }
+
+        canvas {
+            width: 100%;
+            border: 1px solid #000000;
+        }
+
+        #upload {
+            display: block;
+            margin: 10px;
+            height: 60px;
+            text-align: center;
+            line-height: 60px;
+            border: 1px solid;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .touch {
+            background-color: #ddd;
+        }
+
+        .img-list {
+            margin: 10px 5px;
+        }
+
+        .img-list li {
+            position: relative;
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            margin: 5px 5px 20px 5px;
+            border: 1px solid rgb(100, 149, 198);
+            background: #fff no-repeat center;
+            background-size: cover;
+        }
+
+        .progress {
+            position: absolute;
+            width: 100%;
+            height: 20px;
+            line-height: 20px;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(100, 149, 198, .5);
+        }
+
+        .progress span {
+            display: block;
+            width: 0;
+            height: 100%;
+            background-color: rgb(100, 149, 198);
+            text-align: center;
+            color: #FFF;
+            font-size: 13px;
+        }
+
+        .size {
+            position: absolute;
+            width: 100%;
+            height: 15px;
+            line-height: 15px;
+            bottom: -18px;
+            text-align: center;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .tips {
+            display: block;
+            text-align: center;
+            font-size: 13px;
+            margin: 10px;
+            color: #999;
+        }
+
+        .pic-list {
+            margin: 10px;
+            line-height: 18px;
+            font-size: 13px;
+        }
+
+        .pic-list a {
+            display: block;
+            margin: 10px 0;
+        }
+
+        .pic-list a img {
+            vertical-align: middle;
+            max-width: 30px;
+            max-height: 30px;
+            margin: -4px 0 0 10px;
+        }
+    </style>
+    <script>
+        var ID = GetRequest("ID")
+        var BUSEXCLIST = GetRequest("BUSEXCLIST")
+        $(function () {
+            var objection = JSON.parse(sessionStorage.getItem(BUSEXCLIST));
+            $("#SPECAUSE_CN").html(objection.SPECAUSE_CN);
+            $("#DECORG_CN").html(objection.DECORG_CN);
+            $("#ABNTIME").html(getSmpFormatDateByLong(objection.ABNTIME, false));
+            console.log(objection);
+            if (ID != null && ID != "") {
+                $.ajax({
+                    type: "get",
+                    url: httpUrl + "/e/opa/objection/get.json",
+                    async: true,
+                    data: {
+                        "SESSIONID": SESSIONID,
+                        "TOKEN": TOKEN,
+                        "ID": ID
+                    },
+                    dataType: "json",
+                    success: function (res) {
+                        $("#REASONS").val(res.data.REASONS);
+                        createImg(res.data.FILES);
+                    }
+                });
+            }
+        });
+
+        function createImg(files) {
+            count = files.length;
+            var html = "";
+            for (var i = 0; i < files.length; i++) {
+                html += "<li id='oldImg" + (i + 1) + "' class='weui-uploader__file' style='background-image:url(" + files[i].FILEPATH + ")'>" +
+                    "<a onclick='delImg(\"" + files[i].ID + "\")' style='float:right;top:0px;right:0;display:block;'>" +
+                    "<img src='../static/img/delete.png' width='20px'  ></a>" +
+                    "</li>";
+            }
+            $("#uploaderFiles").html(html);
+        }
+
+        //从数据库中读取图片的删除
+        var delFlag = 1;
+
+        function delImg(id) {
+            delFlag = 2;
+            mui.confirm("您确定要删除吗？", "提示", btnArray, function (e) {
+                if (e.index == 1) {
+                    $.ajax({
+                        type: "post",
+                        url: httpUrl + "/e/opa/objection/files/del.json",
+                        async: true,
+                        data: {
+                            "SESSIONID": SESSIONID,
+                            "TOKEN": TOKEN,
+                            "ID": id
+                        },
+                        dataType: "json",
+                        success: function (res) {
+                            if (res.success) {
+                                mui.toast("删除成功");
+                            }
+                        }
+                    });
+                }
+                delFlag = 1;
+            })
+        }
+
+        function goInfo() {
+            window.location.href = "objectionApplyInfo.html?BUSEXCLIST=" + BUSEXCLIST;
+        }
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="report.html"></a>
+    <h1 class="mui-title">经营异常异议编辑</h1>
+    <span id="sure">
 		    	<a href="javascript:;" onclick="goInfo();">申请记录</a>
 		    </span>
-		</header>
-		
-		<!--基本信息-->
-		<form id="addForm">
-		<div id="common-box">
-			<div id="line-block">
-				<div class="web-box">
-						<ul>
-							<li>
+</header>
+
+<!--基本信息-->
+<form id="addForm">
+    <div id="common-box">
+        <div id="line-block">
+            <div class="web-box">
+                <ul>
+                    <li>
 								<span>
 									列入事由
 								</span>
-								<div class="web-write">
-							     <p id="SPECAUSE_CN"> </p>
-								</div>
-							</li>
-						</ul>
-				</div>
-				<div class="web-box">
-						<ul>
-							<li>
+                        <div class="web-write">
+                            <p id="SPECAUSE_CN"></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="web-box">
+                <ul>
+                    <li>
 								<span>
 									列入机关
 								</span>
-								<div class="web-write">
-									<p id="DECORG_CN"></p>
-								</div>
-							</li>
-						</ul>
-				</div>
-				<div class="web-box">
-						<ul>
-							<li>
+                        <div class="web-write">
+                            <p id="DECORG_CN"></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="web-box">
+                <ul>
+                    <li>
 								<span>
 									列入日期
 								</span>
-								<div class="web-write">
-									<p id="ABNTIME"></p>
-								</div>
-							</li>
-						</ul>
-				</div>
-				<div class="web-box">
-						<ul>
-							<li style="color: red;">
-								注：企业对被列入经营异常名录有异议的，可以自公示之日起 30 日内向作出决定的市监机关提出书面申请并提交相关证明材料 (以加盖企业公章的附件形式进行上传)。
-							</li>
-							<li>
+                        <div class="web-write">
+                            <p id="ABNTIME"></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="web-box">
+                <ul>
+                    <li style="color: red;">
+                        注：企业对被列入经营异常名录有异议的，可以自公示之日起 30 日内向作出决定的市监机关提出书面申请并提交相关证明材料 (以加盖企业公章的附件形式进行上传)。
+                    </li>
+                    <li>
 								<span>
 									异议原因
 								</span>
-								<div class="web-write">
-									<textarea name="REASONS" id="REASONS" cols="30"  rows="6" placeholder="请填写异议原因" style="border:solid 1px #E1E1E1 ;margin-top: 15px;"></textarea>
-								</div>
-							</li>
-						</ul>
-				</div>
-				
-				<div class="web-box">
-					<ul>
-					<li>
+                        <div class="web-write">
+                            <textarea name="REASONS" id="REASONS" cols="30" rows="6" placeholder="请填写异议原因"
+                                      style="border:solid 1px #E1E1E1 ;margin-top: 15px;"></textarea>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="web-box">
+                <ul>
+                    <li>
 						<span>
 							上传相关证明<br/>
 							<label style="color: #999999;">(最多上传3张)</label>
 						</span>
-						<div style="width: 68%; float: right;overflow: hidden;padding-top: 18px;padding-bottom: 8px;">
-						    	<div id="upload-container">
-								<div class="page__bd">
-									<!--图片浏览、删除-->
-									 <div class="weui-gallery" id="gallery">
-							            <p class="weui-gallery__img" id="galleryImg" ></p>
-							            <!--<div class="weui-gallery__opr">
-							                <a href="javascript:" class="weui-gallery__del">
-							                    <i class="weui-icon-delete weui-icon_gallery-delete" ></i>
-							                </a>
-							            </div>-->
-							        </div>
-																	
-									<!--图片添加模块-->
-			                        <div class="weui-uploader__bd" style="margin-bottom: 0.5rem;">
-			                            <ul class="weui-uploader__files" id="uploaderFiles" >
-			                                <li></li>
-			                            </ul>
-			                            <div id="uploadDiv" class="weui-uploader__input-box">
-			                            	 <input id="uploaderInput" name="uploaderInput" class="weui-uploader__input" type="file" accept="image/*"  multiple/>
-			                            </div>
-			                        </div>
-							    </div>
-							</div>
-						</div>
-						
-						</li>
-					</ul>
-				</div>
-				
-			</div>
-			
-			</div>
-		</form>	
-		<div class="yy">
-	    	<a id="commit">保存</a>
-	    </div>
-	</body>
+                        <div style="width: 68%; float: right;overflow: hidden;padding-top: 18px;padding-bottom: 8px;">
+                            <div id="upload-container">
+                                <div class="page__bd">
+                                    <!--图片浏览、删除-->
+                                    <div class="weui-gallery" id="gallery">
+                                        <p class="weui-gallery__img" id="galleryImg"></p>
+                                        <!--<div class="weui-gallery__opr">
+                                            <a href="javascript:" class="weui-gallery__del">
+                                                <i class="weui-icon-delete weui-icon_gallery-delete" ></i>
+                                            </a>
+                                        </div>-->
+                                    </div>
+
+                                    <!--图片添加模块-->
+                                    <div class="weui-uploader__bd" style="margin-bottom: 0.5rem;">
+                                        <ul class="weui-uploader__files" id="uploaderFiles">
+                                            <li></li>
+                                        </ul>
+                                        <div id="uploadDiv" class="weui-uploader__input-box">
+                                            <input id="uploaderInput" name="uploaderInput" class="weui-uploader__input"
+                                                   type="file" accept="image/*" multiple/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+</form>
+<div class="yy">
+    <a id="commit">保存</a>
+</div>
+</body>
 </html>

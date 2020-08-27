@@ -29,26 +29,26 @@ public class LoginServlet extends HttpServlet {
         }
         //调用service查询
         UserService service = new UserServiceImpl();
-        User u =  service.login(user);
+        User u = service.login(user);
         System.out.println(u.getName());
-        System.out.println(u==null);
+        System.out.println(u == null);
         System.out.println(u.getStatus());
         ResultInfo info = new ResultInfo();
         //判断用户名或密码是否正确
-        if(u==null){
+        if (u == null) {
             //用户名密码错误
             info.setFlag(false);
             info.setErrorMsg("用户名或密码错误");
         }
         //判断用户是否激活
-        if(u!=null && !u.getStatus().equals("Y")){
+        if (u != null && !u.getStatus().equals("Y")) {
             //用户尚未激活
             info.setFlag(false);
             info.setErrorMsg("尚未激活,请登录邮箱激活");
 
         }
         //登录成功的判断
-        if(u!=null && "Y".equals(u.getStatus())){
+        if (u != null && "Y".equals(u.getStatus())) {
             info.setFlag(true);
         }
         //响应数据给前端

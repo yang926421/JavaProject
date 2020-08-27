@@ -11,7 +11,7 @@ import java.io.IOException;
 @WebServlet("/ServletCookie")
 public class ServletCookie extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Cookie c = new Cookie("msg","hello");
+        Cookie c = new Cookie("msg", "hello");
         response.addCookie(c);
         c.setMaxAge(300);
     }

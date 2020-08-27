@@ -1,78 +1,80 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>清算信息</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/businesslicense.css" />
-		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-		<script type="text/javascript" src="../static/js/common.js" ></script>
-		<script>
-			//获取企业id
-			var pripid= sessionStorage.getItem("PRIPID");
-			$(function(){
-				getData();
-			});
-			//获取企业清算信息
-			function getData(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/p/clearinfo/by/pripid/get.json",
-					data:{"PRIPID":pripid},
-					dataType:"json",
-					async:true,
-					success:function(res){
-						if(res.success==true){
-							createData(res.data);
-						}
-					}
-				});
-			}
-			//创建清算信息数据
-			function createData(obj){
-				if(obj!=null && obj.length>0){
-					var htmlData="";
-					$("#count").html(obj.length);
-					for(var i=0;i<obj.length;i++){
-						var type="";
-						if(obj[i].LIGST==1){
-							type="已完结";
-						}else if(obj[i].LIGST==2){
-							type="未完结";
-						}
-						htmlData+=" <div  class='licenseInfo'><ul>"+
-							 	"<li><span>清算状态：</span><span>"+type+"</span></li>"+
-							// 	"<li><span>清算组负责人：</span><span>"+obj[i].ELIQMBR[0].LIGPRISIGN+"</span></li>"+
-							 	"<li><span>清算组成员：</span><span>"+obj[i].ELIQMBR[0].LIQMEM+"</span></li>"+
-							 	"<li><span>清算完结时间：</span><span>"+getFormatDateByLong(obj[i].LIGENDDATE,"yyyy年MM月dd日") +"</span></li>"+	
-							 "</ul></div>"
-					}
-					$("#content").html(htmlData);
-				}else{
-					$("#count").html(0)
-				}
-			}
-		</script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="companyDetail.html"></a>
-		    <h1 class="mui-title">清算信息(<span id="count"></span>)</h1>
-		</header>
-		<div id="content"></div>
-		 <!--<div  class="licenseInfo">
-			<ul>
-			 	<li><span>清算状态：</span><span>已清算</span></li>
-			 	<li><span>清算组负责人：</span><span>麻花</span></li>
-			 	<li><span>清算组成员：</span><span>小李、小张、小花</span></li>
-			 	<li><span>清算时间：</span><span>2017年6月5日-2017年6月8日</span></li>	
-			 </ul>
-		</div>-->
-		
-		
-	</body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>清算信息</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/businesslicense.css"/>
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script>
+        //获取企业id
+        var pripid = sessionStorage.getItem("PRIPID");
+        $(function () {
+            getData();
+        });
+
+        //获取企业清算信息
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/p/clearinfo/by/pripid/get.json",
+                data: {"PRIPID": pripid},
+                dataType: "json",
+                async: true,
+                success: function (res) {
+                    if (res.success == true) {
+                        createData(res.data);
+                    }
+                }
+            });
+        }
+
+        //创建清算信息数据
+        function createData(obj) {
+            if (obj != null && obj.length > 0) {
+                var htmlData = "";
+                $("#count").html(obj.length);
+                for (var i = 0; i < obj.length; i++) {
+                    var type = "";
+                    if (obj[i].LIGST == 1) {
+                        type = "已完结";
+                    } else if (obj[i].LIGST == 2) {
+                        type = "未完结";
+                    }
+                    htmlData += " <div  class='licenseInfo'><ul>" +
+                        "<li><span>清算状态：</span><span>" + type + "</span></li>" +
+                        // 	"<li><span>清算组负责人：</span><span>"+obj[i].ELIQMBR[0].LIGPRISIGN+"</span></li>"+
+                        "<li><span>清算组成员：</span><span>" + obj[i].ELIQMBR[0].LIQMEM + "</span></li>" +
+                        "<li><span>清算完结时间：</span><span>" + getFormatDateByLong(obj[i].LIGENDDATE, "yyyy年MM月dd日") + "</span></li>" +
+                        "</ul></div>"
+                }
+                $("#content").html(htmlData);
+            } else {
+                $("#count").html(0)
+            }
+        }
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="companyDetail.html"></a>
+    <h1 class="mui-title">清算信息(<span id="count"></span>)</h1>
+</header>
+<div id="content"></div>
+<!--<div  class="licenseInfo">
+   <ul>
+        <li><span>清算状态：</span><span>已清算</span></li>
+        <li><span>清算组负责人：</span><span>麻花</span></li>
+        <li><span>清算组成员：</span><span>小李、小张、小花</span></li>
+        <li><span>清算时间：</span><span>2017年6月5日-2017年6月8日</span></li>
+    </ul>
+</div>-->
+
+
+</body>
 </html>

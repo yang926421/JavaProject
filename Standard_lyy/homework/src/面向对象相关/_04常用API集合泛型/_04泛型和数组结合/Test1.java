@@ -15,7 +15,7 @@ public class Test1 {
         }
     }
 
-    public static <T> void swap(T[] arr, int i, int j){
+    public static <T> void swap(T[] arr, int i, int j) {
         // 2.使用第三方变量的方式交换数组中的元素
         T temp = arr[i];
         arr[i] = arr[j];

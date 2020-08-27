@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 @Aspect()
 public class MyAspect {
     @Before("execution(* cn.gsxt.*.*(..))")
-    public void fast(){
+    public void fast() {
         System.out.println("给你车轱辘换一下");
     }
 }

@@ -1,176 +1,189 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>国家企业信用信息公示系统</title>
-		<link rel="stylesheet" href="static/css/common.css">
-		<link rel="stylesheet" href="static/css/mui.min.css">
-		<link rel="stylesheet" href="static/css/my-index.css">
-		<script src="static/js/jquery.min.js"></script>
-		<script src="static/js/login.js"></script>
-		<script type="text/javascript" src="static/js/mui.min.js" ></script>
-		<script type="text/javascript" src="static/js/common.js" ></script>
-		<script>
-			
-			
-			//根据统一社会信用代码/注册号获取_主体名称、联络员姓名
-			function getName(){
-				var registerhao=$("#registerhao").val();
-				if(registerhao!=null && registerhao!=""){
-					$.ajax({
-						type:"get",
-						url:httpUrl+"/p/mainbody/getSimpleInfoByNo.json",
-						async:false,
-						data:{"NO":registerhao},
-						dataType:"json",
-						success:function(res){
-							if(res.success==true){
-								$("#companyName").val(res.data.BODY_NAME);
-								$("#registerName").val(res.data.NAME);
-							}
-						}
-					});
-					
-				}
-				
-			}
-			//根据统一社会信用代码/注册号+身份证号获取_联络员手机号
-			function getMobile(){
-				var registerhao=$("#registerhao").val();
-				var registerId=$("#registerId").val();
-				if(registerhao!=null && registerhao!="" && registerId!=null && registerId!=""){
-					$.ajax({
-						type:"get",
-						url:httpUrl+"/p/mainbody/getContactMobileByNo.json",
-						async:false,
-						data:{"NO":registerhao,"CARD_NO":registerId},
-						dataType:"json",
-						success:function(res){
-							if(res.success==true){
-								$("#registerPhone").val(res.data.MOBILE);
-							}
-						}
-					});
-				}
-			}
-			
-		</script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="javascript:history.go(-1)"></a>
-		    <h1 class="mui-title">登录 </h1>
-		</header>
-		
-		<!--填写登录信息-->
-		<div id="common-box">
-			<div id="login-write">
-				<form action="" method="post">
-					<div class="mui-input-row">
-						<input type="text" id="registerhao" value="" onblur="getName();" class="mui-input-clear" placeholder="统一社会信用代码/注册号">
-						<i class="input_clear"><img src="img/close.png"/></i>
-					</div>
-					
-					<!--分割-->
-					<div class="mui-input-row">
-						<input type="text" id="registerId" value="" onblur="getMobile()" class="mui-input-clear" placeholder="联络员身份证号码">
-						<i class="input_clear"><img src="img/close.png"/></i>
-					</div>
-					
-					
-					<!--分割-->
-					<div class="mui-input-row">
-						<input type="text" id="companyName" value="" class="mui-input-clear" placeholder="企业（个体、农专）名称">
-						<i class="input_clear"><img src="img/close.png"/></i>
-					</div>
-					
-					<!--分割-->
-					<div class="mui-input-row">
-						<input type="text" id="registerName" value="" class="mui-input-clear" placeholder="联络员姓名">
-						<i class="input_clear"><img src="img/close.png"/></i>
-					</div>
-					
-					<!--分割-->
-					<div class="mui-input-row">
-						<input type="text" id="registerPhone" value="" readonly="readonly" class="mui-input-clear" placeholder="联络员手机号">
-						<i class="input_clear"><img src="img/close.png"/></i>
-					</div>
-					
-					<!--分割-->
-					<div class="mui-input-row">
-						<input type="text" id="registerCode" value="" class="mui-input-clear" placeholder="输入验证码">
-						<input type="button"  id="getVerification" value="获取验证码"/>
-					</div>
-				</form>
-				
-				
-				<!--一个按钮-->
-				<div class="yy">
-			    	<a onClick="login()" class="" id="confirmBtn">登   录</a>
-			    </div>
-			    
-			    
-			</div>
-			
-			<!--联络员变更-->
-		    <div class="people-change">
-		    	<span onclick="toUpdate();">企业联络员变更</span>
-		    </div>
-		    
-		</div>
-		
-		<!--联络员注册-->
-	    <div class="people-register">
-	    	<span><a href="register.html">企业联络员注册</a></span>
-	    </div>
-	    
-		
-		<script type="text/javascript">
-			
-			function toUpdate(){
-				window.location.href="updateLoginInfo.html";
-			}
-			//企业联络员登录
-			function login(){
-					var registerhao = $("#registerhao").val(),
-					registerId = $("#registerId").val(),
-				    companyName = $("#companyName").val();
-				    registerName = $("#registerName").val();
-				   // registerPhone = $("#registerPhone").val();
-				   registerPhone = "18569931111";
-				    registerCode = $("#registerCode").val();
-				    if(registerhao.length == 0 || registerId.length == 0 || companyName.length == 0 || registerName.length == 0 || registerPhone.length == 0 || registerCode.length == 0){
-				    		mui.toast("信息不能为空");
-				    		return;
-				    }
-				    $.ajax({
-						type:"post",
-						url:httpUrl+"/login.json",
-						data:{"NO":registerhao,"IDCARD_NO":registerId,"MAINBODY_NAME":companyName,"NAME":registerName,"MOBILE":registerPhone,"VER_CODE":registerCode,"VER_CODE_ID":VER_CODE_ID},
-						async:false,
-						dataType:"json",
-						success:function(res){
-							console.log(res);
-							if(res.success==true){
-								 mui.toast(res.codeMsg);		
-								sessionStorage.setItem("loginInfo",JSON.stringify(res.data));
-								sessionStorage.setItem("name",registerName);
-								sessionStorage.setItem("cardId",registerId);
-								sessionStorage.setItem("mobile",registerPhone);
-								loginInfo=sessionStorage.getItem("loginInfo")
-								window.location.href = "index.html";
-							}
-						},
-						error:function(XMLHttpRequest, textStatus, errorThrown){
-			                mui.toast('服务器异常');		
-			            }
-					
-				});
-			}
-			
-			$("#getVerification").on("click",function(){
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>国家企业信用信息公示系统</title>
+    <link rel="stylesheet" href="static/css/common.css">
+    <link rel="stylesheet" href="static/css/mui.min.css">
+    <link rel="stylesheet" href="static/css/my-index.css">
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/login.js"></script>
+    <script type="text/javascript" src="static/js/mui.min.js"></script>
+    <script type="text/javascript" src="static/js/common.js"></script>
+    <script>
+
+
+        //根据统一社会信用代码/注册号获取_主体名称、联络员姓名
+        function getName() {
+            var registerhao = $("#registerhao").val();
+            if (registerhao != null && registerhao != "") {
+                $.ajax({
+                    type: "get",
+                    url: httpUrl + "/p/mainbody/getSimpleInfoByNo.json",
+                    async: false,
+                    data: {"NO": registerhao},
+                    dataType: "json",
+                    success: function (res) {
+                        if (res.success == true) {
+                            $("#companyName").val(res.data.BODY_NAME);
+                            $("#registerName").val(res.data.NAME);
+                        }
+                    }
+                });
+
+            }
+
+        }
+
+        //根据统一社会信用代码/注册号+身份证号获取_联络员手机号
+        function getMobile() {
+            var registerhao = $("#registerhao").val();
+            var registerId = $("#registerId").val();
+            if (registerhao != null && registerhao != "" && registerId != null && registerId != "") {
+                $.ajax({
+                    type: "get",
+                    url: httpUrl + "/p/mainbody/getContactMobileByNo.json",
+                    async: false,
+                    data: {"NO": registerhao, "CARD_NO": registerId},
+                    dataType: "json",
+                    success: function (res) {
+                        if (res.success == true) {
+                            $("#registerPhone").val(res.data.MOBILE);
+                        }
+                    }
+                });
+            }
+        }
+
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="javascript:history.go(-1)"></a>
+    <h1 class="mui-title">登录 </h1>
+</header>
+
+<!--填写登录信息-->
+<div id="common-box">
+    <div id="login-write">
+        <form action="" method="post">
+            <div class="mui-input-row">
+                <input type="text" id="registerhao" value="" onblur="getName();" class="mui-input-clear"
+                       placeholder="统一社会信用代码/注册号">
+                <i class="input_clear"><img src="img/close.png"/></i>
+            </div>
+
+            <!--分割-->
+            <div class="mui-input-row">
+                <input type="text" id="registerId" value="" onblur="getMobile()" class="mui-input-clear"
+                       placeholder="联络员身份证号码">
+                <i class="input_clear"><img src="img/close.png"/></i>
+            </div>
+
+
+            <!--分割-->
+            <div class="mui-input-row">
+                <input type="text" id="companyName" value="" class="mui-input-clear" placeholder="企业（个体、农专）名称">
+                <i class="input_clear"><img src="img/close.png"/></i>
+            </div>
+
+            <!--分割-->
+            <div class="mui-input-row">
+                <input type="text" id="registerName" value="" class="mui-input-clear" placeholder="联络员姓名">
+                <i class="input_clear"><img src="img/close.png"/></i>
+            </div>
+
+            <!--分割-->
+            <div class="mui-input-row">
+                <input type="text" id="registerPhone" value="" readonly="readonly" class="mui-input-clear"
+                       placeholder="联络员手机号">
+                <i class="input_clear"><img src="img/close.png"/></i>
+            </div>
+
+            <!--分割-->
+            <div class="mui-input-row">
+                <input type="text" id="registerCode" value="" class="mui-input-clear" placeholder="输入验证码">
+                <input type="button" id="getVerification" value="获取验证码"/>
+            </div>
+        </form>
+
+
+        <!--一个按钮-->
+        <div class="yy">
+            <a onClick="login()" class="" id="confirmBtn">登 录</a>
+        </div>
+
+
+    </div>
+
+    <!--联络员变更-->
+    <div class="people-change">
+        <span onclick="toUpdate();">企业联络员变更</span>
+    </div>
+
+</div>
+
+<!--联络员注册-->
+<div class="people-register">
+    <span><a href="register.html">企业联络员注册</a></span>
+</div>
+
+
+<script type="text/javascript">
+
+    function toUpdate() {
+        window.location.href = "updateLoginInfo.html";
+    }
+
+    //企业联络员登录
+    function login() {
+        var registerhao = $("#registerhao").val(),
+            registerId = $("#registerId").val(),
+            companyName = $("#companyName").val();
+        registerName = $("#registerName").val();
+        // registerPhone = $("#registerPhone").val();
+        registerPhone = "18569931111";
+        registerCode = $("#registerCode").val();
+        if (registerhao.length == 0 || registerId.length == 0 || companyName.length == 0 || registerName.length == 0 || registerPhone.length == 0 || registerCode.length == 0) {
+            mui.toast("信息不能为空");
+            return;
+        }
+        $.ajax({
+            type: "post",
+            url: httpUrl + "/login.json",
+            data: {
+                "NO": registerhao,
+                "IDCARD_NO": registerId,
+                "MAINBODY_NAME": companyName,
+                "NAME": registerName,
+                "MOBILE": registerPhone,
+                "VER_CODE": registerCode,
+                "VER_CODE_ID": VER_CODE_ID
+            },
+            async: false,
+            dataType: "json",
+            success: function (res) {
+                console.log(res);
+                if (res.success == true) {
+                    mui.toast(res.codeMsg);
+                    sessionStorage.setItem("loginInfo", JSON.stringify(res.data));
+                    sessionStorage.setItem("name", registerName);
+                    sessionStorage.setItem("cardId", registerId);
+                    sessionStorage.setItem("mobile", registerPhone);
+                    loginInfo = sessionStorage.getItem("loginInfo")
+                    window.location.href = "index.html";
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                mui.toast('服务器异常');
+            }
+
+        });
+    }
+
+    $("#getVerification").on("click", function () {
 //				var mobile= $("#registerPhone").val();
 //				if(mobile!=null && mobile!=""){
 //					if(!phone.test(phone)){
@@ -181,14 +194,12 @@
 //				}else{
 //					mui.toast("请输入手机号码");
 //				}
-				var cardNo=$("#registerId").val();
-				var no = $("#registerhao").val();
-				getCode(no,cardNo);
-			});
-			
-					
-									
-			
-		</script>
-	</body>
+        var cardNo = $("#registerId").val();
+        var no = $("#registerhao").val();
+        getCode(no, cardNo);
+    });
+
+
+</script>
+</body>
 </html>

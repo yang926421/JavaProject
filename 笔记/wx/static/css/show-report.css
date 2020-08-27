@@ -1,108 +1,127 @@
 /*企业名称*/
-#com-name-box{
-	margin-top: 4.4rem;
-	background-color:#FFFFFF ;
-	margin-bottom: 0.5rem;
-}
-.com-name{
-	margin: auto;
-	width: 92%;
-}
-.com-name h3{
-	padding-top: 1.8rem;
-	font-size: 1.6rem;
-	font-weight: bold;
-	margin-top: 1.4rem;
-}
-.com-name span{
-	display: inline-block;
-	font-size: 1.3rem;
-	line-height: 1.8rem;
-	padding-bottom: 1.0rem;
-	color: #d72830;
-}
-/*修改信息*/
-#repair-box{
-	/*border: #000000 solid 1px;*/
-	margin-bottom: 0.6rem;
-}
-#repair-box #repair-icon{
-	/*border: #000000 solid 1px;*/
-	width: 1.6rem;
-	height: 2.2rem;
-	vertical-align: middle;
-	padding-top: 0.2rem;
-	margin-right: 1.8%;
-	
-}
-#repair-box a{
-	/*border: #000000 solid 1px;*/
-	color: #D72830;
-	font-size: 1.4rem;
-}
-/*日期信息*/
-#date-box{
-	/*border: #000000 solid 1px;*/
-	padding-bottom: 1.4rem;
-	
-}
-#date-box #date-icon{
-	/*border: #000000 solid 1px;*/
-	width: 1.6rem;
-	height: 2.2rem;
-	vertical-align: middle;
-	padding-top: 0.2rem;
-	margin-right: 1.8%;
-}
-#date-box a{
-	/*border: #000000 solid 1px;*/
-	color: #999;
-	font-size: 1.4rem;
-}
-/*基本信息*/
-.basic-inf-box{
-	color: #999999;
-	font-size: 1.5rem;
-}
-.basic-inf-box .basic-inf-name{
-	color: #999999;
-}
-.basic-inf-box .basic-inf-con{
-	color: #333;
-}
-/*单行列表*/
-#list-box{
-	background-color:#FFFFFF ;
-	margin-bottom: 1.0rem;
-}
-#list-box .line{
-	margin: auto;
-	width: 92%;
-	overflow: hidden;
-}
-#list-box .line a{
-	color: #333333;
-}
-#list-box .line .inf-num{
-	color: #999999;
-}
-#list-box .line span{
-	font-size: 1.5rem;
-	font-weight: bold;
-	line-height: 4.8rem;
-	border: #000000 solid red;
-}
-#list-box .line span:first-child{
-	color: #333333;
-}
-#arrow-right{
-	float: right;
-	width: 0.6rem;
-	height: 1.2rem;
+#com-name-box {
+    margin-top: 4.4rem;
+    background-color: #FFFFFF;
+    margin-bottom: 0.5rem;
 }
 
-#arrow-down{
-	float: right;
-	width: 1.3rem;
-	height: 1.2rem;
+.com-name {
+    margin: auto;
+    width: 92%;
+}
+
+.com-name h3 {
+    padding-top: 1.8rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-top: 1.4rem;
+}
+
+.com-name span {
+    display: inline-block;
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+    padding-bottom: 1.0rem;
+    color: #d72830;
+}
+
+/*修改信息*/
+#repair-box {
+    /*border: #000000 solid 1px;*/
+    margin-bottom: 0.6rem;
+}
+
+#repair-box #repair-icon {
+    /*border: #000000 solid 1px;*/
+    width: 1.6rem;
+    height: 2.2rem;
+    vertical-align: middle;
+    padding-top: 0.2rem;
+    margin-right: 1.8%;
+
+}
+
+#repair-box a {
+    /*border: #000000 solid 1px;*/
+    color: #D72830;
+    font-size: 1.4rem;
+}
+
+/*日期信息*/
+#date-box {
+    /*border: #000000 solid 1px;*/
+    padding-bottom: 1.4rem;
+
+}
+
+#date-box #date-icon {
+    /*border: #000000 solid 1px;*/
+    width: 1.6rem;
+    height: 2.2rem;
+    vertical-align: middle;
+    padding-top: 0.2rem;
+    margin-right: 1.8%;
+}
+
+#date-box a {
+    /*border: #000000 solid 1px;*/
+    color: #999;
+    font-size: 1.4rem;
+}
+
+/*基本信息*/
+.basic-inf-box {
+    color: #999999;
+    font-size: 1.5rem;
+}
+
+.basic-inf-box .basic-inf-name {
+    color: #999999;
+}
+
+.basic-inf-box .basic-inf-con {
+    color: #333;
+}
+
+/*单行列表*/
+#list-box {
+    background-color: #FFFFFF;
+    margin-bottom: 1.0rem;
+}
+
+#list-box .line {
+    margin: auto;
+    width: 92%;
+    overflow: hidden;
+}
+
+#list-box .line a {
+    color: #333333;
+}
+
+#list-box .line .inf-num {
+    color: #999999;
+}
+
+#list-box .line span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 4.8rem;
+    border: #000000 solid red;
+}
+
+#list-box .line span:first-child {
+    color: #333333;
+}
+
+#arrow-right {
+    float: right;
+    width: 0.6rem;
+    height: 1.2rem;
+}
+
+#arrow-down {
+    float: right;
+    width: 1.3rem;
+    height: 1.2rem;
 }

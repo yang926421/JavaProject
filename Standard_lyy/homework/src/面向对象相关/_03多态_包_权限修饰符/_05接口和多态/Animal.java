@@ -3,7 +3,9 @@ package 面向对象相关._03多态_包_权限修饰符._05接口和多态;
 public abstract class Animal {
     private String name;
     private String weight;
-    public Animal(){}
+
+    public Animal() {
+    }
 
     public Animal(String name, String weight) {
         this.name = name;
@@ -26,5 +28,5 @@ public abstract class Animal {
         this.weight = weight;
     }
 
-    public  abstract void eat();
+    public abstract void eat();
 }

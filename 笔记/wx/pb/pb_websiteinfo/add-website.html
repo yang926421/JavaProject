@@ -1,116 +1,117 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>添加网站或网店</title>
-		<link rel="stylesheet" href="../../static/css/common.css">
-		<link rel="stylesheet" href="../../static/css/mui.min.css">
-		<link rel="stylesheet" href="../../static/css/add-website.css">
-		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
-		<script type="text/javascript" src="../../static/js/common.js"></script>
-		
-		<script>
-			//个体的网站或网店
-			var ancheid=GetRequest("ANCHEID");
-			$(function(){
-				$("#TOKEN").val(TOKEN);
-				$("#SESSIONID").val(SESSIONID);
-				$("#ANCHEID").val(ancheid);
-			})
-			function addWeb(){
-				var websitname=$("#WEBSITNAME").val();
-				if(!isNotNull(websitname)){
-					mui.toast("请输入网站或网店名称");
-					return;
-				}
-				var websit=$("#WEBSITE").val();
-				if(!isNotNull(websit)){
-					mui.toast("请输入网址");
-					return;
-				}else if(!website.test(websit)){
-					mui.toast("请输入正确的网址");
-					return;
-				}
-				
-				$.ajax({
-					type:"post",
-					url:httpUrl+"/i/an/website/save.json",
-					async:true,
-					data:$("#addForm").serialize(),
-					dataType:'json',
-					success:function(res){
-						if(res.success==true){
-							window.location.href="website-inf.html?ANCHEID="+ancheid;
-						}
-					}
-				});
-			}
-			
-		</script>
-		
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="website-inf.html"></a>
-		    <h1 class="mui-title">添加网站或网店</h1>
-		    <span id="add">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>添加网站或网店</title>
+    <link rel="stylesheet" href="../../static/css/common.css">
+    <link rel="stylesheet" href="../../static/css/mui.min.css">
+    <link rel="stylesheet" href="../../static/css/add-website.css">
+    <script type="text/javascript" src="../../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../../static/js/common.js"></script>
+
+    <script>
+        //个体的网站或网店
+        var ancheid = GetRequest("ANCHEID");
+        $(function () {
+            $("#TOKEN").val(TOKEN);
+            $("#SESSIONID").val(SESSIONID);
+            $("#ANCHEID").val(ancheid);
+        })
+
+        function addWeb() {
+            var websitname = $("#WEBSITNAME").val();
+            if (!isNotNull(websitname)) {
+                mui.toast("请输入网站或网店名称");
+                return;
+            }
+            var websit = $("#WEBSITE").val();
+            if (!isNotNull(websit)) {
+                mui.toast("请输入网址");
+                return;
+            } else if (!website.test(websit)) {
+                mui.toast("请输入正确的网址");
+                return;
+            }
+
+            $.ajax({
+                type: "post",
+                url: httpUrl + "/i/an/website/save.json",
+                async: true,
+                data: $("#addForm").serialize(),
+                dataType: 'json',
+                success: function (res) {
+                    if (res.success == true) {
+                        window.location.href = "website-inf.html?ANCHEID=" + ancheid;
+                    }
+                }
+            });
+        }
+
+    </script>
+
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="website-inf.html"></a>
+    <h1 class="mui-title">添加网站或网店</h1>
+    <span id="add">
 		    	<!--<a href="" class=""><img src="img/add.png"/></a>-->
 		    </span>
-		</header>
-		
-		<!--网站名称-->
-		<form id="addForm">
-		 <input type="hidden" name="ANCHEID" id="ANCHEID" />
-		  <input type="hidden" name="SESSIONID" id="SESSIONID" />
-		   <input type="hidden" name="TOKEN" id="TOKEN" />
-		<div id="common-box">
-			<div class="web-box">
-					<ul>
-						<li>
+</header>
+
+<!--网站名称-->
+<form id="addForm">
+    <input type="hidden" name="ANCHEID" id="ANCHEID"/>
+    <input type="hidden" name="SESSIONID" id="SESSIONID"/>
+    <input type="hidden" name="TOKEN" id="TOKEN"/>
+    <div id="common-box">
+        <div class="web-box">
+            <ul>
+                <li>
 							<span id="name">
 								类型
 							</span>
-							<div class="web-write">
-								<label><input type="radio" value="1" name="WEBTYPE" checked="checked"/><span> 网站</span></label>
-								<label><input type="radio" value="2" name="WEBTYPE" /><span> 网店</span></label>
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
+                    <div class="web-write">
+                        <label><input type="radio" value="1" name="WEBTYPE" checked="checked"/><span> 网站</span></label>
+                        <label><input type="radio" value="2" name="WEBTYPE"/><span> 网店</span></label>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
 							<span id="name">
 								名称
 							</span>
-							<div class="web-write">
-								<input type="text" name="WEBSITNAME" id="WEBSITNAME"  placeholder="请输入网站或网店名称"/>
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
+                    <div class="web-write">
+                        <input type="text" name="WEBSITNAME" id="WEBSITNAME" placeholder="请输入网站或网店名称"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
 							<span id="name">
 								网址
 							</span>
-							<div class="web-write">
-								<input type="text" name="WEBSITE" id="WEBSITE"  placeholder="请输入网址"/>
-							</div>
-						</li>
-					</ul>
-			</div>
-		</div>
-		</form>
-		<!--一个按钮-->
-		<div class="yy">
-	    	<a onClick="addWeb();">添加</a>
-	    </div>
-	</body>
+                    <div class="web-write">
+                        <input type="text" name="WEBSITE" id="WEBSITE" placeholder="请输入网址"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</form>
+<!--一个按钮-->
+<div class="yy">
+    <a onClick="addWeb();">添加</a>
+</div>
+</body>
 </html>

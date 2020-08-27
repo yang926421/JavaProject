@@ -1,476 +1,494 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>社保信息</title>
-		<link rel="stylesheet" href="../../static/css/common.css">
-		<link rel="stylesheet" href="../../static/css/mui.min.css">
-		<link rel="stylesheet" href="../../static/css/social-security-inf.css">
-		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
-		<script type="text/javascript" src="../../static/js/common.js"></script>
-		<script>
-			//农专的社保信息
-			var ancheid=GetRequest("ANCHEID"); //年报id
-			$(function(){
-					//先隐藏
-				$("#line-block .social-block").hide();
-					//点击显示/隐藏切换
-				 $("#line-block #social-title:first-child").click(function(){
-		   			  $(this).parent().children(".social-block").toggle();  
-		 		 });
-				
-				$("#ANCHEID").val(ancheid);
-				$("#TOKEN").val(TOKEN);
-				$("#SESSIONID").val(SESSIONID);
-				getData();
-			})
-			//获取数据
-			function getData(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/c/an/socSec/get.json",
-					async:true,
-					data:{"ANCHEID":ancheid,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
-					dataType:"json",
-					success:function(res){
-						if(res.success==true){
-							createData(res.data);
-						}
-					}
-				});
-			}
-			
-			function createData(obj){
-			    if(obj!=null && obj.length>0){
-					$("#SOSEID").val(obj[0].SOSEID);
-					$("#SO110").val(obj[0].SO110);
-					$("#SO210").val(obj[0].SO210);
-					$("#SO310").val(obj[0].SO310);
-					$("#SO410").val(obj[0].SO410);
-					$("#SO510").val(obj[0].SO510);
-					if(obj[0].TOTALWAGESDIS!=null && obj[0].TOTALWAGESDIS!=""){
-						$("#TOTALWAGESDIS").val(obj[0].TOTALWAGESDIS);
-					}
-					if(obj[0].TOTALWAGESDIS==1){ 
-				       document.getElementById("totalwagesdisImg").src="../../static/img/show.png";
-				    }else{
-				    	document.getElementById("totalwagesdisImg").src="../../static/img/show-no.png";
-				    }
-						$("#TOTALWAGES_SO110").val(obj[0].TOTALWAGES_SO110);
-						$("#TOTALWAGES_SO210").val(obj[0].TOTALWAGES_SO210);
-						$("#TOTALWAGES_SO310").val(obj[0].TOTALWAGES_SO310);
-						$("#TOTALWAGES_SO410").val(obj[0].TOTALWAGES_SO410);
-						$("#TOTALWAGES_SO510").val(obj[0].TOTALWAGES_SO510);
-						if(obj[0].TOTALPAYMENTDIS!=null && obj[0].TOTALPAYMENTDIS!=""){
-							$("#TOTALPAYMENTDIS").val(obj[0].TOTALPAYMENTDIS);	
-						}
-	                if(obj[0].TOTALPAYMENTDIS==1){ 
-				       document.getElementById("totalpaymentdisImg").src="../../static/img/show.png";
-				    }else{
-				    	document.getElementById("totalpaymentdisImg").src="../../static/img/show-no.png";
-				    }
-				    	$("#TOTALPAYMENT_SO110").val(obj[0].TOTALPAYMENT_SO110);
-						$("#TOTALPAYMENT_SO210").val(obj[0].TOTALPAYMENT_SO210);
-						$("#TOTALPAYMENT_SO310").val(obj[0].TOTALPAYMENT_SO310);
-						$("#TOTALPAYMENT_SO410").val(obj[0].TOTALPAYMENT_SO410);
-						$("#TOTALPAYMENT_SO510").val(obj[0].TOTALPAYMENT_SO510);
-						if(obj[0].UNPAIDSOCIALINSDIS!=null){
-							
-						}
-	                $("#UNPAIDSOCIALINSDIS").val(obj[0].UNPAIDSOCIALINSDIS);	
-				    if(obj[0].UNPAIDSOCIALINSDIS==1){ //单位累计欠缴金额是否公示
-				       document.getElementById("unpaidsocialinsdisImg").src="../../static/img/show.png";
-				    }else{
-				    	document.getElementById("unpaidsocialinsdisImg").src="../../static/img/show-no.png";
-				    }
-			    	$("#UNPAIDSOCIALINS_SO110").val(obj[0].UNPAIDSOCIALINS_SO110);
-					$("#UNPAIDSOCIALINS_SO210").val(obj[0].UNPAIDSOCIALINS_SO210);
-					$("#UNPAIDSOCIALINS_SO310").val(obj[0].UNPAIDSOCIALINS_SO310);
-					$("#UNPAIDSOCIALINS_SO410").val(obj[0].UNPAIDSOCIALINS_SO410);
-					$("#UNPAIDSOCIALINS_SO510").val(obj[0].UNPAIDSOCIALINS_SO510);
-				}
-				
-			}
-			
-			function addData(){
-				$.ajax({
-					type:"post",
-					url:httpUrl+"/c/an/socSec/save.json",
-					async:true,
-					data:$("#addForm").serialize(),
-					dataType:"json",
-					success:function(res){
-						if(res.success==true){
-							//mui.toast(res.codeMsg);
-							window.location.href="../sfc_anche/report.html?ANCHEID="+res.data.ANCHEID;
-						}
-					}
-				});
-			}
-			
-		</script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="report.html"></a>
-		    <h1 class="mui-title">社保信息</h1>
-		    <span id="sure">
-		    	<a href="javascript:;" onclick="addData()" >保存</a>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>社保信息</title>
+    <link rel="stylesheet" href="../../static/css/common.css">
+    <link rel="stylesheet" href="../../static/css/mui.min.css">
+    <link rel="stylesheet" href="../../static/css/social-security-inf.css">
+    <script type="text/javascript" src="../../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../../static/js/common.js"></script>
+    <script>
+        //农专的社保信息
+        var ancheid = GetRequest("ANCHEID"); //年报id
+        $(function () {
+            //先隐藏
+            $("#line-block .social-block").hide();
+            //点击显示/隐藏切换
+            $("#line-block #social-title:first-child").click(function () {
+                $(this).parent().children(".social-block").toggle();
+            });
+
+            $("#ANCHEID").val(ancheid);
+            $("#TOKEN").val(TOKEN);
+            $("#SESSIONID").val(SESSIONID);
+            getData();
+        })
+
+        //获取数据
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/c/an/socSec/get.json",
+                async: true,
+                data: {"ANCHEID": ancheid, "TOKEN": TOKEN, "SESSIONID": SESSIONID},
+                dataType: "json",
+                success: function (res) {
+                    if (res.success == true) {
+                        createData(res.data);
+                    }
+                }
+            });
+        }
+
+        function createData(obj) {
+            if (obj != null && obj.length > 0) {
+                $("#SOSEID").val(obj[0].SOSEID);
+                $("#SO110").val(obj[0].SO110);
+                $("#SO210").val(obj[0].SO210);
+                $("#SO310").val(obj[0].SO310);
+                $("#SO410").val(obj[0].SO410);
+                $("#SO510").val(obj[0].SO510);
+                if (obj[0].TOTALWAGESDIS != null && obj[0].TOTALWAGESDIS != "") {
+                    $("#TOTALWAGESDIS").val(obj[0].TOTALWAGESDIS);
+                }
+                if (obj[0].TOTALWAGESDIS == 1) {
+                    document.getElementById("totalwagesdisImg").src = "../../static/img/show.png";
+                } else {
+                    document.getElementById("totalwagesdisImg").src = "../../static/img/show-no.png";
+                }
+                $("#TOTALWAGES_SO110").val(obj[0].TOTALWAGES_SO110);
+                $("#TOTALWAGES_SO210").val(obj[0].TOTALWAGES_SO210);
+                $("#TOTALWAGES_SO310").val(obj[0].TOTALWAGES_SO310);
+                $("#TOTALWAGES_SO410").val(obj[0].TOTALWAGES_SO410);
+                $("#TOTALWAGES_SO510").val(obj[0].TOTALWAGES_SO510);
+                if (obj[0].TOTALPAYMENTDIS != null && obj[0].TOTALPAYMENTDIS != "") {
+                    $("#TOTALPAYMENTDIS").val(obj[0].TOTALPAYMENTDIS);
+                }
+                if (obj[0].TOTALPAYMENTDIS == 1) {
+                    document.getElementById("totalpaymentdisImg").src = "../../static/img/show.png";
+                } else {
+                    document.getElementById("totalpaymentdisImg").src = "../../static/img/show-no.png";
+                }
+                $("#TOTALPAYMENT_SO110").val(obj[0].TOTALPAYMENT_SO110);
+                $("#TOTALPAYMENT_SO210").val(obj[0].TOTALPAYMENT_SO210);
+                $("#TOTALPAYMENT_SO310").val(obj[0].TOTALPAYMENT_SO310);
+                $("#TOTALPAYMENT_SO410").val(obj[0].TOTALPAYMENT_SO410);
+                $("#TOTALPAYMENT_SO510").val(obj[0].TOTALPAYMENT_SO510);
+                if (obj[0].UNPAIDSOCIALINSDIS != null) {
+
+                }
+                $("#UNPAIDSOCIALINSDIS").val(obj[0].UNPAIDSOCIALINSDIS);
+                if (obj[0].UNPAIDSOCIALINSDIS == 1) { //单位累计欠缴金额是否公示
+                    document.getElementById("unpaidsocialinsdisImg").src = "../../static/img/show.png";
+                } else {
+                    document.getElementById("unpaidsocialinsdisImg").src = "../../static/img/show-no.png";
+                }
+                $("#UNPAIDSOCIALINS_SO110").val(obj[0].UNPAIDSOCIALINS_SO110);
+                $("#UNPAIDSOCIALINS_SO210").val(obj[0].UNPAIDSOCIALINS_SO210);
+                $("#UNPAIDSOCIALINS_SO310").val(obj[0].UNPAIDSOCIALINS_SO310);
+                $("#UNPAIDSOCIALINS_SO410").val(obj[0].UNPAIDSOCIALINS_SO410);
+                $("#UNPAIDSOCIALINS_SO510").val(obj[0].UNPAIDSOCIALINS_SO510);
+            }
+
+        }
+
+        function addData() {
+            $.ajax({
+                type: "post",
+                url: httpUrl + "/c/an/socSec/save.json",
+                async: true,
+                data: $("#addForm").serialize(),
+                dataType: "json",
+                success: function (res) {
+                    if (res.success == true) {
+                        //mui.toast(res.codeMsg);
+                        window.location.href = "../sfc_anche/report.html?ANCHEID=" + res.data.ANCHEID;
+                    }
+                }
+            });
+        }
+
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="report.html"></a>
+    <h1 class="mui-title">社保信息</h1>
+    <span id="sure">
+		    	<a href="javascript:;" onclick="addData()">保存</a>
 		    </span>
-		</header>
-		
-		<!--社保信息-->
-		<form id="addForm">
-			<input type="hidden" name="ANCHEID" id="ANCHEID"/>
-			<input type="hidden" name="TOKEN" id="TOKEN" />
-			<input type="hidden" name="SESSIONID" id="SESSIONID" />
-			<input type="hidden" name="SOSEID" id="SOSEID" />
-		<div id="common-box">
-			<div class="web-box">
-				<div id="social-title">
-					<h4>参保人员统计(单位：人)</h4> 
-					<!--<span class="contribution-arrow-right"><img src="img/show-no.png"/></span>-->
-				</div>
-					<ul>
-						
-						<li>
+</header>
+
+<!--社保信息-->
+<form id="addForm">
+    <input type="hidden" name="ANCHEID" id="ANCHEID"/>
+    <input type="hidden" name="TOKEN" id="TOKEN"/>
+    <input type="hidden" name="SESSIONID" id="SESSIONID"/>
+    <input type="hidden" name="SOSEID" id="SOSEID"/>
+    <div id="common-box">
+        <div class="web-box">
+            <div id="social-title">
+                <h4>参保人员统计(单位：人)</h4>
+                <!--<span class="contribution-arrow-right"><img src="img/show-no.png"/></span>-->
+            </div>
+            <ul>
+
+                <li>
 							<span>
 								城镇职工基本养老保险
 							</span>
-							<div class="web-write">
-								<input type="text" name="SO110" id="SO110" onkeyup="inputNum(this)" placeholder="请输入人数"/>
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
+                    <div class="web-write">
+                        <input type="text" name="SO110" id="SO110" onkeyup="inputNum(this)" placeholder="请输入人数"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
 							<span>
 								失业保险
 							</span>
-							<div class="web-write">
-								<input type="text" name="SO210" id="SO210" onkeyup="inputNum(this)" placeholder="请输入人数"/>
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                    <div class="web-write">
+                        <input type="text" name="SO210" id="SO210" onkeyup="inputNum(this)" placeholder="请输入人数"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								职工基本医疗保险
 							</span>
-							<div class="web-write">
-								<input type="text" name="SO310" id="SO310" onkeyup="inputNum(this)" placeholder="请输入人数"/>
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                    <div class="web-write">
+                        <input type="text" name="SO310" id="SO310" onkeyup="inputNum(this)" placeholder="请输入人数"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								工伤保险
 							</span>
-							<div class="web-write">
-								<input type="text" name="SO410" id="SO410" onkeyup="inputNum(this)" placeholder="请输入人数"/>
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                    <div class="web-write">
+                        <input type="text" name="SO410" id="SO410" onkeyup="inputNum(this)" placeholder="请输入人数"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								生育保险
 							</span>
-							<div class="web-write">
-								<input type="text" name="SO510" id="SO510" onkeyup="inputNum(this)" placeholder="请输入人数"/>
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			
-			<!--第二列开始-->
-			<div id="line-block">
-					<div id="social-title">
-						<h4>单位缴费基数(单位：万元)</h4> 
-						<input type="hidden" name="TOTALWAGESDIS" id="TOTALWAGESDIS" value="2"/>
-						<span class="contribution-arrow-right"><img id="totalwagesdisImg" src="../../static/img/show-no.png"/></span>
-					</div>
-					
-					<div class="social-block">
-					<div class="web-box">
-						<ul>
-							
-							<li>
-								<span >
+                    <div class="web-write">
+                        <input type="text" name="SO510" id="SO510" onkeyup="inputNum(this)" placeholder="请输入人数"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+        <!--第二列开始-->
+        <div id="line-block">
+            <div id="social-title">
+                <h4>单位缴费基数(单位：万元)</h4>
+                <input type="hidden" name="TOTALWAGESDIS" id="TOTALWAGESDIS" value="2"/>
+                <span class="contribution-arrow-right"><img id="totalwagesdisImg"
+                                                            src="../../static/img/show-no.png"/></span>
+            </div>
+
+            <div class="social-block">
+                <div class="web-box">
+                    <ul>
+
+                        <li>
+								<span>
 									单位参加城镇职工基本养老保险缴费基数
 								</span>
-								<div class="web-write">
-									<input type="text" name="TOTALWAGES_SO110" id="TOTALWAGES_SO110" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
-								</div>
-							</li>
-						</ul>
-					</div>
-				
-				<div class="web-box">
-						<ul>
-							<li>
-								<span >
+                            <div class="web-write">
+                                <input type="text" name="TOTALWAGES_SO110" id="TOTALWAGES_SO110"
+                                       oninput="inputNumPoint(this)" placeholder="请输入金额"/>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="web-box">
+                    <ul>
+                        <li>
+								<span>
 									单位参加失业保险缴费基数
 								</span>
-								<div class="web-write">
-									<input type="text" name="TOTALWAGES_SO210" id="TOTALWAGES_SO210" oninput="inputNumPoint(this)"  placeholder="请输入金额"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-				
-				<div class="web-box">
-						<ul>
-							<li>
-								<span >
+                            <div class="web-write">
+                                <input type="text" name="TOTALWAGES_SO210" id="TOTALWAGES_SO210"
+                                       oninput="inputNumPoint(this)" placeholder="请输入金额"/>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="web-box">
+                    <ul>
+                        <li>
+								<span>
 									单位参加职工基本医疗保险缴费基数
 								</span>
-								<div class="web-write">
-									<input type="text" name="TOTALWAGES_SO310" id="TOTALWAGES_SO310" oninput="inputNumPoint(this)"  placeholder="请输入金额"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-				<div class="web-box">
-						<ul>
-							<li>
-								<span >
+                            <div class="web-write">
+                                <input type="text" name="TOTALWAGES_SO310" id="TOTALWAGES_SO310"
+                                       oninput="inputNumPoint(this)" placeholder="请输入金额"/>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="web-box">
+                    <ul>
+                        <li>
+								<span>
 									单位参加工伤保险缴费基数
 								</span>
-								<div class="web-write">
-									<input type="text" name="TOTALWAGES_SO410" id="TOTALWAGES_SO410" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-				<div class="web-box">
-						<ul>
-							<li>
-								<span >
+                            <div class="web-write">
+                                <input type="text" name="TOTALWAGES_SO410" id="TOTALWAGES_SO410"
+                                       oninput="inputNumPoint(this)" placeholder="请输入金额"/>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="web-box">
+                    <ul>
+                        <li>
+								<span>
 									单位参加生育保险缴费基数
 								</span>
-								<div class="web-write">
-									<input type="text" name="TOTALWAGES_SO510" id="TOTALWAGES_SO510" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-				</div>
-			</div>
-				<div style="width: 100%;height: 10px;background-color: #FFFFFF;"></div>
-			<!--第三列开始-->
-			<div id="line-block">
-					<div id="social-title">
-						<h4>本期实际缴费金额(单位：万元)</h4> 
-						<input type="hidden" name="TOTALPAYMENTDIS" id="TOTALPAYMENTDIS" value="2"/>
-						<span class="contribution-arrow-right"><img id="totalpaymentdisImg" src="../../static/img/show-no.png"/></span>
-					</div>
-					<div class="social-block">
-					<div class="web-box">
-						<ul>
-							
-							<li>
-								<span >
+                            <div class="web-write">
+                                <input type="text" name="TOTALWAGES_SO510" id="TOTALWAGES_SO510"
+                                       oninput="inputNumPoint(this)" placeholder="请输入金额"/>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div style="width: 100%;height: 10px;background-color: #FFFFFF;"></div>
+        <!--第三列开始-->
+        <div id="line-block">
+            <div id="social-title">
+                <h4>本期实际缴费金额(单位：万元)</h4>
+                <input type="hidden" name="TOTALPAYMENTDIS" id="TOTALPAYMENTDIS" value="2"/>
+                <span class="contribution-arrow-right"><img id="totalpaymentdisImg" src="../../static/img/show-no.png"/></span>
+            </div>
+            <div class="social-block">
+                <div class="web-box">
+                    <ul>
+
+                        <li>
+								<span>
 									参加城镇职工基本养老保险本期实际缴费金额
 								</span>
-								<div class="web-write">
-									<input type="text" name="TOTALPAYMENT_SO110" id="TOTALPAYMENT_SO110" oninput="inputNumPoint(this)" placeholder="请输入金额
+                            <div class="web-write">
+                                <input type="text" name="TOTALPAYMENT_SO110" id="TOTALPAYMENT_SO110"
+                                       oninput="inputNumPoint(this)" placeholder="请输入金额
 	"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-				
-				<div class="web-box">
-						<ul>
-							<li>
-								<span >
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="web-box">
+                    <ul>
+                        <li>
+								<span>
 									参加失业保险本期实际缴费金额
 								</span>
-								<div class="web-write">
-									<input type="text" name="TOTALPAYMENT_SO210" id="TOTALPAYMENT_SO210" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-				
-				<div class="web-box">
-						<ul>
-							<li>
-								<span >
+                            <div class="web-write">
+                                <input type="text" name="TOTALPAYMENT_SO210" id="TOTALPAYMENT_SO210"
+                                       oninput="inputNumPoint(this)" placeholder="请输入金额"/>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="web-box">
+                    <ul>
+                        <li>
+								<span>
 									参加职工基本医疗保险本期实际缴费金额
 								</span>
-								<div class="web-write">
-									<input type="text" name="TOTALPAYMENT_SO310" id="TOTALPAYMENT_SO310" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-				
-				<div class="web-box">
-						<ul>
-							<li>
-								<span >
+                            <div class="web-write">
+                                <input type="text" name="TOTALPAYMENT_SO310" id="TOTALPAYMENT_SO310"
+                                       oninput="inputNumPoint(this)" placeholder="请输入金额"/>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="web-box">
+                    <ul>
+                        <li>
+								<span>
 									参加工伤保险本期实际缴费金额
 								</span>
-								<div class="web-write">
-									<input type="text" name="TOTALPAYMENT_SO410" id="TOTALPAYMENT_SO410" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-				
-				<div class="web-box">
-						<ul>
-							<li>
-								<span >
+                            <div class="web-write">
+                                <input type="text" name="TOTALPAYMENT_SO410" id="TOTALPAYMENT_SO410"
+                                       oninput="inputNumPoint(this)" placeholder="请输入金额"/>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="web-box">
+                    <ul>
+                        <li>
+								<span>
 									参加生育保险本期实际缴费金额
 								</span>
-								<div class="web-write">
-									<input type="text" name="TOTALPAYMENT_SO510" id="TOTALPAYMENT_SO510" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-				</div>
-			</div>
-				<div style="width: 100%;height: 10px;background-color: #FFFFFF;"></div>
-			<!--第三列开始-->
-			<div id="line-block">
-					<div id="social-title">
-						<h4>单位累计欠缴金额(单位：万元)</h4> 
-						<input type="hidden" name="UNPAIDSOCIALINSDIS" id="UNPAIDSOCIALINSDIS" value="2"/>
-						<span class="contribution-arrow-right"><img id="unpaidsocialinsdisImg" src="../../static/img/show-no.png"/></span>
-					</div>
-					<div class="social-block">
-				<div class="web-box">
-						<ul>
-							<li>
-								<span >
+                            <div class="web-write">
+                                <input type="text" name="TOTALPAYMENT_SO510" id="TOTALPAYMENT_SO510"
+                                       oninput="inputNumPoint(this)" placeholder="请输入金额"/>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div style="width: 100%;height: 10px;background-color: #FFFFFF;"></div>
+        <!--第三列开始-->
+        <div id="line-block">
+            <div id="social-title">
+                <h4>单位累计欠缴金额(单位：万元)</h4>
+                <input type="hidden" name="UNPAIDSOCIALINSDIS" id="UNPAIDSOCIALINSDIS" value="2"/>
+                <span class="contribution-arrow-right"><img id="unpaidsocialinsdisImg"
+                                                            src="../../static/img/show-no.png"/></span>
+            </div>
+            <div class="social-block">
+                <div class="web-box">
+                    <ul>
+                        <li>
+								<span>
 									单位参加城镇职工基本养老保险累计欠缴金额
 								</span>
-								<div class="web-write">
-									<input type="text" name="UNPAIDSOCIALINS_SO110" id="UNPAIDSOCIALINS_SO110" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-				
-				<div class="web-box">
-						<ul>
-							<li>
-								<span >
+                            <div class="web-write">
+                                <input type="text" name="UNPAIDSOCIALINS_SO110" id="UNPAIDSOCIALINS_SO110"
+                                       oninput="inputNumPoint(this)" placeholder="请输入金额"/>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="web-box">
+                    <ul>
+                        <li>
+								<span>
 									单位参加失业保险累计欠缴金额
 								</span>
-								<div class="web-write">
-									<input type="text" name="UNPAIDSOCIALINS_SO210" id="UNPAIDSOCIALINS_SO210" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-				
-				<div class="web-box">
-						<ul>
-							<li>
-								<span >
+                            <div class="web-write">
+                                <input type="text" name="UNPAIDSOCIALINS_SO210" id="UNPAIDSOCIALINS_SO210"
+                                       oninput="inputNumPoint(this)" placeholder="请输入金额"/>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="web-box">
+                    <ul>
+                        <li>
+								<span>
 									单位参加职工基本医疗保险累计欠缴金额
 								</span>
-								<div class="web-write">
-									<input type="text" name="UNPAIDSOCIALINS_SO310" id="UNPAIDSOCIALINS_SO310" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-				
-				<div class="web-box">
-						<ul>
-							<li>
-								<span >
+                            <div class="web-write">
+                                <input type="text" name="UNPAIDSOCIALINS_SO310" id="UNPAIDSOCIALINS_SO310"
+                                       oninput="inputNumPoint(this)" placeholder="请输入金额"/>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="web-box">
+                    <ul>
+                        <li>
+								<span>
 									参加工伤保险累计欠缴金额
 								</span>
-								<div class="web-write">
-									<input type="text" name="UNPAIDSOCIALINS_SO410" id="UNPAIDSOCIALINS_SO410" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-				
-				<div class="web-box">
-						<ul>
-							<li>
-								<span >
+                            <div class="web-write">
+                                <input type="text" name="UNPAIDSOCIALINS_SO410" id="UNPAIDSOCIALINS_SO410"
+                                       oninput="inputNumPoint(this)" placeholder="请输入金额"/>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="web-box">
+                    <ul>
+                        <li>
+								<span>
 									单位参加生育保险累计欠缴金额
 								</span>
-								<div class="web-write">
-									<input type="text" name="UNPAIDSOCIALINS_SO510" id ="UNPAIDSOCIALINS_SO510" oninput="inputNumPoint(this)" placeholder="请输入金额"/>
-								</div>
-							</li>
-						</ul>
-				</div>
-				</div>
-			</div>
-			
-		</div>
-				<div style="width: 100%;height: 10px;background-color: #FFFFFF;"></div>
-		</form>
-		<script>
-			document.getElementById("totalwagesdisImg").addEventListener('tap', function() {
-				var totalwagesdis=$("#TOTALWAGESDIS").val();
-				if(totalwagesdis==2){
-					document.getElementById("totalwagesdisImg").src="../../static/img/show.png";
-					$("#TOTALWAGESDIS").val(1);
-					mui.toast('您设置了单位缴费基数对外公示');
-				}else{
-					document.getElementById("totalwagesdisImg").src="../../static/img/show-no.png";
-					$("#TOTALWAGESDIS").val(2);
-					mui.toast('您设置了单位缴费基数对外隐藏');
-				}
-			});
-			
-			document.getElementById("totalpaymentdisImg").addEventListener('tap', function() {
-				var totalpaymentdis=$("#TOTALPAYMENTDIS").val();
-				if(totalpaymentdis==2){
-					document.getElementById("totalpaymentdisImg").src="../../static/img/show.png";
-					$("#TOTALPAYMENTDIS").val(1);
-					mui.toast('您设置了本期实际缴费金额对外公示');
-				}else{
-					document.getElementById("totalpaymentdisImg").src="../../static/img/show-no.png";
-					$("#TOTALPAYMENTDIS").val(2);
-					mui.toast('您设置了本期实际缴费金额对外隐藏');
-				}
-			});
-			
-			document.getElementById("unpaidsocialinsdisImg").addEventListener('tap', function() {
-				var unpaidsocialinsdis=$("#UNPAIDSOCIALINSDIS").val();
-				if(unpaidsocialinsdis==2){
-					document.getElementById("unpaidsocialinsdisImg").src="../../static/img/show.png";
-					$("#UNPAIDSOCIALINSDIS").val(1);
-					mui.toast('您设置了单位累计欠缴金额对外公示');
-				}else{
-					document.getElementById("unpaidsocialinsdisImg").src="../../static/img/show-no.png";
-					$("#UNPAIDSOCIALINSDIS").val(2);
-					mui.toast('您设置了单位累计欠缴金额对外隐藏');
-				}
-			});
-			
-		</script>
-		
-	</body>
+                            <div class="web-write">
+                                <input type="text" name="UNPAIDSOCIALINS_SO510" id="UNPAIDSOCIALINS_SO510"
+                                       oninput="inputNumPoint(this)" placeholder="请输入金额"/>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div style="width: 100%;height: 10px;background-color: #FFFFFF;"></div>
+</form>
+<script>
+    document.getElementById("totalwagesdisImg").addEventListener('tap', function () {
+        var totalwagesdis = $("#TOTALWAGESDIS").val();
+        if (totalwagesdis == 2) {
+            document.getElementById("totalwagesdisImg").src = "../../static/img/show.png";
+            $("#TOTALWAGESDIS").val(1);
+            mui.toast('您设置了单位缴费基数对外公示');
+        } else {
+            document.getElementById("totalwagesdisImg").src = "../../static/img/show-no.png";
+            $("#TOTALWAGESDIS").val(2);
+            mui.toast('您设置了单位缴费基数对外隐藏');
+        }
+    });
+
+    document.getElementById("totalpaymentdisImg").addEventListener('tap', function () {
+        var totalpaymentdis = $("#TOTALPAYMENTDIS").val();
+        if (totalpaymentdis == 2) {
+            document.getElementById("totalpaymentdisImg").src = "../../static/img/show.png";
+            $("#TOTALPAYMENTDIS").val(1);
+            mui.toast('您设置了本期实际缴费金额对外公示');
+        } else {
+            document.getElementById("totalpaymentdisImg").src = "../../static/img/show-no.png";
+            $("#TOTALPAYMENTDIS").val(2);
+            mui.toast('您设置了本期实际缴费金额对外隐藏');
+        }
+    });
+
+    document.getElementById("unpaidsocialinsdisImg").addEventListener('tap', function () {
+        var unpaidsocialinsdis = $("#UNPAIDSOCIALINSDIS").val();
+        if (unpaidsocialinsdis == 2) {
+            document.getElementById("unpaidsocialinsdisImg").src = "../../static/img/show.png";
+            $("#UNPAIDSOCIALINSDIS").val(1);
+            mui.toast('您设置了单位累计欠缴金额对外公示');
+        } else {
+            document.getElementById("unpaidsocialinsdisImg").src = "../../static/img/show-no.png";
+            $("#UNPAIDSOCIALINSDIS").val(2);
+            mui.toast('您设置了单位累计欠缴金额对外隐藏');
+        }
+    });
+
+</script>
+
+</body>
 </html>

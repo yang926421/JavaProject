@@ -1,122 +1,124 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>商标注册信息</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/shangbiaozhuche.css" />
-		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../static/js/common.js" ></script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="searchMain.html"></a>
-		    <h1 class="mui-title">商标注册信息(<span id="count"></span>)</h1>
-		</header>
-		<div id="common-box"></div>
-		
-		<!--<a href="">
-			<div class="shangdiv">
-				 <div class="imgdiv">
-				 	<img src="../static/img/logo.png" />
-				 </div>
-				 <div class="insdiv">
-				 	  <ul>
-				 	  		<li><span style="color: #3E3E3E;">百度</span><span class="type">商标无效</span></li>
-				 	  		<li class="zhuce-con"><span>注册号: </span><span>400004</span></li>
-				 	  		<li class="zhuce-con"><span>商标类别: </span><span>38-通讯服务</span></li>
-				 	  		<li class="zhuce-con"><span>申请时间: </span><span>2017.02.02</span></li>
-				 	  </ul>
-				 	  <div class="arrow-right">
-						 <img src="../static/img/arrow-right.png"/>
-					  </div>
-				 </div>
-			</div>
-		</a>-->
-		
-			
-	<input type="hidden" name="page" id="page" value="1" />
-	<input type="hidden" name="totalPage" id="totalPage" value="1"/>
-	
-	<div id="loadData" style="display: none;" onclick="getData();">点击加载更多...</div>
-	<!--加载点-->
-	<div id="loading" style="display: none;" class="spinner">
-		 <div class="bounce1"></div>
-		 <div class="bounce2"></div>
-		 <div class="bounce3"></div>
-	</div>
-	
-	<div id="noData" style="display: none;" >没有更多了...</div>
-		
-		 
-		 <script type="text/javascript">
-		 	//获取企业id
-			var pripid= sessionStorage.getItem("PRIPID");
-			$(function(){
-				getData();
-			});
-			//分页获取企业商标注册信息
-			function getData(){
-				page=$("#page").val();
-				if(page==0){
-					page=1;
-				}
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/p/tm/baseinfo/by/pripid/list.json",
-					data:{"PRIPID":pripid},
-					async:true,
-					dataType:"json",
-					beforeSend:function(){
-			    			$("#loading").show();
-			    		},
-					success:function(res){
-						$("#loading").hide();
-						if(res.success==true){
-							loadPage(res);
-							$("#count").html(res.records);
-							createElem(res.data)
-						}
-					}
-				});
-			}
-			//创建商标注册信息数据
-			function createElem(data){			
-				for (var i = 0; i < data.length; i++) {
-					var time ="";
-					if(data[i].REG_ANNC_DATE!=null && data[i].REG_ANNC_DATE!=""){
-						time=getFormatDateByLong(data[i].REG_ANNC_DATE,"yyyy年MM月dd日");
-					}
-					var img="../static/img/shangbiao_no.png";
-					if(data[i].TM_IMAGE!=null && data[i].TM_IMAGE!=""){
-						img=data[i].TM_IMAGE;
-					}
-				   var elem="<div class='web-box'><a href='shangbiaozhuce-inf.html?TMID="+data[i].TMID+"'>"+
-							"<div class='shangdiv'>"+
-							"	 <div class='imgdiv'>"+
-							"	 	<img src='"+img+"' />"+
-							"	 </div>"+
-							"	 <div class='insdiv'>"+
-							"	 	  <ul>"+
-							"	 	  		<li class='zhuce-con'>"+data[i].ENTNAME+"</li>"+
-							"	 	  		<li class='zhuce-con'><span>注册号: </span><span>"+data[i].REG_NUM+"</span></li>"+
-							"	 	  		<li class='zhuce-con'><span>商标类别: </span><span>第"+data[i].INT_CLS+"类</span></li>"+
-							"	 	  		<li class='zhuce-con'><span>注册公告日期: </span><span>"+time+"</span></li>"+
-							"	 	  </ul>"+
-							"	 	  <div class='arrow-right'>"+
-							"			 <img src='../static/img/arrow-right.png'/>"+
-							"		  </div>"+
-							"	 </div>"+
-							"</div>"+
-						"</a> </div>"; 
-				   
-					$("#common-box").append(elem);
-				}
-			}
-		 </script>
-	</body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>商标注册信息</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/shangbiaozhuche.css"/>
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="searchMain.html"></a>
+    <h1 class="mui-title">商标注册信息(<span id="count"></span>)</h1>
+</header>
+<div id="common-box"></div>
+
+<!--<a href="">
+    <div class="shangdiv">
+         <div class="imgdiv">
+             <img src="../static/img/logo.png" />
+         </div>
+         <div class="insdiv">
+               <ul>
+                       <li><span style="color: #3E3E3E;">百度</span><span class="type">商标无效</span></li>
+                       <li class="zhuce-con"><span>注册号: </span><span>400004</span></li>
+                       <li class="zhuce-con"><span>商标类别: </span><span>38-通讯服务</span></li>
+                       <li class="zhuce-con"><span>申请时间: </span><span>2017.02.02</span></li>
+               </ul>
+               <div class="arrow-right">
+                 <img src="../static/img/arrow-right.png"/>
+              </div>
+         </div>
+    </div>
+</a>-->
+
+
+<input type="hidden" name="page" id="page" value="1"/>
+<input type="hidden" name="totalPage" id="totalPage" value="1"/>
+
+<div id="loadData" style="display: none;" onclick="getData();">点击加载更多...</div>
+<!--加载点-->
+<div id="loading" style="display: none;" class="spinner">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+</div>
+
+<div id="noData" style="display: none;">没有更多了...</div>
+
+
+<script type="text/javascript">
+    //获取企业id
+    var pripid = sessionStorage.getItem("PRIPID");
+    $(function () {
+        getData();
+    });
+
+    //分页获取企业商标注册信息
+    function getData() {
+        page = $("#page").val();
+        if (page == 0) {
+            page = 1;
+        }
+        $.ajax({
+            type: "get",
+            url: httpUrl + "/p/tm/baseinfo/by/pripid/list.json",
+            data: {"PRIPID": pripid},
+            async: true,
+            dataType: "json",
+            beforeSend: function () {
+                $("#loading").show();
+            },
+            success: function (res) {
+                $("#loading").hide();
+                if (res.success == true) {
+                    loadPage(res);
+                    $("#count").html(res.records);
+                    createElem(res.data)
+                }
+            }
+        });
+    }
+
+    //创建商标注册信息数据
+    function createElem(data) {
+        for (var i = 0; i < data.length; i++) {
+            var time = "";
+            if (data[i].REG_ANNC_DATE != null && data[i].REG_ANNC_DATE != "") {
+                time = getFormatDateByLong(data[i].REG_ANNC_DATE, "yyyy年MM月dd日");
+            }
+            var img = "../static/img/shangbiao_no.png";
+            if (data[i].TM_IMAGE != null && data[i].TM_IMAGE != "") {
+                img = data[i].TM_IMAGE;
+            }
+            var elem = "<div class='web-box'><a href='shangbiaozhuce-inf.html?TMID=" + data[i].TMID + "'>" +
+                "<div class='shangdiv'>" +
+                "	 <div class='imgdiv'>" +
+                "	 	<img src='" + img + "' />" +
+                "	 </div>" +
+                "	 <div class='insdiv'>" +
+                "	 	  <ul>" +
+                "	 	  		<li class='zhuce-con'>" + data[i].ENTNAME + "</li>" +
+                "	 	  		<li class='zhuce-con'><span>注册号: </span><span>" + data[i].REG_NUM + "</span></li>" +
+                "	 	  		<li class='zhuce-con'><span>商标类别: </span><span>第" + data[i].INT_CLS + "类</span></li>" +
+                "	 	  		<li class='zhuce-con'><span>注册公告日期: </span><span>" + time + "</span></li>" +
+                "	 	  </ul>" +
+                "	 	  <div class='arrow-right'>" +
+                "			 <img src='../static/img/arrow-right.png'/>" +
+                "		  </div>" +
+                "	 </div>" +
+                "</div>" +
+                "</a> </div>";
+
+            $("#common-box").append(elem);
+        }
+    }
+</script>
+</body>
 </html>

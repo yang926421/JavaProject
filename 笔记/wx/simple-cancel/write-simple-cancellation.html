@@ -1,209 +1,211 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>国家企业信用信息公示系统</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/weui.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/write-simple-cancellation.css">
-		
-		<script type="text/javascript" src="../static/js/jquery.min.js"></script>
-		<script type="text/javascript" src="../static/js/common.js" ></script>
-		<!--<script type="text/javascript" src="../js/load-img.js"></script>-->
-	    <script type="text/javascript" src="../static/js/mui.min.js" ></script>
-	    	<script type="text/javascript" src="../static/js/simple-cancellation.js" ></script>
-	    <script>
-	    var SCID="";
-	    
-	    	$(function(){
-	    		$("#PRIPID").val(PRIPID);
-	    		$("#UNISCID").val(UNISCID);
-	    		$("#BODY_NO").val(BODY_NO);
-	    		$("#ENTNAME").val(BODY_NAME);
-	    		$("#REGNO").val(REGNO);
-	    		$("#REGORG_CN").val(REGORG_CN); 
-    			$("#REGORG").val(REGORG);
-	    		$("#SESSIONID").val(SESSIONID); 
-	    		$("#TOKEN").val(TOKEN); 
-	    		if(REGORG_CN==undefined || REGORG_CN==null || REGORG_CN==""){
-	    			$("#regorgDiv").hide();
-	    		}
-	    		//获取简易注销公告信息
-	    		$.ajax({
-					type:"get",
-					url:httpUrl+"/e/escnotice/getByPripid.json",
-					async:false,
-					data:{"PRIPID":PRIPID,"SESSIONID":SESSIONID,"TOKEN":TOKEN,"TYPE":"1"},
-					dataType:"json",
-					success:function(res){
-						if(res.success==true){
-							createData(res.data);
-						}
-					}
-					
-				});
-	    		
-	    	});
-	    	function createData(obj){
-	    		if(typeof(obj.SCID) != "undefined"){
-	    			SCID=obj.SCID;
-	    			COMMITMENT=obj.COMMITMENT;
-	    			$("#SCID").val(obj.SCID);
-	    			var html="<li id='oldImg' class='weui-uploader__file' style='background-image:url("+obj.LOC_FILENAME+");'></li>";
-	    			
-	    			$("#uploaderFiles").html(html);
-	    		//	$(".weui-uploader__input-box").css("display","none");
-	    		}
-	    		
-	    	};
-	    
-	    	
-	    	//图片删除
-//			function deleteImg(){
-//				mui.confirm('删除预览图片后可重新上传， 确定要删除吗？', function(e) {
-//					if (e.index == 1) {
-//						$(".weui-uploader__file").remove();
-//						$(".weui-uploader__input-box").css("display","inline-block");
-//					}
-//				});
-//				
-//			}
-	    </script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="simple-cancellation.html"></a>
-		    <h1 class="mui-title">注销公告填报</h1>
-		    <!--<span id="sure">
-		    	<a  class="" onclick="save()" id="confirmBtn">提交</a>
-		    </span>-->
-		</header>
-			<form action="" id="addForm" method="post" enctype="multipart/form-data">
-				<input type="hidden" name="PRIPID" id="PRIPID" />
-				<input type="hidden" name="SCID" id="SCID" />
-				<input type="hidden" name="REGORG" id="REGORG" />
-				<input type="hidden" name="REGNO" id="REGNO" />
-				<input type="hidden" name="UNISCID" id="UNISCID" />
-				
-				<input type="hidden" name="SESSIONID" id="SESSIONID" />
-				<input type="hidden" name="TOKEN" id="TOKEN" />
-		<!--填写注销公告信息-->
-		<div id="common-box">
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>国家企业信用信息公示系统</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/weui.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/write-simple-cancellation.css">
+
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <!--<script type="text/javascript" src="../js/load-img.js"></script>-->
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../static/js/simple-cancellation.js"></script>
+    <script>
+        var SCID = "";
+
+        $(function () {
+            $("#PRIPID").val(PRIPID);
+            $("#UNISCID").val(UNISCID);
+            $("#BODY_NO").val(BODY_NO);
+            $("#ENTNAME").val(BODY_NAME);
+            $("#REGNO").val(REGNO);
+            $("#REGORG_CN").val(REGORG_CN);
+            $("#REGORG").val(REGORG);
+            $("#SESSIONID").val(SESSIONID);
+            $("#TOKEN").val(TOKEN);
+            if (REGORG_CN == undefined || REGORG_CN == null || REGORG_CN == "") {
+                $("#regorgDiv").hide();
+            }
+            //获取简易注销公告信息
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/e/escnotice/getByPripid.json",
+                async: false,
+                data: {"PRIPID": PRIPID, "SESSIONID": SESSIONID, "TOKEN": TOKEN, "TYPE": "1"},
+                dataType: "json",
+                success: function (res) {
+                    if (res.success == true) {
+                        createData(res.data);
+                    }
+                }
+
+            });
+
+        });
+
+        function createData(obj) {
+            if (typeof (obj.SCID) != "undefined") {
+                SCID = obj.SCID;
+                COMMITMENT = obj.COMMITMENT;
+                $("#SCID").val(obj.SCID);
+                var html = "<li id='oldImg' class='weui-uploader__file' style='background-image:url(" + obj.LOC_FILENAME + ");'></li>";
+
+                $("#uploaderFiles").html(html);
+                //	$(".weui-uploader__input-box").css("display","none");
+            }
+
+        };
+
+
+        //图片删除
+        //			function deleteImg(){
+        //				mui.confirm('删除预览图片后可重新上传， 确定要删除吗？', function(e) {
+        //					if (e.index == 1) {
+        //						$(".weui-uploader__file").remove();
+        //						$(".weui-uploader__input-box").css("display","inline-block");
+        //					}
+        //				});
+        //
+        //			}
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="simple-cancellation.html"></a>
+    <h1 class="mui-title">注销公告填报</h1>
+    <!--<span id="sure">
+        <a  class="" onclick="save()" id="confirmBtn">提交</a>
+    </span>-->
+</header>
+<form action="" id="addForm" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="PRIPID" id="PRIPID"/>
+    <input type="hidden" name="SCID" id="SCID"/>
+    <input type="hidden" name="REGORG" id="REGORG"/>
+    <input type="hidden" name="REGNO" id="REGNO"/>
+    <input type="hidden" name="UNISCID" id="UNISCID"/>
+
+    <input type="hidden" name="SESSIONID" id="SESSIONID"/>
+    <input type="hidden" name="TOKEN" id="TOKEN"/>
+    <!--填写注销公告信息-->
+    <div id="common-box">
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								企业名称
 							</span>
-							<div class="web-write">
-								<input type="text" name="ENTNAME" id="ENTNAME" readonly="readonly" >
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                    <div class="web-write">
+                        <input type="text" name="ENTNAME" id="ENTNAME" readonly="readonly">
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								统一社会信用代码/注册号
 							</span>
-							<div class="web-write">
-								<input type="text" name="BODY_NO" id="BODY_NO" readonly="readonly"  />
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box" id="regorgDiv">
-					<ul>
-						<li>
-							<span >
+                    <div class="web-write">
+                        <input type="text" name="BODY_NO" id="BODY_NO" readonly="readonly"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box" id="regorgDiv">
+            <ul>
+                <li>
+							<span>
 								登记机关
 							</span>
-							<div class="web-write">
-								<input type="text" name="REGORG_CN" id="REGORG_CN" readonly="readonly"  />
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<div >
-								全体投资人承诺书
-							</div>
-					<!--		<div class="">
-								<span id="upload-img">
-									<img src="../img/upload-img.png"/>
-									     <input type='file' name="file" id="file" name='photo'>
-								</span>
-								
-								
-							</div>-->
-							<div id="upload-container">
-								<div class="page__bd">
-									<!--图片浏览、删除-->
-							        <div class="weui-gallery" id="gallery">
-							            <span class="weui-gallery__img" id="galleryImg"></span>
-							            <!--<div class="weui-gallery__opr">
-							                <a href="javascript:" class="weui-gallery__del">
-							                    <i class="weui-icon-delete weui-icon_gallery-delete" onclick="deleteImg()"></i>
-							                </a>
-							            </div>-->
-							        </div>
-									
-									<!--图片添加模块-->
-			                        <div class="weui-uploader__bd" style="margin-bottom: 0.5rem;">
-			                            <ul class="weui-uploader__files" id="uploaderFiles" >
-			                            </ul>
-			                            <div class="weui-uploader__input-box">
-			                                <input id="uploaderInput" name="uploaderInput" class="weui-uploader__input" type="file"  accept="image/*" />
-			                            </div>
-			                        </div>
-							    </div>
-							</div>
-						</li>
-					</ul>
-			</div>
-		</div>
-		<br />
-		<!--<div class="web-box">
-			
-					<ul>
-						<li>
-							<span >
-								备注
-							</span>
-							<div class="web-write">
-								<textarea name="" rows="" cols="" placeholder="请填写备注信息"></textarea>
-							</div>
-						</li>
-					</ul>
-				
-		</div>
-		-->
-		</form>
-		<!--弹窗提醒-->
-		<!--<script type="text/javascript"> 
-			document.getElementById("confirmBtn").addEventListener('tap', function() {
-				mui.confirm('确定要提交简易注销公告吗？该公告一旦提交，不能更改，且仅有一次简易注销机会。', function(e) {
-					if (e.index == 1) {
-						window.location.href='simple-cancellation.html';
-					} 
-				})
-			});
-		</script>-->
-		<br />
-		<div id="addBtn" class="yy" >
-	    	<a id="commit">提交</a>
-	    </div>
-	    <div id="addBtn" class="yy" >
-	    	<a id="commitPublic">提交并公示</a>
-	    </div>
-	</body>
+                    <div class="web-write">
+                        <input type="text" name="REGORG_CN" id="REGORG_CN" readonly="readonly"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
+                    <div>
+                        全体投资人承诺书
+                    </div>
+                    <!--		<div class="">
+                                <span id="upload-img">
+                                    <img src="../img/upload-img.png"/>
+                                         <input type='file' name="file" id="file" name='photo'>
+                                </span>
+
+
+                            </div>-->
+                    <div id="upload-container">
+                        <div class="page__bd">
+                            <!--图片浏览、删除-->
+                            <div class="weui-gallery" id="gallery">
+                                <span class="weui-gallery__img" id="galleryImg"></span>
+                                <!--<div class="weui-gallery__opr">
+                                    <a href="javascript:" class="weui-gallery__del">
+                                        <i class="weui-icon-delete weui-icon_gallery-delete" onclick="deleteImg()"></i>
+                                    </a>
+                                </div>-->
+                            </div>
+
+                            <!--图片添加模块-->
+                            <div class="weui-uploader__bd" style="margin-bottom: 0.5rem;">
+                                <ul class="weui-uploader__files" id="uploaderFiles">
+                                </ul>
+                                <div class="weui-uploader__input-box">
+                                    <input id="uploaderInput" name="uploaderInput" class="weui-uploader__input"
+                                           type="file" accept="image/*"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <br/>
+    <!--<div class="web-box">
+
+                <ul>
+                    <li>
+                        <span >
+                            备注
+                        </span>
+                        <div class="web-write">
+                            <textarea name="" rows="" cols="" placeholder="请填写备注信息"></textarea>
+                        </div>
+                    </li>
+                </ul>
+
+    </div>
+    -->
+</form>
+<!--弹窗提醒-->
+<!--<script type="text/javascript">
+    document.getElementById("confirmBtn").addEventListener('tap', function() {
+        mui.confirm('确定要提交简易注销公告吗？该公告一旦提交，不能更改，且仅有一次简易注销机会。', function(e) {
+            if (e.index == 1) {
+                window.location.href='simple-cancellation.html';
+            }
+        })
+    });
+</script>-->
+<br/>
+<div id="addBtn" class="yy">
+    <a id="commit">提交</a>
+</div>
+<div id="addBtn" class="yy">
+    <a id="commitPublic">提交并公示</a>
+</div>
+</body>
 </html>

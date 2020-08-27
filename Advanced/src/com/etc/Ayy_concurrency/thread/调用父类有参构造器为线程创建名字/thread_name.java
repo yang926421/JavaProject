@@ -8,15 +8,15 @@ public class thread_name {
         t1.start();
         Thread t2 = new MyThread("线程2");
         t2.start();
-        for (int i =0; i<10; i++){
-            System.out.println(Thread.currentThread().getName()+"====>"+i);
+        for (int i = 0; i < 10; i++) {
+            System.out.println(Thread.currentThread().getName() + "====>" + i);
         }
 
     }
 
 }
 
-class MyThread extends Thread{
+class MyThread extends Thread {
     //有参构造器
     public MyThread(String name)
     //public thread(string name); 父类的有参构造器
@@ -26,8 +26,8 @@ class MyThread extends Thread{
 
     @Override
     public void run() {
-        for(int i = 0; i<10;i++){
-            System.out.println(Thread.currentThread().getName()+"===>"+i);
+        for (int i = 0; i < 10; i++) {
+            System.out.println(Thread.currentThread().getName() + "===>" + i);
         }
     }
 }

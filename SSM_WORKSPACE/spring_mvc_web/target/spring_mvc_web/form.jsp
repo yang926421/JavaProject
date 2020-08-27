@@ -12,7 +12,7 @@
 </head>
 <body>
 <form action="${pageContext.request.contextPath}/user/quick15" method="post">
-<%--    表明是第几个对象的username age--%>
+    <%--    表明是第几个对象的username age--%>
     <input type="text" name="userList[0].username">
     <input type="text" name="userList[0].age">
     <input type="text" name="userList[1].username">

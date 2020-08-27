@@ -1,238 +1,241 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>国家企业信用信息公示系统</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/weui.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/write-simple-cancellation.css">
-		
-		<script type="text/javascript" src="../static/js/jquery.min.js"></script>
-		<script type="text/javascript" src="../static/js/common.js" ></script>
-		<!--<script type="text/javascript" src="../js/load-img.js"></script>-->
-	    <script type="text/javascript" src="../static/js/mui.min.js" ></script>
-	    	<script type="text/javascript" src="../static/js/applyOutEdit_ill.js" ></script>
-	    <script>
-    		var ILLID=GetRequest("ILLID");
-    		var objection =JSON.parse(sessionStorage.getItem("apply"+ILLID));
-    		var outId=objection.outId;
-	    
-	    	$(function(){
-	    		$("#PRIPID").val(PRIPID);
-	    		$("#SESSIONID").val(SESSIONID); 
-	    		$("#TOKEN").val(TOKEN); 
-	    		$("#ILLID").val(ILLID);
-	    		$("#APPLYER").val(com_NAME); 
-    			$("#TEL").val(com_MOBTEL);
-	    		$("#CERNO").val(com_CERNO);
-	    		//$("#REASONS").val(BODY_NAME);
-	    		$("#CREATEDUSER").val(com_NAME);
-	    		createData(objection);
-	    	});
-	    	/*function getData(){
-	    		//获取失信企业信息
-	    		$.ajax({
-					type:"get",
-					url:httpUrl+"/e/li/illdisdetail/get.json",
-					async:false,
-					data:{"PRIPID":PRIPID,"SESSIONID":SESSIONID,"TOKEN":TOKEN,"outBs":'1',"ILLID":ILLID},
-					dataType:"json",
-					success:function(res){
-						if(res.success==true){
-							createData(res.data);
-						}
-					}
-					
-				});
-	    	}*/
-	    	function createData(obj){
-				//COMMITMENT=obj.COMMITMENT;
-				console.log(obj);
-	    		$("#ENTNAME").val(obj.ENTNAME);
-	    		$("#UNISCID").val(obj.UNISCID);
-	    		$("#REGNO").val(obj.REGNO);
-    			$("#outId").val(obj.outId);
-	    		$("#DECORG_CN").val(obj.DECORG_CN);
-	    		$("#DEDOCNUM").val(obj.DEDOCNUM);
-	    		$("#SERILLREA_CN").val(obj.SERILLREA_CN);
-	    		if(obj.outId != null && obj.outId != "" && obj.outId != undefined){
-	    			$("#REASONS").val(obj.REASONS)
-		    		if(obj.fileListMap != null){
-		    			var html = "";
-		    			for(var i = 0 ; i < obj.fileListMap.length; i++){
-		    				console.log(obj.fileListMap[i]);
-							html+="<li id='oldImg"+(i+1)+"' class='weui-uploader__file' style='background-image:url("+obj.fileListMap[i].filePathFormart+");'>"+
-							"<a onclick='delImg(\""+obj.ILLID+"\",\""+obj.fileListMap[i].FILEPATH+"\")' style='float:right;top:0px;right:0;display:block;'>"+
-				            "<img src='../static/img/delete.png' width='20px'  ></a>"+
-							"</li>";
-							filesNum++;
-							
-		    			}
-		    			$("#uploaderFiles").append(html);
-		    		}
-	    		}
-				//	$(".weui-uploader__input-box").css("display","none");
-	    		
-	    	}
-	    	
-	    	
-			//从数据库中读取图片的删除
-			var delFlag=1;
-			function delImg(illid,filePath){
-				delFlag=2;
-				mui.confirm("您确定要删除吗？","提示",btnArray,function(e){
-					if (e.index == 1) {
-						$.ajax({
-							type:"post",
-							url:httpUrl+"/e/ill/apply/out/file/del.json",
-							async:true,
-							data:{
-								"SESSIONID":SESSIONID,
-								"TOKEN":TOKEN,
-								"ILLID":illid,
-								"FILEPATH":filePath
-							},
-							dataType:"json",
-							success:function(res){
-								console.log(res);
-								if(res.success){
-									mui.toast("删除成功");
-									filesNum=filesNum-1;
-								}
-							}
-						});
-					}
-					delFlag=1;
-				})
-			}
-	    	
-	    	function objectList(){
-	    		window.location.href="applyOutList.html?ILLID="+ILLID;
-	    	}
-	    
-	    	
-	    	//图片删除
-//			function deleteImg(){
-//				mui.confirm('删除预览图片后可重新上传， 确定要删除吗？', function(e) {
-//					if (e.index == 1) {
-//						$(".weui-uploader__file").remove();
-//						$(".weui-uploader__input-box").css("display","inline-block");
-//					}
-//				});
-//				
-//			}
-	    </script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="applyDisdetail.html"></a>
-		    <h1 class="mui-title" style="width: 75%;">移出申请</h1>
-		    <span id="sure">
-		    	<a  class="" onclick="objectList()" id="confirmBtn">申请记录</a>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>国家企业信用信息公示系统</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/weui.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/write-simple-cancellation.css">
+
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <!--<script type="text/javascript" src="../js/load-img.js"></script>-->
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../static/js/applyOutEdit_ill.js"></script>
+    <script>
+        var ILLID = GetRequest("ILLID");
+        var objection = JSON.parse(sessionStorage.getItem("apply" + ILLID));
+        var outId = objection.outId;
+
+        $(function () {
+            $("#PRIPID").val(PRIPID);
+            $("#SESSIONID").val(SESSIONID);
+            $("#TOKEN").val(TOKEN);
+            $("#ILLID").val(ILLID);
+            $("#APPLYER").val(com_NAME);
+            $("#TEL").val(com_MOBTEL);
+            $("#CERNO").val(com_CERNO);
+            //$("#REASONS").val(BODY_NAME);
+            $("#CREATEDUSER").val(com_NAME);
+            createData(objection);
+        });
+
+        /*function getData(){
+            //获取失信企业信息
+            $.ajax({
+                type:"get",
+                url:httpUrl+"/e/li/illdisdetail/get.json",
+                async:false,
+                data:{"PRIPID":PRIPID,"SESSIONID":SESSIONID,"TOKEN":TOKEN,"outBs":'1',"ILLID":ILLID},
+                dataType:"json",
+                success:function(res){
+                    if(res.success==true){
+                        createData(res.data);
+                    }
+                }
+
+            });
+        }*/
+        function createData(obj) {
+            //COMMITMENT=obj.COMMITMENT;
+            console.log(obj);
+            $("#ENTNAME").val(obj.ENTNAME);
+            $("#UNISCID").val(obj.UNISCID);
+            $("#REGNO").val(obj.REGNO);
+            $("#outId").val(obj.outId);
+            $("#DECORG_CN").val(obj.DECORG_CN);
+            $("#DEDOCNUM").val(obj.DEDOCNUM);
+            $("#SERILLREA_CN").val(obj.SERILLREA_CN);
+            if (obj.outId != null && obj.outId != "" && obj.outId != undefined) {
+                $("#REASONS").val(obj.REASONS)
+                if (obj.fileListMap != null) {
+                    var html = "";
+                    for (var i = 0; i < obj.fileListMap.length; i++) {
+                        console.log(obj.fileListMap[i]);
+                        html += "<li id='oldImg" + (i + 1) + "' class='weui-uploader__file' style='background-image:url(" + obj.fileListMap[i].filePathFormart + ");'>" +
+                            "<a onclick='delImg(\"" + obj.ILLID + "\",\"" + obj.fileListMap[i].FILEPATH + "\")' style='float:right;top:0px;right:0;display:block;'>" +
+                            "<img src='../static/img/delete.png' width='20px'  ></a>" +
+                            "</li>";
+                        filesNum++;
+
+                    }
+                    $("#uploaderFiles").append(html);
+                }
+            }
+            //	$(".weui-uploader__input-box").css("display","none");
+
+        }
+
+
+        //从数据库中读取图片的删除
+        var delFlag = 1;
+
+        function delImg(illid, filePath) {
+            delFlag = 2;
+            mui.confirm("您确定要删除吗？", "提示", btnArray, function (e) {
+                if (e.index == 1) {
+                    $.ajax({
+                        type: "post",
+                        url: httpUrl + "/e/ill/apply/out/file/del.json",
+                        async: true,
+                        data: {
+                            "SESSIONID": SESSIONID,
+                            "TOKEN": TOKEN,
+                            "ILLID": illid,
+                            "FILEPATH": filePath
+                        },
+                        dataType: "json",
+                        success: function (res) {
+                            console.log(res);
+                            if (res.success) {
+                                mui.toast("删除成功");
+                                filesNum = filesNum - 1;
+                            }
+                        }
+                    });
+                }
+                delFlag = 1;
+            })
+        }
+
+        function objectList() {
+            window.location.href = "applyOutList.html?ILLID=" + ILLID;
+        }
+
+
+        //图片删除
+        //			function deleteImg(){
+        //				mui.confirm('删除预览图片后可重新上传， 确定要删除吗？', function(e) {
+        //					if (e.index == 1) {
+        //						$(".weui-uploader__file").remove();
+        //						$(".weui-uploader__input-box").css("display","inline-block");
+        //					}
+        //				});
+        //
+        //			}
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="applyDisdetail.html"></a>
+    <h1 class="mui-title" style="width: 75%;">移出申请</h1>
+    <span id="sure">
+		    	<a class="" onclick="objectList()" id="confirmBtn">申请记录</a>
 		    </span>
-		</header>
-		<form action="" id="addForm" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="SESSIONID" id="SESSIONID" />
-			<input type="hidden" name="TOKEN" id="TOKEN" />
-			<input type="hidden" name="PRIPID" id="PRIPID" />
-			<input type="hidden" name="ILLID" id="ILLID" />
-			<input type="hidden" name="ENTNAME" id="ENTNAME" />
-			<input type="hidden" name="UNISCID" id="UNISCID" />
-			<input type="hidden" name="REGNO" id="REGNO" />
-			<input type="hidden" name="APPLYER" id="APPLYER" />
-			<input type="hidden" name="TEL" id="TEL" />
-			<input type="hidden" name="CERNO" id="CERNO" />
-			<input type="hidden" name="CREATEDUSER" id="CREATEDUSER" />
-			<input type="hidden" name="outId" id="outId" />
-		<!--填写移出申请信息-->
-		<div id="common-box">
-			<div class="web-box">
-				<ul>
-					<li>
-						<span >
+</header>
+<form action="" id="addForm" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="SESSIONID" id="SESSIONID"/>
+    <input type="hidden" name="TOKEN" id="TOKEN"/>
+    <input type="hidden" name="PRIPID" id="PRIPID"/>
+    <input type="hidden" name="ILLID" id="ILLID"/>
+    <input type="hidden" name="ENTNAME" id="ENTNAME"/>
+    <input type="hidden" name="UNISCID" id="UNISCID"/>
+    <input type="hidden" name="REGNO" id="REGNO"/>
+    <input type="hidden" name="APPLYER" id="APPLYER"/>
+    <input type="hidden" name="TEL" id="TEL"/>
+    <input type="hidden" name="CERNO" id="CERNO"/>
+    <input type="hidden" name="CREATEDUSER" id="CREATEDUSER"/>
+    <input type="hidden" name="outId" id="outId"/>
+    <!--填写移出申请信息-->
+    <div id="common-box">
+        <div class="web-box">
+            <ul>
+                <li>
+						<span>
 							列入机关
 						</span>
-						<div class="web-write">
-							<input type="text" name="DECORG_CN" id="DECORG_CN" readonly="readonly" >
-						</div>
-					</li>
-				</ul>
-			</div>
-			
-			<div class="web-box">
-				<ul>
-					<li>
-						<span >
+                    <div class="web-write">
+                        <input type="text" name="DECORG_CN" id="DECORG_CN" readonly="readonly">
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
+						<span>
 							列入文号
 						</span>
-						<div class="web-write">
-							<input type="text" name="DEDOCNUM" id="DEDOCNUM" readonly="readonly"  />
-						</div>
-					</li>
-				</ul>
-			</div>
-			
-			<div class="web-box">
-				<ul>
-					<li>
-						<span >
+                    <div class="web-write">
+                        <input type="text" name="DEDOCNUM" id="DEDOCNUM" readonly="readonly"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
+						<span>
 							列入事由
 						</span>
-						<div class="web-write">
-							<textarea name="SERILLREA_CN" id="SERILLREA_CN"  rows="3" readonly="readonly"></textarea>
-						</div>
-					</li>
-				</ul>
-			</div>
-			
-			<div class="web-box" id="regorgDiv">
-				<ul>
-					<li>
-						<span >
+                    <div class="web-write">
+                        <textarea name="SERILLREA_CN" id="SERILLREA_CN" rows="3" readonly="readonly"></textarea>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box" id="regorgDiv">
+            <ul>
+                <li>
+						<span>
 							移出原因
 						</span>
-						<div class="web-write">
-							<textarea name="REASONS" id="REASONS"  rows="5" placeholder="请填写移出原因"></textarea>
-						</div>
-					</li>
-				</ul>
-			</div>
-			
-			<div class="web-box">
-				<ul>
-					<li>
-						<div >
-							相关证明材料
-						</div>
-						<div id="upload-container">
-							<div class="page__bd">
-								<!--图片浏览、删除-->
-						        <div class="weui-gallery" id="gallery">
-						            <span class="weui-gallery__img" id="galleryImg"></span>
-						        </div>
-								
-								<!--图片添加模块-->
-		                        <div class="weui-uploader__bd" style="margin-bottom: 0.5rem;">
-		                            <ul class="weui-uploader__files" id="uploaderFiles" >
-		                            </ul>
-		                            <div class="weui-uploader__input-box">
-		                                <input id="uploaderInput" name="uploaderInput" class="weui-uploader__input" type="file"  accept="image/*" />
-		                            </div>
-		                        </div>
-						    </div>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<br />
-		</form>
-		<br />
-		<div id="addBtn" class="yy" >
-	    	<a id="commit">提交</a>
-	   </div>
-	</body>
+                    <div class="web-write">
+                        <textarea name="REASONS" id="REASONS" rows="5" placeholder="请填写移出原因"></textarea>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
+                    <div>
+                        相关证明材料
+                    </div>
+                    <div id="upload-container">
+                        <div class="page__bd">
+                            <!--图片浏览、删除-->
+                            <div class="weui-gallery" id="gallery">
+                                <span class="weui-gallery__img" id="galleryImg"></span>
+                            </div>
+
+                            <!--图片添加模块-->
+                            <div class="weui-uploader__bd" style="margin-bottom: 0.5rem;">
+                                <ul class="weui-uploader__files" id="uploaderFiles">
+                                </ul>
+                                <div class="weui-uploader__input-box">
+                                    <input id="uploaderInput" name="uploaderInput" class="weui-uploader__input"
+                                           type="file" accept="image/*"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <br/>
+</form>
+<br/>
+<div id="addBtn" class="yy">
+    <a id="commit">提交</a>
+</div>
+</body>
 </html>

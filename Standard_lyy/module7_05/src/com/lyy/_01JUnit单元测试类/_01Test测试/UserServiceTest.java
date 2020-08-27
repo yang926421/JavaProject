@@ -27,9 +27,9 @@ public class UserServiceTest {
 
 
     @Test
-   public void testLogin(){
+    public void testLogin() {
         UserService userService = new UserService();
-        String rs = userService.login("admin1","123456");
+        String rs = userService.login("admin1", "123456");
         // 断言预期结果的正确性
         /**
          * 参数一   测试失败的提醒信息
@@ -37,11 +37,11 @@ public class UserServiceTest {
          * 参数三  实际值
          *
          * */
-        Assert.assertEquals("登录方法有错误,需要修改","Success", rs);
-   }
+        Assert.assertEquals("登录方法有错误,需要修改", "Success", rs);
+    }
 
-    public void testChu(){
+    public void testChu() {
         UserService userService = new UserService();
         userService.chu(10, 0);
-   }
+    }
 }

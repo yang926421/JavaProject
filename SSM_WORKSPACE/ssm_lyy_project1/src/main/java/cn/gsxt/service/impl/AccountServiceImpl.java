@@ -21,12 +21,12 @@ public class AccountServiceImpl implements AccountService {
     private AccountMapper accountMapper;
 
     @Override
-    public void save(Account account){
+    public void save(Account account) {
         accountMapper.save(account);
     }
 
     @Override
     public List<Account> findAll() {
-       return   accountMapper.findAll();
+        return accountMapper.findAll();
     }
 }

@@ -5,43 +5,45 @@
     <title>vuejs初始</title>
     <script src="js/vue-2.6.10.js"></script>
     <style type="text/css">
-        div{
+        div {
             width: 100px;
             height: 100px;
             color: white;
         }
-        .red{
+
+        .red {
             background-color: red;
         }
-        .blue{
+
+        .blue {
             background-color: blue;
         }
     </style>
 </head>
 <body>
-    <div id="app">
-        <button @click="color='red'">红色</button>
-        <button @click="color='blue'">蓝色</button>
-        <div v-bind:class="color">
-            点击按钮改变背景颜色
-        </div>
-        <br>
-        <br>
-        <button @click="bool=!bool">点击这里改变颜色</button>
-        <div v-bind:class="{red:bool,blue:!bool}">
-            点击按钮改变背景颜色
-        </div>
+<div id="app">
+    <button @click="color='red'">红色</button>
+    <button @click="color='blue'">蓝色</button>
+    <div v-bind:class="color">
+        点击按钮改变背景颜色
     </div>
-    <script type="text/javascript">
-        var app = new Vue({
-            el:"#app",
-            data:{
-                color:"red",
-                bool:true,
-                name:"公示系统",
-                num: 1
-            }
-        });
-    </script>
+    <br>
+    <br>
+    <button @click="bool=!bool">点击这里改变颜色</button>
+    <div v-bind:class="{red:bool,blue:!bool}">
+        点击按钮改变背景颜色
+    </div>
+</div>
+<script type="text/javascript">
+    var app = new Vue({
+        el: "#app",
+        data: {
+            color: "red",
+            bool: true,
+            name: "公示系统",
+            num: 1
+        }
+    });
+</script>
 </body>
 </html>

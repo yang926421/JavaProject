@@ -6,9 +6,9 @@ import java.lang.reflect.Proxy;
 
 public class ProxyUtil {
     /**
-     做一个被代理的业务对象返回
+     * 做一个被代理的业务对象返回
      */
-    public static <T> T getProxy(Object obj){
+    public static <T> T getProxy(Object obj) {
         /**
          * 参数一  类加载器，负责加载到时候做好的业务代理对象！
          * 参数二  被代理业务对象的全部实现的接口，以便有代理对象可以知道要为哪些方法做代理
@@ -26,8 +26,8 @@ public class ProxyUtil {
                         long startTime = System.currentTimeMillis();
                         //真正触发真实的方法执行
                         Object rs = method.invoke(obj, params);
-                        long endTime =  System.currentTimeMillis();
-                        System.out.println(method.getName()+"方法耗时"+(endTime-startTime)/1000+"s");
+                        long endTime = System.currentTimeMillis();
+                        System.out.println(method.getName() + "方法耗时" + (endTime - startTime) / 1000 + "s");
                         return rs;//返回方法执行的结果
                     }
                 });

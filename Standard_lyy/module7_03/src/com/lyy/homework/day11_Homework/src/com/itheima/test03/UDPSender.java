@@ -5,8 +5,8 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 
 /**
- 使用UDP协议实现一个程序(发送端)发送信息给另一个程序(接收端)，
- 接收端将接收到的内容打印输出即可。
+ * 使用UDP协议实现一个程序(发送端)发送信息给另一个程序(接收端)，
+ * 接收端将接收到的内容打印输出即可。
  */
 public class UDPSender {
     public static void main(String[] args) throws Exception {

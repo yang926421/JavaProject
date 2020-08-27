@@ -1,13 +1,12 @@
 package com.lyy._08反射的作用在哪里;
 
 
-
 public class Pig {
-    private String name ;
+    private String name;
     private double weight;
     private String color;
-    private String onwer ;
-    private String sex ;
+    private String onwer;
+    private String sex;
 
     public Pig(String name, double weight, String color, String onwer, String sex) {
         this.name = name;

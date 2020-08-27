@@ -1,38 +1,45 @@
-.web-box{
-	margin-bottom: 0.5rem;
-	background-color: #FFFFFF;
+.web-box {
+    margin-bottom: 0.5rem;
+    background-color: #FFFFFF;
 }
-.web-box a{
-	color: #333333;
+
+.web-box a {
+    color: #333333;
 }
-.web-name{
-	margin: auto;
-	width: 92%;
-	position: relative;
+
+.web-name {
+    margin: auto;
+    width: 92%;
+    position: relative;
 }
-.web-name h4{
-	padding-top: 1.8rem;
-	margin-top: 1.4rem;
-	font-size: 1.6rem;
-	font-weight: bold;
-	line-height: 2.2rem;
+
+.web-name h4 {
+    padding-top: 1.8rem;
+    margin-top: 1.4rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    line-height: 2.2rem;
 }
-.web{
-	/*border: #000000 solid 1px;*/
+
+.web {
+    /*border: #000000 solid 1px;*/
 }
-.web li{
-	font-size:1.5rem;
-	line-height: 2.4rem;
-	padding-bottom: 1.4rem;
+
+.web li {
+    font-size: 1.5rem;
+    line-height: 2.4rem;
+    padding-bottom: 1.4rem;
 }
-.web li span:first-child{
-	color: #999999;
-	font-size:1.5rem;
+
+.web li span:first-child {
+    color: #999999;
+    font-size: 1.5rem;
 }
+
 /*箭头*/
-.arrow-right{
-	position: absolute;
-	right: 0;
-	width: 0.8rem;
-	top: 3.2rem;
+.arrow-right {
+    position: absolute;
+    right: 0;
+    width: 0.8rem;
+    top: 3.2rem;
 }

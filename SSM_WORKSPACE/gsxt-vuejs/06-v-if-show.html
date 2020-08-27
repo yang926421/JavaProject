@@ -7,20 +7,21 @@
 </head>
 <body>
 <div id="app">
-    <button @click="show=!show">点我来进行切换</button><br>
+    <button @click="show=!show">点我来进行切换</button>
+    <br>
     <h2 v-if="show">
         Hello Vue.js
     </h2>
-   <ul>
-       <li v-for="(user,index) in users" v-if="user.gender=='女'">
+    <ul>
+        <li v-for="(user,index) in users" v-if="user.gender=='女'">
             <!--           -->
-           {{user.index}}---{{user.name}}----{{user.age}}-----{{user.gender}}
-       </li>
-       <li v-else style="background-color: brown">
-           <!--           -->
-           {{user.index}}---{{user.name}}----{{user.age}}-----{{user.gender}}
-       </li>
-   </ul>
+            {{user.index}}---{{user.name}}----{{user.age}}-----{{user.gender}}
+        </li>
+        <li v-else style="background-color: brown">
+            <!--           -->
+            {{user.index}}---{{user.name}}----{{user.age}}-----{{user.gender}}
+        </li>
+    </ul>
     <br>
     <ul>
         <li v-for="(value, key, index) in person">
@@ -32,29 +33,29 @@
         hello,lyy!
     </h1>
 
-<h2>
-num={{num}}
-</h2></div>
+    <h2>
+        num={{num}}
+    </h2></div>
 <script type="text/javascript">
-   var app = new Vue({
-       el:"#app",
-       data:{
-           num:1,
-            show:true,
-            users:[
-              {"name":"lyy","age":13,"gender":"女"},
-              {"name":"lyy1","age":12,"gender":"男"},
-              {"name":"lyy3","age":6,"gender":"女"},
-          ],
-           person:{"name":"lyy3","age":6,"gender":"女","address":"中国"}
-       },
-       methods:{
-           //递减函数
-           decrement(){
-               this.num--;
-           }
-       }
-   });
+    var app = new Vue({
+        el: "#app",
+        data: {
+            num: 1,
+            show: true,
+            users: [
+                {"name": "lyy", "age": 13, "gender": "女"},
+                {"name": "lyy1", "age": 12, "gender": "男"},
+                {"name": "lyy3", "age": 6, "gender": "女"},
+            ],
+            person: {"name": "lyy3", "age": 6, "gender": "女", "address": "中国"}
+        },
+        methods: {
+            //递减函数
+            decrement() {
+                this.num--;
+            }
+        }
+    });
 </script>
 </body>
 </html>

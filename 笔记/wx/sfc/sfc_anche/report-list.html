@@ -1,131 +1,129 @@
-
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>国家企业信用信息公示系统</title>
-		<link rel="stylesheet" href="../../static/css/common.css">
-		<link rel="stylesheet" href="../../static/css/mui.min.css">
-		<link rel="stylesheet" href="../../static/css/write-report.css">
-		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
-		<script type="text/javascript" src="../../static/js/common.js"></script>
-		<script>
-			
-			$(document).ready(function(){
-  				getData();
-			});
-			
-			function getData(){
-				$.ajax({
-  					type:'get',
-  					url:httpUrl+'/c/an/years/get.json',
-  					data:{"PRIPID":PRIPID,"TYPE":TYPE,"BODY_TYPE":BODY_TYPE,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
-  					dataType:'json',
-  					success:function(res){
-  						if(res.success==true){
-  							createData(res.data);
-  						}
-  					}
-  				});
-			}
-			
-				function createData(obj){
-					var html="";
-					for(var i=0;i<obj.YEARLIST.length;i++){
-						var updateHtml="";
-						if(obj.YEARLIST[i].ANCHEID!=null && obj.YEARLIST[i].ANCHEID!=""){
-							if(obj.YEARLIST[i].ALLOWUPDATE){   //是否能修改
-								updateHtml="<a href='show-report.html?ANCHEID="+obj.YEARLIST[i].ANCHEID+"&ALLOWUPDATE=true'>查看/修改</a>"
-							}else{   //其他的情况就只能查看了
-								updateHtml="<a href='show-report.html?ANCHEID="+obj.YEARLIST[i].ANCHEID+"&ALLOWUPDATE=false'>查看</a>"
-							}
-							
-						}else{
-							updateHtml="<a href='"+obj.FILL_FORM_NAME+".html?ANCHEYEAR="+obj.YEARLIST[i].ANCHEYEAR+"&ALLOWUPDATE=true'>去填写</a>"
-						}
-						
-						var publicTime="--";
-						if(obj.YEARLIST[i].PUBLICTIME!=null && obj.YEARLIST[i].PUBLICTIME!=""){
-							publicTime=getFormatDateByLong(obj.YEARLIST[i].PUBLICTIME,'yyyy年MM月dd日');
-						}
-						var updateTime="--";
-						if(obj.YEARLIST[i].LASTUPDATETIME!=null && obj.YEARLIST[i].LASTUPDATETIME!=""){
-							updateTime=getFormatDateByLong(obj.YEARLIST[i].LASTUPDATETIME,'yyyy年MM月dd日');
-						}
-						html+="<div class='web-box'><div class='web-name'><div class='year-report'>"+
-								"<h4>"+obj.YEARLIST[i].ANCHEYEAR+"年年度报告</h4><span class='report-state'>"+obj.YEARLIST[i].STATUS+"</span></div>"+
-								"<ul class='web'>"+
-								"	<li><span>修改日期：</span> <span class='report-date'>"+updateTime +"</span></li>"+
-								"	<li><span>公示日期：</span> <span class='report-date'>"+publicTime+"</span></li>"+
-								"</ul>"+
-								"</div>"+
-								"<div class='write-btn'>"+updateHtml+"</div></div> ";
-					}
-					$("#common-box").html(html);
-			}
-			
-			
-		</script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-icon mui-icon-back mui-pull-left" href="../../write-inf.html"></a>
-		    <h1 class="mui-title">年报填写</h1>
-		     <!--<span id="sure">
-		    	<a href="report.html" >年报填写</a>
-		    </span>-->
-		</header>
-		
-		<!--年份报告-->
-		<div id="common-box">
-			<!--<div class="web-box">
-				<div class="web-name">
-					<div class="year-report">
-						<h4>2016年年度报告</h4> 
-						<span class="report-state">
-							未填写
-						</span>
-					</div>
-					<ul class="web">
-						<li><span>修改日期：</span> <span class="report-date">--</span></li>
-						<li><span>公示日期：</span> <span class="report-date">--</span></li>
-					</ul>
-				</div>
-				<a href="report.html">
-					<div class="write-btn">
-						去填写
-					</div>
-				</a>
-			</div>-->
-			
-			<!--<div class="web-box">
-				<div class="web-name">
-					<div class="year-report">
-						<h4>2016年年度报告</h4> 
-						<span class="report-stated">
-							已公示
-						</span>
-					</div>
-					<ul class="web">
-						<li><span>修改日期：</span> <span class="report-date">2016年7月1日</span></li>
-						<li><span>公示日期：</span> <span class="report-date">2016年6月1日</span></li>
-					</ul>
-				</div>
-				<a href="show-report.html">
-					<div class="write-btn">
-						查看
-					</div>
-				</a>
-			</div>
-			-->
-		
-			
-			
-		</div>
-		
-		
-	</body>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>国家企业信用信息公示系统</title>
+    <link rel="stylesheet" href="../../static/css/common.css">
+    <link rel="stylesheet" href="../../static/css/mui.min.css">
+    <link rel="stylesheet" href="../../static/css/write-report.css">
+    <script type="text/javascript" src="../../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../../static/js/common.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            getData();
+        });
+
+        function getData() {
+            $.ajax({
+                type: 'get',
+                url: httpUrl + '/c/an/years/get.json',
+                data: {"PRIPID": PRIPID, "TYPE": TYPE, "BODY_TYPE": BODY_TYPE, "TOKEN": TOKEN, "SESSIONID": SESSIONID},
+                dataType: 'json',
+                success: function (res) {
+                    if (res.success == true) {
+                        createData(res.data);
+                    }
+                }
+            });
+        }
+
+        function createData(obj) {
+            var html = "";
+            for (var i = 0; i < obj.YEARLIST.length; i++) {
+                var updateHtml = "";
+                if (obj.YEARLIST[i].ANCHEID != null && obj.YEARLIST[i].ANCHEID != "") {
+                    if (obj.YEARLIST[i].ALLOWUPDATE) {   //是否能修改
+                        updateHtml = "<a href='show-report.html?ANCHEID=" + obj.YEARLIST[i].ANCHEID + "&ALLOWUPDATE=true'>查看/修改</a>"
+                    } else {   //其他的情况就只能查看了
+                        updateHtml = "<a href='show-report.html?ANCHEID=" + obj.YEARLIST[i].ANCHEID + "&ALLOWUPDATE=false'>查看</a>"
+                    }
+
+                } else {
+                    updateHtml = "<a href='" + obj.FILL_FORM_NAME + ".html?ANCHEYEAR=" + obj.YEARLIST[i].ANCHEYEAR + "&ALLOWUPDATE=true'>去填写</a>"
+                }
+
+                var publicTime = "--";
+                if (obj.YEARLIST[i].PUBLICTIME != null && obj.YEARLIST[i].PUBLICTIME != "") {
+                    publicTime = getFormatDateByLong(obj.YEARLIST[i].PUBLICTIME, 'yyyy年MM月dd日');
+                }
+                var updateTime = "--";
+                if (obj.YEARLIST[i].LASTUPDATETIME != null && obj.YEARLIST[i].LASTUPDATETIME != "") {
+                    updateTime = getFormatDateByLong(obj.YEARLIST[i].LASTUPDATETIME, 'yyyy年MM月dd日');
+                }
+                html += "<div class='web-box'><div class='web-name'><div class='year-report'>" +
+                    "<h4>" + obj.YEARLIST[i].ANCHEYEAR + "年年度报告</h4><span class='report-state'>" + obj.YEARLIST[i].STATUS + "</span></div>" +
+                    "<ul class='web'>" +
+                    "	<li><span>修改日期：</span> <span class='report-date'>" + updateTime + "</span></li>" +
+                    "	<li><span>公示日期：</span> <span class='report-date'>" + publicTime + "</span></li>" +
+                    "</ul>" +
+                    "</div>" +
+                    "<div class='write-btn'>" + updateHtml + "</div></div> ";
+            }
+            $("#common-box").html(html);
+        }
+
+
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-icon mui-icon-back mui-pull-left" href="../../write-inf.html"></a>
+    <h1 class="mui-title">年报填写</h1>
+    <!--<span id="sure">
+       <a href="report.html" >年报填写</a>
+   </span>-->
+</header>
+
+<!--年份报告-->
+<div id="common-box">
+    <!--<div class="web-box">
+        <div class="web-name">
+            <div class="year-report">
+                <h4>2016年年度报告</h4>
+                <span class="report-state">
+                    未填写
+                </span>
+            </div>
+            <ul class="web">
+                <li><span>修改日期：</span> <span class="report-date">--</span></li>
+                <li><span>公示日期：</span> <span class="report-date">--</span></li>
+            </ul>
+        </div>
+        <a href="report.html">
+            <div class="write-btn">
+                去填写
+            </div>
+        </a>
+    </div>-->
+
+    <!--<div class="web-box">
+        <div class="web-name">
+            <div class="year-report">
+                <h4>2016年年度报告</h4>
+                <span class="report-stated">
+                    已公示
+                </span>
+            </div>
+            <ul class="web">
+                <li><span>修改日期：</span> <span class="report-date">2016年7月1日</span></li>
+                <li><span>公示日期：</span> <span class="report-date">2016年6月1日</span></li>
+            </ul>
+        </div>
+        <a href="show-report.html">
+            <div class="write-btn">
+                查看
+            </div>
+        </a>
+    </div>
+    -->
+
+
+</div>
+
+
+</body>
 </html>

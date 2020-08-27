@@ -14,7 +14,7 @@ import java.util.Properties;
  */
 public class JDBCUtils {
 
-    private static DataSource ds ;
+    private static DataSource ds;
 
     static {
 
@@ -38,7 +38,7 @@ public class JDBCUtils {
     /**
      * 获取连接池对象
      */
-    public static DataSource getDataSource(){
+    public static DataSource getDataSource() {
         return ds;
     }
 
@@ -47,6 +47,6 @@ public class JDBCUtils {
      * 获取连接Connection对象
      */
     public static Connection getConnection() throws SQLException {
-        return  ds.getConnection();
+        return ds.getConnection();
     }
 }

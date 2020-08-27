@@ -16,7 +16,7 @@ public class callable_pool {
         try {
             String res1 = t1.get();
             String res2 = t2.get();
-            String res3= t3.get();
+            String res3 = t3.get();
             String res4 = t4.get();
             System.out.println(res1);
             System.out.println(res2);
@@ -30,18 +30,20 @@ public class callable_pool {
 
 class
 
-myCallable implements Callable<String>{
+myCallable implements Callable<String> {
     private int n;
-    public myCallable(int n){
+
+    public myCallable(int n) {
         this.n = n;
     }
+
     //使用线程池计算1-100  1-200 1-300的和
     @Override
     public String call() throws Exception {
         int sum = 0;
-        for (int i= 0; i<=n;i++){
-            sum+=i;
+        for (int i = 0; i <= n; i++) {
+            sum += i;
         }
-        return Thread.currentThread().getName()+"===>"+sum;
+        return Thread.currentThread().getName() + "===>" + sum;
     }
 }

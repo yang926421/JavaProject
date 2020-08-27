@@ -1,71 +1,83 @@
-.web-box{
-	border-bottom:solid #EAEAEA 1px ;
-	background-color: #FFFFFF;
+.web-box {
+    border-bottom: solid #EAEAEA 1px;
+    background-color: #FFFFFF;
 }
-.web-box ul{
-	margin: auto;
-	width: 92%;
-	/*border: #000000 solid 1px;*/
+
+.web-box ul {
+    margin: auto;
+    width: 92%;
+    /*border: #000000 solid 1px;*/
 }
-.web-box li{
-	line-height: 5rem;
-	overflow: hidden;
-	font-size: 1.5rem;
+
+.web-box li {
+    line-height: 5rem;
+    overflow: hidden;
+    font-size: 1.5rem;
 }
-.web-box li span{
-	/*border: #000000 solid 1px;*/
-	float: left;
-	display: inline-block;
+
+.web-box li span {
+    /*border: #000000 solid 1px;*/
+    float: left;
+    display: inline-block;
 }
-.web-box:nth-child(2) li span{
-	/*border: #000000 solid 1px;*/
-	float: left;
-	display: inline-block;
+
+.web-box:nth-child(2) li span {
+    /*border: #000000 solid 1px;*/
+    float: left;
+    display: inline-block;
 }
-.web-write{
-	width:55%;
-	overflow: hidden;
-	/*border: #000000 solid 1px;*/
-	float: right;
+
+.web-write {
+    width: 55%;
+    overflow: hidden;
+    /*border: #000000 solid 1px;*/
+    float: right;
 }
-.web-write input{
-	border: none;
-	display: inline-block;
-	font-size: 1.5rem;
-	/*height: 2.2rem;*/
-	padding: 0px 0px;
+
+.web-write input {
+    border: none;
+    display: inline-block;
+    font-size: 1.5rem;
+    /*height: 2.2rem;*/
+    padding: 0px 0px;
 }
-.select-time{
-	/*border: #000000 solid 1px;*/
-	overflow: hidden;
-	width: 55%;
-	float: right;
+
+.select-time {
+    /*border: #000000 solid 1px;*/
+    overflow: hidden;
+    width: 55%;
+    float: right;
 }
-.select-time .web-write{
-	width:80%;
-	/*border: #000000 solid 1px;*/
-	float: left;
+
+.select-time .web-write {
+    width: 80%;
+    /*border: #000000 solid 1px;*/
+    float: left;
 }
-.select-time .contribution-arrow-right{
-	/*border: #000000 solid 1px;*/
-	float: right;
+
+.select-time .contribution-arrow-right {
+    /*border: #000000 solid 1px;*/
+    float: right;
 }
-#date-time{
-	border: #000000 solid 1px;
-	padding:2rem 0 0rem 0;
+
+#date-time {
+    border: #000000 solid 1px;
+    padding: 2rem 0 0rem 0;
 }
+
 /*箭头*/
-.contribution-arrow-right{
-	width: 0.8rem;
-	/*border: #000000 solid 1px;*/
-	float: right;
+.contribution-arrow-right {
+    width: 0.8rem;
+    /*border: #000000 solid 1px;*/
+    float: right;
 }
+
 /*日期*/
-#demo4{
-	border: none;
-	margin-left:-25%;
-	margin-bottom: 0px;
-	padding: 14px 0px;
-	color: #a8a8a8;
-	font-size: 1.5rem;
+#demo4 {
+    border: none;
+    margin-left: -25%;
+    margin-bottom: 0px;
+    padding: 14px 0px;
+    color: #a8a8a8;
+    font-size: 1.5rem;
 }

@@ -1,43 +1,51 @@
 /*设置*/
 /*单行列表*/
-.mui-table-view-cell a{
+.mui-table-view-cell a {
 }
-i{
-	color: #999999;
+
+i {
+    color: #999999;
 }
-#login-write ul:first-child{
-	margin-bottom: 1.0rem;
+
+#login-write ul:first-child {
+    margin-bottom: 1.0rem;
 }
-.mui-table-view-chevron .mui-table-view-cell{
-	padding-right: 40px;
-	font-size: 1.6rem;
+
+.mui-table-view-chevron .mui-table-view-cell {
+    padding-right: 40px;
+    font-size: 1.6rem;
 }
-.mui-table-view-chevron .mui-table-view-cell>a:not(.mui-btn){
-	margin-right: -44px;
+
+.mui-table-view-chevron .mui-table-view-cell > a:not(.mui-btn) {
+    margin-right: -44px;
 }
-#red-tip{
-	display: inline-block;
-	width: 0.6rem;
-	height: 0.6rem;
-	background-color:#f91818;
-	border-radius: 0.5rem;
+
+#red-tip {
+    display: inline-block;
+    width: 0.6rem;
+    height: 0.6rem;
+    background-color: #f91818;
+    border-radius: 0.5rem;
 }
 
 
 /*关于我们*/
-.logo-con{
-	text-align: center;
-	margin-top:9rem;
+.logo-con {
+    text-align: center;
+    margin-top: 9rem;
 }
-.logo-con .company-name{
-	color: #333333;
-	font-size: 1.7rem;
+
+.logo-con .company-name {
+    color: #333333;
+    font-size: 1.7rem;
 }
-.logo-con p:last-child{
-	line-height: 0.4rem;
-	margin-bottom: 5rem;
+
+.logo-con p:last-child {
+    line-height: 0.4rem;
+    margin-bottom: 5rem;
 }
-#logo-img{
-	display: inline-block;
-	width: 7.0rem;
+
+#logo-img {
+    display: inline-block;
+    width: 7.0rem;
 }

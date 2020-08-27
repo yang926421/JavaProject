@@ -18,7 +18,7 @@ public class MybatisTest {
 
 
     @Test
-    public void test() throws Exception{
+    public void test() throws Exception {
         //使用Mybatis获取流
         InputStream resourceAsStream = Resources.getResourceAsStream("sqlMybatisConfig.xml");
         //获取sqlSessionFactory创造器
@@ -26,7 +26,7 @@ public class MybatisTest {
         //获取sqlSession
         SqlSession sqlSession = sqlSessionFactory.openSession(true);
         //使用分页组件
-        PageHelper.startPage(1,3);
+        PageHelper.startPage(1, 3);
         //使用sqlSession获取Mapper
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         List<User> userList = mapper.findAll();
@@ -37,7 +37,7 @@ public class MybatisTest {
     }
 
     @Test
-    public void test1() throws Exception{
+    public void test1() throws Exception {
         //使用Mybatis获取流
         InputStream resourceAsStream = Resources.getResourceAsStream("sqlMybatisConfig.xml");
         //获取sqlSessionFactory创造器
@@ -54,7 +54,7 @@ public class MybatisTest {
     }
 
     @Test
-    public void test2() throws Exception{
+    public void test2() throws Exception {
         //使用Mybatis获取流
         InputStream resourceAsStream = Resources.getResourceAsStream("sqlMybatisConfig.xml");
         //获取sqlSessionFactory创造器

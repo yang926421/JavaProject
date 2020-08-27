@@ -10,7 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;
 import java.util.Map;
 
-public class UserDaoImpl  implements UserDao {
+public class UserDaoImpl implements UserDao {
 
     private JdbcTemplate template = new JdbcTemplate(JDBCUtils.getDataSource());
 
@@ -35,7 +35,7 @@ public class UserDaoImpl  implements UserDao {
         String sql = "insert into tab_user(username,password,name,birthday,sex,telephone,email,status,code) values(?,?,?,?,?,?,?,?,?)";
         //2.执行sql
         System.out.println(11111111);
-        template.update(sql,user.getUsername(),
+        template.update(sql, user.getUsername(),
                 user.getPassword(),
                 user.getName(),
                 user.getBirthday(),

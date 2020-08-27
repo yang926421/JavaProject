@@ -1,87 +1,87 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>国家企业信用信息公示系统</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/contribution-inf.css">
-			<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-			<script type="text/javascript" src="../static/js/common.js" ></script>
-			<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-			<script>
-				var MEMID=GetRequest("MEMID");  //成员id
-				$(function(){
-					getData();
-				});
-				
-				function getData(){
-					$.ajax({
-						type:"get",
-						url:httpUrl+"/e/groupMenber/info.json",
-						data:{"MEMID":MEMID,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
-						async:false,
-						dataType:"json",
-						success:function(res){
-							if(res.success==true){
-								createData(res.data.altList);
-							}
-						}
-					});
-				}
-				
-				function createData(obj){
-					$("#count").html(obj.length);
-					var htmlData="";
-					for(var i=0;i<obj.length;i++){
-						htmlData+="<div class='web-box'>"+
-								"	<div class='web-name'>"+
-								"		<ul class='web'>"+
-								"			<li><span>修改项：</span> <span>"+obj[i].ALT+"</span></li>"+
-								"			<li><span>修改前：</span> <span>"+obj[i].ALTBE+"</span></li>"+
-								"			<li><span>修改后：</span> <span>"+obj[i].ALTAF+"</span></li>"+
-								"			<li><span>修改时间：</span> <span>"+getFormatDateByLong(obj[i].ALTDATE,"yyyy年MM月dd日")+"</span></li>"+
-								"		</ul>"+
-								"	</div>"+
-							"</div> ";
-					}
-					$("#common-box").html(htmlData);
-				}
-				
-				
-			</script>
-		
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" ></a>
-		    <h1 class="mui-title">集团成员修改记录</h1>
-		</header>
-		
-		<!--营业执照作废声明信息-->
-		<div id="common-box">
-			<!--<div class="web-box">
-				<a href="contribution-inf-con.html">
-					<div class="web-name">
-						<ul class="web">
-							<li><span>成员名称：</span> <span >泰康养老保险股份有限公司</span></li>
-							<li><span>统一社会信用代码：</span> <span >91110000665605848U</span></li>
-							<li><span>成员类型：</span> <span >其他成员单位</span></li>
-							<li><span>母公司控股比例：</span> <span >67%</span></li>
-							<li><span>公示状态：</span> <span >已公示</span></li>
-							<li><span>最后修改时间：</span> <span >2018年1月1日</span></li>
-						</ul>
-						
-						<div class="arrow-right">
-							<img src="../static/img/arrow-right.png"/>
-						</div>
-					</div>
-				</a>
-			</div>-->
-			
-		</div>
-		
-	</body>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>国家企业信用信息公示系统</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/contribution-inf.css">
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script>
+        var MEMID = GetRequest("MEMID");  //成员id
+        $(function () {
+            getData();
+        });
+
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/e/groupMenber/info.json",
+                data: {"MEMID": MEMID, "TOKEN": TOKEN, "SESSIONID": SESSIONID},
+                async: false,
+                dataType: "json",
+                success: function (res) {
+                    if (res.success == true) {
+                        createData(res.data.altList);
+                    }
+                }
+            });
+        }
+
+        function createData(obj) {
+            $("#count").html(obj.length);
+            var htmlData = "";
+            for (var i = 0; i < obj.length; i++) {
+                htmlData += "<div class='web-box'>" +
+                    "	<div class='web-name'>" +
+                    "		<ul class='web'>" +
+                    "			<li><span>修改项：</span> <span>" + obj[i].ALT + "</span></li>" +
+                    "			<li><span>修改前：</span> <span>" + obj[i].ALTBE + "</span></li>" +
+                    "			<li><span>修改后：</span> <span>" + obj[i].ALTAF + "</span></li>" +
+                    "			<li><span>修改时间：</span> <span>" + getFormatDateByLong(obj[i].ALTDATE, "yyyy年MM月dd日") + "</span></li>" +
+                    "		</ul>" +
+                    "	</div>" +
+                    "</div> ";
+            }
+            $("#common-box").html(htmlData);
+        }
+
+
+    </script>
+
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left"></a>
+    <h1 class="mui-title">集团成员修改记录</h1>
+</header>
+
+<!--营业执照作废声明信息-->
+<div id="common-box">
+    <!--<div class="web-box">
+        <a href="contribution-inf-con.html">
+            <div class="web-name">
+                <ul class="web">
+                    <li><span>成员名称：</span> <span >泰康养老保险股份有限公司</span></li>
+                    <li><span>统一社会信用代码：</span> <span >91110000665605848U</span></li>
+                    <li><span>成员类型：</span> <span >其他成员单位</span></li>
+                    <li><span>母公司控股比例：</span> <span >67%</span></li>
+                    <li><span>公示状态：</span> <span >已公示</span></li>
+                    <li><span>最后修改时间：</span> <span >2018年1月1日</span></li>
+                </ul>
+
+                <div class="arrow-right">
+                    <img src="../static/img/arrow-right.png"/>
+                </div>
+            </div>
+        </a>
+    </div>-->
+
+</div>
+
+</body>
 </html>

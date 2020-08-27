@@ -6,10 +6,12 @@ public class orange implements Comparable {
     private int price;
     private String color;
     private double weight;
-    public orange(){
+
+    public orange() {
 
     }
-    public orange(int price, String color, double weight){
+
+    public orange(int price, String color, double weight) {
         this.price = price;
         this.color = color;
         this.weight = weight;
@@ -50,7 +52,7 @@ public class orange implements Comparable {
 
     @Override
     public int compareTo(Object o) {
-        return ((orange)o).price - this.price;
+        return ((orange) o).price - this.price;
     }
 
     @Override

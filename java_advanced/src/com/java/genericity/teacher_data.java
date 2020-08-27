@@ -1,6 +1,6 @@
 package com.java.genericity;
 
-public class teacher_data implements Data<teacher>{
+public class teacher_data implements Data<teacher> {
     @Override
     public void add(teacher stu) {
 

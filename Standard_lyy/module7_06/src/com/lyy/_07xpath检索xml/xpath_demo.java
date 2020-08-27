@@ -13,24 +13,23 @@ import java.io.InputStream;
 import java.util.List;
 
 /**
- xpath用来解析整个xml数据  xpath检索某些信息
-
- xpath使用必须要导入Dom4j框架  然后导入xpath特有的框架包  jaxen-1.1.2.jar
-
- xpath的常用API
-    List<Node> selectNodes(String var1): 检索出一批节点集合
-    Node selectSingleNode(String var1) 检索出一个节点返回
-
- xpath提供的四种检索数据的写法
-    1.绝对路径
-    2.相对路径
-    3 全文搜索
-    4 属性查找
-
+ * xpath用来解析整个xml数据  xpath检索某些信息
+ * <p>
+ * xpath使用必须要导入Dom4j框架  然后导入xpath特有的框架包  jaxen-1.1.2.jar
+ * <p>
+ * xpath的常用API
+ * List<Node> selectNodes(String var1): 检索出一批节点集合
+ * Node selectSingleNode(String var1) 检索出一个节点返回
+ * <p>
+ * xpath提供的四种检索数据的写法
+ * 1.绝对路径
+ * 2.相对路径
+ * 3 全文搜索
+ * 4 属性查找
  */
 public class xpath_demo {
     @Test
-    public void path01() throws  Exception{
+    public void path01() throws Exception {
         //
         SAXReader saxReader = new SAXReader();
         InputStream is = xpath_demo.class.getResourceAsStream("/Contact.xml");
@@ -59,7 +58,7 @@ public class xpath_demo {
         List<Node> attributes = document.selectNodes("//@id");
         for (Node attribute : attributes) {
             Attribute attr = (Attribute) attribute;
-            System.out.println(attr.getName() + "--->"+attr.getValue());
+            System.out.println(attr.getName() + "--->" + attr.getValue());
         }
 
         // 4.//元素[@属性名称]  在全文检索包含该属性的元素对象

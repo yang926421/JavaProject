@@ -3,17 +3,17 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-<!--    scope 的属性值-->
+    <!--    scope 的属性值-->
     <bean id="user1" class="cn.gsxt.domain.User">
-    <property name="name" value="lyy"></property>
-    <property name="password" value="123456"></property>
-</bean>
+        <property name="name" value="lyy"></property>
+        <property name="password" value="123456"></property>
+    </bean>
     <bean id="user2" class="cn.gsxt.domain.User">
         <property name="name" value="lyy2"></property>
         <property name="password" value="1234567"></property>
     </bean>
     <bean id="userDao" class="cn.gsxt.dao.impl.userDaoImpl" scope="singleton"
-    init-method="init" destroy-method="destory">
+          init-method="init" destroy-method="destory">
         <property name="strList">
             <list>
                 <value>张三</value>
@@ -37,14 +37,14 @@
             </props>
         </property>
     </bean>
-<!--    set方法依赖注入-->
-<!--    <bean id="userService" class="cn.gsxt.service.impl.UserServiceImpl">-->
-<!--&lt;!&ndash;        将userdao通过设置属性注入给service&ndash;&gt;-->
-<!--    <property name="userDao" ref="userDao"></property>-->
-<!--    使用P命名空间-->
-<!--    <bean id="userService" class="cn.gsxt.service.impl.UserServiceImpl" p:userDao-ref="userDao">-->
+    <!--    set方法依赖注入-->
+    <!--    <bean id="userService" class="cn.gsxt.service.impl.UserServiceImpl">-->
+    <!--&lt;!&ndash;        将userdao通过设置属性注入给service&ndash;&gt;-->
+    <!--    <property name="userDao" ref="userDao"></property>-->
+    <!--    使用P命名空间-->
+    <!--    <bean id="userService" class="cn.gsxt.service.impl.UserServiceImpl" p:userDao-ref="userDao">-->
     <bean id="userService" class="cn.gsxt.service.impl.UserServiceImpl">
-    <constructor-arg name="userDao" ref="userDao"></constructor-arg>
+        <constructor-arg name="userDao" ref="userDao"></constructor-arg>
     </bean>
     <import resource="applicationContext-dao.xml"></import>
     <import resource="applicationContext-user.xml"></import>

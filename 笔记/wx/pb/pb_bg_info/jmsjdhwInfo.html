@@ -1,219 +1,226 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>海关减免税监督货物</title>
-		<link rel="stylesheet" href="../../static/css/common.css">
-		<link rel="stylesheet" href="../../static/css/mui.min.css">
-		<link rel="stylesheet" href="../../static/css/essential-inf.css">
-	
-		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
-		<script type="text/javascript" src="../../static/js/common.js"></script>
-		<script type="text/javascript" src="../../static/js/entreginfo_pb.js"></script>
-		<script>
-			var ancheId=GetRequest("ANCHEID");
-			$(function(){
-				$("#SESSIONID").val(SESSIONID);
-				$("#TOKEN").val(TOKEN);
-				$("#ANCHEID").val(ancheId);
-				getData();
-				$("input[name='HASTAXRELIEFGOODS']").click(
-					function(){
-						if(this.value==1){
-							$("#cont").show();
-						}else{
-							$("#cont").hide();
-						}
-					}
-				);
-			});
-			
-			function getData(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/h/an/cu/pbreginfo/get.json",
-					data:{"ANCHEID":ancheId,"SESSIONID":SESSIONID,"TOKEN":TOKEN},
-					async:true,
-					success:function(res){
-						if(res.success){
-							entreginfo=res.data;
-							$("input[name='HASTAXRELIEFGOODS'][value='"+res.data.HASTAXRELIEFGOODS+"']").attr("checked","checked");
-							if(res.data.HASTAXRELIEFGOODS=='' || res.data.HASTAXRELIEFGOODS==1){
-								$("#cont").show();
-								$("input[name='INSTALLLOCATION'][value='"+res.data.INSTALLLOCATION+"']").attr("checked","checked");
-								$("input[name='HANDLINGSITUATION'][value='"+res.data.HANDLINGSITUATION+"']").attr("checked","checked");
-								$("input[name='ILLEGALUSED'][value='"+res.data.ILLEGALUSED+"']").attr("checked","checked");
-								$("input[name='THESAMEASDECLARE'][value='"+res.data.THESAMEASDECLARE+"']").attr("checked","checked");
-								$("input[name='RECAPITALISE'][value='"+res.data.RECAPITALISE+"']").attr("checked","checked");
-								$("input[name='ISFIXEDASSETS'][value='"+res.data.ISFIXEDASSETS+"']").attr("checked","checked");
-								$("#OTHERMATTERS").val(res.data.OTHERMATTERS);
-							}else{
-								$("#cont").hide();
-							}
-						}
-					}
-				});
-			}
-			
-			function addData(){
-				delete entreginfo.S_EXT_DATATIME;
-				entreginfo.HASTAXRELIEFGOODS=$('input:radio[name="HASTAXRELIEFGOODS"]:checked').val();
-				if(entreginfo.HASTAXRELIEFGOODS==1){
-					entreginfo.INSTALLLOCATION=$('input:radio[name="INSTALLLOCATION"]:checked').val();
-					entreginfo.HANDLINGSITUATION=$('input:radio[name="HANDLINGSITUATION"]:checked').val();
-					entreginfo.ILLEGALUSED=$('input:radio[name="ILLEGALUSED"]:checked').val();
-					entreginfo.THESAMEASDECLARE=$('input:radio[name="THESAMEASDECLARE"]:checked').val();
-					entreginfo.RECAPITALISE=$('input:radio[name="RECAPITALISE"]:checked').val();
-					entreginfo.ISFIXEDASSETS=$('input:radio[name="ISFIXEDASSETS"]:checked').val();
-					entreginfo.OTHERMATTERS=$("#OTHERMATTERS").val();
-				}
-				entreginfo.SESSIONID=SESSIONID;
-				entreginfo.TOKEN=TOKEN;
-				console.info(entreginfo)
-				$.ajax({
-					type:"post",
-					url:httpUrl+"/h/an/cu/pbreginfo/save.json",
-					async:true,
-					data:entreginfo,
-					success:function(res){
-						if(res.success){
-							window.location.href="../pb_anche/report.html?ANCHEID="+ancheId;
-						}
-					}
-				});
-			}
-			
-		</script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" ></a>
-		    <h1 class="mui-title"><span id="saveOrUpdate"></span>海关减免税监督货物</h1>
-		     <span id="sure">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>海关减免税监督货物</title>
+    <link rel="stylesheet" href="../../static/css/common.css">
+    <link rel="stylesheet" href="../../static/css/mui.min.css">
+    <link rel="stylesheet" href="../../static/css/essential-inf.css">
+
+    <script type="text/javascript" src="../../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../../static/js/common.js"></script>
+    <script type="text/javascript" src="../../static/js/entreginfo_pb.js"></script>
+    <script>
+        var ancheId = GetRequest("ANCHEID");
+        $(function () {
+            $("#SESSIONID").val(SESSIONID);
+            $("#TOKEN").val(TOKEN);
+            $("#ANCHEID").val(ancheId);
+            getData();
+            $("input[name='HASTAXRELIEFGOODS']").click(
+                function () {
+                    if (this.value == 1) {
+                        $("#cont").show();
+                    } else {
+                        $("#cont").hide();
+                    }
+                }
+            );
+        });
+
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/h/an/cu/pbreginfo/get.json",
+                data: {"ANCHEID": ancheId, "SESSIONID": SESSIONID, "TOKEN": TOKEN},
+                async: true,
+                success: function (res) {
+                    if (res.success) {
+                        entreginfo = res.data;
+                        $("input[name='HASTAXRELIEFGOODS'][value='" + res.data.HASTAXRELIEFGOODS + "']").attr("checked", "checked");
+                        if (res.data.HASTAXRELIEFGOODS == '' || res.data.HASTAXRELIEFGOODS == 1) {
+                            $("#cont").show();
+                            $("input[name='INSTALLLOCATION'][value='" + res.data.INSTALLLOCATION + "']").attr("checked", "checked");
+                            $("input[name='HANDLINGSITUATION'][value='" + res.data.HANDLINGSITUATION + "']").attr("checked", "checked");
+                            $("input[name='ILLEGALUSED'][value='" + res.data.ILLEGALUSED + "']").attr("checked", "checked");
+                            $("input[name='THESAMEASDECLARE'][value='" + res.data.THESAMEASDECLARE + "']").attr("checked", "checked");
+                            $("input[name='RECAPITALISE'][value='" + res.data.RECAPITALISE + "']").attr("checked", "checked");
+                            $("input[name='ISFIXEDASSETS'][value='" + res.data.ISFIXEDASSETS + "']").attr("checked", "checked");
+                            $("#OTHERMATTERS").val(res.data.OTHERMATTERS);
+                        } else {
+                            $("#cont").hide();
+                        }
+                    }
+                }
+            });
+        }
+
+        function addData() {
+            delete entreginfo.S_EXT_DATATIME;
+            entreginfo.HASTAXRELIEFGOODS = $('input:radio[name="HASTAXRELIEFGOODS"]:checked').val();
+            if (entreginfo.HASTAXRELIEFGOODS == 1) {
+                entreginfo.INSTALLLOCATION = $('input:radio[name="INSTALLLOCATION"]:checked').val();
+                entreginfo.HANDLINGSITUATION = $('input:radio[name="HANDLINGSITUATION"]:checked').val();
+                entreginfo.ILLEGALUSED = $('input:radio[name="ILLEGALUSED"]:checked').val();
+                entreginfo.THESAMEASDECLARE = $('input:radio[name="THESAMEASDECLARE"]:checked').val();
+                entreginfo.RECAPITALISE = $('input:radio[name="RECAPITALISE"]:checked').val();
+                entreginfo.ISFIXEDASSETS = $('input:radio[name="ISFIXEDASSETS"]:checked').val();
+                entreginfo.OTHERMATTERS = $("#OTHERMATTERS").val();
+            }
+            entreginfo.SESSIONID = SESSIONID;
+            entreginfo.TOKEN = TOKEN;
+            console.info(entreginfo)
+            $.ajax({
+                type: "post",
+                url: httpUrl + "/h/an/cu/pbreginfo/save.json",
+                async: true,
+                data: entreginfo,
+                success: function (res) {
+                    if (res.success) {
+                        window.location.href = "../pb_anche/report.html?ANCHEID=" + ancheId;
+                    }
+                }
+            });
+        }
+
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left"></a>
+    <h1 class="mui-title"><span id="saveOrUpdate"></span>海关减免税监督货物</h1>
+    <span id="sure">
 		    	<a href="javascript:;" onclick="addData()">保存</a>
 		    </span>
-		</header>
-		
-		<!--股东信息-->
-		<form id="addForm">
-			<input type="hidden" name="SESSIONID" id="SESSIONID" />
-			<input type="hidden" name="TOKEN" id="TOKEN" />
-			<input type="hidden" name="ANCHEID" id="ANCHEID" />
-		<div id="common-box">
-			<div id="line-block">
-				<div class="web-box">
-					<ul>
-						<li>
+</header>
+
+<!--股东信息-->
+<form id="addForm">
+    <input type="hidden" name="SESSIONID" id="SESSIONID"/>
+    <input type="hidden" name="TOKEN" id="TOKEN"/>
+    <input type="hidden" name="ANCHEID" id="ANCHEID"/>
+    <div id="common-box">
+        <div id="line-block">
+            <div class="web-box">
+                <ul>
+                    <li>
 							<span>
 								是否有海关减免税监管货物
 							</span>
-							<div class="essential-write">
-								<label><input type="radio" value="1" name="HASTAXRELIEFGOODS" id="HASTAXRELIEFGOODS1" checked="checked" />是</label>
-								<label><input type="radio" value="2" name="HASTAXRELIEFGOODS" id="HASTAXRELIEFGOODS2" />否</label>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div id="cont">
-				<div class="web-box">
-					<ul>
-						<li>
+                        <div class="essential-write">
+                            <label><input type="radio" value="1" name="HASTAXRELIEFGOODS" id="HASTAXRELIEFGOODS1"
+                                          checked="checked"/>是</label>
+                            <label><input type="radio" value="2" name="HASTAXRELIEFGOODS"
+                                          id="HASTAXRELIEFGOODS2"/>否</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div id="cont">
+                <div class="web-box">
+                    <ul>
+                        <li>
 							<span>
 								减免税进口货物安装地点、使用情况
 							</span>
-							<div class="essential-write">
-								<label><input type="radio" value="1" name="INSTALLLOCATION" id="INSTALLLOCATION1" />正常</label>
-								<label><input type="radio" value="2" name="INSTALLLOCATION" id="INSTALLLOCATION2" />异常</label>
-							</div>
-						</li>
-					</ul>
-				</div>
-			
-			
-				<div class="web-box">
-					<ul>
-						<li>
+                            <div class="essential-write">
+                                <label><input type="radio" value="1" name="INSTALLLOCATION"
+                                              id="INSTALLLOCATION1"/>正常</label>
+                                <label><input type="radio" value="2" name="INSTALLLOCATION"
+                                              id="INSTALLLOCATION2"/>异常</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="web-box">
+                    <ul>
+                        <li>
 							<span>
 								减免税进口货物调换、抵押、质押、留置、转让、出售、移作他用、退运境外或进行其他处置的情事
 							</span>
-							<div class="essential-write">
-								<label><input type="radio" value="1" name="HANDLINGSITUATION" id="HANDLINGSITUATION1" />有</label>
-								<label><input type="radio" value="2" name="HANDLINGSITUATION" id="HANDLINGSITUATION2" />无</label>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="web-box">
-					<ul>
-						<li>
+                            <div class="essential-write">
+                                <label><input type="radio" value="1" name="HANDLINGSITUATION" id="HANDLINGSITUATION1"/>有</label>
+                                <label><input type="radio" value="2" name="HANDLINGSITUATION" id="HANDLINGSITUATION2"/>无</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="web-box">
+                    <ul>
+                        <li>
 							<span>
 								减免税进口货物未按照特定用途、特定地区、特定企业使用的情事
 							</span>
-							<div class="essential-write">
-								<label><input type="radio" value="1" name="ILLEGALUSED" id="ILLEGALUSED1" />有</label>
-								<label><input type="radio" value="2" name="ILLEGALUSED" id="ILLEGALUSED2" />无</label>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="web-box">
-					<ul>
-						<li>
+                            <div class="essential-write">
+                                <label><input type="radio" value="1" name="ILLEGALUSED" id="ILLEGALUSED1"/>有</label>
+                                <label><input type="radio" value="2" name="ILLEGALUSED" id="ILLEGALUSED2"/>无</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="web-box">
+                    <ul>
+                        <li>
 							<span>
 								实际进口的减免税货物的规格、型号和技术参数是否与申报减免税申请时相同
 							</span>
-							<div class="essential-write">
-								<label><input type="radio" value="1" name="THESAMEASDECLARE" id="THESAMEASDECLARE1" />是</label>
-								<label><input type="radio" value="2" name="THESAMEASDECLARE" id="THESAMEASDECLARE2" />否</label>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="web-box">
-					<ul>
-						<li>
+                            <div class="essential-write">
+                                <label><input type="radio" value="1" name="THESAMEASDECLARE"
+                                              id="THESAMEASDECLARE1"/>是</label>
+                                <label><input type="radio" value="2" name="THESAMEASDECLARE"
+                                              id="THESAMEASDECLARE2"/>否</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="web-box">
+                    <ul>
+                        <li>
 							<span>
 								减免税申请人改制、股权转让、合并、分立及其他资产重组情况
 							</span>
-							<div class="essential-write">
-								<label><input type="radio" value="1" name="RECAPITALISE" id="RECAPITALISE1" />有</label>
-								<label><input type="radio" value="2" name="RECAPITALISE" id="RECAPITALISE2" />无</label>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="web-box">
-					<ul>
-						<li>
+                            <div class="essential-write">
+                                <label><input type="radio" value="1" name="RECAPITALISE" id="RECAPITALISE1"/>有</label>
+                                <label><input type="radio" value="2" name="RECAPITALISE" id="RECAPITALISE2"/>无</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="web-box">
+                    <ul>
+                        <li>
 							<span>
 								减免税进口货物是否已入本单位固定资产账
 							</span>
-							<div class="essential-write">
-								<label><input type="radio" value="1" name="ISFIXEDASSETS" id="ISFIXEDASSETS1" />是</label>
-								<label><input type="radio" value="2" name="ISFIXEDASSETS" id="ISFIXEDASSETS2" />否</label>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                            <div class="essential-write">
+                                <label><input type="radio" value="1" name="ISFIXEDASSETS" id="ISFIXEDASSETS1"/>是</label>
+                                <label><input type="radio" value="2" name="ISFIXEDASSETS" id="ISFIXEDASSETS2"/>否</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="web-box">
+                    <ul>
+                        <li>
+							<span>
 								其他需要向海关说明的情况
 							</span>
-							<div class="web-write">
-								<textarea name="OTHERMATTERS" id="OTHERMATTERS"  rows="5" placeholder="请填写具体问题" style="border: none;"></textarea>
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			</div>
-			
-			</div>
-		</div>	
-	</body>
+                            <div class="web-write">
+                                <textarea name="OTHERMATTERS" id="OTHERMATTERS" rows="5" placeholder="请填写具体问题"
+                                          style="border: none;"></textarea>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
 </html>

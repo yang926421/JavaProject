@@ -9,11 +9,11 @@ public class map_deom2 {
         Map<String, Integer> maps = new HashMap<>();
         //添加元素
         maps.put("iphone", 10);
-        maps.put("娃娃",30);
-        maps.put("iphoneX",100);//  Map集合后面重复的键对应的元素会覆盖前面重复的整个元素！
-        maps.put("huawei",1000);
-        maps.put("生活用品",10);
-        maps.put("手表",10);
+        maps.put("娃娃", 30);
+        maps.put("iphoneX", 100);//  Map集合后面重复的键对应的元素会覆盖前面重复的整个元素！
+        maps.put("huawei", 1000);
+        maps.put("生活用品", 10);
+        maps.put("手表", 10);
 
         // 遍历 键找值的方法遍历
         Set<String> keys = maps.keySet();
@@ -38,8 +38,8 @@ public class map_deom2 {
 
         }
         // 第三种发方式 lambda
-        maps.forEach((k, v) ->{
-            System.out.println(k+"v");
+        maps.forEach((k, v) -> {
+            System.out.println(k + "v");
         });
-}
+    }
 }

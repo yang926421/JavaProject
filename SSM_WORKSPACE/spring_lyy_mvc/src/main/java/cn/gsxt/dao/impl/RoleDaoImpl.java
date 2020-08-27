@@ -27,8 +27,8 @@ public class RoleDaoImpl implements RoleDao {
     @Override
     public void save(Role role) {
 //        jdbc来操作
-    String sql = "insert into sys_role values(?,?,?)";
-    jdbcTemplate.update(sql, null, role.getRoleName(), role.getRoleDesc());
+        String sql = "insert into sys_role values(?,?,?)";
+        jdbcTemplate.update(sql, null, role.getRoleName(), role.getRoleDesc());
     }
 
     @Override

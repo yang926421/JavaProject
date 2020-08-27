@@ -1,13 +1,11 @@
 package com.lyy._06Dom4j解析案例;
 
 /**
- <contact id="1" vip="true">
- <name>潘金莲</name>
- <gender>女</gender>
- <email>panpan@itcast.cn</email>
- </contact>
-
-
+ * <contact id="1" vip="true">
+ * <name>潘金莲</name>
+ * <gender>女</gender>
+ * <email>panpan@itcast.cn</email>
+ * </contact>
  */
 public class Contact {
     private int id;
@@ -16,10 +14,11 @@ public class Contact {
     private char sex;
     private String email;
 
-    public Contact(){
+    public Contact() {
 
     }
-    public Contact(int id, boolean vip, String name, char sex, String email){
+
+    public Contact(int id, boolean vip, String name, char sex, String email) {
         this.id = id;
         this.vip = vip;
         this.name = name;
@@ -29,6 +28,7 @@ public class Contact {
 
     /**
      * 获取
+     *
      * @return id
      */
     public int getId() {
@@ -37,6 +37,7 @@ public class Contact {
 
     /**
      * 设置
+     *
      * @param id
      */
     public void setId(int id) {
@@ -45,6 +46,7 @@ public class Contact {
 
     /**
      * 获取
+     *
      * @return vip
      */
     public boolean isVip() {
@@ -53,6 +55,7 @@ public class Contact {
 
     /**
      * 设置
+     *
      * @param vip
      */
     public void setVip(boolean vip) {
@@ -61,6 +64,7 @@ public class Contact {
 
     /**
      * 获取
+     *
      * @return name
      */
     public String getName() {
@@ -69,6 +73,7 @@ public class Contact {
 
     /**
      * 设置
+     *
      * @param name
      */
     public void setName(String name) {
@@ -77,6 +82,7 @@ public class Contact {
 
     /**
      * 获取
+     *
      * @return sex
      */
     public char getSex() {
@@ -85,6 +91,7 @@ public class Contact {
 
     /**
      * 设置
+     *
      * @param sex
      */
     public void setSex(char sex) {
@@ -93,6 +100,7 @@ public class Contact {
 
     /**
      * 获取
+     *
      * @return email
      */
     public String getEmail() {
@@ -101,6 +109,7 @@ public class Contact {
 
     /**
      * 设置
+     *
      * @param email
      */
     public void setEmail(String email) {

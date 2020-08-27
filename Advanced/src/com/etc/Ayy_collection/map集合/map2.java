@@ -20,15 +20,15 @@ public class map2 {
             System.out.println(value);
         }
         //键值对的方式遍历
-        Set<Map.Entry<String,Integer>> entries = maps.entrySet();
+        Set<Map.Entry<String, Integer>> entries = maps.entrySet();
         for (Map.Entry<String, Integer> entry : entries) {
             String key = entry.getKey();
             Integer value = entry.getValue();
             System.out.println(key + "=>" + value);
         }
 //        lambda表达式
-        maps.forEach((k, v) ->{
-            System.out.println(k+v);
+        maps.forEach((k, v) -> {
+            System.out.println(k + v);
         });
     }
 }

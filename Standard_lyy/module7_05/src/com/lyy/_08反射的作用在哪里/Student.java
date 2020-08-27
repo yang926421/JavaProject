@@ -2,14 +2,14 @@ package com.lyy._08反射的作用在哪里;
 
 
 public class Student {
-    private int id ;
-    private String name ;
-    private int age ;
-    private char sex ;
-    private String address ;
-    private String tel ;
+    private int id;
+    private String name;
+    private int age;
+    private char sex;
+    private String address;
+    private String tel;
 
-    public Student(){
+    public Student() {
 
     }
 

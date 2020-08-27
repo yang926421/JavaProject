@@ -1,67 +1,67 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>国家企业信用信息公示系统</title>
-		<link rel="stylesheet" href="../../static/css/common.css">
-		<link rel="stylesheet" href="../../static/css/mui.min.css">
-		<link rel="stylesheet" href="../../static/css/show-report.css">
-		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
-		<script type="text/javascript" src="../../static/js/common.js"></script>
-		<script type="text/javascript" src="../../static/js/path.js" ></script>
-		<script>
-			var ancheid = GetRequest("ANCHEID");  //年报id
-			var bodyType=sessionStorage.getItem("BODY_TYPE");
-			var type=sessionStorage.getItem("TYPE")
-			$(function(){
-				//点击基本信息显示/隐藏切换
-				 $("#list-box .line:first-child").click(function(){
-		   			 $(".basic-inf-box").toggle();
-		 		 });
-				
-				getData();
-				
-			});
-			
-				//获取年报详情
-			function getData(){
-				$.ajax({
-  					type:'get',		
-  					url:httpUrl+'/p/e/self/an/base/get.json',
-  					data:{"ANCHEID":ancheid,"BODY_TYPE":bodyType},
-  					dataType:'json',
-  					success:function(res){
-  						if(res.success==true){
-  							console.info(res.data);
-  							createMenu(res.data[0].EDISYCONTBUSIRELA);
-  							createData(res.data[0]);
-  						}
-  					}
-  				});
-			}
-			
-		
-			 function createMenu(obj){
-		  		var menuHtml="";
-				for(i=0;i<obj.length;i++){
-					if(obj[i].BUSINESS_ITEMTYPE=="01" && obj[i].BUSINESS_ITEM!="CU_REGINFO" &&  obj[i].BUSINESS_ITEM!="CU_TAXRELIEFGOODS"){  //判断是否是表级的菜单
-						menuHtml+="<a href='javascript:;' onclick='returnPath(\""+obj[i].BUSINESS_ITEM+"\")'>"+
-								"<div id='list-box'>"+
-								"		<div class='line'>"+
-								"			<span>"+obj[i].BUSINESS_ITEMDISY+" </span> ";
-								if( parseInt(obj[i].COUNT)>=0){
-									menuHtml+=" <span  class='inf-num'>("+obj[i].COUNT+")</span>";
-								}
-						menuHtml+="<span id='arrow-right'><img src='../../static/img/arrow-right.png'/></span>"+
-								"		</div>"+
-								"</div>"+
-							"</a> ";
-						$('#'+obj[i].BUSINESS_ITEM).show();
-		  			}else{
-		  				sessionStorage.setItem(obj[i].BUSINESS_ITEM,obj[i].BUSINESS_ITEMDESC ); 
-		  				//四大人员是否显示
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>国家企业信用信息公示系统</title>
+    <link rel="stylesheet" href="../../static/css/common.css">
+    <link rel="stylesheet" href="../../static/css/mui.min.css">
+    <link rel="stylesheet" href="../../static/css/show-report.css">
+    <script type="text/javascript" src="../../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../../static/js/common.js"></script>
+    <script type="text/javascript" src="../../static/js/path.js"></script>
+    <script>
+        var ancheid = GetRequest("ANCHEID");  //年报id
+        var bodyType = sessionStorage.getItem("BODY_TYPE");
+        var type = sessionStorage.getItem("TYPE")
+        $(function () {
+            //点击基本信息显示/隐藏切换
+            $("#list-box .line:first-child").click(function () {
+                $(".basic-inf-box").toggle();
+            });
+
+            getData();
+
+        });
+
+        //获取年报详情
+        function getData() {
+            $.ajax({
+                type: 'get',
+                url: httpUrl + '/p/e/self/an/base/get.json',
+                data: {"ANCHEID": ancheid, "BODY_TYPE": bodyType},
+                dataType: 'json',
+                success: function (res) {
+                    if (res.success == true) {
+                        console.info(res.data);
+                        createMenu(res.data[0].EDISYCONTBUSIRELA);
+                        createData(res.data[0]);
+                    }
+                }
+            });
+        }
+
+
+        function createMenu(obj) {
+            var menuHtml = "";
+            for (i = 0; i < obj.length; i++) {
+                if (obj[i].BUSINESS_ITEMTYPE == "01" && obj[i].BUSINESS_ITEM != "CU_REGINFO" && obj[i].BUSINESS_ITEM != "CU_TAXRELIEFGOODS") {  //判断是否是表级的菜单
+                    menuHtml += "<a href='javascript:;' onclick='returnPath(\"" + obj[i].BUSINESS_ITEM + "\")'>" +
+                        "<div id='list-box'>" +
+                        "		<div class='line'>" +
+                        "			<span>" + obj[i].BUSINESS_ITEMDISY + " </span> ";
+                    if (parseInt(obj[i].COUNT) >= 0) {
+                        menuHtml += " <span  class='inf-num'>(" + obj[i].COUNT + ")</span>";
+                    }
+                    menuHtml += "<span id='arrow-right'><img src='../../static/img/arrow-right.png'/></span>" +
+                        "		</div>" +
+                        "</div>" +
+                        "</a> ";
+                    $('#' + obj[i].BUSINESS_ITEM).show();
+                } else {
+                    sessionStorage.setItem(obj[i].BUSINESS_ITEM, obj[i].BUSINESS_ITEMDESC);
+                    //四大人员是否显示
 //		  				if(obj[i].BUSINESS_ITEM=="HAS_FOUR_PERSON" && obj[i].BUSINESS_ITEMDESC==1){
 //		  					$("#HAS_FOUR_PERSON_1").show();
 //		  					$("#HAS_FOUR_PERSON_2").show();
@@ -74,273 +74,299 @@
 //		  					$("#HAS_FOUR_PERSON_4").hide();
 //		  				}
 //		  				
-						//企业控股情况、隶属企业名称是否显示
-						if(obj[i].BUSINESS_ITEM=="ALL_PRODUCTION" && obj[i].BUSINESS_ITEMDESC==1){
-							$("#HOLDINGSMSG_SHOW").show();//企业控股 
-							$("#DEPENDENTENTNAME_SHOW").hide();
-							$("#SUP_UNISCID_SHOW").hide();
-						}else{
-							$("#HOLDINGSMSG_SHOW").hide();//企业控股 
-							$("#DEPENDENTENTNAME_SHOW").show();
-							$("#SUP_UNISCID_SHOW").show();
-						}
-		  			}
-				}
-				$("#menuData").html(menuHtml);
-				
-		  	}
-			//链接跳转
-		function returnPath(id){
-			if(ancheid!=null && ancheid!=""){
-				getAnchePathShow(id,type,ancheid,1);
-			}
-		}
-			     
-			function createData(obj){
-				 var DEPENDENTENTNAME_SHOW=sessionStorage.getItem("ALL_PRODUCTION");
-				 if(DEPENDENTENTNAME_SHOW=="1"){
-				 	$("#HOLDINGSMSG_SHOW").show();
-				 	$("#DEPENDENTENTNAME_SHOW").hide();
-				 	if(obj.HOLDINGSMSGDIS==1){  //企业控股情况是否公示
-						$("#HOLDINGSMSG").html(obj.HOLDINGSMSG);
-					}else{
-						$("#HOLDINGSMSG").html("企业选择不公示");
-					}
-				 	
-				 }else{
-				 	$("#HOLDINGSMSG_SHOW").hide();
-				 	$("#DEPENDENTENTNAME_SHOW").show();
-				 	$("#DEPENDENTENTNAME").html(obj.DEPENDENTENTNAME);
-				 }
-				
-					$("#currYear").html(obj.ANCHEYEAR);
-					$("#ANCHEYEAR").html(obj.ANCHEYEAR+"年年度报告");
-					 //是否有修改记录
-					if(obj.UPDATECOUNT>0){
-						var html="<span id='repair-icon'><img src='../../static/img/repair.png'/></span>"+
-									"<a href='modify-record.html?ANCHEID="+obj.ANCHEID+"'>"+obj.UPDATECOUNT+"条修改记录，点击查看</a>";
-									$("#repair-box").html(html); 
-					}
-					$("#PUBLICTIME").html(getFormatDateByLong(obj.PUBLICTIME,"yyyy年MM月dd日") );  //填报时间
-					$("#ENTNAME").html(obj.ENTNAME); //企业名称
-					if(obj.UNISCID!=null && obj.UNISCID!=""){
-						$("#UNISCID").html(obj.UNISCID); //统一社会信用代码
-					}else{
-						$("#UNISCID").html(obj.REGNO); //注册号
-					}
-					$("#ADDR").html(obj.ADDR);  //通信地址
-					$("#POSTALCODE").html(obj.POSTALCODE); //邮政编码
-					$("#TEL").html(obj.TEL);   //联系电话
-					$("#EMAIL").html(obj.EMAIL); //邮箱
-				
-					if(obj.SUP_INFO!=null && obj.SUP_INFO!=""){
-							$("#MAINBUSIACT").html(obj.SUP_INFO.MAINBUSIACT); //主营业务活动
-							if(obj.SUP_INFO.WOMEMPNUMDIS==1){ //女性从业人数是否选择公示
-								$("#WOMEMPNUM").html(obj.SUP_INFO.WOMEMPNUM);
-							}else{
-								$("#WOMEMPNUM").html("企业选择不公示");
-							}
-							$("#DEPENDENTENTNAME").html(obj.SUP_INFO.DEPENDENTENTNAME);
-							$("#SUP_UNISCID").html(obj.SUP_INFO.UNISCID);
-					}
-					if(obj.EMPNUMDIS==1){  //从业人数是否选择公示
-						$("#EMPNUM").html(obj.EMPNUM);
-					}else{
-						$("#EMPNUM").html("企业选择不公示");
-					}
-					
-					$("#BUSST").html(obj.BUSST_CN);  //经营状态
-					
-				
-					
-					//判断四个是否
-					if(obj.EDISYCONTBUSIRELA!=null && obj.EDISYCONTBUSIRELA.length>0){
-						for(var i=0;i<obj.EDISYCONTBUSIRELA.length;i++){
-							if(obj.EDISYCONTBUSIRELA[i].BUSINESS_ITEMTYPE=="01"){  //判断是否是表级的菜单
-								if(obj.EDISYCONTBUSIRELA[i].BUSINESS_ITEM=="GUARANTEE"){  //对外担保
-									if(obj.EDISYCONTBUSIRELA[i].COUNT>0){
-										$("#danbao").html("是");
-									}else{
-										$("#danbao").html("否");
-									}
-								}else if(obj.EDISYCONTBUSIRELA[i].BUSINESS_ITEM=="WEBSITE"){  //网站或网店
-									if(obj.EDISYCONTBUSIRELA[i].COUNT>0){
-										$("#web").html("是");
-									}else{
-										$("#web").html("否");
-									}
-								}else if(obj.EDISYCONTBUSIRELA[i].BUSINESS_ITEM=="STOCK_ALTER"){  //股权变更
-									if(obj.EDISYCONTBUSIRELA[i].COUNT>0){
-										$("#gudong").html("是");
-									}else{
-										$("#gudong").html("否");
-									}
-								}else if(obj.EDISYCONTBUSIRELA[i].BUSINESS_ITEM=="INVESTMENT"){  //对外投资
-									if(obj.EDISYCONTBUSIRELA[i].COUNT>0){
-										$("#touzi").html("是");
-									}else{
-										$("#touzi").html("否");
-									}
-								}
-				  			}
-						}
-						
-					}
-			}
-			
-			function goUpdateAnche(){
-				window.location.href="report.html?ANCHEID="+ancheid
-			}
-		</script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left"></a>
-		    <h1 class="mui-title"><span id="currYear"></span>年度报告详情</h1>
-		</header>
-		
-		<!--企业名称-->
-		<div id="com-name-box">
-			<div class="com-name">
-				<h3 id="ANCHEYEAR"></h3>
-				<span>* 企业年报信息由该企业提供，企业对其年报信息的真实性、合法性负责</span>
-				<div id="repair-box">
-					<!--<span id="repair-icon">
-						<img src="../../static/img/repair.png"/>
-					</span>
-					<a href="modify-record.html">一条修改记录，点击查看</a>-->
-				</div>
-				
-				<div id="date-box">
+                    //企业控股情况、隶属企业名称是否显示
+                    if (obj[i].BUSINESS_ITEM == "ALL_PRODUCTION" && obj[i].BUSINESS_ITEMDESC == 1) {
+                        $("#HOLDINGSMSG_SHOW").show();//企业控股
+                        $("#DEPENDENTENTNAME_SHOW").hide();
+                        $("#SUP_UNISCID_SHOW").hide();
+                    } else {
+                        $("#HOLDINGSMSG_SHOW").hide();//企业控股
+                        $("#DEPENDENTENTNAME_SHOW").show();
+                        $("#SUP_UNISCID_SHOW").show();
+                    }
+                }
+            }
+            $("#menuData").html(menuHtml);
+
+        }
+
+        //链接跳转
+        function returnPath(id) {
+            if (ancheid != null && ancheid != "") {
+                getAnchePathShow(id, type, ancheid, 1);
+            }
+        }
+
+        function createData(obj) {
+            var DEPENDENTENTNAME_SHOW = sessionStorage.getItem("ALL_PRODUCTION");
+            if (DEPENDENTENTNAME_SHOW == "1") {
+                $("#HOLDINGSMSG_SHOW").show();
+                $("#DEPENDENTENTNAME_SHOW").hide();
+                if (obj.HOLDINGSMSGDIS == 1) {  //企业控股情况是否公示
+                    $("#HOLDINGSMSG").html(obj.HOLDINGSMSG);
+                } else {
+                    $("#HOLDINGSMSG").html("企业选择不公示");
+                }
+
+            } else {
+                $("#HOLDINGSMSG_SHOW").hide();
+                $("#DEPENDENTENTNAME_SHOW").show();
+                $("#DEPENDENTENTNAME").html(obj.DEPENDENTENTNAME);
+            }
+
+            $("#currYear").html(obj.ANCHEYEAR);
+            $("#ANCHEYEAR").html(obj.ANCHEYEAR + "年年度报告");
+            //是否有修改记录
+            if (obj.UPDATECOUNT > 0) {
+                var html = "<span id='repair-icon'><img src='../../static/img/repair.png'/></span>" +
+                    "<a href='modify-record.html?ANCHEID=" + obj.ANCHEID + "'>" + obj.UPDATECOUNT + "条修改记录，点击查看</a>";
+                $("#repair-box").html(html);
+            }
+            $("#PUBLICTIME").html(getFormatDateByLong(obj.PUBLICTIME, "yyyy年MM月dd日"));  //填报时间
+            $("#ENTNAME").html(obj.ENTNAME); //企业名称
+            if (obj.UNISCID != null && obj.UNISCID != "") {
+                $("#UNISCID").html(obj.UNISCID); //统一社会信用代码
+            } else {
+                $("#UNISCID").html(obj.REGNO); //注册号
+            }
+            $("#ADDR").html(obj.ADDR);  //通信地址
+            $("#POSTALCODE").html(obj.POSTALCODE); //邮政编码
+            $("#TEL").html(obj.TEL);   //联系电话
+            $("#EMAIL").html(obj.EMAIL); //邮箱
+
+            if (obj.SUP_INFO != null && obj.SUP_INFO != "") {
+                $("#MAINBUSIACT").html(obj.SUP_INFO.MAINBUSIACT); //主营业务活动
+                if (obj.SUP_INFO.WOMEMPNUMDIS == 1) { //女性从业人数是否选择公示
+                    $("#WOMEMPNUM").html(obj.SUP_INFO.WOMEMPNUM);
+                } else {
+                    $("#WOMEMPNUM").html("企业选择不公示");
+                }
+                $("#DEPENDENTENTNAME").html(obj.SUP_INFO.DEPENDENTENTNAME);
+                $("#SUP_UNISCID").html(obj.SUP_INFO.UNISCID);
+            }
+            if (obj.EMPNUMDIS == 1) {  //从业人数是否选择公示
+                $("#EMPNUM").html(obj.EMPNUM);
+            } else {
+                $("#EMPNUM").html("企业选择不公示");
+            }
+
+            $("#BUSST").html(obj.BUSST_CN);  //经营状态
+
+
+            //判断四个是否
+            if (obj.EDISYCONTBUSIRELA != null && obj.EDISYCONTBUSIRELA.length > 0) {
+                for (var i = 0; i < obj.EDISYCONTBUSIRELA.length; i++) {
+                    if (obj.EDISYCONTBUSIRELA[i].BUSINESS_ITEMTYPE == "01") {  //判断是否是表级的菜单
+                        if (obj.EDISYCONTBUSIRELA[i].BUSINESS_ITEM == "GUARANTEE") {  //对外担保
+                            if (obj.EDISYCONTBUSIRELA[i].COUNT > 0) {
+                                $("#danbao").html("是");
+                            } else {
+                                $("#danbao").html("否");
+                            }
+                        } else if (obj.EDISYCONTBUSIRELA[i].BUSINESS_ITEM == "WEBSITE") {  //网站或网店
+                            if (obj.EDISYCONTBUSIRELA[i].COUNT > 0) {
+                                $("#web").html("是");
+                            } else {
+                                $("#web").html("否");
+                            }
+                        } else if (obj.EDISYCONTBUSIRELA[i].BUSINESS_ITEM == "STOCK_ALTER") {  //股权变更
+                            if (obj.EDISYCONTBUSIRELA[i].COUNT > 0) {
+                                $("#gudong").html("是");
+                            } else {
+                                $("#gudong").html("否");
+                            }
+                        } else if (obj.EDISYCONTBUSIRELA[i].BUSINESS_ITEM == "INVESTMENT") {  //对外投资
+                            if (obj.EDISYCONTBUSIRELA[i].COUNT > 0) {
+                                $("#touzi").html("是");
+                            } else {
+                                $("#touzi").html("否");
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+        function goUpdateAnche() {
+            window.location.href = "report.html?ANCHEID=" + ancheid
+        }
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left"></a>
+    <h1 class="mui-title"><span id="currYear"></span>年度报告详情</h1>
+</header>
+
+<!--企业名称-->
+<div id="com-name-box">
+    <div class="com-name">
+        <h3 id="ANCHEYEAR"></h3>
+        <span>* 企业年报信息由该企业提供，企业对其年报信息的真实性、合法性负责</span>
+        <div id="repair-box">
+            <!--<span id="repair-icon">
+                <img src="../../static/img/repair.png"/>
+            </span>
+            <a href="modify-record.html">一条修改记录，点击查看</a>-->
+        </div>
+
+        <div id="date-box">
 					<span id="date-icon">
 						<img src="../../static/img/date.png"/>
 					</span>
-					<a>填报时间：<em id="PUBLICTIME"></em></a>
-				</div>
-			</div>
-		</div>
-		
-		<!--单行列表-->
-		<div id="list-box">
-			<!--<a href="essential-inf.html">-->
-				<div class="line">
-					<span>基本信息</span>
-					<span id="arrow-down"><img src="../../static/img/arrow-down-01.png"/></span>
-				</div>
-				
-				<div class="basic-inf-box">
-					<ul class="mui-table-view">
-						<li class="mui-table-view-cell"><span class="basic-inf-name">企业名称：</span><span id="ENTNAME" class="basic-inf-con"></span></li>
-						<li class="mui-table-view-cell"><span class="basic-inf-name">统一社会信用代码/注册号：</span><span id="UNISCID" class="basic-inf-con"></span></li>
-						<li class="mui-table-view-cell"><span class="basic-inf-name">企业通信地址：</span><span id="ADDR" class="basic-inf-con"></span></li>
-						<li class="mui-table-view-cell"><span class="basic-inf-name">邮政编码：</span><span id="POSTALCODE" class="basic-inf-con"></span></li>
-						<li class="mui-table-view-cell"><span class="basic-inf-name">企业联系电话：</span><span id="TEL" class="basic-inf-con"></span></li>
-						<li class="mui-table-view-cell"><span class="basic-inf-name">企业电子邮箱：</span><span id="EMAIL" class="basic-inf-con"></span></li>
-						<li class="mui-table-view-cell"><span class="basic-inf-name">企业主营业务活动：</span>
-							<span id="MAINBUSIACT" class="basic-inf-con">
+            <a>填报时间：<em id="PUBLICTIME"></em></a>
+        </div>
+    </div>
+</div>
+
+<!--单行列表-->
+<div id="list-box">
+    <!--<a href="essential-inf.html">-->
+    <div class="line">
+        <span>基本信息</span>
+        <span id="arrow-down"><img src="../../static/img/arrow-down-01.png"/></span>
+    </div>
+
+    <div class="basic-inf-box">
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell"><span class="basic-inf-name">企业名称：</span><span id="ENTNAME"
+                                                                                           class="basic-inf-con"></span>
+            </li>
+            <li class="mui-table-view-cell"><span class="basic-inf-name">统一社会信用代码/注册号：</span><span id="UNISCID"
+                                                                                                   class="basic-inf-con"></span>
+            </li>
+            <li class="mui-table-view-cell"><span class="basic-inf-name">企业通信地址：</span><span id="ADDR"
+                                                                                             class="basic-inf-con"></span>
+            </li>
+            <li class="mui-table-view-cell"><span class="basic-inf-name">邮政编码：</span><span id="POSTALCODE"
+                                                                                           class="basic-inf-con"></span>
+            </li>
+            <li class="mui-table-view-cell"><span class="basic-inf-name">企业联系电话：</span><span id="TEL"
+                                                                                             class="basic-inf-con"></span>
+            </li>
+            <li class="mui-table-view-cell"><span class="basic-inf-name">企业电子邮箱：</span><span id="EMAIL"
+                                                                                             class="basic-inf-con"></span>
+            </li>
+            <li class="mui-table-view-cell"><span class="basic-inf-name">企业主营业务活动：</span>
+                <span id="MAINBUSIACT" class="basic-inf-con">
 							</span>
-						</li>
-						<li class="mui-table-view-cell"><span class="basic-inf-name">从业人数：</span><span id="EMPNUM" class="basic-inf-con"></span></li>
-						<li class="mui-table-view-cell"><span class="basic-inf-name">女性从业人数：</span><span id="WOMEMPNUM" class="basic-inf-con"></span></li>
-						<li class="mui-table-view-cell"><span class="basic-inf-name">企业经营状态：</span><span id="BUSST" class="basic-inf-con"></span></li>
-						<li id="HOLDINGSMSG_SHOW" class="mui-table-view-cell" ><span class="basic-inf-name">企业控股情况：</span><span id="HOLDINGSMSG" class="basic-inf-con"></span></li>
-						<li id="DEPENDENTENTNAME_SHOW" class="mui-table-view-cell" ><span class="basic-inf-name">隶属企业名称：</span><span id="DEPENDENTENTNAME" class="basic-inf-con"></span></li>
-						<li id="SUP_UNISCID_SHOW" class="mui-table-view-cell" ><span class="basic-inf-name">隶属企业社会信用代码/注册号：</span><span id="SUP_UNISCID" class="basic-inf-con"></span></li>
-						<li class="mui-table-view-cell" id="GUARANTEE" style="display: none;"><span class="basic-inf-name">是否有对外担保：</span><span id="danbao" class="basic-inf-con"></span></li>
-						<li class="mui-table-view-cell" id="WEBSITE" style="display: none;"><span class="basic-inf-name">是否有网站或网店：</span><span id="web" class="basic-inf-con"></span></li>
-						<li class="mui-table-view-cell" id="STOCK_ALTER" style="display: none;"><span class="basic-inf-name">有限责任公司本年度是否发生股东股权转让：</span><span id="gudong" class="basic-inf-con"></span></li>
-						<li class="mui-table-view-cell" id="INVESTMENT" style="display: none;"><span class="basic-inf-name">是否有投资信息或购买其他公司股权：</span><span id="touzi" class="basic-inf-con"></span></li>
-					    
-					    <!--<li class="mui-table-view-cell" id="HAS_FOUR_PERSON_1"><span class="basic-inf-name">高校毕业生人数：</span><span  class="basic-inf-con">不公示</span></li>
-						<li class="mui-table-view-cell" id="HAS_FOUR_PERSON_2"><span class="basic-inf-name">退役士兵人数：</span><span  class="basic-inf-con">不公示</span></li>
-						<li class="mui-table-view-cell" id="HAS_FOUR_PERSON_3"><span class="basic-inf-name">残疾人人数：</span><span  class="basic-inf-con">不公示</span></li>
-						<li class="mui-table-view-cell" id="HAS_FOUR_PERSON_4"><span class="basic-inf-name">失业人员再就业人数：</span><span  class="basic-inf-con">不公示</span></li>-->
-					</ul>
-				</div>
-				
-			<!--</a>-->
-		</div>
-		 <div id="menuData">
-		<!--单行列表-->
-		<!--<a href="../websiteinfo/website-inf.html">
-			<div id="list-box">
-					<div class="line">
-						<span>网站或网店信息 </span> <span id="CNT_WEBSITE" class="inf-num"></span>
-						<span id="arrow-right"><img src="../img/arrow-right.png"/></span>
-					</div>
-			</div>
-		</a>
-		
-		<a href="../subcapital/contribution.html">
-			<div id="list-box">
-				<div class="line">
-					<span>股东及出资信息 </span><span id="CNT_ANSUBCAPITAL" class="inf-num"></span>
-					<span id="arrow-right"><img src="../img/arrow-right.png"/></span>
-				</div>
-			</div>
-		</a>
-		
-		<a href="../forinvestment/investment-inf.html">
-			<div id="list-box">
-				<div class="line">
-					<span>对外投资信息 </span><span id="CNT_ANFORINVESTMENT" class="inf-num"></span>
-					<span id="arrow-right"><img src="../img/arrow-right.png"/></span>
-				</div>
-			</div>
-		</a>
-		
-		<a href="asset-inf.html">
-			<div id="list-box">
-				<div class="line">
-					<span>企业资产状况信息 </span><span  class="inf-num"></span>
-					<span id="arrow-right"><img src="../img/arrow-right.png"/></span>
-				</div>
-			</div>
-		</a>
-		
-		<a href="../forguaranteeInfo/guarantee-inf.html">
-			<div id="list-box">
-				<div class="line">
-					<span>对外提供保证担保信息 </span><span id="CNT_ANFORGUARANTEE" class="inf-num"></span>
-					<span id="arrow-right"><img src="../img/arrow-right.png"/></span>
-				</div>
-			</div>
-		</a>
-		
-		<a href="../alterstockInfo/equity-record.html">
-			<div id="list-box">
-				<div class="line">
-					<span>股权变更信息</span> <span id="CNT_ANALTERSTOCK" class="inf-num"></span>
-					<span id="arrow-right"><img src="../img/arrow-right.png"/></span>
-				</div>
-			</div>
-		</a>
-			<a href="add-partyinfo.html">
-			<div id="list-box">
-				<div class="line">
-					<span>党建信息</span> <span id="CNT_ANSOCSECINFO" class="inf-num"></span>
-					<span id="arrow-right"><img src="../img/arrow-right.png"/></span>
-				</div>
-			</div>
-		</a>
-		<a href="../socsecinfo/social-security-inf.html">
-			<div id="list-box">
-				<div class="line">
-					<span>社保信息</span> <span id="CNT_ANSOCSECINFO" class="inf-num"></span>
-					<span id="arrow-right"><img src="../img/arrow-right.png"/></span>
-				</div>
-			</div>
-		</a>
-		
-		<a href="modify-record.html">
-			<div id="list-box">
-				<div class="line">
-					<span>修改记录</span> <span class="inf-num"></span>
-					<span id="arrow-right"><img src="../img/arrow-right.png"/></span>
-				</div>
-			</div>
-		</a>-->
-		</div>
-	</body>
+            </li>
+            <li class="mui-table-view-cell"><span class="basic-inf-name">从业人数：</span><span id="EMPNUM"
+                                                                                           class="basic-inf-con"></span>
+            </li>
+            <li class="mui-table-view-cell"><span class="basic-inf-name">女性从业人数：</span><span id="WOMEMPNUM"
+                                                                                             class="basic-inf-con"></span>
+            </li>
+            <li class="mui-table-view-cell"><span class="basic-inf-name">企业经营状态：</span><span id="BUSST"
+                                                                                             class="basic-inf-con"></span>
+            </li>
+            <li id="HOLDINGSMSG_SHOW" class="mui-table-view-cell"><span class="basic-inf-name">企业控股情况：</span><span
+                    id="HOLDINGSMSG" class="basic-inf-con"></span></li>
+            <li id="DEPENDENTENTNAME_SHOW" class="mui-table-view-cell"><span class="basic-inf-name">隶属企业名称：</span><span
+                    id="DEPENDENTENTNAME" class="basic-inf-con"></span></li>
+            <li id="SUP_UNISCID_SHOW" class="mui-table-view-cell"><span
+                    class="basic-inf-name">隶属企业社会信用代码/注册号：</span><span id="SUP_UNISCID" class="basic-inf-con"></span>
+            </li>
+            <li class="mui-table-view-cell" id="GUARANTEE" style="display: none;"><span
+                    class="basic-inf-name">是否有对外担保：</span><span id="danbao" class="basic-inf-con"></span></li>
+            <li class="mui-table-view-cell" id="WEBSITE" style="display: none;"><span
+                    class="basic-inf-name">是否有网站或网店：</span><span id="web" class="basic-inf-con"></span></li>
+            <li class="mui-table-view-cell" id="STOCK_ALTER" style="display: none;"><span class="basic-inf-name">有限责任公司本年度是否发生股东股权转让：</span><span
+                    id="gudong" class="basic-inf-con"></span></li>
+            <li class="mui-table-view-cell" id="INVESTMENT" style="display: none;"><span class="basic-inf-name">是否有投资信息或购买其他公司股权：</span><span
+                    id="touzi" class="basic-inf-con"></span></li>
+
+            <!--<li class="mui-table-view-cell" id="HAS_FOUR_PERSON_1"><span class="basic-inf-name">高校毕业生人数：</span><span  class="basic-inf-con">不公示</span></li>
+            <li class="mui-table-view-cell" id="HAS_FOUR_PERSON_2"><span class="basic-inf-name">退役士兵人数：</span><span  class="basic-inf-con">不公示</span></li>
+            <li class="mui-table-view-cell" id="HAS_FOUR_PERSON_3"><span class="basic-inf-name">残疾人人数：</span><span  class="basic-inf-con">不公示</span></li>
+            <li class="mui-table-view-cell" id="HAS_FOUR_PERSON_4"><span class="basic-inf-name">失业人员再就业人数：</span><span  class="basic-inf-con">不公示</span></li>-->
+        </ul>
+    </div>
+
+    <!--</a>-->
+</div>
+<div id="menuData">
+    <!--单行列表-->
+    <!--<a href="../websiteinfo/website-inf.html">
+        <div id="list-box">
+                <div class="line">
+                    <span>网站或网店信息 </span> <span id="CNT_WEBSITE" class="inf-num"></span>
+                    <span id="arrow-right"><img src="../img/arrow-right.png"/></span>
+                </div>
+        </div>
+    </a>
+
+    <a href="../subcapital/contribution.html">
+        <div id="list-box">
+            <div class="line">
+                <span>股东及出资信息 </span><span id="CNT_ANSUBCAPITAL" class="inf-num"></span>
+                <span id="arrow-right"><img src="../img/arrow-right.png"/></span>
+            </div>
+        </div>
+    </a>
+
+    <a href="../forinvestment/investment-inf.html">
+        <div id="list-box">
+            <div class="line">
+                <span>对外投资信息 </span><span id="CNT_ANFORINVESTMENT" class="inf-num"></span>
+                <span id="arrow-right"><img src="../img/arrow-right.png"/></span>
+            </div>
+        </div>
+    </a>
+
+    <a href="asset-inf.html">
+        <div id="list-box">
+            <div class="line">
+                <span>企业资产状况信息 </span><span  class="inf-num"></span>
+                <span id="arrow-right"><img src="../img/arrow-right.png"/></span>
+            </div>
+        </div>
+    </a>
+
+    <a href="../forguaranteeInfo/guarantee-inf.html">
+        <div id="list-box">
+            <div class="line">
+                <span>对外提供保证担保信息 </span><span id="CNT_ANFORGUARANTEE" class="inf-num"></span>
+                <span id="arrow-right"><img src="../img/arrow-right.png"/></span>
+            </div>
+        </div>
+    </a>
+
+    <a href="../alterstockInfo/equity-record.html">
+        <div id="list-box">
+            <div class="line">
+                <span>股权变更信息</span> <span id="CNT_ANALTERSTOCK" class="inf-num"></span>
+                <span id="arrow-right"><img src="../img/arrow-right.png"/></span>
+            </div>
+        </div>
+    </a>
+        <a href="add-partyinfo.html">
+        <div id="list-box">
+            <div class="line">
+                <span>党建信息</span> <span id="CNT_ANSOCSECINFO" class="inf-num"></span>
+                <span id="arrow-right"><img src="../img/arrow-right.png"/></span>
+            </div>
+        </div>
+    </a>
+    <a href="../socsecinfo/social-security-inf.html">
+        <div id="list-box">
+            <div class="line">
+                <span>社保信息</span> <span id="CNT_ANSOCSECINFO" class="inf-num"></span>
+                <span id="arrow-right"><img src="../img/arrow-right.png"/></span>
+            </div>
+        </div>
+    </a>
+
+    <a href="modify-record.html">
+        <div id="list-box">
+            <div class="line">
+                <span>修改记录</span> <span class="inf-num"></span>
+                <span id="arrow-right"><img src="../img/arrow-right.png"/></span>
+            </div>
+        </div>
+    </a>-->
+</div>
+</body>
 </html>

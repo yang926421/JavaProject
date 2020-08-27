@@ -20,18 +20,18 @@ public class CheckCodeServlet extends HttpServlet {
         int height = 50;
 
         //1.创建一对象，在内存中图片(验证码图片对象)
-        BufferedImage image = new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 
 
         //2.美化图片
         //2.1 填充背景色
         Graphics g = image.getGraphics();//画笔对象
         g.setColor(Color.PINK);//设置画笔颜色
-        g.fillRect(0,0,width,height);
+        g.fillRect(0, 0, width, height);
 
         //2.2画边框
         g.setColor(Color.BLUE);
-        g.drawRect(0,0,width - 1,height - 1);
+        g.drawRect(0, 0, width - 1, height - 1);
 
         String str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghigklmnopqrstuvwxyz0123456789";
         //生成随机角标
@@ -44,11 +44,11 @@ public class CheckCodeServlet extends HttpServlet {
             sb.append(ch);
 
             //2.3写验证码
-            g.drawString(ch+"",width/5*i,height/2);
+            g.drawString(ch + "", width / 5 * i, height / 2);
         }
         String checkCode_session = sb.toString();
         //将验证码存入session
-        request.getSession().setAttribute("checkCode_session",checkCode_session);
+        request.getSession().setAttribute("checkCode_session", checkCode_session);
 
         //2.4画干扰线
         g.setColor(Color.GREEN);
@@ -61,17 +61,17 @@ public class CheckCodeServlet extends HttpServlet {
 
             int y1 = ran.nextInt(height);
             int y2 = ran.nextInt(height);
-            g.drawLine(x1,y1,x2,y2);
+            g.drawLine(x1, y1, x2, y2);
         }
 
 
         //3.将图片输出到页面展示
-        ImageIO.write(image,"jpg",response.getOutputStream());
+        ImageIO.write(image, "jpg", response.getOutputStream());
 
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.doPost(request,response);
+        this.doPost(request, response);
     }
 }

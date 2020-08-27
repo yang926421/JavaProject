@@ -10,7 +10,7 @@ public class Company implements Money {
     @Override
     public void paySalary(Employee e) {
         totalMoney -= e.getXinZi();
-        System.out.println("给发工资了"+e.getName()+e.getXinZi()+"公司剩余了"+totalMoney);
+        System.out.println("给发工资了" + e.getName() + e.getXinZi() + "公司剩余了" + totalMoney);
 
     }
 }

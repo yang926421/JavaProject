@@ -1,6 +1,6 @@
 package 面向对象相关._01面向对象基础._05test;
 
-public class Teacher extends Person{
+public class Teacher extends Person {
     private String xueKe;
 
     public String getXueKe() {
@@ -11,9 +11,10 @@ public class Teacher extends Person{
         this.xueKe = xueKe;
     }
 
-    public Teacher(){
+    public Teacher() {
 
     }
+
     public Teacher(String name, int age, String xueKe) {
         super(name, age);
         this.xueKe = xueKe;
@@ -38,7 +39,8 @@ public class Teacher extends Person{
     public void setAge(int age) {
         super.setAge(age);
     }
-    public void teacher(){
-        System.out.println(this.getName() + "上"+ this.getXueKe());
+
+    public void teacher() {
+        System.out.println(this.getName() + "上" + this.getXueKe());
     }
 }

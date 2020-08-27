@@ -10,7 +10,7 @@ public class Dog extends Animal {
         System.out.println("这是狗的dog方法,狗在吃呀");
     }
 
-    public void lookHome(){
+    public void lookHome() {
         System.out.println("狗在看家门呀");
     }
 }

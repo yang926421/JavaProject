@@ -12,7 +12,8 @@ import redis.clients.jedis.Jedis;
 import java.util.List;
 
 public class provinceServiceImpl implements provinceService {
-    provinceDao dao =  new provinceDaoImpl();
+    provinceDao dao = new provinceDaoImpl();
+
     @Override
     public List<Province> findAll() {
         return dao.findAll();
@@ -26,7 +27,7 @@ public class provinceServiceImpl implements provinceService {
         Jedis jedis = JedisUtils.getJedis();
         String province_json = jedis.get("province");
         System.out.println(province_json);
-        if (province_json == null || province_json.length() == 0){
+        if (province_json == null || province_json.length() == 0) {
             //redis中没有数据缓存没数据
             System.out.println("redis中没数据，查询数据库");
             List<Province> ps = dao.findAll();
@@ -42,8 +43,7 @@ public class provinceServiceImpl implements provinceService {
             //归还连接
             jedis.close();
 
-        }
-        else{
+        } else {
             System.out.println("缓存中有数据,查询缓村");
         }
         return province_json;

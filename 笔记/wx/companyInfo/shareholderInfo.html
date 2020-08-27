@@ -1,114 +1,113 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>股东及出资信息</title>
-		<link rel="stylesheet" href="../static/css/common.css">
-		<link rel="stylesheet" href="../static/css/mui.min.css">
-		<link rel="stylesheet" href="../static/css/shareholderInfo.css" />
-		<script type="text/javascript" src="../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../static/js/mui.min.js" ></script>
-		<script type="text/javascript" src="../static/js/common.js" ></script>
-		<script>
-			var pripid= sessionStorage.getItem("PRIPID"); 
-			$(function(){
-				getData();
-			});
-			
-			function getData(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/p/subcapital/by/pripid/list.json",
-					async:true,
-					data:{"PRIPID":pripid},
-					dataType:"json",
-					success:function(res){
-						if(res.success==true){
-							createData(res.data);
-						}
-					}
-				});
-			}
-			
-			function createData(obj){
-				var htmlData="";
-				if(obj!=null && obj.length>0){
-					$("#count").html(obj.length)
-					for(var i=0;i<obj.length;i++){
-						var SHAREHOLDER="";
-						var CERNO="";
-						var CERTYPE_CN="";
-						if(obj[i].SHAREHOLDER=="1"){
-							SHAREHOLDER="自然人股东";
-							CERNO="[非公示项]";
-							CERTYPE_CN="[非公示项]";
-						}else{
-							SHAREHOLDER="非自然人股东"
-							CERNO=obj[i].CERNO;
-							CERTYPE_CN=obj[i].CERTYPE_CN;
-						}
-						if(i==0){
-							htmlData+="<a href='shareholderDetail.html?INVID="+obj[i].INVID+"&SHAREHOLDER="+obj[i].SHAREHOLDER+"'> <div class='shareholderDiv martop'> "+
-									" <div class='holdername'><span>"+obj[i].INV+"</span><span>"+SHAREHOLDER+"</span></div>"+	
-									" <div class='holderCard'>"+
-									 "	  <div class='holderone'><span>证照/证件类型: </span><span>"+CERTYPE_CN+"</span></div>"+
-									 "	  <div class='holdertwo'><span>证照/证件号码: </span><span>"+CERNO+"</span></div>"+
-									 "	  <img src='../static/img/arrow-right.png' />"+
-									 "</div>"+
-								"</div> </a>";
-						}else{
-							htmlData+="<a href='shareholderDetail.html?INVID="+obj[i].INVID+"&SHAREHOLDER="+obj[i].SHAREHOLDER+"'><div class='shareholderDiv top'>"+
-									" <div class='holdername'><span>"+obj[i].INV+"</span><span>"+SHAREHOLDER+"</span></div>	"+
-									 "<div class='holderCard'>"+
-									 "	  <div class='holderone'><span>证照/证件类型: </span><span>"+CERTYPE_CN+"</span></div>"+
-									 "	  <div class='holdertwo'><span>证照/证件号码: </span><span>"+CERNO+"</span></div>"+
-									 "	  <img src='../static/img/arrow-right.png' />"+
-									 "</div>"+
-								"</div> </a>";
-						}
-					}
-					$("#content").html(htmlData);
-				}else{
-					$("#count").html("0")
-				}
-			}
-	</script>
-	</head>
-	
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href=""></a>
-		    <h1 class="mui-title">股东及出资信息(<span id="count"></span>)</h1>
-		</header>
-		
-		<!--提示信息-->
-		<div class="tip">
-			<span >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>股东及出资信息</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/shareholderInfo.css"/>
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script>
+        var pripid = sessionStorage.getItem("PRIPID");
+        $(function () {
+            getData();
+        });
+
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/p/subcapital/by/pripid/list.json",
+                async: true,
+                data: {"PRIPID": pripid},
+                dataType: "json",
+                success: function (res) {
+                    if (res.success == true) {
+                        createData(res.data);
+                    }
+                }
+            });
+        }
+
+        function createData(obj) {
+            var htmlData = "";
+            if (obj != null && obj.length > 0) {
+                $("#count").html(obj.length)
+                for (var i = 0; i < obj.length; i++) {
+                    var SHAREHOLDER = "";
+                    var CERNO = "";
+                    var CERTYPE_CN = "";
+                    if (obj[i].SHAREHOLDER == "1") {
+                        SHAREHOLDER = "自然人股东";
+                        CERNO = "[非公示项]";
+                        CERTYPE_CN = "[非公示项]";
+                    } else {
+                        SHAREHOLDER = "非自然人股东"
+                        CERNO = obj[i].CERNO;
+                        CERTYPE_CN = obj[i].CERTYPE_CN;
+                    }
+                    if (i == 0) {
+                        htmlData += "<a href='shareholderDetail.html?INVID=" + obj[i].INVID + "&SHAREHOLDER=" + obj[i].SHAREHOLDER + "'> <div class='shareholderDiv martop'> " +
+                            " <div class='holdername'><span>" + obj[i].INV + "</span><span>" + SHAREHOLDER + "</span></div>" +
+                            " <div class='holderCard'>" +
+                            "	  <div class='holderone'><span>证照/证件类型: </span><span>" + CERTYPE_CN + "</span></div>" +
+                            "	  <div class='holdertwo'><span>证照/证件号码: </span><span>" + CERNO + "</span></div>" +
+                            "	  <img src='../static/img/arrow-right.png' />" +
+                            "</div>" +
+                            "</div> </a>";
+                    } else {
+                        htmlData += "<a href='shareholderDetail.html?INVID=" + obj[i].INVID + "&SHAREHOLDER=" + obj[i].SHAREHOLDER + "'><div class='shareholderDiv top'>" +
+                            " <div class='holdername'><span>" + obj[i].INV + "</span><span>" + SHAREHOLDER + "</span></div>	" +
+                            "<div class='holderCard'>" +
+                            "	  <div class='holderone'><span>证照/证件类型: </span><span>" + CERTYPE_CN + "</span></div>" +
+                            "	  <div class='holdertwo'><span>证照/证件号码: </span><span>" + CERNO + "</span></div>" +
+                            "	  <img src='../static/img/arrow-right.png' />" +
+                            "</div>" +
+                            "</div> </a>";
+                    }
+                }
+                $("#content").html(htmlData);
+            } else {
+                $("#count").html("0")
+            }
+        }
+    </script>
+</head>
+
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href=""></a>
+    <h1 class="mui-title">股东及出资信息(<span id="count"></span>)</h1>
+</header>
+
+<!--提示信息-->
+<div class="tip">
+			<span>
 				* 股东及出资信息截止2014年2月28日。2014年2月28日之后市监只公示股东姓名，其他出资信息由企业自行公示。
 			</span>
-		</div>
-		<div id="content"></div>
-		<!--<div class="shareholderDiv martop">
-			 <div class="holdername"><span>王天霸</span><span>自然人股东</span></div>	
-			 <div class="holderCard">
-			 	  <div class="holderone"><span>证照/证件类型: </span><span>营业证照</span></div>
-			 	  <div class="holdertwo"><span>证照/证件号码: </span><span>[非公示项]</span></div>
-			 	  <img src="../static/img/arrow-right.png" />
-			 </div>
-		</div>
-		
-		<div class="shareholderDiv top">
-			 <div class="holdername"><span>王甜甜</span><span>法人股东</span></div>	
-			 <div class="holderCard">
-			 	  <div class="holderone"><span>证照/证件类型: </span><span>营业证照</span></div>
-			 	  <div class="holdertwo"><span>证照/证件号码: </span><span>441124444434354332</span></div>
-			 	  <img src="../static/img/arrow-right.png" />
-			 </div>
-		</div>-->
-		
-		
-		
-	</body>
+</div>
+<div id="content"></div>
+<!--<div class="shareholderDiv martop">
+     <div class="holdername"><span>王天霸</span><span>自然人股东</span></div>
+     <div class="holderCard">
+           <div class="holderone"><span>证照/证件类型: </span><span>营业证照</span></div>
+           <div class="holdertwo"><span>证照/证件号码: </span><span>[非公示项]</span></div>
+           <img src="../static/img/arrow-right.png" />
+     </div>
+</div>
+
+<div class="shareholderDiv top">
+     <div class="holdername"><span>王甜甜</span><span>法人股东</span></div>
+     <div class="holderCard">
+           <div class="holderone"><span>证照/证件类型: </span><span>营业证照</span></div>
+           <div class="holdertwo"><span>证照/证件号码: </span><span>441124444434354332</span></div>
+           <img src="../static/img/arrow-right.png" />
+     </div>
+</div>-->
+
+
+</body>
 </html>

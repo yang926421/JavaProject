@@ -10,9 +10,9 @@ import java.util.*;
 public class jackSonTest {
     //java对象转换为json
     @Test
-    public void test1() throws Exception{
+    public void test1() throws Exception {
         //创建person对象
-        Person p  = new Person();
+        Person p = new Person();
         p.setName("张三");
         p.setAge(23);
         p.setGender("男");
@@ -23,14 +23,14 @@ public class jackSonTest {
         /**
          转换方法
          writeValue(参数1， obj)
-            参数一
-            File  将obj对象转换为Json字符串，并保存到指定文件中
-            Writer   将obj转换为json字符串，并将json数据填充到字符输出流中
-            OutputStream 将obj对象转换为字符串，并将json数据填充到字节输出流中
+         参数一
+         File  将obj对象转换为Json字符串，并保存到指定文件中
+         Writer   将obj转换为json字符串，并将json数据填充到字符输出流中
+         OutputStream 将obj对象转换为字符串，并将json数据填充到字节输出流中
 
 
          writeValueAsString(obj)
-            将obj对象直接转换为json字符串
+         将obj对象直接转换为json字符串
 
          */
         String json_str = mapper.writeValueAsString(p);
@@ -45,9 +45,9 @@ public class jackSonTest {
     }
 
     @Test
-    public void test2() throws Exception{
+    public void test2() throws Exception {
         //创建person对象
-        Person p  = new Person();
+        Person p = new Person();
         p.setName("张三");
         p.setAge(23);
         p.setGender("男");
@@ -62,21 +62,21 @@ public class jackSonTest {
     }
 
     @Test
-    public void test3() throws Exception{
+    public void test3() throws Exception {
         //创建person对象
-        Person p  = new Person();
+        Person p = new Person();
         p.setName("张三");
         p.setAge(23);
         p.setGender("男");
         p.setBirthday(new Date());
 
-        Person p1  = new Person();
+        Person p1 = new Person();
         p1.setName("张三");
         p1.setAge(23);
         p1.setGender("男");
         p1.setBirthday(new Date());
 
-        Person p2  = new Person();
+        Person p2 = new Person();
         p2.setName("张三");
         p2.setAge(23);
         p2.setGender("男");
@@ -96,9 +96,9 @@ public class jackSonTest {
     }
 
     @Test
-    public void test4() throws Exception{
+    public void test4() throws Exception {
         Map<String, Object> map = new HashMap<>();
-        map.put("name","zhangsan");
+        map.put("name", "zhangsan");
         map.put("age", 23);
         map.put("gender", "男");
 
@@ -108,7 +108,7 @@ public class jackSonTest {
     }
 
     @Test
-    public void test5() throws Exception{
+    public void test5() throws Exception {
         //初始化json字符串
         String S1 = "{\"gender\":\"男\",\"name\":\"zhangsan\",\"age\":23}";
         ObjectMapper mapper = new ObjectMapper();

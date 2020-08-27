@@ -1,58 +1,68 @@
-.web-name h4{
-	padding-top: 1.8rem;
-	margin-top: 1.4rem;
-	font-size: 1.6rem;
-	font-weight: bold;
-	line-height: 2.2rem;
-}
-.web-box{
-	margin-bottom: 0.5rem;
-	background-color: #FFFFFF;
-}
-.web-box a{
-	color: #333333;
+.web-name h4 {
+    padding-top: 1.8rem;
+    margin-top: 1.4rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    line-height: 2.2rem;
 }
 
-.web-name{
-	margin: auto;
-	width: 92%;
-	position: relative;
+.web-box {
+    margin-bottom: 0.5rem;
+    background-color: #FFFFFF;
 }
-.web{
-	/*border: #000000 solid 1px;*/
-	padding-top: 1.8rem;
+
+.web-box a {
+    color: #333333;
 }
-.web li{
-	font-size:1.5rem;
-	line-height: 3.0rem;
+
+.web-name {
+    margin: auto;
+    width: 92%;
+    position: relative;
 }
-.web li span:first-child{
-	color: #999999;
-	font-size:1.5rem;
+
+.web {
+    /*border: #000000 solid 1px;*/
+    padding-top: 1.8rem;
 }
-.web li:last-child{
-	padding-bottom: 1.4rem;
+
+.web li {
+    font-size: 1.5rem;
+    line-height: 3.0rem;
 }
+
+.web li span:first-child {
+    color: #999999;
+    font-size: 1.5rem;
+}
+
+.web li:last-child {
+    padding-bottom: 1.4rem;
+}
+
 /*箭头*/
-.arrow-right{
-	position: absolute;
-	right: 0;
-	width: 0.8rem;
-	top: 14rem;
+.arrow-right {
+    position: absolute;
+    right: 0;
+    width: 0.8rem;
+    top: 14rem;
 }
+
 /*箭头*/
-.arrow-right-a{
-	position: absolute;
-	right: 0;
-	width: 0.8rem;
-	top: 5rem;
+.arrow-right-a {
+    position: absolute;
+    right: 0;
+    width: 0.8rem;
+    top: 5rem;
 }
+
 /*成员名册信息*/
-#member{
-	display: inline-block;
-	float: left;
+#member {
+    display: inline-block;
+    float: left;
 }
-#member-name{
-	display: inline-block;
-	width:84%;
+
+#member-name {
+    display: inline-block;
+    width: 84%;
 }

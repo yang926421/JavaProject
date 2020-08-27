@@ -19,7 +19,7 @@ public class Jdbc_test {
     private JdbcTemplate jdbcTemplate;
 
     @Test
-    public void test1(){
+    public void test1() {
         int row = jdbcTemplate.update("insert into account values(?,?)", "lisi", 5000);
         System.out.println(row);
     }

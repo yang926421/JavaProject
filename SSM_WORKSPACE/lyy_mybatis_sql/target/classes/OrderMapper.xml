@@ -2,18 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.gsxt.mapper.OrderMapper">
     <resultMap id="orderMap" type="order">
-<!--        手动去指定字段与实体属性之间的关系
-        column  数据库字段的名称
-         property 实体的属性名称
--->
+        <!--        手动去指定字段与实体属性之间的关系
+                column  数据库字段的名称
+                 property 实体的属性名称
+        -->
         <id column="oid" property="id"/>
         <result column="ordertime" property="ordertime"/>
         <result column="total" property="total"/>
-<!--        <result column="uid" property="user.id"/>-->
-<!--        <result column="username" property="user.username"/>-->
-<!--        <result column="password" property="user.password"/>-->
-<!--        <result column="birthday" property="user.birthday"/>-->
-<!--        property指属性名称(order中的属性  private User user)       javaType代表类型  当前实体中属性 的类型（User）-->
+        <!--        <result column="uid" property="user.id"/>-->
+        <!--        <result column="username" property="user.username"/>-->
+        <!--        <result column="password" property="user.password"/>-->
+        <!--        <result column="birthday" property="user.birthday"/>-->
+        <!--        property指属性名称(order中的属性  private User user)       javaType代表类型  当前实体中属性 的类型（User）-->
         <association property="user" javaType="user">
             <id column="uid" property="id"/>
             <result column="username" property="username"/>

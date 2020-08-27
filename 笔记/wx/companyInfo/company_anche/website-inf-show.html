@@ -1,74 +1,74 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>网站或网店信息</title>
-		<link rel="stylesheet" href="../../static/css/common.css">
-		<link rel="stylesheet" href="../../static/css/mui.min.css">
-		<link rel="stylesheet" href="../../static/css/website-inf.css">
-			<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
-		<script type="text/javascript" src="../../static/js/common.js"></script>
-		<script>
-			//企业的网站或网店
-			var ancheid=GetRequest("ANCHEID");
-			$(function(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/p/e/self/an/website/list.json",
-					async:true,
-					data:{"ANCHEID":ancheid},
-					dataType:"json",
-					success:function(res){
-						if(res.success==true){
-							createData(res.data);
-						}
-					}
-				});
-				
-			});
-			
-			function createData(obj){
-				if(obj!=null && obj.length>0){
-					$("#count").html(obj.length);
-					var htmlData="";
-					for(var i=0;i<obj.length;i++){
-						var webtype="";
-						if(obj[i].WEBTYPE==1){
-							webtype="网站";
-						}else{
-							webtype="网店";
-						}
-						htmlData+="<div class='web-box'>"+
-								"<div class='web-name'>"+
-								"	<h4>"+obj[i].WEBSITNAME+"</h4>"+
-								"	<ul class='web'>"+
-								"		<li><span>类型：</span> <span id=''>"+webtype+"</span></li>"+
-								"		<li><span>网址：</span> <span id=''>"+obj[i].WEBSITE+"</span></li>"+
-								"	</ul>"+
-								"</div>"+
-						"</div> ";
-					}
-					$("#common-box").html(htmlData);
-				}else{
-					$("#count").html(0);
-				}
-			}
-		</script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="../anche/report.html"></a>
-		    <h1 class="mui-title">网站或网店信息(<span id="count"></span>)</h1>
-		</header>
-		
-		<!--网站名称-->
-		<div id="common-box">
-			
-		</div>
-		
-		
-	</body>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>网站或网店信息</title>
+    <link rel="stylesheet" href="../../static/css/common.css">
+    <link rel="stylesheet" href="../../static/css/mui.min.css">
+    <link rel="stylesheet" href="../../static/css/website-inf.css">
+    <script type="text/javascript" src="../../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../../static/js/common.js"></script>
+    <script>
+        //企业的网站或网店
+        var ancheid = GetRequest("ANCHEID");
+        $(function () {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/p/e/self/an/website/list.json",
+                async: true,
+                data: {"ANCHEID": ancheid},
+                dataType: "json",
+                success: function (res) {
+                    if (res.success == true) {
+                        createData(res.data);
+                    }
+                }
+            });
+
+        });
+
+        function createData(obj) {
+            if (obj != null && obj.length > 0) {
+                $("#count").html(obj.length);
+                var htmlData = "";
+                for (var i = 0; i < obj.length; i++) {
+                    var webtype = "";
+                    if (obj[i].WEBTYPE == 1) {
+                        webtype = "网站";
+                    } else {
+                        webtype = "网店";
+                    }
+                    htmlData += "<div class='web-box'>" +
+                        "<div class='web-name'>" +
+                        "	<h4>" + obj[i].WEBSITNAME + "</h4>" +
+                        "	<ul class='web'>" +
+                        "		<li><span>类型：</span> <span id=''>" + webtype + "</span></li>" +
+                        "		<li><span>网址：</span> <span id=''>" + obj[i].WEBSITE + "</span></li>" +
+                        "	</ul>" +
+                        "</div>" +
+                        "</div> ";
+                }
+                $("#common-box").html(htmlData);
+            } else {
+                $("#count").html(0);
+            }
+        }
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="../anche/report.html"></a>
+    <h1 class="mui-title">网站或网店信息(<span id="count"></span>)</h1>
+</header>
+
+<!--网站名称-->
+<div id="common-box">
+
+</div>
+
+
+</body>
 </html>

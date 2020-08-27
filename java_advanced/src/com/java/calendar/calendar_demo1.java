@@ -4,17 +4,17 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- Calendar 代表了系统此刻日期对应的日历对象
- Calendar 是一个抽象类,不能直接创建对象
- Calendar 创建日历对象的语法
-    Calendar  right_now = Calendar.getInstance();
- Calendar的方法
-    public static Calendar getInstance(); 返回一个日期类对象
-    public int get (int field); 取日期中某个字段的信息
-    public void set(int field, int value); 修改某个字段的信息为value值
-    public void add(int field, amount); 为某个字段增加减少指定的值
-    public final Date getTime();  拿到此刻时间的对象
-    public long getTimeInMillis();  拿到此刻时间对应的毫秒值
+ * Calendar 代表了系统此刻日期对应的日历对象
+ * Calendar 是一个抽象类,不能直接创建对象
+ * Calendar 创建日历对象的语法
+ * Calendar  right_now = Calendar.getInstance();
+ * Calendar的方法
+ * public static Calendar getInstance(); 返回一个日期类对象
+ * public int get (int field); 取日期中某个字段的信息
+ * public void set(int field, int value); 修改某个字段的信息为value值
+ * public void add(int field, amount); 为某个字段增加减少指定的值
+ * public final Date getTime();  拿到此刻时间的对象
+ * public long getTimeInMillis();  拿到此刻时间对应的毫秒值
  */
 
 

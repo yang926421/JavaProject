@@ -1,154 +1,162 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title></title>
-		<link rel="stylesheet" href="../../static/css/common.css">
-		<link rel="stylesheet" href="../../static/css/mui.min.css">
-		<link rel="stylesheet" href="../../static/css/add-investment-inf.css">
-		<script type="text/javascript" src="../../static/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../../static/js/mui.min.js"></script>
-		<script type="text/javascript" src="../../static/js/common.js"></script>
-		<script>
-			//年报id
-			var ancheid=GetRequest("ANCHEID");
-			//对外投资id
-			var outinvid=GetRequest("OUTINVID");
-			
-			$(function(){
-				$("#TOKEN").val(TOKEN);
-				$("#SESSIONID").val(SESSIONID);
-				$("#ANCHEID").val(ancheid);
-				if(outinvid!=null && outinvid!=""){
-					$("#OUTINVID").val(outinvid);
-					$("#saveOrUpdate").html("修改");
-					$("#sure").show();
-					$("#addBtn").hide();
-					$("#delBtn").show();
-					getData();
-				}else{
-					$("#saveOrUpdate").html("添加");
-					$("#sure").hide();
-					$("#addBtn").show();
-					$("#delBtn").hide();
-				}
-			})
-			//获取对外投资信息
-			function getData(){
-				$.ajax({
-					type:"get",
-					url:httpUrl+"/e/an/foreignInvestment/get.json",
-					async:true,
-					data:{"OUTINVID":outinvid,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
-					dataType:"json",
-					success:function(res){
-						if(res.success==true){
-							$("#ANCHEID").val(res.data.ANCHEID);
-							$("#OUTINVID").val(res.data.OUTINVID);
-							$("#UNISCID").val(res.data.UNISCID);
-							$("#ENTNAME").val(res.data.ENTNAME);
-						}
-					}
-				});
-			}
-			//添加or修改对外投资信息
-			function addData(){
-				var entname=$("#ENTNAME").val();
-				var  uniscid=$("#UNISCID").val();
-				if(!isNotNull(entname)){
-					mui.toast("请输入投资公司");
-					return;
-				}
-				if(!isNotNull(uniscid)){
-					mui.toast("请输入统一社会信用代码/注册号");
-					return;
-				}
-				$.ajax({
-					type:"post",
-					url:httpUrl+"/e/an/foreignInvestment/save.json",
-					async:true,
-					data:$("#suForm").serialize(),
-					dataType:"json",
-					success:function(res){
-						if(res.success==true){
-							window.location.href="investment-inf.html?ANCHEID="+ancheid;
-						}
-					}
-				});
-			}
-			//删除对外投资信息
-			function delData(){
-				mui.confirm("您确定要删除吗？","提示",btnArray,function(e){
-					if (e.index == 1) {
-							$.ajax({
-								type:"post",
-								url:httpUrl+"/e/an/foreignInvestment/delete.json",
-								async:true,
-								data:{"OUTINVID":$("#OUTINVID").val(),"ANCHEID":ancheid,"TOKEN":TOKEN,"SESSIONID":SESSIONID},
-								dataType:"json",
-								success:function(res){
-									if(res.success==true){
-										window.location.href="investment-inf.html?ANCHEID="+ancheid;
-									}
-								}
-							});
-					} 
-					
-				
-				});
-			}
-		</script>
-	</head>
-	<body>
-		<!--导航栏-->
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="investment-inf.html"></a>
-		    <h1 class="mui-title"><span id="saveOrUpdate"></span>对外投资信息</h1>
-		    <span id="sure" style="display: none;">
-		    	<a href="javascript:;" onclick="addData();" >保存</a>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title></title>
+    <link rel="stylesheet" href="../../static/css/common.css">
+    <link rel="stylesheet" href="../../static/css/mui.min.css">
+    <link rel="stylesheet" href="../../static/css/add-investment-inf.css">
+    <script type="text/javascript" src="../../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/js/mui.min.js"></script>
+    <script type="text/javascript" src="../../static/js/common.js"></script>
+    <script>
+        //年报id
+        var ancheid = GetRequest("ANCHEID");
+        //对外投资id
+        var outinvid = GetRequest("OUTINVID");
+
+        $(function () {
+            $("#TOKEN").val(TOKEN);
+            $("#SESSIONID").val(SESSIONID);
+            $("#ANCHEID").val(ancheid);
+            if (outinvid != null && outinvid != "") {
+                $("#OUTINVID").val(outinvid);
+                $("#saveOrUpdate").html("修改");
+                $("#sure").show();
+                $("#addBtn").hide();
+                $("#delBtn").show();
+                getData();
+            } else {
+                $("#saveOrUpdate").html("添加");
+                $("#sure").hide();
+                $("#addBtn").show();
+                $("#delBtn").hide();
+            }
+        })
+
+        //获取对外投资信息
+        function getData() {
+            $.ajax({
+                type: "get",
+                url: httpUrl + "/e/an/foreignInvestment/get.json",
+                async: true,
+                data: {"OUTINVID": outinvid, "TOKEN": TOKEN, "SESSIONID": SESSIONID},
+                dataType: "json",
+                success: function (res) {
+                    if (res.success == true) {
+                        $("#ANCHEID").val(res.data.ANCHEID);
+                        $("#OUTINVID").val(res.data.OUTINVID);
+                        $("#UNISCID").val(res.data.UNISCID);
+                        $("#ENTNAME").val(res.data.ENTNAME);
+                    }
+                }
+            });
+        }
+
+        //添加or修改对外投资信息
+        function addData() {
+            var entname = $("#ENTNAME").val();
+            var uniscid = $("#UNISCID").val();
+            if (!isNotNull(entname)) {
+                mui.toast("请输入投资公司");
+                return;
+            }
+            if (!isNotNull(uniscid)) {
+                mui.toast("请输入统一社会信用代码/注册号");
+                return;
+            }
+            $.ajax({
+                type: "post",
+                url: httpUrl + "/e/an/foreignInvestment/save.json",
+                async: true,
+                data: $("#suForm").serialize(),
+                dataType: "json",
+                success: function (res) {
+                    if (res.success == true) {
+                        window.location.href = "investment-inf.html?ANCHEID=" + ancheid;
+                    }
+                }
+            });
+        }
+
+        //删除对外投资信息
+        function delData() {
+            mui.confirm("您确定要删除吗？", "提示", btnArray, function (e) {
+                if (e.index == 1) {
+                    $.ajax({
+                        type: "post",
+                        url: httpUrl + "/e/an/foreignInvestment/delete.json",
+                        async: true,
+                        data: {
+                            "OUTINVID": $("#OUTINVID").val(),
+                            "ANCHEID": ancheid,
+                            "TOKEN": TOKEN,
+                            "SESSIONID": SESSIONID
+                        },
+                        dataType: "json",
+                        success: function (res) {
+                            if (res.success == true) {
+                                window.location.href = "investment-inf.html?ANCHEID=" + ancheid;
+                            }
+                        }
+                    });
+                }
+
+
+            });
+        }
+    </script>
+</head>
+<body>
+<!--导航栏-->
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="investment-inf.html"></a>
+    <h1 class="mui-title"><span id="saveOrUpdate"></span>对外投资信息</h1>
+    <span id="sure" style="display: none;">
+		    	<a href="javascript:;" onclick="addData();">保存</a>
 		    </span>
-		</header>
-		
-		<!--投资信息-->
-		<form id="suForm">
-			<input type="hidden" name="TOKEN" id="TOKEN" />
-			<input type="hidden" name="SESSIONID" id="SESSIONID" />
-			<input type="hidden" name="ANCHEID" id="ANCHEID" />
-			<input type="hidden" name="OUTINVID" id="OUTINVID" />
-		<div id="common-box">
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+</header>
+
+<!--投资信息-->
+<form id="suForm">
+    <input type="hidden" name="TOKEN" id="TOKEN"/>
+    <input type="hidden" name="SESSIONID" id="SESSIONID"/>
+    <input type="hidden" name="ANCHEID" id="ANCHEID"/>
+    <input type="hidden" name="OUTINVID" id="OUTINVID"/>
+    <div id="common-box">
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								投资设立企业或购买股权企业名称
 							</span>
-							<div class="web-write">
-								<input type="text" name="ENTNAME" id="ENTNAME" value="" placeholder="请输入投资公司"/>
-							</div>
-						</li>
-					</ul>
-			</div>
-			
-			<div class="web-box">
-					<ul>
-						<li>
-							<span >
+                    <div class="web-write">
+                        <input type="text" name="ENTNAME" id="ENTNAME" value="" placeholder="请输入投资公司"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="web-box">
+            <ul>
+                <li>
+							<span>
 								统一社会信用代码/注册号
 							</span>
-							<div class="web-write">
-								<input type="text" name="UNISCID" id="UNISCID" value="" placeholder="请输入统一社会信用代码/注册号"/>
-							</div>
-						</li>
-					</ul>
-			</div>
-		</div>
-		</form>
-		<div id="addBtn" class="yy">
-	    	<a onClick="addData();">添&nbsp;&nbsp;加</a>
-	    </div>
-	    <div id="delBtn" class="yy-delete" style="display: none;" >
-	    	<a onClick="delData();">删&nbsp;&nbsp;除</a>
-	    </div>
-	</body>
+                    <div class="web-write">
+                        <input type="text" name="UNISCID" id="UNISCID" value="" placeholder="请输入统一社会信用代码/注册号"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</form>
+<div id="addBtn" class="yy">
+    <a onClick="addData();">添&nbsp;&nbsp;加</a>
+</div>
+<div id="delBtn" class="yy-delete" style="display: none;">
+    <a onClick="delData();">删&nbsp;&nbsp;除</a>
+</div>
+</body>
 </html>

@@ -27,19 +27,19 @@ public class springTest {
     private JdbcTemplate jdbcTemplate;
 
     @Test
-    public void test2(){
+    public void test2() {
         aop.run();
     }
 
     @Test
-    public void test() throws Exception{
+    public void test() throws Exception {
 //         userService.save();
         System.out.println(1234);
-     }
+    }
 
-     @Test
-    public void test4(){
+    @Test
+    public void test4() {
         String sql = "";
 //        jdbcTemplate.queryForObject()
-     }
+    }
 }

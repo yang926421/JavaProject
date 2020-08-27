@@ -64,8 +64,8 @@ public class file_demo_api {
         }
         System.out.println(list2);
         //获取文件最后一次修改的时间
-    long time = f3.lastModified();
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        long time = f3.lastModified();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         System.out.println(sdf.format(time));
 
 

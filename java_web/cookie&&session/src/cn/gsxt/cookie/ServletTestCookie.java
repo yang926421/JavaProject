@@ -26,7 +26,7 @@ public class ServletTestCookie extends HttpServlet {
         Cookie[] cookies = request.getCookies();
         boolean flag = false;//没有cookie为lastTime
         //2.遍历cookie数组
-        if(cookies != null && cookies.length > 0) {
+        if (cookies != null && cookies.length > 0) {
             //遍历cookies数组，有没有对应的cookie的值
             for (Cookie cookie : cookies) {
                 String name = cookie.getName();
@@ -58,23 +58,23 @@ public class ServletTestCookie extends HttpServlet {
             }
         }
 
-        if(cookies == null || cookies.length == 0 || flag == false){
+        if (cookies == null || cookies.length == 0 || flag == false) {
             //第一次访问，没有cookie
-                Date date = new Date();
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
-                String str_date = sdf.format(date);
-                //设置cookie
-                System.out.println("编码前：" + str_date);
-                //URL编码
-                str_date = URLEncoder.encode(str_date, "utf-8");
-                System.out.println("编码后：" + str_date);
+            Date date = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
+            String str_date = sdf.format(date);
+            //设置cookie
+            System.out.println("编码前：" + str_date);
+            //URL编码
+            str_date = URLEncoder.encode(str_date, "utf-8");
+            System.out.println("编码后：" + str_date);
 
-                Cookie cookie = new Cookie("lastTime", str_date);
-                //设置cookie的存活时间
-                cookie.setMaxAge(60 * 60 * 24 * 30);//一个月
-                response.addCookie(cookie);
+            Cookie cookie = new Cookie("lastTime", str_date);
+            //设置cookie的存活时间
+            cookie.setMaxAge(60 * 60 * 24 * 30);//一个月
+            response.addCookie(cookie);
 
-                response.getWriter().write("<h1>您好，欢迎您首次访问</h1>");
+            response.getWriter().write("<h1>您好，欢迎您首次访问</h1>");
 
         }
     }
