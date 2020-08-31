@@ -33,8 +33,8 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="$PROJECT_DIR$/../../../software/maven/apache-maven-3.5.2-bin/apache-maven-3.5.2" />
-        <option name="userSettingsFile" value="D:\lyy\software\maven\apache-maven-3.5.2-bin\apache-maven-3.5.2\conf\settings.xml" />
+        <option name="mavenHome" value="D:/lyy/documents/apache-maven-3.5.2-bin/apache-maven-3.5.2" />
+        <option name="userSettingsFile" value="D:\lyy\documents\apache-maven-3.5.2-bin\apache-maven-3.5.2\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
     <option name="importingSettings">
@@ -53,11 +53,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ssm_maven_parent2/maven_web1/src/main/webapp/WEB-INF" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -186,6 +186,7 @@
       <workItem from="1598248113649" duration="9882000" />
       <workItem from="1598260347277" duration="2533000" />
       <workItem from="1598262910286" duration="7612000" />
+      <workItem from="1598756851298" duration="345000" />
     </task>
     <servers />
   </component>
@@ -213,10 +214,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="606" y="276" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1598248138444" />
-    <state x="540" y="107" key="FileChooserDialogImpl" timestamp="1598260331860">
+    <state x="540" y="107" key="FileChooserDialogImpl" timestamp="1598756948510">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="540" y="107" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1598260331860" />
+    <state x="540" y="107" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1598756948510" />
     <state width="834" height="2" key="GridCell.Tab.0.bottom" timestamp="1598404144798">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -265,10 +266,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="834" height="2" key="GridCell.Tab.2.right/0.0.1366.728@0.0.1366.728" timestamp="1598404144798" />
-    <state x="184" y="0" key="SettingsEditor" timestamp="1598317582510">
+    <state x="184" y="0" key="SettingsEditor" timestamp="1598756952279">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1598317582510" />
+    <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1598756952279" />
     <state x="115" y="96" key="new project wizard" timestamp="1598404136882">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
