@@ -1,0 +1,93 @@
+package cn.gsxt.springboot03.interceptor;
+
+
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.asb.gsxt.config.SwitchConfig;
+import com.asb.gsxt.constant.Constant;
+import com.asb.gsxt.util.ExceptionUtil;
+import com.asb.gsxt.util.RedisUtil;
+import com.asb.gsxt.util.Result;
+import com.xiaoleilu.hutool.json.JSONUtil;
+import java.io.IOException;
+import java.util.Calendar;
+import java.util.Map;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+@Component
+public class ReportInterceptor extends HandlerInterceptorAdapter {
+    private static final Logger log = LoggerFactory.getLogger(ReportInterceptor.class);
+    @Resource
+    private SwitchConfig switchConfig;
+    @Resource
+    private RedisUtil redisUtil;
+
+    public ReportInterceptor() {
+    }
+
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+        boolean permission = true;
+        //根据application配置文件判断是否添加过滤器
+        if (this.switchConfig.isInterceptor()) {
+        //request域获取token和SESSIONID
+            String token = request.getParameter("TOKEN");
+            String sessionId = request.getParameter("SESSIONID");
+            //添加日志信息
+            log.debug("================ access_token：{}\t验证用户登录信息", token);
+
+            try {
+            //判断token不为空
+                if (StringUtils.isNotBlank(token)) {
+                    String obj = this.redisUtil.get(token);
+                    if (StringUtils.isNotBlank(obj)) {
+                        Map<String, Object> tokenMap = JSONObject.parseObject(obj);
+                        String tokenSessionId = tokenMap.get("SESSION_ID") != null ? String.valueOf(tokenMap.get("SESSION_ID")) : "";
+                        if (!tokenSessionId.equals(sessionId)) {
+                            permission = this.reLogin(response, "你的账号已在别的地方登录，是否重新登录？");
+                        }
+
+                        this.redisUtil.setWithExpireTime(token, JSONUtil.toJsonStr(tokenMap), Constant.TOKEN_EXPIRE_TIME);
+                    } else {
+                        permission = this.reLogin(response, "账户过期，请重新登录！");
+                    }
+                } else {
+                    permission = this.reLogin(response, "请先登录！");
+                }
+            } catch (Exception var10) {
+                ExceptionUtil.exception(var10);
+            }
+        }
+
+        return permission;
+    }
+
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+        super.postHandle(request, response, handler, modelAndView);
+    }
+
+    private boolean reLogin(HttpServletResponse response, String message) throws IOException {
+        Result result = new Result();
+        result.setCode(3);
+        result.setCodeMsg(message);
+        result.setSuccess(false);
+        result.setStatus(500);
+        result.setTime(Calendar.getInstance().getTimeInMillis());
+        response.setCharacterEncoding("UTF-8");
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Credentials", "true");
+        response.setHeader("Access-Control-Allow-Methods", "*");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type,Access-Token");
+        response.setHeader("Access-Control-Expose-Headers", "*");
+        response.setHeader("content-type", "text/html;charset=UTF-8");
+        response.getWriter().print(JSONObject.toJSONString(result, new SerializerFeature[]{SerializerFeature.PrettyFormat, SerializerFeature.WriteMapNullValue, SerializerFeature.WriteNullStringAsEmpty, SerializerFeature.WriteNullListAsEmpty, SerializerFeature.DisableCircularReferenceDetect}));
+        return false;
+    }
+}

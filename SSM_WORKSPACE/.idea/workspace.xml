@@ -33,7 +33,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="D:/lyy/documents/apache-maven-3.5.2-bin/apache-maven-3.5.2" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../apache-maven-3.5.2-bin/apache-maven-3.5.2" />
         <option name="userSettingsFile" value="D:\lyy\documents\apache-maven-3.5.2-bin\apache-maven-3.5.2\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
@@ -161,11 +161,6 @@
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
             </expand>
             <select />
           </treeState>
@@ -186,7 +181,12 @@
       <workItem from="1598248113649" duration="9882000" />
       <workItem from="1598260347277" duration="2533000" />
       <workItem from="1598262910286" duration="7612000" />
+<<<<<<< HEAD
       <workItem from="1598756851298" duration="700000" />
+=======
+      <workItem from="1598756851298" duration="345000" />
+      <workItem from="1598857452387" duration="1564000" />
+>>>>>>> 88e2f4bfed962f5797a8bf60f3ab1ed272ca5c86
     </task>
     <servers />
   </component>
