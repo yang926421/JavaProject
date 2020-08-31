@@ -506,9 +506,21 @@ private String IDCARD_NO;
 )
 ```
 
-权限控制(redis来做)
+## 3.权限控制(redis来做)
+
+
+
+## 4.拦截器
+
+
+
+## 5.定时任务
 
 开发环境的配置  日志保留三个月的
+
+
+
+
 
 
 
@@ -931,3 +943,19 @@ k8s
 *k8s*全称kubernetes,这个名字大家应该都不陌生,*k8s*是为容器服务而生的一个可移植容器的编排管理工具,越来越多的公司正在拥抱*k8s*,并且当前*k8s*已经主导了云业务流程
 >>>>>>> f9fd40f4c31d53558e4845256b28d8f2a46378b2
 
+# [Spring之 JDBCTemplate和 HibernateTemplate区别](https://www.cnblogs.com/Hibara/p/8493546.html)
+
+JDBCTemplate是Spring对jdbc的封装，但sql需要自己写，增加了灵活性和复杂性，但是不利于跨数据库使用。
+若使用HibernateTemplate则不用关心底层的数据库是哪个数据库，在编程方面，也更对象化了
+
+
+
+如何来写一个网站
+
+1.前端
+
+​	模板 别人写好的 我们来改
+
+​	框架 组件 自己手动组合拼接  bootstrap  
+
+![1598866818120](assets/1598866818120.png)
