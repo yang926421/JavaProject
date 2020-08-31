@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>cn.gsxt</groupId>
-    <artifactId>springboot02</artifactId>
+    <artifactId>springboot03</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springboot02</name>
+    <name>springboot03</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -21,12 +21,11 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <dependency>

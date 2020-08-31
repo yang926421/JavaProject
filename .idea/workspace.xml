@@ -34,7 +34,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/spring-boot/springboot-01" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/spring-boot/springboot02" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RunManager">
@@ -57,6 +57,7 @@
       <option name="presentableId" value="Default" />
       <updated>1598500498681</updated>
       <workItem from="1598500517326" duration="1150000" />
+      <workItem from="1598598004198" duration="51000" />
     </task>
     <servers />
   </component>
@@ -64,9 +65,13 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="623" y="118" key="FileChooserDialogImpl" timestamp="1598510023094">
+    <state x="623" y="118" key="FileChooserDialogImpl" timestamp="1598598053435">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="623" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1598510023094" />
+    <state x="623" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1598598053435" />
+    <state x="523" y="187" key="com.intellij.ide.util.TipDialog" timestamp="1598598032067">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="523" y="187" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1598598032067" />
   </component>
 </project>

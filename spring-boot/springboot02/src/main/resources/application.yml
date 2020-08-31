@@ -1,0 +1,30 @@
+spring:
+  profiles:
+    active: test
+
+#对象
+person:
+  name: lyy
+  email: 1234
+  age: 23
+  happy: false
+  birth: 2019/11/02
+  maps:
+    k1: v1
+    k2: v2
+  lists: [code, music, dog]
+  dog:
+    name: 旺财
+    age: 2
+
+#行内写法
+students: {name: lyy,age: 23}
+
+#数组
+pets:
+  - cat
+  - dog
+  - pig
+#数组的行内写法
+pets1: [cat, dog, pig]
+
