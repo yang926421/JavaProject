@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.len.pdms.service.provider.mapper.TaskMapper">
+
+    <select id="selectList" parameterType="com.len.pdms.model.vo.TaskVo" resultType="com.len.pdms.model.vo.TaskVo">
+        select t.*,cu.real_name createUserName, du.real_name dealUserName
+        from pdms_task t
+            left join sys_user cu on t.create_user_id = cu.id
+            left join sys_user du on t.deal_user_id = du.id
+        where project_id = #{projectId} and tenant_id = #{tenantId} order by create_date desc
+    </select>
+
+</mapper>

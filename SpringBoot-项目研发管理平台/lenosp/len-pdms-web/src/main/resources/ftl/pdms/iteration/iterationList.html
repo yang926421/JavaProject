@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="../../../plugin/layui/css/layui.css">
+    <link rel="stylesheet" href="../../../plugin/lenos/main.css">
+    <script type="text/javascript" src="../../../plugin/jquery/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../../../plugin/layui/layui.all.js" charset="utf-8"></script>
+</head>
+
+<body>
+
+<!-- 表格上方按钮 -->
+<div class="layui-col-md12" style="height:40px;margin-top:3px;">
+    <div class="layui-btn-group">
+        <button id="add" class="layui-btn layui-btn-normal" data-type="add">
+            <i class="layui-icon">&#xe608;</i>创建迭代
+        </button>
+    </div>
+</div>
+
+<!-- 数据表格 -->
+<table id="list" class="layui-hide" lay-filter="iteration"></table>
+
+<!-- 表格按钮 -->
+<script type="text/html" id="toolBar">
+    <a class="layui-btn layui-btn-xs  layui-btn-normal" lay-event="process">处理迭代</a>
+    <a class="layui-btn layui-btn-xs  layui-btn-normal" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script type="text/html" id="nameBar">
+    <span style="color: blue;cursor: pointer;" tag="name" lay-event="addIssue">{{ d.name }}</span>
+</script>
+
+<script>
+    
+    // 表格初始化
+    var table = layui.table;
+    // 新增
+    $("#add").click(function(){
+        add();
+    });
+
+    //方法级渲染
+    layui.table.render({
+        id: 'list',
+        elem: '#list'
+        , url: '../../../pdms/iteration/selectList'
+        , cols: [[
+            {checkbox: true, fixed: true, width: '5%'}
+            , {field: 'name', title: '迭代名称', width: '20%', sort: true ,toolbar: "#nameBar"}
+            , {field: 'content', title: '迭代目标', width: '20%', sort: true}
+            , {field: 'createDateText', title: '创建时间', width: '10%', sort: true}
+            , {field: 'startDateText', title: '开始时间', width: '10%', sort: true}
+            , {field: 'endDateText', title: '结束时间', width: '10%', sort: true}
+            , {field: 'statusText', title: '状态', width: '5%', sort: true}
+            , {field: 'remark', title: '操作', width: '15%', toolbar: "#toolBar"}
+        ]]
+        , page: true
+        , height: 'full-83'
+        , done: function(res, curr, count){
+           /*$("[tag='name']").click(function () {
+               addIssue();
+           });*/
+        }
+    });
+
+    //监听工具条
+    table.on('tool(iteration)', function (obj) {
+        var data = obj.data;
+        if (obj.event === 'del') {
+            layer.confirm('确定删除[<label style="color: #00AA91;">' + data.name + '</label>]?', function () {
+                del(data.id);
+            });
+        }else if (obj.event === 'process') {
+            process(data);
+        }else if (obj.event === 'edit') {
+            edit(data);
+        }else if (obj.event === 'addIssue'){
+            addIssue(data);
+        }
+    });
+
+    function del(id) {
+        $.post('../../../pdms/iteration/remove',{id:id},function (d) {
+            layer.msg(d.msg);
+            layui.table.reload('list');
+        },'json');
+    }
+
+
+    function add() {
+        layer.open({
+            type: 2,
+            area: ['1000px', '500px'],
+            title: '新增迭代',
+            content: 'add-iteration.html'
+        });
+    }
+
+    function edit(data) {
+        window.data = data;
+        layer.open({
+            type: 2,
+            area: ['1000px', '500px'],
+            title: '编辑迭代',
+            content: 'update-iteration.html'
+        });
+    }
+
+    function process(data) {
+        window.data = data;
+        layer.open({
+            type: 2,
+            area: ['1000px', '500px'],
+            title: '处理迭代',
+            content: 'process-iteration.html'
+        });
+    }
+
+    function addIssue(data) {
+        window.data = data;
+        layer.open({
+            type: 2,
+            area: ['1000px', '600px'],
+            title: '迭代问题清单',
+            content: 'issue-iteration.html'
+        });
+    }
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.len.pdms.service.provider.mapper.IterationIssueMapper">
+
+    <select id="selectList" parameterType="com.len.pdms.model.vo.IterationIssueVo" resultType="com.len.pdms.model.vo.IterationIssueVo">
+
+        <if test="issueType == 0">
+            select t.*, r.name,r.create_date,r.status,r.content from pdms_iteration_issue t, pdms_requirement r
+                where r.id = t.issue_id and t.iteration_id = #{iterationId} order by create_date desc
+        </if>
+
+        <if test="issueType == 1">
+            select t.*, r.name,r.create_date,r.status,r.content from pdms_iteration_issue t, pdms_bug r
+                where r.id = t.issue_id and t.iteration_id = #{iterationId} order by create_date desc
+        </if>
+
+        <if test="issueType == 2">
+            select t.*, r.name,r.create_date,r.status,r.content from pdms_iteration_issue t, pdms_task r
+                where r.id = t.issue_id and t.iteration_id = #{iterationId} order by create_date desc
+        </if>
+
+    </select>
+
+</mapper>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>
+    <link rel="stylesheet" href="../../../plugin/layui/css/layui.css">
+    <link rel="stylesheet" href="../../../plugin/ztree/css/metroStyle/metroStyle.css">
+    <script type="text/javascript" src="../../../plugin/jquery/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../../../plugin/layui/layui.all.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../../../plugin/ztree/js/jquery.ztree.core.js"></script>
+    <script type="text/javascript" src="../../../plugin/ztree/js/jquery.ztree.excheck.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../../../plugin/tools/tool.js"></script>
+</head>
+
+<body>
+<div class="x-body">
+    <form class="layui-form layui-form-pane" style="margin-left: 20px;" lay-filter="myform">
+        <input name="id" type="hidden">
+        <div style="width:100%;height:400px;overflow: auto;">
+            <div class="layui-form-item">
+                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 10px;">
+                    <legend style="font-size:16px;">版本信息</legend>
+                </fieldset>
+            </div>
+            <div class="layui-form-item">
+                <label for="name" class="layui-form-label">
+                    <span class="x-red">*</span>版本名称
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" id="name" name="name" lay-verify="name" autocomplete="off" class="layui-input">
+                </div>
+                <div id="ms" class="layui-form-mid layui-word-aux">
+                    <span class="x-red">*</span><span id="ums">名称必填</span>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <div class="layui-input-inline" style="width: 900px;margin-left: 0px;">
+                        <textarea id="content" class="layui-textarea" style="display: none;"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="width: 100%;height: 55px;background-color: white;border-top:1px solid #e6e6e6;position: fixed;bottom: 1px;margin-left:-20px;">
+            <div class="layui-form-item" style=" float: right;margin-right: 30px;margin-top: 8px">
+                <button class="layui-btn layui-btn-normal" lay-filter="update" lay-submit>
+                    修改
+                </button>
+                <button class="layui-btn layui-btn-primary" id="close">
+                    取消
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    layui.use(['form', 'layer', 'layedit'], function () {
+        $ = layui.jquery;
+        var form = layui.form;
+        var layer = layui.layer;
+        var layedit = layui.layedit;
+
+
+        // 富文本编辑器值回填
+        $("#content").html(window.parent.data.content);
+        var editIndex = layedit.build('content');
+
+
+        var data = window.parent.data;
+        // 值回填
+        form.val("myform", {
+            id: data.id,
+            name: data.name
+        });
+
+        //自定义验证规则
+        form.verify({
+            name: function (value) {
+                if (value.trim() == "") {
+                    return "名称不能为空";
+                }
+            }
+        });
+
+        $('#close').click(function () {
+            var index = parent.layer.getFrameIndex(window.name);
+            parent.layer.close(index);
+        });
+
+        //监听提交
+        form.on('submit(update)', function (data) {
+            data.field.content = layedit.getContent(editIndex);
+            $.post('../../../pdms/version/update', data.field, function (data) {
+                window.parent.layui.table.reload('list'); // 刷新表格
+                layer.msg('修改成功');
+
+                // 关闭窗口
+                var index = parent.layer.getFrameIndex(window.name);
+                parent.layer.close(index);
+            });
+
+            return false;
+        });
+    });
+</script>
+</body>
+
+</html>

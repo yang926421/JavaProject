@@ -21,7 +21,13 @@ https://www.cnblogs.com/liuning8023/p/4493156.html
 3.多环境切换(dev test pro(生产环境))
 ```
 
+springboot的认知和了解
 
+内置tomcat提供了自动配置,搭建spring应用的脚手架,解决复杂的配置,混乱的依赖关系
+
+
+
+@RestController  == @Controller + @ResponseBody
 
 ### springboot的配置文件
 
@@ -520,9 +526,9 @@ private String IDCARD_NO;
 
 
 
+![1598928067083](assets/1598928067083.png)
 
-
-
+![1598930236256](assets/1598930236256.png)
 
 ```
 ################### 端口+上下文 ###################

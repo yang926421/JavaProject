@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="../../../plugin/layui/css/layui.css">
+    <link rel="stylesheet" href="../../../plugin/lenos/main.css">
+    <script type="text/javascript" src="../../../plugin/jquery/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../../../plugin/layui/layui.all.js" charset="utf-8"></script>
+</head>
+
+<body>
+
+<!-- 表格上方按钮 -->
+<div class="layui-col-md12" style="height:40px;margin-top:3px;">
+    <div class="layui-btn-group">
+        <button id="add" class="layui-btn layui-btn-normal" data-type="add">
+            <i class="layui-icon">&#xe608;</i>新增
+        </button>
+    </div>
+</div>
+
+<!-- 数据表格 -->
+<table id="list" class="layui-hide" lay-filter="version"></table>
+
+<!-- 表格按钮 -->
+<script type="text/html" id="toolBar">
+    <a class="layui-btn layui-btn-xs  layui-btn-normal" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script>
+    
+    // 表格初始化
+    var table = layui.table;
+
+    // 新增
+    $("#add").click(function(){
+        add();
+    });
+
+    //方法级渲染
+    layui.table.render({
+        id: 'list',
+        elem: '#list'
+        , url: '../../../pdms/version/selectList'
+        , cols: [[
+            {checkbox: true, fixed: true, width: '5%'}
+            , {field: 'name', title: '版本名称', width: '20%', sort: true}
+            , {field: 'content', title: '版本描述', width: '20%', sort: true}
+            , {field: 'createDateText', title: '创建时间', width: '10%', sort: true}
+            , {field: 'remark', title: '操作', width: '20%', toolbar: "#toolBar"}
+        ]]
+        , page: true
+        , height: 'full-83'
+    });
+
+    //监听工具条
+    table.on('tool(version)', function (obj) {
+        var data = obj.data;
+        if (obj.event === 'del') {
+            layer.confirm('确定删除[<label style="color: #00AA91;">' + data.name + '</label>]?', function () {
+                del(data.id);
+            });
+        } else if (obj.event === 'edit') {
+            edit(data);
+        }
+    });
+
+    function del(id) {
+        $.post('../../../pdms/version/remove',{id:id},function (d) {
+            layer.msg(d.msg);
+            layui.table.reload('list');
+        },'json');
+    }
+
+
+    function add() {
+        layer.open({
+            type: 2,
+            area: ['1000px', '500px'],
+            title: '新增版本',
+            content: 'add-version.html'
+        });
+    }
+
+    function edit(data) {
+        window.data = data;
+        layer.open({
+            type: 2,
+            area: ['1000px', '500px'],
+            title: '编辑版本',
+            content: 'update-version.html'
+        });
+    }
+
+</script>
+</body>
+
+</html>
