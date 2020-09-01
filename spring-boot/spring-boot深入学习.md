@@ -21,13 +21,21 @@ https://www.cnblogs.com/liuning8023/p/4493156.html
 3.多环境切换(dev test pro(生产环境))
 ```
 
-springboot的认知和了解
+# springboot的认知和了解
 
 内置tomcat提供了自动配置,搭建spring应用的脚手架,解决复杂的配置,混乱的依赖关系
 
 
 
 @RestController  == @Controller + @ResponseBody
+
+## SpringBoot的注解
+
+```
+
+```
+
+
 
 ### springboot的配置文件
 
@@ -969,3 +977,11 @@ JDBCTemplate是Spring对jdbc的封装，但sql需要自己写，增加了灵活�
 非spring官方写的用框架名开头
 
 例如   mybatis_-spring-boot-stater
+
+
+
+## springboot的主要特性
+
+![image-20200901224355614](spring-boot%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0.assets/image-20200901224355614.png)
+
+![image-20200901224519790](spring-boot%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0.assets/image-20200901224519790.png)
