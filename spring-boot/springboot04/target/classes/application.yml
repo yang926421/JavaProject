@@ -1,0 +1,4 @@
+#配置国际化的配置文件
+spring:
+  messages:
+    basename: i18n.login

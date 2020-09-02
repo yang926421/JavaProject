@@ -1070,17 +1070,11 @@ static class Registrar implements ImportBeanDefinitionRegistrar, DeterminableImp
    public void registerBeanDefinitions(AnnotationMetadata metadata, BeanDefinitionRegistry registry) {
       register(registry, new PackageImport(metadata).getPackageName());
    }
-
-   @Override
-   public Set<Object> determineImports(AnnotationMetadata metadata) {
-      return Collections.singleton(new PackageImport(metadata));
-   }
-
 }
-
 /**
  * Wrapper for a package import.
  */
+ //内部类
 private static final class PackageImport {
 
    private final String packageName;
@@ -1088,28 +1082,37 @@ private static final class PackageImport {
    PackageImport(AnnotationMetadata metadata) {
       this.packageName = ClassUtils.getPackageName(metadata.getClassName());
    }
+   
+   //这块儿获取到的packageName就是主启动类所对应的上层包的名字
 
    String getPackageName() {
       return this.packageName;
    }
 
-   @Override
-   public boolean equals(Object obj) {
-      if (obj == null || getClass() != obj.getClass()) {
-         return false;
-      }
-      return this.packageName.equals(((PackageImport) obj).packageName);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.packageName.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "Package Import " + this.packageName;
-   }
 
 }
 ```
+
+## 自动装配(源代码的深入)
+
+自动配置springboot的应用基于自己添加的jar包的依赖
+
+spring.factories
+
+s![image-20200902221855216](spring-boot%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0.assets/image-20200902221855216.png)
+
+里面配置了好多自动配置类
+
+![image-20200902222133798](spring-boot%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0.assets/image-20200902222133798.png)
+
+springboot将javaee的一些技术进行整合,
+
+![image-20200902223016107](spring-boot%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0.assets/image-20200902223016107.png)
+
+我们在xml文件中添加了springboot-parent的启动器,这个启动器内部引入了一些相关的jar包,包括springboot-autoconfigure,springboot在启动的时候会加载jar包下的spring.factories,我们想要实现相关功能的自动配置 就需要在启动类上加上相关注解 @EnableAutoConfiguration,就会为我们引入自动配置类.把这些自动配置的类都加载到springboot中.然后在pom.xml文件中引入
+
+EnableAutoConfiguration下面的配置中引入我们需要使用到的配置
+
+![image-20200902224701177](spring-boot%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0.assets/image-20200902224701177.png)
+
+## springboot热部署
