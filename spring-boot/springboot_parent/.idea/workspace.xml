@@ -42,7 +42,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="SvnConfiguration">
@@ -59,6 +59,7 @@
       <workItem from="1599060789192" duration="187000" />
       <workItem from="1599061063759" duration="71000" />
       <workItem from="1599061173841" duration="40000" />
+      <workItem from="1599061288463" duration="39000" />
     </task>
     <servers />
   </component>
@@ -70,13 +71,17 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="274" y="30" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1599060853340" />
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1599061124784">
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1599061325958">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1599061124784" />
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1599061325958" />
     <state x="184" y="6" key="SettingsEditor" timestamp="1599061188090">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1599061188090" />
+    <state x="363" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1599061298001">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="363" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1599061298001" />
   </component>
 </project>
