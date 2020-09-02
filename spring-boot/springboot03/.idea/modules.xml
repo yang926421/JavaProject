@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../SpringBoot-项目研发管理平台/lenosp/len-core/len-core.iml" filepath="$PROJECT_DIR$/../../SpringBoot-项目研发管理平台/lenosp/len-core/len-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../SpringBoot-项目研发管理平台/lenosp/len-entity/len-entity.iml" filepath="$PROJECT_DIR$/../../SpringBoot-项目研发管理平台/lenosp/len-entity/len-entity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../SpringBoot-项目研发管理平台/lenosp/len-pdms-model/len-pdms-model.iml" filepath="$PROJECT_DIR$/../../SpringBoot-项目研发管理平台/lenosp/len-pdms-model/len-pdms-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../SpringBoot-项目研发管理平台/lenosp/len-pdms-service-api/len-pdms-service-api.iml" filepath="$PROJECT_DIR$/../../SpringBoot-项目研发管理平台/lenosp/len-pdms-service-api/len-pdms-service-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../SpringBoot-项目研发管理平台/lenosp/len-pdms-service-provider/len-pdms-service-provider.iml" filepath="$PROJECT_DIR$/../../SpringBoot-项目研发管理平台/lenosp/len-pdms-service-provider/len-pdms-service-provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../SpringBoot-项目研发管理平台/lenosp/len-pdms-web/len-pdms-web.iml" filepath="$PROJECT_DIR$/../../SpringBoot-项目研发管理平台/lenosp/len-pdms-web/len-pdms-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../SpringBoot-项目研发管理平台/lenosp/len-sys/len-sys.iml" filepath="$PROJECT_DIR$/../../SpringBoot-项目研发管理平台/lenosp/len-sys/len-sys.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../SpringBoot-项目研发管理平台/lenosp/len-web/len-web.iml" filepath="$PROJECT_DIR$/../../SpringBoot-项目研发管理平台/lenosp/len-web/len-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../SpringBoot-项目研发管理平台/lenosp/lenosp.iml" filepath="$PROJECT_DIR$/../../SpringBoot-项目研发管理平台/lenosp/lenosp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot03.iml" filepath="$PROJECT_DIR$/springboot03.iml" />
+    </modules>
+  </component>
+</project>

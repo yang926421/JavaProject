@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="12a243c4-9a9b-4251-b21a-5ecaad96fb82" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../software/maven/apache-maven-3.5.2-bin/apache-maven-3.5.2" />
+        <option name="userSettingsFile" value="D:\lyy\software\maven\apache-maven-3.5.2-bin\apache-maven-3.5.2\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1gexKav5WEOFVWvjuOb1f7JLRgc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/springboot_parent" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\lyy\documents\project1\spring-boot\springboot_parent\springboot_hello\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.Application">
+    <configuration name="Springboot01Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.gsxt.Springboot01Application" />
+      <module name="springboot-01" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.gsxt.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="springboot_hello" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.gsxt.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.gsxt.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HelloworldApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="helloworld" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.gsxt.helloworld.HelloworldApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Springboot01Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot-01" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.gsxt.Springboot01Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.Application" />
+        <item itemvalue="Application.Springboot01Application" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="12a243c4-9a9b-4251-b21a-5ecaad96fb82" name="Default Changelist" comment="" />
+      <created>1598488796352</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1598488796352</updated>
+      <workItem from="1598488800921" duration="838000" />
+      <workItem from="1598498640050" duration="1220000" />
+      <workItem from="1598499934168" duration="566000" />
+      <workItem from="1598856120206" duration="183000" />
+      <workItem from="1599029549617" duration="4213000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="464" y="29" key="#Notifications" timestamp="1598499183724">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="464" y="29" key="#Notifications/0.0.1366.728@0.0.1366.728" timestamp="1598499183724" />
+    <state x="274" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599038369883">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="274" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1599038369883" />
+    <state x="509" y="124" key="FileChooserDialogImpl" timestamp="1599038813654">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="509" y="124" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1599038813654" />
+    <state width="1087" height="111" key="GridCell.Tab.0.bottom" timestamp="1599038826822">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1087" height="111" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1599038826822" />
+    <state width="1087" height="111" key="GridCell.Tab.0.center" timestamp="1599038826821">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1087" height="111" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1599038826821" />
+    <state width="1087" height="111" key="GridCell.Tab.0.left" timestamp="1599038826821">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1087" height="111" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1599038826821" />
+    <state width="1087" height="111" key="GridCell.Tab.0.right" timestamp="1599038826821">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1087" height="111" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1599038826821" />
+    <state width="1087" height="111" key="GridCell.Tab.1.bottom" timestamp="1599038826827">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1087" height="111" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1599038826827" />
+    <state width="1087" height="111" key="GridCell.Tab.1.center" timestamp="1599038826827">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1087" height="111" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1599038826827" />
+    <state width="1087" height="111" key="GridCell.Tab.1.left" timestamp="1599038826822">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1087" height="111" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1599038826822" />
+    <state width="1087" height="111" key="GridCell.Tab.1.right" timestamp="1599038826827">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1087" height="111" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1599038826827" />
+    <state x="373" y="18" key="Maven.ArtifactSearchDialog" timestamp="1598499999663">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="373" y="18" key="Maven.ArtifactSearchDialog/0.0.1366.728@0.0.1366.728" timestamp="1598499999663" />
+    <state x="230" y="11" key="SettingsEditor" timestamp="1598499965655">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="230" y="11" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1598499965655" />
+    <state x="416" y="187" key="com.intellij.ide.util.TipDialog" timestamp="1598499934300">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="416" y="187" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1598499934300" />
+    <state x="115" y="80" width="1251" height="603" key="new project wizard" timestamp="1599037857568">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="115" y="80" width="1251" height="603" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1599037857568" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1599030312061">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1599030312061" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/springboot-01/src/main/java/cn/gsxt/Springboot01Application.java</url>
+          <line>6</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

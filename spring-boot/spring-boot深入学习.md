@@ -21,21 +21,13 @@ https://www.cnblogs.com/liuning8023/p/4493156.html
 3.多环境切换(dev test pro(生产环境))
 ```
 
-# springboot的认知和了解
+springboot的认知和了解
 
 内置tomcat提供了自动配置,搭建spring应用的脚手架,解决复杂的配置,混乱的依赖关系
 
 
 
-@RestController  == @Controller + @ResponseBody
-
-## SpringBoot的注解
-
-```
-
-```
-
-
+@RestController  == 
 
 ### springboot的配置文件
 
@@ -980,8 +972,144 @@ JDBCTemplate是Spring对jdbc的封装，但sql需要自己写，增加了灵活�
 
 
 
-## springboot的主要特性
 
-![image-20200901224355614](spring-boot%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0.assets/image-20200901224355614.png)
 
-![image-20200901224519790](spring-boot%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0.assets/image-20200901224519790.png)
+
+
+# springboot
+
+springboot的版本对应配置好的一系列的版本,需要用哪个在pom.xml配置即可,
+
+1.starter到底是什么,如何去使用starter?
+
+springboot对应的功能的启动器,以spring开头的是spring提供的
+
+
+
+2.tomcat是如何内嵌的
+
+3.使用了web对应的starter,springmvc是如何自动装配的?
+
+4.我们如何来配置我们自定义的相关的内容
+
+## 默认扫描器
+
+basepackage是由springboot来进行管理的
+
+springboot主启动类配置@SpringBootApplication,主启动类需要放在其它被扫描包的上层
+
+对其进行深入探索
+
+```
+
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Inherited
+@SpringBootConfiguration
+@EnableAutoConfiguration
+@ComponentScan(excludeFilters = { @Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),
+		@Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) })
+public @interface SpringBootApplication {
+    
+}
+
+```
+
+@SpringBootConfiguration注解  (标志着这是个springboot注解类)
+
+```
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Configuration  //标志这是个java注解类
+public @interface SpringBootConfiguration {
+    
+}
+```
+
+@Configuration  spring官方的说明,相当于将其由spring容器来管理,用java方式来做spring的配置
+
+![1599040607871](assets/1599040607871.png)
+
+@EnableAutoConfiguration
+
+```
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Inherited
+@AutoConfigurationPackage  //自动配置类的包
+@Import(AutoConfigurationImportSelector.class)  //自动配置类的引入
+public @interface EnableAutoConfiguration {
+    
+}
+```
+
+@AutoConfigurationPackage 
+
+```
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Inherited
+@Import(AutoConfigurationPackages.Registrar.class)
+public @interface AutoConfigurationPackage {
+
+}
+```
+
+AutoConfigurationPackages.Registrar.class
+
+```
+ */
+static class Registrar implements ImportBeanDefinitionRegistrar, DeterminableImports {
+
+   @Override
+   //注册bean的定义
+   public void registerBeanDefinitions(AnnotationMetadata metadata, BeanDefinitionRegistry registry) {
+      register(registry, new PackageImport(metadata).getPackageName());
+   }
+
+   @Override
+   public Set<Object> determineImports(AnnotationMetadata metadata) {
+      return Collections.singleton(new PackageImport(metadata));
+   }
+
+}
+
+/**
+ * Wrapper for a package import.
+ */
+private static final class PackageImport {
+
+   private final String packageName;
+
+   PackageImport(AnnotationMetadata metadata) {
+      this.packageName = ClassUtils.getPackageName(metadata.getClassName());
+   }
+
+   String getPackageName() {
+      return this.packageName;
+   }
+
+   @Override
+   public boolean equals(Object obj) {
+      if (obj == null || getClass() != obj.getClass()) {
+         return false;
+      }
+      return this.packageName.equals(((PackageImport) obj).packageName);
+   }
+
+   @Override
+   public int hashCode() {
+      return this.packageName.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "Package Import " + this.packageName;
+   }
+
+}
+```
