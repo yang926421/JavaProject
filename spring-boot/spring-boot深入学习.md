@@ -61,7 +61,30 @@ pets:
 pets1: [cat, dog, pig]
 ```
 
+![1599097983739](assets/1599097983739.png)
+
+字符串中有特殊字符的时候,不加引号会自动转义,加上双引号会不转义,输出想要表达的意思
+
 ### yaml可以给实体类赋值
+
+常用的两种方式
+
+1.属性绑定  通过get和set方法进行绑定
+
+
+
+2.构造器绑定
+
+通过构造器方法进行绑定  需要在controller层对实体进行注入的时候添加注解
+
+```
+@EnableConfigurationProperties(AcmeConstructor.class)
+AcmeConstructor  这是个pojo对象
+在javabean中有构造器方法
+@ConfigurationProperties(prefix = "acme")  //对应yml配置文件中的配置
+@ConstructorBinding
+
+```
 
 ```
 @ConfigurationProperties(prefix = "person")
@@ -107,7 +130,23 @@ public class person {
 
 ```
 
+根据源码来理解
+
+![1599104876586](assets/1599104876586.png)
+
+![1599104923136](assets/1599104923136.png)
+
+![1599104928415](assets/1599104928415.png)
+
+![1599105007558](assets/1599105007558.png)
+
+# 所以我们在yml文件中直接进行spring.redis配置的时候会读取到这个内容,我们在自己的类中需要使用RedisTemplate的时候直接进行属性依赖注入就可以使用
+
+### @ConfigurationProperties
+
 ![1598601241146](assets/1598601241146.png)
+
+ConfigurationProperties("")  前缀不可以使用驼峰模式
 
 
 
@@ -134,11 +173,17 @@ person:
 
 mainType.properties文件中存储properties格式
 
+## 配置文件的优先级
+
+项目目录下的  config/application.yml  > 项目目录下的application.yml > resources根目录下的config/application.yml  >resources下的application.yml
+
+我们默认的是resources下的application.yml 优先级最低(如果是父子工程,此时的项目目录指的是父工程下的目录,不是子工程的项目目录)
+
 #### yml和properties的区别
 
 ![1598602428603](assets/1598602428603.png)
 
-#### 小结
+#### yml配置文件小结
 
 ```
 1、@ConfigurationProperties只需要写一次即可 ， @Value则需要每个字段都添加
@@ -190,14 +235,7 @@ mainType.properties文件中存储properties格式
 
 
 
-
-## 配置文件的优先级
-
-项目目录下的  config/application.yml  > 项目目录下的application.yml > resources根目录下的config/application.yml  >resources下的application.yml
-
-我们默认的是resources下的application.yml 优先级最低
-
-## 多文件环境配置
+## springboot多文件环境配置
 
 ![1598605143458](assets/1598605143458.png)
 
@@ -268,21 +306,9 @@ public String login(@RequestParam("username") String username,
 
 
 
+springboot 2.2.1的新特性
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+只要是在主启动类下被扫描的包 里面都可以定义bean当做@Configuration来使用,而不需要添加这个注解
 
 
 
@@ -1093,9 +1119,13 @@ private static final class PackageImport {
 }
 ```
 
+![1599093376757](assets/1599093376757.png)
+
 ## 自动装配(源代码的深入)
 
 自动配置springboot的应用基于自己添加的jar包的依赖
+
+springboot 扫描当前 classpath 下所有的 jar 包，筛选出来 EnableAutoConfiguration 下的所有自动配置类注入到 spring 容器中，完成自 动的 bean 的配置
 
 spring.factories
 
@@ -1115,4 +1145,4 @@ EnableAutoConfiguration下面的配置中引入我们需要使用到的配置
 
 ![image-20200902224701177](spring-boot%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0.assets/image-20200902224701177.png)
 
-## springboot热部署
+## springboot提供很多技术的自动配置类,这些都是需要spring来进行维护的,可能是为了推广springboot

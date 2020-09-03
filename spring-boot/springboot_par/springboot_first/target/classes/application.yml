@@ -1,0 +1,36 @@
+server:
+  port: 8081
+  #
+  servlet:
+    context-path: /lyy
+
+
+person:
+  name: lyy
+  age: 18
+#  hobbys:
+#    - 抽烟
+#    - 喝酒
+#    - 睡觉觉
+
+# 根据pojo对象来写配置内容
+acme:
+  enabled: false
+  remote-address: 222.143.21.123
+  security:
+    username: lyy
+    password: 123
+    roles:
+      - 德玛西亚
+      - 诺克萨斯
+spring:
+  profiles:
+    active: dev
+---
+spring:
+  profiles: dev
+
+---
+spring:
+  profiles: pro
+

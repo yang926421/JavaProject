@@ -1,0 +1,81 @@
+{
+  "groups": [
+    {
+      "name": "acme",
+      "type": "cn.gsxt.module.AcmeConstructor",
+      "sourceType": "cn.gsxt.module.AcmeConstructor"
+    },
+    {
+      "name": "acme",
+      "type": "cn.gsxt.module.AcmeProperties",
+      "sourceType": "cn.gsxt.module.AcmeProperties"
+    },
+    {
+      "name": "acme.security",
+      "type": "cn.gsxt.module.AcmeConstructor$Security",
+      "sourceType": "cn.gsxt.module.AcmeConstructor"
+    },
+    {
+      "name": "acme.security",
+      "type": "cn.gsxt.module.AcmeProperties$Security",
+      "sourceType": "cn.gsxt.module.AcmeProperties",
+      "sourceMethod": "getSecurity()"
+    },
+    {
+      "name": "person",
+      "type": "cn.gsxt.module.Person",
+      "sourceType": "cn.gsxt.module.Person"
+    }
+  ],
+  "properties": [
+    {
+      "name": "acme.enabled",
+      "type": "java.lang.Boolean",
+      "sourceType": "cn.gsxt.module.AcmeConstructor",
+      "defaultValue": false
+    },
+    {
+      "name": "acme.enabled",
+      "type": "java.lang.Boolean",
+      "sourceType": "cn.gsxt.module.AcmeProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "acme.remote-address",
+      "type": "java.net.InetAddress",
+      "sourceType": "cn.gsxt.module.AcmeConstructor"
+    },
+    {
+      "name": "acme.remote-address",
+      "type": "java.net.InetAddress",
+      "sourceType": "cn.gsxt.module.AcmeProperties"
+    },
+    {
+      "name": "acme.security.password",
+      "type": "java.lang.String",
+      "sourceType": "cn.gsxt.module.AcmeConstructor$Security"
+    },
+    {
+      "name": "acme.security.roles",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "cn.gsxt.module.AcmeConstructor$Security"
+    },
+    {
+      "name": "acme.security.username",
+      "type": "java.lang.String",
+      "sourceType": "cn.gsxt.module.AcmeConstructor$Security"
+    },
+    {
+      "name": "person.age",
+      "type": "java.lang.Integer",
+      "sourceType": "cn.gsxt.module.Person",
+      "defaultValue": 0
+    },
+    {
+      "name": "person.name",
+      "type": "java.lang.String",
+      "sourceType": "cn.gsxt.module.Person"
+    }
+  ],
+  "hints": []
+}
