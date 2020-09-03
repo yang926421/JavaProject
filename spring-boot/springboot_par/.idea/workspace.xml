@@ -23,8 +23,8 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="$PROJECT_DIR$/../../../../software/maven/apache-maven-3.5.2-bin/apache-maven-3.5.2" />
-        <option name="userSettingsFile" value="D:\lyy\software\maven\apache-maven-3.5.2-bin\apache-maven-3.5.2\conf\settings.xml" />
+        <option name="mavenHome" value="D:/lyy/documents/apache-maven-3.5.2-bin/apache-maven-3.5.2" />
+        <option name="userSettingsFile" value="D:\lyy\documents\apache-maven-3.5.2-bin\apache-maven-3.5.2\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
     <option name="importingSettings">
@@ -50,8 +50,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../SpringBoot-项目研发管理平台" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -85,6 +88,10 @@
       <option name="presentableId" value="Default" />
       <updated>1599095892415</updated>
       <workItem from="1599095904657" duration="15785000" />
+      <workItem from="1599138415079" duration="902000" />
+      <workItem from="1599140999847" duration="219000" />
+      <workItem from="1599141404947" duration="3869000" />
+      <workItem from="1599145384331" duration="1529000" />
     </task>
     <servers />
   </component>
@@ -92,54 +99,74 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="543" y="22" key="#Notifications" timestamp="1599142167422">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="543" y="22" key="#Notifications/0.0.1366.728@0.0.1366.728" timestamp="1599142167422" />
     <state x="172" y="95" key="#com.intellij.ide.util.MemberChooser" timestamp="1599103903241">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="172" y="95" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1599103903241" />
-    <state x="926" y="118" key="FileChooserDialogImpl" timestamp="1599123801971">
+    <state x="926" y="118" key="FileChooserDialogImpl" timestamp="1599145296120">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="926" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1599123801971" />
-    <state width="1087" height="197" key="GridCell.Tab.0.bottom" timestamp="1599104039893">
+    <state x="926" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1599145296120" />
+    <state width="932" height="197" key="GridCell.Tab.0.bottom" timestamp="1599146635976">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1087" height="197" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1599104039893" />
-    <state width="1087" height="197" key="GridCell.Tab.0.center" timestamp="1599104039893">
+    <state width="932" height="197" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1599146635976" />
+    <state width="932" height="197" key="GridCell.Tab.0.center" timestamp="1599146635975">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1087" height="197" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1599104039893" />
-    <state width="1087" height="197" key="GridCell.Tab.0.left" timestamp="1599104039893">
+    <state width="932" height="197" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1599146635975" />
+    <state width="932" height="197" key="GridCell.Tab.0.left" timestamp="1599146635975">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1087" height="197" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1599104039893" />
-    <state width="1087" height="197" key="GridCell.Tab.0.right" timestamp="1599104039893">
+    <state width="932" height="197" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1599146635975" />
+    <state width="932" height="197" key="GridCell.Tab.0.right" timestamp="1599146635975">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1087" height="197" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1599104039893" />
-    <state width="1087" height="197" key="GridCell.Tab.1.bottom" timestamp="1599104039893">
+    <state width="932" height="197" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1599146635975" />
+    <state width="932" height="197" key="GridCell.Tab.1.bottom" timestamp="1599146635976">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1087" height="197" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1599104039893" />
-    <state width="1087" height="197" key="GridCell.Tab.1.center" timestamp="1599104039893">
+    <state width="932" height="197" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1599146635976" />
+    <state width="932" height="197" key="GridCell.Tab.1.center" timestamp="1599146635976">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1087" height="197" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1599104039893" />
-    <state width="1087" height="197" key="GridCell.Tab.1.left" timestamp="1599104039893">
+    <state width="932" height="197" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1599146635976" />
+    <state width="932" height="197" key="GridCell.Tab.1.left" timestamp="1599146635976">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1087" height="197" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1599104039893" />
-    <state width="1087" height="197" key="GridCell.Tab.1.right" timestamp="1599104039893">
+    <state width="932" height="197" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1599146635976" />
+    <state width="932" height="197" key="GridCell.Tab.1.right" timestamp="1599146635976">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1087" height="197" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1599104039893" />
+    <state width="932" height="197" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1599146635976" />
+    <state width="932" height="249" key="GridCell.Tab.2.bottom" timestamp="1599145808329">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="932" height="249" key="GridCell.Tab.2.bottom/0.0.1366.728@0.0.1366.728" timestamp="1599145808329" />
+    <state width="932" height="249" key="GridCell.Tab.2.center" timestamp="1599145808329">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="932" height="249" key="GridCell.Tab.2.center/0.0.1366.728@0.0.1366.728" timestamp="1599145808329" />
+    <state width="932" height="249" key="GridCell.Tab.2.left" timestamp="1599145808328">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="932" height="249" key="GridCell.Tab.2.left/0.0.1366.728@0.0.1366.728" timestamp="1599145808328" />
+    <state width="932" height="249" key="GridCell.Tab.2.right" timestamp="1599145808329">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="932" height="249" key="GridCell.Tab.2.right/0.0.1366.728@0.0.1366.728" timestamp="1599145808329" />
     <state x="508" y="51" key="Registry" timestamp="1599096957273">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="508" y="51" key="Registry/0.0.1366.728@0.0.1366.728" timestamp="1599096957273" />
-    <state x="214" y="5" key="SettingsEditor" timestamp="1599103719978">
+    <state x="214" y="0" key="SettingsEditor" timestamp="1599145289925">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="214" y="5" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1599103719978" />
+    <state x="214" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1599145289925" />
     <state x="394" y="187" key="com.intellij.ide.util.TipDialog" timestamp="1599095904366">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -148,9 +175,25 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="-90" y="76" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1599122265445" />
-    <state x="701" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1599125158220">
+    <state x="701" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1599144461687">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="701" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1599125158220" />
+    <state x="701" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1599144461687" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/springboot_first/src/main/java/cn/gsxt/controller/TestController.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/springboot_first/src/main/java/cn/gsxt/controller/JdbcController.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

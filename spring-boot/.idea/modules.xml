@@ -3,9 +3,13 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../../helloworld/helloworld/helloworld.iml" filepath="$PROJECT_DIR$/../../helloworld/helloworld/helloworld.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_par/springboot_java_api/service-common/service-common.iml" filepath="$PROJECT_DIR$/springboot_par/springboot_java_api/service-common/service-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-boot.iml" filepath="$PROJECT_DIR$/spring-boot.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-01/springboot-01.iml" filepath="$PROJECT_DIR$/springboot-01/springboot-01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_par/springboot_first/springboot_first.iml" filepath="$PROJECT_DIR$/springboot_par/springboot_first/springboot_first.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot_parent/springboot_hello/springboot_hello.iml" filepath="$PROJECT_DIR$/springboot_parent/springboot_hello/springboot_hello.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_par/springboot_java_api/springboot_java_api.iml" filepath="$PROJECT_DIR$/springboot_par/springboot_java_api/springboot_java_api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_par/springboot_par.iml" filepath="$PROJECT_DIR$/springboot_par/springboot_par.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot_parent/springboot_parent.iml" filepath="$PROJECT_DIR$/springboot_parent/springboot_parent.iml" />
     </modules>
   </component>

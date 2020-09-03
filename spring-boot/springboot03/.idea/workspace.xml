@@ -23,7 +23,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="$PROJECT_DIR$/../../../../software/maven/apache-maven-3.5.2-bin/apache-maven-3.5.2" />
+        <option name="mavenHome" value="D:/software/maven/apache-maven-3.5.2-bin/apache-maven-3.5.2" />
         <option name="userSettingsFile" value="D:\lyy\software\maven\apache-maven-3.5.2-bin\apache-maven-3.5.2\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
@@ -49,7 +49,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../springboot_par" />
     <property name="settings.editor.selected.configurable" value="project.propCompiler" />
   </component>
   <component name="RecentsManager">
@@ -102,6 +102,7 @@
       <workItem from="1598856268409" duration="57000" />
       <workItem from="1598856397730" duration="794000" />
       <workItem from="1598857393659" duration="23362000" />
+      <workItem from="1599145299991" duration="82000" />
     </task>
     <servers />
   </component>
@@ -121,10 +122,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="488" y="47" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1598864192686" />
-    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1599029540075">
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1599145380192">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1599029540075" />
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1599145380192" />
     <state width="1081" height="139" key="GridCell.Tab.0.bottom" timestamp="1599029544586">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
