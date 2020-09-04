@@ -3,10 +3,11 @@ server:
   #
   servlet:
     context-path: /lyy
+
 #配置数据源的连接
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/boot_test?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: 123
@@ -28,3 +29,14 @@ spring:
     useGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
 
+
+#配置mybatis的连接
+mybatis:
+  # 这个文件可以不用设置
+#  config-location: classpath:salMapperConfig.xml
+  mapper-locations: classpath:mapper/*.xml
+  # 配置 数据库的表的pojo对象之间的驼峰识别之类的
+  configuration:
+    map-underscore-to-camel-case: true
+  # mybatis设置别名  大小写不区分都可以使用
+  type-aliases-package: cn.gsxt.domain

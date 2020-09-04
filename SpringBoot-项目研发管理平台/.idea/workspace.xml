@@ -43,7 +43,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1599123804824</updated>
-      <workItem from="1599123808419" duration="674000" />
+      <workItem from="1599123808419" duration="744000" />
+      <workItem from="1599185637226" duration="1541000" />
     </task>
     <servers />
   </component>
@@ -51,6 +52,14 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="579" y="312" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1599189443352">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="579" y="312" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1599189443352" />
+    <state x="513" y="178" key="FileChooserDialogImpl" timestamp="1599189472087">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="513" y="178" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1599189472087" />
     <state x="0" y="11" key="SettingsEditor" timestamp="1599123838239">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

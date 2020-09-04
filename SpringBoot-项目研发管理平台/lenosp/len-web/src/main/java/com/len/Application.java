@@ -18,11 +18,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 @EnableWebMvc
 @SpringBootApplication
 @EnableTransactionManagement
-@ComponentScan({"com.len"})
 @MapperScan(basePackages = {"com.len.mapper"})
-@EnableAutoConfiguration(exclude = {
-        org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class
-})
 public class Application {
 
     public static void main(String[] args) {
