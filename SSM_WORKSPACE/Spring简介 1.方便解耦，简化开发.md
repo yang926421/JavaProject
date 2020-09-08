@@ -336,10 +336,6 @@ execution(* *..*.*(..))
 <aop:通知类型 method=“切面类中方法名” pointcut=“切点表达式"></aop:通知类型>
 ```
 
-![](C:/Users/Administrator/Desktop/%E4%B8%80%E4%BA%9B%E6%96%87%E4%BB%B6/ssm/03-%E5%B0%B1%E4%B8%9A%E8%AF%BE(2.1)-Spring/day03_%20AOP%E7%AE%80%E4%BB%8B/%E7%AC%94%E8%AE%B0/img/%E5%9B%BE%E7%89%875.png)
-
-##### 
-
 切点表达式的抽取
 
 当多个增强的切点表达式相同时,可以将切点表达式进行抽取,在增强中使用pointcut-ref来引用抽取后的切点表达式
