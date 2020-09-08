@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="springboot_sms_test" />
         <module name="service-common" />
         <module name="springboot_first" />
       </profile>
@@ -15,6 +16,7 @@
       <module name="springboot_first" target="1.8" />
       <module name="springboot_java_api" target="1.8" />
       <module name="springboot_par" target="1.8" />
+      <module name="springboot_sms_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -22,6 +24,7 @@
       <module name="service-common" options="-parameters" />
       <module name="springboot_first" options="-parameters" />
       <module name="springboot_java_api" options="-parameters" />
+      <module name="springboot_sms_test" options="-parameters" />
     </option>
   </component>
 </project>
