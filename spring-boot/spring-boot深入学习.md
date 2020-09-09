@@ -538,9 +538,11 @@ private String IDCARD_NO;
 )
 ```
 
-## 3.权限控制(redis来做)
+## 3.权限控制(redis来做)(重点可以整一下,面试可以谈)
 
+存储用户的状态(登录)
 
+集群  可以将数据存在redis中(数据共享)  不做集群 存在session
 
 ## 4.拦截器
 
@@ -1146,3 +1148,16 @@ EnableAutoConfiguration下面的配置中引入我们需要使用到的配置
 ![image-20200902224701177](spring-boot%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0.assets/image-20200902224701177.png)
 
 ## springboot提供很多技术的自动配置类,这些都是需要spring来进行维护的,可能是为了推广springboot
+
+
+
+
+
+
+
+![image-20200907231341626](spring-boot%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0.assets/image-20200907231341626.png)
+
+
+
+
+

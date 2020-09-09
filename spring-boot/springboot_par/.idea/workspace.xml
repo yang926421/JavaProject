@@ -24,7 +24,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="$PROJECT_DIR$/../../../../software/maven/apache-maven-3.5.2-bin/apache-maven-3.5.2" />
+        <option name="mavenHome" value="D:/software/maven/apache-maven-3.5.2-bin/apache-maven-3.5.2" />
         <option name="userSettingsFile" value="D:\lyy\software\maven\apache-maven-3.5.2-bin\apache-maven-3.5.2\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
@@ -51,8 +51,13 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+<<<<<<< HEAD
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../springboot-01" />
+    <property name="project.structure.last.edited" value="Modules" />
+=======
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
+>>>>>>> eadb3b5e21a68ca9a9fbae00739809635e7c402d
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
@@ -137,6 +142,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="543" y="22" key="#Notifications/0.0.1366.728@0.0.1366.728" timestamp="1599142167422" />
+    <state x="0" y="45" key="#Project_Structure" timestamp="1599224886482">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="0" y="45" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1599224886482" />
     <state x="172" y="95" key="#com.intellij.ide.util.MemberChooser" timestamp="1599103903241">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
