@@ -21,8 +21,7 @@ class SpringbootSmsTestApplicationTests {
     @Test
     void contextLoads() {
         //连接阿里云
-        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI4GDacxpgQNV3Nrpn26S8", "TBNTwzhguOWEBtSofj7HwcmsBrtMIP");
-        //构建一个客户端
+               //构建一个客户端
         IAcsClient client = new DefaultAcsClient(profile);
         //构建一个请求
         CommonRequest request = new CommonRequest();

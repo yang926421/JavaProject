@@ -17,8 +17,7 @@ import java.util.Map;
 public class SendMessageImpl implements SendMessage {
     @Override
     public boolean send(String PhoneNum, String TemplateCode, Map<String, Object> code) {
-        //连接阿里云
-        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI4GDacxpgQNV3Nrpn26S8", "TBNTwzhguOWEBtSofj7HwcmsBrtMIP");
+        //连接阿里云 代码在微信
         //构建一个客户端
         IAcsClient client = new DefaultAcsClient(profile);
         //构建一个请求
