@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="501d7347-790a-461d-ab15-265ffb4496f6" name="Default Changelist" comment="" />
+    <list default="true" id="adb6350b-8cd9-4dca-9ca7-80a94d7f418f" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,7 +18,7 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectId" id="1hIjKCC0AZewwNawsaOdqpcugNF" />
+  <component name="ProjectId" id="1hUqIf53zKvmSucUb3bWBf2NvNo" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="showExcludedFiles" value="true" />
@@ -30,34 +30,34 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
-  </component>
-  <component name="RunManager">
-    <configuration name="SpringbootSmsTestApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="springboot_sms_test" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.gsxt.SpringbootSmsTestApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="501d7347-790a-461d-ab15-265ffb4496f6" name="Default Changelist" comment="" />
-      <created>1599705433268</created>
+      <changelist id="adb6350b-8cd9-4dca-9ca7-80a94d7f418f" name="Default Changelist" comment="" />
+      <created>1600075939890</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1599705433268</updated>
-      <workItem from="1599705441012" duration="744000" />
-      <workItem from="1600076697473" duration="648000" />
+      <updated>1600075939890</updated>
+      <workItem from="1600075943044" duration="53000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="185" y="37" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600075988295">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="185" y="37" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1600075988295" />
+    <state x="511" y="137" key="FileChooserDialogImpl" timestamp="1600075994216">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="511" y="137" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1600075994216" />
   </component>
 </project>

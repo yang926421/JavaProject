@@ -590,7 +590,9 @@ hash变更的数据user name age 尤其是用户信息之类的,经常变动的�
 
 
 
-# redis实现乐观锁(watch)
+# redis实现乐观锁(watch)以及事务
+
+redis的事务不保证原子性    单条命令保证原子性
 
 ## watch
 
