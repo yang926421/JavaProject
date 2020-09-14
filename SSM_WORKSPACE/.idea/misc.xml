@@ -13,6 +13,7 @@
     <file type="web" url="file://$PROJECT_DIR$/spring_interceptor" />
     <file type="web" url="file://$PROJECT_DIR$/spring_lyy_mvc" />
     <file type="web" url="file://$PROJECT_DIR$/spring_mvc_web" />
+    <file type="web" url="file://$PROJECT_DIR$/spring_review" />
     <file type="web" url="file://$PROJECT_DIR$/spring_spring_mvc" />
     <file type="web" url="file://$PROJECT_DIR$/ssm_lyy_project" />
     <file type="web" url="file://$PROJECT_DIR$/ssm_lyy_project1" />
@@ -50,6 +51,7 @@
         <option value="$PROJECT_DIR$/maven_parent/pom.xml" />
         <option value="$PROJECT_DIR$/ssm_maven_parent/pom.xml" />
         <option value="$PROJECT_DIR$/ssm_maven_parent2/pom.xml" />
+        <option value="$PROJECT_DIR$/spring_review/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
