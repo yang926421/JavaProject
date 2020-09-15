@@ -7,7 +7,7 @@
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
        http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!--<bean  id="userDao" class="cn.gsxt.dao.userDao">-->
+    <!--<bean  id="userDao" class="cn.gsxt.mapper.userDao">-->
     <!--        <property name="str" value="123456"/>-->
     <!--        <property name="list">-->
     <!--            <list>-->

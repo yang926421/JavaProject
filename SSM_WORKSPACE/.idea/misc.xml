@@ -52,6 +52,7 @@
         <option value="$PROJECT_DIR$/ssm_maven_parent/pom.xml" />
         <option value="$PROJECT_DIR$/ssm_maven_parent2/pom.xml" />
         <option value="$PROJECT_DIR$/spring_review/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatis_review/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

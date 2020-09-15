@@ -1,6 +1,6 @@
 package cn.gsxt.service.impl;
 
-import cn.gsxt.dao.RoleDao;
+import cn.gsxt.mapper.RoleDao;
 import cn.gsxt.domain.Role;
 import cn.gsxt.service.RoleService;
 

@@ -1,9 +1,7 @@
 package cn.gsxt.service.impl;
 
-import cn.gsxt.dao.userDao;
+import cn.gsxt.mapper.userDao;
 import cn.gsxt.service.UserService;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class UserServiceImpl implements UserService {
     private userDao userDao;
@@ -15,7 +13,7 @@ public class UserServiceImpl implements UserService {
     public UserServiceImpl() {
     }
 
-    public UserServiceImpl(cn.gsxt.dao.userDao userDao) {
+    public UserServiceImpl(cn.gsxt.mapper.userDao userDao) {
         this.userDao = userDao;
     }
 

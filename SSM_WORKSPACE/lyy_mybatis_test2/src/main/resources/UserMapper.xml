@@ -7,7 +7,7 @@
 <!--    </select>-->
 <!--</mapper>-->
 
-<mapper namespace="cn.gsxt.dao.UserMapper">
+<mapper namespace="cn.gsxt.mapper.UserMapper">
     <select id="findAll" resultType="user">
         select * from user
     </select>

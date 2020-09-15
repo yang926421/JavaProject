@@ -19,6 +19,11 @@
       <module fileurl="file://$PROJECT_DIR$/maven_parent/maven_son/maven_son.iml" filepath="$PROJECT_DIR$/maven_parent/maven_son/maven_son.iml" />
       <module fileurl="file://$PROJECT_DIR$/ssm_maven_parent/maven_web/maven_web.iml" filepath="$PROJECT_DIR$/ssm_maven_parent/maven_web/maven_web.iml" />
       <module fileurl="file://$PROJECT_DIR$/ssm_maven_parent2/maven_web1/maven_web1.iml" filepath="$PROJECT_DIR$/ssm_maven_parent2/maven_web1/maven_web1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatis_review/mybatis-01/mybatis-01.iml" filepath="$PROJECT_DIR$/mybatis_review/mybatis-01/mybatis-01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatis_review/mybatis-02/mybatis-02.iml" filepath="$PROJECT_DIR$/mybatis_review/mybatis-02/mybatis-02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatis_review/mybatis-03/mybatis-03.iml" filepath="$PROJECT_DIR$/mybatis_review/mybatis-03/mybatis-03.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatis_review/mybatis-04/mybatis-04.iml" filepath="$PROJECT_DIR$/mybatis_review/mybatis-04/mybatis-04.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatis_review/mybatis_review.iml" filepath="$PROJECT_DIR$/mybatis_review/mybatis_review.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_aop_1/spring_aop_1.iml" filepath="$PROJECT_DIR$/spring_aop_1/spring_aop_1.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_exception/spring_exception.iml" filepath="$PROJECT_DIR$/spring_exception/spring_exception.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_inter/spring_inter.iml" filepath="$PROJECT_DIR$/spring_inter/spring_inter.iml" />

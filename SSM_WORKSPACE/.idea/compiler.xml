@@ -6,35 +6,39 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="lyy_mybatis_sql" />
-        <module name="maven_pojo1" />
-        <module name="maven_son" />
-        <module name="ssm_lyy_project1" />
-        <module name="spring_review" />
-        <module name="spring_jdbc" />
-        <module name="maven_web" />
-        <module name="spring_aop_1" />
-        <module name="spring_mvc_web" />
-        <module name="ssm_lyy_project" />
-        <module name="maven_web1" />
-        <module name="maven_pojo" />
-        <module name="lyy_mybatis_test2" />
-        <module name="maven_dao1" />
-        <module name="spring_inter" />
-        <module name="maven_service1" />
-        <module name="spring_tx" />
-        <module name="spring_lyy_mvc" />
-        <module name="maven_service" />
-        <module name="spring_ioc_1" />
-        <module name="maven_dao" />
-        <module name="itheima_spring_exception" />
-        <module name="lyy_mybatis_test" />
-        <module name="Mybatis_test_demo1" />
         <module name="spring_exception" />
-        <module name="spring_ioc_anno" />
-        <module name="spring_test" />
         <module name="ssm_web_all" />
+        <module name="maven_web1" />
+        <module name="maven_dao" />
+        <module name="spring_mvc_web" />
+        <module name="maven_son" />
+        <module name="maven_pojo" />
+        <module name="maven_pojo1" />
+        <module name="spring_test" />
+        <module name="spring_aop_1" />
+        <module name="spring_jdbc" />
+        <module name="spring_ioc_1" />
+        <module name="ssm_lyy_project" />
+        <module name="lyy_mybatis_test" />
+        <module name="maven_service" />
+        <module name="itheima_spring_exception" />
+        <module name="lyy_mybatis_sql" />
+        <module name="spring_ioc_anno" />
+        <module name="mybatis-04" />
+        <module name="maven_dao1" />
+        <module name="mybatis-03" />
+        <module name="maven_web" />
+        <module name="mybatis-01" />
+        <module name="lyy_mybatis_test2" />
+        <module name="Mybatis_test_demo1" />
+        <module name="spring_review" />
+        <module name="ssm_lyy_project1" />
+        <module name="spring_lyy_mvc" />
+        <module name="spring_inter" />
+        <module name="mybatis-02" />
         <module name="lyy_mybatis_anno" />
+        <module name="spring_tx" />
+        <module name="maven_service1" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -53,6 +57,11 @@
       <module name="maven_son" target="1.7" />
       <module name="maven_web" target="1.8" />
       <module name="maven_web1" target="1.8" />
+      <module name="mybatis-01" target="1.5" />
+      <module name="mybatis-02" target="1.5" />
+      <module name="mybatis-03" target="1.5" />
+      <module name="mybatis-04" target="1.5" />
+      <module name="mybatis_review" target="1.5" />
       <module name="Mybatis_test_demo1" target="1.7" />
       <module name="spring_aop_1" target="1.5" />
       <module name="spring_exception" target="1.7" />

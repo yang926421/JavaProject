@@ -31,7 +31,7 @@ spring程序开发的步骤
 ## spring配置文件
 
 ```
-<bean id="userDao" class="cn.gsxt.dao.impl.userDaoImpl"></bean>
+<bean id="userDao" class="cn.gsxt.mapper.impl.userDaoImpl"></bean>
 ```
 
 这种配置写法默认调用的是类中的无参构造函数，如果没有无参构造函数则不能创建成功
@@ -116,7 +116,7 @@ public class userDaoImpl implements userDao {
 set 方法
 
 ```
- <bean id="userDao" class="cn.gsxt.dao.impl.userDaoImpl"></bean>
+ <bean id="userDao" class="cn.gsxt.mapper.impl.userDaoImpl"></bean>
  <bean id="userService" class="cn.gsxt.service.impl.UserServiceImpl">
   	<property name="userDao" ref="userDao"></property>
  </bean>
@@ -127,7 +127,7 @@ set 方法
 有参构造
 
 ```
- <bean id="userDao" class="cn.gsxt.dao.impl.userDaoImpl"></bean>
+ <bean id="userDao" class="cn.gsxt.mapper.impl.userDaoImpl"></bean>
  <bean id="userService" class="cn.gsxt.service.impl.UserServiceImpl">
   	<constructor-arg name="userDao" ref="userDao"></constructor-arg>
   </bean>
@@ -423,7 +423,7 @@ xmlns:tx="http://www.springframework.org/schema/tx"
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <bean id="accountDao" class="cn.gsxt.dao.impl.AccountDaoImpl">
+    <bean id="accountDao" class="cn.gsxt.mapper.impl.AccountDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
 

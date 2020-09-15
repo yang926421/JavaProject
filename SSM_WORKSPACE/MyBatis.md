@@ -7,7 +7,9 @@
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2020062316463790.png)
 
 - **MyBatis 是一款优秀的持久层框架;**
-- 它支持自定义 SQL、存储过程以及高级映射。MyBatis 免除了几乎所有的 JDBC 代码以及设置参数和获取结果集的工作。MyBatis 可以通过简单的 XML 或注解来配置和映射原始类型、接口和 Java POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。
+- 它支持自定义 SQL、存储过程以及高级映射。
+- MyBatis 免除了几乎所有的 JDBC 代码以及设置参数和获取结果集的工作。
+- MyBatis 可以通过简单的 XML 或注解来配置和映射原始类型、接口和 Java POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。
 
 ### 1.2 持久化
 
@@ -27,7 +29,20 @@
 Dao层、Service层、Controller层
 
 - 完成持久化工作的代码块
+
 - 层界限十分明显
+
+  maven仓库获得mybatis
+
+  ```xml
+  <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis</artifactId>
+      <version>3.5.2</version>
+  </dependency>
+  ```
+
+  
 
 ### 1.4 为什么需要MyBatis
 
@@ -90,50 +105,69 @@ Dao层、Service层、Controller层
 
   ```xml
   <?xml version="1.0" encoding="UTF-8" ?>
-  <!DOCTYPE configuration
-          PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-          "http://mybatis.org/dtd/mybatis-3-config.dtd">
-  <!--configuration核心配置文件-->
+  <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
   <configuration>
+      <!--    引入properties文件-->
+      <properties resource="jdbc.properties"></properties>
       <environments default="development">
           <environment id="development">
-              <transactionManager type="JDBC"/>
+              <transactionManager type="JDBC"></transactionManager>
               <dataSource type="POOLED">
-                  <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                  <property name="url" value="jdbc:mysql://localhost:3306/mybatis?userSSL=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC"/>
-                  <property name="username" value="root"/>
-                  <property name="password" value="root"/>
+                  <property name="driver" value="${jdbc.driver}"/>
+                  <property name="url" value="${jdbc.url}"/>
+                  <property name="username" value="${jdbc.username}"/>
+                  <property name="password" value="${jdbc.password}"/>
               </dataSource>
           </environment>
       </environments>
+      <!-- 每一个mapper。xml文件都需要在mybatis的核心配置文件配置    -->
+      <mappers>
+          <mapper resource="mapper/UserMapper.xml"></mapper>
+      </mappers>
   </configuration>
   ```
 
 - 编写mybatis工具类
 
   ```java
-  //sqlSessionFactory --> sqlSession
+  package cn.gsxt.utils;
+  
+  import org.apache.ibatis.io.Resources;
+  import org.apache.ibatis.session.SqlSession;
+  import org.apache.ibatis.session.SqlSessionFactory;
+  import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+  
+  import java.io.IOException;
+  import java.io.InputStream;
+  
+  //sqlSessionFactory  --->  sqlSession
   public class MybatisUtils {
   
-      static SqlSessionFactory sqlSessionFactory = null;
+      private static SqlSessionFactory sqlSessionFactory;
   
-      static {
+      static{
           try {
-              //使用Mybatis第一步 ：获取sqlSessionFactory对象
               String resource = "mybatis-config.xml";
-              InputStream inputStream = Resources.getResourceAsStream(resource);
-              sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+              InputStream resourceAsStream = Resources.getResourceAsStream(resource);
+              //获取sqlSessionFactory创造器
+              sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
           } catch (IOException e) {
               e.printStackTrace();
           }
       }
   
-      //既然有了 SqlSessionFactory，顾名思义，我们可以从中获得 SqlSession 的实例.
-      // SqlSession 提供了在数据库执行 SQL 命令所需的所有方法。
+      //通过sqlSession来执行sql
+  
       public static SqlSession getSqlSession(){
-          return sqlSessionFactory.openSession();
+           SqlSession sqlSession = sqlSessionFactory.openSession(true);
+           return sqlSession;
       }
+  
+      //关闭sqlsession
+  
+  
   }
+  
   ```
 
 ### 2.3 编写代码
@@ -152,23 +186,17 @@ Dao层、Service层、Controller层
 
   ```xml
   <?xml version="1.0" encoding="UTF-8" ?>
-  <!DOCTYPE mapper
-          PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <!--namespace=绑定一个指定的Dao/Mapper接口-->
-  <mapper namespace="com.kuang.dao.UserDao">
-      <select id="getUserList" resultType="com.kuang.pojo.User">
-      select * from USER
-    </select>
+  <mapper namespace="cn.gsxt.mapper.UserMapper">
+      <select id="getUserList" resultType="cn.gsxt.module.User">
+          select * from user;
+      </select>
   </mapper>
+  
   ```
 
 - 测试
-
-  **注意点：**
-
-  org.apache.ibatis.binding.BindingException: Type interface com.kuang.dao.UserDao is not known to the MapperRegistry.
 
   **MapperRegistry是什么?**
 
@@ -222,20 +250,38 @@ namespace中的包名要和Dao/Mapper接口的包名一致
   1. 编写接口
 
      ```java
+     package cn.gsxt.mapper;
+     
+     import cn.gsxt.module.User;
+     
+     import java.util.List;
+     
      public interface UserMapper {
-         //查询所有用户
          public List<User> getUserList();
-         //插入用户
-         public void addUser(User user);
+     
+         // 增加用户
+         public void insertUser(User user);
      }
+     
      ```
 
   2. 编写对应的mapper中的sql语句
 
      ```xml
-     <insert id="addUser" parameterType="com.kuang.pojo.User">
-         insert into user (id,name,password) values (#{id}, #{name}, #{password})
-     </insert>
+     <?xml version="1.0" encoding="UTF-8" ?>
+     <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+     
+     <mapper namespace="cn.gsxt.mapper.UserMapper">
+         <select id="getUserList" resultType="cn.gsxt.module.User">
+             select * from user;
+         </select>
+     
+         <!--插入增加用户 -->
+         <insert id="insertUser" parameterType="cn.gsxt.module.User">
+             insert into user (`id`, `name`, `pwd`) values (#{id}, #{name}, #{pwd})
+         </insert>
+     </mapper>
+     
      ```
 
   3. 测试
@@ -255,7 +301,7 @@ namespace中的包名要和Dao/Mapper接口的包名一致
      }
      ```
 
-     **注意：增删改查一定要提交事务：**
+     **注意：增删改查一定要提交事务：*(可以默认提交事务  获取session的时候**sqlSessionFactory.openSession(true)**)**_
 
      ```java
      sqlSession.commit();
@@ -372,28 +418,32 @@ MyBatis默认的事务管理器就是JDBC ，连接池：POOLED
 
 1. 编写一个配置文件
 
-   db.properties
+   jdbc.properties
 
    ```properties
-   driver=com.mysql.cj.jdbc.Driver
-   url=jdbc:mysql://localhost:3306/mybatis?userSSL=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
-   username=root
-   password=root
+   jdbc.driver=com.mysql.jdbc.Driver
+   jdbc.url=jdbc:mysql://localhost:3306/ssmtest
+   #jdbc.url=jdbc:mysql://localhost:3306/ssmtest?useSSL=true&amp;useUnicode=true&amp;characterEncoding=UTF-8
+   jdbc.username=root
+   jdbc.password=123
    ```
 
 2. 在核心配置文件中引入
 
    ```xml
    <!--引用外部配置文件-->
-   <properties resource="db.properties">
-       <property name="username" value="root"/>
-       <property name="password" value="root"/>
+   <properties resource="jdbc.properties">
+        <property name="driver" value="${jdbc.driver}"/>
+                   <property name="url" value="${jdbc.url}"/>
+                   <property name="username" value="${jdbc.username}"/>
+                   <property name="password" value="${jdbc.password}"/>
+              
    </properties>
    ```
 
    - 可以直接引入外部文件
    - 可以在其中增加一些属性配置
-   - 如果两个文件有同一个字段，优先使用外部配置文件的
+   - 如果两个文件有同一个字段，xml文件中的先使用,随后被覆盖.外部配置文件的
 
 ### 4. 类型别名 typeAliases
 
@@ -403,8 +453,8 @@ MyBatis默认的事务管理器就是JDBC ，连接池：POOLED
 
   ```xml
   <!--可以给实体类起别名-->
-  <typeAliases>
-      <typeAlias type="com.kuang.pojo.User" alias="User"/>
+   <typeAliases>
+  <typeAlias type="cn.gsxt.module.User" alias="user"/>
   </typeAliases>
   ```
 
@@ -412,7 +462,7 @@ MyBatis默认的事务管理器就是JDBC ，连接池：POOLED
 
   ```xml
   <typeAliases>
-      <package name="com.kuang.pojo"/>
+      <package name="cn.gsxt.module"/>
   </typeAliases>
   ```
 
@@ -433,7 +483,11 @@ MyBatis默认的事务管理器就是JDBC ，连接池：POOLED
 
 这是 MyBatis 中极为重要的调整设置，它们会改变 MyBatis 的运行时行为。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2020062316474822.png)
+开启缓存和懒加载以及日志设置
+
+![1600147304360](assets/1600147304360.png)
+
+![1600147335260](assets/1600147335260.png)
 
 ### 6. 其他配置
 
@@ -473,6 +527,8 @@ MapperRegistry：注册绑定我们的Mapper文件；
 
 方式三：使用包扫描进行注入
 
+![1600152965294](assets/1600152965294.png)
+
 ```xml
 <mappers>
     <package name="com.kuang.dao"/>
@@ -481,7 +537,7 @@ MapperRegistry：注册绑定我们的Mapper文件；
 
 ### 8. 作用域和生命周期
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200623164809990.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0RERERlbmdf,size_16,color_FFFFFF,t_70)
+![1600153809377](assets/1600153809377.png)
 
 声明周期和作用域是至关重要的，因为错误的使用会导致非常严重的**并发问题**。
 
@@ -494,7 +550,7 @@ MapperRegistry：注册绑定我们的Mapper文件；
 
 - 说白了就可以想象为：数据库连接池
 - SqlSessionFactory一旦被创建就应该在应用的运行期间一直存在，**没有任何理由丢弃它或重新创建一个实例。**
-- 因此SqlSessionFactory的最佳作用域是应用作用域（ApplocationContext）。
+- 因此SqlSessionFactory的最佳作用域是应用作用域（ApplicationContext）。
 - 最简单的就是使用**单例模式**或静态单例模式。
 
 **SqlSession：**
@@ -505,7 +561,7 @@ MapperRegistry：注册绑定我们的Mapper文件；
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200623164833872.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0RERERlbmdf,size_16,color_FFFFFF,t_70)
 
-## 5、解决属性名和字段名不一致的问题
+## 5、(ResultMap)解决属性名和字段名不一致的问题
 
 ### 1. 问题
 
@@ -540,22 +596,20 @@ MapperRegistry：注册绑定我们的Mapper文件；
 
 结果集映射
 
-> id name pwd
+> 数据库字段    id name pwd
 >
-> id name password
+> 实体类字段                 id username password
 
 ```xml
-<!--结果集映射-->
-<resultMap id="UserMap" type="User">
-    <!--column数据库中的字段，property实体类中的属性-->
-    <result column="id" property="id"></result>
-    <result column="name" property="name"></result>
-    <result column="pwd" property="password"></result>
-</resultMap>
-
-<select id="getUserList" resultMap="UserMap">
-    select * from USER
-</select>
+ <!--  结果集映射  -->
+    <resultMap id="UserMap" type="user">
+        <result column="id" property="id"/>
+        <result column="name" property="username"/>
+        <result column="pwd" property="password"/>
+    </resultMap>
+    <select id="findUserById" parameterType="int" resultMap="UserMap">
+        select * from user where id=#{id}
+    </select>
 ```
 
 - `resultMap` 元素是 MyBatis 中最重要最强大的元素。
@@ -595,7 +649,7 @@ MapperRegistry：注册绑定我们的Mapper文件；
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2020062316493391.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0RERERlbmdf,size_16,color_FFFFFF,t_70)
 
-### 6.2 Log4j
+### 6.2 Log4j(可以结合自己博客园的文章)
 
 什么是Log4j？
 
@@ -647,9 +701,13 @@ MapperRegistry：注册绑定我们的Mapper文件；
 
 **Log4j简单使用**
 
+```
+//在日志中进行自定义 加输出语句
+```
+
 1. 在要使用Log4j的类中，导入包 import org.apache.log4j.Logger;
 
-2. 日志对象，参数为当前类的class对象
+2. 获取日志对象，参数为当前类的class对象
 
    ```java
    Logger logger = Logger.getLogger(UserDaoTest.class);
@@ -677,6 +735,7 @@ MapperRegistry：注册绑定我们的Mapper文件；
 
 ```sql
 SELECT * from user limit startIndex,pageSize 
+select * from user limit 3;//第一个参数不写 默认从0开始 [0-n-1]
 ```
 
 **使用MyBatis实现分页，核心SQL**
@@ -753,6 +812,87 @@ SELECT * from user limit startIndex,pageSize
 ### 7.3 分页插件
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200623164958936.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0RERERlbmdf,size_16,color_FFFFFF,t_70)
+
+
+
+MyBatis可以使用第三方的插件来对功能进行扩展，分页助手PageHelper是将分页的复杂操作进行封装，使用简单的方式即可获得分页的相关数据
+
+开发步骤：
+
+①导入通用PageHelper的坐标
+
+②在mybatis核心配置文件中配置PageHelper插件
+
+③测试分页数据获取
+
+
+
+##### ①导入通用PageHelper坐标
+
+```xml
+<!-- 分页助手 -->
+<dependency>
+    <groupId>com.github.pagehelper</groupId>
+    <artifactId>pagehelper</artifactId>
+    <version>3.7.5</version>
+</dependency>
+<dependency>
+    <groupId>com.github.jsqlparser</groupId>
+    <artifactId>jsqlparser</artifactId>
+    <version>0.9.1</version>
+</dependency>
+
+```
+
+##### ②在mybatis核心配置文件中配置PageHelper插件
+
+```xml
+<!-- 注意：分页助手的插件  配置在通用馆mapper之前 -->
+  <!--    配置分页助手插件-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <!--            不同的数据库使用的分页都不一样-->
+            <property name="dialect" value="mysql"/>
+        </plugin>
+    </plugins>
+```
+
+##### ③测试分页代码实现
+
+```java
+  // 在分页组件的加持下
+    @Test
+    public void test2(){
+        //获取sqlSession对象
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        //获取mapper映射文件 执行sql
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        PageHelper.startPage(1, 2);
+        List<User> userList = mapper.getUserList();
+        for (User user : userList) {
+            System.out.println(user);
+        }
+        //关闭sqlSession
+        sqlSession.close();
+
+    }
+```
+
+**获得分页相关的其他参数**
+
+```java
+//其他分页的数据
+PageInfo<User> pageInfo = new PageInfo<User>(select);
+System.out.println("总条数："+pageInfo.getTotal());
+System.out.println("总页数："+pageInfo.getPages());
+System.out.println("当前页："+pageInfo.getPageNum());
+System.out.println("每页显示长度："+pageInfo.getPageSize());
+System.out.println("是否第一页："+pageInfo.isIsFirstPage());
+System.out.println("是否最后一页："+pageInfo.isIsLastPage());
+
+```
+
+#### 
 
 ## 8、使用注解开发
 

@@ -1,6 +1,6 @@
 package cn.gsxt.service;
 
-import cn.gsxt.dao.UserMapper;
+import cn.gsxt.mapper.UserMapper;
 //import cn.gsxt.dao.impl.UserMapperImpl;
 import cn.gsxt.domain.User;
 import org.apache.ibatis.io.Resources;
@@ -9,7 +9,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.InputStream;
-import java.util.List;
 
 public class UserService {
     public static void main(String[] args) throws Exception {

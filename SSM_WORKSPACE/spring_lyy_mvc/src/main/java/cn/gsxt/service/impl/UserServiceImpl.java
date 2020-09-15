@@ -1,7 +1,7 @@
 package cn.gsxt.service.impl;
 
-import cn.gsxt.dao.RoleDao;
-import cn.gsxt.dao.UserDao;
+import cn.gsxt.mapper.RoleDao;
+import cn.gsxt.mapper.UserDao;
 import cn.gsxt.domain.Role;
 import cn.gsxt.domain.User;
 import cn.gsxt.service.UserService;

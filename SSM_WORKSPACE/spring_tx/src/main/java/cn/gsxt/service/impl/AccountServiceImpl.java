@@ -22,7 +22,7 @@
 package cn.gsxt.service.impl;
 
 
-import cn.gsxt.dao.AccountDao;
+import cn.gsxt.mapper.AccountDao;
 import cn.gsxt.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

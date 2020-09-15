@@ -1,6 +1,6 @@
 package cn.gsxt.test;
 
-import cn.gsxt.dao.UserMapper1;
+import cn.gsxt.mapper.UserMapper1;
 import cn.gsxt.domain.User;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -8,12 +8,9 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

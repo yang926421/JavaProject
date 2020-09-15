@@ -17,7 +17,7 @@
     </bean>
 
     <!--配置Dao-->
-    <bean id="userDao" class="cn.gsxt.dao.impl.UserDaoImpl"></bean>
+    <bean id="userDao" class="cn.gsxt.mapper.impl.UserDaoImpl"></bean>
 
     <!--配置service-->
     <bean id="userService" class="cn.gsxt.service.impl.UserServiceImpl">

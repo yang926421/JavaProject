@@ -1,15 +1,12 @@
 package cn.gsxt.service.impl;
 
-import cn.gsxt.dao.UserDao;
+import cn.gsxt.mapper.UserDao;
 import cn.gsxt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 
 
 //<bean id="userService" class="cn.gsxt.service.impl.UserServiceImpl" ></bean>

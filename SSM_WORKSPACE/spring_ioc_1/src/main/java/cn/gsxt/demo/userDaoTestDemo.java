@@ -1,6 +1,6 @@
 package cn.gsxt.demo;
 
-import cn.gsxt.dao.userDao;
+import cn.gsxt.mapper.userDao;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

@@ -24,7 +24,7 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <!--    <bean id="accountDao" class="cn.gsxt.dao.impl.AccountDaoImpl">-->
+    <!--    <bean id="accountDao" class="cn.gsxt.mapper.impl.AccountDaoImpl">-->
     <!--        <property name="jdbcTemplate" ref="jdbcTemplate"/>-->
     <!--</bean>-->
 

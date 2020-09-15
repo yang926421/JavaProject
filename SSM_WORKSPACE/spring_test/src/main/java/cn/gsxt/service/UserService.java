@@ -1,7 +1,7 @@
 package cn.gsxt.service;
 
 
-import cn.gsxt.dao.userDao;
+import cn.gsxt.mapper.userDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
