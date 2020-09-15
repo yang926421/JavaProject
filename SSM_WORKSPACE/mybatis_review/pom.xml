@@ -15,6 +15,7 @@
         <module>mybatis-02</module>
         <module>mybatis-03</module>
         <module>mybatis-04</module>
+        <module>mybatis-05</module>
     </modules>
 
     <!-- 导入依赖   -->
@@ -71,6 +72,13 @@
             <groupId>com.github.jsqlparser</groupId>
             <artifactId>jsqlparser</artifactId>
             <version>0.9.1</version>
+        </dependency>
+        <!-- lombok插件  省略get  set  构造器等   -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.10</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

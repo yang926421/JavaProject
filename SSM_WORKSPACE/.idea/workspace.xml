@@ -21,7 +21,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="$PROJECT_DIR$/../../../software/maven/apache-maven-3.5.2-bin/apache-maven-3.5.2" />
+        <option name="mavenHome" value="D:/software/maven/apache-maven-3.5.2-bin/apache-maven-3.5.2" />
         <option name="userSettingsFile" value="D:\lyy\software\maven\apache-maven-3.5.2-bin\apache-maven-3.5.2\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
@@ -42,15 +42,19 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mybatis_review/mybatis-04/src/main/java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mybatis_review/mybatis-05/src/main/java" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\mybatis_review\mybatis-02\src\main\resources\cn.gsxt" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\java\javaProject\SSM_WORKSPACE\mybatis_review\mybatis-05\src\main\java" />
+      <recent name="D:\java\javaProject\SSM_WORKSPACE\mybatis_review\mybatis-05\src\main\resources" />
+      <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\mybatis_review\mybatis-04\src\main\java" />
+      <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\mybatis_review\mybatis-04\src\main\resources" />
+      <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\mybatis_review\mybatis-03\src" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="cn.gsxt.mapper" />
@@ -58,33 +62,13 @@
       <recent name="cn.gsxt.service.impl" />
       <recent name="cn.gsxt.service" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\mybatis_review\mybatis-04\src\main\java" />
-      <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\mybatis_review\mybatis-04\src\main\resources" />
-      <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\mybatis_review\mybatis-03\src" />
-      <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\mybatis_review\mybatis-02\src\main\resources\cn\gsxt\mapper" />
-      <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\mybatis_review\mybatis-02\src\main\resources" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\mybatis_review\mybatis-02\src\main\resources\cn.gsxt" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserDaoTest.test2">
-    <configuration name="UserDaoTest.getUserByLimit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="mybatis-04" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cn.gsxt.mapper.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="cn.gsxt.mapper" />
-      <option name="MAIN_CLASS_NAME" value="cn.gsxt.mapper.UserDaoTest" />
-      <option name="METHOD_NAME" value="getUserByLimit" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserDaoTest.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="mybatis-04" />
+  <component name="RunManager" selected="JUnit.UserDaoTest.test5">
+    <configuration name="UserDaoTest.test1 (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mybatis-05" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cn.gsxt.mapper.*" />
@@ -99,8 +83,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserDaoTest.test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="mybatis-04" />
+    <configuration name="UserDaoTest.test2 (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mybatis-05" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cn.gsxt.mapper.*" />
@@ -115,8 +99,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserDaoTest.test3 (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="mybatis-03" />
+    <configuration name="UserDaoTest.test3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mybatis-05" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cn.gsxt.mapper.*" />
@@ -131,8 +115,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserDaoTest.testLog4j" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="mybatis-04" />
+    <configuration name="UserDaoTest.test4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mybatis-05" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cn.gsxt.mapper.*" />
@@ -141,7 +125,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="cn.gsxt.mapper" />
       <option name="MAIN_CLASS_NAME" value="cn.gsxt.mapper.UserDaoTest" />
-      <option name="METHOD_NAME" value="testLog4j" />
+      <option name="METHOD_NAME" value="test4" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserDaoTest.test5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mybatis-05" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.gsxt.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.gsxt.mapper" />
+      <option name="MAIN_CLASS_NAME" value="cn.gsxt.mapper.UserDaoTest" />
+      <option name="METHOD_NAME" value="test5" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -149,11 +149,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserDaoTest.test2" />
-        <item itemvalue="JUnit.UserDaoTest.getUserByLimit" />
-        <item itemvalue="JUnit.UserDaoTest.testLog4j" />
-        <item itemvalue="JUnit.UserDaoTest.test1" />
-        <item itemvalue="JUnit.UserDaoTest.test3 (1)" />
+        <item itemvalue="JUnit.UserDaoTest.test5" />
+        <item itemvalue="JUnit.UserDaoTest.test4" />
+        <item itemvalue="JUnit.UserDaoTest.test3" />
+        <item itemvalue="JUnit.UserDaoTest.test2 (1)" />
+        <item itemvalue="JUnit.UserDaoTest.test1 (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -177,14 +177,18 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="364" y="45" key="#Notifications" timestamp="1600178476827">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="364" y="45" key="#Notifications/0.0.1366.728@0.0.1366.728" timestamp="1600178476827" />
     <state x="326" y="22" key="#Project_Structure" timestamp="1600163918907">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="326" y="22" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1600163918907" />
-    <state x="872" y="95" key="#com.intellij.ide.util.MemberChooser" timestamp="1600154577811">
+    <state x="872" y="95" key="#com.intellij.ide.util.MemberChooser" timestamp="1600178641409">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="872" y="95" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1600154577811" />
+    <state x="872" y="95" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1600178641409" />
     <state x="464" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600094291953">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -193,37 +197,68 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="514" y="125" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1600136225166" />
-    <state width="1323" height="256" key="GridCell.Tab.0.bottom" timestamp="1600164050475">
+    <state width="1088" height="2" key="GridCell.Tab.0.bottom" timestamp="1600182543186">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="256" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1600164050475" />
-    <state width="1323" height="256" key="GridCell.Tab.0.center" timestamp="1600164050475">
+    <state width="1088" height="2" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1600182543186" />
+    <state width="1088" height="2" key="GridCell.Tab.0.center" timestamp="1600182543186">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="256" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1600164050475" />
-    <state width="1323" height="256" key="GridCell.Tab.0.left" timestamp="1600164050475">
+    <state width="1088" height="2" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1600182543186" />
+    <state width="1088" height="2" key="GridCell.Tab.0.left" timestamp="1600182543185">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="256" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1600164050475" />
-    <state width="1323" height="256" key="GridCell.Tab.0.right" timestamp="1600164050475">
+    <state width="1088" height="2" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1600182543185" />
+    <state width="1088" height="2" key="GridCell.Tab.0.right" timestamp="1600182543186">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="256" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1600164050475" />
-    <state x="0" y="11" key="SettingsEditor" timestamp="1600136240623">
+    <state width="1088" height="2" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1600182543186" />
+    <state width="637" height="2" key="GridCell.Tab.1.bottom" timestamp="1600181040034">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="0" y="11" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1600136240623" />
+    <state width="637" height="2" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1600181040034" />
+    <state width="637" height="2" key="GridCell.Tab.1.center" timestamp="1600181040034">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="637" height="2" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1600181040034" />
+    <state width="637" height="2" key="GridCell.Tab.1.left" timestamp="1600181040034">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="637" height="2" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1600181040034" />
+    <state width="637" height="2" key="GridCell.Tab.1.right" timestamp="1600181040034">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="637" height="2" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1600181040034" />
+    <state x="0" y="11" key="SettingsEditor" timestamp="1600177914147">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="0" y="11" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1600177914147" />
     <state x="414" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1600095513437">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="414" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1600095513437" />
-    <state x="115" y="96" key="new project wizard" timestamp="1600157963376">
+    <state x="115" y="96" key="new project wizard" timestamp="1600177895966">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="115" y="96" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1600157963376" />
+    <state x="115" y="96" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1600177895966" />
+    <state x="820" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1600182918910">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="820" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1600182918910" />
     <state x="392" y="46" key="spring file set editor" timestamp="1600090635087">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="392" y="46" key="spring file set editor/0.0.1366.728@0.0.1366.728" timestamp="1600090635087" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/mybatis_review/mybatis-05/src/test/java/cn/gsxt/mapper/UserDaoTest.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
