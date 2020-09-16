@@ -898,6 +898,8 @@ System.out.println("是否最后一页："+pageInfo.isIsLastPage());
 
 ## 8、使用注解开发
 
+![image-20200915215011473](MyBatis.assets/image-20200915215011473.png)
+
 ### 8.1 面向接口开发
 
 **三个面向区别**
@@ -919,7 +921,7 @@ System.out.println("是否最后一页："+pageInfo.isIsLastPage());
 
    ```xml
    <mappers>
-       <mapper class="com.kuang.dao.UserMapper"/>
+           <package name="cn.gsxt.mapper"/>
    </mappers>
    ```
 
@@ -947,8 +949,11 @@ int deleteUser(@Param("uid") int id);
 - 引用类型不需要加
 - 如果只有一个基本类型的话，可以忽略，但是建议大家都加上
 - 我们在SQL中引用的就是我们这里的@Param()中设定的属性名
+- ![image-20200915225059093](MyBatis.assets/image-20200915225059093.png)
 
-**#{} 和 ${}**
+## **#{} 和 ${}的区别**
+
+#{}预编译 防止sql注入
 
 ## 9、Lombok
 
