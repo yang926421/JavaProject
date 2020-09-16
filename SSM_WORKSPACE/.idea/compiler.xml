@@ -6,8 +6,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="mybatis-07" />
-        <module name="spring_exception" />
         <module name="ssm_web_all" />
         <module name="maven_web1" />
         <module name="maven_dao" />
@@ -16,7 +14,6 @@
         <module name="maven_pojo" />
         <module name="maven_pojo1" />
         <module name="spring_test" />
-        <module name="mybatis-06" />
         <module name="spring_aop_1" />
         <module name="spring_jdbc" />
         <module name="Mybatis_test_demo1" />
@@ -25,23 +22,27 @@
         <module name="maven_service" />
         <module name="itheima_spring_exception" />
         <module name="lyy_mybatis_sql" />
+        <module name="mybatis-09" />
         <module name="mybatis-08" />
-        <module name="spring_ioc_anno" />
-        <module name="mybatis-04" />
+        <module name="mybatis-07" />
+        <module name="mybatis-06" />
         <module name="mybatis-05" />
-        <module name="maven_dao1" />
+        <module name="mybatis-04" />
         <module name="mybatis-03" />
         <module name="maven_web" />
         <module name="mybatis-01" />
         <module name="lyy_mybatis_test2" />
+        <module name="spring_ioc_anno" />
+        <module name="maven_service1" />
         <module name="spring_review" />
-        <module name="ssm_lyy_project1" />
         <module name="spring_lyy_mvc" />
+        <module name="ssm_lyy_project1" />
+        <module name="maven_dao1" />
         <module name="spring_inter" />
         <module name="mybatis-02" />
         <module name="lyy_mybatis_anno" />
         <module name="spring_tx" />
-        <module name="maven_service1" />
+        <module name="spring_exception" />
         <module name="spring_ioc_1" />
       </profile>
     </annotationProcessing>
@@ -69,6 +70,7 @@
       <module name="mybatis-06" target="1.5" />
       <module name="mybatis-07" target="1.5" />
       <module name="mybatis-08" target="1.5" />
+      <module name="mybatis-09" target="1.5" />
       <module name="mybatis_review" target="1.5" />
       <module name="Mybatis_test_demo1" target="1.7" />
       <module name="spring_aop_1" target="1.5" />

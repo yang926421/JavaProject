@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--    引入properties文件-->
+    <properties resource="jdbc.properties"></properties>
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+        <!-- 开启数据库和实体的驼峰命名转换       -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+    <!-- 可以配置扫描包   -->
+<!--    <typeAliases>-->
+<!--        <typeAlias type="cn.gsxt.module.Teacher" alias="teacher"/>-->
+<!--        <typeAlias type="cn.gsxt.module.Student" alias="Student"/>-->
+
+<!--    </typeAliases>-->
+    <typeAliases>
+        <package name="cn.gsxt.module"/>
+    </typeAliases>
+    <!--    配置分页助手插件-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <!--            不同的数据库使用的分页都不一样-->
+            <property name="dialect" value="mysql"/>
+        </plugin>
+    </plugins>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <package name="cn.gsxt.mapper"/>
+    </mappers>
+</configuration>
