@@ -1,3 +1,5 @@
+
+
 # MyBatis
 
 ## 1、简介
@@ -1401,3 +1403,8 @@ CREATE TABLE `mybatis`.`blog`  (
    ```xml
    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
    ```
+
+
+
+
+
