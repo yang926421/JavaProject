@@ -1007,7 +1007,6 @@ public class User {
     private String name;
     private String password;
 }
-```
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200623165052167.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0RERERlbmdf,size_16,color_FFFFFF,t_70)
 
@@ -1015,7 +1014,7 @@ public class User {
 
 > 多个学生一个老师；
 
-```sql
+​```sql
 alter table student ADD CONSTRAINT fk_tid foreign key (tid) references teacher(id
 ```
 
@@ -1036,37 +1035,38 @@ alter table student ADD CONSTRAINT fk_tid foreign key (tid) references teacher(i
         1. 查询所有的学生信息
         2. 根据查询出来的学生的tid寻找特定的老师 (子查询)
     -->
-<select id="getStudent" resultMap="StudentTeacher">
-    select * from student
-</select>
-<resultMap id="StudentTeacher" type="student">
-    <result property="id" column="id"/>
-    <result property="name" column="name"/>
-    <!--复杂的属性，我们需要单独出来 对象：association 集合：collection-->
-    <collection property="teacher" column="tid" javaType="teacher" select="getTeacher"/>
-</resultMap>
-<select id="getTeacher" resultType="teacher">
-    select * from teacher where id = #{id}
-</select>
+ <resultMap id="studentTea" type="student">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+     
+     <!--  teacher复杂的属性  -->这块儿的select是调用select  可以调用其他接口中的方法, 比如可以调用
+     TeacherMapper的getTeacher方法  Teachermapper.xml中具体实现
+        <association property="teacher" column="tid" javaType="Teacher" select="getTeacher"/>
+    </resultMap>
+    <select id="findAllStudent" resultMap="studentTea">
+        select * from student
+    </select>
+
+    <select id="getTeacher" resultType="teacher">
+        select * from teacher where id=#{id}
+    </select>
 ```
 
 ### 3.按照结果嵌套处理
 
 ```xml
-    <!--按照结果进行查询-->
-    <select id="getStudent2" resultMap="StudentTeacher2">
-        select s.id sid , s.name sname, t.name tname
-        from student s,teacher t
-        where s.tid=t.id
-    </select>
-    <!--结果封装，将查询出来的列封装到对象属性中-->
-    <resultMap id="StudentTeacher2" type="student">
-        <result property="id" column="sid"/>
-        <result property="name" column="sname"/>
+<!--结果封装，将查询出来的列封装到对象属性中-->   
+<resultMap id="studentTea2" type="student">
+        <id column="sid" property="id"/>
+        <result column="sname" property="name"/>
         <association property="teacher" javaType="teacher">
-            <result property="name" column="tname"></result>
+            <result property="name" column="tname"/>
         </association>
     </resultMap>
+    <select id="findAllStudent2" resultMap="studentTea2">
+        select s.id sid, s.name sname , t.name tname from student s, teacher t where s.tid = t.id
+    </select>
+   
 ```
 
 回顾Mysql多对一查询方式:
@@ -1106,24 +1106,27 @@ public class Teacher {
 
 ```xml
 <!--按结果嵌套查询-->
-<select id="getTeacher" resultMap="StudentTeacher">
-    SELECT s.id sid, s.name sname,t.name tname,t.id tid FROM student s, teacher t
-    WHERE s.tid = t.id AND tid = #{tid}
-</select>
-<resultMap id="StudentTeacher" type="Teacher">
-    <result property="id" column="tid"/>
-    <result property="name" column="tname"/>
-    <!--复杂的属性，我们需要单独处理 对象：association 集合：collection
-    javaType=""指定属性的类型！
-    集合中的泛型信息，我们使用ofType获取
-    -->
-    <collection property="students" ofType="Student">
-        <result property="id" column="sid"/>
-        <result property="name" column="sname"/>
-        <result property="tid" column="tid"/>
-    </collection>
-</resultMap>
+ <resultMap id="TeacherAndStudent" type="Teacher">
+        <result column="tid" property="id"/>
+        <result column="tname" property="name"/>
+        <!--复杂的属性，我们需要单独处理 对象：association 集合：collection
+   javaType=""指定属性的类型！
+   因为我们使用的是List<Student>集合中的泛型信息，我们使用ofType获取
+   -->
+        <collection property="students" ofType="Student">
+            <result column="sid" property="id"/>
+            <result column="sname" property="name"/>
+            <result column="tid" property="tid"/>
+        </collection>
+    </resultMap>
+    <select id="findAllTeacherAndStudent" resultMap="TeacherAndStudent">
+        select t.id tid, t.name tname, s.name sname, s.id sid from teacher t , student s where t.id = s.tid and t.id=#{tid}
+    </select>
 ```
+
+**按照子查询处理**
+
+![1600244257065](assets/1600244257065.png)
 
 ### 小结
 
@@ -1209,7 +1212,29 @@ CREATE TABLE `mybatis`.`blog`  (
 
 ### choose (when, otherwise)
 
-### trim、where、set
+choose可以选择所有when中的满足的条件 只要满足第一个 就不会再拼接,
+
+如果choose都不满足 则会执行 otherwise
+
+![1600251466608](assets/1600251466608.png)
+
+
+
+
+
+### trim、where、set(trim 我们一般where 和set就够用了)
+
+sql拼接的时候where会自动监测第一个拼接的子语句是否是第一个  如果是第一个且含有or and 之类的 会自动将and  or去除  
+
+![1600250697999](assets/1600250697999.png)
+
+![1600250863891](assets/1600250863891.png)
+
+#### set的作用
+
+![1600252115050](assets/1600252115050.png)
+
+所谓的动态sql,本质上还是sql语句,只是我们可以在sql层面,去执行一个逻辑代码
 
 ### SQL片段
 

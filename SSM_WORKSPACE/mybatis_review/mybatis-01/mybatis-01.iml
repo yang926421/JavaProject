@@ -18,6 +18,6 @@
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.12" level="project" />
     <orderEntry type="library" name="Maven: com.github.pagehelper:pagehelper:3.7.5" level="project" />
     <orderEntry type="library" name="Maven: com.github.jsqlparser:jsqlparser:0.9.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.projectlombok:lombok:1.18.10" level="project" />
+    <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.10" level="project" />
   </component>
 </module>
