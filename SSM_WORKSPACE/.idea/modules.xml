@@ -29,6 +29,10 @@
       <module fileurl="file://$PROJECT_DIR$/mybatis_review/mybatis-08/mybatis-08.iml" filepath="$PROJECT_DIR$/mybatis_review/mybatis-08/mybatis-08.iml" />
       <module fileurl="file://$PROJECT_DIR$/mybatis_review/mybatis-09/mybatis-09.iml" filepath="$PROJECT_DIR$/mybatis_review/mybatis-09/mybatis-09.iml" />
       <module fileurl="file://$PROJECT_DIR$/mybatis_review/mybatis_review.iml" filepath="$PROJECT_DIR$/mybatis_review/mybatis_review.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-review/spring-ioc-01/spring-ioc-01.iml" filepath="$PROJECT_DIR$/spring-review/spring-ioc-01/spring-ioc-01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-review/spring-ioc-02/spring-ioc-02.iml" filepath="$PROJECT_DIR$/spring-review/spring-ioc-02/spring-ioc-02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-review/spring-proxy-03/spring-proxy-03.iml" filepath="$PROJECT_DIR$/spring-review/spring-proxy-03/spring-proxy-03.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-review/spring-review.iml" filepath="$PROJECT_DIR$/spring-review/spring-review.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_aop_1/spring_aop_1.iml" filepath="$PROJECT_DIR$/spring_aop_1/spring_aop_1.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_exception/spring_exception.iml" filepath="$PROJECT_DIR$/spring_exception/spring_exception.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_inter/spring_inter.iml" filepath="$PROJECT_DIR$/spring_inter/spring_inter.iml" />
@@ -37,7 +41,6 @@
       <module fileurl="file://$PROJECT_DIR$/spring_jdbc/spring_jdbc.iml" filepath="$PROJECT_DIR$/spring_jdbc/spring_jdbc.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_lyy_mvc/spring_lyy_mvc.iml" filepath="$PROJECT_DIR$/spring_lyy_mvc/spring_lyy_mvc.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_mvc_web/spring_mvc_web.iml" filepath="$PROJECT_DIR$/spring_mvc_web/spring_mvc_web.iml" />
-      <module fileurl="file://$PROJECT_DIR$/spring_review/spring_review.iml" filepath="$PROJECT_DIR$/spring_review/spring_review.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_test/spring_test.iml" filepath="$PROJECT_DIR$/spring_test/spring_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_tx/spring_tx.iml" filepath="$PROJECT_DIR$/spring_tx/spring_tx.iml" />
       <module fileurl="file://$PROJECT_DIR$/ssm_lyy_project/ssm_lyy_project.iml" filepath="$PROJECT_DIR$/ssm_lyy_project/ssm_lyy_project.iml" />

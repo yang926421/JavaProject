@@ -12,7 +12,7 @@
         <property name="name" value="lyy2"></property>
         <property name="password" value="1234567"></property>
     </bean>
-    <bean id="userDao" class="cn.gsxt.dao.impl.userDaoImpl" scope="singleton"
+    <bean id="userDao" class="cn.gsxt.mapper.impl.userDaoImpl" scope="singleton"
           init-method="init" destroy-method="destory">
         <property name="strList">
             <list>

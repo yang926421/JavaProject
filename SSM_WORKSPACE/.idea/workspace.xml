@@ -42,13 +42,23 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mybatis_review/mybatis-09/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\mybatis_review\mybatis-02\src\main\resources\cn.gsxt" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.gsxt.demo02" />
+      <recent name="cn.gsxt.mapper" />
+      <recent name="cn.gsxt.dao" />
+      <recent name="cn.gsxt.service.impl" />
+      <recent name="cn.gsxt.service" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\java\javaProject\SSM_WORKSPACE\mybatis_review\mybatis-09\src\main\resources" />
       <recent name="D:\java\javaProject\SSM_WORKSPACE\mybatis_review\mybatis-09\src\main\java" />
@@ -56,23 +66,14 @@
       <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\mybatis_review\mybatis-07\src" />
       <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\mybatis_review\mybatis-06\src\main\resources\cn\gsxt\mapper" />
     </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="cn.gsxt.mapper" />
-      <recent name="cn.gsxt.dao" />
-      <recent name="cn.gsxt.service.impl" />
-      <recent name="cn.gsxt.service" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\lyy\documents\project1\SSM_WORKSPACE\mybatis_review\mybatis-02\src\main\resources\cn.gsxt" />
-    </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserTest.test">
-    <configuration name="Blog" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="cn.gsxt.module.Blog" />
-      <module name="mybatis-08" />
+  <component name="RunManager" selected="Application.Client">
+    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.gsxt.demo01.Client" />
+      <module name="spring-proxy-03" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cn.gsxt.module.*" />
+          <option name="PATTERN" value="cn.gsxt.demo01.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -80,12 +81,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="cn.gsxt.module.test" />
-      <module name="mybatis-08" />
+    <configuration name="MyTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.gsxt.test.MyTest" />
+      <module name="spring-ioc-02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cn.gsxt.module.*" />
+          <option name="PATTERN" value="cn.gsxt.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -93,48 +94,47 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BlogTest.addBlog" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="mybatis-08" />
+    <configuration name="IocTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring-ioc-01" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cn.gsxt.mapper.*" />
+          <option name="PATTERN" value="cn.gsxt.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="cn.gsxt.mapper" />
-      <option name="MAIN_CLASS_NAME" value="cn.gsxt.mapper.BlogTest" />
-      <option name="METHOD_NAME" value="addBlog" />
+      <option name="PACKAGE_NAME" value="cn.gsxt.test" />
+      <option name="MAIN_CLASS_NAME" value="cn.gsxt.test.IocTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IocTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring-ioc-01" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.gsxt.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.gsxt.test" />
+      <option name="MAIN_CLASS_NAME" value="cn.gsxt.test.IocTest" />
+      <option name="METHOD_NAME" value="test" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BlogTest.getBlog" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="mybatis-08" />
+    <configuration name="UserService.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring-ioc-01" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cn.gsxt.mapper.*" />
+          <option name="PATTERN" value="cn.gsxt.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="cn.gsxt.mapper" />
-      <option name="MAIN_CLASS_NAME" value="cn.gsxt.mapper.BlogTest" />
-      <option name="METHOD_NAME" value="getBlog" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="mybatis-09" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cn.gsxt.mapper.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="cn.gsxt.mapper" />
-      <option name="MAIN_CLASS_NAME" value="cn.gsxt.mapper.UserTest" />
+      <option name="PACKAGE_NAME" value="cn.gsxt.service" />
+      <option name="MAIN_CLASS_NAME" value="cn.gsxt.service.UserService" />
       <option name="METHOD_NAME" value="test" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -143,11 +143,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserTest.test" />
-        <item itemvalue="JUnit.BlogTest.getBlog" />
-        <item itemvalue="JUnit.BlogTest.addBlog" />
-        <item itemvalue="Application.test" />
-        <item itemvalue="Application.Blog" />
+        <item itemvalue="Application.Client" />
+        <item itemvalue="JUnit.IocTest.test" />
+        <item itemvalue="JUnit.IocTest" />
+        <item itemvalue="Application.MyTest" />
+        <item itemvalue="JUnit.UserService.test" />
       </list>
     </recent_temporary>
   </component>
@@ -164,6 +164,8 @@
       <workItem from="1600089624878" duration="4469000" />
       <workItem from="1600095510883" duration="1430000" />
       <workItem from="1600135497581" duration="39821000" />
+      <workItem from="1600310524652" duration="6790000" />
+      <workItem from="1600329433066" duration="7493000" />
     </task>
     <servers />
   </component>
@@ -171,61 +173,61 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="326" y="22" key="#Project_Structure" timestamp="1600163918907">
+    <state x="326" y="22" key="#Project_Structure" timestamp="1600334119842">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="326" y="22" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1600163918907" />
+    <state x="326" y="22" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1600334119842" />
     <state x="823" y="123" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1600249023155">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="823" y="123" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1600249023153" />
-    <state x="872" y="95" key="#com.intellij.ide.util.MemberChooser" timestamp="1600246093959">
+    <state x="872" y="95" key="#com.intellij.ide.util.MemberChooser" timestamp="1600336901235">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="872" y="95" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1600246093959" />
+    <state x="872" y="95" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1600336901235" />
     <state x="464" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600246975955">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="464" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1600246975955" />
-    <state x="514" y="125" key="FileChooserDialogImpl" timestamp="1600136225166">
+    <state x="514" y="125" key="FileChooserDialogImpl" timestamp="1600328354115">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="514" y="125" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1600136225166" />
-    <state width="1088" height="344" key="GridCell.Tab.0.bottom" timestamp="1600265576027">
+    <state x="514" y="125" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1600328354115" />
+    <state width="1040" height="236" key="GridCell.Tab.0.bottom" timestamp="1600334912989">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1088" height="344" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1600265576027" />
-    <state width="1088" height="344" key="GridCell.Tab.0.center" timestamp="1600265576025">
+    <state width="1040" height="236" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1600334912989" />
+    <state width="1040" height="236" key="GridCell.Tab.0.center" timestamp="1600334912989">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1088" height="344" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1600265576025" />
-    <state width="1088" height="344" key="GridCell.Tab.0.left" timestamp="1600265576025">
+    <state width="1040" height="236" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1600334912989" />
+    <state width="1040" height="236" key="GridCell.Tab.0.left" timestamp="1600334912988">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1088" height="344" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1600265576025" />
-    <state width="1088" height="344" key="GridCell.Tab.0.right" timestamp="1600265576027">
+    <state width="1040" height="236" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1600334912988" />
+    <state width="1040" height="236" key="GridCell.Tab.0.right" timestamp="1600334912989">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1088" height="344" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1600265576027" />
-    <state x="0" y="11" key="SettingsEditor" timestamp="1600136240623">
+    <state width="1040" height="236" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1600334912989" />
+    <state x="0" y="11" key="SettingsEditor" timestamp="1600328284021">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="0" y="11" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1600136240623" />
-    <state x="414" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1600095513437">
+    <state x="0" y="11" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1600328284021" />
+    <state x="414" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1600310527737">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="414" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1600095513437" />
-    <state x="78" y="47" key="new project wizard" timestamp="1600264618620">
+    <state x="414" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1600310527737" />
+    <state x="78" y="47" key="new project wizard" timestamp="1600334089058">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="78" y="47" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1600264618620" />
+    <state x="78" y="47" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1600334089058" />
     <state x="685" y="346" width="670" height="676" key="search.everywhere.popup" timestamp="1600265032456">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="685" y="346" width="670" height="676" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1600265032456" />
-    <state x="392" y="46" key="spring file set editor" timestamp="1600090635087">
+    <state x="392" y="46" key="spring file set editor" timestamp="1600311211406">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="392" y="46" key="spring file set editor/0.0.1366.728@0.0.1366.728" timestamp="1600090635087" />
+    <state x="392" y="46" key="spring file set editor/0.0.1366.728@0.0.1366.728" timestamp="1600311211406" />
   </component>
 </project>
