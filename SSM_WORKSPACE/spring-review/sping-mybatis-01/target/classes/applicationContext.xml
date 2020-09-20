@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--    -->
+    <!--    spring的配置文件-->
+    <!--    配置组件扫描-->
+    <context:component-scan base-package="cn.gsxt">
+        <!--        &lt;!&ndash;   排除controller的扫描   因为controller是由spring-mvc负责控制的     &ndash;&gt;-->
+        <!--        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+    </context:component-scan>
+    <!--  加载properties文件  -->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <!--    配置数据源-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+    <!--  配置mybatis层要使用的sqlSessionFactory  -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--  spring帮助我们创建sqlsessionFactory工厂  内部需要数据源 需要mybatis的核心配置文件-->
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 加载绑定mybatis的核心文件  因为SqlSessionFactoryBean 本质上是操作mybatis层的-->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+    </bean>
+    <!--    加载mapper所在的包 为mapper创建实现类,放入spring容器中 我们需要使用的时候,
+    直接注入  不用再sqlSession获取mapper-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <property name="basePackage" value="cn.gsxt.mapper"/>
+    </bean>
+
+
+</beans>

@@ -1,7 +1,6 @@
 package cn.gsxt.test;
 
 import cn.gsxt.config.UserConfig;
-import cn.gsxt.module.User;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

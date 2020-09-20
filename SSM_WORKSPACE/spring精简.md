@@ -317,3 +317,108 @@ public class Client {
 InvocationHandler
 Proxy
 ```
+
+## 9.AOP
+
+![image-20200917213430880](spring%E7%B2%BE%E7%AE%80.assets/image-20200917213430880.png)
+
+
+
+spring整合mybatis
+
+1.配置
+
+```
+<dependency>
+    <groupId>org.mybatis</groupId>
+    <artifactId>mybatis-spring</artifactId>
+    <version>2.0.2</version>
+</dependency>
+```
+
+![image-20200919160938439](spring%E7%B2%BE%E7%AE%80.assets/image-20200919160938439.png)
+
+spring和mybatis整合的两种方式
+
+1.一种是传统的   
+
+```
+sqlSessionFactory是由spring来管理的  但是我们要通过sqlSession来获取mapper
+```
+
+![image-20200919163425057](spring%E7%B2%BE%E7%AE%80.assets/image-20200919163425057.png)
+
+mapper的实现类  获取sqlSession获取mapper
+
+![image-20200919163559090](spring%E7%B2%BE%E7%AE%80.assets/image-20200919163559090.png)
+
+
+
+![image-20200919163621609](spring%E7%B2%BE%E7%AE%80.assets/image-20200919163621609.png)
+
+
+
+2.另一种是sqlSessionFactory和mapper的实现类都由spring来给我们管理
+
+```
+ <!--  加载properties文件  -->
+    <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
+    <!--    配置数据源-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+    <!--  配置mybatis层要使用的sqlSessionFactory  -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--  spring帮助我们创建sqlsessionFactory工厂  内部需要数据源 需要mybatis的核心配置文件-->
+        <property name="dataSource" ref="dataSource"></property>
+        <!-- 加载绑定mybatis的核心文件  因为SqlSessionFactoryBean 本质上是操作mybatis层的-->
+        <property name="configLocation" value="classpath:mybatis-config.xml"></property>
+    </bean>
+    <!--    加载mapper所在的包 为mapper创建实现类,放入spring容器中 我们需要使用的时候,
+    直接注入  不用再sqlSession获取mapper-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="cn.gsxt.mapper"></property>
+    </bean>
+    
+    
+    
+    我们在service层直接注入mapper
+    直接mapper调用方法就可以
+```
+
+# 使用bean的方式
+
+```
+应用上下文对象是通过new ClasspathXmlApplicationContext(spring配置文件) 方式获取的，但是每次从容器中获得Bean时都要编写new ClasspathXmlApplicationContext(spring配置文件) ，这样的弊端是配置文件加载多次，应用上下文对象创建多次。
+
+在Web项目中，可以使用ServletContextListener监听Web应用的启动，我们可以在Web应用启动时，就加载Spring的配置文件，创建应用上下文对象ApplicationContext，在将其存储到最大的域servletContext域中，这样就可以在任意位置从域中获得应用上下文ApplicationContext对象了。
+```
+
+
+
+声明式事务
+
+要么都成功 要么都失败
+
+把一组业务当成一个业务来做,确保完整性和一致性
+
+事物的ACID原则
+
+原子性
+
+一致性
+
+隔离性
+
+多个事务可能操作同个资源,防止数据损坏
+
+持久性
+
+事务一旦提交,无论发生什么问题,结果都不会被影响,持久到数据库中
+
+
+
+![image-20200920231057728](spring%E7%B2%BE%E7%AE%80.assets/image-20200920231057728.png)

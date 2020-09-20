@@ -266,6 +266,9 @@ IOC 解耦只是降低他们的依赖关系，但不会消除。例如：业务�
 
 ```java
 public class UserServiceImpl implements UserService {
+    public UserServiceImpl(UserDaO userdao){
+        this.userdao = userdao;
+    }
 @Override
 public void save() {
 ApplicationContext applicationContext = new 
@@ -567,7 +570,7 @@ context命名空间下的
 
 ## Spring集成junit单元测试
 
-
+![image-20200919214236448](spring%E6%95%B4%E7%90%86%E8%80%81%E5%B8%88%E7%AC%94%E8%AE%B0.assets/image-20200919214236448.png)
 
 # 1.Spring 的 AOP 简介
 

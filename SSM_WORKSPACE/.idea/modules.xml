@@ -29,6 +29,8 @@
       <module fileurl="file://$PROJECT_DIR$/mybatis_review/mybatis-08/mybatis-08.iml" filepath="$PROJECT_DIR$/mybatis_review/mybatis-08/mybatis-08.iml" />
       <module fileurl="file://$PROJECT_DIR$/mybatis_review/mybatis-09/mybatis-09.iml" filepath="$PROJECT_DIR$/mybatis_review/mybatis-09/mybatis-09.iml" />
       <module fileurl="file://$PROJECT_DIR$/mybatis_review/mybatis_review.iml" filepath="$PROJECT_DIR$/mybatis_review/mybatis_review.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-review/sping-mybatis-01/sping-mybatis-01.iml" filepath="$PROJECT_DIR$/spring-review/sping-mybatis-01/sping-mybatis-01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-review/spring-aop-01/spring-aop-01.iml" filepath="$PROJECT_DIR$/spring-review/spring-aop-01/spring-aop-01.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-review/spring-ioc-01/spring-ioc-01.iml" filepath="$PROJECT_DIR$/spring-review/spring-ioc-01/spring-ioc-01.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-review/spring-ioc-02/spring-ioc-02.iml" filepath="$PROJECT_DIR$/spring-review/spring-ioc-02/spring-ioc-02.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-review/spring-proxy-03/spring-proxy-03.iml" filepath="$PROJECT_DIR$/spring-review/spring-proxy-03/spring-proxy-03.iml" />

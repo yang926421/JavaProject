@@ -6,9 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="spring_exception" />
         <module name="ssm_web_all" />
-        <module name="spring-proxy-03" />
         <module name="maven_web1" />
+        <module name="maven_dao1" />
+        <module name="maven_service" />
         <module name="maven_dao" />
         <module name="spring_mvc_web" />
         <module name="maven_son" />
@@ -20,7 +22,7 @@
         <module name="Mybatis_test_demo1" />
         <module name="ssm_lyy_project" />
         <module name="lyy_mybatis_test" />
-        <module name="maven_service" />
+        <module name="spring-proxy-03" />
         <module name="itheima_spring_exception" />
         <module name="lyy_mybatis_sql" />
         <module name="mybatis-09" />
@@ -33,18 +35,18 @@
         <module name="maven_web" />
         <module name="mybatis-01" />
         <module name="lyy_mybatis_test2" />
+        <module name="sping-mybatis-01" />
         <module name="spring_ioc_anno" />
-        <module name="spring-ioc-01" />
-        <module name="maven_service1" />
         <module name="spring_inter" />
+        <module name="spring-aop-01" />
         <module name="spring_lyy_mvc" />
         <module name="ssm_lyy_project1" />
         <module name="spring-ioc-02" />
-        <module name="maven_dao1" />
+        <module name="spring-ioc-01" />
         <module name="mybatis-02" />
         <module name="lyy_mybatis_anno" />
         <module name="spring_tx" />
-        <module name="spring_exception" />
+        <module name="maven_service1" />
         <module name="spring_ioc_1" />
       </profile>
     </annotationProcessing>
@@ -75,6 +77,8 @@
       <module name="mybatis-09" target="1.5" />
       <module name="mybatis_review" target="1.5" />
       <module name="Mybatis_test_demo1" target="1.7" />
+      <module name="sping-mybatis-01" target="1.5" />
+      <module name="spring-aop-01" target="1.5" />
       <module name="spring-ioc-01" target="1.5" />
       <module name="spring-ioc-02" target="1.5" />
       <module name="spring-ioc01" target="1.5" />
