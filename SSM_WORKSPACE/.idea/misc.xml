@@ -55,6 +55,7 @@
         <option value="$PROJECT_DIR$/mybatis_review/pom.xml" />
         <option value="$PROJECT_DIR$/spring-review/pom.xml" />
         <option value="$PROJECT_DIR$/springMvc-review/pom.xml" />
+        <option value="$PROJECT_DIR$/ssm-review/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

@@ -178,27 +178,9 @@ get请求乱码问题tomcat已经帮我们解决 post请求可以设置全局过
 
 json
 
-fastjson  阿里巴巴的工具
+# fastjson  阿里巴巴的工具
 
-```
-<dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>2.10.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.10.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <version>2.10.0</version>
-        </dependency>
-```
-
-
+![image-20200921220550310](springMvc.assets/image-20200921220550310.png)
 
 
 

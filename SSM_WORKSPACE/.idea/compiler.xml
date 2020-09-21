@@ -6,17 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="maven_web" />
+        <module name="spring_exception" />
         <module name="ssm_web_all" />
         <module name="maven_web1" />
+        <module name="maven_dao1" />
         <module name="maven_service" />
         <module name="maven_dao" />
         <module name="spring_mvc_web" />
         <module name="maven_son" />
-        <module name="springMvc-01-servlet" />
         <module name="maven_pojo" />
         <module name="maven_pojo1" />
         <module name="spring_test" />
-        <module name="spring-mvc-01" />
         <module name="spring_aop_1" />
         <module name="spring_jdbc" />
         <module name="Mybatis_test_demo1" />
@@ -32,25 +33,25 @@
         <module name="mybatis-05" />
         <module name="mybatis-04" />
         <module name="mybatis-03" />
-        <module name="maven_web" />
+        <module name="spring-mvc-01" />
         <module name="mybatis-01" />
         <module name="lyy_mybatis_test2" />
         <module name="sping-mybatis-01" />
+        <module name="ssm-review" />
         <module name="spring_ioc_anno" />
         <module name="spring-mvc-anno03" />
-        <module name="spring-ioc-01" />
-        <module name="maven_service1" />
         <module name="spring_inter" />
         <module name="spring-aop-01" />
         <module name="spring_lyy_mvc" />
-        <module name="ssm_lyy_project1" />
+        <module name="springMvc-01-servlet" />
         <module name="spring-ioc-02" />
-        <module name="maven_dao1" />
+        <module name="spring-ioc-01" />
         <module name="mybatis-02" />
         <module name="lyy_mybatis_anno" />
         <module name="spring_tx" />
-        <module name="spring_exception" />
+        <module name="maven_service1" />
         <module name="spring_ioc_1" />
+        <module name="ssm_lyy_project1" />
         <module name="spring-mvc-json-04" />
       </profile>
     </annotationProcessing>
@@ -107,6 +108,7 @@
       <module name="spring_tx" target="1.5" />
       <module name="springMvc-01-servlet" target="1.5" />
       <module name="springMvc-review" target="1.5" />
+      <module name="ssm-review" target="1.5" />
       <module name="ssm_lyy_project" target="1.7" />
       <module name="ssm_lyy_project1" target="1.7" />
       <module name="ssm_maven_parent" target="1.8" />
