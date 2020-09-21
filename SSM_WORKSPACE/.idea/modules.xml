@@ -33,8 +33,13 @@
       <module fileurl="file://$PROJECT_DIR$/spring-review/spring-aop-01/spring-aop-01.iml" filepath="$PROJECT_DIR$/spring-review/spring-aop-01/spring-aop-01.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-review/spring-ioc-01/spring-ioc-01.iml" filepath="$PROJECT_DIR$/spring-review/spring-ioc-01/spring-ioc-01.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-review/spring-ioc-02/spring-ioc-02.iml" filepath="$PROJECT_DIR$/spring-review/spring-ioc-02/spring-ioc-02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springMvc-review/spring-mvc-01/spring-mvc-01.iml" filepath="$PROJECT_DIR$/springMvc-review/spring-mvc-01/spring-mvc-01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springMvc-review/spring-mvc-anno03/spring-mvc-anno03.iml" filepath="$PROJECT_DIR$/springMvc-review/spring-mvc-anno03/spring-mvc-anno03.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springMvc-review/spring-mvc-json-04/spring-mvc-json-04.iml" filepath="$PROJECT_DIR$/springMvc-review/spring-mvc-json-04/spring-mvc-json-04.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-review/spring-proxy-03/spring-proxy-03.iml" filepath="$PROJECT_DIR$/spring-review/spring-proxy-03/spring-proxy-03.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-review/spring-review.iml" filepath="$PROJECT_DIR$/spring-review/spring-review.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springMvc-review/springMvc-01-servlet/springMvc-01-servlet.iml" filepath="$PROJECT_DIR$/springMvc-review/springMvc-01-servlet/springMvc-01-servlet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springMvc-review/springMvc-review.iml" filepath="$PROJECT_DIR$/springMvc-review/springMvc-review.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_aop_1/spring_aop_1.iml" filepath="$PROJECT_DIR$/spring_aop_1/spring_aop_1.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_exception/spring_exception.iml" filepath="$PROJECT_DIR$/spring_exception/spring_exception.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_inter/spring_inter.iml" filepath="$PROJECT_DIR$/spring_inter/spring_inter.iml" />

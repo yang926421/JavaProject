@@ -25,7 +25,7 @@
     <!--    配置读取静态文件   开发资源的访问-->
     <!--    <mvc:resources location="/js/" mapping="/js/**"/>-->
     <mvc:default-servlet-handler/>
-    <!--    配置json数据处理器适配器-->
+    <!--    配置json乱码问题数据处理器适配器-->
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
         <property name="messageConverters">
             <list>

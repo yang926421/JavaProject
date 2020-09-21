@@ -142,6 +142,8 @@ public class UserController {
         //配置声明 mvc声明  自动转化为json  配置转换器的时候指定json转换的转换器(详见spring-mvc.xml mvc配置中的)
         //注入json的一个转换器
 
+
+
     }
 
     @RequestMapping("/quick13")
@@ -215,7 +217,6 @@ public class UserController {
     //回写数据(返回对象或集合  不自己转json  使用MVC配置的)
     @ResponseBody  //告诉SpringMVC这是为了回写字符串,不是进行跳转的  直接在Http响应体回写(重点 重点)
 //    http://localhost:8080/spring_mvc_web/user/quick17/zhangsan   使用restful规范
-//    将url请求的参数  name绑定为当前方法形参的username
     //@PathVariable("username") 获取到restful的requestMapping的username
     public void save18(@PathVariable("username") String username) throws Exception {
         System.out.println("Controller18 save running");

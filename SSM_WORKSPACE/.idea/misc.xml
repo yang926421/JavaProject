@@ -54,11 +54,15 @@
         <option value="$PROJECT_DIR$/spring_review/pom.xml" />
         <option value="$PROJECT_DIR$/mybatis_review/pom.xml" />
         <option value="$PROJECT_DIR$/spring-review/pom.xml" />
+        <option value="$PROJECT_DIR$/springMvc-review/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/maven_parent/maven_son/pom.xml" />
+        <option value="$PROJECT_DIR$/springMvc-review/spring-mvc-anno-gu/pom.xml" />
+        <option value="$PROJECT_DIR$/springMvc-review/spring-mvc-anno01/pom.xml" />
+        <option value="$PROJECT_DIR$/springMvc-review/spring-mvc-gu-04/pom.xml" />
         <option value="$PROJECT_DIR$/ssm_maven_parent/maven_web/pom.xml" />
         <option value="$PROJECT_DIR$/ssm_maven_parent/pom.xml" />
       </set>
