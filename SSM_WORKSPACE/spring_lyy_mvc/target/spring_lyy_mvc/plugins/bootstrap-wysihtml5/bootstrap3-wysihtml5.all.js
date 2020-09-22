@@ -78,7 +78,7 @@ var wysihtml5 = {
         define(factory);
         /*
     TODO: look into this properly.
-
+    
     } else if (typeof exports == "object") {
         // Node/CommonJS style for Browserify
         module.exports = factory;
@@ -2185,7 +2185,7 @@ var wysihtml5 = {
 
     /*----------------------------------------------------------------------------------------------------------------*/
 
-    // Wrappers for the browser's native DOM Range and/or TextRange implementation
+    // Wrappers for the browser's native DOM Range and/or TextRange implementation 
     api.createCoreModule("WrappedRange", ["DomRange"], function (api, module) {
         var WrappedRange, WrappedTextRange;
         var dom = api.dom;
@@ -2573,11 +2573,11 @@ var wysihtml5 = {
                         For the particular case of a boundary within a text node containing rendered line breaks (within a
                         <pre> element, for example), we need a slightly complicated approach to get the boundary's offset in
                         IE. The facts:
-
+                        
                         - Each line break is represented as \r in the text node's data/nodeValue properties
                         - Each line break is represented as \r\n in the TextRange's 'text' property
                         - The 'text' property of the TextRange does not contain trailing line breaks
-
+                        
                         To get round the problem presented by the final fact above, we can use the fact that TextRange's
                         moveStart() and moveEnd() methods return the actual number of characters moved, which is not
                         necessarily the same as the number of characters it was instructed to move. The simplest approach is
@@ -2586,13 +2586,13 @@ var wysihtml5 = {
                         "move-negative-gazillion" method). However, this is extremely slow when the document is large and
                         the range is near the end of it. Clearly doing the mirror image (i.e. moving the range boundaries to
                         the end of the document) has the same problem.
-
+                        
                         Another approach that works is to use moveStart() to move the start boundary of the range up to the
                         end boundary one character at a time and incrementing a counter with the value returned by the
                         moveStart() call. However, the check for whether the start boundary has reached the end boundary is
                         expensive, so this method is slow (although unlike "move-negative-gazillion" is largely unaffected
                         by the location of the range within the document).
-
+                        
                         The approach used below is a hybrid of the two methods above. It uses the fact that a string
                         containing the TextRange's 'text' property with each \r\n converted to a single \r character cannot
                         be longer than the text of the TextRange, so the start of the range is moved that length initially
@@ -8382,12 +8382,12 @@ wysihtml5.dom.query = function (elements, query) {
         node.parentNode.removeChild(node);
     }
 };
-;/*
+;/* 
  * Methods for fetching pasted html before it gets inserted into content
 **/
 
 /* Modern event.clipboardData driven approach.
- * Advantage is that it does not have to loose selection or modify dom to catch the data.
+ * Advantage is that it does not have to loose selection or modify dom to catch the data. 
  * IE does not support though.
 **/
 wysihtml5.dom.getPastedHtml = function (event) {
@@ -11437,7 +11437,7 @@ wysihtml5.commands.formatCode = {
                 }),
                 isEmpty, list;
 
-            // This space causes new lists to never break on enter
+            // This space causes new lists to never break on enter 
             var INVISIBLE_SPACE_REG_EXP = /\uFEFF/g;
             tempElement.innerHTML = tempElement.innerHTML.replace(INVISIBLE_SPACE_REG_EXP, "");
 
@@ -13399,7 +13399,7 @@ wysihtml5.views.View = Base.extend(
         // Pass false to disable
         uneditableContainerClassname: "wysihtml5-uneditable-container",
         // Browsers that support copied source handling will get a marking of the origin of the copied source (for determinig code cleanup rules on paste)
-        // Also copied source is based directly on selection -
+        // Also copied source is based directly on selection - 
         // (very useful for webkit based browsers where copy will otherwise contain a lot of code and styles based on whatever and not actually in selection).
         // If falsy value is passed source override is also disabled
         copyedFromMarking: '<meta name="copied-from" content="wysihtml5">'

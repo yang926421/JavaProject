@@ -34,7 +34,9 @@
       <module fileurl="file://$PROJECT_DIR$/spring-review/spring-ioc-01/spring-ioc-01.iml" filepath="$PROJECT_DIR$/spring-review/spring-ioc-01/spring-ioc-01.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-review/spring-ioc-02/spring-ioc-02.iml" filepath="$PROJECT_DIR$/spring-review/spring-ioc-02/spring-ioc-02.iml" />
       <module fileurl="file://$PROJECT_DIR$/springMvc-review/spring-mvc-01/spring-mvc-01.iml" filepath="$PROJECT_DIR$/springMvc-review/spring-mvc-01/spring-mvc-01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springMvc-review/spring-mvc-ajax05/spring-mvc-ajax05.iml" filepath="$PROJECT_DIR$/springMvc-review/spring-mvc-ajax05/spring-mvc-ajax05.iml" />
       <module fileurl="file://$PROJECT_DIR$/springMvc-review/spring-mvc-anno03/spring-mvc-anno03.iml" filepath="$PROJECT_DIR$/springMvc-review/spring-mvc-anno03/spring-mvc-anno03.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springMvc-review/spring-mvc-file/spring-mvc-file.iml" filepath="$PROJECT_DIR$/springMvc-review/spring-mvc-file/spring-mvc-file.iml" />
       <module fileurl="file://$PROJECT_DIR$/springMvc-review/spring-mvc-json-04/spring-mvc-json-04.iml" filepath="$PROJECT_DIR$/springMvc-review/spring-mvc-json-04/spring-mvc-json-04.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-review/spring-proxy-03/spring-proxy-03.iml" filepath="$PROJECT_DIR$/spring-review/spring-proxy-03/spring-proxy-03.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-review/spring-review.iml" filepath="$PROJECT_DIR$/spring-review/spring-review.iml" />

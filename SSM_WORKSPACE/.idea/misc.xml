@@ -15,6 +15,7 @@
     <file type="web" url="file://$PROJECT_DIR$/spring_mvc_web" />
     <file type="web" url="file://$PROJECT_DIR$/spring_review" />
     <file type="web" url="file://$PROJECT_DIR$/spring_spring_mvc" />
+    <file type="web" url="file://$PROJECT_DIR$/springMvc-review/springMvc-ajax" />
     <file type="web" url="file://$PROJECT_DIR$/ssm_lyy_project" />
     <file type="web" url="file://$PROJECT_DIR$/ssm_lyy_project1" />
     <file type="web" url="file://$PROJECT_DIR$/ssm_maven_parent" />
@@ -64,6 +65,7 @@
         <option value="$PROJECT_DIR$/springMvc-review/spring-mvc-anno-gu/pom.xml" />
         <option value="$PROJECT_DIR$/springMvc-review/spring-mvc-anno01/pom.xml" />
         <option value="$PROJECT_DIR$/springMvc-review/spring-mvc-gu-04/pom.xml" />
+        <option value="$PROJECT_DIR$/springMvc-review/springMvc-ajax/pom.xml" />
         <option value="$PROJECT_DIR$/ssm_maven_parent/maven_web/pom.xml" />
         <option value="$PROJECT_DIR$/ssm_maven_parent/pom.xml" />
       </set>

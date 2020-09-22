@@ -28,7 +28,7 @@
         </property>
     </bean>
     <!--    4.配置service层和dao层的role-->
-    <bean id="roleDao" class="cn.gsxt.dao.impl.RoleDaoImpl">
+    <bean id="roleDao" class="cn.gsxt.mapper.impl.RoleDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
 
@@ -36,7 +36,7 @@
         <property name="roleDao" ref="roleDao"/>
     </bean>
     <!--    配置user-->
-    <bean id="userDao" class="cn.gsxt.dao.impl.UserDaoImpl">
+    <bean id="userDao" class="cn.gsxt.mapper.impl.UserDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
 

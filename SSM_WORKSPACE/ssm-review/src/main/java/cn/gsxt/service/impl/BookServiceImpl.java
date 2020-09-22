@@ -4,9 +4,12 @@ import cn.gsxt.mapper.BookMapper;
 import cn.gsxt.module.Books;
 import cn.gsxt.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
+@Service
 public class BookServiceImpl implements BookService {
 
     @Autowired
