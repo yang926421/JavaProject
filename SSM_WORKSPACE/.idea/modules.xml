@@ -50,6 +50,7 @@
       <module fileurl="file://$PROJECT_DIR$/spring_jdbc/spring_jdbc.iml" filepath="$PROJECT_DIR$/spring_jdbc/spring_jdbc.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_lyy_mvc/spring_lyy_mvc.iml" filepath="$PROJECT_DIR$/spring_lyy_mvc/spring_lyy_mvc.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_mvc_web/spring_mvc_web.iml" filepath="$PROJECT_DIR$/spring_mvc_web/spring_mvc_web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_ssm_0922/spring_ssm_0922.iml" filepath="$PROJECT_DIR$/spring_ssm_0922/spring_ssm_0922.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_test/spring_test.iml" filepath="$PROJECT_DIR$/spring_test/spring_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_tx/spring_tx.iml" filepath="$PROJECT_DIR$/spring_tx/spring_tx.iml" />
       <module fileurl="file://$PROJECT_DIR$/ssm-review/ssm-review.iml" filepath="$PROJECT_DIR$/ssm-review/ssm-review.iml" />

@@ -15,6 +15,7 @@
     <file type="web" url="file://$PROJECT_DIR$/spring_mvc_web" />
     <file type="web" url="file://$PROJECT_DIR$/spring_review" />
     <file type="web" url="file://$PROJECT_DIR$/spring_spring_mvc" />
+    <file type="web" url="file://$PROJECT_DIR$/spring_ssm_0922" />
     <file type="web" url="file://$PROJECT_DIR$/springMvc-review/springMvc-ajax" />
     <file type="web" url="file://$PROJECT_DIR$/ssm_lyy_project" />
     <file type="web" url="file://$PROJECT_DIR$/ssm_lyy_project1" />
@@ -57,6 +58,7 @@
         <option value="$PROJECT_DIR$/spring-review/pom.xml" />
         <option value="$PROJECT_DIR$/springMvc-review/pom.xml" />
         <option value="$PROJECT_DIR$/ssm-review/pom.xml" />
+        <option value="$PROJECT_DIR$/spring_ssm_0922/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
