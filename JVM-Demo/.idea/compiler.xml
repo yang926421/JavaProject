@@ -6,7 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="JVM-Demo" />
+        <module name="test_basic" />
       </profile>
     </annotationProcessing>
   </component>
