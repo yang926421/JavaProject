@@ -38,7 +38,9 @@ public class BookSystem {
 
     public static void main(String[] args) {
         /** 2.展示操作界面 ：独立功能建立封装成方法调用 方便互相之间的逻辑调用 */
-        showCommand();
+//        showCommand();
+        String str = "123";
+        System.out.println(str instanceof String);
     }
 
     /**
@@ -203,5 +205,10 @@ public class BookSystem {
         Book book = new Book(name, Double.valueOf(price), author);
         books.add(book);
         System.out.println("您添加在" + type + "下的书本" + book.getName() + "成功！");
+    }
+
+    public void test(){
+        String str = "123";
+        System.out.println(str instanceof String);
     }
 }

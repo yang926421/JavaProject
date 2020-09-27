@@ -57,7 +57,20 @@
       <recent name="D:\lyy\documents\project1\Standard_lyy\module7_06\lib" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BeerDemo1">
+  <component name="RunManager" selected="Application.AnnotationDemo1">
+    <configuration name="AnnotationDemo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lyy._13元注解.AnnotationDemo1" />
+      <module name="module7_05" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lyy._13元注解.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BeerDemo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.lyy._01思维训练.BeerDemo1" />
       <module name="module7_03" />
@@ -73,19 +86,6 @@
     </configuration>
     <configuration name="Date_demo2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="面向对象相关._04常用API集合泛型._01Date.Date_demo2" />
-      <module name="homework" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="面向对象相关._04常用API集合泛型._01Date.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Date_demo3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="面向对象相关._04常用API集合泛型._01Date.Date_demo3" />
       <module name="homework" />
       <extension name="coverage">
         <pattern>
@@ -125,11 +125,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AnnotationDemo1" />
         <item itemvalue="Application.BeerDemo1" />
         <item itemvalue="Application.domain_test" />
         <item itemvalue="Application.lambda_demo1" />
         <item itemvalue="Application.Date_demo2" />
-        <item itemvalue="Application.Date_demo3" />
       </list>
     </recent_temporary>
   </component>
@@ -160,6 +160,7 @@
       <workItem from="1597032216249" duration="695000" />
       <workItem from="1597066675948" duration="45000" />
       <workItem from="1601020688779" duration="998000" />
+      <workItem from="1601193742228" duration="4760000" />
     </task>
     <servers />
   </component>

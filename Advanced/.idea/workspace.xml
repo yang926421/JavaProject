@@ -46,7 +46,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/一些文件/java进阶13天资料/day08-线程状态，volatile关键字、原子性、并发包、死锁、线程池/homework" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Standard_lyy/module7_05" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -60,7 +60,20 @@
       <recent name="D:\lyy\documents\project1\Advanced\src\com\etc\Ayy_data_struct\python" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Exception异常处理进阶">
+  <component name="RunManager" selected="Application.BookSystem">
+    <configuration name="BookSystem" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_collection._09图书管理案例.BookSystem" />
+      <module name="Advanced" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.etc.Ayy_collection._09图书管理案例.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Exception异常处理进阶" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_exception.Exception异常处理进阶" />
       <module name="Advanced" />
@@ -100,19 +113,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ThreadSafe" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_concurrency.thread.线程安全问题.ThreadSafe" />
-      <module name="Advanced" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.etc.Ayy_concurrency.thread.线程安全问题.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="thread_safe" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.etc.Ayy_concurrency.thread.线程安全之lock锁.thread_safe" />
       <module name="Advanced" />
@@ -128,11 +128,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.BookSystem" />
         <item itemvalue="Application.Exception异常处理进阶" />
         <item itemvalue="Application.Exception_demo运行时异常处理机制" />
         <item itemvalue="Application.ThreadSafe (1)" />
         <item itemvalue="Application.thread_safe" />
-        <item itemvalue="Application.ThreadSafe" />
       </list>
     </recent_temporary>
   </component>
@@ -149,57 +149,55 @@
       <workItem from="1592450573376" duration="31342000" />
       <workItem from="1593736447273" duration="1918000" />
       <workItem from="1594105768756" duration="8045000" />
+      <workItem from="1601167760428" duration="3831000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="0" y="0" key="#Project_Structure" timestamp="1592450579947">
+    <state x="403" y="221" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1601167828938">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="0" y="0" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1592450579947" />
-    <state x="403" y="221" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1592879163591">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="403" y="221" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1592879163591" />
+    <state x="403" y="221" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1601167828938" />
     <state x="867" y="87" key="#com.intellij.ide.util.MemberChooser" timestamp="1592961048540">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="867" y="87" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1592961048540" />
-    <state x="871" y="104" key="FileChooserDialogImpl" timestamp="1594202239149">
+    <state x="871" y="104" key="FileChooserDialogImpl" timestamp="1601193600607">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="871" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1594202239149" />
-    <state width="1201" height="161" key="GridCell.Tab.0.bottom" timestamp="1592964989207">
+    <state x="871" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1601193600607" />
+    <state width="884" height="160" key="GridCell.Tab.0.bottom" timestamp="1601193603517">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1201" height="161" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1592964989207" />
-    <state width="1201" height="161" key="GridCell.Tab.0.center" timestamp="1592964989207">
+    <state width="884" height="160" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1601193603517" />
+    <state width="884" height="160" key="GridCell.Tab.0.center" timestamp="1601193603516">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1201" height="161" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1592964989207" />
-    <state width="1201" height="161" key="GridCell.Tab.0.left" timestamp="1592964989206">
+    <state width="884" height="160" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1601193603516" />
+    <state width="884" height="160" key="GridCell.Tab.0.left" timestamp="1601193603516">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1201" height="161" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1592964989206" />
-    <state width="1201" height="161" key="GridCell.Tab.0.right" timestamp="1592964989207">
+    <state width="884" height="160" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1601193603516" />
+    <state width="884" height="160" key="GridCell.Tab.0.right" timestamp="1601193603517">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1201" height="161" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1592964989207" />
+    <state width="884" height="160" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1601193603517" />
     <state width="808" height="203" key="GridCell.Tab.1.bottom" timestamp="1592964989168">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
