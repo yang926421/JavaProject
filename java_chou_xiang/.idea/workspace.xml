@@ -34,13 +34,17 @@
       <option name="presentableId" value="Default" />
       <updated>1592362927738</updated>
       <workItem from="1592362929351" duration="8000" />
+      <workItem from="1601167613880" duration="12000" />
     </task>
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1592362935991">
+    <state x="515" y="213" key="FileChooserDialogImpl" timestamp="1601167624088">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1592362935991" />
+    <state x="515" y="213" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1601167624088" />
   </component>
 </project>

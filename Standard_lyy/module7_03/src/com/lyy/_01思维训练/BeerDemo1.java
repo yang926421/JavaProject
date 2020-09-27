@@ -10,10 +10,17 @@ public class BeerDemo1 {
 
     //非规律性递归问题
     public static void main(String[] args) {
-        buy_beer(10);
-        System.out.println("一共买了" + total_num + "瓶啤酒");
-        System.out.println("剩余盖子" + GaiZi_count);
-        System.out.println("剩余瓶子" + PingZi_count);
+//        buy_beer(10);
+//        System.out.println("一共买了" + total_num + "瓶啤酒");
+//        System.out.println("剩余盖子" + GaiZi_count);
+//        System.out.println("剩余瓶子" + PingZi_count);
+        int f = f(3);
+        System.out.println(f);
+    }
+
+
+    public static int f(int a){
+        return a==1?a:a*f(a-1);
 
     }
 

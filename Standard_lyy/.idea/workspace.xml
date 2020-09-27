@@ -46,18 +46,31 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SSM_WORKSPACE" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\lyy\documents\project1\Standard_lyy\module7_06\lib" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BeerDemo1">
+  <component name="RunManager" selected="Application.AnnotationDemo1">
+    <configuration name="AnnotationDemo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lyy._13元注解.AnnotationDemo1" />
+      <module name="module7_05" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lyy._13元注解.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BeerDemo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.lyy._01思维训练.BeerDemo1" />
       <module name="module7_03" />
@@ -73,19 +86,6 @@
     </configuration>
     <configuration name="Date_demo2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="面向对象相关._04常用API集合泛型._01Date.Date_demo2" />
-      <module name="homework" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="面向对象相关._04常用API集合泛型._01Date.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Date_demo3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="面向对象相关._04常用API集合泛型._01Date.Date_demo3" />
       <module name="homework" />
       <extension name="coverage">
         <pattern>
@@ -125,11 +125,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AnnotationDemo1" />
         <item itemvalue="Application.BeerDemo1" />
         <item itemvalue="Application.domain_test" />
         <item itemvalue="Application.lambda_demo1" />
         <item itemvalue="Application.Date_demo2" />
-        <item itemvalue="Application.Date_demo3" />
       </list>
     </recent_temporary>
   </component>
@@ -159,6 +159,8 @@
       <workItem from="1597030163040" duration="198000" />
       <workItem from="1597032216249" duration="695000" />
       <workItem from="1597066675948" duration="45000" />
+      <workItem from="1601020688779" duration="998000" />
+      <workItem from="1601193742228" duration="4760000" />
     </task>
     <servers />
   </component>
@@ -183,30 +185,34 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="529" y="253" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1597066705713" />
-    <state x="403" y="124" key="FileChooserDialogImpl" timestamp="1597066719282">
+    <state x="403" y="124" key="FileChooserDialogImpl" timestamp="1601021692437">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="403" y="124" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1597066719282" />
-    <state width="933" height="176" key="GridCell.Tab.0.bottom" timestamp="1597034665940">
+    <state x="403" y="124" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1601021692437" />
+    <state width="933" height="160" key="GridCell.Tab.0.bottom" timestamp="1601021693306">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="933" height="176" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1597034665940" />
-    <state width="933" height="176" key="GridCell.Tab.0.center" timestamp="1597034665940">
+    <state width="933" height="160" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1601021693306" />
+    <state width="933" height="160" key="GridCell.Tab.0.center" timestamp="1601021693306">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="933" height="176" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1597034665940" />
-    <state width="933" height="176" key="GridCell.Tab.0.left" timestamp="1597034665940">
+    <state width="933" height="160" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1601021693306" />
+    <state width="933" height="160" key="GridCell.Tab.0.left" timestamp="1601021693306">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="933" height="176" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1597034665940" />
-    <state width="933" height="176" key="GridCell.Tab.0.right" timestamp="1597034665940">
+    <state width="933" height="160" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1601021693306" />
+    <state width="933" height="160" key="GridCell.Tab.0.right" timestamp="1601021693306">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="933" height="176" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1597034665940" />
-    <state x="260" y="0" key="SettingsEditor" timestamp="1594784041383">
+    <state width="933" height="160" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1601021693306" />
+    <state x="260" y="0" key="SettingsEditor" timestamp="1601020842430">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="260" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1594784041383" />
+    <state x="260" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1601020842430" />
+    <state x="83" y="0" key="new project wizard" timestamp="1601020811274">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="83" y="0" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1601020811274" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
