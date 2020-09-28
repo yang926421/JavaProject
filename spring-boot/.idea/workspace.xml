@@ -53,8 +53,8 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="D:/lyy/documents/apache-maven-3.5.2-bin/apache-maven-3.5.2" />
-        <option name="userSettingsFile" value="D:\lyy\documents\apache-maven-3.5.2-bin\apache-maven-3.5.2\conf\settings.xml" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../software/maven/apache-maven-3.5.2-bin/apache-maven-3.5.2" />
+        <option name="userSettingsFile" value="D:\lyy\software\maven\apache-maven-3.5.2-bin\apache-maven-3.5.2\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
     <option name="importingSettings">
@@ -173,6 +173,7 @@
       <workItem from="1599140952719" duration="40000" />
       <workItem from="1599141221573" duration="182000" />
       <workItem from="1599144966110" duration="96000" />
+      <workItem from="1601263142242" duration="10385000" />
     </task>
     <servers />
   </component>
@@ -188,10 +189,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="206" y="0" width="1160" height="690" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1599061505043" />
-    <state x="509" y="124" key="FileChooserDialogImpl" timestamp="1599141401515">
+    <state x="509" y="124" key="FileChooserDialogImpl" timestamp="1601264927671">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="509" y="124" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1599141401515" />
+    <state x="509" y="124" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1601264927671" />
     <state width="932" height="176" key="GridCell.Tab.0.bottom" timestamp="1599141402622">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -248,29 +249,29 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="265" y="28" key="Registry/0.0.1366.728@0.0.1366.728" timestamp="1599092617842" />
-    <state x="169" y="20" width="998" height="708" key="SettingsEditor" timestamp="1599140985725">
+    <state x="169" y="20" width="998" height="708" key="SettingsEditor" timestamp="1601264932592">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="169" y="20" width="998" height="708" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1599140985725" />
+    <state x="169" y="20" width="998" height="708" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1601264932592" />
     <state x="416" y="187" key="com.intellij.ide.util.TipDialog" timestamp="1599140952795">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="416" y="187" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1599140952795" />
-    <state x="115" y="80" width="1251" height="603" key="new project wizard" timestamp="1599037857568">
+    <state x="115" y="80" width="1251" height="603" key="new project wizard" timestamp="1601277051625">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="115" y="80" width="1251" height="603" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1599037857568" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1599092599890">
+    <state x="115" y="80" width="1251" height="603" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1601277051625" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1601281371283">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1599092599890" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1601281371283" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/springboot-01/src/main/java/cn/gsxt/Springboot01Application.java</url>
-          <line>6</line>
+          <line>8</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -292,6 +293,11 @@
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.2.9.RELEASE/spring-boot-autoconfigure-2.2.9.RELEASE-sources.jar!/org/springframework/boot/autoconfigure/AutoConfigurationImportSelector.java</url>
           <line>114</line>
           <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/springboot_par/springboot_first/src/main/java/cn/gsxt/ApplicationFirst.java</url>
+          <line>12</line>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

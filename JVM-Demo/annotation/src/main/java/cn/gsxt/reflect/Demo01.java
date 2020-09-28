@@ -1,5 +1,7 @@
 package cn.gsxt.reflect;
 
+import java.lang.reflect.Constructor;
+
 //什么叫反射
 public class Demo01 extends Object {
     public static void main(String[] args) throws Exception {
@@ -7,7 +9,11 @@ public class Demo01 extends Object {
         Class<?> aClass = Class.forName("cn.gsxt.reflect.User");
         System.out.println(aClass);
 
-
+        User user = (User) aClass.newInstance();
+        Constructor<?>[] declaredConstructors = aClass.getDeclaredConstructors();
+        for (Constructor<?> declaredConstructor : declaredConstructors) {
+            System.out.println(declaredConstructor);
+        }
 
     }
 
