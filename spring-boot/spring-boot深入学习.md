@@ -13,6 +13,196 @@ service: userService  分布式情况下  业务放分开发那么这个服务�
 https://www.cnblogs.com/liuning8023/p/4493156.html
 
 <<<<<<< HEAD
+
+![1601276355632](assets/1601276355632.png)
+
+## 1.starter
+
+```
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter</artifactId>
+</dependency>
+1.启动器   说白了就是springboot的启动场景
+比如spring-boot-starter-web  会帮我们自动导入web环境所有的依赖
+2.springboot会将所有的功能场景,都变成一个一个启动器
+3.我们需要什么功能,就只需要找到对应的启动器就可以了  starter
+
+
+```
+
+## 2.主启动类
+
+```
+//标注这个类是一个springboot应用
+@SpringBootApplication
+public class Springboot01Application {
+
+    public static void main(String[] args) {
+        //将springboot应用启动
+        SpringApplication.run(Springboot01Application.class, args);
+    }
+
+}
+```
+
+3.剖析主启动类上及之后的注解
+
+```
+1.@SpringBootConfiguration  springboot的配置
+	点进@SpringBootConfiguration 看到@Configuration 表明这是spring的配置类
+		点进@Configuration  @Component  这也是spring的组件
+2.@EnableAutoConfiguration  自动配置
+	2.1@AutoConfigurationPackage  自动配置包
+		@Import(AutoConfigurationPackages.Registrar.class) 自动配置 包注册
+			private static final class PackageImport 静态内部类
+				return this.packageName; 获取的就是主启动类上层的包
+	2.2@Import(AutoConfigurationImportSelector.class)(自动导入包的核心)自动配置导入选择
+		2.2.1 AutoConfigurationImportSelector  自动导入选择器 (选择了什么东西)
+			方法 getAutoConfigurationEntry 获得了自动配置的实体
+				getCandidateConfigurations 获取候选的配置
+					loadFactoryNames()  获取所有的加载配置
+						load函数的参数 getSpringFactoriesLoaderFactoryClass()
+							EnableAutoConfiguration  获取了标注了这个注解的类,
+						loadSpringFactories()
+							项目资源
+							classLoader.getResources(FACTORIES_RESOURCE_LOCATION) :
+								从这里获取配置
+								FACTORIES_RESOURCE_LOCATION = "META-INF/spring.factories";
+								这个文件在spring-boot-autoconfigure-2.2.9.RELEASE.jar下
+								spring.factories
+									这个文件下有很多自动配置类,需要导入相应的starter才能生效
+							系统资源
+							ClassLoader.getSystemResources(FACTORIES_RESOURCE_LOCATION));
+							从这些资源中遍历了所有的nextElement,封装成Properties供我们使用	
+				
+						
+			
+3.@ComponentScan  扫描当前主启动类同级的包
+
+
+3的自动扫描包扫描完到2.1.1去注册
+自动配置类有个核心注解ConditionalOnxxx  如果这里边的条件都满足,才会生效
+结论  
+springboot所有的自动配置都在启动类被扫描并且加载,所有的自动配置类都在spring.factories,但是要判断条件是否成立是否导入了对应的starter,就有了对应的启动器,有了启动器,我们自动的装配就会生效,然后就会配置成功
+1.springboot在启动的时候,从类路径下/META-INF/spring.factories获取指定的值
+2.将这些自动配置的类导入容器,自动配置就会生效,帮助我们自动配置
+3.以前需要我们去配置的东西,现在springboot帮我们做了
+4.整个javaEE,解决方案和自动配置的东西都在spring-boot-autoconfigure-2.2.9.RELEASE.jar包下,springboot将javaee的一些技术进行整合,
+5.它会把所有需要导入的组件,以类名的方式返回(spring.factories下的全路径名),这些组件就会被添加到容器中
+6.容器中存在非常多的XXXAutoConfiguration的文件(@Bean),就是这些类给容器中导入了这个starter场景需要的所有组件,并自动配置  @Configuration   JavaConfig
+7.有了自动配置类,免去了我们手动编写配置文件的工作
+```
+
+2.2@Import(AutoConfigurationImportSelector.class)自动配置导入选择
+
+AutoConfigurationImportSelector这个类下
+
+```
+protected AutoConfigurationEntry getAutoConfigurationEntry(AutoConfigurationMetadata autoConfigurationMetadata,
+      AnnotationMetadata annotationMetadata) {
+   if (!isEnabled(annotationMetadata)) {
+      return EMPTY_ENTRY;
+   }
+   AnnotationAttributes attributes = getAttributes(annotationMetadata);
+   //获取所有的配置
+   List<String> configurations = getCandidateConfigurations(annotationMetadata, attributes);
+   configurations = removeDuplicates(configurations);
+   Set<String> exclusions = getExclusions(annotationMetadata, attributes);
+   checkExcludedClasses(configurations, exclusions);
+   configurations.removeAll(exclusions);
+   configurations = filter(configurations, autoConfigurationMetadata);
+   fireAutoConfigurationImportEvents(configurations, exclusions);
+   return new AutoConfigurationEntry(configurations, exclusions);
+}
+
+```
+
+//获取候选的配置
+
+```
+getCandidateConfigurations这个方法
+protected List<String> getCandidateConfigurations(AnnotationMetadata metadata, AnnotationAttributes attributes) {
+		List<String> configurations = SpringFactoriesLoader.loadFactoryNames(getSpringFactoriesLoaderFactoryClass(),
+				getBeanClassLoader())
+		Assert.notEmpty(configurations, "No auto configuration classes found in META-INF/spring.factories. If you "
+				+ "are using a custom packaging, make sure that file is correct.");
+		return configurations;
+	}
+```
+
+![1601282953838](assets/1601282953838.png)
+
+getCandidateConfigurations这个方法
+
+```
+List<String> configurations = SpringFactoriesLoader.loadFactoryNames(getSpringFactoriesLoaderFactoryClass(),
+
+				getBeanClassLoader())
+
+SpringFactoriesLoader  spring工厂的加载  loadFactoryNames参数是一个类 在上面的图片可以看到是标注了EnableAutoConfiguration的类
+Properties properties = PropertiesLoaderUtils.loadProperties(resource); 所有的资源加载到配置类中
+
+除了集成 Java 的 Service Loader 之外，Spring 还提供了另一种 IoC 的实现。其只需要添加一个简单的配置文件，文件名必须为 spring.factories 并且放到 META-INF 下。从代码的角度看，这个文件通过静态方法 SpringFactoriesLoader.loadFactories() 来读取。Spring 的这个实现确实让你吃惊。
+
+```
+
+META-INF/spring.factories 自动配置的核心文件
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # springboot目前最重要的知识点
 
 ```
@@ -551,6 +741,8 @@ private String IDCARD_NO;
 ## 5.定时任务
 
 开发环境的配置  日志保留三个月的
+
+ 
 
 
 
