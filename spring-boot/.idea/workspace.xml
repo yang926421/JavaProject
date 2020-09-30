@@ -173,7 +173,7 @@
       <workItem from="1599140952719" duration="40000" />
       <workItem from="1599141221573" duration="182000" />
       <workItem from="1599144966110" duration="96000" />
-      <workItem from="1601263142242" duration="10385000" />
+      <workItem from="1601263142242" duration="10849000" />
     </task>
     <servers />
   </component>
@@ -298,6 +298,11 @@
           <url>file://$PROJECT_DIR$/springboot_par/springboot_first/src/main/java/cn/gsxt/ApplicationFirst.java</url>
           <line>12</line>
           <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.2.9.RELEASE/spring-boot-autoconfigure-2.2.9.RELEASE-sources.jar!/org/springframework/boot/autoconfigure/AutoConfigurationPackages.java</url>
+          <line>144</line>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
