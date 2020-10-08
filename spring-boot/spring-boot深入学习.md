@@ -149,9 +149,23 @@ Properties properties = PropertiesLoaderUtils.loadProperties(resource); 所有�
 
 META-INF/spring.factories 自动配置的核心文件
 
+## 3.启动
 
+```java
+SpringApplication.run(Springboot01Application.class, args);
+1.SpringApplication的实例化
+    springApplication做了以下四件事情
+    1.推断应用的项目是普通的项目还是web项目
+    2.查找并加载所有可用的初始化器,设置到initializers属性中
+    3.找出所有的应用程序监听器,设置到listener属性中
+    4.推断并设置main方法的定义类,找到运行的主类
+2.run方法的执行 
+   
+    
+    
+    
 
-
+```
 
 
 
@@ -433,7 +447,7 @@ mainType.properties文件中存储properties格式
 
 ![1598605186267](assets/1598605186267.png)
 
-
+# 自动装配的原理(核心)
 
 ![1598606652067](assets/1598606652067.png)
 

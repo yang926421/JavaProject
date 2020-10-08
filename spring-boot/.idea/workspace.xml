@@ -53,8 +53,8 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="$PROJECT_DIR$/../../../software/maven/apache-maven-3.5.2-bin/apache-maven-3.5.2" />
-        <option name="userSettingsFile" value="D:\lyy\software\maven\apache-maven-3.5.2-bin\apache-maven-3.5.2\conf\settings.xml" />
+        <option name="mavenHome" value="D:/lyy/documents/apache-maven-3.5.2-bin/apache-maven-3.5.2" />
+        <option name="userSettingsFile" value="D:\lyy\documents\apache-maven-3.5.2-bin\apache-maven-3.5.2\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
     <option name="importingSettings">
@@ -79,7 +79,10 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="F:/work/整理/一些文件/com" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
@@ -174,6 +177,8 @@
       <workItem from="1599141221573" duration="182000" />
       <workItem from="1599144966110" duration="96000" />
       <workItem from="1601263142242" duration="10385000" />
+      <workItem from="1601300914655" duration="132000" />
+      <workItem from="1601301126598" duration="5555000" />
     </task>
     <servers />
   </component>
@@ -189,10 +194,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="206" y="0" width="1160" height="690" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1599061505043" />
-    <state x="509" y="124" key="FileChooserDialogImpl" timestamp="1601264927671">
+    <state x="524" y="89" key="FileChooserDialogImpl" timestamp="1602061521805">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="509" y="124" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1601264927671" />
+    <state x="524" y="89" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1602061521805" />
     <state width="932" height="176" key="GridCell.Tab.0.bottom" timestamp="1599141402622">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -249,10 +254,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="265" y="28" key="Registry/0.0.1366.728@0.0.1366.728" timestamp="1599092617842" />
-    <state x="169" y="20" width="998" height="708" key="SettingsEditor" timestamp="1601264932592">
+    <state x="320" y="20" width="998" height="708" key="SettingsEditor" timestamp="1601305738943">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="169" y="20" width="998" height="708" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1601264932592" />
+    <state x="320" y="20" width="998" height="708" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1601305738943" />
     <state x="416" y="187" key="com.intellij.ide.util.TipDialog" timestamp="1599140952795">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -271,7 +276,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/springboot-01/src/main/java/cn/gsxt/Springboot01Application.java</url>
-          <line>8</line>
+          <line>10</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
